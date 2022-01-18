@@ -1,0 +1,20 @@
+# ignore everything in the root except the "wp-content" directory.
+/*
+!themes/
+!override/
+
+# ignore all files starting with .
+.*
+
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "plugins" directory
+# "themes" directory
+themes/*
+!themes/profumo-labo
+
+# ignore node/grunt dependency directories
+node_modules/
