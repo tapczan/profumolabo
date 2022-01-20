@@ -45,6 +45,16 @@
 
        <div class="row header-top__row">
 
+        <div class="col-md-4">
+          1
+        </div>
+        <div class="col-md-4">
+          2
+        </div>
+        <div class="col-md-4">
+          3
+        </div>
+
        <div class="col flex-grow-0 header-top__block header-top__block--menu-toggle d-block d-md-none">
           <a
             class="header-top__link"
@@ -76,6 +86,8 @@
 
     </div>
   </div>
+
+  
   {hook h='displayNavFullWidth'}
 {/block}*}
 
@@ -126,4 +138,13 @@
     </div>
   </div>
 </div>
+ 
+  {if $page.page_name == 'index'}
+    <div class="row mx-0">
+      <div style="width:100%; max-width: 1920px; margin: 0 auto;">
+       {widget name='is_imageslider'}
+      </div>
+    </div>
+  {/if}
+  
 {/block}
