@@ -32,6 +32,9 @@
 <div class="footer-container">
   <div class="container">
     <div class="row">
+      <div class="col-12 text-center">
+        <img class="img-fluid" src="{$urls.img_url}footer_logo.svg" alt="">
+      </div>
       {block name='hook_footer'}
         {hook h='displayFooter'}
       {/block}
