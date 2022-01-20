@@ -22,9 +22,9 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="col flex-grow-0 header-top__block header-top__block--user">
+<div class="col flex-grow-0 header-top__block header-top__block--user header__inner-login">
   <a
-    class="header-top__link"
+    class="header__inner-top-link header__inner-login-link"
     rel="nofollow"
     href="{$urls.pages.my_account}"
     {if $logged}
@@ -34,7 +34,8 @@
     {/if}
   >
     <div class="header-top__icon-container">
-      <span class="header-top__icon material-icons">person</span>
+      <span class="header__inner-login-label">ZALOGUJ SIĘ</span>
+      <img class="header__inner-login-icon" src="{$urls.img_url}home-icon.png">
     </div>
   </a>
 </div>

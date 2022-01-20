@@ -16,20 +16,20 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-<div class="header-top__block header-top__block--cart col flex-grow-0">
+<div class="header-top__block header-top__block--cart col flex-grow-0 header-cart">
   <div class="blockcart cart-preview dropdown" data-refresh-url="{$refresh_url}">
-    <a href="#" role="button" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="header-top__link d-lg-block d-none">
+    <a href="#" role="button" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="header__inner-top-link d-lg-block d-none">
       <div class="header-top__icon-container">
-        <span class="header-top__icon material-icons">shopping_basket</span>
-        <span class="header-top__badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
+        <img class="header-top__icon header__inner-cart-icon" src="{$urls.img_url}bag-icon.png">
+        <span class="header-top__badge header__inner-cart-badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
           {$cart.products_count}
         </span>
       </div>
     </a>
-    <a href="{$cart_url}" class="d-flex d-lg-none header-top__link">
+    <a href="{$cart_url}" class="d-flex d-lg-none header__inner-top-link">
       <div class="header-top__icon-container">
-        <span class="header-top__icon material-icons">shopping_basket</span>
-        <span class="header-top__badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
+        <img class="header-top__icon header__inner-cart-icon" src="{$urls.img_url}bag-icon.png">
+        <span class="header-top__badge header__inner-cart-badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
           {$cart.products_count}
         </span>
       </div>

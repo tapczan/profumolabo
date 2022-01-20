@@ -39,7 +39,7 @@
   </nav>
 {/block}*}
 
-{block name='header_top'}
+{*{block name='header_top'}
   <div class="header-top">
     <div class="container">
 
@@ -77,4 +77,53 @@
     </div>
   </div>
   {hook h='displayNavFullWidth'}
+{/block}*}
+
+
+{block name='header_top'}
+<div class="header">
+  <div class="header__inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="header__inner-l">
+            {widget name='ps_languageselector'}
+            {widget name='is_searchbar'}
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="{$urls.pages.index}">
+            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+          </a>
+        </div>
+        <div class="col-md-4">
+          <div class="header__inner-r">
+            {widget name='ps_customersignin'}
+            {widget name='is_shoppingcart'}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+  <div class="header__nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-2 col-sm-7 col-9 header__nav-left">
+          <a href="{$urls.pages.index}">
+            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+          </a>
+        </div>
+        <div class="col-xl-8 col-sm-1 col-1 header__nav-mid">
+          {hook h='displayMegaMenu'}
+        </div>
+        <div class="col-xl-2 col-sm-4 col-2 header__nav-right">
+          {widget name='is_searchbar'}
+          {widget name='ps_customersignin'}
+          {widget name='is_shoppingcart'}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {/block}

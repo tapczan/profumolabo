@@ -37,6 +37,7 @@ import './components/quickview';
 import './components/product';
 import './components/cart/cart';
 import './components/cart/block-cart';
+import './components/jquery.matchHeight';
 
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
@@ -79,6 +80,27 @@ $(document).ready(() => {
 
   $('.js-select-link').on('change', ({target}) => {
     window.location.href = $(target).val();
+  });
+
+  // Navigation Script
+  $('.mm_columns_li').matchHeight();
+
+  var stickyNavTop = $('.header__nav').offset().top;
+ 
+  function stickyNav(){
+    var scrollTop = $(window).scrollTop();
+          
+    if (scrollTop > stickyNavTop) { 
+      $('.header__nav').addClass('header__nav--sticky');
+    } else {
+      $('.header__nav').removeClass('header__nav--sticky'); 
+    }
+  };
+  
+  stickyNav();
+  
+  $(window).on('scroll', function() {
+    stickyNav();
   });
 });
 
