@@ -63,7 +63,9 @@ global_settings:
      - ps_shoppingcart
      - ps_imageslider
   hooks:
-    modules_to_hook:
+    displayFullHomeSlider:
+        - is_imageslider
+    modules_to_hook:      
       displayNav1:
         - ps_contactinfo
       displayNav2:

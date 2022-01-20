@@ -28,6 +28,7 @@
       <section id="content" class="page-home">
         {block name='page_content_top'}{/block}
 
+    
         {hook h='displayHomeTop'}
 
         {block name='page_content'}
