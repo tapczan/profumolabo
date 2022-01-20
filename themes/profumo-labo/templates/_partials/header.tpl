@@ -99,6 +99,7 @@
         <div class="col-md-4">
           <div class="header__inner-r">
             {widget name='ps_customersignin'}
+            <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.png">
             {widget name='is_shoppingcart'}
           </div>
         </div>
