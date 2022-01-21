@@ -151,13 +151,4 @@
     </div>
   </div>
 </div>
- 
-  {if $page.page_name == 'index'}
-    <div class="row mx-0">
-      <div style="width:100%; max-width: 1920px; margin: 0 auto;">
-       {widget name='is_imageslider'}
-      </div>
-    </div>
-  {/if}
-  
 {/block}
