@@ -37,6 +37,10 @@
       text-decoration: none;
       background: $gray-100;
     }
+
+    &:focus{
+      background: $white !important;
+    }
   }
 
   &__icon-container {
@@ -502,6 +506,34 @@
 
     .header-top__icon.header__inner-search-icon{
       width: 20px !important;
+    }
+
+    .search-form{
+      max-width: 960px !important;
+      margin: auto;
+    }
+
+    .search-form__form-group{
+      padding-left: 0;
+    }
+
+    .search-form__btn{
+      left: auto;
+      right: 10px;
+    }
+
+    .search-form__input{
+      padding: 5px 10px 7px;
+      font-family: $font-jost;
+      font-size: $font-size-sm;
+      font-style: normal;
+      border-bottom: none;
+    }
+  }
+
+  .header__nav:not(.header__nav--sticky) {
+    .header__nav-search-mobile{
+      display: none !important;
     }
   }
 }
