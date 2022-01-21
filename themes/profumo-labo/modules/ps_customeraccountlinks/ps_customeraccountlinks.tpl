@@ -23,10 +23,10 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div id="block_myaccount_infos" class="col-md-3 col-12 mb-lg-4">
+<div id="block_myaccount_infos" class="col-md-4 col-12 mb-lg-4">
 
   <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
-    <span class="h4 mb-0">{l s='Your account' d='Shop.Theme.Customeraccount'}</span>
+    <span class="h6 mb-5 text-uppercase text-white fw-regular">{l s='Your account' d='Shop.Theme.Customeraccount'}</span>
     <a href="#footer_account_list" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
       <i class="material-icons d-block"></i>
     </a>

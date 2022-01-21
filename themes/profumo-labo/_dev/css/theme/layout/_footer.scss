@@ -6,8 +6,47 @@
 
 
 .footer-container {
-  padding-top: map-get($spacers, 5);
+  padding-top: 126px;
   padding-bottom: map-get($spacers, 2);
-  margin-top: map-get($spacers, 5);
   background: #000;
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 188px;
+  }
+
+  .container {
+    max-width: 1001px;
+  }
+
+  .h6,
+  .links-list__link {
+    letter-spacing: 0.1em;
+  }
+
+  .links-list__link {
+    font-size: 16px;
+    line-height: 30px;
+    color: rgba(255, 255, 255, 0.6);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &__logo {
+    max-width: 341px;
+    margin-bottom: 160px;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 188px;
+    }
+  }
+
+  &__payment {
+    max-width: 110px;
+  }
+
+  hr {
+    border-color: #535353;
+  }
 }

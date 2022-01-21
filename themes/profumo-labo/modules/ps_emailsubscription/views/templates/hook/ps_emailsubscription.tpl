@@ -23,52 +23,57 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div class="block_newsletter col-lg-8 col-md-12 col-sm-12" id="blockEmailSubscription_{$hookName}">
-  <div class="row">
-    <p id="block-newsletter-label" class="col-md-5 col-12">{l s='Get our latest news and special sales' d='Shop.Theme.Global'}</p>
-    <div class="col-md-7 col-12">
-      <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
-        <div class="row">
-          <div class="col-12">
-            <div class="input-group js-parent-focus">
-              <input
-                name="email"
-                type="email"
-                value="{$value}"
-                class="form-control js-child-focus"
-                placeholder="{l s='Your email address' d='Shop.Forms.Labels'}"
-                aria-labelledby="block-newsletter-label"
-                required
-              >
-              <div class="input-group-append">
+<div class="block_newsletter py-3" id="blockEmailSubscription_{$hookName}">
+  <div class="container">
+    <div class="row align-items-center">
+      <p id="block-newsletter-label" class="col-md-6 col-12 mb-md-0 mb-3 text-uppercase block_newsletter__label">
+      {l s='sign up for our newsletter' d='Shop.Theme.Global'}<br>
+      {l s='to get a 15% off your first order' d='Shop.Theme.Global'}
+      </p>
+      <div class="col-md-6 col-12">
+        <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
+          <div class="row">
+            <div class="col-12">
+              <div class="input-group js-parent-focus">
                 <input
-                  class="btn btn-primary float-right hidden-xs-down"
-                  name="submitNewsletter"
-                  type="submit"
-                  value="{l s='Subscribe' d='Shop.Theme.Actions'}"
+                  name="email"
+                  type="email"
+                  value="{$value}"
+                  class="form-control js-child-focus"
+                  placeholder="{l s='Your email address' d='Shop.Forms.Labels'}"
+                  aria-labelledby="block-newsletter-label"
+                  required
                 >
+                <div class="input-group-append">
+                  <input
+                    class="btn btn-primary float-right text-uppercase"
+                    name="submitNewsletter"
+                    type="submit"
+                    value="{l s='Subscribe' d='Shop.Theme.Actions'}"
+                  >
+                </div>
               </div>
+              <input type="hidden" name="blockHookName" value="{$hookName}" />
+              <input type="hidden" name="action" value="0">
+              <div class="clearfix"></div>
             </div>
-            <input type="hidden" name="blockHookName" value="{$hookName}" />
-            <input type="hidden" name="action" value="0">
-            <div class="clearfix"></div>
+            <div class="col-12">
+                {*{if $conditions}
+                  <small class="form-text text-muted">{$conditions nofilter}</small>
+                {/if}*}
+                {if $msg}
+                  <p class="alert {if $nw_error}alert-danger{else}alert-success{/if}">
+                    {$msg}
+                  </p>
+                {/if}
+                {hook h='displayNewsletterRegistration'}
+                {if isset($id_module)}
+                  {hook h='displayGDPRConsent' id_module=$id_module}
+                {/if}
+            </div>
           </div>
-          <div class="col-12">
-              {if $conditions}
-                <small class="form-text text-muted">{$conditions nofilter}</small>
-              {/if}
-              {if $msg}
-                <p class="alert {if $nw_error}alert-danger{else}alert-success{/if}">
-                  {$msg}
-                </p>
-              {/if}
-              {hook h='displayNewsletterRegistration'}
-              {if isset($id_module)}
-                {hook h='displayGDPRConsent' id_module=$id_module}
-              {/if}
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>

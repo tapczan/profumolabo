@@ -26,3 +26,11 @@
 .font-base {
   @include font-size($font-size-base);
 }
+
+.fw-regular {
+  font-weight: 400;
+}
+
+.fw-light {
+  font-weight: 300;
+}
