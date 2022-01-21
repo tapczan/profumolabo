@@ -47,6 +47,10 @@ input[type="number"] {
   iframe{
     width: 100% !important;
   }
+
+  img{
+    max-width: 100%;
+  }
 }
 
 @media(min-width: 1400px){

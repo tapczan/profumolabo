@@ -261,8 +261,8 @@
           border: 0;
           margin-top: 0;
           text-align: center;
-          padding-top: 70px;
-          padding-bottom: 50px;
+          padding-top: 40px;
+          padding-bottom: 40px;
           display: none;
         }
 
@@ -787,4 +787,41 @@
   .header__nav .header-top__link.search-toggler{
     display: none !important;
   }
+}
+
+.drogeria-btn{
+  text-align: center;
+  display: block;
+  border: 1px solid #000;
+  text-transform: uppercase;
+  font-size: 12px !important;
+  font-weight: 300;
+  padding: 1px;
+}
+
+.drogeria-btn:hover{
+  border: 1px solid #CCB48F;
+}
+
+.three-column-list{
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+}
+
+.header__mega-menu .mm_menus_ul .mm_menus_li.mega-menu-header-marki .mm_columns_li{
+  max-width: 330px;
+}
+
+.header__mega-menu .mm_menus_ul .mm_menus_li.mega-menu-header-marki .mm_columns_li:first-child{
+  border-right: 0;
+}
+
+.header__mega-menu .mm_menus_ul .mm_menus_li.mega-menu-header-marki .mm_columns_li:first-child .mm_blocks_ul .mm_blocks_li:nth-child(2){
+  text-align: center;
+  font-weight: 500;
+  line-height: 18px;
+  color: #000;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
