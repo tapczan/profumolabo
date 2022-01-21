@@ -539,6 +539,10 @@
 }
 
 @media screen and (max-width: 991px){
+  .header__mega-menu .mm_menus_ul .mm_menus_li > a{
+    margin-bottom: 0 !important;
+  }
+
   .header__inner{
     display: none;
 
