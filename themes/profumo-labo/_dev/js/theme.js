@@ -83,7 +83,11 @@ $(document).ready(() => {
   });
 
   // Navigation Script
-  $('.mm_columns_li').matchHeight();
+  $('.mega-menu-header-kobieta .mm_columns_li').matchHeight();
+  $('.mega-menu-header-mezczyzna .mm_columns_li').matchHeight();
+  $('.mega-menu-header-kolekje .mm_columns_li').matchHeight();
+  $('.mega-menu-header-marki .mm_columns_li').matchHeight();
+  $('.mega-menu-header-kontakt .mm_columns_li').matchHeight();
 
   var stickyNavTop = $('.header__nav').offset().top;
  
@@ -108,6 +112,12 @@ $(document).ready(() => {
   });
 
   $(window).on('load', function(){
+    $('.mega-menu-header-kobieta .mm_columns_li').matchHeight();
+    $('.mega-menu-header-mezczyzna .mm_columns_li').matchHeight();
+    $('.mega-menu-header-kolekje .mm_columns_li').matchHeight();
+    $('.mega-menu-header-marki .mm_columns_li').matchHeight();
+    $('.mega-menu-header-kontakt .mm_columns_li').matchHeight();
+    
     var winW = $(window).outerWidth();
 
     if( winW >= 992 ){
