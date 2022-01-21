@@ -102,6 +102,10 @@ $(document).ready(() => {
   $(window).on('scroll', function() {
     stickyNav();
   });
+
+  $('.jsSearchToggleMobile').on('click', function(){
+    $('.jsMobileSearch').toggle();
+  });
 });
 
 function accLinksTriggerActive() {

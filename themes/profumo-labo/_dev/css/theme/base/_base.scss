@@ -43,6 +43,10 @@ input[type="number"] {
 #wrapper{
   position: relative;
   z-index: 50;
+
+  iframe{
+    width: 100% !important;
+  }
 }
 
 @media(min-width: 1400px){
@@ -55,4 +59,9 @@ input[type="number"] {
   .container{
     max-width: 1700px;
   }
+}
+
+body.noscroll{
+  overflow: unset;
+  height: auto;
 }

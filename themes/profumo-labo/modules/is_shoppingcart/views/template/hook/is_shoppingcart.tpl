@@ -20,7 +20,7 @@
   <div class="blockcart cart-preview dropdown" data-refresh-url="{$refresh_url}">
     <a href="#" role="button" id="cartDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="header__inner-top-link d-lg-block d-none">
       <div class="header-top__icon-container">
-        <img class="header-top__icon header__inner-cart-icon" src="{$urls.img_url}bag-icon.png">
+        <img class="header-top__icon header__inner-cart-icon" src="{$urls.img_url}bag-icon.svg">
         <span class="header-top__badge header__inner-cart-badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
           {$cart.products_count}
         </span>
@@ -28,7 +28,7 @@
     </a>
     <a href="{$cart_url}" class="d-flex d-lg-none header__inner-top-link">
       <div class="header-top__icon-container">
-        <img class="header-top__icon header__inner-cart-icon" src="{$urls.img_url}bag-icon.png">
+        <img class="header-top__icon header__inner-cart-icon" src="{$urls.img_url}bag-icon.svg">
         <span class="header-top__badge header__inner-cart-badge {if $cart.products_count > 9}header-top__badge--smaller{/if}">
           {$cart.products_count}
         </span>
