@@ -23,7 +23,7 @@
 *  International Registered Trademark & Property of PrestaShop SA
 *}
 
-<form id="_desktop_search_from" class="search-form js-search-form d-none d-md-block" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">
+<form id="_desktop_search_from" class="search-form js-search-form" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">
 	<div class="search-form__form-group">
 		<input type="hidden" name="controller" value="search">
 		<input class="js-search-input search-form__input form-control" placeholder="{l s='Szukaj' d='Shop.Istheme'}" type="text" name="s" value="{$search_string}" autocomplete="off">
@@ -33,7 +33,7 @@
 	</div>
 </form>
 
-<a role="button" class="search-toggler header-top__link d-block d-md-none jsSearchToggleMobile">
+<a role="button" class="search-toggler header-top__link jsSearchToggleMobile">
 	<div class="header-top__icon-container">
 		<img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-mobile-icon.svg">
 	</div>

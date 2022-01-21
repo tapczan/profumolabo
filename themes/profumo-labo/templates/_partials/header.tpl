@@ -122,12 +122,12 @@
   <div class="header__nav">
     <div class="container">
       <div class="row">
-        <div class="col-xl-2 col-sm-7 col-9 header__nav-left">
+        <div class="col-md-2 col-sm-7 col-9 header__nav-left">
           <a href="{$urls.pages.index}">
             <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
           </a>
         </div>
-        <div class="col-xl-8 col-sm-1 col-1 header__nav-mid">
+        <div class="col-md-8 col-sm-1 col-1 header__nav-mid">
           <div class="header__nav-search-mobile jsMobileSearch">
             <form class="search-form js-search-form" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">
               <div class="search-form__form-group">
@@ -141,7 +141,7 @@
           </div>
           {hook h='displayMegaMenu'}
         </div>
-        <div class="col-xl-2 col-sm-4 col-2 header__nav-right">
+        <div class="col-md-2 col-sm-4 col-2 header__nav-right">
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
           <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg">

@@ -106,6 +106,28 @@ $(document).ready(() => {
   $('.jsSearchToggleMobile').on('click', function(){
     $('.jsMobileSearch').toggle();
   });
+
+  $(window).on('load', function(){
+    var winW = $(window).outerWidth();
+
+    if( winW >= 992 ){
+      $('.ets_mm_megamenu').removeClass('changestatus');
+    }
+
+    if( winW <= 991 ){
+      $('.ets_mm_megamenu').addClass('changestatus');
+    }
+
+    $(window).on('resize', function(){
+      var winResizeW = $(window).outerWidth();
+
+      $('.ets_mm_megamenu').addClass('changestatus');
+
+      if( winResizeW >= 992 ){
+        $('.ets_mm_megamenu').removeClass('changestatus');
+      } 
+    });
+  });
 });
 
 function accLinksTriggerActive() {
