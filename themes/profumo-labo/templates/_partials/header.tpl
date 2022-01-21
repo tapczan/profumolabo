@@ -111,7 +111,7 @@
         <div class="col-md-4">
           <div class="header__inner-r">
             {widget name='ps_customersignin'}
-            <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.png">
+            <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg">
             {widget name='is_shoppingcart'}
           </div>
         </div>
@@ -128,11 +128,23 @@
           </a>
         </div>
         <div class="col-xl-8 col-sm-1 col-1 header__nav-mid">
+          <div class="header__nav-search-mobile jsMobileSearch">
+            <form class="search-form js-search-form" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">
+              <div class="search-form__form-group">
+                <input type="hidden" name="controller" value="search">
+                <input class="js-search-input search-form__input form-control" placeholder="{l s='Szukaj' d='Shop.Istheme'}" type="text" name="s" value="{$search_string}" autocomplete="off">
+                <button type="submit" class="search-form__btn btn">
+                  <img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-mobile-icon.svg">
+                </button>
+              </div>
+            </form>
+          </div>
           {hook h='displayMegaMenu'}
         </div>
         <div class="col-xl-2 col-sm-4 col-2 header__nav-right">
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
+          <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg">
           {widget name='is_shoppingcart'}
         </div>
       </div>
