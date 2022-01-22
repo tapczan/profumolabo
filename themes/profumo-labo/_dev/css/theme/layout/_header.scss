@@ -506,6 +506,127 @@
   column-count: 3;
 }
 
+.mega-menu-header{
+  &-kobieta,
+  &-mezczyzna{
+    .mm_columns_ul{
+      .mm_columns_li:last-child{
+        .mm_blocks_ul .ets_mm_categories a{
+          color: #CCB48F !important;
+        }
+      }
+    }
+  }
+
+  &-marki{
+    .three-column-list{
+      font-size: $font-size-xs;
+      line-height: 20px;
+    }
+  }
+
+  &-kontakt{
+    .mm_columns_li {
+      max-width: 300px !important;
+    }
+    
+    .kontakt{
+      &-first-col {
+        h3{
+          font-weight: 500;
+        }
+  
+        span{
+          display: block;
+        }
+  
+        ul li{
+          float: none !important;
+          display: block;
+        }
+  
+        &-info,
+        &-contact{
+          padding: 0;
+          margin: 0;
+          list-style: none;
+        }
+  
+        &-contact li a{
+          font-weight: 500 !important;
+          color: #000 !important;
+        }
+  
+        &-gold{
+          color: #CCB48F;
+          margin-top: 10px;
+        }
+  
+        &-space{
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+      }
+  
+      &-second-col{
+        h3{
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+  
+        &-list{
+          padding: 0;
+          margin: 0;
+          margin-bottom: 20px !important;
+          list-style: none;
+  
+          &--gold{
+            margin-bottom: 0 !important;
+  
+            a{
+              color: #CCB48F !important;
+            }
+          }
+  
+          li{
+            float: none !important;
+            display: block;
+            line-height: 24px !important;
+  
+            a{
+              line-height: 24px !important;
+            }
+          }
+        }
+      }
+  
+      &-third-col{
+        h3{
+          font-weight: 500;
+          text-transform: uppercase;
+        }
+  
+        &-list{
+          padding: 0;
+          margin: 0;
+          margin-bottom: 20px !important;
+          list-style: none;
+  
+          li{
+            float: none !important;
+            display: block;
+            line-height: 24px !important;
+  
+            a{
+              line-height: 24px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1520px){
   .header__mega-menu .mm_menus_ul .mm_menus_li .mm_columns_li{
     max-width: 200px;
@@ -807,127 +928,6 @@
           left: 0;
           width: 15px;
           height: 1px;
-        }
-      }
-    }
-  }
-}
-
-.mega-menu-header{
-  &-kobieta,
-  &-mezczyzna{
-    .mm_columns_ul{
-      .mm_columns_li:last-child{
-        .mm_blocks_ul .ets_mm_categories a{
-          color: #CCB48F !important;
-        }
-      }
-    }
-  }
-
-  &-marki{
-    .three-column-list{
-      font-size: $font-size-xs;
-      line-height: 20px;
-    }
-  }
-
-  &-kontakt{
-    .mm_columns_li {
-      max-width: 300px !important;
-    }
-    
-    .kontakt{
-      &-first-col {
-        h3{
-          font-weight: 500;
-        }
-  
-        span{
-          display: block;
-        }
-  
-        ul li{
-          float: none !important;
-          display: block;
-        }
-  
-        &-info,
-        &-contact{
-          padding: 0;
-          margin: 0;
-          list-style: none;
-        }
-  
-        &-contact li a{
-          font-weight: 500 !important;
-          color: #000 !important;
-        }
-  
-        &-gold{
-          color: #CCB48F;
-          margin-top: 10px;
-        }
-  
-        &-space{
-          margin-top: 10px;
-          margin-bottom: 10px;
-        }
-      }
-  
-      &-second-col{
-        h3{
-          font-weight: 500;
-          text-transform: uppercase;
-        }
-  
-        &-list{
-          padding: 0;
-          margin: 0;
-          margin-bottom: 20px !important;
-          list-style: none;
-  
-          &--gold{
-            margin-bottom: 0 !important;
-  
-            a{
-              color: #CCB48F !important;
-            }
-          }
-  
-          li{
-            float: none !important;
-            display: block;
-            line-height: 24px !important;
-  
-            a{
-              line-height: 24px !important;
-            }
-          }
-        }
-      }
-  
-      &-third-col{
-        h3{
-          font-weight: 500;
-          text-transform: uppercase;
-        }
-  
-        &-list{
-          padding: 0;
-          margin: 0;
-          margin-bottom: 20px !important;
-          list-style: none;
-  
-          li{
-            float: none !important;
-            display: block;
-            line-height: 24px !important;
-  
-            a{
-              line-height: 24px !important;
-            }
-          }
         }
       }
     }
