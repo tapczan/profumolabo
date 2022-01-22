@@ -253,7 +253,11 @@
           margin-bottom: -7px !important;
         }
 
-        &:hover > a + span + .mm_columns_ul{
+        &:hover > a + span.closed + .mm_columns_ul{
+          display: none;
+        }
+
+        &:hover > a + span.opened + .mm_columns_ul{
           display: block;
         }
 
