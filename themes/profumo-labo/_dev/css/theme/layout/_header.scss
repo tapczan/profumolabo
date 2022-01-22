@@ -793,6 +793,11 @@
   }
 }
 
+// Mega Menu
+.mega-menu-header-kobieta .mm_columns_ul .mm_columns_li:last-child .mm_blocks_ul .ets_mm_categories a{
+  color: #CCB48F !important;
+}
+
 @media screen and (max-width: 360px){
   .header__nav-right {
     right: 10px;
