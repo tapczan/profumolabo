@@ -1,0 +1,86 @@
+.blockinstagram{
+    margin: 50px -2px;
+
+    &__title{
+        font-family: $font-jost;
+        font-size: $font-size-xl;
+        margin: 50px 0;
+        padding: 0;
+        text-align: center;
+        font-weight: normal;
+    }
+
+    &__feed{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+    
+    &__item{
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 2px;
+    }
+
+    &__small{
+        flex: 0 0 25%;
+        max-width: 25%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__big{
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: flex;
+
+        .blockinstagram__item{
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    }
+
+    &__img{
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .blockinstagram{
+        margin: 25px -2px;
+
+        &__title{
+            margin: 25px 0;
+            font-size: $font-size-lg;
+        }
+
+        &__feed{
+            flex-direction: column;
+        }
+
+        &__item{
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    
+        &__small{
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    
+        &__big{
+            flex: 0 0 100%;
+            max-width: 100%;
+            flex-direction: column;
+            flex-wrap: wrap;
+    
+            .blockinstagram__item{
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
