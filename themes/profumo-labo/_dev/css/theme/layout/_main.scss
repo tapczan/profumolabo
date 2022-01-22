@@ -5,8 +5,17 @@
   min-height: 100vh;
 }
 
+section#main {
 
-
+  a {
+    color:#000;
+  }
+  .ts-12 {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+  }
+}
 .page-home {
 
   .pslabo-full-width {
@@ -19,6 +28,19 @@
     margin-top: 15px;
     margin-bottom: 5px;
     text-transform: uppercase;
+  }
+
+  .profumolabo-section {
+    border-top: 1px solid #969696;
+    border-bottom: 1px solid #969696;
+    padding: 80px 0;
+
+    p {
+      line-height: 26px;
+    } 
+    a {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -280,5 +302,83 @@
         color: #000;
       }
     }
+  }
+}
+
+.page-home {
+
+  .products-list__block.products-list__block--grid {
+    float: left;
+    width: 16.6%;
+    min-height: 370px;
+
+    .product-miniature.card {
+      border: 0;
+    }
+    .product-miniature__thumb {
+      text-align:center;
+
+      .product-flags,
+      .product-miniature__quick-view {
+        display: none !important;
+      }
+    }
+    .product-miniature__title {
+      font-size: 12px;
+      font-weight: 400;
+      text-align:center;
+    }
+    .product-miniature__pricing {
+      text-align: center !important;
+
+      .price {
+        font-size: 12px;
+        font-weight: 400;
+        color: #000;
+      }
+    }
+    .product-miniature__actions {
+      display: none !important;
+    }
+
+
+  }
+
+  .arpl-more-container {
+    width: 100%; 
+    text-align: center;
+  }
+
+}
+
+html[lang="en-GB"] {
+
+  .arpl-more-link {
+    color: #000;
+  
+    i.material-icons {
+      display: none;
+    }
+  
+    &:before {
+      content: "Read More";
+    }
+  
+  }
+}
+
+html[lang="en-PL"] {
+  
+  .arpl-more-link {
+    color: #000;
+  
+    i.material-icons {
+      display: none;
+    }
+  
+    &:before {
+      content: "ZOBACZ WIĘCEJ";
+    }
+  
   }
 }
