@@ -25,47 +25,49 @@
 
 {* Block Instagram *}
 <div class="blockinstagram">
-    <h2 class="blockinstagram__title">
-        ZOBACZ NAS NA INSTAGRAMIE
-    </h2>
+    <div class="blockinstagram__inner">
+        <h2 class="blockinstagram__title">
+            ZOBACZ NAS NA INSTAGRAMIE
+        </h2>
 
-    <div class="blockinstagram__feed">
-        <div class="blockinstagram__small">
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig1.png" alt="Instagram 1">
+        <div class="blockinstagram__feed">
+            <div class="blockinstagram__small">
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig1.png" alt="Instagram 1">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig2.png" alt="Instagram 2">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig3.png" alt="Instagram 3">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig4.png" alt="Instagram 4">
+                </div>
             </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig2.png" alt="Instagram 2">
-            </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig3.png" alt="Instagram 3">
-            </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig4.png" alt="Instagram 4">
-            </div>
-        </div>
 
-        <div class="blockinstagram__big">
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig5.png" alt="Instagram 5">
+            <div class="blockinstagram__big">
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig5.png" alt="Instagram 5">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig6.png" alt="Instagram 6">
+                </div>
             </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig6.png" alt="Instagram 6">
-            </div>
-        </div>
 
-        <div class="blockinstagram__small">
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig7.png" alt="Instagram 7">
-            </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig8.png" alt="Instagram 8">
-            </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig9.png" alt="Instagram 9">
-            </div>
-            <div class="blockinstagram__item">
-                <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig10.png" alt="Instagram 10">
+            <div class="blockinstagram__small">
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig7.png" alt="Instagram 7">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig8.png" alt="Instagram 8">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig9.png" alt="Instagram 9">
+                </div>
+                <div class="blockinstagram__item">
+                    <img class="blockinstagram__img" src="{$urls.img_url}instagram/ig10.png" alt="Instagram 10">
+                </div>
             </div>
         </div>
     </div>

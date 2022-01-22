@@ -1,5 +1,9 @@
 .blockinstagram{
-    margin: 50px -2px;
+    overflow: hidden;
+    
+    &__inner{
+        margin: 50px -2px;
+    }
 
     &__title{
         font-family: $font-jost;
@@ -50,7 +54,9 @@
 
 @media screen and (max-width: 767px){
     .blockinstagram{
-        margin: 25px -2px;
+        &__inner{
+            margin: 25px -2px;
+        }
 
         &__title{
             margin: 25px 0;
