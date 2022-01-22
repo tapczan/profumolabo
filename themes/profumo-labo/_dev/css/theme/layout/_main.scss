@@ -5,6 +5,15 @@
   min-height: 100vh;
 }
 
+@mixin custom-psheader-title {
+  font-size: 35px !important;
+  line-height: 39px !important;
+  font-weight: 400 !important;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
 section#main {
 
   a {
@@ -21,13 +30,9 @@ section#main {
   .pslabo-full-width {
     width: 100%;
   }
+
   .custom-psheader-title {
-    font-size: 35px !important;
-    line-height: 39px !important;
-    font-weight: 400 !important;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
+    @include custom-psheader-title;
   }
 
   .profumolabo-section {
@@ -134,6 +139,7 @@ section#main {
       width: 50%;
 
       .btn-primary {
+        color: #fff !important;
         text-transform: uppercase;
         font-size: 12px;
         font-weight: 300;       
@@ -176,7 +182,7 @@ section#main {
   .nav.nav-tabs {
     border-color: transparent;
     border-bottom: 0;
-    margin-top: 100px;
+    margin-top: 0;
     margin-bottom: 0;
 
     .nav-item {
@@ -354,6 +360,7 @@ section#main {
 html[lang="en-GB"] {
 
   .arpl-more-link {
+    font-size: 0;
     color: #000;
   
     i.material-icons {
@@ -361,15 +368,34 @@ html[lang="en-GB"] {
     }
   
     &:before {
+      font-size: $font-size-sm;
       content: "Read More";
     }
-  
   }
+
+  #arpl-group-5:before {
+    content: "BEST SELLER";
+    display: block;
+    text-align: center;
+    padding: 50px 0 30px;
+    @include custom-psheader-title;
+  }
+  
+  #arpl-group-8 .arpl-header h2:after {
+    content: "Extremely durable and at the same time gentle to the skin Extremely durable and gentle to the skin at the same time";
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 30px;
+  }
+
 }
 
-html[lang="en-PL"] {
+html[lang="pl-PL"] {
   
   .arpl-more-link {
+    font-size: 0;
     color: #000;
   
     i.material-icons {
@@ -377,8 +403,27 @@ html[lang="en-PL"] {
     }
   
     &:before {
+      font-size: $font-size-sm;
       content: "ZOBACZ WIĘCEJ";
     }
   
   }
+
+  #arpl-group-5:before {
+    content: "BESTSELLERY";
+    display: block;
+    text-align: center;
+    padding: 50px 0 30px;
+    @include custom-psheader-title;
+  }
+  
+  #arpl-group-8 .arpl-header h2:after {
+    content: "Ekstremalnie trwałe i jednocześnie delikatne dla skóry kstremalnie trwałe i jednocześnie delikatne dla skóry";
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 30px;
+  }
 }
+
