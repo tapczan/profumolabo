@@ -93,7 +93,7 @@
 
 
 {block name='header_top'}
-<div class="header">
+<div class="header{if !$logged} header--notloggedin{/if}">
   <div class="header__inner">
     <div class="container">
       <div class="row">
