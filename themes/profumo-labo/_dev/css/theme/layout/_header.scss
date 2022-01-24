@@ -519,9 +519,17 @@
   }
 
   &-marki{
+    .ets_mm_block *{
+      font-size: $font-size-xs;
+      line-height: 22px;
+    }
+
     .three-column-list{
       font-size: $font-size-xs;
-      line-height: 20px;
+    }
+
+    .mm_columns_ul .mm_columns_li:first-child .mm_blocks_ul .mm_blocks_li:nth-child(2) .ets_mm_block_content{
+      line-height: 16px;
     }
   }
 
@@ -630,6 +638,20 @@
 @media screen and (max-width: 1520px){
   .header__mega-menu .mm_menus_ul .mm_menus_li .mm_columns_li{
     max-width: 200px;
+  }
+}
+
+@media screen and (max-width: 1220px){
+  .header__mega-menu .mm_menus_ul .mm_menus_li .mm_columns_li{
+    max-width: 170px;
+
+    .mm_blocks_li{
+      padding: 0 5px;
+    }
+
+    a{
+      white-space: normal;
+    }
   }
 }
 

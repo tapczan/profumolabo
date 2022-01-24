@@ -162,6 +162,7 @@ section#main {
 
     .arpl-cat-img {
       background: url(~/img/circle-bg.png) center center no-repeat;
+      background-size: 70%;
     }
 
     .arpl-cat-img img {
@@ -356,6 +357,18 @@ section#main {
   #arpl-group-8 {
     padding-bottom: 50px;
     border-bottom: 1px $gray solid;
+  }
+
+  #arpl-tab-7,
+  #arpl-group-1,
+  #arpl-group-8{
+    .arpl-more-link{
+      text-decoration: underline;
+      
+      &:hover{
+        color: $brown;
+      }
+    }
   }
 }
 
