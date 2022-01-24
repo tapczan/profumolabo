@@ -25,9 +25,9 @@
 
 <div id="block_myaccount_infos" class="offset-lg-1 col-lg-3 col-md-4 col-12 mb-lg-4">
 
-  <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
-    <span class="h6 mb-5 text-uppercase text-white fw-regular">{l s='Your account' d='Shop.Theme.Customeraccount'}</span>
-    <a href="#footer_account_list" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
+  <div class="footer-collapse d-flex align-items-center mb-3 justify-content-between position-relative">
+    <span class="h6 mb-md-5 mb-0 text-uppercase text-white fw-regular">{l s='Your account' d='Shop.Theme.Customeraccount'}</span>
+    <a href="#footer_account_list" class="icon-collapse stretched-link d-block d-md-none" data-toggle="collapse">
       <i class="material-icons d-block"></i>
     </a>
   </div>

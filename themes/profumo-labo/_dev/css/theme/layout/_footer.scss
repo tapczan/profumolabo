@@ -16,6 +16,11 @@
 
   .container {
     max-width: 1001px;
+
+    @include media-breakpoint-down(sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .btn-light {
@@ -39,12 +44,24 @@
     }
   }
 
+  .icon-collapse {
+    color: #fff;
+  }
+
+  .footer-collapse {
+    @include media-breakpoint-down(sm) {
+      border-top: 1px solid rgba(255, 255, 255, 0.37);
+      padding-top: 14px;
+    }
+  }
+
   &__logo {
     max-width: 341px;
     margin-bottom: 160px;
 
     @include media-breakpoint-down(sm) {
       margin-bottom: 188px;
+      max-width: 193px;
     }
   }
 
@@ -63,6 +80,8 @@
   }
 
   #block_myaccount_infos & {
+    display: none;
+
     @include media-breakpoint-up(sm) {
       display: block;
     }

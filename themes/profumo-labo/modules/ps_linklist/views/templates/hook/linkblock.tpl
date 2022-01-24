@@ -26,9 +26,9 @@
   {foreach $linkBlocks as $linkBlock name=linkBlockItem}
     <div class="{if $smarty.foreach.linkBlockItem.index == 1}offset-lg-1 {/if}col-lg-3 col-md-4 col-12 mb-lg-4">
       {assign var=_expand_id value=10|mt_rand:100000}
-      <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
-        <span class="h6 mb-5 text-uppercase text-white fw-regular">{$linkBlock.title}</span>
-        <a href="#footer_sub_menu_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block d-md-none" data-toggle="collapse">
+      <div class="footer-collapse d-flex align-items-center mb-3 justify-content-between position-relative">
+        <span class="h6 mb-md-5 mb-0 text-uppercase text-white fw-regular">{$linkBlock.title}</span>
+        <a href="#footer_sub_menu_{$_expand_id}" class="icon-collapse stretched-link d-block d-md-none" data-toggle="collapse">
           <i class="material-icons d-block"></i>
         </a>
       </div>

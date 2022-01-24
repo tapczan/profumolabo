@@ -29,17 +29,26 @@
 
 <div class="footer-container">
   <div class="container">
-    <div class="row justify-content-between">
+    <div class="row">
       <div class="col-12 text-center">
         <img class="footer-container__logo img-fluid" src="{$urls.img_url}footer_logo.svg" alt="">
       </div>
       {block name='hook_footer'}
+      <div class="col-12">
+        <div class="row justify-content-between px-md-0 px-5">
         {hook h='displayFooter'}
+        </div>
+      </div>
       {/block}
       <div class="col-12">
         <hr>
       </div>
-      <div class="col-lg-4 offset-lg-9 col-12">
+      <div class="col-6 d-md-none">
+        <div class="pl-5">
+          {widget name='ps_socialfollow'}
+        </div>
+      </div>
+      <div class="col-lg-4 offset-lg-9 col-6">
         <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
       </div>
     </div>
