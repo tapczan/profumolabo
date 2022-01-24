@@ -39,7 +39,7 @@
       <div class="col-12">
         <hr>
       </div>
-      <div class="col-lg-4 offset-lg-8 col-12">
+      <div class="col-lg-4 offset-lg-9 col-12">
         <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
       </div>
     </div>
