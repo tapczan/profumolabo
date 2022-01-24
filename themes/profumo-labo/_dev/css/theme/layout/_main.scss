@@ -7,9 +7,9 @@
 }
 
 @mixin custom-psheader-title {
-  font-size: 35px !important;
-  line-height: 39px !important;
-  font-weight: 400 !important;
+  font-size: 35px;
+  line-height: 39px;
+  font-weight: 400;
   margin-top: 15px;
   margin-bottom: 5px;
   text-transform: uppercase;
@@ -24,6 +24,12 @@ section#main {
     font-size: 12px;
     line-height: 15px;
     font-weight: 400;
+  }
+}
+
+.homeslider{
+  .homeslider__arrow{
+    display: none;
   }
 }
 
@@ -370,6 +376,20 @@ section#main {
       }
     }
   }
+
+  .see-the-products{
+    width: 100%;
+
+    &__item{
+      padding: 0 10px;
+    }
+  }
+
+  #arpl-group-10{
+    .arpl-header{
+      display: none;
+    }
+  }
 }
 
 html[lang="en-GB"] {
@@ -387,6 +407,7 @@ html[lang="en-GB"] {
     }
   }
 
+  #arpl-group-5:before,
   #arpl-group-9:before {
     content: "BEST SELLER";
     display: block;
@@ -420,6 +441,7 @@ html[lang="pl-PL"] {
     }
   }
 
+  #arpl-group-5:before,
   #arpl-group-9:before {
     content: "BESTSELLERY";
     display: block;
@@ -563,10 +585,246 @@ html[lang="pl-PL"] {
       }
     }
 
+    #arpl-group-5,
     #arpl-group-9{
       &:before{
-        padding: 0;
+        font-size: $font-size-xl !important;
+        padding: 0 !important;
         margin: 0;
+      }
+
+      .nav.nav-tabs{
+        display: block;
+        text-align: center;
+
+        .nav-item{
+          width: 45%;
+          display: inline-block;
+
+          &:last-child{
+            text-align: left;
+          }
+
+          a{
+            font-size: $font-size-sm !important;
+          }
+        }
+      }
+
+      .arpl-tab-content{
+        padding: 0 !important;
+
+        .arpl-tab-header{
+          display: none;
+        }
+      }
+    }
+
+    #custom-text{
+      .custom-psheader-title{
+        margin: 0 0 30px !important;
+        padding: 0 !important;
+        font-size: $font-size-xm;
+      }
+
+      p{
+        font-size: $font-size-xs;
+      }
+
+      & + section{
+        & > h2{
+          &.custom-psheader-title{
+            padding-bottom: 0 !important;
+            margin-bottom: 30px !important;
+            font-size: $font-size-xm;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+          }
+        }
+  
+        .row.mb-5{
+          font-size: $font-size-sm;
+          margin-bottom: 0 !important;
+  
+          .mx-auto.text-center{
+            margin-bottom: 0 !important;
+          }
+        }
+  
+        p{
+          margin-bottom: 0 !important;
+        }
+  
+        img{
+          object-fit: cover;
+          width: 318px !important;
+          height: 318px;
+          margin: 30px auto;
+          display: block;
+        }
+      }
+    }
+
+    .see-the-products{
+      padding: 0 0 30px;
+      margin: 0 0 30px !important;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+
+      &__item{
+        max-width: 300px;
+        margin: 0 auto;
+        position: relative;
+        font-size: $font-size-xs;
+
+        .title{
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          color: $white;
+          font-size: $font-size-xm;
+        }
+
+        img{
+          margin-bottom: 30px;
+        }
+      }
+
+      .slick-dots{
+        bottom: 0;
+        position: relative;
+
+        li{
+          width: auto;
+          height: auto;
+          margin: 0 5px;
+        }
+
+        button{
+          width: 10px;
+          height: 10px;
+          background-color: $light-gray;
+          display: block;
+          padding: 0;
+          border-radius: 50%;
+
+          &:before{
+            display: none;
+          }
+
+          &:hover{
+            background-color: $dark-gray;
+          }
+        }
+
+        .slick-active{
+          button{
+            background-color: $dark-gray;
+          }
+        }
+      }
+    }
+
+    #arpl-group-5,
+    #arpl-group-9,
+    #arpl-group-10,
+    #arpl-group-11{
+      .featured-products{
+        .product-miniature{
+          &__title{
+            height: auto;
+          }
+
+          &__pricing {
+            margin: 0;
+          }
+        }
+
+        .products-list__block.products-list__block--grid{
+          min-height: auto;
+          margin-bottom: 0;
+        }
+
+        .owl-nav{
+          button{
+            width: 20px;
+            height: 20px;
+            margin: 0;
+            background: $white;
+            color: $gray;
+
+            &:focus,
+            &:hover{
+              background: $white;
+              color: $gray;
+            }
+          }
+        }
+      }
+    }
+
+    #arpl-group-10{
+      .arpl-header{
+        display: none;
+      }
+    }
+
+    #arpl-group-11{
+      margin-bottom: 0 !important;
+
+      .arpl-header{
+        margin: 30px 0 !important;
+
+        .arpl-title{
+          font-size: $font-size-xm;
+          margin: 0;
+        }
+      }
+
+      .arpl-section{
+        margin-bottom: 0;
+      }
+    }
+
+    .profumolabo-section{
+      border-top: 1px solid rgba(0, 0, 0, 0.07) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+      padding: 0;
+      margin: 0 0 30px;
+
+      img{
+        margin: 30px auto;
+      }
+
+      .col-md-6{
+        order: 2;
+      }
+
+      .col-md-6.px-6.py-6{
+        order: 1;
+        padding: 0 !important;
+        text-align: center;
+
+        .custom-psheader-title{
+          font-size: $font-size-xm;
+          margin: 30px 0;
+          padding: 0 !important;
+        }
+
+        .profumolabo-section__content{
+          font-size: $font-size-sm;
+
+          p{
+            line-height: 22px;
+          }
+
+          & + a{
+            margin-top: 30px;
+            display: block;
+          }
+        }
       }
     }
   }
