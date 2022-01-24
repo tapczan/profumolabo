@@ -27,6 +27,7 @@ import $ from 'jquery';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
 import 'jquery-hoverintent';
+import 'slick-carousel';
 import './components/dynamic-bootstrap-components';
 
 import './components/selectors';
@@ -82,7 +83,7 @@ $(document).ready(() => {
     window.location.href = $(target).val();
   });
 
-  // Navigation Script
+  // Navigation script
   var stickyNavTop = $('.header__nav').offset().top;
  
   function stickyNav(){
@@ -134,6 +135,30 @@ $(document).ready(() => {
     $(window).on('resize', function(){
       resizeAddClassNav();
     });
+  });
+
+  // Block reassurance slider
+  $('.js-block-reassurance-slider').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 2,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          dots: true
+        }
+      }
+    ]
   });
 });
 
