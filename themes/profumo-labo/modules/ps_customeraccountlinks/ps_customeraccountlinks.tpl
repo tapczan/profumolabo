@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-<div id="block_myaccount_infos" class="col-md-4 col-12 mb-lg-4">
+<div id="block_myaccount_infos" class="offset-lg-1 col-lg-3 col-md-4 col-12 mb-lg-4">
 
   <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
     <span class="h6 mb-5 text-uppercase text-white fw-regular">{l s='Your account' d='Shop.Theme.Customeraccount'}</span>
@@ -32,7 +32,7 @@
     </a>
   </div>
 
-  <div class="collapse d-md-block" id="footer_account_list">
+  <div class="collapse d-md-block mb-md-5 pb-md-4" id="footer_account_list">
     <ul class="links-list">
       {foreach from=$my_account_urls item=my_account_url}
         <li class="links-list__elem">
@@ -44,4 +44,7 @@
     </ul>
   </div>
 
+  <div class="row">
+  {widget name='ps_socialfollow'}
+  </div>
 </div>

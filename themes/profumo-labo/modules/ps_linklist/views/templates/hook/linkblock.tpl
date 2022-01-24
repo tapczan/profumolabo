@@ -23,8 +23,8 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-  {foreach $linkBlocks as $linkBlock}
-    <div class="col-md-4 col-12 mb-lg-4">
+  {foreach $linkBlocks as $linkBlock name=linkBlockItem}
+    <div class="{if $smarty.foreach.linkBlockItem.index == 1}offset-lg-1 {/if}col-lg-3 col-md-4 col-12 mb-lg-4">
       {assign var=_expand_id value=10|mt_rand:100000}
       <div class="d-flex align-items-center mb-3 justify-content-between position-relative">
         <span class="h6 mb-5 text-uppercase text-white fw-regular">{$linkBlock.title}</span>

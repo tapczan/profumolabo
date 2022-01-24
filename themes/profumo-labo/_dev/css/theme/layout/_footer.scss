@@ -18,6 +18,12 @@
     max-width: 1001px;
   }
 
+  .btn-light {
+    background-color: #aeaeae;
+    border-color: #aeaeae;
+    color: #000;
+  }
+
   .h6,
   .links-list__link {
     letter-spacing: 0.1em;
@@ -48,5 +54,17 @@
 
   hr {
     border-color: #535353;
+  }
+}
+
+.block-social {
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
+
+  #block_myaccount_infos & {
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
   }
 }

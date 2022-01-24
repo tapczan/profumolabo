@@ -29,7 +29,7 @@
 
 <div class="footer-container">
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-between">
       <div class="col-12 text-center">
         <img class="footer-container__logo img-fluid" src="{$urls.img_url}footer_logo.svg" alt="">
       </div>

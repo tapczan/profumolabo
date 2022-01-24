@@ -24,11 +24,11 @@
  *}
 
 {block name='block_social'}
-  <div class="block-social col-lg-4 col-md-12 col-sm-12">
+  <div class="block-social col-12">
     <ul class="mb-0 row">
       {foreach from=$social_links item='social_link'}
         <li class="col flex-grow-0 flex-shrink-0 mb-2">
-          <a href="{$social_link.url}" rel="noopener noreferrer" title="{$social_link.label}" target="_blank" class="btn btn-light p-2 rounded-circle btn-lg">
+          <a href="{$social_link.url}" rel="noopener noreferrer" title="{$social_link.label}" target="_blank" class="btn btn-light btn-sm p-1 rounded-circle">
             <span class="icon icon-{$social_link.class} d-block"></span>
             <div class="sr-only">
               {$social_link.label}
