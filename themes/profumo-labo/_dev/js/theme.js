@@ -160,6 +160,29 @@ $(document).ready(() => {
       }
     ]
   });
+
+  $('.js-see-the-products').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1,
+          dots: true
+        }
+      }
+    ]
+  });
 });
 
 function accLinksTriggerActive() {
