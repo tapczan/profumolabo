@@ -75,15 +75,12 @@
 }
 
 .block-social {
-  @include media-breakpoint-up(sm) {
-    display: none;
-  }
-
-  #block_myaccount_infos & {
-    display: none;
-
-    @include media-breakpoint-up(sm) {
-      display: block;
+  li {
+    @include media-breakpoint-down(sm) {
+      max-width: 26px;
+      flex: 0 0 26px;
+      padding: 0;
+      margin-right: 10px;
     }
   }
 }

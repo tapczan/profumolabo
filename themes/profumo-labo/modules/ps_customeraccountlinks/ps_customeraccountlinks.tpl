@@ -44,7 +44,7 @@
     </ul>
   </div>
 
-  <div class="row">
+  <div class="row d-md-block d-none">
   {widget name='ps_socialfollow'}
   </div>
 </div>

@@ -40,15 +40,15 @@
         </div>
       </div>
       {/block}
-      <div class="col-12">
+      <div class="col-12 mt-md-0 mt-5">
         <hr>
       </div>
-      <div class="col-6 d-md-none">
-        <div class="pl-5">
+      <div class="col-7 d-md-none">
+        <div class="pl-4">
           {widget name='ps_socialfollow'}
         </div>
       </div>
-      <div class="col-lg-4 offset-lg-9 col-6">
+      <div class="col-lg-4 offset-lg-9 col-5">
         <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
       </div>
     </div>
