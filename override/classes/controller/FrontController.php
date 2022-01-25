@@ -300,7 +300,6 @@ class FrontControllerCore extends Controller
         if( isset($cookie->logged ) && $cookie->logged ) {
             $this->is_logged_in = true;
         }
-        var_dump($this->is_logged_in);
         
         if (self::$initialized) {
             return;
