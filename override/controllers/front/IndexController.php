@@ -37,7 +37,6 @@ class IndexControllerCore extends FrontController
         parent::initContent();
         $this->context->smarty->assign([
             'HOOK_HOME' => Hook::exec('displayHome'),
-            'CHECK_LOGIN' => $this->context->customer->logged
         ]);
         $this->setTemplate('index');
     }
