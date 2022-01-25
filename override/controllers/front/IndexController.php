@@ -37,20 +37,8 @@ class IndexControllerCore extends FrontController
         parent::initContent();
         $this->context->smarty->assign([
             'HOOK_HOME' => Hook::exec('displayHome'),
-            'CHECK_LOGIN' => $this->checkLogin()
+            'CHECK_LOGIN' => $this->context->customer->logged
         ]);
         $this->setTemplate('index');
     }
-
-    public function checkLogin() {
-
-        $cookie = new Cookie('psAdmin', '', (int)Configuration::get('PS_COOKIE_LIFETIME_BO'));
-
-        if (isset($cookie->id_employee) && $cookie->id_employee) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 }
