@@ -33,8 +33,22 @@
 </a>
 *}
 
-{if isset($banner_img)}
-  <img src="{$banner_img}" alt="{$banner_desc}" title="{$banner_desc}" class="img-fluid pslabo-full-width">
-{else}
-  <span>{$banner_desc}</span>
-{/if}
+        </section>
+      </section>
+    </div>
+  </div>
+</div>
+
+<section class="banner__full">
+  {if isset($banner_img)}
+    <img src="{$banner_img}" alt="{$banner_desc}" title="{$banner_desc}" class="img-fluid pslabo-full-width">
+  {else}
+    <span>{$banner_desc}</span>
+  {/if}
+</section>
+
+<div class="container">
+  <div class="row">
+    <div id="content-wrapper" class="col-12 js-content-wrapper">
+      <section id="main">
+        <section id="content" class="page-home">

@@ -68,6 +68,11 @@ section#main {
         color: $brown !important;
       }
     }
+
+    .col-md-6.px-6.py-6{
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
   }
 
   .tab-pane .products-list__block.products-list__block--grid {
@@ -163,7 +168,7 @@ section#main {
   }
 
   .arpl-featured-categories {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+    border-bottom: 1px solid $gray !important;
     padding-bottom: 50px !important;
 
     .arpl-cat-img {
@@ -190,6 +195,7 @@ section#main {
     border-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
+    font-size: 0;
 
     .nav-item {
       width: 50%;
@@ -212,6 +218,7 @@ section#main {
       &:first-child {
         text-align: right;
         border-right: 1px solid $black;
+        width: 48%;
       }
 
     }
@@ -227,14 +234,13 @@ section#main {
     .featured-products {
       float: left;
       width: 100%;
+      padding-bottom: 25px;
 
       .arpl-header {
         display: none;
       }
 
       .arpl-more-container {
-        position: absolute;
-        bottom: 0;
         width: 100%;
         text-align: center
       }
@@ -275,7 +281,7 @@ section#main {
   }  
   
   .see-the-products {
-    padding-bottom: 100px;
+    padding-bottom: 70px;
     border-bottom: 1px solid $gray;
     margin-bottom: 50px;
 
@@ -321,7 +327,6 @@ section#main {
   .products-list__block.products-list__block--grid {
     float: left;
     width: 16.6%;
-    min-height: 370px;
   
     .product-miniature.card {
       border: 0;
@@ -342,6 +347,7 @@ section#main {
 
     .product-miniature__pricing {
       text-align: center !important;
+      margin: 0;
 
       .price {
         font-size: 12px;
@@ -362,7 +368,7 @@ section#main {
 
   #arpl-group-8 {
     padding-bottom: 50px;
-    border-bottom: 1px $gray solid;
+    border-bottom: 1px solid $gray;
   }
 
   #arpl-tab-7,
@@ -382,12 +388,29 @@ section#main {
 
     &__item{
       padding: 0 10px;
+      font-size: $font-size-xs;
     }
   }
 
   #arpl-group-10{
     .arpl-header{
       display: none;
+    }
+  }
+
+  #arpl-group-1{
+    .arpl-no-carousel-products{
+      margin-top: 50px;
+    }
+
+    .arpl-header {
+      display: none;
+    }
+  }
+
+  .banner__full{
+    img{
+      width: 100%;
     }
   }
 }
@@ -491,6 +514,7 @@ html[lang="pl-PL"] {
       .col-lg-6.text-center{
         img{
           max-width: 60px !important;
+          padding: 0 0 30px !important;
         }
 
         p{
@@ -514,8 +538,16 @@ html[lang="pl-PL"] {
       .featured-products{
         padding-bottom: 0;
 
+        .arpl-product-list-view{
+          border-bottom: $border-bottom-mobile;
+
+          & > li{
+            border-top: 0 !important;
+          }
+        }
+
         .arpl-header{
-          margin: 0 0 30px !important;
+          margin: 0 !important;
 
           .arpl-title{
             font-size: $font-size-xm;
@@ -558,6 +590,7 @@ html[lang="pl-PL"] {
       .arpl-featured-categories{
         padding-bottom: 0 !important;
         margin-bottom: 0;
+        border-bottom: $border-bottom-mobile !important;
 
         .arpl-header{
           margin: 0 0 30px !important;
@@ -618,6 +651,12 @@ html[lang="pl-PL"] {
           display: none;
         }
       }
+
+      .arpl-tab-pane{
+        .featured-products{
+          padding-bottom: 0;
+        }
+      }
     }
 
     #custom-text{
@@ -669,7 +708,7 @@ html[lang="pl-PL"] {
       padding: 0 0 30px;
       margin: 0 0 30px !important;
       text-align: center;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+      border-bottom: $border-bottom-mobile !important;
 
       &__item{
         max-width: 300px;
@@ -789,10 +828,10 @@ html[lang="pl-PL"] {
     }
 
     .profumolabo-section{
-      border-top: 1px solid rgba(0, 0, 0, 0.07) !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+      border-top: $border-bottom-mobile !important;
+      border-bottom: $border-bottom-mobile !important;
       padding: 0;
-      margin: 0 0 30px;
+      margin: 0 !important;
 
       img{
         margin: 30px auto;
