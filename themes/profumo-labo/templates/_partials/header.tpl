@@ -90,7 +90,11 @@
   
   {hook h='displayNavFullWidth'}
 {/block}*}
-
+{if $CHECK_LOGIN}
+Logged in
+{else}
+Not logged in
+{/if}
 
 {block name='header_top'}
 <div class="header{if !$logged} header--notloggedin{/if}">
