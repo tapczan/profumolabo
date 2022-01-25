@@ -22,16 +22,15 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="col flex-grow-0 header-top__block header-top__block--user header__inner-login">
+<div class="col flex-grow-0 header-top__block header-top__block--user">
   <a
+    class="header__inner-top-link header__inner-login-link"
     rel="nofollow"
     href="{$urls.pages.my_account}"
     {if $logged}
       title="{l s='View my customer account' d='Shop.Theme.Customeraccount'}"
-      class="header__inner-top-link header__inner-login-link login-link--isloggedin"
     {else}
       title="{l s='Log in to your customer account' d='Shop.Theme.Customeraccount'}"
-      class="header__inner-top-link header__inner-login-link login-link--notloggedin"
     {/if}
   >
     <div class="header-top__icon-container">

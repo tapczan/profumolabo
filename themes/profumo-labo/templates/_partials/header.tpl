@@ -90,14 +90,9 @@
   
   {hook h='displayNavFullWidth'}
 {/block}*}
-{if $CHECK_LOGIN}
-Logged in
-{else}
-Not logged in
-{/if}
 
 {block name='header_top'}
-<div class="header{if !$logged} header--notloggedin{/if}">
+<div class="header{if $logged} header--loggedin{else} header--notloggedin{/if}">
   <div class="header__inner">
     <div class="container">
       <div class="row">
@@ -126,12 +121,12 @@ Not logged in
   <div class="header__nav">
     <div class="container">
       <div class="row">
-        <div class="col-md-2 col-sm-7 col-9 header__nav-left">
+        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-7 col-9 header__nav-left">
           <a href="{$urls.pages.index}">
             <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
           </a>
         </div>
-        <div class="col-md-8 col-sm-1 col-1 header__nav-mid">
+        <div class="{if $logged}col-md-8{else}col-md-6{/if} col-sm-1 col-1 header__nav-mid">
           <div class="header__nav-search-mobile jsMobileSearch">
             <form class="search-form js-search-form" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">
               <div class="search-form__form-group">
@@ -145,7 +140,7 @@ Not logged in
           </div>
           {hook h='displayMegaMenu'}
         </div>
-        <div class="col-md-2 col-sm-4 col-2 header__nav-right">
+        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-2 header__nav-right">
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
           <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg">
