@@ -192,6 +192,11 @@ $(document).ready(() => {
     slidesToScroll: 1,
     dots: false,
   });
+
+  $('.js-comment-close').on('click', function(){
+    $('.js-comment-form').slideToggle();
+    $(this).toggleClass('product-comment__close--notactive')
+  });
 });
 
 function accLinksTriggerActive() {
