@@ -111,6 +111,8 @@
     &__form{
         display: none;
         padding: 0;
+        max-width: 585px !important;
+        width: 100% !important;
 
         .comment-form-desc{
             margin-left: 0 !important;
@@ -129,6 +131,17 @@
 
         .carousel__button{
             top: 0 !important;
+        }
+    }
+}
+
+@media(max-width: 767px){
+    .product-comment{
+        &__form{
+            .star-rating-label{
+                min-width: 0 !important;
+                margin-left: 0 !important;
+            }
         }
     }
 }
