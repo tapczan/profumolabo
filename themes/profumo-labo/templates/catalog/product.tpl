@@ -231,6 +231,10 @@
     </div>
   </section>
 
+  {block name='product_footer'}
+    {hook h='displayFooterProduct' product=$product category=$category}
+  {/block}
+
   {block name='page_footer_container'}
     <footer class="page-footer">
       {block name='page_footer'}

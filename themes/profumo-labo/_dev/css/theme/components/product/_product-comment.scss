@@ -1,0 +1,161 @@
+.product-comment{
+    padding: 50px 0;
+
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 30px;
+        position: relative;
+    }
+
+    &__title{
+        font-size: $font-size-product-md;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+
+    &__btn-form{
+        border: 1px solid $black;
+        font-size: $font-size-xs;
+        padding: 5px;
+        text-align: center;
+        border-radius: 0;
+        text-transform: uppercase;
+        color: $black;
+
+        &:hover,
+        &:focus{
+            text-decoration: none;
+            color: $black;
+        }
+    }
+
+    &__close{
+        background: url(~/img/icons/plus-icon.svg);
+        background-size: 10px;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $black;
+        border-radius: 50%;
+        margin-left: 10px;
+        transition: all .2s;
+        transform: rotate(45deg);
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 5px;
+
+        &--notactive{
+            transform: rotate(0);
+        }
+    }
+
+    &__item{
+        padding-bottom: 10px;
+
+        &:last-child{
+            padding-bottom: 30px;
+            border-bottom: $border-comment;
+        }
+
+        .star-rating{
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+            vertical-align: middle;
+
+            &__list{
+                display: inline-block;
+            }
+
+            &__icon{
+                background: url(~/img/icons/star_gray.svg);
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: block;
+                width: 10px;
+                height: 10px;
+
+                &--active{
+                    background: url(~/img/icons/star_active.svg);
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        .comment{
+            &-details{
+                font-size: $font-size-xs;
+            }
+
+            &-footer{
+                font-size: $font-size-xs;
+                font-weight: 500;
+
+                &--normal{
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+    &__form{
+        display: none;
+        padding: 0;
+
+        .comment-form-desc{
+            margin-left: 0 !important;
+        }
+
+        .comment-button-submit{
+            border: 1px solid $black;
+            font-size: 12px;
+            padding: 5px 15px;
+            text-align: center;
+            border-radius: 0;
+            text-transform: uppercase;
+            background: $black;
+            color: $white;
+        }
+
+        .carousel__button{
+            top: 0 !important;
+        }
+    }
+}
+
+@media(max-width: 600px){
+    .product-comment{
+        &__header{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        &__title{
+            order: 2;
+            font-size: $font-size-sm;
+        }
+
+        &__controls{
+            margin-bottom: 20px;
+        }
+
+        &__close{
+            background-size: 7px;
+            width: 15px;
+            height: 15px;
+            right: 0;
+            top: auto;
+            bottom: 0;
+        }
+    }
+}
