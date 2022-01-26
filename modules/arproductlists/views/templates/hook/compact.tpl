@@ -18,6 +18,182 @@
 *  International Registered Trademark & Property of Areama
 *}
 
+
+
+<li data-id-product="{$product.id_product|intval}" data-id-product-attribute="{$product.id_product_attribute|intval}" itemscope itemtype="http://schema.org/Product">
+    {*{include file="./custom_compact.tpl"}*}
+    
+    <div class="arpl-thumb">
+        {block name='product_flags'}
+            <ul class="product-flags">
+                {foreach from=$product.flags item=flag}
+                <li class="product-flag {$flag.type|escape:'htmlall':'UTF-8'}">{$flag.label|escape:'htmlall':'UTF-8'}</li>
+                {/foreach}
+            </ul>
+        {/block}
+        {if $product.cover}
+            <a href="{$product.url|escape:'htmlall':'UTF-8'}" class="thumbnail product-thumbnail">
+            <img src="{$product.cover.bySize.home_default.url|escape:'htmlall':'UTF-8'}"
+                alt="{if !empty($product.cover.legend)}{$product.cover.legend|escape:'htmlall':'UTF-8'}{else}{$product.name|escape:'htmlall':'UTF-8'}{/if}"
+                data-full-size-image-url="{$product.cover.large.url|escape:'htmlall':'UTF-8'}" >
+            </a>
+        {else}
+            <a href="{$product.url|escape:'htmlall':'UTF-8'}" class="thumbnail product-thumbnail">
+            <img src="{$urls.no_picture_image.bySize.home_default.url|escape:'htmlall':'UTF-8'}" >
+            </a>
+        {/if}
+    </div>
+
+
+    <div class="arpl-content">
+        <div class="comments_note">
+            {if ($averageTotal>0 && Configuration::get('PRODUCT_COMMENTS_LIST') == 1) || $PRODUCT_COMMENTS_LIST_ALL == true}
+                <div class="star_content clearfix">
+                    {section name="i" start=0 loop=5 step=1}
+                        {if $averageTotal le $smarty.section.i.index}
+                            <div class="star {if $averageTotal == 0 && $SHOW_FIVE_STARS == true}star_on{/if}"></div>
+                        {else}
+                            <div class="star star_on"></div>
+                        {/if}
+                    {/section}
+                </div>
+            {/if}
+        </div>
+        <div class="product-rating">
+            <ul class="star-rating">
+            <li class="star-rating__list">
+                <span class="star-rating__icon star-rating__icon--active"></span>
+            </li>
+            <li class="star-rating__list">
+                <span class="star-rating__icon star-rating__icon--active"></span>
+            </li>
+            <li class="star-rating__list">
+                <span class="star-rating__icon star-rating__icon--active"></span>
+            </li>
+            <li class="star-rating__list">
+                <span class="star-rating__icon"></span>
+            </li>
+            <li class="star-rating__list">
+                <span class="star-rating__icon"></span>
+            </li>
+            </ul>
+            <span class="star-review">
+            (21 opinii)
+            </span>
+        </div>
+        <div class="arpl-content-title">
+            <h3 class="h3 product-title" itemprop="name">
+                <a href="{$product.url|escape:'htmlall':'UTF-8'}">{$product.name|escape:'htmlall':'UTF-8'}</a>
+                <a class="product-wishlist" href="/">
+                    {* <img src="{$urls.img_url}heart-icon.svg"> *}
+                    <span
+                    class="wishlist-button"
+                    data-url="{$url}"
+                    data-product-id="{$product.id}"
+                    data-product-attribute-id="{$product.id_product_attribute}"
+                    data-is-logged="{$customer.is_logged}"
+                    data-list-id="1"
+                    data-checked="true"
+                    data-is-product="true"
+                    ></span>
+                </a>
+            </h3>
+        </div>
+        {if $product.features}
+            <div class="arpl-content-features">
+                <p>
+                    {foreach $product.features as $feature}
+                        {$feature.name|escape:'htmlall':'UTF-8'} - {$feature.value|escape:'htmlall':'UTF-8'}
+                    {/foreach}
+                </p>
+            </div>
+        {/if}
+        <div class="arpl-content-price">
+            {block name='product_price_and_shipping'}
+                {if $product.show_price}
+                    <div class="product-price-and-shipping">
+                      {if $product.has_discount}
+                          {hook h='displayProductPriceBlock' product=$product type="old_price"}
+
+                          <span class="sr-only">{l s='Regular price' mod='arproductlists'}</span>
+                          <span class="regular-price">{$product.regular_price|escape:'htmlall':'UTF-8'}</span>
+                          {if $product.discount_type === 'percentage'}
+                          <span class="discount-percentage discount-product">{$product.discount_percentage|escape:'htmlall':'UTF-8'}</span>
+                          {elseif $product.discount_type === 'amount'}
+                          <span class="discount-amount discount-product">{$product.discount_amount_to_display|escape:'htmlall':'UTF-8'}</span>
+                          {/if}
+                      {/if}
+
+                      {hook h='displayProductPriceBlock' product=$product type="before_price"}
+
+                      <span class="sr-only">{l s='Price' mod='arproductlists'}</span>
+                      <span itemprop="price" class="price">{$product.price|escape:'htmlall':'UTF-8'}</span>
+
+                      {hook h='displayProductPriceBlock' product=$product type='unit_price'}
+
+                      {hook h='displayProductPriceBlock' product=$product type='weight'}
+                    </div>
+                {/if}
+
+                <span class="product-stock-info">
+                    Ostatnie <span class="product-stock-info__num">5</span> sztuk w tej cenie
+                </span>
+            {/block}
+        </div> 
+        {block name='product_variants'}
+            {if $product.main_variants}
+            {include file='catalog/_partials/variant-links.tpl' variants=$product.main_variants}
+            {/if}
+        {/block}
+    </div>
+
+
+    <div class="arpl-buttons">
+        {if $product.customizable}
+            <a class="btn btn-info" href="{$product.url|escape:'htmlall':'UTF-8'}" title="{l s='Customize' mod='arproductlists'}" data-id-product="{$product.id|intval}">
+                <span>{l s='Customize' mod='arproductlists'}</span>
+            </a>
+        {else}
+            <a class="btn btn-primary" href="{$link->getAddToCartURL($product.id, $product.cache_default_attribute)|escape:'htmlall':'UTF-8'}" rel="nofollow" title="{l s='Add to cart' mod='arproductlists'}" data-id-product="{$product.id|intval}">
+                <span>{l s='Add to cart' mod='arproductlists'}</span>
+            </a>
+        {/if}
+        <div class="product-sku">
+            SYMBOL: P026US100
+        </div>
+        <div class="product-accordion" id="productSingleAccordion">
+
+            <div class="product-accordion__item">
+                <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
+                {if $pslanguage == 'pl'}
+                    OPIS     
+                {else if $pslanguage == 'gb'}
+                    DESCRIPTION
+                {/if}
+                </div>
+                <div class="product-accordion__body collapse show" id="productAccordionContent1" aria-labelledby="productAccordionHeader1" data-parent="#productSingleAccordion">
+                    <p>{$product.description|strip_tags|escape:'htmlall':'UTF-8'}</p>
+                    <a href="{$product.url|escape:'htmlall':'UTF-8'}">
+                    {if $pslanguage == 'pl'}
+                    SZCZEGÓŁY PRODUKTU     
+                    {else if $pslanguage == 'gb'}
+                    PRODUCT DETAILS
+                    {/if}
+                </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+</li>
+
+
+
+
+
+
+{* BASE TPL
+
 <li data-id-product="{$product.id_product|intval}" data-id-product-attribute="{$product.id_product_attribute|intval}" itemscope itemtype="http://schema.org/Product">
     <div class="arpl-thumb">
         {block name='product_flags'}
@@ -102,3 +278,5 @@
         {/if}
     </div>
 </li>
+
+*}

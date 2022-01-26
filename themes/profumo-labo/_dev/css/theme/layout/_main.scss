@@ -104,7 +104,7 @@ section#main {
 
     > li {
       padding: 0 !important;
-      min-height: 450px;
+      min-height: 550px;
     }
 
     .arpl-thumb {
@@ -145,14 +145,27 @@ section#main {
         }
       }
 
+      .price {
+        margin-bottom: 10px;
+      }
+      .wishlist-button-add.wishlist-button-product {
+        display: inline-block;
+        box-shadow: none;
+
+        .material-icons {
+          font-size: 26px;
+        }
+      }
+
     }
 
     .arpl-buttons {
       display: block;
       position: absolute;
-      top: unset;
-      bottom: 50px;
+      top: 35%;
+      bottom: 0;
       width: 50%;
+      z-index: 1;
 
       .btn-primary {
         color: #fff !important;
@@ -163,6 +176,32 @@ section#main {
         background-color: $black;
         border-radius: 0;
         border: 0;
+        margin-bottom: 10px;
+      }
+
+      .product-sku {
+        color: #777777;
+        margin-bottom: 20px;
+      }
+
+      .product-accordion {
+        .product-accordion__header:before {
+          content: "+";
+          font-size: 24px;
+          padding-right: 0;
+        }
+
+        .product-accordion__header.collapsed:before {
+          content: "-" !important;
+          font-size: 24px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+
+        .product-accordion__body a {
+          color: #CCB48F !important;
+          text-decoration: underline;
+        }
       }
     }
   }
