@@ -25,18 +25,18 @@
 
 {block name='social_sharing'}
   {if $social_share_links}
-    <div class="social-sharing my-3">
-      <p class="h6">{l s='Share' d='Shop.Theme.Actions'}</p>
-      <ul class="mb-0 row">
+    <div class="social-sharing">
+      <p class="h6 social-sharing__title">{l s='Share' d='Shop.Theme.Actions'}</p>
+      <ul class="social-sharing__list">
         {foreach from=$social_share_links item='social_share_link'}
-          <li class="col flex-grow-0 flex-shrink-0 mb-2">
+          <li class="social-sharing__item">
             <a
               href="{$social_share_link.url}"
               title="{$social_share_link.label}"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn-light p-2 rounded-circle btn-lg">
-              <span class="icon icon-{$social_share_link.class} d-block"></span>
+              class="social-sharing__link">
+              <span class="icon icon-{$social_share_link.class}"></span>
               <div class="sr-only">
                 {$social_share_link.label}
               </div>

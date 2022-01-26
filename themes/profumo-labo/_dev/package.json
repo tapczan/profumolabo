@@ -14,6 +14,7 @@
   "author": "Igor Stępień",
   "license": "GPL-3.0",
   "dependencies": {
+    "@fancyapps/ui": "^4.0.20",
     "@prestashop-core/jquery.live-polyfill": "^1.1.2",
     "bootstrap": "^4.6.1",
     "bootstrap-touchspin": "^4.3.0",

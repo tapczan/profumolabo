@@ -28,20 +28,27 @@
     <div class="product-variants-item">
       <p class="control-label h6 mb-2">{$group.name}</p>
       {if $group.group_type == 'select'}
-        <select
-          class="custom-select"
-          id="group_{$id_attribute_group}"
-          data-product-attribute="{$id_attribute_group}"
-          name="group[{$id_attribute_group}]">
+        <ul id="group_{$id_attribute_group}" class="variants-selection">
           {foreach from=$group.attributes key=id_attribute item=group_attribute}
-            <option value="{$id_attribute}" title="{$group_attribute.name}"{if $group_attribute.selected} selected="selected"{/if}>{$group_attribute.name}</option>
+            <li class="input-container attribute-radio col-auto px-1 mb-2">
+              <label class="attribute-radio__label">
+                <input
+                  class="input-radio attribute-radio__input"
+                  type="radio"
+                  data-product-attribute="{$id_attribute_group}"
+                  name="group[{$id_attribute_group}]"
+                  value="{$id_attribute}"
+                  title="{$group_attribute.name}"
+                  {if $group_attribute.selected}checked="checked"{/if}>
+                <span class="attribute-radio__text">{$group_attribute.name}</span>
+              </label>
+            </li>
           {/foreach}
-        </select>
+        </ul>
       {elseif $group.group_type == 'color'}
-        <ul class="row mx-n1" id="group_{$id_attribute_group}">
-
+        <ul class="variants-color" id="group_{$id_attribute_group}">
           {foreach from=$group.attributes key=id_attribute item=group_attribute}
-            <li class="col flex-grow-0 px-1 pb-2">
+            <li class="product-color">
               <div class="custom-control custom-radio-color">
                   <input class="custom-control-input" type="radio" data-product-attribute="{$id_attribute_group}" id="{$id_attribute_group}_{$id_attribute}"  name="group[{$id_attribute_group}]" value="{$id_attribute}" title="{$group_attribute.name}"{if $group_attribute.selected} checked="checked"{/if}>
 
@@ -63,7 +70,7 @@
           {/foreach}
         </ul>
       {elseif $group.group_type == 'radio'}
-        <ul id="group_{$id_attribute_group}" class="row mx-n1">
+        <ul id="group_{$id_attribute_group}" class="variants-selection">
           {foreach from=$group.attributes key=id_attribute item=group_attribute}
             <li class="input-container attribute-radio col-auto px-1 mb-2">
               <label class="attribute-radio__label">
