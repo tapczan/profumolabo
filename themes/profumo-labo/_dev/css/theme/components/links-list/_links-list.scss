@@ -9,7 +9,7 @@
 
   &__elem {
     &:not(:last-child) {
-      margin: 0 0 map-get($spacers, 2);
+      margin: 0 0 6px;
     }
   }
 

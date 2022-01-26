@@ -24,7 +24,7 @@
  *}
 
   {foreach $linkBlocks as $linkBlock name=linkBlockItem}
-    <div class="{if $smarty.foreach.linkBlockItem.index == 1}offset-lg-1 {/if}col-lg-3 col-md-4 col-12 mb-lg-4">
+    <div class="offset-lg-1 col-lg-3 col-md-4 col-12 mb-lg-4">
       {assign var=_expand_id value=10|mt_rand:100000}
       <div class="footer-collapse d-flex align-items-center mb-3 justify-content-between position-relative">
         <span class="h6 mb-md-5 mb-0 text-uppercase text-white fw-regular">{$linkBlock.title}</span>
@@ -32,7 +32,7 @@
           <i class="material-icons d-block"></i>
         </a>
       </div>
-      <div id="footer_sub_menu_{$_expand_id}" class="collapse d-md-block">
+      <div id="footer_sub_menu_{$_expand_id}" class="collapse d-md-block{if $smarty.foreach.linkBlockItem.index == 1} mb-md-5 pb-md-1{/if}">
         <ul class="links-list">
           {foreach $linkBlock.links as $link}
             <li class="links-list__elem">
@@ -49,5 +49,10 @@
           {/foreach}
         </ul>
       </div>
+      {if $smarty.foreach.linkBlockItem.index == 1}
+        <div class="row d-md-block d-none mb-md-5 pb-md-5">
+        {widget name='ps_socialfollow'}
+        </div>
+      {/if}
     </div>
   {/foreach}
