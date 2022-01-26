@@ -24,7 +24,9 @@
  *}
 <div class="product-add-to-cart js-product-add-to-cart">
   {if !$configuration.is_catalog}
-
+    <h3 class="product-quantity-label">
+      Ilość
+    </h3>
     {block name='product_quantity'}
       <div class="product-quantity d-flex mb-1">
         <div class="qty mr-1 mb-1">
@@ -41,12 +43,10 @@
               value="1"
               min="1"
             {/if}
-            class="input-group input-touchspin"
+            class="input-group input-touchspin addtocart-input"
             aria-label="{l s='Quantity' d='Shop.Theme.Actions'}"
           >
-        </div>
-
-        <div class="add mr-1 mb-1">
+          
           <button
             class="btn btn-primary add-to-cart"
             data-button-action="add-to-cart"

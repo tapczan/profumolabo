@@ -22,129 +22,35 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div class="js-product-images">
-  {block name='product_cover'}
-    {if $product.default_image}
 
-      <div class="positon-relative product-main-images">
-        {if $product.images|count > 1}
-          {$index = 0}
+{block name='product_cover'}
+  <div class="product-single__img js-product-single-img">
+    {if $product.images}
+      {foreach from=$product.images item=image}
+        <div class="product-img">
+          <a class="product-wishlist product-wishlist--mobile" href="/">
+            <img src="{$urls.img_url}heart-icon.svg">
+          </a>
 
-          <div class="js-product-main-images swiper-container swiper-container-custom" data-index="{$index}">
-            <div class="product-main-images__list swiper-wrapper">
-              <div class="swiper-slide">
-                <img
-                  class="rounded img-fluid lazyload"
-                  {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
-                  width="{$product.default_image.bySize.large_default.width}"
-                  height="{$product.default_image.bySize.large_default.height}"
-                  {if !empty($product.default_image.legend)}
-                    alt="{$product.default_image.legend}"
-                    title="{$product.default_image.legend}"
-                  {else}
-                    alt="{$product.name}"
-                  {/if}
-                  loading="lazy">
-              </div>
-              {if $product.images|count > 1}
-                {foreach from=$product.images item=image}
-                  {if $image.id_image === $product.default_image.id_image}
-                    {continue}
-                  {/if}
-                  {$index = $index + 1}
-
-                  <div class="swiper-slide" data-index="{$index}">
-                    <img
-                      class="rounded img-fluid lazyload"
-                      {generateImagesSources image=$image size='large_default' lazyload=true}
-                      width="{$image.bySize.large_default.width}"
-                      height="{$image.bySize.large_default.height}"
-                      {if !empty($product.default_image.legend)}
-                        alt="{$image.legend}" title="{$image.legend}"
-                      {else}
-                        alt="{$product.name}"
-                      {/if}
-                      loading="lazy">
-                  </div>
-                {/foreach}
-              {/if}
-            </div>
-
-            <div class="swiper-button-prev swiper-button-custom">
-              <span class="sr-only">{l s='Previous' d='Shop.Theme.Actions'}</span>
-              <span class="material-icons">keyboard_arrow_left</span>
-            </div>
-            <div class="swiper-button-next swiper-button-custom">
-              <span class="sr-only">{l s='Next' d='Shop.Theme.Actions'}</span>
-              <span class="material-icons">keyboard_arrow_right</span>
-            </div>
-          </div>
-        {else}
-          <img
-            class="rounded img-fluid"
-            {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
-            width="{$product.default_image.bySize.large_default.width}"
-            height="{$product.default_image.bySize.large_default.height}"
-            {if !empty($product.default_image.legend)}
-              alt="{$product.default_image.legend}"
-              title="{$product.default_image.legend}"
-            {else}
-              alt="{$product.name}"
-            {/if}
-            loading="lazy">
-        {/if}
-
-        <a class="product-main-images__modal-trigger-layer btn btn-light shadow rounded-circle hidden-sm-down" data-toggle="modal" data-target="#product-modal">
-          <span class="material-icons font-reset line-height-reset">zoom_in</span>
-        </a>
-
-      </div>
-    {else}
-      <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
-    {/if}
-  {/block}
-
-  {block name='product_images'}
-    {if $product.images|count > 1}
-      <div class="js-product-thumbs product-thumbs swiper-container mt-2 swiper-container-custom">
-        <div class="product-thumbs__list swiper-wrapper">
-          <div class="product-thumbs__elem swiper-slide">
-            <img
-              class="rounded img-fluid lazyload"
-              {generateImagesSources image=$product.default_image size='home_default' lazyload=true}
-              width="{$product.default_image.bySize.home_default.width}"
-              height="{$product.default_image.bySize.home_default.height}"
+          <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
+            <img 
+              src="{$image.bySize.medium_default.url}" 
               {if !empty($product.default_image.legend)}
-                alt="{$product.default_image.legend}"
-                title="{$product.default_image.legend}"
+                alt="{$image.legend}" title="{$image.legend}"
               {else}
                 alt="{$product.name}"
               {/if}
-              loading="lazy">
-          </div>
-          {if $product.images|count > 1}
-            {foreach from=$product.images item=image}
-              {if $image.id_image === $product.default_image.id_image}
-                {continue}
-              {/if}
-              <div class="product-thumbs__elem swiper-slide">
-                <img
-                  class="rounded img-fluid lazyload"
-                  {generateImagesSources image=$image size='home_default' lazyload=true}
-                  width="{$image.bySize.home_default.width}"
-                  height="{$image.bySize.home_default.height}"
-                  {if !empty($product.default_image.legend)}
-                    alt="{$image.legend}" title="{$image.legend}"
-                  {else}
-                    alt="{$product.name}"
-                  {/if}
-                  loading="lazy">
-              </div>
-            {/foreach}
-          {/if}
+              class="product-img__asset"
+            >
+          </a>
         </div>
+      {/foreach}
+    {else}
+      <div class="product-img">
+        <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
       </div>
     {/if}
-  {/block}
-</div>
+  </div>
+{/block}
+
 {hook h='displayAfterProductThumbs' product=$product}

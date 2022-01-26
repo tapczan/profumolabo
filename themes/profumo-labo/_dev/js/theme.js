@@ -49,6 +49,8 @@ import CustomSelect from './components/CustomSelect';
 import PageLazyLoad from './components/Lazyload';
 import PageLoader from './components/PageLoader';
 
+import { Fancybox } from "@fancyapps/ui";
+
 /* eslint-disable */
 // "inherit" EventEmitter
 for (const i in EventEmitter.prototype) {
@@ -182,6 +184,13 @@ $(document).ready(() => {
         }
       }
     ]
+  });
+
+  $('.js-product-single-img').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
   });
 });
 
