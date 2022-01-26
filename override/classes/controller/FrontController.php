@@ -527,6 +527,7 @@ class FrontControllerCore extends Controller
 
     protected function assignGeneralPurposeVariables()
     {
+
         $templateVars = [
             'cart' => $this->cart_presenter->present($this->context->cart),
             'currency' => $this->getTemplateVarCurrency(),
@@ -544,6 +545,7 @@ class FrontControllerCore extends Controller
             'token' => Tools::getToken(),
             'debug' => _PS_MODE_DEV_,
             'logged' => $this->is_logged_in,
+            'pslanguage' => $this->context->language->iso_code
         ];
 
         $modulesVariables = Hook::exec(
