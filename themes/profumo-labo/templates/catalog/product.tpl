@@ -235,12 +235,8 @@
     {hook h='displayFooterProduct' product=$product category=$category}
   {/block}
 
-  {block name='page_footer_container'}
-    <footer class="page-footer">
-      {block name='page_footer'}
-        <!-- Footer content -->
-      {/block}
-    </footer>
+  {block name='product_single_after_comment'}
+    {hook h='arProductPageHook1' product=$product category=$category}
   {/block}
 
   {*
