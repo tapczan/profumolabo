@@ -24,9 +24,47 @@
  *}
 <div class="product-add-to-cart js-product-add-to-cart">
   {if !$configuration.is_catalog}
-    <h3 class="product-quantity-label">
-      Ilość
-    </h3>
+
+    {block name='product_availability'}
+      <span id="product-availability" class="js-product-availability">
+        {if $product.show_availability && $product.availability_message}
+          <span
+            {if $product.availability == 'available'}
+              class="badge badge-success py-1 mb-1"
+            {elseif $product.availability == 'last_remaining_items'}
+              class="badge badge-warning py-1 mb-1"
+            {else}
+                class="badge badge-danger py-1 mb-1"
+            {/if}
+          >
+          {if $product.availability == 'available'}
+            <i class="material-icons rtl-no-flip font-reset align-bottom">&#xE5CA;</i>
+          {elseif $product.availability == 'last_remaining_items'}
+            <i class="material-icons font-reset align-bottom">&#xE002;</i>
+          {else}
+            <i class="material-icons font-reset align-bottom">&#xE14B;</i>
+          {/if}
+          {$product.availability_message}
+          </span>
+        {/if}
+      </span>
+    {/block}
+
+    {block name='product_minimal_quantity'}
+      <div class="product-minimal-quantity js-product-minimal-quantity">
+      {if $product.minimal_quantity > 1}
+        <span class="product-stock-info">
+          {l
+            s='The minimum purchase order quantity for the product is %quantity%.'
+            d='Shop.Theme.Checkout'
+            sprintf=['%quantity%' => $product.minimal_quantity]
+          }
+        </span>
+      {/if}
+      </div>
+    {/block}
+    
+    <h3 class="product-quantity-label">Ilość</h3>
     {block name='product_quantity'}
       <div class="product-quantity d-flex mb-1">
         <div class="qty mr-1 mb-1">
@@ -63,6 +101,7 @@
       </div>
     {/block}
 
+    {*
     {block name='product_availability'}
       <span id="product-availability" class="js-product-availability">
         {if $product.show_availability && $product.availability_message}
@@ -87,7 +126,8 @@
         {/if}
       </span>
     {/block}
-
+    
+    
     {block name='product_minimal_quantity'}
       <div class="product-minimal-quantity js-product-minimal-quantity">
       {if $product.minimal_quantity > 1}
@@ -101,5 +141,7 @@
       {/if}
       </div>
     {/block}
+    *}
+
   {/if}
 </div>

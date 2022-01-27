@@ -24,6 +24,18 @@
  *}
 <section class="product-discounts js-product-discounts">
   {if $product.quantity_discounts}
+
+    <span class="product-stock-info">
+      {foreach from=$product.quantity_discounts item='quantity_discount' name='quantity_discounts'}
+          {if $pslanguage == 'pl'}
+            Ostatnie <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> sztuk w tej cenie    
+          {else if $pslanguage == 'en'}
+            Last <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> pieces for this price
+          {/if}
+      {/foreach}
+    </span>
+    
+    {*
     <p class="h6 mb-2">{l s='Volume discounts' d='Shop.Theme.Catalog'}</p>
     {block name='product_discount_table'}
       <table class="table mb-4">
@@ -44,6 +56,9 @@
         {/foreach}
         </tbody>
       </table>
+
     {/block}
+    *}
+
   {/if}
 </section>
