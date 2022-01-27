@@ -193,6 +193,62 @@ $(document).ready(() => {
     dots: false,
   });
 
+  /*
+  * Override slider for product listings
+  */
+  const sliderOverrideList = $('#arpl-section-12-31-carousel, #arpl-section-13-27-carousel, #arpl-section-13-28-carousel');
+
+  sliderOverrideList.slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    arrow: true,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
+  });
+  /*
+  * End override slider for product listings
+  */
+
+  /*
+  * Add dropdown to tabbed list on mobile
+  */
+  function mobileDropdown(){
+    var winW = $(window).innerWidth();
+    var mobileDropdownSection = $('#arpl-group-13');
+    var mobileDropdownElem = $('#arpl-group-13 .nav-tabs');
+    var mobileDropdownElemActive = $('#arpl-group-13 .nav-link.active').text();
+
+    if( $('.nav-tabs-mobile-label').length == 0 ){
+      mobileDropdownSection.prepend('<h3 class="nav-tabs-mobile-label">' + mobileDropdownElemActive + '</h3>');
+    }
+
+    $('#arpl-group-13 .nav-link').each(function(){
+      $(this).on('click', function(){
+        var activeMobileDropdownText = $(this).text();
+
+        $('.nav-tabs-mobile-label').text(activeMobileDropdownText);
+        mobileDropdownElem.hide();
+      });
+    });
+
+    $('.nav-tabs-mobile-label').on('click', function(){
+      mobileDropdownElem.toggle();
+    });
+  }
+  
+  mobileDropdown();
+  /*
+  * End add dropdown to tabbed list on mobile
+  */
+
   $('.js-comment-close').on('click', function(){
     $('.js-comment-form').slideToggle();
     $(this).toggleClass('product-comment__close--notactive')

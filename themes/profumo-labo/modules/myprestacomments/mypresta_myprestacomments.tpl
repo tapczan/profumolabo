@@ -98,11 +98,13 @@
             {/foreach}
         {else}
             {if (!$too_early AND ($logged OR $allow_guests))}
-                <p class="align_center alert alert-info">
-                    <a id="new_comment_tab_btn" class="open-comment-form" href="#new_comment_form">{l s='Be the first to write your review' mod='myprestacomments'} !</a>
-                </p>
+                <div class="product-comment__alert-notice">
+                    Be the first to write your review
+                </div>
             {else}
-                <p class="align_center">{l s='No customer reviews for the moment.' mod='myprestacomments'}</p>
+                <div class="product-comment__alert-notice">
+                    No customer reviews for the moment.
+                </div>
             {/if}
         {/if}
     </div>
