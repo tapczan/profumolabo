@@ -91,22 +91,25 @@
 
               <div class="product-reference">
                 <span class="product-inspired">
-                  Inspiracja no29
+                  {$product.reference}
                 </span>
                 <span class="product-brand">
-                  Tom Ford Noir Noir
+                  {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
                 </span>
               </div>
               
               {block name='product_prices'}
                 <div class="product-price">
                   {include file='catalog/_partials/product-prices.tpl'}
-                  <span class="product-stock-info">
-                    Ostatnie <span class="product-stock-info__num">5</span> sztuk w tej cenie
-                  </span>
                 </div>
               {/block}
 
+              {block name='product_discounts'}
+                <span class="product-stock-info">
+                  {include file='catalog/_partials/product-discounts.tpl'}
+                </span>
+              {/block}
+              
               {if $product.is_customizable && count($product.customizations.fields)}
                 {block name='product_customization'}
                   <div class="product-variation">
@@ -141,9 +144,10 @@
                       {/if}
                     {/block}
   
+                    {*
                     {block name='product_discounts'}
                       {include file='catalog/_partials/product-discounts.tpl'}
-                    {/block}
+                    {/block}*}
   
                     {block name='product_add_to_cart'}
                       {include file='catalog/_partials/product-add-to-cart.tpl'}
@@ -159,20 +163,20 @@
                 SYMBOL: P026US100
               </div>
 
-              {block name='product_description_short'}
-                <div class="product-description">{$product.description_short nofilter}</div>
-              {/block}
-
               <div class="product-accordion" id="productSingleAccordion">
                 <div class="product-accordion__item">
                   <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
-                    OPIS
+                    {if $pslanguage == 'pl'}
+                        OPIS     
+                    {else if $pslanguage == 'en'}
+                        DESCRIPTION
+                    {/if}
                   </div>
                   <div class="product-accordion__body collapse show" id="productAccordionContent1" aria-labelledby="productAccordionHeader1" data-parent="#productSingleAccordion">
-                    <p>Świeżo-korzenno-drzewna kompozycja ukazuje styl i podkreśla aparycję mężczyzny, który po nią sięga. Świeżo-korzenno-drzewna kompozycja jest wzorem równowagi i harmonii. Żywiołowa świeżość nut głowy - mandarynki i kolendry, podkreślona nieco</p>
+                    <p>{$product.description_short nofilter}</p>
                   </div>
                 </div>
-
+                {*
                 <div class="product-accordion__item">
                   <div class="product-accordion__header" id="productAccordionHeader2" data-toggle="collapse" data-target="#productAccordionContent2" aria-expanded="false" aria-controls="productAccordionContent2">
                     DODAJ AKCESORIA
@@ -217,6 +221,8 @@
                     <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
                   </div>
                 </div>
+                *}
+
               </div>
 
               <div class="product-social">
@@ -235,8 +241,12 @@
     {hook h='displayFooterProduct' product=$product category=$category}
   {/block}
 
-  {block name='product_single_after_comment'}
-    {hook h='arProductPageHook1' product=$product category=$category}
+  {block name='page_footer_container'}
+    <footer class="page-footer">
+      {block name='page_footer'}
+        <!-- Footer content -->
+      {/block}
+    </footer>
   {/block}
 
   {*
