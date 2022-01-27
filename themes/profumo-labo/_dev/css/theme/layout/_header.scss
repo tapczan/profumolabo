@@ -531,6 +531,30 @@
     .mm_columns_ul .mm_columns_li:first-child .mm_blocks_ul .mm_blocks_li:nth-child(2) .ets_mm_block_content{
       line-height: 16px;
     }
+  }  
+  
+  &-kolekje{
+    .mm_columns_ul{
+      .mm_columns_li{
+        .mm_blocks_ul{
+          .mm_blocks_li:first-child{
+            .ets_mm_block_content{
+              a{
+                text-align: center;
+                display: block;
+                font-weight: 500;
+              }
+            }
+          }
+
+          .mm_blocks_li:last-child{
+            .ets_mm_block_content{
+              line-height: 18px;
+            }
+          }
+        }
+      }
+    }
   }
 
   &-kontakt{
@@ -863,14 +887,15 @@
       border-bottom: 1px solid $light-gray !important;
 
       .arrow{
-        height: 34px;
+        height: 22px !important;
+        margin-top: 5px !important;
 
         &::before{
-          width: 10px;
+          width: 10px !important;
         }
 
         &::after{
-          height: 10px;
+          height: 10px !important;
         }
       }
 
@@ -954,6 +979,11 @@
       }
     }
   }
+
+  .header__nav .header__mega-menu .mm_menus_ul .mm_menus_li a,
+  .header__nav.header__nav--sticky .header__mega-menu .mm_menus_ul .mm_menus_li a{
+    font-size: $font-size-xs !important;
+  }
 }
 
 @media screen and (max-width: 360px){
@@ -981,6 +1011,46 @@
               margin-bottom: 20px;
             }
           }        
+        }
+      }
+    }
+  }
+
+  .mega-menu-header{
+    &-kolekje{
+      .mm_columns_ul{
+        .mm_columns_li{
+          max-width: 260px !important;
+
+          .mm_blocks_ul{
+            .mm_blocks_li{
+              padding: 0 30px;
+            }
+          }
+        }
+      }
+    }
+    
+    &-marki{
+      .mm_columns_ul{
+        .mm_columns_li:last-child{
+          .mm_blocks_ul{
+            .mm_blocks_li{
+              padding-left: 30px;
+            }
+          }
+        }
+      }
+    }
+    
+    &-kontakt{
+      .mm_columns_ul{
+        .mm_columns_li:first-child{
+          .mm_blocks_ul{
+            .mm_blocks_li{
+              padding-right: 30px;
+            }
+          }
         }
       }
     }
