@@ -196,7 +196,7 @@ $(document).ready(() => {
   /*
   * Override slider for product listings
   */
-  const sliderOverrideList = $('#arpl-section-12-31-carousel, #arpl-section-13-27-carousel, #arpl-section-13-28-carousel');
+  const sliderOverrideList = $('#arpl-section-12-31-carousel, #arpl-section-13-27-carousel, #arpl-section-13-28-carousel, #arpl-section-13-25-carousel, #arpl-section-13-26-carousel, #arpl-section-12-27-carousel');
 
   sliderOverrideList.slick({
     infinite: true,

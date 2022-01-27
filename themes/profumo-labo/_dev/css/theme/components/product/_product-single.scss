@@ -12,9 +12,14 @@
         margin-bottom: 0 !important;
     }
 
-    #arpl-section-13-27-carousel, 
+    #arpl-section-13-25-carousel,
+    #arpl-section-13-26-carousel,
+    #arpl-section-12-27-carousel,
+    #arpl-section-13-27-carousel,
     #arpl-section-13-28-carousel,
     #arpl-section-12-31-carousel{
+        width: 100%;
+
         .slick{
             &-arrow{
                 background: url(~/img/icons/left-arrow.svg);
@@ -41,12 +46,6 @@
                 right: 0;
             }
         }
-    }
-
-    #arpl-section-13-27-carousel,
-    #arpl-section-13-28-carousel,
-    #arpl-section-12-31-carousel{
-        width: 100%;
 
         .products-list__block{
             display: block;
@@ -595,6 +594,9 @@
             padding: 20px 0;
         }
 
+        #arpl-section-13-25-carousel,
+        #arpl-section-13-26-carousel,
+        #arpl-section-12-27-carousel,
         #arpl-section-13-27-carousel,
         #arpl-section-13-28-carousel,
         #arpl-section-12-31-carousel{
