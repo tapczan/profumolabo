@@ -38,9 +38,20 @@
       {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
       {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
-
+      
+      <div class="product-single__info" style="margin-bottom: 10px;">
+          <span class="product-inspired text-center">
+            {$product.reference}
+          </span>
+          <span class="product-brand text-center">
+            {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
+          </span>
+      </div>
+      
       {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
-
+      <div class="text-center">
+      <span style="font-size: 12px;color:#bbb">23.25/8ML</span>
+      </div>
       {block name='product_form'}
         {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
       {/block}
