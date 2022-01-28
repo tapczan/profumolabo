@@ -56,6 +56,7 @@
 
                 {$model->more_link|escape:'htmlall':'UTF-8'}
                 <!--<i class="material-icons">&#xE315;</i>-->
+                
             </a>
         </div>
     {/if}
