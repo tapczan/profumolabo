@@ -692,17 +692,15 @@ html[lang="pl-PL"] {
     i.material-icons {
       display: none;
     }
-  
-    
   }
 
   #arpl-group-5:before,
   #arpl-group-9:before {
+    @include custom-psheader-title;
     content: "BESTSELLERY";
     display: block;
     text-align: center;
-    padding: 50px 0 30px;
-    @include custom-psheader-title;
+    padding: 38px 0 62px !important;
   }
 
   #arpl-group-8 .arpl-header h2:after {
@@ -1126,7 +1124,9 @@ html[lang="pl-PL"] {
   }
 
   html[lang="en-US"] #arpl-group-5:before, 
-  html[lang="en-US"] #arpl-group-9:before{
+  html[lang="en-US"] #arpl-group-9:before,
+  html[lang="pl-PL"] #arpl-group-5:before, 
+  html[lang="pl-PL"] #arpl-group-9:before{
     padding: 0 0 20px 0 !important;
   }
 
