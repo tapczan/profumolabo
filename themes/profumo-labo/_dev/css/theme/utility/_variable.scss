@@ -22,7 +22,14 @@ $gray: #969696;
 $brown: #CCB48F;
 $red: #f00000;
 $background-gray: #eeeeee;
+$background-circle-gray: #EBEBEB;
 
+$border-bottom-section: 1px solid #969696;
 $border-bottom-mobile: 1px solid rgba(0, 0, 0, 0.07);
 $border-social: 1px solid #4E525B;
 $border-comment: 1px solid #686868;
+
+@mixin font-with-line-height($font-size, $line-height) {
+    font-size: $font-size;
+    line-height: $line-height;
+}  
