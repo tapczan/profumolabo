@@ -1410,6 +1410,12 @@
   }
 }
 
+@media(max-width: 1040px){
+  .header__mega-menu .mm_menus_ul .mm_menus_li .mm_columns_li{
+    max-width: 160px;
+  }
+}
+
 @media (min-width: 992px) and (max-width: 1199px){
   .header__nav{
     &:not(.header__nav--sticky) {
