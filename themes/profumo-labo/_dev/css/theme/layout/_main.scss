@@ -477,6 +477,7 @@ section#main {
     border-bottom: 1px solid $gray;
     margin-bottom: 0 !important;
     width: 100%;
+    color: $black;
 
     &__item{
       padding: 0 10px;
@@ -493,8 +494,9 @@ section#main {
       line-height: 24px;
       letter-spacing: 0.05em;
       font-weight: 400;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
       padding-top: 34px !important;
+      color: $black;
     }
 
     .link {
@@ -502,7 +504,7 @@ section#main {
       line-height: 15px;
       font-weight: 400;
       text-decoration:underline;
-      margin-top: 16px;
+      margin-top: 20px;
 
       a {
         color: $black;
