@@ -81,10 +81,22 @@
                 {block name='page_header'}
                   <h1 class="product-title">
                     {block name='page_title'}{$product.name}{/block}
-
+                    <span
+                    class="wishlist-button"
+                    data-url="{$url}"
+                    data-product-id="{$product.id}"
+                    data-product-attribute-id="{$product.id_product_attribute}"
+                    data-is-logged="{$customer.is_logged}"
+                    data-list-id="1"
+                    data-checked="true"
+                    data-is-product="true"
+                    ></span>
+                    
+                    {*
                     <a class="product-wishlist" href="/">
                       <img src="{$urls.img_url}heart-icon.svg">
                     </a>
+                    *}
                   </h1>
                 {/block}
               {/block}
@@ -94,7 +106,9 @@
                   {$product.reference}
                 </span>
                 <span class="product-brand">
-                  {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
+                {if isset($product_manufacturer->id)}
+                  {$product_manufacturer->name}
+                {/if}
                 </span>
               </div>
               
@@ -110,6 +124,7 @@
                 </span>
               {/block}
               
+              {$product.is_customizable}
               {if $product.is_customizable && count($product.customizations.fields)}
                 {block name='product_customization'}
                   <div class="product-variation">
@@ -160,7 +175,10 @@
               </div>
 
               <div class="product-sku">
-                SYMBOL: P026US100
+                <p id="product_ean13"{if empty($product->ean13) || !$product->ean13} style="display: none;"{/if}>
+                    <label>{l s='Ean13:'} </label>
+                    <span {if !empty($product->ean13) && $product->ean13} content="{$product->ean13}"{/if}>{$product->ean13|escape:'html':'UTF-8'}</span>
+                </p>
               </div>
 
               <div class="product-accordion" id="productSingleAccordion">

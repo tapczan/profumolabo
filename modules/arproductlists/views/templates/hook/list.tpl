@@ -50,8 +50,12 @@
 {if !$contentOnly}
     {if $model->getList()->getMoreLink() and $model->getList()->more_link}
         <div class="arpl-more-container">
+             
+
             <a class="arpl-more-link" href="{$model->getList()->getMoreLink() nofilter}">
-                {$model->more_link|escape:'htmlall':'UTF-8'}<i class="material-icons">&#xE315;</i>
+
+                {$model->more_link|escape:'htmlall':'UTF-8'}
+                <!--<i class="material-icons">&#xE315;</i>-->
             </a>
         </div>
     {/if}
