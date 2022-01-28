@@ -50,6 +50,7 @@
       </span>
     {/block}
 
+    {*
     {block name='product_minimal_quantity'}
       <div class="product-minimal-quantity js-product-minimal-quantity">
       {if $product.minimal_quantity > 1}
@@ -63,7 +64,8 @@
       {/if}
       </div>
     {/block}
-    
+    *}
+
     <h3 class="product-quantity-label">Ilość</h3>
     {block name='product_quantity'}
       <div class="product-quantity d-flex mb-1">

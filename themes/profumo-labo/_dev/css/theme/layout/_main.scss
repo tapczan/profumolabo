@@ -28,6 +28,26 @@ section#main {
   }
 }
 
+.product-single__info {
+  .product-title {
+    margin: 0 !important;
+    
+    .wishlist-button-add.wishlist-button-product {
+      display: inline-block;
+      box-shadow: none;
+      position: relative;
+      top: 1px;
+    }
+  }
+  .product-reference {
+    margin: 0 0 15px !important;
+  }
+}
+.product-accordion__body a {
+  color: #CCB48F !important;
+  text-decoration: underline;
+}
+
 /*
 * Override homepage styling
 */ 
