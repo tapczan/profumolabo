@@ -193,6 +193,14 @@ $(document).ready(() => {
     dots: false,
   });
 
+  $('.js-home-slider').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: true,
+    arrow: false,
+  });
+
   /*
   * Override slider for product listings
   */

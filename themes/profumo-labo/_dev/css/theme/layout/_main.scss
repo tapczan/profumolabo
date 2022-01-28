@@ -1,18 +1,19 @@
+@mixin custom-psheader-title {
+  font-size: $font-size-xxl;
+  line-height: 38px;
+  font-weight: 400;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 105px 0 35px !important;
+  text-transform: uppercase;
+  color: $black;
+}
 
 .l-main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-}
-
-@mixin custom-psheader-title {
-  font-size: 35px;
-  line-height: 39px;
-  font-weight: 400;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  text-transform: uppercase;
 }
 
 section#main {
@@ -27,16 +28,99 @@ section#main {
   }
 }
 
-.homeslider{
-  .homeslider__arrow{
-    display: none;
+/*
+* Override homepage styling
+*/ 
+.home-slider{
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  &__container,
+  &__item,
+  &__img{
+    width: 100%;
+  }
+
+  &__item{
+    min-height: 550px;
+  }
+
+  &__img{
+    object-fit: cover;
+    min-height: 550px;
+    width: 100%;
+  }
+
+  .slick-slider{
+    margin-bottom: 0;
+  }
+
+  .slick-dots{
+    bottom: 45px;
+    font-size: 0;
+    padding: 0;
+    margin: 0;
+    height: auto;
+
+    li{
+        width: auto;
+        height: auto;
+        margin: 0 5px;
+    }
+
+    button{
+        width: 15px;
+        height: 15px;
+        background-color: $white;
+        display: block;
+        padding: 0;
+        border-radius: 50%;
+
+        &:before{
+            display: none;
+        }
+
+        &:hover{
+            background-color: $background-gray;
+        }
+    }
+
+    .slick-active{
+        button{
+            background-color: $background-gray;
+        }
+    }
   }
 }
+/*
+* End override homepage styling
+*/ 
 
 .page-home {
   font-family: $font-jost;
   font-weight: 400;
   letter-spacing: 0.1em;
+
+  section{
+    .container.mt-5.py-6.px-4{
+      font-weight: 300;
+
+      .col-lg-6.text-center p{
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .col-md-10.mb-3.mx-auto.text-center,
+  .col-lg-6.col-md-8.col-sm-12.mb-3.mx-auto.text-center{
+    font-weight: 300;
+    color: $black;
+  }
+
+  .col-md-10.mb-3.mx-auto.text-center{
+    margin-bottom: 50px !important;
+  }
 
   .pslabo-full-width {
     width: 100%;
@@ -59,6 +143,9 @@ section#main {
 
     p {
       line-height: 26px;
+      font-size: $font-size-xl;
+      font-weight: 300;
+      text-align: justify;  
     } 
 
     a {
@@ -72,6 +159,11 @@ section#main {
     .col-md-6.px-6.py-6{
       padding-top: 0 !important;
       padding-bottom: 0 !important;
+    }
+
+    .custom-psheader-title{
+      padding-top: 30px !important;
+      padding-bottom: 25px !important;
     }
   }
 
@@ -240,6 +332,23 @@ section#main {
       width: 50%;
       border-color: transparent;
       border: 0;
+      position: relative;
+
+      &:after{
+        content: '';
+        background: $black;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+        height: 22px;
+        margin: auto;
+        position: absolute;
+      }
+
+      &:last-child:after{
+        display: none;
+      }
 
       .nav-link,
       .nav-link.active {
@@ -256,10 +365,8 @@ section#main {
 
       &:first-child {
         text-align: right;
-        border-right: 1px solid $black;
         width: 48%;
       }
-
     }
   }
 
@@ -320,25 +427,36 @@ section#main {
   }  
   
   .see-the-products {
-    padding-bottom: 70px;
+    padding-bottom: 80px;
     border-bottom: 1px solid $gray;
-    margin-bottom: 50px;
+    margin-bottom: 0 !important;
+    width: 100%;
+
+    &__item{
+      padding: 0 10px;
+      font-size: $font-size-xs;
+      line-height: 16px;
+    }
 
     img {
       width: 100%;
     }
+
     .title {
       font-size: 22px;
       line-height: 24px;
       letter-spacing: 0.05em;
       font-weight: 400;
+      margin-bottom: 12px;
+      padding-top: 34px !important;
     }
+
     .link {
       font-size: 12px;
       line-height: 15px;
       font-weight: 400;
       text-decoration:underline;
-      margin-top: 50px;
+      margin-top: 16px;
 
       a {
         color: $black;
@@ -348,6 +466,15 @@ section#main {
         }
       }
     }
+  }
+
+  #custom-text + section .custom-psheader-title.text-center.mt-5.py-6{
+    padding-top: 60px !important;
+    padding-bottom: 55px !important;
+  }
+
+  #custom-text + section .row.mb-5{
+    margin-bottom: 30px !important;
   }
 
   .arpl-carousel-products.owl-carousel .owl-item img {
@@ -422,15 +549,6 @@ section#main {
     }
   }
 
-  .see-the-products{
-    width: 100%;
-
-    &__item{
-      padding: 0 10px;
-      font-size: $font-size-xs;
-    }
-  }
-
   #arpl-group-10{
     .arpl-header{
       display: none;
@@ -444,12 +562,6 @@ section#main {
 
     .arpl-header {
       display: none;
-    }
-  }
-
-  .banner__full{
-    img{
-      width: 100%;
     }
   }
 
@@ -510,11 +622,11 @@ html[lang="en-US"] {
 
   #arpl-group-5:before,
   #arpl-group-9:before {
+    @include custom-psheader-title;
     content: "BEST SELLER";
     display: block;
     text-align: center;
-    padding: 50px 0 30px;
-    @include custom-psheader-title;
+    padding: 38px 0 62px !important;
   }
   
   #arpl-group-8 .arpl-header h2:after {
@@ -568,6 +680,25 @@ html[lang="pl-PL"] {
         }
       }
     }
+  }
+}
+
+.banner__full{
+  img{
+    width: 100%;
+    margin: auto;
+    display: block;
+  }
+}
+
+@media screen and (max-width:1399px) {
+  .page-home .profumolabo-section p{
+    font-size: $font-size-md;
+    line-height: 22px;
+  }
+
+  .page-home .profumolabo-section .custom-psheader-title {
+    padding-top: 10px !important;
   }
 }
 
@@ -897,6 +1028,7 @@ html[lang="pl-PL"] {
         .arpl-title{
           font-size: $font-size-xm;
           margin: 0;
+          line-height: 24px;
         }
       }
 
@@ -926,7 +1058,7 @@ html[lang="pl-PL"] {
 
         .custom-psheader-title{
           font-size: $font-size-xm;
-          margin: 30px 0;
+          margin: 0 0 20px !important;
           padding: 0 !important;
         }
 
@@ -934,7 +1066,8 @@ html[lang="pl-PL"] {
           font-size: $font-size-sm;
 
           p{
-            line-height: 22px;
+            line-height: 20px;
+            font-size: 14px;
           }
 
           & + a{
@@ -943,6 +1076,76 @@ html[lang="pl-PL"] {
           }
         }
       }
+    }
+  }
+
+  .page-home section .container.mt-5.py-6.px-4 .col-lg-6 iframe{
+    margin-top: 40px;
+  }
+
+  html[lang="en-US"] #arpl-group-5:before, 
+  html[lang="en-US"] #arpl-group-9:before{
+    padding: 0 0 20px 0 !important;
+  }
+
+  .page-home .col-md-10.mb-3.mx-auto.text-center{
+    margin-bottom: 0 !important;
+  }
+
+  .page-home .see-the-products__item .title{
+    padding-top: 0 !important;
+  }
+
+  .page-home #custom-text + section .custom-psheader-title.text-center.mt-5.py-6{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .page-home .profumolabo-section .col-md-6.px-6.py-6{
+    padding-top: 30px !important;
+    padding-bottom: 10px !important;
+    flex: 100%;
+    max-width: 100%;
+  }
+
+  .page-home .profumolabo-section .col-md-6{
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+@media(min-width: 1400px){
+  .page-home{
+    section{
+      .container.mt-5.py-6.px-4{
+        font-size: 22px;
+        line-height: 35px;
+        font-weight: 300;
+  
+        .col-lg-6.text-center{
+          max-width: 740px;
+          margin: auto;
+        }
+  
+        .col-lg-6{
+          iframe{
+            height: 483px !important;
+          }
+        }
+      }
+    }
+
+    .col-md-10.mb-3.mx-auto.text-center{
+      flex: 0 0 98%;
+      max-width: 98%;
+      line-height: 35px;
+      font-size: $font-size-xl;
+    }
+
+    .col-lg-6.col-md-8.col-sm-12.mb-3.mx-auto.text-center{
+      line-height: 30px;
+      font-size: $font-size-xl;
+      margin-bottom: 0px !important;
     }
   }
 }

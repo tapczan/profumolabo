@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<section class="banner__full">
+<section class="home-full-banner">
   {if isset($banner_img)}
     <img src="{$banner_img}" alt="{$banner_desc}" title="{$banner_desc}" class="img-fluid pslabo-full-width">
   {else}
