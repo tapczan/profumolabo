@@ -239,6 +239,7 @@
         a{
           font-size: $font-size-sm !important;
           font-weight: normal;
+          white-space: normal;
 
           &:after,
           &:before{
