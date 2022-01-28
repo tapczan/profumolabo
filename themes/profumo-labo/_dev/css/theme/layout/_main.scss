@@ -651,17 +651,14 @@ section#main {
 
 html[lang="en-US"] {
   .arpl-more-link {
-    font-size: 0;
+    font-size: 12px;
+    text-transform: uppercase;
     color: $black;
   
     i.material-icons {
       display: none;
     }
   
-    &:before {
-      font-size: $font-size-sm;
-      content: "Read More";
-    }
   }
 
   #arpl-group-5:before,
@@ -685,17 +682,15 @@ html[lang="en-US"] {
 
 html[lang="pl-PL"] {
   .arpl-more-link {
-    font-size: 0;
+    font-size: 12px;
+    text-transform: uppercase;
     color: $black;
   
     i.material-icons {
       display: none;
     }
   
-    &:before {
-      font-size: $font-size-sm;
-      content: "ZOBACZ WIĘCEJ";
-    }
+    
   }
 
   #arpl-group-5:before,
