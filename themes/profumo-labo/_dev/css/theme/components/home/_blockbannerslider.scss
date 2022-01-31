@@ -1,0 +1,62 @@
+.blockbannerslider{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+    &__container,
+    &__item,
+    &__img{
+        width: 100%;
+    }
+
+    &__item{
+        min-height: 550px;
+    }
+
+    &__img{
+        object-fit: cover;
+        min-height: 550px;
+        width: 100%;
+    }
+
+    .slick-slider{
+        margin-bottom: 0;
+    }
+
+    .slick-dots{
+        bottom: 45px;
+        font-size: 0;
+        padding: 0;
+        margin: 0;
+        height: auto;
+
+        li{
+            width: auto;
+            height: auto;
+            margin: 0 5px;
+        }
+
+        button{
+            width: 15px;
+            height: 15px;
+            background-color: $white;
+            display: block;
+            padding: 0;
+            border-radius: 50%;
+
+            &:before{
+                display: none;
+            }
+
+            &:hover{
+                background-color: $background-gray;
+            }
+        }
+
+        .slick-active{
+            button{
+                background-color: $background-gray;
+            }
+        }
+    }
+}
