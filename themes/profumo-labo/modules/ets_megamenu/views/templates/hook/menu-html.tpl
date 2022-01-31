@@ -41,6 +41,7 @@
                 <a {if isset($menu.menu_open_new_tab) && $menu.menu_open_new_tab == 1} target="_blank"{/if}
                         href="{$menu.menu_link|escape:'html':'UTF-8'}"
                         style="{if $menu.enabled_vertical}{if isset($menu.menu_ver_text_color) && $menu.menu_ver_text_color}color:{$menu.menu_ver_text_color|escape:'html':'UTF-8'};{/if}{if isset($menu.menu_ver_background_color) && $menu.menu_ver_background_color}background-color:{$menu.menu_ver_background_color|escape:'html':'UTF-8'};{/if}{/if}{if Configuration::get('ETS_MM_HEADING_FONT_SIZE')}font-size:{Configuration::get('ETS_MM_HEADING_FONT_SIZE')|intval}px;{/if}">
+                    {if $menu.columns}<span class=" mm_has_sub_arrow"><</span>{/if}
                     <span class="mm_menu_content_title">
                         {if $menu.menu_img_link}
                             <img src="{$menu.menu_img_link|escape:'html':'UTF-8'}" title="" alt="" width="20"/>
@@ -54,7 +55,7 @@
                 </a>
                 {if $menu.enabled_vertical}
                     {if $menu.tabs}
-                        <span class="arrow closed"></span>
+                        <span class="arrow closed d-none"></span>
                     {/if}
                 {/if}
                 {if $menu.enabled_vertical}
@@ -107,7 +108,7 @@
                         </ul>
                     {/if}
                 {else}
-                    {if $menu.columns}<span class="arrow closed"></span>{/if}
+                    {if $menu.columns}<span class="arrow closed d-none"></span>{/if}
                     {if $menu.columns}
                         <ul class="mm_columns_ul"
                             style=" width:{$menu.sub_menu_max_width|escape:'html':'UTF-8'};{if Configuration::get('ETS_MM_TEXT_FONT_SIZE')} font-size:{Configuration::get('ETS_MM_TEXT_FONT_SIZE')|intval}px;{/if}{if !$menu.enabled_vertical && $menu.background_image} background-image:url('{$menu.background_image|escape:'html':'UTF-8'}');background-position:{$menu.position_background|escape:'html':'UTF-8'}{/if}">

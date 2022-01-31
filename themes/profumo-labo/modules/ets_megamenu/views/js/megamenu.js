@@ -396,6 +396,7 @@ function clickTextShowMenu(){
          $('.clicktext_show_submenu li.mm_has_sub > a').each(function() {
             $(this).on('click', function(e){
                 if ($(window).width() <= 767 ){
+                    $(this).parent().toggleClass('active')
                     e.preventDefault();
                    itemClickMenu(this);
                } 
