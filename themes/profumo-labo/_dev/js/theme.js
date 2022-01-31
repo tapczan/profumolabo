@@ -139,53 +139,7 @@ $(document).ready(() => {
     });
   });
 
-  // Block reassurance slider
-  $('.js-block-reassurance-slider').slick({
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    dots: false,
-    responsive: [
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 2,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          dots: true
-        }
-      }
-    ]
-  });
-
-  $('.js-see-the-products').slick({
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    dots: false,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 2,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          dots: true
-        }
-      }
-    ]
-  });
-
+  // product single
   $('.js-product-single-img').slick({
     infinite: true,
     slidesToShow: 1,
@@ -193,7 +147,8 @@ $(document).ready(() => {
     dots: false,
   });
 
-  $('.js-home-slider').slick({
+  // home page banner slider
+  $('.js-blockbannerslider').slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -201,10 +156,74 @@ $(document).ready(() => {
     arrow: false,
   });
 
+  // home page featured product slider
+  $('.js-blockfeaturedproduct').slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    dots: false,
+  });
+
+  // home page offerta slider
+  $('.js-blockofferta').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          dots: true
+        }
+      }
+    ]
+  });
+
+  // home page reassurance slider
+  $('.js-block-reassurance-slider').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    dots: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 481,
+        settings: {
+          slidesToShow: 1,
+          dots: true
+        }
+      }
+    ]
+  });
+
   /*
   * Override slider for product listings
   */
-  const sliderOverrideList = $('#arpl-section-13-40-carousel, #arpl-section-12-31-carousel, #arpl-section-13-27-carousel, #arpl-section-13-28-carousel, #arpl-section-13-25-carousel, #arpl-section-13-26-carousel, #arpl-section-12-27-carousel');
+  const sliderOverrideList = $(`#arpl-section-13-40-carousel, 
+                                #arpl-section-13-26-carousel, 
+                                #arpl-section-12-31-carousel, 
+                                #arpl-section-13-27-carousel, 
+                                #arpl-section-13-28-carousel, 
+                                #arpl-section-13-25-carousel, 
+                                #arpl-section-12-27-carousel`);
+  const sliderBestsellerHome = $('#arpl-section-5-7-carousel, #arpl-section-5-8-carousel');
+  const silderSixOnDesktop = $('#arpl-section-8-16-carousel, #arpl-section-1-15-carousel');
 
   sliderOverrideList.slick({
     infinite: true,
@@ -214,12 +233,53 @@ $(document).ready(() => {
     arrow: true,
     responsive: [
       {
-        breakpoint: 991,
+        breakpoint: 992,
         settings: {
           slidesToShow: 2,
         }
       }
     ]
+  });
+
+  silderSixOnDesktop.slick({
+    infinite: true,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    dots: false,
+    arrow: true,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+        }
+      }
+    ]
+  });
+
+  /* Slick needs no get Reinitialized on window Resize after it was destroyed */
+  $(window).on('load resize orientationchange', function() {
+    sliderBestsellerHome.each(function(){
+      var $carousel = $(this);
+      /* Initializes a slick carousel only on mobile screens */
+      // slick on mobile
+      if ($(window).width() > 991) {
+        if ($carousel.hasClass('slick-initialized')) {
+          $carousel.slick('unslick');
+        }
+      }
+      else{
+        if (!$carousel.hasClass('slick-initialized')) {
+          $carousel.slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            mobileFirst: true,
+            dots: false,
+            arrow: true
+          });
+        }
+      }
+    });
   });
   /*
   * End override slider for product listings

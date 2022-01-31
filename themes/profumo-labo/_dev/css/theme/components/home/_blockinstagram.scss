@@ -2,13 +2,13 @@
     overflow: hidden;
     
     &__inner{
-        margin: 50px -2px;
+        margin: 0 -2px 50px;
     }
 
     &__title{
         font-family: $font-jost;
         font-size: $font-size-xxl;
-        margin: 50px 0;
+        margin: 0 0 50px;
         padding: 0;
         text-align: center;
         font-weight: normal;

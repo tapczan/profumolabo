@@ -1,4 +1,4 @@
-<div class="product-single__info">
+<div class="blockfeaturedproduct__info">
     <div class="product-rating">
 
         <ul class="star-rating">

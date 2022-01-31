@@ -24,12 +24,12 @@
  *}
 
 {if $homeslider.slides}
-  <section class="home-slider">
-    <div class="home-slider__container js-home-slider">
+  <section class="blockbannerslider">
+    <div class="blockbannerslider__container js-blockbannerslider">
       {foreach from=$homeslider.slides item=slide}
-        <div class="home-slider__item">
+        <div class="blockbannerslider__item">
           <img
-          class="home-slider__img"
+          class="blockbannerslider__img"
           src="{$slide.image_url}"
           alt="{$slide.title}">
         </div>

@@ -27,12 +27,9 @@
             {include file="./custom/custom_compact_product_thumb.tpl"}
         </div>
 
-        <div class="col-md-6 product-single__info arpl-contentx products-list__blockx">
+        <div class="col-md-6 arpl-content">
+
             {include file="./custom/custom_compact_product_details.tpl"}
-
-
-
-
 
             {*
             <div class="comments_note">
