@@ -69,12 +69,19 @@
           {/block}
 
           <div class="row">
+
+            
+            
+            {if $page_name != 'product'}
+              {include file='./custom/custom-category-page.tpl' listing=$listing category=$category}
+            {else if}
+
             {block name="left_column"}
               <div id="left-column" class="col-12 col-md-4 col-lg-3">
                 {if $page.page_name == 'product'}
                   {hook h='displayLeftColumnProduct'}
                 {else}
-                  {hook h="displayLeftColumn"}
+                  {*{hook h="displayLeftColumn"}*}
                 {/if}
               </div>
             {/block}
@@ -99,6 +106,10 @@
               </div>
             {/block}
           </div>
+
+          {/if}
+
+
         </div>
         {hook h="displayWrapperBottom"}
       </section>
