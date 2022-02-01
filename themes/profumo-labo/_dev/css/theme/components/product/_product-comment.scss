@@ -15,6 +15,7 @@
         padding: 0;
         font-weight: normal;
         text-transform: uppercase;
+        color: $black;
     }
 
     &__btn-form{
@@ -117,6 +118,7 @@
         padding: 0;
         max-width: 585px !important;
         width: 100% !important;
+        margin: auto !important;
 
         .comment-form-desc{
             margin-left: 0 !important;
@@ -135,6 +137,22 @@
 
         .carousel__button{
             top: 0 !important;
+        }
+
+        input[type=text],
+        textarea{
+            &:focus{
+                outline: none !important;
+            }
+        }
+
+        a{
+            color: $black !important;
+
+            &:hover,
+            &:focus{
+                color: $brown !important;
+            }
         }
     }
 
@@ -158,6 +176,56 @@
     }
 }
 
+#new_comment_form{
+    &.product-comment__form{
+        #criterions_list{
+            width: 100%;
+            text-align: center;
+        }
+
+        .star-rating-label{
+            display: inline-block !important;
+            vertical-align: middle;
+            width: auto;
+            min-width: auto !important;
+            margin: 0 !important;
+            float: none !important;
+        }
+
+        .star_content{
+            display: inline-block;
+            margin: 0 0 0 5px;
+            vertical-align: 1px;
+
+            .star{
+                margin: 0;
+                padding: 0;
+                display: inline-block;
+                vertical-align: middle;
+                background: url(~/img/icons/star_gray.svg) !important;
+                background-size: contain !important;
+                background-position: center !important;
+                background-repeat: no-repeat !important;
+                width: 11px;
+                height: 11px;
+                float: none;
+
+                &.star_on,
+                &.star_hover{
+                    background: url(~/img/icons/star_active.svg) !important;
+                    background-size: contain !important;
+                    background-position: center !important;
+                    background-repeat: no-repeat !important;
+                }
+            }
+
+            & + span{
+                display: none;
+            }
+        }
+    }
+}
+
 @media(max-width: 767px){
     .product-comment{
         padding: 10px 0 0;
@@ -168,6 +236,15 @@
                 margin-left: 0 !important;
             }
         }
+
+        &__item:last-child{
+            border-bottom: $border-bottom-mobile;
+        }
+    }
+
+    #new_comment_form.product-comment__form #criterions_list{
+        padding-bottom: 0;
+        text-align: left;
     }
 }
 

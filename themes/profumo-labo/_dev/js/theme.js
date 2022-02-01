@@ -317,7 +317,11 @@ $(document).ready(() => {
     });
   }
   
-  mobileDropdown();
+  if( $('#arpl-group-13 .nav-item').length > 1 ){
+    mobileDropdown();
+  }else{
+    $('#arpl-group-13').addClass('no-tab-available')
+  }
   /*
   * End add dropdown to tabbed list on mobile
   */

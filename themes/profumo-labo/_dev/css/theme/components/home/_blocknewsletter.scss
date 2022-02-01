@@ -5,6 +5,7 @@
         font-size: 25px;
         line-height: 28px;
         letter-spacing: 0.08em;
+        color: $black;
 
         @include media-breakpoint-down(sm) {
             font-size: 12px;
