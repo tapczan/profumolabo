@@ -281,6 +281,11 @@ $(document).ready(() => {
       }
     });
   });
+
+  $('.js-filtermobile-slider').on('click', function(){
+    $(this).toggleClass('istoggled');
+    $('.js-search-filters').slideToggle();
+  });
   /*
   * End override slider for product listings
   */
