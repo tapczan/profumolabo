@@ -148,6 +148,7 @@ $(function() {
             {
                 var btnObj = $(this);
                 $('body').addClass('noscroll');
+                $('.mobile-menu-social').addClass('opened');
                 btnObj.removeClass('closed');
                 btnObj.addClass('opened');
                 //btnObj.text('-');
@@ -161,6 +162,7 @@ $(function() {
                 $('body').removeClass('noscroll');
                 var btnObj = $(this); 
                 btnObj.removeClass('opened');
+                $('.mobile-menu-social').removeClass('opened');
                 btnObj.addClass('closed');
                 //btnObj.text('+');           
                 wrapper.stop(true,true).removeClass('active');
@@ -413,6 +415,12 @@ function clickTextShowMenu(){
                     $(this).parent().toggleClass('active')
                     e.preventDefault();
                    itemClickMenu(this);
+
+                   if ($(this).parent().hasClass('mega-menu-header-kontakt') && $(this).parent().hasClass('active')) {
+                    $('.mobile-menu-newsletter').addClass('opened');
+                   }else {
+                    $('.mobile-menu-newsletter').removeClass('opened');
+                   }
                } 
             });
             
