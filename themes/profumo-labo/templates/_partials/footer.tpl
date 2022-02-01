@@ -48,7 +48,7 @@
           {widget name='ps_socialfollow'}
         </div>
       </div>
-      <div class="col-lg-4 offset-lg-9 col-5">
+      <div class="col-lg-12 col-5">
         <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
       </div>
     </div>
