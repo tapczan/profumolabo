@@ -24,6 +24,8 @@
 *}
 
 {* Block Instagram *}
+{if $page.page_name == 'index'}
+
 <div class="blockinstagram">
     <div class="blockinstagram__inner">
         <h2 class="blockinstagram__title">
@@ -72,6 +74,7 @@
         </div>
     </div>
 </div>
+
 {* Block Instagram *}
 
 <div class="container">
@@ -129,3 +132,4 @@
     </div>
     </div>
 </div>
+{/if}
