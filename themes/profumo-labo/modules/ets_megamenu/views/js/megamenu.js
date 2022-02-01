@@ -131,6 +131,7 @@ $(function() {
     
     $('.ybc-menu-toggle, .ybc-menu-vertical-button').on('click',function(){
             var wrapper = $(this).next('.mm_menus_ul');
+            $('.ets_mm_megamenu_content').toggleClass('mobile-menu-height');
             if($(this).hasClass('closed'))
             {
                 var btnObj = $(this);
@@ -325,6 +326,8 @@ function clickTextShowMenu(){
             $(this).find('a').first().on('click', function(e){
                 if ($(window).width() <= 767 ){
                     e.preventDefault();
+                    $(this).parent().toggleClass('active')
+                    console.log('test');
                    var btnObj =  $(this).next('.arrow');
                     var wrapper =  btnObj.next();
                    if(btnObj.hasClass('closed'))

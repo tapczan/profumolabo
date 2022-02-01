@@ -22,7 +22,12 @@
     <ul class="ets_mm_categories">
         {foreach from=$categories item='category'}
             <li {if isset($category.sub) && $category.sub}class="has-sub"{/if}>
-                <a href="{$link->getCategoryLink($category.id_category|intval)}">{$category.name|escape:'html':'UTF-8'}</a>
+                <a href="{$link->getCategoryLink($category.id_category|intval)}">
+                    <span class="has-sub-arrow">
+                        <img width='8' height="14" src="{$urls.img_url}menu-left-arrow.svg" alt="">
+                    </span>
+                    {$category.name|escape:'html':'UTF-8'}
+                </a>
                 {if isset($category.sub) && $category.sub}
                     <span class="arrow closed d-none"></span>
                     {$category.sub nofilter}

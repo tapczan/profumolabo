@@ -41,7 +41,11 @@
                 <a {if isset($menu.menu_open_new_tab) && $menu.menu_open_new_tab == 1} target="_blank"{/if}
                         href="{$menu.menu_link|escape:'html':'UTF-8'}"
                         style="{if $menu.enabled_vertical}{if isset($menu.menu_ver_text_color) && $menu.menu_ver_text_color}color:{$menu.menu_ver_text_color|escape:'html':'UTF-8'};{/if}{if isset($menu.menu_ver_background_color) && $menu.menu_ver_background_color}background-color:{$menu.menu_ver_background_color|escape:'html':'UTF-8'};{/if}{/if}{if Configuration::get('ETS_MM_HEADING_FONT_SIZE')}font-size:{Configuration::get('ETS_MM_HEADING_FONT_SIZE')|intval}px;{/if}">
-                    {if $menu.columns}<span class=" mm_has_sub_arrow"><</span>{/if}
+                    {if $menu.columns}
+                    <span class=" mm_has_sub_arrow">
+                        <img src="{$urls.img_url}menu-left-arrow.svg" alt="">
+                    </span>
+                    {/if}
                     <span class="mm_menu_content_title">
                         {if $menu.menu_img_link}
                             <img src="{$menu.menu_img_link|escape:'html':'UTF-8'}" title="" alt="" width="20"/>
