@@ -50,7 +50,9 @@
       
       {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
       <div class="text-center">
-      <span style="font-size: 12px;color:#bbb">23.25/8ML</span>
+      <span style="font-size: 12px;color:#bbb">
+        {if isset($product.unity)} {$product.unit_price} {$product.unity} {/if}
+      </span>
       </div>
       {block name='product_form'}
         {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
