@@ -28,9 +28,16 @@
     {if $product.images}
       {foreach from=$product.images item=image}
         <div class="product-img">
-          <a class="product-wishlist product-wishlist--mobile" href="/">
-            <img src="{$urls.img_url}heart-icon.svg">
-          </a>
+          <span
+          class="wishlist-button"
+          data-url="{$url}"
+          data-product-id="{$product.id}"
+          data-product-attribute-id="{$product.id_product_attribute}"
+          data-is-logged="{$customer.is_logged}"
+          data-list-id="1"
+          data-checked="true"
+          data-is-product="true"
+          ></span>
 
           <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
             <img 
