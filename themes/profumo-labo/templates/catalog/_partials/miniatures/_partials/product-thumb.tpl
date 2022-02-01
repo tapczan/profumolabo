@@ -4,7 +4,8 @@
       <img
         {if $product.default_image}
           data-full-size-image-url="{$product.default_image.large.url}"
-          {generateImagesSources image=$product.default_image size='home_default'}
+          src="{$product.default_image.bySize.home_default.url}"
+          {*{generateImagesSources image=$product.default_image size='home_default'}*}
           {else}
           src="{$urls.no_picture_image.bySize.home_default.url}"
         {/if}
