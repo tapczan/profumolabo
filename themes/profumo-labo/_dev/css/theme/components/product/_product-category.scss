@@ -23,10 +23,6 @@
         padding: 0 0 50px;
         border-bottom: $border-bottom-mobile;
 
-        .arpl-header{
-            display: none;
-        }
-
         .arpl-section{
             padding: 0 !important;
             margin: 0 !important;
@@ -69,9 +65,56 @@
         .product{
             &-listing{
                 .arpl-header{
-                    display: none;
+                    overflow: visible;
+                    text-align: right;
+
+                    .nice-select{
+                        @include font-with-line-height($font-size-xs, 14px);
+
+                        background: $white;
+                        border-style: none;
+                        margin: 0 !important;
+                        width: auto !important;
+                        padding: 0 25px 0 0;
+                        height: auto;
+                        position: relative;
+                        overflow: visible;
+                        outline: none;
+                        box-shadow: none !important;
+
+                        &:after{
+                            position: absolute;
+                            content: '';
+                            background: url(~/img/icons/left-arrow.svg);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            transform: rotate(-90deg);
+                            top: -3px;
+                            right: 0;
+                            width: 20px;
+                            height: 20px;
+                        }
+
+                        .list{
+                            right: 0;
+                            left: auto;
+                            border-radius: 0;
+
+                            li{
+                                min-height: auto;
+                                padding: 5px 10px;
+                                height: auto;
+                                line-height: 14px;
+                            }
+
+                            li.selected{
+                                font-weight: 500;
+                            }
+                        }
+                    }
                 }
-        
+
                 .featured-products.arpl-no-carousel-products.arpl-content{
                     display: flex;
                     flex-wrap: wrap;
@@ -458,6 +501,10 @@
                     margin-bottom: 0;
                     margin-top: 30px;
                 }
+
+                .arpl-header{
+                    display: none;
+                }
             }
         }
 
@@ -473,7 +520,7 @@
     }
 }
 
-@media (min-width: 992px){
+@media (min-width: 768px){
     .product-category__main .product-filter .search-filters{
         display: block !important;
     }
