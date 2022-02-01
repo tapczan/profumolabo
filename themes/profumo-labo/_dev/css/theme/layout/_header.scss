@@ -219,6 +219,12 @@
         padding: 0 20px;
         float: none;
         text-align: left;  
+        @include media-breakpoint-down(sm) {
+          > a {
+            letter-spacing: 1px;
+
+          }
+        }
         &.mm_has_sub {
           .mm_has_sub_arrow {
             display: none;
@@ -609,6 +615,11 @@
     overflow: visible !important;
   }
 }
+.mm_menus_ul>li {
+  @include media-breakpoint-down(sm) {
+    overflow: visible !important;
+  }
+}
 .mega-menu-header{
   &-kobieta,
   &-mezczyzna{
@@ -644,6 +655,64 @@
 
     .mm_columns_ul .mm_columns_li:first-child .mm_blocks_ul .mm_blocks_li:nth-child(2) .ets_mm_block_content{
       line-height: 16px;
+    }
+    a.mark-mobile-btn {
+      display: none;
+    }
+    @include media-breakpoint-down(sm) {
+      a.mark-mobile-btn {
+        border: 1px solid #000;
+        color: #fff !important;
+        background: #000;
+        text-transform: uppercase;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        font-size: 15px !important;
+        font-weight: 300 !important;
+        letter-spacing: .1em;
+        transition: .2 ease;
+        &:hover {
+          background: #fff;
+        }
+      }
+      .mm_columns_ul {
+        .mm_columns_li:first-child {
+          .mm_blocks_ul {
+            padding: 20px;
+            .mm_blocks_li:nth-child(2) {
+              margin-top: 16px;
+              .ets_mm_block_content{
+                font-weight: 400;
+                line-height: 15px;
+              }
+              .mm_block_type_html {
+                text-align: center;
+              }
+            }
+            .mm_blocks_li:nth-child(3) {
+              margin-top: 20px;
+              .ets_mm_block_content {
+                font-weight: 300;
+                line-height: 23px;
+              }
+            }
+            .mm_blocks_li:nth-child(4) {
+              margin-top: 20px;
+            }
+          }
+          .mm_block_type_html {
+            font-size: 12px !important;
+            letter-spacing: 0.1em;
+          }
+          .ets_mm_block_content {
+            color: #000 !important;
+          }
+        }
+        .mm_columns_li:not(:first-child) {
+          display: none !important;
+        }
+      }
     }
   }  
   
