@@ -126,6 +126,18 @@ $(function() {
         if($(window).width() >= 768){
             $(this).find('.mm_columns_ul').stop(true,true).slideUp(0);
         }
+    });    
+
+    $('.mega-menu-header-kontakt .mm_columns_li .ets_mm_block > span').each(function() {
+        $(this).on('click', function(e){
+            if ($(window).width() <= 767 ){
+                $(this).parent().toggleClass('active')
+                $(this).parent().parent().parent().toggleClass('active')
+                e.preventDefault();
+               itemClickMenu(this);
+           } 
+        });
+        
     });
     
     
@@ -327,7 +339,6 @@ function clickTextShowMenu(){
                 if ($(window).width() <= 767 ){
                     e.preventDefault();
                     $(this).parent().toggleClass('active')
-                    console.log('test');
                    var btnObj =  $(this).next('.arrow');
                     var wrapper =  btnObj.next();
                    if(btnObj.hasClass('closed'))
