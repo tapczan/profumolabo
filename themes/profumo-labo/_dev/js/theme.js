@@ -332,6 +332,22 @@ $(document).ready(() => {
     $('.js-comment-form').slideToggle();
     $(this).toggleClass('product-comment__close--notactive')
   });
+
+  /*
+  * Clear comment input fields and close popup form on submit
+  */
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutationRecord) {
+      setTimeout(() => {
+        $('.js-trigger-click-submit')[0].click();
+        $('.js-input-comment').val('');
+        $('.js-textarea-comment').val('');
+      }, 100);
+    });    
+  });
+
+  var target = document.getElementById('new_comment_form_ok');
+  observer.observe(target, { attributes : true, attributeFilter : ['style'] });
 });
 
 function accLinksTriggerActive() {
