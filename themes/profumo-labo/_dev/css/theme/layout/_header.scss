@@ -163,7 +163,6 @@
 
     &-login{
       &-link{
-        width: 100px;
         text-align: center;
 
         &:hover{
@@ -176,10 +175,6 @@
         font-size: $font-size-sm;
         text-transform: uppercase;
         color: $dark-gray;
-      }
-
-      &-icon{
-        display: none;
       }
     }
 
@@ -431,7 +426,7 @@
 
     &__form-group{
       position: relative;
-      padding: 2px 18px 2px 30px;
+      padding: 4px 18px 4px 30px;
       @include media-breakpoint-up(lg) {
         background-color: #f4f4f4;
         border-radius: 5px;
@@ -445,8 +440,9 @@
       color: #B0B0B0;
       padding: 0;
       height: auto;
-      line-height: 20px;
+      line-height: 14px;
       letter-spacing: 0.1em;
+      font-size: 11px;
 
       &:focus {
         background: #f4f4f4
@@ -517,7 +513,8 @@
 
       .header__inner-login{
         &-link{
-          width: auto
+          width: auto;
+          padding: 0 10px;
         }
 
         &-label{
@@ -1443,10 +1440,6 @@
       .header__mega-menu .mm_menus_ul .mm_menus_li{
         padding: 0 15px;
       }
-
-      .header__inner-login-link{
-        width: 80px;
-      }
     }
 
     .header__nav-right{
@@ -1462,16 +1455,10 @@
       }
     }
 
-    .header__inner-r{
-      .header__inner-login-link{
-        width: 80px;
-      }
-    }
-
     .header__nav--sticky{
       .header__nav-right{
         .header__inner-login-link{
-          width: 115px;
+          padding-right: 10px;
 
           .header__inner-login-label{
             display: inline-block;
@@ -1708,8 +1695,6 @@
 .header.header--notloggedin{
   .header__inner-r{
     .header__inner-login-link{
-      width: 100px;
-
       .header__inner-login-label{
         font-weight: 300;
         letter-spacing: 2px;
