@@ -93,10 +93,10 @@ $(document).ready(() => {
           
     if (scrollTop > stickyNavTop) { 
       $('.header__nav').addClass('header__nav--sticky');
-      $('.home-slider-wrapper').addClass('correction-padding');
+      $('.sticky-menu-correction').addClass('correction-padding');
     } else {
       $('.header__nav').removeClass('header__nav--sticky');
-      $('.home-slider-wrapper').removeClass('correction-padding');
+      $('.sticky-menu-correction').removeClass('correction-padding');
     }
   };
 
