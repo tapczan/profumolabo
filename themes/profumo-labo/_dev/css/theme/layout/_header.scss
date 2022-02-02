@@ -88,7 +88,8 @@
   background: $white;
 
   &__inner{
-    padding: 35px 0 15px;
+    padding: 32px;
+    border-bottom: 1px solid $gray;
 
     &-l{
       display: flex;
@@ -429,25 +430,20 @@
 
     &__form-group{
       position: relative;
-      padding-left: 30px;
+      padding: 2px 18px 2px 30px;
+      background-color: #f4f4f4;
+      border-radius: 5px;
     }
 
     &__input{
       border-style: none;
-      border-bottom: 1px solid $light-gray;
       font-family: $font-roboto;
-      color: $black;
-      font-style: italic;
-      border-radius: 0;
+      background: #f4f4f4;
+      color: #B0B0B0;
       padding: 0;
       height: auto;
       line-height: 20px;
-      background: $white;
-
-      &:focus,
-      &:hover{
-        background: $white;
-      }
+      letter-spacing: 0.1em;
 
       &::-webkit-input-placeholder,
       &:-ms-input-placeholder,
@@ -462,6 +458,7 @@
       left: 0;
       color: $black;
       padding: 0;
+      margin-left: 5px;
     }
   }
 

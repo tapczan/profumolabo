@@ -35,7 +35,7 @@
   >
     <div class="header-top__icon-container">
       <span class="header__inner-login-label">ZALOGUJ SIĘ</span>
-      <img class="header__inner-login-icon" src="{$urls.img_url}home-icon.png">
+      <img class="header__inner-login-icon" src="{$urls.img_url}user-icon.svg">
     </div>
   </a>
 </div>
