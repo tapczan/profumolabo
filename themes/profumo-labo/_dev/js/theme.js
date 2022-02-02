@@ -340,14 +340,13 @@ $(document).ready(() => {
     mutations.forEach(function(mutationRecord) {
       setTimeout(() => {
         $('.js-trigger-click-submit')[0].click();
-        $('.js-input-comment').val('');
-        $('.js-textarea-comment').val('');
+        $('.js-input-comment, .js-textarea-comment').val('');
       }, 100);
     });    
   });
 
-  var target = document.getElementById('new_comment_form_ok');
-  observer.observe(target, { attributes : true, attributeFilter : ['style'] });
+  var targetElement = document.getElementsByClassName('js-comment-alert')[0];
+  observer.observe(targetElement, { attributes : true, attributeFilter : ['style'] });
 });
 
 function accLinksTriggerActive() {

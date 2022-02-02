@@ -49,7 +49,7 @@
         <span class="product-comment__close js-comment-close"></span>
     </div>
     
-    <div id="new_comment_form_ok" class="product-comment__alert" style="display:none;"></div>
+    <div id="new_comment_form_ok" class="product-comment__alert js-comment-alert" style="display:none;"></div>
     
     <div id="product_comments_block_tab" class="product-comment__list js-comment-form">
         {if $comments}
