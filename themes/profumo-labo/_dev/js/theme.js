@@ -89,9 +89,9 @@ $(document).ready(() => {
   var stickyNavTop = $('.header__nav').offset().top;
  
   function stickyNav(){
+    var footerContainer = $('.footer-container').offset().top;
     var scrollTop = $(window).scrollTop();
-          
-    if (scrollTop > stickyNavTop) { 
+    if (scrollTop > stickyNavTop && scrollTop < footerContainer) { 
       $('.header__nav').addClass('header__nav--sticky');
       $('.sticky-menu-correction').addClass('correction-padding');
     } else {
