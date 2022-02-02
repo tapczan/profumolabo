@@ -439,6 +439,10 @@
       line-height: 20px;
       letter-spacing: 0.1em;
 
+      &:focus {
+        background: #f4f4f4
+      }
+
       &::-webkit-input-placeholder,
       &:-ms-input-placeholder,
       &::placeholder {
