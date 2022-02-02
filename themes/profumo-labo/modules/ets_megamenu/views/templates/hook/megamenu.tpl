@@ -51,38 +51,7 @@
                         {widget name="ps_emailsubscription"}
                     </div>
                     <div class="mobile-menu-social closed">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <span class="icon icon-facebook d-block"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon icon-instagram d-block"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon icon-youtube d-block"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon icon-facebook d-block"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon icon-pinterest d-block"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="icon icon-twitter d-block"></span>
-                                </a>
-                            </li>
-                        </ul>
+                        {widget name="ps_socialfollow"}
                     </div>
                 </div>
             </div>

@@ -591,6 +591,20 @@
         display: flex;
         justify-content: space-around;
       }
+      .btn {
+        background: 0;
+        border: 0;
+        &:focus {
+          box-shadow: none;
+        }
+        &:active {
+          background: 0;
+          border: 0;
+        }
+        .icon {
+          font-size: 20px;
+        }
+      }
     }
   }
 }
