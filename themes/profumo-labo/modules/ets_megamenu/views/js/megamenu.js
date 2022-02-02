@@ -130,7 +130,7 @@ $(function() {
 
     $('.mega-menu-header-kontakt .mm_columns_li .ets_mm_block > span').each(function() {
         $(this).on('click', function(e){
-            if ($(window).width() <= 767 ){
+            if ($(window).width() <= 992 ){
                 $(this).parent().toggleClass('active')
                 $(this).parent().parent().parent().toggleClass('active')
                 e.preventDefault();
@@ -284,7 +284,7 @@ function autoChangeStatus()
     else
     {
         $('.ets_mm_megamenu').removeClass('changestatus');
-        if ( $(window).width() > 767 ){
+        if ( $(window).width() > 992 ){
             $('#index .menu_ver_alway_show_sub .arrow').addClass('opened').removeClass('closed');
             $('#index .menu_ver_alway_show_sub .mm_columns_ul_tab_content').addClass('active');
         }
@@ -338,7 +338,7 @@ function clickTextShowMenu(){
     if ( $('.clicktext_show_submenu').length > 0 ){
          $('.clicktext_show_submenu li.has-sub').each(function() {
             $(this).find('a').first().on('click', function(e){
-                if ($(window).width() <= 767 ){
+                if ($(window).width() <= 992 ){
                     e.preventDefault();
                     $(this).parent().toggleClass('active')
                    var btnObj =  $(this).next('.arrow');
@@ -365,7 +365,7 @@ function clickTextShowMenu(){
         $('.clicktext_show_submenu li.has-sub').each(function() {
             $(this).find('a').first().on('click', function(e){
                 
-                if ( $('.ets_mm_megamenu').hasClass('changestatus') && $(window).width() > 767 ){
+                if ( $('.ets_mm_megamenu').hasClass('changestatus') && $(window).width() > 992 ){
                    e.preventDefault();
                    //itemClickMenu(this);
                    var btnObj =  $(this).next('.arrow');
@@ -390,7 +390,7 @@ function clickTextShowMenu(){
     if ( $('.clicktext_show_submenu').length > 0 ){
          $('.clicktext_show_submenu li.mm_tabs_has_content > div').each(function() {
             $(this).find('a').first().on('click', function(e){
-                if ($(window).width() <= 767 ){
+                if ($(window).width() <= 992 ){
                     e.preventDefault();
                     itemClickMenu(this);
                } 
@@ -401,7 +401,7 @@ function clickTextShowMenu(){
     if ( $('.clicktext_show_submenu').length > 0 ){
         $('.clicktext_show_submenu li.mm_tabs_has_content > div').each(function() {
             $(this).find('a').first().on('click', function(e){
-                if ( $('.ets_mm_megamenu').hasClass('changestatus') && $(window).width() > 767 ){
+                if ( $('.ets_mm_megamenu').hasClass('changestatus') && $(window).width() > 992 ){
                    e.preventDefault();
                    itemClickMenu(this);
                 }
@@ -411,7 +411,7 @@ function clickTextShowMenu(){
     if ( $('.clicktext_show_submenu').length > 0 ){
          $('.clicktext_show_submenu li.mm_has_sub > a').each(function() {
             $(this).on('click', function(e){
-                if ($(window).width() <= 767 ){
+                if ($(window).width() <= 992 ){
                     $(this).parent().toggleClass('active')
                     e.preventDefault();
                    itemClickMenu(this);
@@ -430,7 +430,7 @@ function clickTextShowMenu(){
     if ( $('.clicktext_show_submenu').length > 0 ){
         $('.clicktext_show_submenu li.mm_has_sub > a').each(function() {
             $(this).on('click', function(e){
-                if ( $('.ets_mm_megamenu').hasClass('changestatus') && $(window).width() > 767 ){
+                if ( $('.ets_mm_megamenu').hasClass('changestatus') && $(window).width() > 992 ){
                    e.preventDefault();
                    itemClickMenu(this);
                 }
@@ -440,7 +440,7 @@ function clickTextShowMenu(){
     if ( $('.clicktext_show_submenu').length > 0 ){
         $('.mm_tab_has_child > .mm_tab_toggle_title').on('click', function(e){
             if ( $(this).find('a').length <= 0 ){
-                if ( $('.ets_mm_megamenu').hasClass('changestatus') || $(window).width() > 767 ){
+                if ( $('.ets_mm_megamenu').hasClass('changestatus') || $(window).width() > 992 ){
                    var btnObj = $(this).parents('.mm_tab_li_content'), wrapper = $(this).parents('.mm_tab_li_content').next();
 
                     if(btnObj.hasClass('closed'))
