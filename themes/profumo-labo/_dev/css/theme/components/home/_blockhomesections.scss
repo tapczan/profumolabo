@@ -5,9 +5,12 @@
 
     &__title{
         @include font-with-line-height($font-size-xxl, 35px);
+
+        font-family: $font-forum;
         font-weight: 400;
         text-align: center;
         margin-bottom: 50px;
+        letter-spacing: 3px;
     }
 
     &__description{
@@ -28,9 +31,11 @@
         &__title{
             @include font-with-line-height($font-size-xl, 25px);
 
+            font-family: $font-forum;
             font-weight: 400;
             text-transform: uppercase;
             margin: 0;
+            letter-spacing: 1px;
         }
 
         &__item{

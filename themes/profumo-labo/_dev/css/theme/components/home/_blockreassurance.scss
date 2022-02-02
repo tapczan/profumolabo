@@ -2,11 +2,14 @@
     max-width: 1500px;
 
     &__title {
-        font-size: 35px;
+        @include font-with-line-height($font-size-xxl, 39px);
+
+        font-family: $font-forum;
+        letter-spacing: 3px;
         margin-bottom: 62px;
 
         @include media-breakpoint-down(sm) {
-            font-size: 22px;
+            font-size: $font-size-xl;
             margin-bottom: 53px;
         }
     }
@@ -57,7 +60,7 @@
 
     .block-title,
     p {
-        font-size: 12px;
+        font-size: $font-size-xs;
     }
 
     p {
