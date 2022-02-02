@@ -49,7 +49,7 @@
         <span class="product-comment__close js-comment-close"></span>
     </div>
     
-    <div id="new_comment_form_ok" class="product-comment__alert" style="display:none;"></div>
+    <div id="new_comment_form_ok" class="product-comment__alert js-comment-alert" style="display:none;"></div>
     
     <div id="product_comments_block_tab" class="product-comment__list js-comment-form">
         {if $comments}
@@ -145,10 +145,10 @@
                         </ul>
                     {/if}
                     <label for="comment_title">{l s='Title for your review' mod='myprestacomments'}<sup class="required">*</sup></label>
-                    <input id="comment_title" name="title" type="text" value=""/>
+                    <input id="comment_title" class="js-input-comment" name="title" type="text" value=""/>
 
                     <label for="content">{l s='Your review' mod='myprestacomments'}<sup class="required">*</sup></label>
-                    <textarea id="content" name="content"></textarea>
+                    <textarea id="content" class="js-textarea-comment" name="content"></textarea>
 
                     {if $allow_guests == true && !$logged}
                         <label>{l s='Your name' mod='myprestacomments'}<sup class="required">*</sup></label>
@@ -168,8 +168,8 @@
                                 {l s='I accept ' mod='myprestacomments'} <a target="_blank" href="{$link->getCmsLink($PRODUCT_COMMENTS_GDPRCMS)}">{l s='privacy policy' mod='myprestacomments'}</a> {l s='rules' mod='myprestacomments'}
                             {/if}
 
-                            <button {if $PRODUCT_COMMENTS_GDPR == 1}disabled{/if} class="comment-button-submit {if $PRODUCT_COMMENTS_GDPR == 1}gdpr_disabled{/if}" id="submitNewMessage" name="submitMessage" type="submit">{l s='Send' mod='myprestacomments'}</button>&nbsp;
-                            {l s='or' mod='myprestacomments'}&nbsp;<a href="#" onclick="$.fancybox.close();">{l s='Cancel' mod='myprestacomments'}</a>
+                            <button {if $PRODUCT_COMMENTS_GDPR == 1}disabled{/if} class="js-comment-button-submit comment-button-submit {if $PRODUCT_COMMENTS_GDPR == 1}gdpr_disabled{/if}" id="submitNewMessage" name="submitMessage" type="submit" data-fancybox-close>{l s='Send' mod='myprestacomments'}</button>&nbsp;
+                            {l s='or' mod='myprestacomments'}&nbsp;<a href="#" onclick="$.fancybox.close();" class="js-trigger-click-submit">{l s='Cancel' mod='myprestacomments'}</a>
                         </p>
                         <div class="clearfix"></div>
                     </div>
