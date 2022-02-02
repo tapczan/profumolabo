@@ -16,10 +16,12 @@
     
             .arpl-title{
                 @include font-with-line-height($font-size-xxl, 39px);
-                
+                    
+                font-family: $font-forum;
                 color: $black;
                 font-weight: 400;
                 margin: 0 0 50px;
+                letter-spacing: 3px;
             }
     
             .arpl-category{
@@ -39,15 +41,31 @@
     
                 .arpl-cat-title{
                     @include font-with-line-height($font-size-xm, 20px);
-        
+
+                    font-family: $font-forum;
                     font-weight: normal;
                     margin-top: 30px;
+                    letter-spacing: 1px;
                 }
             }
         }
     }
   
     #arpl-group-5{
+        &:before{
+            @include font-with-line-height($font-size-xxl, 39px);
+    
+            font-family: $font-forum;
+            content: 'Bestsellery';
+            color: $black;
+            font-weight: 400;
+            margin: 0 auto 50px;
+            text-transform: uppercase;
+            display: block;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
         &.arpl-group-tabbed{
             margin: 0;
     
@@ -277,20 +295,6 @@
         }
     }
   
-    #arpl-group-5{
-        &:before{
-            @include font-with-line-height($font-size-xxl, 39px);
-    
-            content: 'Bestsellery';
-            color: $black;
-            font-weight: 400;
-            margin: 0 auto 50px;
-            text-transform: uppercase;
-            display: block;
-            text-align: center;
-        }
-    }
-  
     #arpl-group-5,
     #arpl-group-1,
     #arpl-group-8{
@@ -427,14 +431,6 @@
   
 @media (max-width: 767px){
     .page-home{
-        #arpl-group-4 .arpl-product-list-view{
-            border-bottom-style: none;
-    
-            & > li{
-                border-top-style: none;
-            }
-        }
-  
         #arpl-group-5{
             &:before{
                 @include font-with-line-height($font-size-xm, 20px);

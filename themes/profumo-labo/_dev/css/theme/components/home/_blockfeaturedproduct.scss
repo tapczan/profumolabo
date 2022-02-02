@@ -373,7 +373,7 @@
                         border: $border-social;
                         border-radius: 50%;
                         padding: 2px 0;
-                        font-size: 14px;
+                        font-size: $font-size-sm;
                     }
                 }
             }
@@ -385,43 +385,47 @@
 * overwrite homepage
 */
 
-.arpl-product-list-view .arpl-content * {
-    overflow: initial !important;
-}
+.page-home{
+    .arpl-product-list-view .arpl-content * {
+        overflow: initial !important;
+    }
 
-#arpl-group-4{
-    margin-top: 0;
+    #arpl-group-4{
+        margin-top: 0;
 
-    .arpl-header {
-        margin: 50px 0 !important;
-    
-        h2 {
-            @include font-with-line-height($font-size-xxl, 39px);
-            font-weight: 400;
+        .arpl-header {
+            margin: 50px 0 !important;
+        
+            h2 {
+                @include font-with-line-height($font-size-xxl, 39px);
+                font-family: $font-forum;
+                font-weight: 400;
+                letter-spacing: 3px;
+            }
         }
-    }
 
-    .arpl-product-list-view{
-        width: 50%;
-        margin: auto;
+        .arpl-product-list-view{
+            width: 50%;
+            margin: auto;
 
-        & > li {
-            padding: 0;
+            & > li {
+                padding: 0;
+            }
         }
-    }
 
-    .arpl-header,
-    .arpl-title{
-        margin-top: 0 !important;
-    }
+        .arpl-header,
+        .arpl-title{
+            margin-top: 0 !important;
+        }
 
-    .arpl-header{
-        margin-bottom: 20px !important;
-    }
+        .arpl-header{
+            margin-bottom: 20px !important;
+        }
 
-    .arpl-product-list-view .arpl-content{
-        .blockfeaturedproduct__info .product-accordion__item{
-            overflow: hidden !important;
+        .arpl-product-list-view .arpl-content{
+            .blockfeaturedproduct__info .product-accordion__item{
+                overflow: hidden !important;
+            }
         }
     }
 }
@@ -553,13 +557,23 @@
             }
         }
     }
+    
+    .page-home{
+        #arpl-group-4{
+            .arpl-header{
+                min-height: auto;
+    
+                h2{
+                    @include font-with-line-height($font-size-xm, 24px);
+                }
+            }
 
-    #arpl-group-4 {
-        .arpl-header{
-            min-height: auto;
-
-            h2{
-                @include font-with-line-height($font-size-xm, 24px);
+            .arpl-product-list-view{
+                border-bottom-style: none;
+        
+                & > li{
+                    border-top-style: none;
+                }
             }
         }
     }

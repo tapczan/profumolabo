@@ -6,12 +6,14 @@
     }
 
     &__title{
-        font-family: $font-jost;
-        font-size: $font-size-xxl;
+        @include font-with-line-height($font-size-xxl, 39px);
+
+        font-family: $font-forum;
         margin: 0 0 50px;
         padding: 0;
         text-align: center;
         font-weight: normal;
+        letter-spacing: 3px;
     }
 
     &__feed{
@@ -55,11 +57,11 @@
 @media screen and (max-width: 767px){
     .blockinstagram{
         &__inner{
-            margin: 25px -2px;
+            margin: 0 -2px 30px;
         }
 
         &__title{
-            margin: 25px 0;
+            margin: 0 0 25px;
             font-size: $font-size-lg;
         }
 
