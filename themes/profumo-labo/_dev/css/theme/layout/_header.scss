@@ -950,6 +950,17 @@
               border-bottom: 1px solid gray;
               width: 100%;
               display: flex;
+              position: relative;
+              padding-left: 40px;
+              &:before {
+                content: '';
+                position: absolute;
+                width: 8px;
+                height: 14px;
+                left: 20px;
+                top: calc(50% - 7px);
+                background: url(~/img/icons/menu-left-arrow.svg);
+              }
             }
             .ets_mm_block_content {
               display: block;
