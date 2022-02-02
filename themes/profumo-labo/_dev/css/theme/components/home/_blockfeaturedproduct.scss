@@ -54,41 +54,45 @@
     &__info{
         .product{
             &-rating{
-                .star-rating{
-                    margin: 0;
-                    padding: 0;
-                    display: inline-block;
-                    vertical-align: middle;
+                .comments_note{
+                    width: 100%;
 
-                    &__list{
+                    .star_content{
+                        text-align: center;
+                        margin-top: 20px;
                         display: inline-block;
-                    }
 
-                    &__icon{
-                        background: url(~/img/icons/star_gray.svg);
-                        background-size: contain;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        display: block;
-                        width: 10px;
-                        height: 10px;
-
-                        &--active{
-                            background: url(~/img/icons/star_active.svg);
+                        .star{
+                            margin: 0;
+                            padding: 0;
+                            display: inline-block;
+                            vertical-align: middle;
+                            background: url(~/img/icons/star_gray.svg);
                             background-size: contain;
                             background-position: center;
                             background-repeat: no-repeat;
+                            width: 10px;
+                            height: 10px;
+                            float: none;
+        
+                            &.star_on{
+                                background: url(~/img/icons/star_active.svg) !important;
+                                background-size: contain !important;
+                                background-position: center !important;
+                                background-repeat: no-repeat !important;
+                            }
+                        }
+
+                        & + span{
+                            font-family: $font-jost;
+                            color: $dark-gray;
+                            font-size: $font-size-xs;
+                            display: inline-block;
+                            vertical-align: -1px;
+                            margin-left: 5px;
+                            font-weight: 300;
                         }
                     }
-                }
-
-                .star-review{
-                    font-family: $font-jost;
-                    color: $dark-gray;
-                    font-size: $font-size-xs;
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-left: 5px;
                 }
             }
 
@@ -505,10 +509,15 @@
                 }
 
                 &-rating{
-                    .star-review,
-                    .star-rating{
-                        display: block;
-                        margin: 0;
+                    .comments_note{
+                        .star_content{
+                            display: block;
+
+                            & + span{
+                                display: block;
+                                margin-bottom: 15px;
+                            }
+                        }
                     }
                 }
 
