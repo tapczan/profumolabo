@@ -1048,6 +1048,7 @@
       font-style: normal;
       border-bottom: none;
       background: $white;
+      border-radius: 0;
       &:focus {
         background: $white;
       }
@@ -1113,6 +1114,11 @@
         font-family: $font-jost;
         font-size: $font-size-sm;
         font-style: normal;
+        background: $white;
+        border-radius: 0;
+        &:focus {
+          background: $white;
+        }
       }
     }
 
