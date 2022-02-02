@@ -425,8 +425,10 @@
     &__form-group{
       position: relative;
       padding: 2px 18px 2px 30px;
-      background-color: #f4f4f4;
-      border-radius: 5px;
+      @include media-breakpoint-up(md) {
+        background-color: #f4f4f4;
+        border-radius: 5px;
+      }
     }
 
     &__input{
@@ -1045,6 +1047,10 @@
       font-size: $font-size-sm;
       font-style: normal;
       border-bottom: none;
+      background: $white;
+      &:focus {
+        background: $white;
+      }
     }
   }
 
