@@ -2,7 +2,18 @@
 /*
 !themes/
 !override/
-!modules/
+modules/
+!modules/is*
+!modules/arproductlists
+!modules/contentvideo
+!modules/createit_customfield
+!modules/ets_megamenu
+!modules/kolekcjapremium
+!modules/myprestacomments
+!modules/ph_simpleblog
+!modules/profumolabocontent
+!modules/pwinstafeed
+!modules/thecheckout
 
 # ignore all files starting with .
 .*
