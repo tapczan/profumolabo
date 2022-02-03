@@ -317,7 +317,7 @@ class Product extends ProductCore
                 ';
 
         $sql .= 'GROUP BY id_attribute_group, id_product_attribute
-                ORDER BY ag.`position` ASC, a.`position` ASC, agl.`name` ASC';
+                ORDER BY pa.`default_on` DESC, ag.`position` ASC, a.`position` ASC, agl.`name` ASC';
 
         return Db::getInstance()->executeS($sql);
 
