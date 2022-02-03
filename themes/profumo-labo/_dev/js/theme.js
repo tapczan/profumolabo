@@ -112,6 +112,22 @@ $(document).ready(() => {
     }
   }
 
+  $('.rollover-images').each(function()
+  {
+    let newSrc = $(this).data('rollover');
+    if(newSrc == 0) return;
+    let oldSrc;
+    $(this).on("mouseover", function() {
+      oldSrc = $(this).attr('src');
+      $(this).attr('src', newSrc).stop(true,true);
+      $(this).parent().parent().css('background', '#f4f4f4');
+    }), 
+    $(this).on('mouseout', function() {
+      $(this).attr('src', oldSrc).stop(true,true);
+      $(this).parent().parent().css('background', 'none');
+    });
+  });
+
   function matchHeightScripts(){
     $('.mega-menu-header-kobieta .mm_columns_li').matchHeight();
     $('.mega-menu-header-mezczyzna .mm_columns_li').matchHeight();
