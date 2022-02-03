@@ -299,8 +299,8 @@ $(document).ready(() => {
     function seeMoreBestsellers(carouselSelector, slideSelector, max, link) {
       var link = "#";
       $(slideSelector).each(function(index, value) {
-        if(index > 3) {
-          $(carouselSelector).slick('slickRemove', $(this).data('slick-index'));
+        if(index > max) {
+          $(carouselSelector).slick('slickRemove', $(this).data('slick-index') - 1);
         }
       })
       $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">Zobacz więcej</a></h3></div>`);
