@@ -124,7 +124,7 @@
                         margin-bottom: 0;
 
                         .price{
-                            font-size: $font-size-sm;
+                            font-size: $font-size-xs;
                             font-weight: 400;
                             color: $black;
                             margin-right: 5px;
@@ -137,6 +137,16 @@
 
                             &--discounted{
                                 color: $red;
+                            }
+
+                            &-attribute{
+                                @include font-with-line-height($font-size-xs, 15px);
+                                font-weight: 300;
+                                display: block;
+
+                                &--default{
+                                    font-weight: 400;
+                                }
                             }
                         }
                     }

@@ -47,13 +47,18 @@
             {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
           </span>
       </div>
-      
-      {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
-      <div class="text-center">
-      <span style="font-size: 12px;color:#bbb">
-        <p class="product-unit-price">{l s='%unit_price%' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>
-      </span>
-      </div>
+      {if !empty($product.attributes)}
+          {include file='catalog/_partials/miniatures/_partials/product-combination-prices.tpl'}
+      {else}
+          {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
+      {/if}
+
+{*      <div class="text-center">*}
+{*      <span style="font-size: 12px;color:#bbb">*}
+{*        <p class="product-unit-price">{l s='%unit_price%' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>*}
+{*      </span>*}
+{*      </div>*}
+
       {block name='product_form'}
         {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
       {/block}
