@@ -22,11 +22,11 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-
+<div id="hook_footer_before_wrapper" class="footer-paralax">
   {block name='hook_footer_before'}
     {hook h='displayFooterBefore'}
   {/block}
-
+</div>
 <div class="footer-container">
   <div class="container">
     <div class="row">

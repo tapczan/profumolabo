@@ -89,7 +89,7 @@ $(document).ready(() => {
   var stickyNavTop = $('.header__nav').offset().top;
  
   function stickyNav(){
-    var footerContainer = $('.footer-container').offset().top;
+    var footerContainer = $('#blockEmailSubscription_displayFooterBefore').offset().top;
     var scrollTop = $(window).scrollTop();
     if (scrollTop > stickyNavTop && scrollTop < footerContainer) { 
       $('.header__nav').addClass('header__nav--sticky');
@@ -99,6 +99,18 @@ $(document).ready(() => {
       $('.sticky-menu-correction').removeClass('correction-padding');
     }
   };
+
+  function paralax() {
+    var footerContainer = $('#blockEmailSubscription_displayFooterBefore').offset().top;
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop < footerContainer) { 
+      $('#hook_footer_before_wrapper').addClass('footer-paralax');
+      $('.footer-container').addClass('paralax');
+    } else {
+      $('#hook_footer_before_wrapper').removeClass('footer-paralax');
+      $('.footer-container').removeClass('paralax');
+    }
+  }
 
   function matchHeightScripts(){
     $('.mega-menu-header-kobieta .mm_columns_li').matchHeight();
@@ -126,6 +138,7 @@ $(document).ready(() => {
 
   $(window).on('scroll', function() {
     stickyNav();
+    paralax();
   });
 
   $('.jsSearchToggleMobile').on('click', function(){
