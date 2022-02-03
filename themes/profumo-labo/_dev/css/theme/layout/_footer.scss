@@ -54,9 +54,11 @@
     font-size: 16px;
     line-height: 30px;
     color: rgba(255, 255, 255, 0.6);
+    transition: .3s ease;
 
     &:hover {
       color: #fff;
+      text-decoration: none;
     }
   }
 
