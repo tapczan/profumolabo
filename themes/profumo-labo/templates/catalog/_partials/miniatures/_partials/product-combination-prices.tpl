@@ -5,10 +5,9 @@
             {if isset($product.attribute_combinations) && !empty($product.attribute_combinations)}
                   {foreach from=$product.attribute_combinations item=combination}
                      {if floatval($combination.price)}
-                        <span class="price {if $combination.default_on} default-attributes {/if}">
+                        <span class="price price-attribute{if $combination.default_on} price-attribute--default default-attributes {/if}">
                             {$combination.price} / {$combination.attribute_name}
                         </span>
-                        </br>
                      {else}
                         {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
                         {break}

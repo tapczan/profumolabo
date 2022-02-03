@@ -215,6 +215,16 @@
                                     &--discounted{
                                         color: $red;
                                     }
+
+                                    &-attribute{
+                                        @include font-with-line-height($font-size-xs, 15px);
+                                        font-weight: 300;
+                                        display: block;
+
+                                        &--default{
+                                            font-weight: 400;
+                                        }
+                                    }
                                 }
                             }
               
