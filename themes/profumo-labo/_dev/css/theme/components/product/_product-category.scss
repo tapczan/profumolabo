@@ -189,7 +189,7 @@
               
                             &__title{
                                 text-transform: uppercase;
-                                font-weight: 500;
+                                font-weight: 400;
                                 font-size: $font-size-sm;
                                 text-align: center;
                                 color: $black;
@@ -202,11 +202,18 @@
                     
                                 .price{
                                     font-size: $font-size-sm;
-                                    font-weight: 500;
+                                    font-weight: 400;
                                     color: $black;
+                                    margin-right: 0;
                     
                                     &--regular{
-                                        display: none;
+                                        color: $light-gray;
+                                        font-size: $font-size-xs;
+                                        margin-right: 5px;
+                                    }
+
+                                    &--discounted{
+                                        color: $red;
                                     }
                                 }
                             }

@@ -147,11 +147,15 @@
                     color: $black;
                     font-weight: 400;
                     font-size: $font-size-product-lg;
-                }
+                    
+                    &--regular{
+                        color: $light-gray;
+                        font-size: $font-size-lg;
+                    }
 
-                .price--regular{
-                    color: $light-gray;
-                    font-size: $font-size-lg;
+                    &--discounted{
+                        color: $red;
+                    }
                 }
             }
 
