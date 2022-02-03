@@ -290,11 +290,23 @@ $(document).ready(() => {
             slidesToScroll: 1,
             mobileFirst: true,
             dots: false,
-            arrow: true
+            arrow: true,
+            infinite: false,
           });
         }
       }
     });
+    function seeMoreBestsellers(carouselSelector, slideSelector, max, link) {
+      var link = "#";
+      $(slideSelector).each(function(index, value) {
+        if(index > 3) {
+          $(carouselSelector).slick('slickRemove', $(this).data('slick-index'));
+        }
+      })
+      $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">Zobacz więcej</a></h3></div>`);
+    }
+    seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5)
+    seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5)
   });
 
   $('.js-filtermobile-slider').on('click', function(){
