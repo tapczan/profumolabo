@@ -112,7 +112,7 @@
 
                     &__title{
                         text-transform: uppercase;
-                        font-weight: 500;
+                        font-weight: 400;
                         font-size: $font-size-sm;
                         text-align: center;
                         color: $black;
@@ -125,11 +125,18 @@
 
                         .price{
                             font-size: $font-size-sm;
-                            font-weight: 500;
+                            font-weight: 400;
                             color: $black;
+                            margin-right: 5px;
 
                             &--regular{
-                                display: none;
+                                color: $light-gray;
+                                font-size: $font-size-xs;
+                                margin-right: 0;
+                            }
+
+                            &--discounted{
+                                color: $red;
                             }
                         }
                     }
@@ -377,11 +384,15 @@
                     color: $black;
                     font-weight: 400;
                     font-size: $font-size-product-lg;
-                }
 
-                .price--regular{
-                    color: $light-gray;
-                    font-size: $font-size-lg;
+                    &--regular{
+                        color: $light-gray;
+                        font-size: $font-size-lg;
+                    }
+    
+                    &--discounted{
+                        color: $red;
+                    }
                 }
             }
 

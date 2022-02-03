@@ -38,7 +38,7 @@
         {/if*}
 
         <div>
-          <span class="price price--lg">
+          <span class="price price--lg {if $product.has_discount}price--discounted{/if}">
             {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='product_sheet'}{/capture}
             {if '' !== $smarty.capture.custom_price}
               {$smarty.capture.custom_price nofilter}
