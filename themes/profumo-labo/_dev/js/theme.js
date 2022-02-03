@@ -93,8 +93,10 @@ $(document).ready(() => {
           
     if (scrollTop > stickyNavTop) { 
       $('.header__nav').addClass('header__nav--sticky');
+      $('.sticky-menu-correction').addClass('correction-padding');
     } else {
-      $('.header__nav').removeClass('header__nav--sticky'); 
+      $('.header__nav').removeClass('header__nav--sticky');
+      $('.sticky-menu-correction').removeClass('correction-padding');
     }
   };
 
@@ -281,6 +283,11 @@ $(document).ready(() => {
       }
     });
   });
+
+  $('.js-filtermobile-slider').on('click', function(){
+    $(this).toggleClass('istoggled');
+    $('.js-search-filters').slideToggle();
+  });
   /*
   * End override slider for product listings
   */
@@ -312,7 +319,11 @@ $(document).ready(() => {
     });
   }
   
-  mobileDropdown();
+  if( $('#arpl-group-13 .nav-item').length > 1 ){
+    mobileDropdown();
+  }else{
+    $('#arpl-group-13').addClass('no-tab-available')
+  }
   /*
   * End add dropdown to tabbed list on mobile
   */
@@ -321,6 +332,21 @@ $(document).ready(() => {
     $('.js-comment-form').slideToggle();
     $(this).toggleClass('product-comment__close--notactive')
   });
+
+  /*
+  * Clear comment input fields and close popup form on submit
+  */
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutationRecord) {
+      setTimeout(() => {
+        $('.js-trigger-click-submit')[0].click();
+        $('.js-input-comment, .js-textarea-comment').val('');
+      }, 100);
+    });    
+  });
+
+  var targetElement = document.getElementsByClassName('js-comment-alert')[0];
+  observer.observe(targetElement, { attributes : true, attributeFilter : ['style'] });
 });
 
 function accLinksTriggerActive() {

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PW Instagram feed documentation</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #f0f2f4;
+    color: #678;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.618;
+    text-shadow: 0 1px #fff;
+}
+.constraint {
+    margin: 0 auto;
+    padding: 30px;
+    width: 800px;
+}
+header {
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+img {
+    display: block;
+    margin: 0 0 10px;
+    max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #456;
+}
+h1 {
+    font-size: 40px;
+}
+h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2:first-of-type {
+    margin-top: 0;
+}
+h3 {
+    font-size: 18px;
+}
+ol,
+ul {
+    font-size: .875em;
+    padding-left: 1.5em;
+}
+li:after {
+    clear: both;
+    content: '';
+    display: block;
+}
+p {
+    font-size: .875em;
+    margin-bottom: 15px;
+}
+p:last-child {
+    margin-bottom: 0;
+}
+code {
+    background: #fff;
+    border-radius: 3px;
+    color: #c7254e;
+    padding: 0 3px;
+}
+a {
+    background: #fff;
+    border-radius: 3px;
+    color: #31b0d5;
+    padding: 2px 3px;
+    text-decoration: none;
+}
+span.btn {
+    color: #00aff0;
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="constraint">
+        <h1>PW Instagram feed documentation</h1>
+    </div>
+</header>
+<div class="constraint">
+    <h2>Installation</h2>
+    <h3>Via FTP (recommended)</h3>
+    <p>
+        1. Unzip the <code>pwinstafeed</code> from the correct <code>1.6</code> or <code>1.7.2.4+</code> folder.<br />
+        2. Place the folder in the <code>root/modules/</code> folder.<br />
+        3. Go to the <em>"Modules"</em> section in the back office and search for <em>"pwinstafeed"</em>.<br />
+        4. Hit "Install" and go ahead and configure the module to your liking.
+    </p>
+    <h3>Via back office (not recommended in 1.7.x)</h3>
+    <p>
+        1. Go to the <em>"Modules"</em> section in the back office and hit <em>"Add new module"</em>.<br />
+        2. Browse for the <code>pwinstafeed.zip</code> file and hit <em>"Upload this module"</em>.<br />
+        3. Go to the <em>"Modules"</em> section in the back office and search for <em>"pwinstafeed"</em>.<br />
+        4. Hit "Install" and go ahead and configure the module to your liking.
+    </p>
+    <h2>Instagram setup</h2>
+    <h3>Access token</h3>
+    <p>Follow the link in the module, under the <em>"Instagram setup"</em> tab, "<span class="btn">Generate an access token</span>" grant our app access &mdash; you might be prompted to log in &mdash; and an Access Token will be generated for you.</p>
+    <p>Simply paste that into the field in the module configuration page. <em>Make sure you copy the entire token and don't have an extra space before or after it.</em></p>
+    <p>Hit <em>"Save all"</em> and your done!</p>
+    <h2>Feed settings</h2>
+    <p>This entire section is for the following hook positions: Home, footer, left and right column.</p>
+    <h3>Number of photos</h3>
+    <p>This decides how many photos to fetch from Instagram. The Instagram API has a limit of 20 photos per request so even if you put a higher number than 20, 20 is the number that will be used.</p>
+    <h3>Feed style</h3>
+    <p>The style of the feed. Square, rounded (5px border radius), or circle (completely round).</p>
+    <h3>Spacing</h3>
+    <p>This controls the spacing between each photo in your feed.</p>
+    <h3>Carousel</h3>
+    <p>Whether or not to use and activate the carousel functionality.</p>
+    <h3>Infite loop</h3>
+    <p>If the carousel should continue to loop around when the user reaches the end, instead of just stopping.</p>
+    <h3>Breakpoints</h3>
+    <p>These breakpoints work from small to large. This way you can decide how many photos (or carousel items) you wish to display depending on the current breakpoint.</p>
+    <p><em>Extra small</em> - From 0px upwards</p>
+    <p><em>Small</em> - From 480px upwards</p>
+    <p><em>Medium</em> - From 768px upwards</p>
+    <p><em>Large</em> - From 992px upwards</p>
+    <p><em>Extra large</em> - From 1180px upwards</p>
+    <h3>Number of columns</h3>
+    <p>If you're not using the carousel, this will more or less be the same as the breakpoint settings above. The number of columns in different breakpoints, working from small to large.</p>
+    <p><em>Extra small</em> - From 0px upwards</p>
+    <p><em>Small</em> - From 480px upwards</p>
+    <p><em>Medium</em> - From 768px upwards</p>
+    <p><em>Large</em> - From 992px upwards</p>
+    <p><em>Extra large</em> - From 1180px upwards</p>
+    <h3>Hover background color</h3>
+    <p>What background color to use when you hover over the photo. You can use hex and rgba.</p>
+    <h3>Hover text color</h3>
+    <p>What text color to use when you hover over the photo. You can use hex and rgba.</p>
+    <h3>Show likes</h3>
+    <p>Whether or not to display how many likes each photo have got on hover.</p>
+    <h3>Show comments</h3>
+    <p>Whether or not to display how many comments each photo have got on hover.</p>
+    <h3>Modal functionality</h3>
+    <p>By default, the photo is linked to it's page on the Instagram site. With the modal functionality you can open it up, in a modal, and you will then see the embedded version of that photo.</p>
+    <h3>Hook position</h3>
+    <p>Where you want this particular feed hooked.</p>
+    <h2>Custom page</h2>
+    <p>All of the following settings will control how the feed will look on your custom page. Completely independent from the feed in the different hook positions.</p>
+    <h3>Page title</h3>
+    <p>Self explanatory, this will be the title of the page.</p>
+    <h3>Breadcrumb title</h3>
+    <p>Self explanatory, this will be the breadcrumb title of the page.</p>
+    <h3>Page content</h3>
+    <p>Self explanatory, this will be the actual content of the page.</p>
+    <h3>Number of photos</h3>
+    <p>This decides how many photos to fetch from Instagram. The Instagram API has a limit of 20 photos per request so even if you put a higher number than 20, 20 is the number that will be used.</p>
+    <h3>Number of columns</h3>
+    <p>The number of columns in different breakpoints, working from small to large.</p>
+    <p><em>Extra small</em> - From 0px upwards</p>
+    <p><em>Small</em> - From 480px upwards</p>
+    <p><em>Medium</em> - From 768px upwards</p>
+    <p><em>Large</em> - From 992px upwards</p>
+    <p><em>Extra large</em> - From 1180px upwards</p>
+    <h3>Page feed style</h3>
+    <p>The style of the feed. Square, rounded (5px border radius), or circle (completely round).</p>
+    <h3>Spacing</h3>
+    <p>This controls the spacing between each photo in your feed.</p>
+    <h3>Modal functionality</h3>
+    <p>By default, the photo is linked to it's page on the Instagram site. With the modal functionality you can open it up, in a modal, and you will then see the embedded version of that photo.</p>
+    <h3>Hover background color</h3>
+    <p>What background color to use when you hover over the photo. You can use hex and rgba.</p>
+    <h3>Hover text color</h3>
+    <p>What text color to use when you hover over the photo. You can use hex and rgba.</p>
+    <h3>Show likes</h3>
+    <p>Whether or not to display how many likes each photo have got on hover.</p>
+    <h3>Show comments</h3>
+    <p>Whether or not to display how many comments each photo have got on hover.</p>
+    <h3>Button background color</h3>
+    <p>What background color the <em>"Load more"</em> button should have.</p>
+    <h3>Button text color</h3>
+    <p>What text color the <em>"Load more"</em> button should have.</p>
+</div>
+</body>
+</html>

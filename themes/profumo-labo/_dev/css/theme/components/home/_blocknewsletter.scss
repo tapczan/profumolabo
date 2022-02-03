@@ -2,13 +2,15 @@
     background-color: #f1f1f1;
 
     &__label {
-        font-size: 25px;
-        line-height: 28px;
+        @include font-with-line-height($font-size-product-lg, 28px);
+        
+        font-family: $font-forum;
         letter-spacing: 0.08em;
+        color: $black;
 
         @include media-breakpoint-down(sm) {
-            font-size: 12px;
-            line-height: 15px;
+            @include font-with-line-height($font-size-xs, 15px);
+            
             text-align: center;
             letter-spacing: 0.1em;
         }
@@ -60,11 +62,11 @@
         }
 
         @include media-breakpoint-down(sm) {
+            @include font-with-line-height($font-size-xs, 30px);
+
             height: 30px;
-            line-height: 30px;
             padding-top: 0;
             padding-bottom: 0;
-            font-size: 12px;
         }
     }
 
@@ -79,15 +81,14 @@
     }
 
     .custom-control-label {
+        @include font-with-line-height($font-size-md, 21px);
+
         font-weight: 300;
-        font-size: 16px;
-        line-height: 21px;
         letter-spacing: 0.15em;
         color: #000;
 
         @include media-breakpoint-down(sm) {
-            font-size: 12px;
-            line-height: 16px;
+            @include font-with-line-height($font-size-xs, 16px);
         }
 
         &::before {

@@ -54,33 +54,18 @@
           </div>
           <div class="col-md-5 col-lg-4">
             <div class="product-single__info">
+             
               <div class="product-rating">
-                <ul class="star-rating">
-                  <li class="star-rating__list">
-                    <span class="star-rating__icon star-rating__icon--active"></span>
-                  </li>
-                  <li class="star-rating__list">
-                    <span class="star-rating__icon star-rating__icon--active"></span>
-                  </li>
-                  <li class="star-rating__list">
-                    <span class="star-rating__icon star-rating__icon--active"></span>
-                  </li>
-                  <li class="star-rating__list">
-                    <span class="star-rating__icon"></span>
-                  </li>
-                  <li class="star-rating__list">
-                    <span class="star-rating__icon"></span>
-                  </li>
-                </ul>
-                <span class="star-review">
-                  (21 opinii)
-                </span>
+                {hook h='displayProductListReviews' product=$product }
               </div>
 
               {block name='page_header_container'}
                 {block name='page_header'}
                   <h1 class="product-title">
                     {block name='page_title'}{$product.name}{/block}
+
+                    {*{hook h='displayProductActions' product=$product customer=$customer url=$url}*}
+
                     <span
                     class="wishlist-button"
                     data-url="{$url}"

@@ -49,14 +49,14 @@
       </header>
  
       {if $page.page_name == 'index'}
-        <div class="row mx-0">
+        <div class="row mx-0 sticky-menu-correction">
           <div style="width:100%; max-width: 1920px; margin: 0 auto;">
            {widget name='is_imageslider'}
           </div>
         </div>
       {/if}    
 
-      <section id="wrapper">
+      <section id="wrapper" class="{if $page.page_name != 'index'}sticky-menu-correction{/if}">
 
         {block name='notifications'}
           {include file='_partials/notifications.tpl'}

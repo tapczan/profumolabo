@@ -32,6 +32,9 @@
                 opacity: 0.5;
                 left: 0;
                 z-index: 20;
+                top: -25%;
+                bottom: 0;
+                margin: auto;
 
                 &:before{
                     display: none;
@@ -109,7 +112,7 @@
 
                     &__title{
                         text-transform: uppercase;
-                        font-weight: 500;
+                        font-weight: 400;
                         font-size: $font-size-sm;
                         text-align: center;
                         color: $black;
@@ -122,11 +125,18 @@
 
                         .price{
                             font-size: $font-size-sm;
-                            font-weight: 500;
+                            font-weight: 400;
                             color: $black;
+                            margin-right: 5px;
 
                             &--regular{
-                                display: none;
+                                color: $light-gray;
+                                font-size: $font-size-xs;
+                                margin-right: 0;
+                            }
+
+                            &--discounted{
+                                color: $red;
                             }
                         }
                     }
@@ -145,9 +155,12 @@
 
     #arpl-group-12{
         .arpl-header .arpl-title{
+            font-family: $font-forum;
             font-size: $font-size-xxl;
             font-weight: 300;
             margin: 0 0 40px;
+            color: $black;
+            letter-spacing: 3px;
         }
     }
 
@@ -184,13 +197,15 @@
             }
 
             .nav-link{
-                font-size: $font-size-xxl;
-                line-height: 38px;
+                @include font-with-line-height($font-size-xxl, 38px);
+
                 text-transform: uppercase;
                 color: $dark-gray;
                 padding: 0;
                 border-style: none;
                 font-weight: 300;
+                font-family: $font-forum;
+                letter-spacing: 3px;
 
                 &.active{
                     color: $black;
@@ -227,6 +242,10 @@
         max-width: 450px;
         margin: auto;
         padding-top: 50px;
+
+        .wishlist-button-add.wishlist-button-product{
+            display: none;
+        }
 
         .product-wishlist--mobile{
             display: none;
@@ -271,41 +290,45 @@
     &__info{
         .product{
             &-rating{
-                .star-rating{
-                    margin: 0;
-                    padding: 0;
-                    display: inline-block;
-                    vertical-align: middle;
+                .comments_note{
+                    width: 100%;
 
-                    &__list{
+                    .star_content{
+                        text-align: center;
+                        margin-top: 20px;
                         display: inline-block;
-                    }
 
-                    &__icon{
-                        background: url(~/img/icons/star_gray.svg);
-                        background-size: contain;
-                        background-position: center;
-                        background-repeat: no-repeat;
-                        display: block;
-                        width: 10px;
-                        height: 10px;
-
-                        &--active{
-                            background: url(~/img/icons/star_active.svg);
+                        .star{
+                            margin: 0;
+                            padding: 0;
+                            display: inline-block;
+                            vertical-align: middle;
+                            background: url(~/img/icons/star_gray.svg);
                             background-size: contain;
                             background-position: center;
                             background-repeat: no-repeat;
+                            width: 10px;
+                            height: 10px;
+                            float: none;
+        
+                            &.star_on{
+                                background: url(~/img/icons/star_active.svg) !important;
+                                background-size: contain !important;
+                                background-position: center !important;
+                                background-repeat: no-repeat !important;
+                            }
+                        }
+
+                        & + span{
+                            font-family: $font-jost;
+                            color: $dark-gray;
+                            font-size: $font-size-xs;
+                            display: inline-block;
+                            vertical-align: -1px;
+                            margin-left: 5px;
+                            font-weight: 300;
                         }
                     }
-                }
-
-                .star-review{
-                    font-family: $font-jost;
-                    color: $dark-gray;
-                    font-size: $font-size-xs;
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-left: 5px;
                 }
             }
 
@@ -315,6 +338,20 @@
                 font-size: $font-size-product-lg;
                 position: relative;
                 padding: 0 30px 0 0;
+                color: $black;
+
+                .wishlist-button-add.wishlist-button-product{
+                    opacity: 0.5;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    line-height: 18px;
+                    border-style: none;
+                    background: transparent;
+                    width: auto;
+                    height: auto;
+                    box-shadow: none;
+                }
             }
             
             &-wishlist{
@@ -347,11 +384,15 @@
                     color: $black;
                     font-weight: 400;
                     font-size: $font-size-product-lg;
-                }
 
-                .price--regular{
-                    color: $light-gray;
-                    font-size: $font-size-lg;
+                    &--regular{
+                        color: $light-gray;
+                        font-size: $font-size-lg;
+                    }
+    
+                    &--discounted{
+                        color: $red;
+                    }
                 }
             }
 
@@ -572,7 +613,7 @@
                         border: $border-social;
                         border-radius: 50%;
                         padding: 2px 0;
-                        font-size: 14px;
+                        font-size: $font-size-sm;
                     }
                 }
             }
@@ -656,14 +697,15 @@
                     }
 
                     .nav-link{
-                        font-size: $font-size-xm;
-                        line-height: 21px;
+                        @include font-with-line-height($font-size-xm, 21px);
+                        
                         text-align: center;
                         cursor: pointer;
                         padding-top: 5px;
                         margin-top: 5px;
                         border-top: $border-bottom-mobile;
                         border-radius: 0;
+                        letter-spacing: 1px;
                     }
 
                     .nav-item:last-child{
@@ -674,8 +716,10 @@
                 }
 
                 .nav-tabs-mobile-label{
-                    font-size: $font-size-xm;
-                    line-height: 21px;
+                    @include font-with-line-height($font-size-xm, 21px);
+                    
+                    font-family: $font-forum;
+                    letter-spacing: 1px;
                     text-align: center;
                     text-transform: uppercase;
                     color: $black;
@@ -705,6 +749,16 @@
                         display: none;
                     }
                 }
+
+                &.no-tab-available{
+                    .nav-tabs{
+                        display: block;
+
+                        .nav-item .nav-link{
+                            border-style: none !important;
+                        }
+                    }
+                }
             }
         }
     }
@@ -727,6 +781,20 @@
                 left: 0;
                 margin: auto;
             }
+
+            .wishlist-button-add.wishlist-button-product{
+                display: block;
+                position: absolute;
+                top: 0;
+                right: -50%;
+                opacity: 0.5;
+                width: 20px;
+                left: 0;
+                margin: auto;
+                box-shadow: none;
+                width: auto;
+                height: auto;
+            }
         }
 
         &__info{
@@ -740,16 +808,30 @@
                 }
 
                 &-rating{
-                    .star-review,
-                    .star-rating{
-                        display: block;
-                        margin: 0;
+                    .comments_note{
+                        .star_content{
+                            display: block;
+
+                            .star{
+                                width: 12px;
+                                height: 12px;
+                            }
+
+                            & + span{
+                                display: block;
+                                margin-bottom: 15px;
+                            }
+                        }
                     }
                 }
 
                 &-title{
                     padding: 0;
                     font-size: $font-size-sm;
+
+                    .wishlist-button-add.wishlist-button-product{
+                        display: none;
+                    }
                 }
 
                 &-add-to-cart{
@@ -770,6 +852,34 @@
                             font-size: $font-size-sm;
                         }
                     }
+                }
+
+                &-img{
+                    .wishlist-button-add.wishlist-button-product{
+                        display: block;
+                    }
+                }
+
+                &-stock-info{
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 380px){
+    .page-product{
+        #arpl-section-13-40-carousel,
+        #arpl-section-13-25-carousel,
+        #arpl-section-13-26-carousel,
+        #arpl-section-12-27-carousel,
+        #arpl-section-13-27-carousel,
+        #arpl-section-13-28-carousel,
+        #arpl-section-12-31-carousel{
+            .slick{
+                &-arrow{
+                    top: -45%;
                 }
             }
         }

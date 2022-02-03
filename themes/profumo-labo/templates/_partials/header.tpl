@@ -45,16 +45,6 @@
 
        <div class="row header-top__row">
 
-        <div class="col-md-4">
-          1
-        </div>
-        <div class="col-md-4">
-          2
-        </div>
-        <div class="col-md-4">
-          3
-        </div>
-
        <div class="col flex-grow-0 header-top__block header-top__block--menu-toggle d-block d-md-none">
           <a
             class="header-top__link"
@@ -96,7 +86,7 @@
   <div class="header__inner">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 d-md-flex align-items-center">
           <div class="header__inner-l">
             {widget name='ps_languageselector'}
             {widget name='is_searchbar'}
@@ -107,10 +97,10 @@
             <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
           </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 d-md-flex align-items-center justify-content-end">
           <div class="header__inner-r">
-            {widget name='ps_customersignin'}
-            <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg">
+            {widget name='ps_customersignin'} 
+            <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
             {widget name='is_shoppingcart'}
           </div>
         </div>
@@ -143,7 +133,7 @@
         <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-2 header__nav-right">
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
-          <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg">
+          <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
           {widget name='is_shoppingcart'}
         </div>
       </div>

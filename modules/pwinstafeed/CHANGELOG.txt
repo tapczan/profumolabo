@@ -1,0 +1,65 @@
+CHANGELOG
+
+==================================================
+
+3.5 - 13-03-2016
+IMPORTANT UPDATE
+
++ Version 3.5 and forward is only for 1.7.2.4 and up
+
+---
+
+3.4 - 17-11-2016
+Minor improvements
+
++ Improved: Code and template cleanup
++ Fixed: Obsolete variables that in rare cases caused errors
+
+---
+
+3.3 - 12-7-2016
+Minor improvements
+
++ Improved: CSS/JS cleanup
++ Improved: Better handling of different aspect ratios
+
+---
+
+3.2 - 8-7-2016
+IMPORTANT UPDATE
+
+Our module now works with the new guidelines Instagram made
+with the recent API changes.
+
++ New: Completely revamped how we interact with the Instagram API
++ New: Easier way of creating and using the Access tokens
++ New: More apperance and control options
++ Improved: Better control of carousel and columns
+
+---
+
+3.0 - 17-12-2015
+Major release
++ New: Stats - Quickly see how many photos have been tagged on each product
++ New: Independent page/controller with own URL
++ New: Independent feed & carousel settings for productpage
++ New: Independent settings for the left/right column hooks
++ New: Change how many photos to be shown in carousels
++ New: Change photos per row if carousel is inactive
++ Improved: Completely restructured backoffice configuration page
++ Bugfix: Carousel library should no longer crash with custom themes
+
+---
+
+2.0 - 31-03-2015
+Major release
++ New: Product specific hashtags
++ New: Left and right column hook support
++ Improved: Restructured and improved backoffice
++ Improved: Error messages upon error in frontend
++ Improved: Javascript functions
+
+----
+
+1.0 - 14-10-2014
+First version
