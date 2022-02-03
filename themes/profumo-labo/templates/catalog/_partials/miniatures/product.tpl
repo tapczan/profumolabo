@@ -47,11 +47,12 @@
             {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
           </span>
       </div>
-      
-      {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
-      <div class="text-center">
-      <span style="font-size: 12px;color:#bbb">23.25/8ML</span>
-      </div>
+      {if !empty($product.attributes)}
+          {include file='catalog/_partials/miniatures/_partials/product-combination-prices.tpl'}
+      {else}
+          {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
+      {/if}
+
       {block name='product_form'}
         {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
       {/block}
