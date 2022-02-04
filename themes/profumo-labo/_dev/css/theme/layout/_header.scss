@@ -8,7 +8,7 @@
 }
 
 .correction-padding {
-  padding-top: 61px;
+  padding-top: 53px;
   @include media-breakpoint-down(md) {
     padding-top: 74.58px;
   }
@@ -96,7 +96,7 @@
 
   &__inner{
     padding: 32px;
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
 
     &-l{
       display: flex;
@@ -353,7 +353,7 @@
         }
 
         & > a{
-          padding: 20px 0;
+          padding: 16px 0;
         }
 
         &:hover > a + span + .mm_columns_ul{
@@ -474,7 +474,6 @@
       left: 0;
       right: 0;
       z-index: 800;
-      padding: 9px 0;
 
       .header__nav-left,
       .header__nav-right{
@@ -1171,8 +1170,8 @@
       justify-content: flex-start;
       flex: 0 0 100%;
       max-width: 100%;
-      padding-top: 25px;
-      padding-bottom: 25px;
+      padding-top: 22px;
+      padding-bottom: 22px;
       border-bottom: 1px solid $light-gray;
     }
 
@@ -1313,13 +1312,10 @@
       }
     }
   }
+}
+.header__nav.header__nav--sticky .header__mega-menu .mm_menus_ul .mm_menus_li a{
+  padding: 19px 0;
 
-  .header__nav .header__mega-menu .mm_menus_ul .mm_menus_li a,
-  .header__nav.header__nav--sticky .header__mega-menu .mm_menus_ul .mm_menus_li a{
-    @include media-breakpoint-up(lg) {
-      font-size: $font-size-xs !important;
-    }
-  }
 }
 
 @media screen and (max-width: 360px){

@@ -94,7 +94,7 @@
         </div>
         <div class="col-md-4 text-center">
           <a href="{$urls.pages.index}">
-            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+            <img class="logo img-fluid" width="272" height="21" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
           </a>
         </div>
         <div class="col-md-4 d-md-flex align-items-center justify-content-end">
