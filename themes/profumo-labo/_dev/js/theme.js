@@ -297,20 +297,15 @@ $(document).ready(() => {
       }
     });
     function seeMoreBestsellers(carouselSelector, slideSelector, max, link) {
-      if($(carouselSelector).hasClass('slick-initialized')){
-        var link = "#";
-        var showMoreText = $('#hook_footer_before_wrapper').data('show-translation');
-    
-        $(slideSelector).each(function(index, value) {
-          if(index > max) {
-            $(carouselSelector).slick('slickRemove', $(this).data('slick-index') - 1);
-          }
-        })
-
-        if(!$('.bestseller-see-more__link').length) {
-          $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">${showMoreText}</a></h3></div>`);
+      var link = "#";
+      var showMoreText = $('#hook_footer_before_wrapper').data('show-translation');
+  
+      $(slideSelector).each(function(index, value) {
+        if(index > max) {
+          $(carouselSelector).slick('slickRemove', $(this).data('slick-index') - 1);
         }
-      }
+      })
+      $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">${showMoreText}</a></h3></div>`);
     }
     seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5)
     seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5)
