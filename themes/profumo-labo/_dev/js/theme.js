@@ -89,9 +89,11 @@ $(document).ready(() => {
   var stickyNavTop = $('.header__nav').offset().top;
  
   function stickyNav(){
-    var footerContainer = $('#blockEmailSubscription_displayFooterBefore').offset().top;
+    var removalStickyNavPoint = $('#blockEmailSubscription_displayFooterBefore').offset().top;
+    var removalStickyNavPintHeight = $('#blockEmailSubscription_displayFooterBefore').innerHeight();
+    var stickytNavHeigh = $('.header__nav').innerHeight();
     var scrollTop = $(window).scrollTop();
-    if (scrollTop > stickyNavTop && scrollTop < footerContainer) { 
+    if (scrollTop > stickyNavTop && scrollTop < (removalStickyNavPoint + removalStickyNavPintHeight - stickytNavHeigh)) { 
       $('.header__nav').addClass('header__nav--sticky');
       $('.sticky-menu-correction').addClass('correction-padding');
     } else {
@@ -100,15 +102,22 @@ $(document).ready(() => {
     }
   };
 
-  function paralax() {
-    var footerContainer = $('#blockEmailSubscription_displayFooterBefore').offset().top;
+  function footerParalaxEffect() {
+    var removalParalaxPoint = $('#blockEmailSubscription_displayFooterBefore').offset().top;
+    var removalParalaxPointSelector = $('#blockEmailSubscription_displayFooterBefore');
+    var stickytNavHeigh = $('.header__nav').innerHeight();
+    var correctionMargin = '40px';
+    var footerContainer = $('.footer-container');
     var scrollTop = $(window).scrollTop();
-    if (scrollTop < footerContainer) { 
-      $('#hook_footer_before_wrapper').addClass('footer-paralax');
-      $('.footer-container').addClass('paralax');
-    } else {
-      $('#hook_footer_before_wrapper').removeClass('footer-paralax');
-      $('.footer-container').removeClass('paralax');
+    if (scrollTop < removalParalaxPoint - stickytNavHeigh) { 
+      $('#hook_footer_before_wrapper').addClass('footer-paralax-wrapper');
+      footerContainer.addClass('paralax');
+      removalParalaxPointSelector.css('margin-top', '0');
+    } 
+    else {
+      $('#hook_footer_before_wrapper').removeClass('footer-paralax-wrapper');
+      footerContainer.removeClass('paralax');
+      removalParalaxPointSelector.css('margin-top', correctionMargin);
     }
   }
 
@@ -138,8 +147,9 @@ $(document).ready(() => {
 
   $(window).on('scroll', function() {
     stickyNav();
-    paralax();
+    footerParalaxEffect();
   });
+  footerParalaxEffect();
 
   $('.jsSearchToggleMobile').on('click', function(){
     $('.jsMobileSearch').toggle();
