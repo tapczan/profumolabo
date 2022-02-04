@@ -1486,8 +1486,6 @@
           }
 
           .header__inner-login-icon{
-            display: inline-block;
-            margin-left: 10px;
             vertical-align: middle;
           }
         }
@@ -1511,46 +1509,14 @@
   .header{
     &--notloggedin{
       .header__nav--sticky{
-        .header__nav-right{
-          .header-top__block--cart {
-            padding-right: 0;
-            padding-left: 5px;
-        
-            .header__inner-cart-icon{
-              width: 20px;
-              height: 20px;
-            }
-        
-            .header__inner-cart-badge{
-              width: 20px;
-              height: 20px;
-              font-size: $font-size-xs;
-              line-height: 20px;
-              right: -9px;
-              top: -7px;
-              text-align: center;
-            }
-          }
-        
+        .header__nav-right{      
           .header__inner-cart-wishlist{
             height: 20px;
           }
         
           .header-top__block--user{
-            padding-left: 5px;
-            padding-right: 5px;
-        
-            .header__inner-login-link{
-              width: 95px;
-            }
-        
             .header__inner-login-label{
               font-size: 12px;
-            }
-        
-            .header__inner-login-icon{
-              height: 16px;
-              margin-left: 5px;
             }
           }
         
