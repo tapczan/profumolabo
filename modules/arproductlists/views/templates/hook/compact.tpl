@@ -21,19 +21,17 @@
     
     <div class="row">
 
-        <div class="col-md-6 arpl-thumbx">
+        <div class="col-md-6">
             {include file="./custom/custom_compact_product_thumb.tpl"}
         </div>
 
-        <div class="col-md-6 arpl-content">
+        <div class="col-md-6">
             {include file="./custom/custom_compact_product_details.tpl"}
         </div>
     
     </div> <!-- end row -->
 
 </li>
-
-
 
 
 
