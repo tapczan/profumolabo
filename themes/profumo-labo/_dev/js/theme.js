@@ -112,21 +112,23 @@ $(document).ready(() => {
     }
   }
 
-  $('.rollover-images').each(function()
-  {
-    let newSrc = $(this).data('rollover');
-    if(newSrc == 0) return;
-    let oldSrc;
-    $(this).on("mouseover", function() {
-      oldSrc = $(this).attr('src');
-      $(this).attr('src', newSrc).stop(true,true);
-      $(this).parent().parent().css('background', '#f4f4f4');
-    }), 
-    $(this).on('mouseout', function() {
-      $(this).attr('src', oldSrc).stop(true,true);
-      $(this).parent().parent().css('background', 'none');
+  function rolloverImages() {
+    $('.product-miniature__thumb').each(function(){
+      let newSrc = $(this).find('.rollover-images').data('rollover');
+      if(newSrc == 0) return;
+      let oldSrc;
+      $(this).on("mouseover", function() {
+        oldSrc = $(this).find('.rollover-images').attr('src');
+        $(this).find('.rollover-images').attr('src', newSrc).stop(true,true);
+        $(this).find('.rollover-images').css('background', '#f4f4f4');
+      }), 
+      $(this).on('mouseout', function() {
+        $(this).find('.rollover-images').attr('src', oldSrc).stop(true,true);
+        $(this).find('.rollover-images').css('background', 'none');
+      });
     });
-  });
+  }
+  rolloverImages();
 
   function matchHeightScripts(){
     $('.mega-menu-header-kobieta .mm_columns_li').matchHeight();
@@ -325,8 +327,9 @@ $(document).ready(() => {
     }
     seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5)
     seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5)
+    rolloverImages()
   });
-
+    
   $('.js-filtermobile-slider').on('click', function(){
     $(this).toggleClass('istoggled');
     $('.js-search-filters').slideToggle();
