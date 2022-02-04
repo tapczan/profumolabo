@@ -378,6 +378,7 @@ $(document).ready(() => {
   /*
   * Clear comment input fields and close popup form on submit
   */
+
   var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutationRecord) {
       setTimeout(() => {
@@ -388,7 +389,9 @@ $(document).ready(() => {
   });
 
   var targetElement = document.getElementsByClassName('js-comment-alert')[0];
-  observer.observe(targetElement, { attributes : true, attributeFilter : ['style'] });
+  if( targetElement ){
+    observer.observe(targetElement, { attributes : true, attributeFilter : ['style'] });
+  }
 });
 
 function accLinksTriggerActive() {
