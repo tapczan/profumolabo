@@ -101,25 +101,59 @@ $(document).ready(() => {
       $('.sticky-menu-correction').removeClass('correction-padding');
     }
   };
-
+  
   function footerParalaxEffect() {
-    var removalParalaxPoint = $('#blockEmailSubscription_displayFooterBefore').offset().top;
-    var removalParalaxPointSelector = $('#blockEmailSubscription_displayFooterBefore');
-    var stickytNavHeigh = $('.header__nav').innerHeight();
-    var correctionMargin = '40px';
-    var footerContainer = $('.footer-container');
-    var scrollTop = $(window).scrollTop();
-    if (scrollTop < removalParalaxPoint - stickytNavHeigh) { 
-      $('#hook_footer_before_wrapper').addClass('footer-paralax-wrapper');
-      footerContainer.addClass('paralax');
-      removalParalaxPointSelector.css('margin-top', '0');
-    } 
-    else {
-      $('#hook_footer_before_wrapper').removeClass('footer-paralax-wrapper');
-      footerContainer.removeClass('paralax');
-      removalParalaxPointSelector.css('margin-top', correctionMargin);
+    const placeholder = $('.paralax-placeholder');
+    const footer = $('.footer-container');
+
+    let placeholderTop
+    let ticking
+    $(window).on('resize', onResize)
+
+    updateHolderHeight()
+    checkFooterHeight()
+
+    function onResize() {
+      updateHolderHeight()
+      checkFooterHeight()
+    }
+
+    function updateHolderHeight() {
+      placeholder.css('height', `${footer.outerHeight()}px`)
+    }
+
+    function checkFooterHeight() {
+      if (footer.outerHeight() > $(window).innerHeight()) { 
+        $(window).on('scroll', onScroll);
+        footer.css('bottom', 'unset')
+        footer.css('top', '0px')
+      } else {
+        $(window).off("scroll", onScroll);
+        footer.css('top', 'unset');
+        footer.css('bottom', '0px');
+      }
+    }
+
+    function onScroll() {
+      placeholderTop = Math.round(placeholder[0].getBoundingClientRect().top) 
+      requestTick()
+    }
+
+    function requestTick() {
+      if (!ticking) requestAnimationFrame(updateBasedOnScroll)
+      ticking = true
+    }
+
+    function updateBasedOnScroll() {
+      ticking = false
+
+      if (placeholderTop <= 0) {
+        footer.css('top', `${placeholderTop}px`)
+      }
     }
   }
+  
+  footerParalaxEffect()
 
   function matchHeightScripts(){
     $('.mega-menu-header-kobieta .mm_columns_li').matchHeight();
@@ -147,9 +181,7 @@ $(document).ready(() => {
 
   $(window).on('scroll', function() {
     stickyNav();
-    footerParalaxEffect();
   });
-  footerParalaxEffect();
 
   $('.jsSearchToggleMobile').on('click', function(){
     $('.jsMobileSearch').toggle();
