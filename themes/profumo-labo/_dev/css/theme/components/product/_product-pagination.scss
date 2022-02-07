@@ -1,0 +1,21 @@
+.product-pagination{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+
+    .pagination{
+        @include font-with-line-height($font-size-xs, 14px);
+
+        margin: 0;
+        padding: 0;
+        color: $black;
+
+        &-link{
+            color: $black;
+        }
+
+        &-item{
+            margin: 0 2px;
+        }
+    }
+}

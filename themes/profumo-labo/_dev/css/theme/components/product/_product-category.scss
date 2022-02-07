@@ -1,4 +1,8 @@
 .product-category{
+    .product-listing{
+        position: relative;
+    }
+
     &__title{
         @include font-with-line-height($font-size-xxl, 38px);
 
@@ -48,7 +52,8 @@
     
             .arpl-cat-title{
                 @include font-with-line-height($font-size-xm, 20px);
-        
+                
+                font-family: $font-forum;
                 font-weight: normal;
                 margin: 30px 0 0;
 
@@ -70,6 +75,11 @@
                     overflow: visible;
                     text-align: right;
 
+                    .arpl-sort-container{
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
                     .nice-select{
                         @include font-with-line-height($font-size-xs, 14px);
 
@@ -83,6 +93,7 @@
                         overflow: visible;
                         outline: none;
                         box-shadow: none !important;
+                        color: $black;
 
                         &:after{
                             position: absolute;
@@ -519,10 +530,6 @@
                 .products-list__block{
                     margin-bottom: 0;
                     margin-top: 30px;
-                }
-
-                .arpl-header{
-                    display: none;
                 }
             }
         }

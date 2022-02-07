@@ -24,11 +24,36 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div class="product-pagination">
-                        {include file='_partials/pagination.tpl' pagination=$listing.pagination}
-                    </div>
                     <div class="product-listing">
+                        {*
+                        <div class="product-pagination">
+                            {include file='_partials/pagination.tpl' pagination=$listing.pagination}
+                        </div>
+                        *}
                         {hook h='arCategoryPageHook2'}
+
+                        <ul class="product-social">
+                            <li class="product-social__item">
+                                <a href="product-social__link">
+                                    <span class="product-social__icon product-social__icon--facebook"></span>
+                                </a>
+                            </li>
+                            <li class="product-social__item">
+                                <a href="product-social__link">
+                                    <span class="product-social__icon product-social__icon--whatsapp"></span>
+                                </a>
+                            </li>
+                            <li class="product-social__item">
+                                <a href="product-social__link">
+                                    <span class="product-social__icon product-social__icon--twitter"></span>
+                                </a>
+                            </li>
+                            <li class="product-social__item">
+                                <a href="product-social__link">
+                                    <span class="product-social__icon product-social__icon--instagram"></span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

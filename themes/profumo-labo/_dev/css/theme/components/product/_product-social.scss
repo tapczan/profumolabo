@@ -1,0 +1,46 @@
+.product-social{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+
+    &__item{
+        display: inline-block;
+        margin-left: 5px;
+    }
+
+    &__link{
+        display: block;
+    }
+
+    &__icon{
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: $border-social;
+        border-radius: 50%;
+        background-size: auto 14px !important;
+
+        &--facebook{
+            background: url(~/img/icons/facebook-icon.svg) no-repeat center;
+        }
+
+        &--whatsapp{
+            background: url(~/img/icons/whatsapp-icon.svg) no-repeat center;
+        }
+
+        &--twitter{
+            background: url(~/img/icons/twitter-icon.svg) no-repeat center;
+        }
+        
+        &--instagram{
+            background: url(~/img/icons/instagram-icon.svg) no-repeat center;
+        }
+    }
+}
+
+@media(max-width: 767px){
+    .product-social{
+        display: none;
+    }
+}
