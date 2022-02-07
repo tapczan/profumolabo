@@ -1,0 +1,34 @@
+.modal-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  background-color: #fff;
+
+  &__logo {
+    fill: #000;
+    stroke: #fff;
+    stroke-width: 2px;
+    filter: drop-shadow(1px 1px 1px black);
+    transition: .3s ease;
+    stroke-dasharray: 1041px;
+    stroke-dashoffset: 0;
+    animation: modal-loader-animate 1s ease;
+  }
+}
+
+@keyframes modal-loader-animate {
+  0%
+  {
+    stroke-dashoffset: 1041px;
+  }
+  100%
+  {
+    stroke-dashoffset: 0;
+  }
+}

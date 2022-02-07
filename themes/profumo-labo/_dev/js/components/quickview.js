@@ -56,6 +56,9 @@ $(() => {
         $('body').append(resp.quickview_html);
         const productModal = $(`#quickview-modal-${resp.product.id}-${resp.product.id_product_attribute}`);
         productModal.modal('show');
+        setTimeout(function() {
+          $('.modal-loader').fadeOut('fast');
+        }, 1000);
         productConfig(productModal);
         productModal.on('hidden.bs.modal', () => {
           productModal.remove();
