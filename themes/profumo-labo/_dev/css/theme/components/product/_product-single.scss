@@ -57,6 +57,10 @@
             max-width: none;
             margin-bottom: 0;
 
+            .wishlist-button-add{
+                display: none;
+            }
+
             .product{
                 &-miniature{
                     border-style: none;

@@ -67,7 +67,7 @@
         }
 
         &.arpl-group-tabbed{
-            margin: 0;
+            margin: 0 0 50px;
     
             .arpl-section{
                 margin-bottom: 100px;
@@ -138,7 +138,7 @@
     #arpl-group-6{
         &.arpl-group.arpl-non-tabbed-group{
             margin: 100px 0 50px;
-            padding: 0 0 30px;
+            padding: 0 0 50px;
     
             .arpl-category{
                 .arpl-cat-img{
@@ -316,6 +316,10 @@
     #arpl-group-5,
     #arpl-group-1,
     #arpl-group-8{
+        .wishlist-button-add{
+            display: none;
+        }
+
         .arpl-more-container{
             text-align: center;
             margin-top: 50px;
@@ -339,7 +343,7 @@
   
     #arpl-group-8{
         &.arpl-group.arpl-non-tabbed-group{
-            margin-bottom: 0;
+            margin-bottom: 50px;
             padding-top: 0;
         }
         
@@ -457,6 +461,8 @@
             }
     
             &.arpl-group-tabbed{
+                margin-bottom: 30px;
+
                 .nav-tabs{
                     .nav-item{
                         width: 49%;
@@ -527,11 +533,12 @@
   
         #arpl-group-1{
             margin-bottom: 0;
+            padding-bottom: 30px;
             border-bottom: $border-bottom-mobile;
     
             .arpl-section{
                 margin-bottom: 30px;
-                margin-top: 30px;
+                margin-top: 0;
             }
             
             .arpl-more-container{
@@ -540,8 +547,8 @@
         }
   
         #arpl-group-8.arpl-group.arpl-non-tabbed-group{
-            margin: 0;
-            padding: 0;
+            margin: 0 0 30px;
+            padding: 0 0 30px;
             border-bottom: $border-bottom-mobile;
     
             .arpl-title{
