@@ -250,8 +250,13 @@ class Product extends ProductCore
 
                 $priceFormatter = new PriceFormatter();
                 foreach ($attributesCombinations as $combination) {
+                    $discount = intval($row['reduction']) ? true : false;
 
-                    $combination['price'] = $priceFormatter->format(Product::getPriceStatic($row['id_product'], false, $combination['id_product_attribute']));
+                    if($discount) {
+                        $combination['discount_price'] = $priceFormatter->format(Product::getPriceStatic($row['id_product'], false, $combination['id_product_attribute'], 6, null, false, $discount));
+                    }
+
+                    $combination['price'] = $priceFormatter->format(Product::getPriceStatic($row['id_product'], false, $combination['id_product_attribute'], 6, null, false, false));
                     $row['attribute_combinations'][] = $combination;
                 }
             }
