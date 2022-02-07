@@ -250,7 +250,6 @@ class Product extends ProductCore
 
                 $priceFormatter = new PriceFormatter();
                 foreach ($attributesCombinations as $combination) {
-//                    $product = new Product($row['id_product'], true, $context->language->id, $context->shop->id);
                     $discount = intval($row['reduction']) ? true : false;
 
                     if($discount) {
