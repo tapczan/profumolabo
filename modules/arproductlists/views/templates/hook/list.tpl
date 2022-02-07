@@ -31,6 +31,35 @@
                     {/foreach}
                 </select>
             </div>
+            <div class="product-pagination">
+                <ul class="pagination">
+                    <li class="pagination-item">
+                        <a href="#" class="pagination-link">
+                            <span class="pagination-prev">
+                                &lt;
+                            </span>
+                        </a>
+                    </li>
+                    <li class="pagination-item pagination-item--current">
+                        1
+                    </li>
+                    <li class="pagination-item pagination-item--separator">
+                        z
+                    </li>
+                    <li class="pagination-item">
+                        <a href="#" class="pagination-link">
+                            55
+                        </a>
+                    </li>
+                    <li class="pagination-item">
+                        <a href="#" class="pagination-link">
+                            <span class="pagination-next">
+                                &gt;
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         {/if}
     </div>
 {/if}
