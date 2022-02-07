@@ -9,9 +9,11 @@
     padding: 0;
     line-height: 1.7em;
     border: 0;
+    color: #000;
     @include font-size(20px);
     &:hover {
       text-decoration: none;
+      color: #000;
     }
   }
 

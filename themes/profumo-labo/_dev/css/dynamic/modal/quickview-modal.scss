@@ -21,6 +21,148 @@
     animation: modal-loader-animate 1s ease;
   }
 }
+.quickview {
+  .modal-header {
+    border-bottom: 0;
+    justify-content: center;
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  }
+  .card {
+    border: 0;
+  }
+  .modal-title-link,
+  .modal-product-title {
+    color: #000;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0 30px 0 0;
+    position: relative;
+    text-transform: uppercase;
+  }
+  .modal-title-link {
+    color: $gray-600;
+    text-decoration: none;
+    &::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    right: 0;
+    top: calc(50% - 7px);
+    background: url(~/img/icons/menu-left-arrow.svg);
+    transform: rotate(180deg);
+}
+  }
+  .product-description-short {
+    p {
+      color: $gray-600;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+  }
+  .price {
+    color: #000;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  .product-add-to-cart {
+    .bootstrap-touchspin {
+      border-style: none;
+      height: auto;
+      max-width: 75px;
+      .btn {
+        color: #000;
+        &:hover {
+          background-color: #fff;
+        }
+      }
+    }
+    .addtocart-input {
+      color: #000;
+      font-size: 12px;
+      font-weight: 400;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      border-style: none;
+      height: auto;
+      max-width: 75px;
+    }
+    .add-to-cart {
+      background: #000;
+      border: 1px solid #000;
+      border-radius: 0;
+      color: #fff;
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      height: auto;
+      margin: 10px 0 5px;
+      padding: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      width: 100%;
+    }
+  }
+  &__right-panel {
+    max-height: 445px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+    }
+  }
+  .control-label,
+  .product-quantity-label {
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+  }
+  .modal-accordion {
+    color: #000;
+    font-size: 12px;
+    padding-bottom: 10px;
+    &__header {
+      border-top: 1px solid rgba(0,0,0,.07);
+      cursor: pointer;
+      padding: 10px 0 10px 25px;
+      position: relative;
+      text-transform: uppercase;
+      &:first-child {
+        border-top-style: none;
+      }
+      &:before{
+        content: '';
+        position: absolute;
+        top: 11px;
+        left: 0;
+        margin: auto;
+        background: url(~/img/icons/plus-icon.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 12px;
+        height: 12px;
+      }
+    }
+    &__body {
+      line-height: 20px;
+    }
+  }
+}
+
 
 @keyframes modal-loader-animate {
   0%

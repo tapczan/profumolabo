@@ -34,10 +34,9 @@
       </svg>
     </div>
      <div class="modal-header">
-      <h1 class="h3 modal-title">{$product.name}</h1>
-
+      <h1 class="modal-title"><a class="modal-title-link" href="{$product.url}">{l s='See the product sheet' d='Shop.Istheme'}</a></h1>
        <button type="button" class="close" data-dismiss="modal" aria-label="{l s='Close' d='Shop.Theme.Global'}">
-         <span aria-hidden="true">&times;</span>
+         <i class="material-icons">close</i>
        </button>
      </div>
      <div class="modal-body">
@@ -48,7 +47,7 @@
               <div class="card-body">
                 {if $product.default_image}
                   <img
-                    class="rounded img-fluid lazyload"
+                    class="rounded img-fluid"
                     {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
                     width="{$product.default_image.bySize.large_default.width}"
                     height="{$product.default_image.bySize.large_default.height}"
@@ -66,13 +65,16 @@
             </div>
           {/block}
         </div>
-        <div class="col-lg-7 col-md-6">
-          {block name='product_prices'}
-            {include file='catalog/_partials/product-prices.tpl'}
-          {/block}
+        <div class="col-lg-7 col-md-6 quickview__right-panel">
+        <h2 class="modal-product-title">{$product.name}</h2>
           {block name='product_description_short'}
             <div id="product-description-short">{$product.description_short nofilter}</div>
           {/block}
+
+          {block name='product_prices'}
+            {include file='catalog/_partials/product-prices.tpl'}
+          {/block}
+          
           {block name='product_buy'}
             <div class="product-actions js-product-actions">
               <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
@@ -87,6 +89,21 @@
                 {block name='product_add_to_cart'}
                   {include file='catalog/_partials/product-add-to-cart.tpl'}
                 {/block}
+
+                <div class="modal-accordion" id="modalAccordionParent">
+                  <div class="modal-accordion__item">
+                    <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
+                      {if $pslanguage == 'pl'}
+                          OPIS     
+                      {else if $pslanguage == 'en'}
+                          DESCRIPTION
+                      {/if}
+                    </div>
+                    <div class="modal-accordion__body collapse show" id="modalAccordionContent1" aria-labelledby="modalAccordionHeader1" data-parent="#modalAccordionParent">
+                      <p>{$product.description_short nofilter}</p>
+                    </div>
+                  </div>
+                </div>
 
                 {* Input to refresh product HTML removed, block kept for compatibility with themes *}
                 {block name='product_refresh'}{/block}
