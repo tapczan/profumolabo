@@ -3,29 +3,26 @@
   margin-top: auto;
 }
 
-
-.footer-paralax {
-  padding-top: map-get($spacers, 5);
-  background-color: #fff;
+.footer-paralax-wrapper {
   position: relative;
-  z-index: 2;
-  margin-bottom: 1133px;
-  box-shadow: 3px 2px 2px 0px rgba(51,51,51,0.5);
+  z-index: 99;
+  background: #fff;
 }
+
+.paralax-placeholder {
+  z-index: -1;
+  position: relative;
+}
+
 .footer-container {
   padding-top: 126px;
   padding-bottom: map-get($spacers, 2);
   background: #000;
 
-  &.paralax {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 100%;  
-    z-index: -99;
-    padding: 0;
-  }
-
+  position: fixed;
+  bottom: 0;
+  z-index: -2;
+  width: 100%;
   @include media-breakpoint-down(sm) {
     padding-top: 188px;
   }

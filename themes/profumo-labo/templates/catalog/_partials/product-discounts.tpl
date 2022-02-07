@@ -28,9 +28,9 @@
     <span class="product-stock-info">
       {foreach from=$product.quantity_discounts item='quantity_discount' name='quantity_discounts'}
           {if $pslanguage == 'pl'}
-            Ostatnie <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> sztuk w tej cenie    
+            Kup <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> sztuk po obniżonej cenie  
           {else if $pslanguage == 'en'}
-            Last <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> pieces for this price
+            Buy <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> pieces for a discounted price
           {/if}
       {/foreach}
     </span>

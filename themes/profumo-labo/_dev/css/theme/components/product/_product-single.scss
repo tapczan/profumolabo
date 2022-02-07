@@ -75,6 +75,21 @@
                             display: none;
                         }
 
+                        &:hover {
+                            .quick-view{
+                                display: flex;
+                                justify-content: center;
+                                width: 100%;
+                                background: #fff;
+                                bottom: 0;
+                                border: 1px solid #f4f4f4;
+                                border-top: none;
+                                border-bottom-left-radius: 5px;
+                                align-items: center;
+                                border-bottom-right-radius: 5px;
+                            }
+                        }
+
                         .comments_note{
                             width: 100%;
 
@@ -347,7 +362,7 @@
                 margin: 0 0 10px;
                 font-size: $font-size-product-lg;
                 position: relative;
-                padding: 0 30px 0 0;
+                padding: 0 40px 0 0;
                 color: $black;
 
                 .wishlist-button-add.wishlist-button-product{
