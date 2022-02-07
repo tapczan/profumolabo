@@ -35,34 +35,30 @@
       class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}"
       data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}"
       >
-      {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
+      <div class="thumbnail-container">
+        {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
-      {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
-      
-      <div class="product-single__info" style="margin-bottom: 10px;">
-          <span class="product-inspired text-center">
-            {$product.reference}
-          </span>
-          <span class="product-brand text-center">
-            {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
-          </span>
+        {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
+        
+        <div class="product-single__info" style="margin-bottom: 10px;">
+            <span class="product-inspired text-center">
+              {$product.reference}
+            </span>
+            <span class="product-brand text-center">
+              {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
+            </span>
+        </div>
+        
+        {if !empty($product.attributes)}
+            {include file='catalog/_partials/miniatures/_partials/product-combination-prices.tpl'}
+        {else}
+            {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
+        {/if}
+
+        {block name='product_form'}
+          {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
+        {/block}
       </div>
-      {if !empty($product.attributes)}
-          {include file='catalog/_partials/miniatures/_partials/product-combination-prices.tpl'}
-      {else}
-          {include file='catalog/_partials/miniatures/_partials/product-prices.tpl'}
-      {/if}
-
-{*      <div class="text-center">*}
-{*      <span style="font-size: 12px;color:#bbb">*}
-{*        <p class="product-unit-price">{l s='%unit_price%' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>*}
-{*      </span>*}
-{*      </div>*}
-
-      {block name='product_form'}
-        {include file='catalog/_partials/miniatures/_partials/product-form.tpl'}
-      {/block}
-
     </article>
   </div>
 {/block}
