@@ -41,35 +41,23 @@
      </div>
      <div class="modal-body">
       <div class="row">
-        <div class="col-lg-5 col-md-6 d-none d-md-block">
+        <div class="col-lg-6 col-md-6 d-none d-md-block">
           {block name='product_cover_thumbnails'}
-            <div class="card">
-              <div class="card-body">
-                {if $product.default_image}
-                  <img
-                    class="rounded img-fluid"
-                    {generateImagesSources image=$product.default_image size='large_default' lazyload=false}
-                    width="{$product.default_image.bySize.large_default.width}"
-                    height="{$product.default_image.bySize.large_default.height}"
-                    {if !empty($product.default_image.legend)}
-                      alt="{$product.default_image.legend}"
-                      title="{$product.default_image.legend}"
-                    {else}
-                      alt="{$product.name}"
-                    {/if}
-                    loading="lazy">
-                {else}
-                  <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
-                {/if}
-              </div>
-            </div>
+            {include file='catalog/_partials/product-cover-thumbnails.tpl'}
           {/block}
         </div>
-        <div class="col-lg-7 col-md-6 quickview__right-panel">
-        <h2 class="modal-product-title">{$product.name}</h2>
-          {block name='product_description_short'}
-            <div id="product-description-short">{$product.description_short nofilter}</div>
-          {/block}
+        <div class="col-lg-6 col-md-6 quickview__right-panel">
+          <h2 class="modal-product-title">{$product.name}</h2>
+          <div class="product-reference">
+            <span class="product-inspired">
+              {$product.reference}
+            </span>
+            <span class="product-brand">
+            {if isset($product_manufacturer->id)}
+              {$product_manufacturer->name}
+            {/if}
+            </span>
+          </div>
 
           {block name='product_prices'}
             {include file='catalog/_partials/product-prices.tpl'}
@@ -89,6 +77,13 @@
                 {block name='product_add_to_cart'}
                   {include file='catalog/_partials/product-add-to-cart.tpl'}
                 {/block}
+
+                <div class="product-sku">
+                  <p id="product_ean13"{if empty($product->ean13) || !$product->ean13} style="display: none;"{/if}>
+                    <label>{l s='Ean13:'} </label>
+                    <span {if !empty($product->ean13) && $product->ean13} content="{$product->ean13}"{/if}>{$product->ean13|escape:'html':'UTF-8'}</span>
+                  </p>
+                </div>
 
                 <div class="modal-accordion" id="modalAccordionParent">
                   <div class="modal-accordion__item">
