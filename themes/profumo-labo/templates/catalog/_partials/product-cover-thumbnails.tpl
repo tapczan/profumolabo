@@ -28,7 +28,9 @@
     {if $product.images}
       {foreach from=$product.images item=image}
         <div class="product-img">
-          {include file="module:blockwishlist/views/templates/hook/product/add-button.tpl"}
+          <div class="js-product-add-to-cart">
+            {hook h='displayProductActions'}
+          </div>
           <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
             <img 
               src="{$image.bySize.medium_default.url}" 

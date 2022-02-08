@@ -12,19 +12,10 @@
     {block name='page_header_container'}
         {block name='page_header'}
             <h1 class="product-title">
-            <a href="{$product.url|escape:'htmlall':'UTF-8'}">{$product.name|escape:'htmlall':'UTF-8'}</a>
-            
-            <span
-            class="wishlist-button"
-            data-url="{$url}"
-            data-product-id="{$product.id}"
-            data-product-attribute-id="{$product.id_product_attribute}"
-            data-is-logged="{$customer.is_logged}"
-            data-list-id="1"
-            data-checked="true"
-            data-is-product="true"
-            ></span>
-
+                <a href="{$product.url|escape:'htmlall':'UTF-8'}">{$product.name|escape:'htmlall':'UTF-8'}</a>
+                <div class="js-product-add-to-cart">
+                    {hook h='displayProductActions' product=$product}
+                </div>
             </h1>
         {/block}
     {/block}
