@@ -22,13 +22,69 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+{block name='header_top'}
+<div class="header{if $logged} header--loggedin{else} header--notloggedin{/if}">
+  <div class="header__inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 d-md-flex align-items-center">
+          <div class="header__inner-l">
+            {widget name='ps_languageselector'}
+            {widget name='is_searchbar'}
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+          <a href="{$urls.pages.index}">
+            <img class="logo img-fluid" width="272" height="21" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+          </a>
+        </div>
+        <div class="col-md-4 d-md-flex align-items-center justify-content-end">
+          <div class="header__inner-r">
+            {widget name='ps_customersignin'} 
+            <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
+            {widget name='is_shoppingcart'}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      
+  <div class="header__nav">
+    <div class="container">
+      <div class="row">
+        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-7 col-9 header__nav-left">
+          <a href="{$urls.pages.index}">
+            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+          </a>
+        </div>
+        <div class="{if $logged}col-md-8{else}col-md-6{/if} col-sm-1 col-1 header__nav-mid">
+          <div class="header__nav-search-mobile jsMobileSearch">
+            {widget name='is_searchbar'}
+          </div>
+          {hook h='displayMegaMenu'}
+        </div>
+        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-2 header__nav-right">
+          {widget name='is_searchbar'}
+          {widget name='ps_customersignin'}
+          <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
+          {widget name='is_shoppingcart'}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}
+
+
+
+{* Original
 {block name='header_banner'}
   <div class="header-banner">
     {hook h='displayBanner'}
   </div>
 {/block}
 
-{*{block name='header_nav'}
+{block name='header_nav'}
   <nav class="header-nav border-bottom bg-light mb-3 py-1 d-none d-md-block">
     <div class="container">
       <div class="row align-items-center">
@@ -37,9 +93,9 @@
       </div>
     </div>
   </nav>
-{/block}*}
+{/block} 
 
-{*{block name='header_top'}
+{block name='header_top'}
   <div class="header-top">
     <div class="container">
 
@@ -76,68 +132,6 @@
 
     </div>
   </div>
-
-  
   {hook h='displayNavFullWidth'}
-{/block}*}
-
-{block name='header_top'}
-<div class="header{if $logged} header--loggedin{else} header--notloggedin{/if}">
-  <div class="header__inner">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 d-md-flex align-items-center">
-          <div class="header__inner-l">
-            {widget name='ps_languageselector'}
-            {widget name='is_searchbar'}
-          </div>
-        </div>
-        <div class="col-md-4 text-center">
-          <a href="{$urls.pages.index}">
-            <img class="logo img-fluid" width="272" height="21" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
-          </a>
-        </div>
-        <div class="col-md-4 d-md-flex align-items-center justify-content-end">
-          <div class="header__inner-r">
-            {widget name='ps_customersignin'} 
-            <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
-            {widget name='is_shoppingcart'}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      
-  <div class="header__nav">
-    <div class="container">
-      <div class="row">
-        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-7 col-6 header__nav-left">
-          <a href="{$urls.pages.index}">
-            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
-          </a>
-        </div>
-        <div class="{if $logged}col-md-8{else}col-md-6{/if} col-sm-1 col-2 header__nav-mid">
-          <div class="header__nav-search-mobile jsMobileSearch">
-            <form class="search-form js-search-form" data-search-controller-url="{$ajax_search_url}" method="get" action="{$search_controller_url}">
-              <div class="search-form__form-group">
-                <input type="hidden" name="controller" value="search">
-                <input class="js-search-input search-form__input form-control" placeholder="{l s='Szukaj' d='Shop.Istheme'}" type="text" name="s" value="{$search_string}" autocomplete="off">
-                <button type="submit" class="search-form__btn btn">
-                  <img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-mobile-icon.svg">
-                </button>
-              </div>
-            </form>
-          </div>
-          {hook h='displayMegaMenu'}
-        </div>
-        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-4 header__nav-right">
-          {widget name='is_searchbar'}
-          {widget name='ps_customersignin'}
-          <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
-          {widget name='is_shoppingcart'}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 {/block}
+*}
