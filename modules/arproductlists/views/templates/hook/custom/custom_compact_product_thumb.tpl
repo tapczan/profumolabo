@@ -3,16 +3,9 @@
     {if $product.images}
       {foreach from=$product.images item=image}
         <div class="product-img">
-          <span
-            class="wishlist-button product-wishlist--mobile"
-            data-url="{$url}"
-            data-product-id="{$product.id}"
-            data-product-attribute-id="{$product.id_product_attribute}"
-            data-is-logged="{$customer.is_logged}"
-            data-list-id="1"
-            data-checked="true"
-            data-is-product="true"
-          ></span>
+          <div class="js-product-add-to-cart">
+            {hook h='displayProductActions'}
+          </div>
 
           <a href="{$image.bySize.large_default.url}" data-fancybox="blockfeaturedproduct-featured-img" class="product-img__url">
             <img 

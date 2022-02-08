@@ -499,6 +499,10 @@
             &-quantity{
                 width: 100%;
                 display: block !important;
+
+                .wishlist-button-add.wishlist-button-product{
+                    display: none;
+                }
             }
 
             &-add-to-cart{

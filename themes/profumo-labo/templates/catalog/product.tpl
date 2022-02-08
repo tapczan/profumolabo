@@ -72,7 +72,9 @@
                 {block name='page_header'}
                   <h1 class="product-title">
                     {block name='page_title'}{$product.name}{/block}
-                    {include file="module:blockwishlist/views/templates/hook/product/add-button.tpl"}
+                    <div class="js-product-add-to-cart">
+                      {hook h='displayProductActions'}
+                    </div>
                   </h1>
                 {/block}
               {/block}
