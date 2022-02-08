@@ -49,7 +49,7 @@
       </header>
  
       {if $page.page_name == 'index'}
-        <div class="row mx-0 sticky-menu-correction">
+        <div class="row mx-0 sticky-menu-correction homepage-slider-wrapper">
           <div style="width:100%; max-width: 1920px; margin: 0 auto;">
            {widget name='is_imageslider'}
           </div>
