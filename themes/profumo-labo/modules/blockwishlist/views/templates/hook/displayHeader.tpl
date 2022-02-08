@@ -16,10 +16,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  * International Registered Trademark & Property of PrestaShop SA
  *}
-
-{*
-
-{if $context === "product"}
+ {if $context === "product"}
   {include file="module:blockwishlist/views/templates/components/modals/add-to-wishlist.tpl" url=$url addUrl=$addUrl newWishlistCTA=$newWishlistCTA}
   {include file="module:blockwishlist/views/templates/components/modals/create.tpl" url=$createUrl}
   {include file="module:blockwishlist/views/templates/components/modals/login.tpl"}
@@ -27,13 +24,9 @@
 {/if}
 
 {if $context === "index" || $context === "category" || $context === "blockwishlist" || $context === 'search'}
-
-asdasd
   {include file="module:blockwishlist/views/templates/components/modals/add-to-wishlist.tpl" url=$url addUrl=$addUrl newWishlistCTA=$newWishlistCTA}
   {include file="module:blockwishlist/views/templates/components/modals/create.tpl" url=$createUrl}
   {include file="module:blockwishlist/views/templates/components/modals/delete.tpl" productUrl=$deleteProductUrl}
   {include file="module:blockwishlist/views/templates/components/modals/login.tpl"}
   {include file="module:blockwishlist/views/templates/components/toast.tpl"}
 {/if}
-
-*}
