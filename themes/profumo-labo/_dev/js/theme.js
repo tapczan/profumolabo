@@ -301,7 +301,7 @@ $(document).ready(() => {
   const silderSixOnDesktop = $('#arpl-section-8-16-carousel, #arpl-section-1-15-carousel');
 
   sliderOverrideList.slick({
-    infinite: true,
+    infinite: false,
     slidesToShow: 4,
     slidesToScroll: 1,
     dots: false,
@@ -317,7 +317,7 @@ $(document).ready(() => {
   });
 
   silderSixOnDesktop.slick({
-    infinite: true,
+    infinite: false,
     slidesToShow: 6,
     slidesToScroll: 1,
     dots: false,
@@ -343,7 +343,7 @@ $(document).ready(() => {
       })
 
       if(!$(`${carouselSelector} .bestseller-see-more__link`).length) {
-        $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">${showMoreText}</a></h3></div>`);
+        $(carouselSelector).slick('slickAdd',`<div><h3><a class="bestseller-see-more__link" href="${link}">${showMoreText}</a></h3></div>`);
       }
     }
   }
@@ -372,10 +372,22 @@ $(document).ready(() => {
         }
       }
     });
-    seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5, '#arpl-section-5-7')
-    seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5, '#arpl-section-5-8')
+    if ($(window).width() < 991) {
+      seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5, '#arpl-section-5-7')
+      seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5, '#arpl-section-5-8')
+      seeMoreBestsellers('#arpl-section-1-15-carousel', '#arpl-section-1-15-carousel .slick-slide', 6, '#arpl-section-1-15')
+      seeMoreBestsellers('#arpl-section-8-16-carousel', '#arpl-section-8-16-carousel .slick-slide', 6, '#arpl-section-8-16')
+      seeMoreBestsellers('#arpl-section-13-40-carousel', '#arpl-section-13-40-carousel .slick-slide', 5, '#arpl-section-13-40')
+      seeMoreBestsellers('#arpl-section-13-26-carousel', '#arpl-section-13-26-carousel .slick-slide', 5, '#arpl-section-13-26')
+      seeMoreBestsellers('#arpl-section-12-31-carousel', '#arpl-section-12-31-carousel .slick-slide', 5, '#arpl-section-12-31')
+      seeMoreBestsellers('#arpl-section-13-27-carousel', '#arpl-section-13-27-carousel .slick-slide', 6, '#arpl-section-13-27')
+      seeMoreBestsellers('#arpl-section-13-28-carousel', '#arpl-section-13-28-carousel .slick-slide', 5, '#arpl-section-13-28')
+      seeMoreBestsellers('#arpl-section-13-25-carousel', '#arpl-section-13-25-carousel .slick-slide', 5, '#arpl-section-13-25')
+      seeMoreBestsellers('#arpl-section-12-27-carousel', '#arpl-section-12-27-carousel .slick-slide', 5, '#arpl-section-12-27')
+    }
   });
   
+                                
     
   $('.js-filtermobile-slider').on('click', function(){
     $(this).toggleClass('istoggled');

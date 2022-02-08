@@ -32,7 +32,7 @@
     {block name='quick_view'}
       <a class="quick-view product-miniature__quick-view" href="#" data-link-action="quickview">
         <i class="material-icons product-miniature__quick-view-icon">visibility</i>
-        {l s='Quick view'}
+        {l s='Quick view' d='Shop.Istheme'}
       </a>
     {/block}
 
