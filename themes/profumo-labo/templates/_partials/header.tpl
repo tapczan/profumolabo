@@ -52,18 +52,18 @@
   <div class="header__nav">
     <div class="container">
       <div class="row">
-        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-7 col-9 header__nav-left">
+        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-7 col-6 header__nav-left">
           <a href="{$urls.pages.index}">
             <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
           </a>
         </div>
-        <div class="{if $logged}col-md-8{else}col-md-6{/if} col-sm-1 col-1 header__nav-mid">
+        <div class="{if $logged}col-md-8{else}col-md-6{/if} col-sm-1 col-2 header__nav-mid">
           <div class="header__nav-search-mobile jsMobileSearch">
             {widget name='is_searchbar'}
           </div>
           {hook h='displayMegaMenu'}
         </div>
-        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-2 header__nav-right">
+        <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-4 header__nav-right">
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
           <a href="{$link->getPageLink('my-account', true)|escape:'html'}"> <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
