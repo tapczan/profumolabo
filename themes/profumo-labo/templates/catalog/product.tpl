@@ -37,55 +37,48 @@
   {/if}
 {/block}
 
+
 {block name='content'}
 
   <section id="main">
-    <div class="product-single">
+     <div class="product-single">
       <div class="container">
         <div class="row">
+
+          <!-- Product Thumbnails -->
           <div class="col-md-7 col-lg-8">
-            {block name='page_content_container'}
-              {block name='page_content'}
-                {block name='product_cover_thumbnails'}
-                  {include file='catalog/_partials/product-cover-thumbnails.tpl'}
+              {block name='page_content_container'}
+                {block name='page_content'}
+                  {block name='product_cover_thumbnails'}
+                    {include file='catalog/_partials/product-cover-thumbnails.tpl'}
+                  {/block}
                 {/block}
               {/block}
-            {/block}
           </div>
+          <!-- End Product Thumbnails -->
+
+
           <div class="col-md-5 col-lg-4">
             <div class="product-single__info">
-             
+
+              <!-- Ratings -->
               <div class="product-rating">
                 {hook h='displayProductListReviews' product=$product }
-              </div>
-
+              </div> 
+              <!-- End ratings -->
+ 
+              <!-- Product Title -->
               {block name='page_header_container'}
                 {block name='page_header'}
                   <h1 class="product-title">
                     {block name='page_title'}{$product.name}{/block}
-
-                    {*{hook h='displayProductActions' product=$product customer=$customer url=$url}*}
-
-                    <span
-                    class="wishlist-button"
-                    data-url="{$url}"
-                    data-product-id="{$product.id}"
-                    data-product-attribute-id="{$product.id_product_attribute}"
-                    data-is-logged="{$customer.is_logged}"
-                    data-list-id="1"
-                    data-checked="true"
-                    data-is-product="true"
-                    ></span>
-                    
-                    {*
-                    <a class="product-wishlist" href="/">
-                      <img src="{$urls.img_url}heart-icon.svg">
-                    </a>
-                    *}
+                    {include file="module:blockwishlist/views/templates/hook/product/add-button.tpl"}
                   </h1>
                 {/block}
               {/block}
+              <!-- End Product Title -->
 
+              <!-- Product References and Manufacturer -->
               <div class="product-reference">
                 <span class="product-inspired">
                   {$product.reference}
@@ -96,29 +89,29 @@
                 {/if}
                 </span>
               </div>
-              
-              {block name='product_prices'}
-                <div class="product-price">
-                  {include file='catalog/_partials/product-prices.tpl'}
-                </div>
-              {/block}
+               <!-- End Product References and Manufacturer -->
 
+              <!-- Product Prices -->
+              {block name='product_prices'}
+                {include file='catalog/_partials/product-prices.tpl'}
+              {/block}
+              <!-- End Product Prices -->
+
+              <!-- Product Discounts -->
               {block name='product_discounts'}
                 <span class="product-stock-info">
                   {include file='catalog/_partials/product-discounts.tpl'}
                 </span>
               {/block}
-              
-              {$product.is_customizable}
+              <!-- End Product Discounts -->
+
               {if $product.is_customizable && count($product.customizations.fields)}
                 {block name='product_customization'}
-                  <div class="product-variation">
-                    {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
-                  </div>
+                  {include file="catalog/_partials/product-customization.tpl" customizations=$product.customizations}
                 {/block}
               {/if}
 
-              <div class="product-actions js-product-actions">
+          <div class="product-actions js-product-actions">
                 {block name='product_buy'}
                   <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
                     <input type="hidden" name="token" value="{$static_token}">
@@ -143,12 +136,7 @@
                       </section>
                       {/if}
                     {/block}
-  
-                    {*
-                    {block name='product_discounts'}
-                      {include file='catalog/_partials/product-discounts.tpl'}
-                    {/block}*}
-  
+   
                     {block name='product_add_to_cart'}
                       {include file='catalog/_partials/product-add-to-cart.tpl'}
                     {/block}
@@ -179,77 +167,35 @@
                     <p>{$product.description_short nofilter}</p>
                   </div>
                 </div>
-                {*
-                <div class="product-accordion__item">
-                  <div class="product-accordion__header" id="productAccordionHeader2" data-toggle="collapse" data-target="#productAccordionContent2" aria-expanded="false" aria-controls="productAccordionContent2">
-                    DODAJ AKCESORIA
-                  </div>
-                  <div class="product-accordion__body collapse" id="productAccordionContent2" aria-labelledby="productAccordionHeader2" data-parent="#productSingleAccordion">
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                  </div>
-                </div>
-                
-                <div class="product-accordion__item">
-                  <div class="product-accordion__header" id="productAccordionHeader3" data-toggle="collapse" data-target="#productAccordionContent3" aria-expanded="false" aria-controls="productAccordionContent3">
-                    NUTY ZAPACHOWE I SKŁAD
-                  </div>
-                  <div class="product-accordion__body collapse" id="productAccordionContent3" aria-labelledby="productAccordionHeader3" data-parent="#productSingleAccordion">
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                  </div>
-                </div>
-                
-                <div class="product-accordion__item">
-                  <div class="product-accordion__header" id="productAccordionHeader4" data-toggle="collapse" data-target="#productAccordionContent4" aria-expanded="false" aria-controls="productAccordionContent4">
-                    CECHY CHARAKTERYSTYCZNE
-                  </div>
-                  <div class="product-accordion__body collapse" id="productAccordionContent4" aria-labelledby="productAccordionHeader4" data-parent="#productSingleAccordion">
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                  </div>
-                </div>
-                
-                <div class="product-accordion__item">
-                  <div class="product-accordion__header" id="productAccordionHeader5" data-toggle="collapse" data-target="#productAccordionContent5" aria-expanded="false" aria-controls="productAccordionContent5">
-                    INFORMACJE DODATKOWE
-                  </div>
-                  <div class="product-accordion__body collapse" id="productAccordionContent5" aria-labelledby="productAccordionHeader5" data-parent="#productSingleAccordion">
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                  </div>
-                </div>
-                
-                <div class="product-accordion__item">
-                  <div class="product-accordion__header" id="productAccordionHeader6" data-toggle="collapse" data-target="#productAccordionContent6" aria-expanded="false" aria-controls="productAccordionContent6">
-                    DOSTAWA I ZWROT
-                  </div>
-                  <div class="product-accordion__body collapse" id="productAccordionContent6" aria-labelledby="productAccordionHeader6" data-parent="#productSingleAccordion">
-                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>
-                  </div>
-                </div>
-                *}
-
-              </div>
-
-              <div class="product-social">
+           
+        </div>
+        <div class="product-social">
                 {block name='product_additional_info'}
                   {include file='catalog/_partials/product-additional-info.tpl'}
                 {/block}
               </div>
-            </div>
+                </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  {block name='product_footer'}
+   {block name='product_footer'}
     {hook h='displayFooterProduct' product=$product category=$category}
   {/block}
 
   {block name='product_single_after_comment'}
     {hook h='arProductPageHook1' product=$product category=$category}
   {/block}
-  
 
-  {*
+
+{/block}
+
+
+
+{* Original
+
+{block name='content'}
   <section id="main">
     <div class="row product-container js-product-container">
         <div class="col-md-7 mb-4">
@@ -332,6 +278,6 @@
       </footer>
     {/block}
   </section>
-  *}
-
 {/block}
+*}
+

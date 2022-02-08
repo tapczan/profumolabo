@@ -28,17 +28,7 @@
     {if $product.images}
       {foreach from=$product.images item=image}
         <div class="product-img">
-          <span
-          class="wishlist-button"
-          data-url="{$url}"
-          data-product-id="{$product.id}"
-          data-product-attribute-id="{$product.id_product_attribute}"
-          data-is-logged="{$customer.is_logged}"
-          data-list-id="1"
-          data-checked="true"
-          data-is-product="true"
-          ></span>
-
+          {include file="module:blockwishlist/views/templates/hook/product/add-button.tpl"}
           <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
             <img 
               src="{$image.bySize.medium_default.url}" 
