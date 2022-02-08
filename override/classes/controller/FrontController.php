@@ -298,7 +298,7 @@ class FrontControllerCore extends Controller
         global $useSSL, $cookie, $smarty, $cart, $iso, $defaultCountry, $protocol_link, $protocol_content, $link, $css_files, $js_files, $currency;
 
         if( isset($cookie->logged ) && $cookie->logged ) {
-            $this->is_logged_in = true;
+            self::$is_logged_in = true;
         }
         
         if (self::$initialized) {
@@ -544,10 +544,14 @@ class FrontControllerCore extends Controller
             'static_token' => Tools::getToken(false),
             'token' => Tools::getToken(),
             'debug' => _PS_MODE_DEV_,
-            'logged' => $this->is_logged_in,
-            'pslanguage' => $this->context->language->iso_code
+            'logged' => self::$is_logged_in,
+            'pslanguage' => $this->context->language->iso_code,
         ];
 
+        // echo "<pre>";
+        // var_dump();
+        // exit;
+     
         $modulesVariables = Hook::exec(
             'actionFrontControllerSetVariables',
             [
