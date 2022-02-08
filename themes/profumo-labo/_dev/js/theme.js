@@ -163,11 +163,11 @@ $(document).ready(() => {
       $(this).on("mouseover", function() {
         oldSrc = $(this).find('.rollover-images').attr('src');
         $(this).find('.rollover-images').attr('src', newSrc).stop(true,true);
-        $(this).find('.rollover-images').css('background', '#f4f4f4');
+        $(this).css('background', '#f4f4f4');
       }), 
       $(this).on('mouseout', function() {
         $(this).find('.rollover-images').attr('src', oldSrc).stop(true,true);
-        $(this).find('.rollover-images').css('background', 'none');
+        $(this).css('background', 'none');
       });
     });
   }
@@ -331,6 +331,22 @@ $(document).ready(() => {
       }
     ]
   });
+  function seeMoreBestsellers(carouselSelector, slideSelector, max, wrapperSelector) {
+    if($(carouselSelector).hasClass('slick-initialized')){
+      var link = $(`${wrapperSelector} .arpl-more-link`).attr('href');
+      var showMoreText = $('#hook_footer_before_wrapper').data('show-translation');
+  
+      $(slideSelector).each(function(index, value) {
+        if(index > max) {
+          $(carouselSelector).slick('slickRemove', $(this).data('slick-index') - 1);
+        }
+      })
+
+      if(!$(`${carouselSelector} .bestseller-see-more__link`).length) {
+        $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">${showMoreText}</a></h3></div>`);
+      }
+    }
+  }
 
   /* Slick needs no get Reinitialized on window Resize after it was destroyed */
   $(window).on('load resize orientationchange', function() {
@@ -356,26 +372,10 @@ $(document).ready(() => {
         }
       }
     });
-    function seeMoreBestsellers(carouselSelector, slideSelector, max, link) {
-      if($(carouselSelector).hasClass('slick-initialized')){
-        var link = "#";
-        var showMoreText = $('#hook_footer_before_wrapper').data('show-translation');
-    
-        $(slideSelector).each(function(index, value) {
-          if(index > max) {
-            $(carouselSelector).slick('slickRemove', $(this).data('slick-index') - 1);
-          }
-        })
-
-        if(!$('.bestseller-see-more__link').length) {
-          $(carouselSelector).slick('slickAdd',`<div><h3 style="position: absolute; top: calc(50% - 28px);"><a class="bestseller-see-more__link" href="${link}">${showMoreText}</a></h3></div>`);
-        }
-      }
-    }
-    seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5)
-    seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5)
-    rolloverImages()
+    seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5, '#arpl-section-5-7')
+    seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5, '#arpl-section-5-8')
   });
+  
     
   $('.js-filtermobile-slider').on('click', function(){
     $(this).toggleClass('istoggled');
