@@ -452,9 +452,35 @@ $(document).ready(() => {
   });
 
   var targetElement = document.getElementsByClassName('js-comment-alert')[0];
+
   if( targetElement ){
     observer.observe(targetElement, { attributes : true, attributeFilter : ['style'] });
   }
+
+  /*
+  * Reload page on success wishlist
+  */
+
+  var observerWishlist = new MutationObserver((mutations) => { 
+      mutations.forEach((mutation) => {
+        const el = mutation.target;
+        if ((!mutation.oldValue || !mutation.oldValue.match(/\bisActive\b/)) 
+          && mutation.target.classList 
+          && mutation.target.classList.contains('isActive')){
+            setTimeout(() => {
+              location.reload(true);
+            }, 500);
+        }
+      });
+  });
+
+  var targetElementWishlist = document.getElementsByClassName('wishlist-toast')[0];
+
+  observerWishlist.observe(targetElementWishlist, { 
+    attributes: true, 
+    attributeOldValue: true, 
+    attributeFilter: ['class'] 
+  });
 });
 
 function accLinksTriggerActive() {
