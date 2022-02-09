@@ -106,7 +106,8 @@
 .wishlist-create,
 .wishlist-login,
 .wishlist-delete,
-.wishlist-share{
+.wishlist-share,
+.wishlist-rename{
     .modal{
         &-body{
             padding: 15px !important;
@@ -150,7 +151,8 @@
 .wishlist-create,
 .wishlist-delete,
 .wishlist-login,
-.wishlist-share{
+.wishlist-share,
+.wishlist-rename{
     position: fixed;
     z-index: 3000;
 
@@ -178,4 +180,19 @@
 
 .wishlist-add-to-new i{
     color: $black !important;
+}
+
+.wishlist-list-item-link:hover{
+    text-decoration: none;
+    color: $black;
+}
+
+.wishlist-list-item:hover .wishlist-list-item-title{
+    color: $black !important;
+    text-decoration: underline;
+}
+
+.wishlist-list-item-right .dropdown-menu{
+    position: absolute;
+    z-index: 10;
 }

@@ -12,13 +12,7 @@
         margin-bottom: 0 !important;
     }
 
-    #arpl-section-13-40-carousel,
-    #arpl-section-13-25-carousel,
-    #arpl-section-13-26-carousel,
-    #arpl-section-12-27-carousel,
-    #arpl-section-13-27-carousel,
-    #arpl-section-13-28-carousel,
-    #arpl-section-12-31-carousel{
+    .arpl-no-carousel-products{
         width: 100%;
 
         .slick{
@@ -675,13 +669,7 @@
             padding: 20px 0;
         }
         
-        #arpl-section-13-40-carousel,
-        #arpl-section-13-25-carousel,
-        #arpl-section-13-26-carousel,
-        #arpl-section-12-27-carousel,
-        #arpl-section-13-27-carousel,
-        #arpl-section-13-28-carousel,
-        #arpl-section-12-31-carousel{
+        .arpl-no-carousel-products{
             .slick{
                 &-arrow{
                     width: 25px;
@@ -903,13 +891,7 @@
 
 @media (max-width: 380px){
     .page-product{
-        #arpl-section-13-40-carousel,
-        #arpl-section-13-25-carousel,
-        #arpl-section-13-26-carousel,
-        #arpl-section-12-27-carousel,
-        #arpl-section-13-27-carousel,
-        #arpl-section-13-28-carousel,
-        #arpl-section-12-31-carousel{
+        .arpl-no-carousel-products{
             .slick{
                 &-arrow{
                     top: -45%;
