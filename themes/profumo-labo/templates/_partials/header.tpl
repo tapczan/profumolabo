@@ -40,8 +40,12 @@
         </div>
         <div class="col-md-4 d-md-flex align-items-center justify-content-end">
           <div class="header__inner-r">
-            {widget name='ps_customersignin'} 
-            <a href="{$wishlist_url}"><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
+            {widget name='ps_customersignin'}
+            <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
+              {if $wishlist_count > 0}
+                <span class="header-top__badge header__inner-cart-badge">{$wishlist_count}</span> 
+              {/if}
+            </a> 
             {widget name='is_shoppingcart'}
           </div>
         </div>
@@ -66,7 +70,11 @@
         <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-4 header__nav-right">
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
-          <a href="{$wishlist_url}"><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> </a>
+          <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
+            {if $wishlist_count > 0}
+              <span class="header-top__badge header__inner-cart-badge">{$wishlist_count}</span> 
+            {/if}
+          </a> 
           {widget name='is_shoppingcart'}
         </div>
       </div>
