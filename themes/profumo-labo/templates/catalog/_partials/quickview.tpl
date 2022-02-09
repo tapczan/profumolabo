@@ -41,12 +41,15 @@
      </div>
      <div class="modal-body">
       <div class="row">
-        <div class="col-lg-6 col-md-6 d-none d-md-block">
+        <div class="col-lg-6 col-md-6 col-sm-12">
           {block name='product_cover_thumbnails'}
             {include file='catalog/_partials/product-cover-thumbnails.tpl'}
           {/block}
         </div>
-        <div class="col-lg-6 col-md-6 quickview__right-panel">
+        <div class="col-lg-6 col-md-6 col-sm-12 quickview__right-panel">
+          <div class="product-rating">
+            {hook h='displayProductListReviews' product=$product }
+          </div>
           <h2 class="modal-product-title">{$product.name}</h2>
           <div class="product-reference">
             <span class="product-inspired">
