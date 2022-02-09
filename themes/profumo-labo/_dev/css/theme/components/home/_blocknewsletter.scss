@@ -73,6 +73,7 @@
     .custom-control-input {
         box-shadow: none;
         outline: none;
+        z-index: 10;
     }
 
     .custom-control-input:checked ~ .custom-control-label::before {
