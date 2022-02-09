@@ -546,7 +546,8 @@ class FrontControllerCore extends Controller
             'debug' => _PS_MODE_DEV_,
             'logged' => self::$is_logged_in,
             'pslanguage' => $this->context->language->iso_code,
-            'wishlist_url' => Context::getContext()->link->getModuleLink('blockwishlist', 'lists')
+            'wishlist_url' => Context::getContext()->link->getModuleLink('blockwishlist', 'lists'),
+            'wishlist_count' => $this->countWishlist()
         ];
 
         // echo "<pre>";
@@ -2132,5 +2133,16 @@ class FrontControllerCore extends Controller
         }
 
         return Validate::isUrl($data);
+    }
+
+    public function countWishlist() {
+
+        $wishlists = WishList::getAllWishListsByIdCustomer($this->context->customer->id);
+        $count = 0;
+        
+        foreach($wishlists as $wishlist) {
+            $count = $count + (int) $wishlist['nbProducts'];
+        }
+        return $count;
     }
 }
