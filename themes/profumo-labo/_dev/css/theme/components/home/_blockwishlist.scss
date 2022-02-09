@@ -105,7 +105,8 @@
 
 .wishlist-create,
 .wishlist-login,
-.wishlist-delete{
+.wishlist-delete,
+.wishlist-share{
     .modal{
         &-body{
             padding: 15px !important;
@@ -148,7 +149,8 @@
 .wishlist-add-to,
 .wishlist-create,
 .wishlist-delete,
-.wishlist-login{
+.wishlist-login,
+.wishlist-share{
     position: fixed;
     z-index: 3000;
 

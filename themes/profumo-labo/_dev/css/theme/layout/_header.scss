@@ -1113,6 +1113,10 @@
 
     &-cart-wishlist{
       display: none;
+
+      & + .header-top__badge{
+        display: none;
+      }
     }
 
     &-search-icon.header-top__icon{
