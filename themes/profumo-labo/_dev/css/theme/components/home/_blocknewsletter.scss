@@ -16,10 +16,20 @@
         }
     }
 
+    &_alert{
+        border-radius: 0 !important;
+        padding: 5px 15px !important;
+        font-size: 12px;
+    }
+
     .container {
         @include media-breakpoint-up(xl) {
             max-width: 1500px;
         }
+    }
+
+    .input-group-append{
+        margin-left: 0 !important;
     }
 
     .input-group {
