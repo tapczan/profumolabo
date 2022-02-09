@@ -150,7 +150,7 @@
 .wishlist-delete,
 .wishlist-login{
     position: fixed;
-    z-index: 1000;
+    z-index: 3000;
 
     .modal-dialog{
         min-height: auto;
@@ -172,4 +172,8 @@
     border-radius: 0 !important; 
     padding: 5px 15px !important;
     text-transform: uppercase;
+}
+
+.wishlist-add-to-new i{
+    color: $black !important;
 }
