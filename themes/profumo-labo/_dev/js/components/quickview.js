@@ -34,6 +34,15 @@ $(() => {
       $(event.currentTarget).addClass('selected');
       $('.js-qv-product-cover').attr('src', $(event.target).data('image-large-src'));
     });
+    if($('.quickview .product-img').length > 1) {
+      $('.js-product-single-img').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: false,
+      });
+      $(".js-product-single-img").slick("refresh");
+    }
 
     qv.find('#quantity_wanted').TouchSpin({
       verticalupclass: 'material-icons touchspin-up',
