@@ -22,28 +22,31 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="js-product-list-top" class="row products-selection align-items-center mb-4">
-  <div class="col flex-grow-0">
+<div id="js-product-list-top" class="products-selection d-flex align-items-center justify-content-end mb-5">
+  <div class="col flex-grow-0 mr-2">
     {block name='sort_by'}
       {include file='catalog/_partials/sort-orders.tpl' sort_orders=$listing.sort_orders}
     {/block}
   </div>
+  {block name='pagination'}
+    {include file='_partials/pagination.tpl' pagination=$listing.pagination}
+  {/block}
 
-  <div class="col flex-grow-0">
+  {* <div class="col flex-grow-0">
     {block name='sort_by'}
       {include file='catalog/_partials/per-page.tpl'}
     {/block}
-  </div>
+  </div> *}
 
-  <div class="col flex-grow-0 hidden-md-up ml-auto">
+  {* <div class="col flex-grow-0 hidden-md-up ml-auto">
     {if !empty($listing.rendered_facets)}
       <button data-target="#mobile_filters" data-toggle="modal" class="btn btn-secondary">
         {l s='Filter' d='Shop.Theme.Actions'}
       </button>
     {/if}
-  </div>
+  </div> *}
 
-  <div class="col flex-grow-0 d-none d-lg-block ml-auto">
+  {* <div class="col flex-grow-0 d-none d-lg-block ml-auto">
     <ul class="display-toggle d-flex align-items-center mx-n1 m-0">
       <li class="display-toggle__elem px-1">
         <a href="#" data-toggle-listing data-display-type="grid" class="display-toggle__link d-inline-block {if $listingDisplayType == 'grid'}active{/if}">
@@ -56,5 +59,5 @@
         </a>
       </li>
     </ul>
-  </div>
+  </div> *}
 </div>

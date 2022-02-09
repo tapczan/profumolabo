@@ -26,15 +26,35 @@
 
 {block name='pagination_page_list'}
   {if $pagination.should_be_displayed}
-    <nav>
-      <ul class="pagination justify-content-center mt-4 mb-2">
+    <div class="listing-pagination">
+      <span class="listing-pagination__current">{$listing.pagination.current_page}</span>
+      <span>{l s='from' d='Shop.Istheme'}</span>
+      <span class="listing-pagination__total">{$listing.pagination.pages_count}</span>
+        {foreach from=$listing.pagination.pages item="page"}
+          {if $page.type === 'next'}
+            <a rel="next"
+              href="{$page.url}"
+              class="listing-pagination__next next js-search-link">
+              &gt;
+            </a>
+            {elseif $page.type === 'previous'}
+            <a rel="prev"
+              href="{$page.url}"
+              class="listing-pagination__prev previous js-search-link">
+              &lt;
+            </a>
+          {/if}
+        {/foreach}
+      </div>
+    {* <nav class="product-pagination">
+      <ul class="pagination">
         {foreach from=$pagination.pages item="page"}
-          <li  class="page-item{if $page.current} active{/if} {if $page.type === 'spacer'}disabled{/if}">
+          <li  class="pagination-item{if $page.current} active{/if} {if $page.type === 'spacer'}disabled{/if}">
             {if $page.type === 'spacer'}
               <span
                 rel="{if $page.type === 'previous'}prev{elseif $page.type === 'next'}next{else}nofollow{/if}"
                 href="#"
-                class="page-link"
+                class=""
               >
                 &hellip;
               </span>
@@ -42,7 +62,7 @@
               <a
                 rel="{if $page.type === 'previous'}prev{elseif $page.type === 'next'}next{else}nofollow{/if}"
                 href="{$page.url}"
-                class="page-link {['disabled' => !$page.clickable, 'js-search-link' => true]|classnames}"
+                class="pagination-link {['disabled' => !$page.clickable, 'js-search-link' => true]|classnames}"
               >
                 {if $page.type === 'previous'}
                   <span class="material-icons font-reset align-middle">keyboard_arrow_left</span>
@@ -58,6 +78,6 @@
           </li>
         {/foreach}
       </ul>
-    </nav>
+    </nav> *}
   {/if}
 {/block}

@@ -5,6 +5,7 @@
     
     .product-listing{
         position: relative;
+        padding-bottom: 40px; 
     }
 
     &__title{
@@ -75,6 +76,52 @@
     &__main{
         .product{
             &-listing{
+                .nice-select{
+                    @include font-with-line-height($font-size-xs, 14px);
+
+                    background: $white;
+                    border-style: none;
+                    margin: 0 !important;
+                    width: auto !important;
+                    padding: 0 25px 0 0;
+                    height: auto;
+                    position: relative;
+                    overflow: visible;
+                    outline: none;
+                    box-shadow: none !important;
+                    color: $black;
+
+                    &:after{
+                        position: absolute;
+                        content: '';
+                        background: url(~/img/icons/left-arrow.svg);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                        transform: rotate(-90deg);
+                        top: -3px;
+                        right: 0;
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .list{
+                        right: 0;
+                        left: auto;
+                        border-radius: 0;
+
+                        li{
+                            min-height: auto;
+                            padding: 5px 10px;
+                            height: auto;
+                            line-height: 14px;
+                        }
+
+                        li.selected{
+                            font-weight: 500;
+                        }
+                    }
+                }
                 .arpl-header{
                     overflow: visible;
                     text-align: right;
@@ -82,53 +129,6 @@
                     .arpl-sort-container{
                         display: inline-block;
                         vertical-align: middle;
-                    }
-
-                    .nice-select{
-                        @include font-with-line-height($font-size-xs, 14px);
-
-                        background: $white;
-                        border-style: none;
-                        margin: 0 !important;
-                        width: auto !important;
-                        padding: 0 25px 0 0;
-                        height: auto;
-                        position: relative;
-                        overflow: visible;
-                        outline: none;
-                        box-shadow: none !important;
-                        color: $black;
-
-                        &:after{
-                            position: absolute;
-                            content: '';
-                            background: url(~/img/icons/left-arrow.svg);
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            background-size: contain;
-                            transform: rotate(-90deg);
-                            top: -3px;
-                            right: 0;
-                            width: 20px;
-                            height: 20px;
-                        }
-
-                        .list{
-                            right: 0;
-                            left: auto;
-                            border-radius: 0;
-
-                            li{
-                                min-height: auto;
-                                padding: 5px 10px;
-                                height: auto;
-                                line-height: 14px;
-                            }
-
-                            li.selected{
-                                font-weight: 500;
-                            }
-                        }
                     }
                 }
 
