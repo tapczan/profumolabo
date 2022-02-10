@@ -28,9 +28,9 @@
     <span class="product-stock-info">
       {foreach from=$product.quantity_discounts item='quantity_discount' name='quantity_discounts'}
           {if $pslanguage == 'pl'}
-            Kup <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> sztuk po obniżonej cenie  
+            Kup <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> sztuk po obniżonej cenie<br/>
           {else if $pslanguage == 'en'}
-            Buy <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> pieces for a discounted price
+            Buy <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> pieces for a discounted price<br/>
           {/if}
       {/foreach}
     </span>

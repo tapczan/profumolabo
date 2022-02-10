@@ -50,14 +50,17 @@
                     {include file='catalog/_partials/product-prices.tpl'}
                 </div>
                 {/block}
-
+                
                 <span class="product-stock-info">
                     <section class="product-discounts js-product-discounts">
-                        {if $pslanguage == 'pl'}
-                            Kup <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> 5 sztuk po obniżonej cenie  
-                        {else if $pslanguage == 'en'}
-                            Buy <span class="product-stock-info__num"> {$quantity_discount.quantity}</span> 5 pieces for a discounted price
-                        {/if}
+                        {assign var='fromQuantity' value=SpecificPrice::getSpecificPriceByID($product.id)}
+                        {foreach $fromQuantity item='quantity' name='quantity'}
+                            {if $pslanguage == 'pl'}
+                                Kup <span class="product-stock-info__num"> {$quantity.from_quantity}</span> sztuk po obniżonej cenie<br/>
+                            {else if $pslanguage == 'en'}
+                                Buy <span class="product-stock-info__num"> {$quantity.from_quantity}</span> pieces for a discounted price<br/>
+                            {/if}
+                        {/foreach}    
                     </section>
                 </span>
             
