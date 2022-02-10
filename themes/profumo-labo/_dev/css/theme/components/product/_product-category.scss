@@ -2,6 +2,41 @@
     .wishlist-button-add{
         display: none;
     }
+    .subcategory {
+        &-wrapper {
+            &__image {
+                display: block;
+                position: relative;
+                background: url(~/img/circle-bg.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 70%;
+        
+                img{
+                    display: block;
+                    margin: auto;
+                    width: 200px;
+                    height: auto;
+                    opacity: .8;
+                }
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+    
+            &__title {
+                @include font-with-line-height($font-size-xm, 20px);
+                text-align: center;
+                font-family: $font-forum;
+                font-weight: normal;
+                margin: 30px 0 0;
+                color: $black;
+            }
+        }
+        
+    }
     
     .product-listing{
         position: relative;
@@ -33,44 +68,6 @@
         margin: 50px 0;
         padding: 0 0 50px;
         border-bottom: $border-bottom-mobile;
-
-        .arpl-section{
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-      
-        .arpl-category{
-            .arpl-cat-img{
-                display: block;
-                position: relative;
-                background: url(~/img/circle-bg.png);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: 70%;
-        
-                img{
-                    display: block;
-                    margin: auto;
-                    width: 200px;
-                }
-            }
-    
-            .arpl-cat-title{
-                @include font-with-line-height($font-size-xm, 20px);
-                
-                font-family: $font-forum;
-                font-weight: normal;
-                margin: 30px 0 0;
-
-                a{
-                    color: $black;
-                }
-            }
-
-            .arpl-cat-desc{
-                display: none;
-            }
-        }
     }
 
     &__main{

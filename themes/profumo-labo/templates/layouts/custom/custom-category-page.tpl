@@ -11,7 +11,12 @@
         </div>
 
         <div class="product-category__listing">
-          {hook h='arCategoryPageHook1'}
+          {* {hook h='arCategoryPageHook1'} *}
+          {block name='subcategory_list'}
+            {if isset($subcategories) && $subcategories|@count > 0}
+              {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
+            {/if}
+          {/block}
         </div>
       </div>
     </div>
