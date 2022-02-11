@@ -460,7 +460,7 @@ $(document).ready(() => {
   /*
   * Reload page on success wishlist
   */
-
+  var currentWindowURL = window.location.href;
   var observerWishlist = new MutationObserver((mutations) => { 
       mutations.forEach((mutation) => {
         const el = mutation.target;
@@ -468,12 +468,12 @@ $(document).ready(() => {
           && mutation.target.classList 
           && mutation.target.classList.contains('isActive')){
             setTimeout(() => {
-              location.reload(true);
+              $(location).prop('href', currentWindowURL);
             }, 500);
         }
       });
   });
-
+  
   var targetElementWishlist = document.getElementsByClassName('wishlist-toast')[0];
 
   observerWishlist.observe(targetElementWishlist, { 
