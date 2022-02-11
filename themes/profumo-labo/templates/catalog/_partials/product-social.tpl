@@ -22,21 +22,25 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-<div id="js-product-list">
-
-  {include file="catalog/_partials/productlist.tpl" products=$listing.products}
-  <div class="d-flex align-items-center justify-content-end">
-    {block name='product-social'}
-      {include file='catalog/_partials/product-social.tpl'}
-    {/block}
-    {* <div class="hidden-md-up text-xs-right up">
-      <a href="#header" class="btn btn-secondary">
-        {l s='Back to top' d='Shop.Theme.Actions'}
+<ul class="product-social">
+  <li class="product-social__item">
+      <a href="product-social__link">
+          <span class="product-social__icon product-social__icon--facebook"></span>
       </a>
-    </div> *}
-
-    {block name='pagination'}
-      {include file='_partials/pagination.tpl' pagination=$listing.pagination}
-    {/block}
-  </div>
-</div>
+  </li>
+  <li class="product-social__item">
+      <a href="product-social__link">
+          <span class="product-social__icon product-social__icon--whatsapp"></span>
+      </a>
+  </li>
+  <li class="product-social__item">
+      <a href="product-social__link">
+          <span class="product-social__icon product-social__icon--twitter"></span>
+      </a>
+  </li>
+  <li class="product-social__item">
+    <a href="product-social__link">
+        <span class="product-social__icon product-social__icon--instagram"></span>
+    </a>
+  </li>
+</ul>

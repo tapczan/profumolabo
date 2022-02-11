@@ -2,9 +2,48 @@
     .wishlist-button-add{
         display: none;
     }
+    .subcategory {
+        &-wrapper {
+            margin-bottom: 30px;
+            &__image {
+                display: block;
+                position: relative;
+                background: url(~/img/circle-bg.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 70%;
+        
+                img{
+                    display: block;
+                    margin: auto;
+                    height: auto;
+                    opacity: .8;
+                }
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+    
+            &__title {
+                @include font-with-line-height($font-size-xm, 20px);
+                text-align: center;
+                font-family: $font-forum;
+                font-weight: normal;
+                margin: 30px 0 0;
+                color: $black;
+                @include media-breakpoint-down(md) {
+                    @include font-with-line-height($font-size-xs, 14px);
+                }
+            }
+        }
+        
+    }
     
     .product-listing{
         position: relative;
+        padding-bottom: 40px; 
     }
 
     &__title{
@@ -32,49 +71,57 @@
         margin: 50px 0;
         padding: 0 0 50px;
         border-bottom: $border-bottom-mobile;
-
-        .arpl-section{
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-      
-        .arpl-category{
-            .arpl-cat-img{
-                display: block;
-                position: relative;
-                background: url(~/img/circle-bg.png);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: 70%;
-        
-                img{
-                    display: block;
-                    margin: auto;
-                    width: 200px;
-                }
-            }
-    
-            .arpl-cat-title{
-                @include font-with-line-height($font-size-xm, 20px);
-                
-                font-family: $font-forum;
-                font-weight: normal;
-                margin: 30px 0 0;
-
-                a{
-                    color: $black;
-                }
-            }
-
-            .arpl-cat-desc{
-                display: none;
-            }
-        }
     }
 
     &__main{
         .product{
             &-listing{
+                .nice-select{
+                    @include font-with-line-height($font-size-xs, 14px);
+
+                    background: $white;
+                    border-style: none;
+                    margin: 0 !important;
+                    width: auto !important;
+                    padding: 0 25px 0 0;
+                    height: auto;
+                    position: relative;
+                    overflow: visible;
+                    outline: none;
+                    box-shadow: none !important;
+                    color: $black;
+
+                    &:after{
+                        position: absolute;
+                        content: '';
+                        background: url(~/img/icons/left-arrow.svg);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: contain;
+                        transform: rotate(-90deg);
+                        top: -3px;
+                        right: 0;
+                        width: 20px;
+                        height: 20px;
+                    }
+
+                    .list{
+                        right: 0;
+                        left: auto;
+                        border-radius: 0;
+
+                        li{
+                            min-height: auto;
+                            padding: 5px 10px;
+                            height: auto;
+                            line-height: 14px;
+                        }
+
+                        li.selected{
+                            font-weight: 500;
+                        }
+                    }
+                }
                 .arpl-header{
                     overflow: visible;
                     text-align: right;
@@ -82,53 +129,6 @@
                     .arpl-sort-container{
                         display: inline-block;
                         vertical-align: middle;
-                    }
-
-                    .nice-select{
-                        @include font-with-line-height($font-size-xs, 14px);
-
-                        background: $white;
-                        border-style: none;
-                        margin: 0 !important;
-                        width: auto !important;
-                        padding: 0 25px 0 0;
-                        height: auto;
-                        position: relative;
-                        overflow: visible;
-                        outline: none;
-                        box-shadow: none !important;
-                        color: $black;
-
-                        &:after{
-                            position: absolute;
-                            content: '';
-                            background: url(~/img/icons/left-arrow.svg);
-                            background-repeat: no-repeat;
-                            background-position: center;
-                            background-size: contain;
-                            transform: rotate(-90deg);
-                            top: -3px;
-                            right: 0;
-                            width: 20px;
-                            height: 20px;
-                        }
-
-                        .list{
-                            right: 0;
-                            left: auto;
-                            border-radius: 0;
-
-                            li{
-                                min-height: auto;
-                                padding: 5px 10px;
-                                height: auto;
-                                line-height: 14px;
-                            }
-
-                            li.selected{
-                                font-weight: 500;
-                            }
-                        }
                     }
                 }
 
