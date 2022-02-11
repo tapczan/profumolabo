@@ -125,12 +125,12 @@ $(document).ready(() => {
     function checkFooterHeight() {
       if (footer.outerHeight() > $(window).innerHeight()) { 
         $(window).on('scroll', onScroll);
-        footer.css('bottom', 'unset')
-        footer.css('top', '0px')
+        footer.css('bottom', '0')
+        footer.css('top', 'unset')
       } else {
         $(window).off("scroll", onScroll);
         footer.css('top', 'unset');
-        footer.css('bottom', '0px');
+        footer.css('bottom', '0');
       }
     }
 
