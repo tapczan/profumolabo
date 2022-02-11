@@ -25,6 +25,9 @@
   width: 100%;
   min-height: 100vh;
 
+  top: unset !important;
+  bottom: 0 !important;
+
   @include media-breakpoint-down(sm) {
     padding-top: 188px;
   }
