@@ -23,6 +23,8 @@
   bottom: 0;
   z-index: 2;
   width: 100%;
+  min-height: 100vh;
+
   @include media-breakpoint-down(sm) {
     padding-top: 188px;
   }
@@ -71,8 +73,8 @@
   }
 
   &__logo {
-    max-width: 341px;
-    margin-bottom: 160px;
+    max-width: 300px;
+    margin-bottom: 100px;
 
     @include media-breakpoint-down(sm) {
       margin-bottom: 188px;
