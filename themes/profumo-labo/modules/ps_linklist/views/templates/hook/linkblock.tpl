@@ -50,7 +50,7 @@
         </ul>
       </div>
       {if $smarty.foreach.linkBlockItem.index == 1}
-        <div class="row d-md-block d-none mb-md-5 pb-md-5">
+        <div class="row d-md-block d-none mb-md-3 pb-md-1">
         {widget name='ps_socialfollow'}
         </div>
       {/if}
