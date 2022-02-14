@@ -196,3 +196,13 @@
     position: absolute;
     z-index: 10;
 }
+
+.l-main{
+    .wishlist-toast{
+        top: 130px;
+    }
+
+    .sticky-menu-correction.correction-padding .wishlist-toast{
+        top: 70px;
+    }
+}
