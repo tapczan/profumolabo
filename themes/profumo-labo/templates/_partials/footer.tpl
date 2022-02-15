@@ -36,8 +36,8 @@
       </div>
       {block name='hook_footer'}
       <div class="col-12">
-        <div class="row justify-content-between px-md-0 px-5">
-        {hook h='displayFooter'}
+        <div class="footer-accordion" id="accordionFooter">
+          {hook h='displayFooter'}
         </div>
       </div>
       {/block}
@@ -45,7 +45,7 @@
         <hr>
       </div>
       <div class="col-7 d-md-none">
-        <div class="pl-4">
+        <div class="footer-social-follow">
           {widget name='ps_socialfollow'}
         </div>
       </div>

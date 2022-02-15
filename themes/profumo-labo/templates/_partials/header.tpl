@@ -43,7 +43,7 @@
             {widget name='ps_customersignin'}
             <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
               {if $wishlist_count > 0}
-                <span class="header-top__badge header__inner-cart-badge">{$wishlist_count}</span> 
+                <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top">{$wishlist_count}</span> 
               {/if}
             </a> 
             {widget name='is_shoppingcart'}
@@ -72,7 +72,7 @@
           {widget name='ps_customersignin'}
           <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
             {if $wishlist_count > 0}
-              <span class="header-top__badge header__inner-cart-badge">{$wishlist_count}</span> 
+              <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav">{$wishlist_count}</span> 
             {/if}
           </a> 
           {widget name='is_shoppingcart'}

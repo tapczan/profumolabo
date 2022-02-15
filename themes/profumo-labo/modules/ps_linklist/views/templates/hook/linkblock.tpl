@@ -22,7 +22,7 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
-
+{*
   {foreach $linkBlocks as $linkBlock name=linkBlockItem}
     <div class="offset-lg-1 col-lg-3 col-md-4 col-12 mb-lg-4">
       {assign var=_expand_id value=10|mt_rand:100000}
@@ -50,9 +50,46 @@
         </ul>
       </div>
       {if $smarty.foreach.linkBlockItem.index == 1}
-        <div class="row d-md-block d-none mb-md-5 pb-md-5">
+        <div class="row d-md-block d-none mb-md-3 pb-md-1">
         {widget name='ps_socialfollow'}
         </div>
       {/if}
     </div>
   {/foreach}
+*}
+
+{foreach $linkBlocks as $linkBlock name=linkBlockItem}
+{assign var=_expand_id value=10|mt_rand:100000}
+<div class="footer-card">
+  <div class="footer-card__header" id="footer_{$_expand_id}">
+    <h2 class="footer-card__title collapsed" type="button" data-toggle="collapse" data-target="#footer_collapse_{$_expand_id}" aria-expanded="false" aria-controls="footer_collapse_{$_expand_id}">
+      {$linkBlock.title}
+      <i class="material-icons"></i>
+    </h2>
+  </div>
+  <div id="footer_collapse_{$_expand_id}" class="footer-card__content collapse" aria-labelledby="footer_{$_expand_id}" data-parent="#accordionFooter">
+    <div class="footer-card__body">
+      <ul class="links-list">
+        {foreach $linkBlock.links as $link}
+          <li class="links-list__elem">
+            <a
+                id="{$link.id}-{$linkBlock.id}"
+                class="{$link.class} links-list__link"
+                href="{$link.url}"
+                title="{$link.description}"
+                {if !empty($link.target)} target="{$link.target}" {/if}
+            >
+              {$link.title}
+            </a>
+          </li>
+        {/foreach}
+      </ul>
+      {if $smarty.foreach.linkBlockItem.index == 1}
+        <div>
+          {widget name='ps_socialfollow'}
+        </div>
+      {/if}
+    </div>
+  </div>
+</div>
+{/foreach}

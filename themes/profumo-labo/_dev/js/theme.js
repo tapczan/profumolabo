@@ -125,12 +125,12 @@ $(document).ready(() => {
     function checkFooterHeight() {
       if (footer.outerHeight() > $(window).innerHeight()) { 
         $(window).on('scroll', onScroll);
-        footer.css('bottom', 'unset')
-        footer.css('top', '0px')
+        footer.css('bottom', '0')
+        footer.css('top', 'unset')
       } else {
         $(window).off("scroll", onScroll);
         footer.css('top', 'unset');
-        footer.css('bottom', '0px');
+        footer.css('bottom', '0');
       }
     }
 
@@ -467,9 +467,28 @@ $(document).ready(() => {
         if ((!mutation.oldValue || !mutation.oldValue.match(/\bisActive\b/)) 
           && mutation.target.classList 
           && mutation.target.classList.contains('isActive')){
-            setTimeout(() => {
-              $(location).prop('href', currentWindowURL);
-            }, 500);
+            const wishlistToastText = $('.wishlist-toast').text().trim();
+            const wishlistCounterTop = $('.js-wishlist-counter-top');
+            const wishlistCounterNav = $('.js-wishlist-counter-nav');
+            let wishlistTopAdd;
+
+            if(wishlistToastText == 'Product added'){
+              wishlistTopAdd = parseInt(wishlistCounterTop.text()) + parseInt(1);
+              wishlistCounterTop.text(wishlistTopAdd);
+              wishlistCounterNav.text(wishlistTopAdd);
+            }
+            
+            if(wishlistToastText == 'Product successfully removed'){
+              wishlistTopAdd = parseInt(wishlistCounterTop.text()) - parseInt(1);
+              wishlistCounterTop.text(wishlistTopAdd);
+              wishlistCounterNav.text(wishlistTopAdd);
+            }
+            
+            if(wishlistToastText == 'List has been removed'){
+              setTimeout(() => {
+                $(location).prop('href', currentWindowURL);
+              }, 500);  
+            }
         }
       });
   });
