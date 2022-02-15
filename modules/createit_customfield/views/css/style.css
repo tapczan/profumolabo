@@ -1,0 +1,7 @@
+#createit-customfield-form-group .createit-customfield:first-child .delete{
+    display: none;
+}
+
+#createit-customfield-form-group .createit-customfield .delete{
+    padding: 30px 0 10px;
+}

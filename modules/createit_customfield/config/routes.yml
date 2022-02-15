@@ -1,0 +1,31 @@
+createit_custom_field:
+  path: /createit-custom-field
+  methods: [GET]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateITCustomField\Controller\Admin\CreateITCustomFieldController::indexAction'
+
+createit_custom_field_search:
+  path: /createit-custom-field
+  methods: [POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateITCustomField\Controller\Admin\CreateITCustomFieldController::searchAction'
+
+createit_custom_field_create:
+  path: /createit-custom-field_create
+  methods: [GET,POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateITCustomField\Controller\Admin\CreateITCustomFieldController::createAction'
+
+createit_custom_field_edit:
+  path: /createit-custom-field_create/{createitProductCustomfield}/edit
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateITCustomField\Controller\Admin\CreateITCustomFieldController::editAction'
+
+createit_custom_field_dete:
+  path: /createit-custom-field_create/{createitProductCustomfield}/delete
+  methods: [DELETE]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateITCustomField\Controller\Admin\CreateITCustomFieldController::deleteAction'
+  requirements:
+    createitProductCustomfield: \d+

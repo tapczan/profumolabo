@@ -4,8 +4,16 @@
  * Add custom fields for each product, both on the backend.
  * @author CreateIt
  */
+
+use PrestaShop\Module\CreateITCustomField\Repository\CreateitCustomfieldRepository;
+use PrestaShop\Module\CreateITCustomField\Repository\CreateitProductCustomfieldRepository;
+
 if (!defined('_PS_VERSION_')) {
     exit;
+}
+
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once __DIR__.'/vendor/autoload.php';
 }
 
 class CreateIt_CustomField extends Module
@@ -68,7 +76,10 @@ class CreateIt_CustomField extends Module
             || !$this->registerHook('displayAdminProductsMainStepLeftColumnMiddle')
             || !$this->registerHook('actionProductUpdate')
             || !$this->registerHook('displayProductCustomField')
+            || !$this->registerHook('displayProductCustomFieldByName')
+            || !$this->registerHook('displayProductCustomFields')
             || !$this->registerHook('displayBackOfficeHeader')
+            || !$this->installTab()
         ) {
             return false;
         }
@@ -76,10 +87,47 @@ class CreateIt_CustomField extends Module
         return true;
     }
 
+    public function installTab()
+    {
+       $tabId = (int) Tab::getIdFromClassName('CreateITCustomFieldController');
+
+        if(!$tabId){
+            $tabId = null;
+        }
+
+        $tab = new Tab($tabId);
+        $tab->active = 1;
+        $tab->class_name = 'CreateITCustomFieldController';
+        $tab->route_name = 'createit_custom_field';
+        $tab->name = [];
+        foreach (Language::getLanguages() as $lang){
+            $tab->name[$lang['id_lang']] = $this->trans('createIT Custom Field', array(), 'Modules.CreateITCustomField.Admin', $lang['locale']);
+        }
+        $tab->id_parent = (int) Tab::getIdFromClassName('AdminCatalog');
+
+        $tab->module = $this->name;
+
+        return $tab->save();
+    }
+
+    private function uninstallTab()
+    {
+        $tabId = (int) Tab::getIdFromClassName('CreateITCustomFieldController');
+        if (!$tabId) {
+            return true;
+        }
+
+        $tab = new Tab($tabId);
+
+        return $tab->delete();
+    }
+
     public function uninstall($keep = true)
     {
         if (
-            !parent::uninstall() || ($keep && !$this->deleteTables())
+            !parent::uninstall()
+            && ($keep && !$this->deleteTables())
+            && $this->uninstallTab()
         ) {
             return false;
         }
@@ -87,6 +135,14 @@ class CreateIt_CustomField extends Module
         $id_hook = Hook::getIdByName('displayProductCustomField');
         $hook = new Hook($id_hook);
         $hook->delete();
+
+        $id_hook2 = Hook::getIdByName('displayProductCustomFields');
+        $hook2 = new Hook($id_hook2);
+        $hook2->delete();
+
+        $id_hook3 = Hook::getIdByName('displayProductCustomFieldByName');
+        $hook3 = new Hook($id_hook3);
+        $hook3->delete();
 
         return true;
     }
@@ -107,19 +163,27 @@ class CreateIt_CustomField extends Module
     {
         return Db::getInstance()->execute('
 			DROP TABLE IF EXISTS
-			`' . _DB_PREFIX_ . 'createit_customfield`');
+			`' . _DB_PREFIX_ . 'createit_customfield`,
+			`' . _DB_PREFIX_ . 'createit_product_customfield`
+			 ');
     }
 
     public function hookDisplayAdminProductsMainStepLeftColumnMiddle($params)
     {
+        /**
+         * @var $custom_fields CreateitProductCustomfieldRepository
+         */
+        $custom_fields = $this->get('prestashop.module.createit_custom_field.repository.custom_field_product_repository');
+
         $currentProductCustomFields = [];
 
-        if($this->isHaveCustomFieldValue($params['id_product'], Context::getContext()->shop->id, Context::getContext()->language->id)){
-            $currentProductCustomFields = $this->getProductAllCustomField($params['id_product'], Context::getContext()->shop->id, Context::getContext()->language->id);
+        if(!empty($custom_fields->findAll())){
+            $currentProductCustomFields = $this->getProductCustomField($params['id_product'], Context::getContext()->shop->id);
         }
 
         $this->context->smarty->assign([
-            'createit_custom_fields' => $currentProductCustomFields
+            'createit_custom_fields' => $currentProductCustomFields,
+            'custom_fields' => $custom_fields->findAll()
         ]);
 
         return $this->display(__FILE__, 'views/templates/admin/products_custom_field.tpl');
@@ -165,7 +229,7 @@ class CreateIt_CustomField extends Module
                 $fn->id_shop = Context::getContext()->shop->id;
                 $fn->id_lang = Context::getContext()->language->id;
                 $fn->content = $createit_custom_field['value'];
-                $fn->field_name = $createit_custom_field['name'];
+                $fn->id_createit_products_customfield = $createit_custom_field['name'];
                 $fn->created_at = $currentDateTime->format('Y-m-d H:i:s');
                 $fn->updated_at = $currentDateTime->format('Y-m-d H:i:s');
 
@@ -186,35 +250,50 @@ class CreateIt_CustomField extends Module
         }
     }
 
-    public function update($id_product, $id_createit_customfield, $id_shop, $id_lang, $createit_custom_field_value, $createit_custom_field_name)
-    {
-        $currentDateTime= new \DateTime('now', new \DateTimeZone('UTC'));
-        $updatedDate = $currentDateTime->format('Y-m-d H:i:s');
-
-        return Db::getInstance()->execute('
-            UPDATE `' . _DB_PREFIX_ . 'createit_customfield`
-            SET `content` = \'' . pSQL($createit_custom_field_value) . '\', `field_name` =  \'' . pSQL($createit_custom_field_name) . '\' , `updated_at` = \'' . pSQL($updatedDate) . '\'
-            WHERE id_product = '. (int) $id_product .' AND
-                    id_shop = '. (int) $id_shop  .' AND
-                    id_createit_customfield = '. (int) $id_createit_customfield  .' AND
-                    id_lang = '. (int) $id_lang
-        );
-    }
-
-    public function getProductCustomField($id_product, $id_shop, $id_lang, $field_name)
+    public function getProductCustomField($id_product, $id_shop)
     {
         if (!Validate::isUnsignedId($id_product) ||
-            !Validate::isUnsignedId($id_shop) ||
-            !Validate::isUnsignedId($id_lang)) {
+            !Validate::isUnsignedId($id_shop)) {
             exit(Tools::displayError());
         }
+
+        $values = [];
+        $cfValues = [];
+
+        $custom_fields = $this->get('prestashop.module.createit_custom_field.repository.custom_field_product_repository');
+
+
         $res = Db::getInstance()->executeS('
-                    SELECT *
-                    FROM `' . _DB_PREFIX_ . 'createit_customfield`
-                    WHERE id_product = '. (int) $id_product .'
-                    AND field_name = "'. $field_name .'"
-                    AND id_shop = '. (int) $id_shop);
-        return $res;
+                SELECT c.id_createit_customfield, c.id_product, c.id_shop, c.id_lang, c.content, pc.field_name, pc.label_name, pc.id_createit_products_customfield, c.created_at, c.updated_at
+                FROM `' . _DB_PREFIX_ . 'createit_customfield` c INNER JOIN `' . _DB_PREFIX_ . 'createit_product_customfield` pc
+                ON c.id_createit_products_customfield = pc.id_createit_products_customfield
+                WHERE id_product = '. (int) $id_product .'
+                AND id_shop = '. (int) $id_shop);
+
+
+        foreach ($res as $value)
+        {
+            $values[$value['id_createit_products_customfield']]['id_createit_products_customfield'] = $value['id_createit_products_customfield'] ?? '';
+            $values[$value['id_createit_products_customfield']]['content'] = $value['content'] ?? '';
+            $values[$value['id_createit_products_customfield']]['field_name'] = $value['field_name'] ?? '';
+            $values[$value['id_createit_products_customfield']]['label_name'] = $value['label_name'] ?? '';
+        }
+
+        /**
+         * @var $cfValue \PrestaShop\Module\CreateITCustomField\Entity\CreateitProductCustomfield
+         */
+        $cfValueIterator = 0;
+        foreach($custom_fields->findAll() as $cfValue)
+        {
+            $cfValues[$cfValueIterator]['id'] = $cfValue->getId();
+            $cfValues[$cfValueIterator]['field_name'] = $cfValue->getFieldName();
+            $cfValues[$cfValueIterator]['field_type'] = $cfValue->getFieldType();
+            $cfValues[$cfValueIterator]['label_name'] = $cfValue->getLabelName();
+            $cfValues[$cfValueIterator]['content'] = $values[$cfValue->getId()]['content'] ?? '';
+            $cfValueIterator++;
+        }
+
+        return $cfValues;
     }
 
     public function getProductAllCustomField($id_product, $id_shop, $id_lang)
@@ -233,36 +312,61 @@ class CreateIt_CustomField extends Module
         return $res;
     }
 
-    public function getProductCustomFieldValue($id_product, $id_shop, $id_lang, $field_name)
-    {
-        $customField = '';
-
-        if($this->isHaveCustomFieldValue($id_product, $id_shop, $id_lang)){
-
-            $currentProductCustomField = $this->getProductCustomField($id_product, $id_shop, $id_lang, $field_name);
-
-            $customField = reset($currentProductCustomField);
-            $customField = $customField['content'];
-        }
-
-        return $customField;
-    }
-
     public function hookDisplayProductCustomField($params)
     {
-        $product = $params['product'];
-        $field_name = $params['field'];
-        $customField = '';
+        $productCustomFields = [];
 
-        if($this->isHaveCustomFieldValue($product['id_product'], Context::getContext()->shop->id, Context::getContext()->language->id)){
-
-
-            $currentProductCustomField = $this->getProductCustomField($product['id_product'], Context::getContext()->shop->id, Context::getContext()->language->id, $field_name);
-
-            $customField = reset($currentProductCustomField);
-            $customField = $customField['content'];
+        if(isset($params['product'])) {
+            $product = $params['product'];
+            if($this->isHaveCustomFieldValue($product['id_product'], Context::getContext()->shop->id, Context::getContext()->language->id)){
+                $productCustomFields = $this->getProductCustomField($product['id_product'], Context::getContext()->shop->id);
+            }
         }
 
-        return $customField;
+        $this->context->smarty->assign([
+            'product_custom_fields' => $productCustomFields
+        ]);
+
+        return $this->display(__FILE__, 'views/templates/front/products_custom_field.tpl');
+    }
+
+    public function hookDisplayProductCustomFields($params)
+    {
+        $productCustomFields = [];
+
+        if(isset($params['product'])) {
+            $product = $params['product'];
+            if($this->isHaveCustomFieldValue($product['id_product'], Context::getContext()->shop->id, Context::getContext()->language->id)){
+                $productCustomFields = $this->getProductCustomField($product['id_product'], Context::getContext()->shop->id);
+            }
+        }
+
+        $this->context->smarty->assign([
+            'product_custom_fields' => $productCustomFields
+        ]);
+
+        return $this->display(__FILE__, 'views/templates/front/products_custom_field.tpl');
+    }
+
+    public function hookDisplayProductCustomFieldByName($params)
+    {
+        $product = $params['product'];
+        $content = '';
+
+        /**
+         * @var $customField CreateitCustomfieldRepository
+         */
+        $customField = $this->get('prestashop.module.createit_custom_field.repository.custom_field_repository');
+
+        /**
+         * @var $res \PrestaShop\Module\CreateITCustomField\Entity\CreateitCustomfield
+         */
+        if(empty($res = $customField->findOneCustomFieldByFieldName($product['id_product'], Context::getContext()->shop->id, $params['field']))){
+            $content = '';
+        }else{
+            $content = $res->getContent();
+        }
+
+        return $content;
     }
 }

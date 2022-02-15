@@ -1,0 +1,22 @@
+{
+  "name": "createit/customfield",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "CreateIT",
+      "email": "support@createit.com"
+    },
+    {
+      "name": "CreateIT"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaShop\\Module\\CreateITCustomField\\": "src/"
+    },
+    "config": {
+      "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+  }
+}
