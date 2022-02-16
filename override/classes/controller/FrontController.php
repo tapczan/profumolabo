@@ -236,6 +236,7 @@ class FrontControllerCore extends Controller
             new ConfigurationAdapter(),
             new Filesystem()
         );
+
     }
 
     /**
@@ -528,6 +529,14 @@ class FrontControllerCore extends Controller
     protected function assignGeneralPurposeVariables()
     {
 
+        $loginFormFields = new CustomerLoginForm(
+            $this->context->smarty,
+            $this->context,
+            $this->getTranslator(),
+            new CustomerLoginFormatter($this->getTranslator()),
+            $this->getTemplateVarUrls()
+        );
+
         $templateVars = [
             'cart' => $this->cart_presenter->present($this->context->cart),
             'currency' => $this->getTemplateVarCurrency(),
@@ -547,13 +556,10 @@ class FrontControllerCore extends Controller
             'logged' => self::$is_logged_in,
             'pslanguage' => $this->context->language->iso_code,
             'wishlist_url' => Context::getContext()->link->getModuleLink('blockwishlist', 'lists'),
-            'wishlist_count' => $this->countWishlist()
+            'wishlist_count' => $this->countWishlist(),
+            'loginFormFields' => $loginFormFields->getTemplateVariables()
         ];
 
-        // echo "<pre>";
-        // var_dump();
-        // exit;
-     
         $modulesVariables = Hook::exec(
             'actionFrontControllerSetVariables',
             [

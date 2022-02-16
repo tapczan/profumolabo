@@ -14,6 +14,32 @@
   }
 }
 
+@mixin blocklogindropdown {
+
+  .blocklogin__dropdown {
+    padding: 10px;
+    min-width: 300px;
+
+    .btn-logindropdown {
+      width: 100%;
+      background-color: #000;
+      border-radius: 0;
+      border:0;
+
+      &-register {
+        width: 100%;
+        color: #000;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 0;
+      }
+    }
+  }
+
+}
+
+
+
 .header-top {
   padding: map-get($spacers, 2) 0;
   @include media-breakpoint-up(md) {
@@ -1494,6 +1520,15 @@
 
     .header__nav--sticky{
       .header__nav-right{
+
+
+        .blocklogin.login-preview.dropdown{
+          padding-right: 10px;
+          padding-left: 10px;
+
+          @include blocklogindropdown();
+        }
+
         .header__inner-login-link{
           padding-right: 10px;
 
@@ -1698,6 +1733,10 @@
     .header-cart{
       padding-left: 25px;
     }
+  }
+
+  .blocklogin.login-preview.dropdown {
+    @include blocklogindropdown();
   }
 }
 
