@@ -93,7 +93,7 @@
                     <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
                       {if $pslanguage == 'pl'}
                           OPIS     
-                      {else if $pslanguage == 'en'}
+                      {else}
                           DESCRIPTION
                       {/if}
                     </div>

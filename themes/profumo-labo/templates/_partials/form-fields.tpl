@@ -36,7 +36,10 @@
  'city'=>'address-level2',
  'company'=>'organization'
  ]}
-{if $field.type == 'hidden' || $field.name == 'id_gender' || $field.name == 'birthday'}
+
+{*{if $field.type == 'hidden' || $field.name == 'id_gender' || $field.name == 'birthday'}*}
+
+{if $field.type == 'hidden' || $field.name == 'birthday'}
 
   {block name='form_field_item_hidden'}
     <input type="hidden" name="{$field.name}" value="{$field.value}">
@@ -48,7 +51,15 @@
   <div class="form-group">
     {if $field.type == 'checkbox' || $field.type == 'radio-buttons'}
       {if $field.type == 'radio-buttons'}
-        <div class="form-label label mr-3">{$field.label}</div>
+        {if $field.label == 'Social title'}
+          {if $pslanguage == 'pl'}
+            <div class="form-label label mr-3">Płeć</div>
+          {else}
+            <div class="form-label label mr-3">Gender</div>
+          {/if}
+        {else}
+          <div class="form-label label mr-3">{$field.label}</div>
+        {/if}
       {/if}
     {else}
       <label class="form-label {if $field.required}required{/if}" for="f-{$field.name}_{$uniqId}">
@@ -93,7 +104,7 @@
           <div class="custom-control custom-radio custom-control-inline">
             <input name="{$field.name}" type="radio" value="{$value}"
               class="custom-control-input {if !empty($field.errors)} is-invalid{/if}"
-              id="f-{$field.name}_{$uniqId}-{$smarty.foreach.radiolist.iteration}" {if $field.required}required{/if}
+              id="f-{$field.name}_{$uniqId}-{$smarty.foreach.radiolist.iteration}" required 
               {if $value eq $field.value} checked {/if}>
 
             <label class="custom-control-label"
