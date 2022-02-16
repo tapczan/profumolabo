@@ -40,7 +40,24 @@
         </div>
         <div class="col-md-4 d-md-flex align-items-center justify-content-end">
           <div class="header__inner-r">
-            {widget name='ps_customersignin'}
+          
+            {if $logged}
+              {widget name='ps_customersignin'}
+            {else}
+            <div class="header-top__block header-top__block--user">
+              <div class="blocklogin login-preview dropdown">
+                <a href="#" role="button" id="loginDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="header__inner-top-link d-lg-block d-none">
+                  <div class="header-top__icon-container">
+                    <img class="header__inner-login-icon" src="{$urls.img_url}user-icon.svg">
+                  </div>
+                </a>
+                <div class="dropdown-menu blocklogin__dropdown login-dropdown dropdown-menu-right">
+                  {include file='customer/_partials/custom-login-form.tpl'}
+                </div>
+              </div>
+            </div>
+            {/if}
+
             <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
               {if $wishlist_count > 0}
                 <span class="header-top__badge header__inner-cart-badge">{$wishlist_count}</span> 
@@ -69,7 +86,24 @@
         </div>
         <div class="{if $logged}col-md-2{else}col-md-3{/if} col-sm-4 col-4 header__nav-right">
           {widget name='is_searchbar'}
-          {widget name='ps_customersignin'}
+          
+          {if $logged}
+              {widget name='ps_customersignin'}
+            {else}
+            <div class="header-top__block header-top__block--user">
+              <div class="blocklogin login-preview dropdown">
+                <a href="#" role="button" id="loginDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" class="header__inner-top-link d-lg-block d-none">
+                  <div class="header-top__icon-container">
+                    <img class="header__inner-login-icon" src="{$urls.img_url}user-icon.svg">
+                  </div>
+                </a>
+                <div class="dropdown-menu blocklogin__dropdown login-dropdown dropdown-menu-right">
+                  {include file='customer/_partials/custom-login-form.tpl'}
+                </div>
+              </div>
+            </div>
+          {/if}
+
           <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
             {if $wishlist_count > 0}
               <span class="header-top__badge header__inner-cart-badge">{$wishlist_count}</span> 
