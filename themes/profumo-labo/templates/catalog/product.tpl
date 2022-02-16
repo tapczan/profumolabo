@@ -161,7 +161,7 @@
                   <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
                     {if $pslanguage == 'pl'}
                         OPIS     
-                    {else if $pslanguage == 'en'}
+                    {else}
                         DESCRIPTION
                     {/if}
                   </div>
