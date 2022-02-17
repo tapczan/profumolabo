@@ -1,0 +1,21 @@
+@media (max-width: 767px){
+
+    body.page-customer-account {
+
+        #main {
+            .customer-links {
+                &__list {
+                    display: block;
+                }
+            }
+            .page-content {
+                button.btn.btn-primary,
+                a.btn.btn-primary {
+                    width: 100%; 
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+}

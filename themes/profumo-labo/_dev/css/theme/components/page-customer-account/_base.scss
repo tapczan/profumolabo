@@ -1,0 +1,114 @@
+
+body.page-customer-account {
+
+    #main {
+        font-family: Forum, cursive;
+
+        header.page-header {
+            h1 {
+                @include header-title();
+            }
+        }
+
+        .page-content {
+            margin-bottom: 80px;
+            .card {
+                border: 0;
+
+                .card-header {
+                    background: transparent;
+                }
+                .card-footer {
+                    background: transparent;
+                    border: 0;
+                }
+            }
+            .form-control {
+                border-color: #212529;
+            }
+            .input-group-append {
+                .btn.btn-primary {
+                    background-color: #979797;
+                    border-color:#979797;
+                    width: 100%;
+                    border-radius: 0 .4rem .4rem 0 !important;
+                }
+            }
+            button.btn.btn-primary,
+            a.btn.btn-primary {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: #fff;
+                background-color:#000;
+                border-radius: 0;
+                border: 0;
+                width: 80%;
+                margin-bottom:10px;
+            }
+
+            .custom-control-input {
+                box-shadow: none;
+                outline: none;
+                z-index: 10;
+            }
+        
+            .custom-control-input:checked ~ .custom-control-label::before {
+                border-color: #000;
+                background-color: #000;
+            }
+
+            &--module-psgdpr-gdpr {
+                button.btn.btn-primary,
+                a.btn.btn-primary {
+                    width: 49%; 
+                }
+            }
+        }
+        .user-form__block {
+            h4 {
+                @include header-title();
+            }
+            &:nth-child(1) {
+                border-right: 2px solid #ddd;
+                .user-form__content {
+                        padding-right: 15%;
+                }
+            }
+            &:nth-child(2) {
+                .user-form__content {
+                    padding-left: 15%;
+                }   
+            }
+        }
+        .bg-light {
+            background-color: #fff !important;
+        }
+        .personal-information {
+        
+            .customer-links {
+                &__list,
+                &__footer {
+                    a {
+                        background: transparent;
+                        font-weight: 400;
+                        letter-spacing: 2px;
+                        i {
+                            color:#979797;
+                        }
+                        &.active {
+                            font-weight: 700;
+                        }
+                    }  
+                }
+
+                .customer-links__logout {
+                    text-align: left;
+                }
+            }
+            button[type=submit] {
+                max-width: 340px;
+            }
+        }
+    }
+}

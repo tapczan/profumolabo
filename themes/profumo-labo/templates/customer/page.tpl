@@ -35,24 +35,32 @@
 
 
 {block name='page_content_container'}
-  <div class="row">
-    <div class="col-lg-3 col-12">
-     {include file='customer/customer-links.tpl'}
-    </div>
-    <div class="pl-lg-5 col-lg-9 col-12">
-      <section id="content" class="{block name='pageContentClass'}page-content {/block}page-content--{$page.page_name}">
-        {$smarty.capture.acc_title nofilter}
 
-        {block name='page_content_top'}
-          {block name='customer_notifications'}
-            {include file='_partials/notifications.tpl'}
-          {/block}
-        {/block}
+  {$smarty.capture.acc_title nofilter}
 
-        {block name='page_content'}
-          <!-- Page content -->
-        {/block}
-      </section>
-    </div>
+  <div class="row my-6 personal-information">
+      <div class="col-lg-8 mx-auto">
+
+      <div class="row">
+        <div class="col-lg-5 col-12">
+        {include file='customer/customer-links.tpl'}
+        </div>
+        <div class="col-lg-7 col-12">
+          <section id="content" class="{block name='pageContentClass'}page-content {/block}page-content--{$page.page_name}">
+            
+            {block name='page_content_top'}
+              {block name='customer_notifications'}
+                {include file='_partials/notifications.tpl'}
+              {/block}
+            {/block}
+
+            {block name='page_content'}
+              <!-- Page content -->
+            {/block}
+          </section>
+        </div>
+      </div>
+
+      </div>
   </div>
 {/block}

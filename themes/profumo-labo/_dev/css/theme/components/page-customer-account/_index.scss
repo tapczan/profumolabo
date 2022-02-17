@@ -1,6 +1,5 @@
-
-
 @mixin header-title {
+    font-family: Forum, cursive;
     font-size: 35px;
     font-weight: 400;
     letter-spacing: 3px;
@@ -9,68 +8,13 @@
     text-transform: uppercase;
 }
 
-body.page-customer-account {
+@import "base";
+@import "wishlist";
+@import "media/1199";
+@import "media/992";
+@import "media/991";
+@import "media/767";
+@import "media/360";
 
-    #main {
-        font-family: Forum, cursive;
 
-        header.page-header {
-            h1 {
-                @include header-title();
-            }
-        }
 
-        .page-content {
-            margin-bottom: 80px;
-            .card {
-                border: 0;
-
-                .card-footer {
-                    background: transparent;
-                    border: 0;
-                }
-            }
-            .form-control {
-                border-color: #212529;
-            }
-            .input-group-append {
-                .btn.btn-primary {
-                    background-color: #979797;
-                    border-color:#979797;
-                    width: 100%;
-                    border-radius: 0 .4rem .4rem 0 !important;
-                }
-            }
-            button.btn.btn-primary,
-            a.btn.btn-primary {
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 3px;
-                color: #fff;
-                background-color:#000;
-                border-radius: 0;
-                border: 0;
-                width: 80%;
-            }
-        }
-        .user-form__block {
-            h4 {
-                @include header-title();
-            }
-            &:nth-child(1) {
-                border-right: 2px solid #ddd;
-                .user-form__content {
-                        padding-right: 15%;
-                }
-            }
-            &:nth-child(2) {
-                .user-form__content {
-                    padding-left: 15%;
-                }   
-            }
-        }
-        .bg-light {
-            background-color: #fff !important;
-        }
-    }
-}
