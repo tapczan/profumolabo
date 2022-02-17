@@ -10,7 +10,7 @@
   <div class="customer-links__list js-customer-links">
     <a class="col-lg-4 col-md-6 col-sm-6 col-12 {if in_array($page.page_name, $pageIdentity)}active{/if}" id="identity-link" href="{$urls.pages.identity}">
       <span class="link-item">
-        <i class="material-icons">&#xE853;</i>
+        <i class="material-icons">&#xe7fd;</i>
         {l s='Information' d='Shop.Theme.Customeraccount'}
       </span>
     </a>
@@ -18,14 +18,14 @@
     {if $customer.addresses|count}
       <a class="col-lg-4 col-md-6 col-sm-6 col-12 {if in_array($page.page_name, $pageAddresses)}active{/if}" id="addresses-link" href="{$urls.pages.addresses}">
         <span class="link-item">
-          <i class="material-icons">&#xE56A;</i>
+          <i class="material-icons">&#xe8b4;</i>
           {l s='Addresses' d='Shop.Theme.Customeraccount'}
         </span>
       </a>
     {else}
       <a class="col-lg-4 col-md-6 col-sm-6 col-12 {if in_array($page.page_name, $pageAddresses)}active{/if}" id="address-link" href="{$urls.pages.address}">
         <span class="link-item">
-          <i class="material-icons">&#xE567;</i>
+          <i class="material-icons">&#xe8b4;</i>
           {l s='Add first address' d='Shop.Theme.Customeraccount'}
         </span>
       </a>
@@ -73,8 +73,12 @@
   </div>
 
   <div class="text-center customer-links__footer">
+    
     <a href="{$link->getPageLink('index', true, null, 'mylogout')}" class="customer-links__logout">
-      {l s='Sign out' d='Shop.Theme.Actions'}
+      <span class="link-item">    
+        <i class="material-icons">&#xe879;</i>
+        {l s='Sign out' d='Shop.Theme.Actions'}
+      </span>
     </a>
   </div>
 </div>

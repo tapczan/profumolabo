@@ -24,9 +24,11 @@
  *}
 {extends file='page.tpl'}
 
+{*
 {block name='page_title'}
   {l s='Login and registration' d='Shop.Istheme'}
 {/block}
+*}
 
 {block name='page_content'}
   <div class="card user-form">
