@@ -1,12 +1,223 @@
 
 .blockcart {
   &__dropdown {
-    width: rem-calc(320px);
-    min-width: inherit;
+    width: 567px;
     padding: 0;
     margin: 0;
     overflow: hidden;
-    border: 1px solid $border-color;
-    border-radius: $border-radius;
+    border-style: none !important;
+    border-radius: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: none !important;
+    top: 35px !important;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
+
+    .cart-dropdown{
+      &__content{
+        padding: 0;
+        max-height: 620px;
+      }
+
+      &__title{
+        position: relative;
+        padding: 20px;
+      }
+
+      &__header{
+        @include font-with-line-height($font-size-lg, 22px);
+
+        font-family: $font-forum;
+        font-weight: normal;
+        color: $black;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0;
+      }
+
+      &__close{
+        position: absolute;
+        top: 0;
+      }
+
+      &__products{
+        border-top: 1px solid rgba($color: $gray, $alpha: 0.25);
+        border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
+        padding: 0 20px;
+
+        .cart-products:last-child{
+          border-bottom-style: none;
+        }
+      }
+    }
+
+    .cart-products{
+      border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
+      border-top-style: none !important;
+      padding: 20px 0 20px 100px;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      &__thumb{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100px;
+      }
+
+      &__img{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: auto;
+        margin: auto;
+      }
+
+      &__details{
+        font-family: $font-jost;
+        font-weight: 400;
+        color: $black;
+        width: 235px;
+      }
+
+      &__name{
+        @include font-with-line-height($font-size-xm, 26px);
+
+        font-weight: 400;
+        text-transform: uppercase;
+        margin: 0;
+        color: $black;
+      }
+
+      &__desc{
+        @include font-with-line-height($font-size-sm, 20px);
+
+        color: $gray-cart;
+        padding: 0;
+      }
+
+      &__price{
+        @include font-with-line-height($font-size-product-lg, 36px);
+
+        font-weight: 500;
+      }
+
+      &__quantity{
+        width: 100px;
+        align-items: center;
+        display: flex;
+        padding: 0 5px;
+
+        select,
+        .nice-select-init{
+          @include font-with-line-height($font-size-sm, 22px);
+          
+          width: 100%;
+          border-radius: 3px;
+          border-style: none;
+          padding: 5px 10px;
+          display: block !important;
+          outline: none;
+          background: $gray-cart-quatity url(~/img/icons/dropdown-arrow.svg);
+          background-repeat: no-repeat;
+          background-position-y: 50%;
+          background-position-x: 90%;
+          color: $black;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+
+        .position-relative{
+          width: 100%;
+        }
+
+        .nice-select{
+          display: none !important;
+        }
+
+        option{
+          border-style: none;
+        }
+      }
+
+      &__remove{
+        align-items: center;
+        display: flex;
+
+        &-cart{
+          @include font-with-line-height($font-size-sm, 20px);
+
+          color: $gray-cart;
+          font-family: $font-jost;
+          background: url(~/img/icons/delete-icon.svg);
+          background-repeat: no-repeat;
+          background-position-y: 50%;
+          background-position-x: 0;
+          text-transform: uppercase;
+          padding: 5px 0 5px 20px;
+        }
+      }
+    }
+
+
+    .cart-summary{
+      padding: 20px;
+
+      &__list{
+        padding: 0;
+        margin: 0;
+      }
+
+      &__item{
+        @include font-with-line-height($font-size-xm, 40px);
+
+        display: flex;
+        justify-content: space-between;
+        color: $black;
+        font-family: $font-jost;
+      }
+
+      &__label{
+        font-weight: 400;
+      }
+
+      &__value{
+        font-weight: 500;
+      }
+    }
+
+    .cart-action{
+      @include font-with-line-height($font-size-sm, 20px);
+
+      padding: 0 20px 20px;
+      text-align: center;
+      font-family: $font-jost;
+
+      &__checkout{
+        font-weight: 300;
+        background: $black;
+        color: $white;
+        padding: 12px;
+        text-transform: uppercase;
+        outline: none;
+        display: block;
+        text-decoration: none;
+        letter-spacing: 1px;
+      }
+
+      &__continue{
+        margin-top: 30px;
+        text-decoration: underline;
+        display: inline-block;
+        cursor: pointer;
+      }
+    }
   }
 }
