@@ -15,21 +15,17 @@
 }
 
 .footer-container {
-  padding-top: 126px;
-  padding-bottom: map-get($spacers, 2);
+  padding-bottom: 0;
   background: #000;
 
   position: fixed;
   bottom: 0;
   z-index: 2;
   width: 100%;
-  min-height: 100vh;
-  top: unset !important;
+  height: 100%;
+  top: 0 !important;
   bottom: 0 !important;
-
-  @include media-breakpoint-down(sm) {
-    padding-top: 188px;
-  }
+  padding-top: 0;
 
   .container {
     max-width: 1001px;
@@ -52,8 +48,8 @@
   }
 
   .links-list__link {
-    font-size: 16px;
-    line-height: 30px;
+    @include font-with-line-height($font-size-xs, 34px);
+
     color: rgba(255, 255, 255, 0.6);
     transition: .3s ease;
 
@@ -75,8 +71,7 @@
   }
 
   &__logo {
-    max-width: 300px;
-    margin-bottom: 100px;
+    max-width: 299px;
 
     @include media-breakpoint-down(sm) {
       margin-bottom: 188px;
@@ -86,6 +81,8 @@
 
   &__payment {
     max-width: 110px;
+    margin-bottom: 10px;
+    margin-left: 10px;
   }
 
   hr {
@@ -109,22 +106,22 @@
   justify-content: space-between;
   flex-wrap: wrap;
 
-  .footer-card:first-child{
-    margin-left: 0;
+  .links-list__elem:not(:last-child){
+    margin-bottom: 0;
   }
 }
 
 .footer-card{
   flex: 0 0 25%;
-  max-width: 25%;
-  margin-left: 8.33333%;
-  margin-bottom: 50px;
+  max-width: 180px;
+  margin-bottom: 20px;
 
   &__header{
-    margin-bottom: 58px;
+    margin-bottom: 50px;
   }
 
   &__title{
+    margin-bottom: 0 !important;
     font-family: $font-jost;
     font-weight: 400;
     color: $white;
@@ -147,6 +144,14 @@
   }
 }
 
+.footer-social-follow-desktop{
+  display: none;
+}
+
+.js-footer-items{
+  width: 100%;
+}
+
 @media(min-width: 768px){
   .footer-card{
     &__content{
@@ -156,6 +161,25 @@
     &__title{
       .material-icons{
         display: none;
+      }
+    }
+  }
+
+  .footer-social-follow-desktop{
+    display: block;
+    width: 100%;
+
+    ul{
+      justify-content: end;
+
+      li{
+        padding: 0 7px;
+        margin: 0 0 30px !important;
+
+        a{
+          width: 25px;
+          height: 25px;
+        }
       }
     }
   }

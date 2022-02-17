@@ -32,25 +32,32 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <img class="footer-container__logo img-fluid" src="{$urls.img_url}footer_logo.svg" alt="">
+        <img class="footer-container__logo img-fluid js-footer-logo-img" src="{$urls.img_url}footer_logo.svg" alt="">
       </div>
-      {block name='hook_footer'}
-      <div class="col-12">
-        <div class="footer-accordion" id="accordionFooter">
-          {hook h='displayFooter'}
+      <div class="js-footer-items">
+        {block name='hook_footer'}
+        <div class="col-12">
+          <div class="footer-accordion" id="accordionFooter">
+            {hook h='displayFooter'}
+          </div>
         </div>
-      </div>
-      {/block}
-      <div class="col-12 mt-md-0 mt-5">
-        <hr>
-      </div>
-      <div class="col-7 d-md-none">
-        <div class="footer-social-follow">
+        {/block}
+        <div class="footer-social-follow footer-social-follow-desktop">
           {widget name='ps_socialfollow'}
         </div>
-      </div>
-      <div class="col-lg-12 col-5">
-        <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
+        <div class="col-12 mt-md-0 mt-5">
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-7 d-md-none">
+            <div class="footer-social-follow">
+              {widget name='ps_socialfollow'}
+            </div>
+          </div>
+          <div class="col-lg-12 col-5">
+            <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
