@@ -84,11 +84,6 @@
           </li>
         {/foreach}
       </ul>
-      {if $smarty.foreach.linkBlockItem.index == 1}
-        <div>
-          {widget name='ps_socialfollow'}
-        </div>
-      {/if}
     </div>
   </div>
 </div>
