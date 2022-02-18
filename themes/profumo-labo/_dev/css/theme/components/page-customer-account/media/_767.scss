@@ -1,18 +1,32 @@
 @media (max-width: 767px){
 
     body.page-customer-account {
-
         #main {
-            .customer-links {
-                &__list {
-                    display: block;
-                }
-            }
             .page-content {
                 button.btn.btn-primary,
                 a.btn.btn-primary {
                     width: 100%; 
                     margin: 0 auto;
+                }
+            }
+
+            .user-form__block{
+                .user-form__content{
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
+
+                &:nth-child(1){
+                    border-right-style: none;
+                    margin-bottom: 30px;
+
+                    .user-form__content{
+                        padding-right: 15px;
+                    }
+                }
+
+                &:nth-child(2) .user-form__content{
+                    padding-left: 15px;
                 }
             }
         }
