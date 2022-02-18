@@ -1,3 +1,29 @@
 @media (max-width: 991px){
+    body.page-customer-account {
+        #main {
+            .customer-links {
+                &__list {
+                    display: block;
 
+                    a{
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+
+                &__footer{
+                    a{
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+
+        #content{
+            .user-form--sm{
+                max-width: 100%;
+            }
+        }
+    }
 }
