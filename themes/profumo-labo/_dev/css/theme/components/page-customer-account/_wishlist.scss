@@ -82,6 +82,13 @@
                     }
                 }
             }
+            .wishlist-product-link {
+                overflow: hidden;
+                .wishlist-product-image {
+                    width: 225px;
+                    height: 225px;
+                }
+            }
         }
     }
 }
