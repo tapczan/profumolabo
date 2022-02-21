@@ -472,7 +472,7 @@ $(document).ready(() => {
             const wishlistCounterNav = $('.js-wishlist-counter-nav');
             let wishlistTopAdd;
 
-            if(wishlistToastText == 'Product added'){
+            if(wishlistToastText == 'Product added' || wishlistToastText == 'Produkt dodany'){
               wishlistTopAdd = parseInt(wishlistCounterTop.text()) + parseInt(1);
               wishlistCounterTop.text(wishlistTopAdd);
               wishlistCounterNav.text(wishlistTopAdd);
@@ -484,7 +484,7 @@ $(document).ready(() => {
               wishlistCounterNav.text(wishlistTopAdd);
             }
             
-            if(wishlistToastText == 'List has been removed'){
+            if(wishlistToastText == 'List has been removed' || wishlistToastText == 'Lista została usunięta'){
               setTimeout(() => {
                 $(location).prop('href', currentWindowURL);
               }, 500);  
