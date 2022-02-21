@@ -22,15 +22,24 @@
            <img
                {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
                alt="{$product.name|escape:'quotes'}"
-               class="img-fluid rounded"
+               class="img-fluid rounded cart-products__img"
                width="{$product.default_image.bySize.cart_default.width}"
                height="{$product.default_image.bySize.cart_default.height}">
        </div>
        <div class="cart-products__desc">
-           <p class="h6 mb-2 font-sm">
+           <h6 class="cart-products__name h6 mb-2 font-sm">
                {$product.name}
-           </p>
+           </h6>
    
+           <div class="cart-products__short-desc">
+               Woda perfumowana 100ml
+           </div>
+   
+           <div class="cart-products__price">
+               {$product.price}
+           </div>
+           
+           {*
            <ul class="mb-2">
                <li class="text-muted small">
                    <span>{l s='Quantity' d='Shop.Theme.Catalog'}:</span>
@@ -47,18 +56,22 @@
            <span class="price price--sm">
                {$product.price}
            </span>
+           *}
+       </div>
+       <div class="cart-products__quantity">
+           <select>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+           </select>
        </div>
        <div class="cart-products__remove">
-           <a  class="remove-from-cart text-danger" rel="nofollow" href="{$product.remove_from_cart_url}"
+           <a class="cart-products__remove-cart remove-from-cart text-danger" rel="nofollow" href="{$product.remove_from_cart_url}"
                data-link-action="delete-from-cart" data-id-product="{$product.id_product|escape:'javascript'}"
                data-id-product-attribute="{$product.id_product_attribute|escape:'javascript'}"
                data-id-customization="{$product.id_customization|escape:'javascript'}">
-               <span class="material-icons font-reset">
-                   delete
-               </span>
+               Delete
            </a>
        </div>
-   
    </div>
-   
    

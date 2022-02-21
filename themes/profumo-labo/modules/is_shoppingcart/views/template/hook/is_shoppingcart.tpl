@@ -38,12 +38,14 @@
        <div class="cart-dropdown__content keep-open js-cart__card-body cart__card-body">
          <div class="cart-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">{l s='Loading...' d='Shop.Theme.Global'}</span></div></div>
          <div class="cart-dropdown__title d-flex align-items-center mb-3">
-           <p class="h5 mb-0 mr-2">
-             {l s='Your cart' d='Shop.Istheme'}
-           </p>
+           <h5 class="cart-dropdown__header h5 mb-0 mr-2">
+             {l s='PRODUCT ADDED TO CART' d='Shop.Istheme'}
+           </h5>
+           {*
            <span class="cart-dropdown__close dropdown-close ml-auto cursor-pointer">
              ×
            </span>
+           *}
          </div>
          {if $cart.products_count > 0}
            <div class="cart-dropdown__products pt-3 mb-3">
@@ -62,16 +64,53 @@
            {/foreach} *}
  
            <div class="cart-summary-line cart-total">
+             <ul class="cart-summary__list">
+               <li class="cart-summary__item">
+                 <span class="cart-summary__label">
+                   Total products:
+                 </span> 
+                 <span class="cart-summary__value">
+                   46,50zl
+                 </span> 
+               </li>
+               <li class="cart-summary__item">
+                 <span class="cart-summary__label">
+                   Shipment:
+                 </span> 
+                 <span class="cart-summary__value">
+                   Za darmo!
+                 </span> 
+               </li>
+               <li class="cart-summary__item">
+                 <span class="cart-summary__label">
+                   Total (gross):
+                 </span> 
+                 <span class="cart-summary__value">
+                   46,49 zl
+                 </span> 
+               </li>
+             </ul>
+             {*
              <span class="label">{$cart.totals.total.label}</span>
              <span class="value">{$cart.totals.total.value}</span>
+             *}
            </div>
  
+           <div class="cart-action">
+             <a href="{$cart_url}" class="cart-action__checkout dropdown-close">
+               {l s='PRZEJDŹ DO REALIZACJI ZAMÓWIENIA' d='Shop.Theme.Actions'}
+             </a>
+             <span class="cart-action__continue dropdown-close">
+               Kontynuuj zakupy
+             </span>
+           </div>
+           {*
            <div class="mt-3">
              <a href="{$cart_url}" class="btn btn-sm btn-primary btn-block dropdown-close">
                {l s='Proceed to checkout' d='Shop.Theme.Actions'}
              </a>
            </div>
- 
+           *}
          {else}
            <div class="alert alert-warning">
              {l s='Unfortunately your basket is empty' d='Shop.Istheme'}
