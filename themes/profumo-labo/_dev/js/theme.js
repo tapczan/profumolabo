@@ -470,18 +470,29 @@ $(document).ready(() => {
             const wishlistToastText = $('.wishlist-toast').text().trim();
             const wishlistCounterTop = $('.js-wishlist-counter-top');
             const wishlistCounterNav = $('.js-wishlist-counter-nav');
+            const wishlistButtonAdd = $('.wishlist-button-add');
             let wishlistTopAdd;
 
             if(wishlistToastText == 'Product added' || wishlistToastText == 'Produkt dodany'){
               wishlistTopAdd = parseInt(wishlistCounterTop.text()) + parseInt(1);
               wishlistCounterTop.text(wishlistTopAdd);
               wishlistCounterNav.text(wishlistTopAdd);
+              wishlistButtonAdd.addClass('wishlist-button-wait');
+
+              setTimeout(() => {
+                wishlistButtonAdd.removeClass('wishlist-button-wait');
+              }, 3000);
             }
             
             if(wishlistToastText == 'Product successfully removed'){
               wishlistTopAdd = parseInt(wishlistCounterTop.text()) - parseInt(1);
               wishlistCounterTop.text(wishlistTopAdd);
               wishlistCounterNav.text(wishlistTopAdd);
+              wishlistButtonAdd.addClass('wishlist-button-wait');
+
+              setTimeout(() => {
+                wishlistButtonAdd.removeClass('wishlist-button-wait');
+              }, 3000);
             }
             
             if(wishlistToastText == 'List has been removed' || wishlistToastText == 'Lista została usunięta'){

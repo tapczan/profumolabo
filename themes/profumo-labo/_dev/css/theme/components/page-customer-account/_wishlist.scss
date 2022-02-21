@@ -92,3 +92,8 @@
         }
     }
 }
+
+.wishlist-button-add.wishlist-button-product.wishlist-button-wait{
+    pointer-events: none;
+    cursor: wait;
+}
