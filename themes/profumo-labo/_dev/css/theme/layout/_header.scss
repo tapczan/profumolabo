@@ -1169,6 +1169,9 @@
       display: none;
       order: 4;
       padding: 0;
+      .header-top__link {
+        display: none;
+      }
       
 
       .search-form__form-group{
