@@ -17,6 +17,16 @@
       &__content{
         padding: 0;
         max-height: 620px;
+
+        .alert{
+          @include font-with-line-height($font-size-xs, 14px);
+
+          margin: 10px 20px;
+          border-radius: 0;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          padding: 10px;
+        }
       }
 
       &__title{
