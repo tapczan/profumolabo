@@ -197,6 +197,10 @@
             width: 25px;
             padding-bottom: 2px;
             background: transparent;
+
+            &:nth-child(2){
+              display: none;
+            }
           }
         }
       }
