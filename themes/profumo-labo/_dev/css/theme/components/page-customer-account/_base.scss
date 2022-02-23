@@ -1,13 +1,27 @@
-
+body.page-customer-account,
+body.page-addresses,
 body.page-customer-account {
 
     #main {
-        font-family: Forum, cursive;
+        font-family: $font-jost;
+        color: $black;
+
+        label{
+            color: $black;
+
+            em{
+                font-style: normal;
+            }
+        }
 
         header.page-header {
             h1 {
                 @include header-title();
             }
+        }
+
+        .address__header{
+            font-weight: 500;
         }
 
         .page-content {
@@ -33,6 +47,15 @@ body.page-customer-account {
                     box-shadow: none;
                 }
 
+                input{
+                    font-family: $font-jost;
+                }
+
+                .nice-select-init{
+                    border-color: #212529;
+                    font-family: $font-jost;
+                }
+
                 .form-control.js-visible-password,
                 .form-control.js-visible-password:focus{
                     border-right: 1px solid #979797;
@@ -51,6 +74,7 @@ body.page-customer-account {
                     font-family: $font-jost;
                     font-weight: 300;
                     margin-top: 7px;
+                    color: $black !important;
                 }
             }
 
@@ -145,14 +169,39 @@ body.page-customer-account {
                     width: 49%; 
                 }
             }
+
+            .address.card{
+                border: 0.0625rem solid rgba(0, 0, 0, 0.125);
+                border-radius: 0;
+
+                .address__footer {
+                    border-top: 0.0625rem solid rgba(0, 0, 0, 0.125);
+                }
+            }
+
+            &.page-content--history,
+            &.page-content--order-slip{
+                .alert{
+                    @include font-with-line-height($font-size-sm, 16px);
+
+                    border-radius: 0;
+                    text-transform: uppercase;
+                    padding: 10px;
+                }
+
+                h6{
+                    font-weight: 500;
+                }
+            }
         }
         .user-form__block {
             font-family: $font-jost;
-            color: $black;
+            color: $black !important;
 
             h4 {
                 @include header-title();
             }
+            
             &:nth-child(1) {
                 border-right: 2px solid #ddd;
 
@@ -183,6 +232,7 @@ body.page-customer-account {
                         @include font-with-line-height($font-size-sm, 20px);
 
                         font-weight: 300;
+                        color: $black !important;
                     }
 
                     .mt-auto.text-center{

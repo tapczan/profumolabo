@@ -1,5 +1,7 @@
 .customer-links {
   margin: 0 0 map-get($spacers, 3);
+  color: $black;
+  
   @include media-breakpoint-up(lg) {
     margin: 0;
   }
@@ -36,12 +38,17 @@
       }
     }
 
+    .active{
+      background: transparent !important;
+    }
+
     #identity-link .material-icons,
     #address-link .material-icons,
     #history-link .material-icons,
     #order-slips-link .material-icons,
     #wishlist-link .material-icons,
-    #psgdpr-link .material-icons{
+    #psgdpr-link .material-icons,
+    #addresses-link .material-icons{
       background-size: contain !important;
       background-position: center !important;
       font-size: 0;
@@ -54,7 +61,8 @@
       background: url(~/img/icons/information-icon.svg);
     }
 
-    #address-link .material-icons{
+    #address-link .material-icons,
+    #addresses-link .material-icons{
       background: url(~/img/icons/location-icon.svg);
     }
 
@@ -80,6 +88,10 @@
       width: 20px;
       height: 18px;
       font-size: 19px;
+
+      i{
+        color: $black !important;
+      }
     }
   }
 
