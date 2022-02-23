@@ -124,7 +124,7 @@
         width: 100px;
         align-items: center;
         display: flex;
-        padding: 0 5px;
+        padding: 0 8px;
 
         select,
         .nice-select-init{
@@ -156,6 +156,48 @@
 
         option{
           border-style: none;
+        }
+
+        .input-group{
+          border-radius: 3px;
+          background: $gray-cart-quatity;
+          border-style: none;
+        }
+
+        .form-control{
+          @include font-with-line-height($font-size-sm, 22px);
+
+          width: 30px;
+          height: auto;
+          font-weight: 400;
+          color: $black;
+          border: 0;
+          background: transparent;
+
+          &:focus{
+            box-shadow: none;
+            border: 1px 
+          }
+        }
+
+        .input-group-btn{
+          @include font-with-line-height($font-size-sm, 22px);
+
+          height: auto;
+          font-weight: 400;
+          color: $black;
+          background: transparent;
+
+          &.input-group-append .btn{
+            @include font-with-line-height($font-size-sm, 22px);
+          }
+
+          .btn{
+            border-radius: 0;
+            width: 25px;
+            padding-bottom: 2px;
+            background: transparent;
+          }
         }
       }
 
@@ -234,6 +276,22 @@
         display: inline-block;
         cursor: pointer;
       }
+    }
+  }
+}
+
+#notifications{
+  .alert{
+    line-height: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 15px;
+    margin: 20px 0 0;
+    text-align: center;
+
+    ul{
+      margin: 0;
     }
   }
 }
