@@ -5,8 +5,18 @@
   }
 
   .link-item {
+    @include font-with-line-height($font-size-sm, 18px);
+
+    font-family: $font-jost;
     display: flex;
     align-items: center;
+    font-weight: 300;
+  }
+
+  .active{
+    .link-item{
+      font-weight: 500;
+    }
   }
 
   &__list {
@@ -24,6 +34,51 @@
       &::-webkit-scrollbar {
         display: none;
       }
+    }
+
+    #identity-link .material-icons,
+    #address-link .material-icons,
+    #history-link .material-icons,
+    #order-slips-link .material-icons,
+    #wishlist-link .material-icons{
+      background-size: contain !important;
+      background-position: center !important;
+      font-size: 0;
+      background-repeat: no-repeat !important;
+      width: 20px;
+      height: 18px;
+    }
+
+    #identity-link .material-icons{
+      background: url(~/img/icons/information-icon.svg);
+    }
+
+    #address-link .material-icons{
+      background: url(~/img/icons/location-icon.svg);
+    }
+
+    #history-link .material-icons{
+      background: url(~/img/icons/calendar-icon.svg);
+    }
+
+    #order-slips-link .material-icons{
+      background: url(~/img/icons/credit-icon.svg);
+    }
+
+    #wishlist-link .material-icons{
+      background: url(~/img/icons/heart-icon.svg);
+    }
+  }
+
+  &__footer{
+    .customer-links__logout .material-icons{
+      background-size: contain !important;
+      background-position: center !important;
+      font-size: 0;
+      background-repeat: no-repeat !important;
+      width: 20px;
+      height: 18px;
+      background: url(~/img/icons/user-icon.svg);
     }
   }
 

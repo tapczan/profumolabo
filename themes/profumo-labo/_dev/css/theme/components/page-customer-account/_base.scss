@@ -19,38 +19,119 @@ body.page-customer-account {
                     background: transparent;
                 }
                 .card-footer {
+                    @include font-with-line-height($font-size-sm, 20px);
+
                     background: transparent;
                     border: 0;
+                    font-family: $font-jost;
                 }
             }
+            .form-group{
+                input:focus,
+                button:focus{
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                .form-control.js-visible-password,
+                .form-control.js-visible-password:focus{
+                    border-right: 1px solid #979797;
+                }
+
+                .form-label{
+                    @include font-with-line-height($font-size-sm, 16px);
+
+                    font-family: $font-jost;
+                    font-weight: 300;
+                }
+
+                .form-text.text-muted{
+                    @include font-with-line-height(10px, 12px);
+
+                    font-family: $font-jost;
+                    font-weight: 300;
+                    margin-top: 7px;
+                }
+            }
+
             .form-control {
                 border-color: #212529;
             }
+
+            .form-footer{
+                margin-top: 50px !important;
+            }
+
             .input-group-append {
                 .btn.btn-primary {
                     background-color: #979797;
                     width: 100%;
                     border-radius: 0 .4rem .4rem 0 !important;
                     border: 1px solid #979797;
+                    padding: 8px 12px;
+
+                    .material-icons{
+                        font-size: 0;
+                        background: url(~/img/icons/password-icon.svg);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        width: 20px;
+                        height: 24px;
+                    }
                 }
             }
+            
             button.btn.btn-primary,
             a.btn.btn-primary {
+                font-family: $font-jost;
                 font-size: 12px;
                 text-transform: uppercase;
-                letter-spacing: 3px;
+                letter-spacing: 1px;
                 color: #fff;
                 background-color:#000;
                 border-radius: 0;
                 border: 0;
                 width: 80%;
                 margin-bottom:10px;
+                font-weight: 300;
+
+                &:focus{
+                    box-shadow: none;
+                    outline: none;
+                }
+            }
+
+            button.btn.btn-primary{
+                margin-bottom: 0;
             }
 
             .custom-control-input {
                 box-shadow: none;
                 outline: none;
                 z-index: 10;
+            }
+
+            .custom-control-label{
+                @include font-with-line-height($font-size-sm, 23px);
+
+                font-family: $font-jost;
+                font-weight: 300;
+
+                &:before,
+                &:after{
+                    top: 3px;
+                }
+            }
+
+            .custom-control-input:focus,
+            .custom-control-input:not(:checked) ~ .custom-control-label::before,
+            .custom-control-input:focus:not(:checked) ~ .custom-control-label::before,
+            .custom-control-input:checked ~ .custom-control-label::before,
+            .custom-control-input:focus:checked ~ .custom-control-label::before {
+                outline: none;
+                box-shadow: none !important;
+                border-color: #000;
             }
         
             .custom-control-input:checked ~ .custom-control-label::before {
@@ -66,18 +147,48 @@ body.page-customer-account {
             }
         }
         .user-form__block {
+            font-family: $font-jost;
+            color: $black;
+
             h4 {
                 @include header-title();
             }
             &:nth-child(1) {
                 border-right: 2px solid #ddd;
+
                 .user-form__content {
-                        padding-right: 15%;
+                    padding-right: 15%;
+                }
+
+                .form-control.js-visible-password,
+                .form-control.js-visible-password:focus{
+                    border-right: 1px solid #979797;
+                }
+
+                .form-footer{
+                    margin-top: 0 !important;
+                }
+
+                .forgot-password{
+                    @include font-with-line-height($font-size-sm, 20px);
+
+                    font-weight: 300;
                 }
             }
             &:nth-child(2) {
                 .user-form__content {
                     padding-left: 15%;
+
+                    .text-muted{
+                        @include font-with-line-height($font-size-sm, 20px);
+
+                        font-weight: 300;
+                    }
+
+                    .mt-auto.text-center{
+                        margin-top: 133px !important;
+                        margin-bottom: 0 !important;
+                    }
                 }   
             }
         }

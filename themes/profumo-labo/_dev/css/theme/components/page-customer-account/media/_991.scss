@@ -18,6 +18,15 @@
                     }
                 }
             }
+
+            .user-form__block:nth-child(2) .user-form__content .mt-auto.text-center{
+                margin-top: 112px !important;
+            }
+
+            .page-content button.btn.btn-primary, 
+            .page-content a.btn.btn-primary{
+                width: 100%;
+            }
         }
 
         #content{
@@ -25,5 +34,6 @@
                 max-width: 100%;
             }
         }
+        
     }
 }
