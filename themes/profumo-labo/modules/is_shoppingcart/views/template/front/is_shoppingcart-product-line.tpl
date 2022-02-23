@@ -70,9 +70,11 @@
 
             <div class="cart-products__quantity">
                     <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                        <span class="input-group-btn input-group-prepend"></span>
+                        <span class="input-group-btn input-group-prepend">
+                        <button class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-down bootstrap-touchspin-injected" type="button">-</button>
+                        </span>
                         <input
-                            class="js-cart-line-product-quantity input-touchspin"
+                            class="js-cart-line-product-quantity input-touchspin form-control"
                             data-down-url="{$product.down_quantity_url}"
                             data-up-url="{$product.up_quantity_url}"
                             data-update-url="{$product.update_quantity_url}"
@@ -85,7 +87,9 @@
                             min="{$product.minimal_quantity}"
                             aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
                             />
-                        <span class="input-group-btn input-group-append"></span>
+                        <span class="input-group-btn input-group-append">
+                        <button class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up bootstrap-touchspin-injected" type="button">+</button>
+                        </span>
                     </div> 
             </div>
 
