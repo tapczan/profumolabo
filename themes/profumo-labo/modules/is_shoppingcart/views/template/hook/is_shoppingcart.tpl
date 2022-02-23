@@ -47,13 +47,13 @@
            </span>
            *}
          </div>
-         {if $cart.products_count > 0}
+          {if $cart.products_count > 0}
            <div class="cart-dropdown__products pt-3 mb-3">
              {foreach from=$cart.products item=product}
                {include 'module:is_shoppingcart/views/template/front/is_shoppingcart-product-line.tpl' product=$product}
              {/foreach}
            </div>
- 
+
            {* {foreach from=$cart.subtotals item="subtotal"}
              {if $subtotal.value}
                <div class="cart-summary-line cart-summary-line-{$subtotal.type}">
@@ -62,38 +62,37 @@
                </div>
              {/if}
            {/foreach} *}
- 
+
            <div class="cart-summary-line cart-total">
              <ul class="cart-summary__list">
-               <li class="cart-summary__item">
-                 <span class="cart-summary__label">
-                   Total products:
-                 </span> 
-                 <span class="cart-summary__value">
-                   46,50zl
-                 </span> 
-               </li>
-               <li class="cart-summary__item">
-                 <span class="cart-summary__label">
-                   Shipment:
-                 </span> 
-                 <span class="cart-summary__value">
-                   Za darmo!
-                 </span> 
-               </li>
-               <li class="cart-summary__item">
-                 <span class="cart-summary__label">
-                   Total (gross):
-                 </span> 
-                 <span class="cart-summary__value">
-                   46,49 zl
-                 </span> 
-               </li>
+              {foreach from=$cart.subtotals item="subtotal"}
+                {if $subtotal.value}
+                  <li class="cart-summary__item">
+                    <span class="cart-summary__label">
+                      {if $subtotal.label == 'Subtotal'}
+                        {l s='Total' d='Shop.Theme.Actions'}
+                      {else}
+                        {$subtotal.label}
+                      {/if}
+                    </span> 
+                    <span class="cart-summary__value">
+                      {if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}
+                    </span> 
+                  </li>
+                {/if}
+              {/foreach}
+              {if $cart.totals}
+                <li class="cart-summary__item">
+                  <span class="cart-summary__label">
+                    {l s='Total (gross)' d='Shop.Theme.Actions'}
+                  </span> 
+                  <span class="cart-summary__value">
+                    {$cart.totals.total.value}  
+                  </span> 
+                </li>
+              {/if}
              </ul>
-             {*
-             <span class="label">{$cart.totals.total.label}</span>
-             <span class="value">{$cart.totals.total.value}</span>
-             *}
+ 
            </div>
  
            <div class="cart-action">
@@ -101,9 +100,12 @@
                {l s='PRZEJDŹ DO REALIZACJI ZAMÓWIENIA' d='Shop.Theme.Actions'}
              </a>
              <span class="cart-action__continue dropdown-close">
-               Kontynuuj zakupy
+               <a href="{$link->getPageLink("index",  true)}" style="color: #111;">
+                {l s='Kontynuuj zakupy' d='Shop.Theme.Actions'}
+                </a>
              </span>
            </div>
+           
            {*
            <div class="mt-3">
              <a href="{$cart_url}" class="btn btn-sm btn-primary btn-block dropdown-close">
@@ -111,6 +113,7 @@
              </a>
            </div>
            *}
+
          {else}
            <div class="alert alert-warning">
              {l s='Unfortunately your basket is empty' d='Shop.Istheme'}
