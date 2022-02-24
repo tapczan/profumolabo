@@ -24,7 +24,6 @@
  *}
 <section class="product-discounts js-product-discounts">
   {if $product.quantity_discounts}
-
     <span class="product-stock-info">
       {foreach from=$product.quantity_discounts item='quantity_discount' name='quantity_discounts'}
           {if $pslanguage == 'pl'}
