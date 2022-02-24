@@ -47,67 +47,75 @@
           {/block}
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 quickview__right-panel">
-          <div class="product-rating">
-            {hook h='displayProductListReviews' product=$product }
-          </div>
-          <h2 class="modal-product-title">{$product.name}</h2>
-          <div class="product-reference">
-            <span class="product-inspired">
-              {$product.reference}
+          <div class='quickview__right-panel--wrapper'>
+            <div class="product-rating">
+              {hook h='displayProductListReviews' product=$product }
+            </div>
+            <h2 class="modal-product-title">{$product.name}</h2>
+            <div class="product-reference">
+              <span class="product-inspired">
+                {l s='Inspiration' d='Shop.Istheme'}
+                {$product.reference}
+              </span>
+              <span class="product-brand">
+              {if isset($product_manufacturer->id)}
+                {$product_manufacturer->name}
+              {/if}
+              </span>
+            </div>
+
+            {block name='product_prices'}
+              {include file='catalog/_partials/product-prices.tpl'}
+            {/block}
+
+            <span class="product-stock-info">
+              {include file='catalog/_partials/product-discounts.tpl'}
             </span>
-            <span class="product-brand">
-            {if isset($product_manufacturer->id)}
-              {$product_manufacturer->name}
-            {/if}
-            </span>
-          </div>
+            
+            {block name='product_buy'}
+              <div class="product-actions js-product-actions">
+                <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
+                  <input type="hidden" name="token" value="{$static_token}">
+                  <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
+                  <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id" class="js-product-customization-id">
 
-          {block name='product_prices'}
-            {include file='catalog/_partials/product-prices.tpl'}
-          {/block}
-          
-          {block name='product_buy'}
-            <div class="product-actions js-product-actions">
-              <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
-                <input type="hidden" name="token" value="{$static_token}">
-                <input type="hidden" name="id_product" value="{$product.id}" id="product_page_product_id">
-                <input type="hidden" name="id_customization" value="{$product.id_customization}" id="product_customization_id" class="js-product-customization-id">
+                  {block name='product_variants'}
+                    {include file='catalog/_partials/product-variants.tpl'}
+                  {/block}
 
-                {block name='product_variants'}
-                  {include file='catalog/_partials/product-variants.tpl'}
-                {/block}
+                  {block name='product_add_to_cart'}
+                    {include file='catalog/_partials/product-add-to-cart.tpl'}
+                  {/block}
 
-                {block name='product_add_to_cart'}
-                  {include file='catalog/_partials/product-add-to-cart.tpl'}
-                {/block}
+                  <div class="product-sku">
+                    <p id="product_ean13"{if empty($product->ean13) || !$product->ean13} style="display: none;"{/if}>
+                      <label>{l s='Symbol:' d='Istheme'} </label>
+                      <span {if !empty($product->ean13) && $product->ean13} content="{$product->ean13}"{/if}>{$product->ean13|escape:'html':'UTF-8'}</span>
+                    </p>
+                  </div>
 
-                <div class="product-sku">
-                  <p id="product_ean13"{if empty($product->ean13) || !$product->ean13} style="display: none;"{/if}>
-                    <label>{l s='Ean13:'} </label>
-                    <span {if !empty($product->ean13) && $product->ean13} content="{$product->ean13}"{/if}>{$product->ean13|escape:'html':'UTF-8'}</span>
-                  </p>
-                </div>
-
-                <div class="modal-accordion" id="modalAccordionParent">
-                  <div class="modal-accordion__item">
-                    <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
-                      {if $pslanguage == 'pl'}
-                          OPIS     
-                      {else}
-                          DESCRIPTION
-                      {/if}
-                    </div>
-                    <div class="modal-accordion__body collapse show" id="modalAccordionContent1" aria-labelledby="modalAccordionHeader1" data-parent="#modalAccordionParent">
-                      <p>{$product.description_short nofilter}</p>
+                  <div class="modal-accordion" id="modalAccordionParent">
+                    <div class="modal-accordion__item">
+                      <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
+                        {if $pslanguage == 'pl'}
+                            OPIS     
+                        {else}
+                            DESCRIPTION
+                        {/if}
+                      </div>
+                      <div class="modal-accordion__body collapse show" id="modalAccordionContent1" aria-labelledby="modalAccordionHeader1" data-parent="#modalAccordionParent">
+                        {$product.description_short nofilter}
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <a class="quickview-product-link" href="{$product.url}">{l s='Product Details' d='Shop.Theme.Catalog'}</a>
 
-                {* Input to refresh product HTML removed, block kept for compatibility with themes *}
-                {block name='product_refresh'}{/block}
-            </form>
+                  {* Input to refresh product HTML removed, block kept for compatibility with themes *}
+                  {block name='product_refresh'}{/block}
+              </form>
+            </div>
+            {/block}
           </div>
-        {/block}
         </div>
       </div>
      </div>
