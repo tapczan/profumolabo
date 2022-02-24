@@ -39,7 +39,7 @@
         </a>
       </p>
 
-      {if $product.attributes}
+      {*if $product.attributes}
         <ul class="mb-2">
           {foreach from=$product.attributes key="attribute" item="value"}
             <li class="text-muted small">
@@ -48,7 +48,16 @@
             </li>
           {/foreach}
         </ul>
-      {/if}
+      {/if*}
+
+      <div class="product-line-grid__category">
+        {$product.category_name}
+        {if $product.attributes}
+            {foreach $product.attributes item=attribute}
+                {$attribute}
+            {/foreach}
+        {/if}
+      </div>
 
       <div class="product-line-info product-price{if $product.has_discount} has-discount{/if}">
         <div class="current-price">

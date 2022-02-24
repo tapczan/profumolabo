@@ -42,19 +42,14 @@
           {/block}
         </div>
 
-        {block name='continue_shopping'}
+        {*block name='continue_shopping'}
           <div class="my-3">
             <a class="btn btn-outline-primary" href="{$urls.pages.index}">
               <span class="material-icons btn-icon mr-1">keyboard_arrow_left</span>
               {l s='Continue shopping' d='Shop.Theme.Actions'}
             </a>
           </div>
-        {/block}
-
-        <!-- shipping informations -->
-        {block name='hook_shopping_cart_footer'}
-          {hook h='displayShoppingCartFooter'}
-        {/block}
+        {/block*}
       </div>
 
       <!-- Right Block: cart subtotal & cart total -->
@@ -87,10 +82,13 @@
           </div>
         {/block}
 
-        {block name='hook_reassurance'}
-          {hook h='displayReassurance'}
-        {/block}
+      </div>
 
+      <div class="cart-grid-bottom col-12">
+        <!-- shipping informations -->
+        {block name='hook_shopping_cart_footer'}
+          {hook h='displayShoppingCartFooter'}
+        {/block}
       </div>
 
     </div>
