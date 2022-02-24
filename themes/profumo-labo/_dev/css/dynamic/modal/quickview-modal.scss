@@ -52,7 +52,11 @@
     display: none;
   }
   .modal-title-link {
-    color: $gray-600;
+    font-family: Forum,cursive;
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    line-height: 39px;
     text-decoration: none;
     &::after {
     content: '';
