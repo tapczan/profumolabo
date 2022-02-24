@@ -86,7 +86,6 @@
                   {block name='product_add_to_cart'}
                     {include file='catalog/_partials/product-add-to-cart.tpl'}
                   {/block}
-
                   <div class="product-sku">
                     <p id="product_ean13"{if empty($product->ean13) || !$product->ean13} style="display: none;"{/if}>
                       <label>{l s='Symbol:' d='Istheme'} </label>
