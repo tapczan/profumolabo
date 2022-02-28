@@ -138,6 +138,12 @@
                     color: $white !important;
                     text-transform: uppercase;
                     letter-spacing: 1px;
+
+                    &:focus,
+                    &:hover{
+                        box-shadow: none;
+                        outline: none;
+                    }
                 }
             }
 
