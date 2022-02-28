@@ -51,7 +51,10 @@
             <div class="product-rating">
               {hook h='displayProductListReviews' product=$product }
             </div>
-            <h2 class="modal-product-title">{$product.name}</h2>
+            <div class="position-relative">
+              <h2 class="modal-product-title">{$product.name}</h2>
+              <button class="wishlist-button-add wishlist-button-product"><i class="material-icons">favorite_border</i></button>
+            </div>
             <div class="product-reference">
               <span class="product-inspired">
                 {l s='Inspiration' d='Shop.Istheme'}
