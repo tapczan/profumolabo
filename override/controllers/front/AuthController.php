@@ -26,29 +26,86 @@
 class AuthController extends AuthControllerCore
 {
 
-    public $is_login_popup = false;
-     
-
+    /*
+    * disable redirect if login popup is enable = true
+    */
+    public $is_login_popup = false; 
+    
     public function initContent()
     {
         $should_redirect = false;
+ 
+        if (Tools::isSubmit('submitCreate') || Tools::isSubmit('create_account')) {
+            $register_form = $this
+                ->makeCustomerForm()
+                ->setGuestAllowed(false)
+                ->fillWith(Tools::getAllValues());
 
-        // feature is on hold
-        if($is_login_popup) 
-        {
-
-            if (Tools::isSubmit('submitLogin')) {
-
-                if ($login_form->submit()) {
-                    // $should_redirect = true;
-                    if (($back = rawurldecode(Tools::getValue('back'))) && $back == Tools::secureReferrer($back))
-                    Tools::redirect(html_entity_decode($back));
-                    Tools::redirect(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : NULL);
+            if (Tools::isSubmit('submitCreate')) {
+                $hookResult = array_reduce(
+                    Hook::exec('actionSubmitAccountBefore', [], null, true),
+                    function ($carry, $item) {
+                        return $carry && $item;
+                    },
+                    true
+                );
+                if ($hookResult && $register_form->submit()) {
+                    $should_redirect = true;
                 }
             }
+
+            $this->context->smarty->assign([
+                'register_form' => $register_form->getProxy(),
+                'hook_create_account_top' => Hook::exec('displayCustomerAccountFormTop'),
+            ]);
+            $this->setTemplate('customer/registration');
+        } else {
+            $login_form = $this->makeLoginForm()->fillWith(
+                Tools::getAllValues()
+            );
+
+            if (Tools::isSubmit('submitLogin')) {
+                if ($login_form->submit()) {
+                    
+                    if($this->is_login_popup) {
+                        if (($back = rawurldecode(Tools::getValue('back'))) && $back == Tools::secureReferrer($back))
+                        Tools::redirect(html_entity_decode($back));
+                        Tools::redirect(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : NULL);
+                    }
+                    else {
+                        $should_redirect = true;
+                    }
+                }
+            }
+
+            $this->context->smarty->assign([
+                'login_form' => $login_form->getProxy(),
+            ]);
+            $this->setTemplate('customer/authentication');
         }
-    
+
         parent::initContent();
 
-    }     
+        if ($should_redirect && !$this->ajax) {
+            $back = rawurldecode(Tools::getValue('back'));
+
+            if (Tools::urlBelongsToShop($back)) {
+                // Checks to see if "back" is a fully qualified
+                // URL that is on OUR domain, with the right protocol
+                return $this->redirectWithNotifications($back);
+            }
+
+            // Well we're not redirecting to a URL,
+            // so...
+            if ($this->authRedirection) {
+                // We may need to go there if defined
+                return $this->redirectWithNotifications($this->authRedirection);
+            }
+
+            // go home
+            return $this->redirectWithNotifications(__PS_BASE_URI__);
+        }
+    }
+
+    
 }
