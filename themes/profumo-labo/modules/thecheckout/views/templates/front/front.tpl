@@ -125,19 +125,6 @@
   <!-- this div tag is required due to core.js events registrations -->
   {*</div>*}
 
-  {*{debug}*}
-  <div id="empty-cart-notice">
-    <h1>{l s='Cart is empty' d='Shop.Notifications.Error'}</h1>
-    <a class="label" href="{$urls.pages.index}">
-      <span class="laquo">«</span>{l s='Continue shopping' d='Shop.Theme.Actions'}
-    </a>
-  </div>
-  <div id="is-test-mode-notice">
-    <div class="notice">{l s='Test mode is enabled, only you can see The Checkout module active.' mod='thecheckout'}</div>
-    <a class="close-notice" href="javascript:$('#is-test-mode-notice').fadeOut();">{l s='OK, close' mod='thecheckout'}</a>
-  </div>
-  {assign 'k' 1}
-  
   <div class="container">
     <nav aria-label="breadcrumb" data-depth="2">
       <ol class="breadcrumb" style="font-family:Jost, sans-serif">         
@@ -157,7 +144,24 @@
       </ol>
     </nav>
   </div>
-  
+
+  {*{debug}*}
+  <div id="empty-cart-notice">
+    <div class="row mb-6">
+      <div class="col-lg-6 mx-auto  mb-6">
+        <h1 class="text-center">{l s='Cart is empty' d='Shop.Notifications.Error'}</h1>
+        <a class="label text-center" href="{$urls.pages.index}" style="display: block">
+          <span class="laquo" style="vertical-align: unset">«</span> {l s='Continue shopping' d='Shop.Theme.Actions'}
+        </a>
+      </div>
+    </div>
+  </div>
+  <div id="is-test-mode-notice">
+    <div class="notice">{l s='Test mode is enabled, only you can see The Checkout module active.' mod='thecheckout'}</div>
+    <a class="close-notice" href="javascript:$('#is-test-mode-notice').fadeOut();">{l s='OK, close' mod='thecheckout'}</a>
+  </div>
+  {assign 'k' 1}
+
   {function blockContainer}
     {foreach $data as $key=>$sub_block}
       {if "blocks" === $key}
