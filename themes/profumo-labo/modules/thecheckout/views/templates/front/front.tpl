@@ -130,16 +130,16 @@
       <ol class="breadcrumb" style="font-family:Jost, sans-serif">         
         <li class="breadcrumb-item">
           <a href="{$urls.pages.index}">
-            {if $pslanguage == 'pl'}STRONA GŁÓWNA {else} HOME {/if}
+            {l s='Home' d='Shop.Theme.Global'}
           </a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
           <a href="{$urls.pages.order}">
-            {if $pslanguage == 'pl'}PANEL KLIENTA {else} CUSTOMER PANEL {/if}
+            {l s='Customer Panel' d='Shop.Theme.Global'}
           </a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-            {if $pslanguage == 'pl'}TWOJE DANE OSOBISTE {else} YOUR PERSONAL DATA {/if}
+            {l s='Your Personal Data' d='Shop.Theme.Global'}
         </li>
       </ol>
     </nav>

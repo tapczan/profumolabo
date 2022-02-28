@@ -96,11 +96,7 @@
                   <div class="modal-accordion" id="modalAccordionParent">
                     <div class="modal-accordion__item">
                       <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
-                        {if $pslanguage == 'pl'}
-                            OPIS     
-                        {else}
-                            DESCRIPTION
-                        {/if}
+                        {l s='Description' d='Shop.Theme.Global'}
                       </div>
                       <div class="modal-accordion__body collapse show" id="modalAccordionContent1" aria-labelledby="modalAccordionHeader1" data-parent="#modalAccordionParent">
                         {$product.description_short nofilter}
