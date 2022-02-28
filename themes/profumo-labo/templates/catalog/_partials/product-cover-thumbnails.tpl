@@ -31,7 +31,9 @@
           <div class="js-product-add-to-cart">
             {hook h='displayProductActions'}
           </div>
+          {if !Context::getContext()->controller->isQuickView()}
           <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
+          {/if}
             <img 
               src="{$image.bySize.medium_default.url}" 
               {if !empty($product.default_image.legend)}
@@ -41,7 +43,9 @@
               {/if}
               class="product-img__asset"
             >
+          {if !Context::getContext()->controller->isQuickView()}
           </a>
+          {/if}
         </div>
       {/foreach}
     {else}
