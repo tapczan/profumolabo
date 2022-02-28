@@ -137,7 +137,27 @@
     <a class="close-notice" href="javascript:$('#is-test-mode-notice').fadeOut();">{l s='OK, close' mod='thecheckout'}</a>
   </div>
   {assign 'k' 1}
-
+  
+  <div class="container">
+    <nav aria-label="breadcrumb" data-depth="2">
+      <ol class="breadcrumb" style="font-family:Jost, sans-serif">         
+        <li class="breadcrumb-item">
+          <a href="{$urls.pages.index}">
+            {if $pslanguage == 'pl'}STRONA GŁÓWNA {else} HOME {/if}
+          </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{$urls.pages.order}">
+            {if $pslanguage == 'pl'}PANEL KLIENTA {else} CUSTOMER PANEL {/if}
+          </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+            {if $pslanguage == 'pl'}TWOJE DANE OSOBISTE {else} YOUR PERSONAL DATA {/if}
+        </li>
+      </ol>
+    </nav>
+  </div>
+  
   {function blockContainer}
     {foreach $data as $key=>$sub_block}
       {if "blocks" === $key}
