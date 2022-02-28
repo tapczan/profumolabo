@@ -51,12 +51,8 @@
   <div class="form-group">
     {if $field.type == 'checkbox' || $field.type == 'radio-buttons'}
       {if $field.type == 'radio-buttons'}
-        {if $field.label == 'Social title'}
-          {if $pslanguage == 'pl'}
-            <div class="form-label label mr-3">Płeć</div>
-          {else}
-            <div class="form-label label mr-3">Gender</div>
-          {/if}
+        {if $field.label == 'Social title' || $field.label == 'Nazwa kontaktu'}
+          <div class="form-label label mr-3">{l s='Gender' d='Shop.Theme.Global'}</div>
         {else}
           <div class="form-label label mr-3">{$field.label}</div>
         {/if}

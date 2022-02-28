@@ -33,11 +33,7 @@
             <div class="register-account text-center mb-3">
                 <div>Don't have an account?</div>
                 <a href="{$urls.pages.register}" class="btn btn-primary d-none d-md-inline-block btn-logindropdown-register" rel="nofollow">
-                    {if $pslanguage == 'pl'}
-                        Zarejestrować
-                    {else}
-                        Register
-                    {/if}
+                    {l s='Register' d='Shop.Theme.Global'}
                 </a>
             </div>
 
