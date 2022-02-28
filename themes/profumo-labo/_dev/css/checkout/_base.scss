@@ -528,6 +528,30 @@
                 }
             }
         }
+
+        & + #login-form{
+            .btn{
+                @include font-with-line-height($font-size-xs, 16px);
+
+                font-weight: 300;
+                background: $black;
+                display: block;
+                margin: 15px auto 0;
+                border-radius: 0;
+                border-style: none;
+                color: $white !important;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                max-width: 320px;
+                width: 100%;
+        
+                &:focus,
+                &:hover{
+                    box-shadow: none;
+                    outline: none;
+                }
+            }
+        }
     }
 }
 

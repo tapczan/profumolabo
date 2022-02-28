@@ -103,7 +103,7 @@
 
         font-weight: 400;
         text-transform: uppercase;
-        margin: 0;
+        margin: 0 !important;
         color: $black;
       }
 
@@ -111,6 +111,7 @@
         @include font-with-line-height($font-size-sm, 20px);
 
         color: $gray-cart;
+        margin-bottom: 5px;
         padding: 0;
       }
 
@@ -159,9 +160,10 @@
         }
 
         .input-group{
-          border-radius: 3px;
-          background: $gray-cart-quatity;
+          border-radius: 0;
+          background: transparent;
           border-style: none;
+          color: $black;
         }
 
         .form-control{
@@ -169,7 +171,7 @@
 
           width: 30px;
           height: auto;
-          font-weight: 400;
+          font-weight: 500;
           color: $black;
           border: 0;
           background: transparent;
@@ -184,7 +186,7 @@
           @include font-with-line-height($font-size-sm, 22px);
 
           height: auto;
-          font-weight: 400;
+          font-weight: 500;
           color: $black;
           background: transparent;
 
@@ -210,20 +212,13 @@
         display: flex;
 
         &-cart{
-          @include font-with-line-height($font-size-sm, 20px);
+          @include font-with-line-height($font-size-lg, 16px);
 
-          color: $gray-cart;
+          color: $gray !important;
           font-family: $font-jost;
-          background: url(~/img/icons/delete-icon.svg);
-          background-repeat: no-repeat;
-          background-position-y: 50%;
-          background-position-x: 0;
-          text-transform: uppercase;
-          padding: 5px 0 5px 20px;
         }
       }
     }
-
 
     .cart-summary{
       &-line{
