@@ -17,27 +17,6 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of Areama
 *}
-<li data-id-product="{$product.id_product|intval}" data-id-product-attribute="{$product.id_product_attribute|intval}" itemscope itemtype="http://schema.org/Product">  
-    
-    <div class="row">
-
-        <div class="col-md-6">
-            {include file="./custom/custom_compact_product_thumb.tpl"}
-        </div>
-
-        <div class="col-md-6">
-            {include file="./custom/custom_compact_product_details.tpl"}
-        </div>
-    
-    </div> <!-- end row -->
-
-</li>
-
-
-
-
-{* BASE TPL
-
 <li data-id-product="{$product.id_product|intval}" data-id-product-attribute="{$product.id_product_attribute|intval}" itemscope itemtype="http://schema.org/Product">
     <div class="arpl-thumb">
         {block name='product_flags'}
@@ -122,5 +101,3 @@
         {/if}
     </div>
 </li>
-
-*}

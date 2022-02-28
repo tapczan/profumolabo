@@ -74,10 +74,7 @@ class AuthControllerCore extends FrontController
 
             if (Tools::isSubmit('submitLogin')) {
                 if ($login_form->submit()) {
-                    // $should_redirect = true;
-                    if (($back = rawurldecode(Tools::getValue('back'))) && $back == Tools::secureReferrer($back))
-                    Tools::redirect(html_entity_decode($back));
-                    Tools::redirect(isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : NULL);
+                    $should_redirect = true;
                 }
             }
 

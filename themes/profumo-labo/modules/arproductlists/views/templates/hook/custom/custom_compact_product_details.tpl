@@ -55,12 +55,8 @@
                     <section class="product-discounts js-product-discounts">
                         {assign var='fromQuantity' value=SpecificPrice::getSpecificPriceByID($product.id)}
                         {foreach $fromQuantity item='quantity' name='quantity'}
-                            {if $pslanguage == 'pl'}
-                                Kup <span class="product-stock-info__num"> {$quantity.from_quantity}</span> sztuk po obniżonej cenie<br/>
-                            {else if $pslanguage == 'en'}
-                                Buy <span class="product-stock-info__num"> {$quantity.from_quantity}</span> pieces for a discounted price<br/>
-                            {/if}
-                        {/foreach}    
+                            {l s='Buy <span class="product-stock-info__num">%quantity%</span> pieces for a discounted price' d='Shop.Theme.Global' sprintf=['%quantity%' => $quantity.from_quantity]}<br/>
+                        {/foreach}   
                     </section>
                 </span>
             
