@@ -795,16 +795,4 @@ class SpecificPriceCore extends ObjectModel
 													`from` >= \'' . pSQL($from) . '\' AND
 													`to` <= \'' . pSQL($to) . '\'' . $rule);
     }
-
-    /*
-     * override not working
-     */
-    public static function getSpecificPriceByID($id_product) {
-        
-        $query = 'SELECT *
-            FROM `' . _DB_PREFIX_ . 'specific_price`
-            WHERE `id_product` = ' . (int) $id_product;
-            
-        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
-    }
 }
