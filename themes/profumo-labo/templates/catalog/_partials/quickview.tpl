@@ -53,7 +53,9 @@
             </div>
             <div class="position-relative">
               <h2 class="modal-product-title">{$product.name}</h2>
-              <button class="wishlist-button-add wishlist-button-product"><i class="material-icons">favorite_border</i></button>
+              <div class="js-product-add-to-cart">
+                {hook h='displayProductActions'}
+              </div>
             </div>
             <div class="product-reference">
               <span class="product-inspired">
