@@ -39,9 +39,20 @@
   .card {
     border: 0;
   }
+  .js-product-single-img {
+    .slick-track {
+      display: flex !important; 
+    }
+    .slick-slide {
+      height: auto;
+    }
+  }
   &__wishlist {
     .wishlist-button-product {
       display: block;
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
     }
   }
   .product-add-to-cart  {

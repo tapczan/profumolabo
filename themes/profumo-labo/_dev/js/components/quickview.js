@@ -42,6 +42,8 @@ $(() => {
         dots: false,
       });
       $(".js-product-single-img").slick("refresh");
+      $('.js-product-single-img').trigger('resize');
+      $('.js-product-single-img').slick('setPosition');
     }
 
     qv.find('#quantity_wanted').TouchSpin({
