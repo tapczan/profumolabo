@@ -70,13 +70,13 @@
                   <li class="cart-summary__item">
                     <span class="cart-summary__label">
                       {if $subtotal.label == 'Subtotal' || $subtotal.label == 'Produkty'}
-                        {l s='Total products' d='Shop.Theme.Actions'}:
+                        {l s='Total products' d='Shop.Theme.Actions'}
                       {else}
                         {$subtotal.label}
                       {/if}
                     </span> 
                     <span class="cart-summary__value">
-                      {if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}:
+                      {if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}
                     </span> 
                   </li>
                 {/if}
