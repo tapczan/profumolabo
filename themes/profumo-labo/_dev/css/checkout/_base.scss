@@ -673,6 +673,155 @@
     }
 }
 
+#order-confirmation{
+    .page-header{
+        h1{
+            @include font-with-line-height($font-size-product-lg, 27px);
+
+            font-family: $font-forum;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            margin: 0;
+            font-weight: 400;
+            margin-bottom: 30px;
+            padding: 0;
+            color: $black;
+        }
+    }
+
+    #content-hook_order_confirmation{
+        text-align: center;
+    }
+
+    .page-content.page-order-confirmation{
+        border-style: none;
+
+        .order-confirmation-table{
+            .card-header{
+                background: transparent !important;
+            }
+
+            .card-title{
+                @include font-with-line-height($font-size-xm, 24px);
+
+                font-weight: 500;
+                color: $black;
+            }
+        }
+
+        .table{
+            thead th,
+            tbody td{
+                border-style: none;
+            }
+
+            thead,
+            tbody tr{
+                border-bottom: $border-bottom-mobile;
+            }
+
+            tbody tr:last-child{
+                border-bottom-style: none;
+            }
+
+            thead th{
+                @include font-with-line-height($font-size-xm, 24px);
+
+                font-weight: 500;
+                color: $black;
+
+                &:nth-child(3),
+                &:nth-child(4),
+                &:nth-child(5){
+                    text-align: center;
+                }
+            }
+
+            .product-line__cell{
+                &.product-line__cell--price,
+                &.product-line__cell--qty,
+                &.product-line__cell--total{
+                    text-align: center;
+                }
+
+                .product-line__price{
+                    color: $black;
+                    font-weight: 500;
+                    @include font-with-line-height($font-size-md, 18px);
+                }
+
+                .product-line__title{
+                    @include font-with-line-height($font-size-md, 18px);
+    
+                    font-weight: 500;
+                    color: $black;
+                }
+            }
+
+            .product-line__attributes {
+                @include font-with-line-height($font-size-sm, 16px);
+                
+                color: $gray;
+
+                .product-line__attribute .font-weight-bold{
+                    font-weight: 500 !important;
+                }
+            }
+        }
+
+        & + .card-group{
+            .card{
+                border-radius: 0;
+            }
+
+            .card-header{
+                background: transparent !important;
+            }
+
+            .card-title{
+                @include font-with-line-height($font-size-xm, 24px);
+
+                font-weight: 500;
+                color: $black;
+            }
+
+            .cart-summary-line{
+                .label,
+                .value,
+                span{
+                    @include font-with-line-height($font-size-sm, 18px);
+
+                    color: $black;
+                    font-weight: 300;
+                }
+
+                &.cart-total{
+                    .label,
+                    .value{
+                        @include font-with-line-height($font-size-xm, 24px);
+        
+                        font-weight: 500;
+                    }
+                }
+
+                span strong{
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    #content-hook_payment_return{
+        padding-bottom: 30px;
+
+        dl dt,
+        strong{
+            font-weight: 500;
+        }
+    }
+}
+
 @media (max-width: 1199px){
     .checkout-area{
         &-5{
@@ -720,6 +869,24 @@
             }
         }
     }
+
+    #order-confirmation{
+        .page-content.page-order-confirmation{
+            .table{
+                tbody tr,
+                tbody td{
+                    display: block;
+                    text-align: center;
+                    width: 100%;
+                    max-width: none;
+                }
+            }
+
+            .order-confirmation-table .card-header{
+                text-align: center;
+            }
+        }
+    }    
 }
 
 @media(max-width: 550px){
