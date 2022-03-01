@@ -39,6 +39,16 @@
   .card {
     border: 0;
   }
+  &__wishlist {
+    .wishlist-button-product {
+      display: block;
+    }
+  }
+  .product-add-to-cart  {
+    .wishlist-button-product {
+      display: none;
+    }
+  }
   .modal-title-link,
   .modal-product-title {
     color: #000;

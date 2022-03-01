@@ -53,7 +53,7 @@
             </div>
             <div class="position-relative">
               <h2 class="modal-product-title">{$product.name}</h2>
-              <div class="js-product-add-to-cart">
+              <div class="js-product-add-to-cart quickview__wishlist">
                 {hook h='displayProductActions'}
               </div>
             </div>
