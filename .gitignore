@@ -4,6 +4,7 @@
 !override/
 modules/
 !modules/is*
+!modules/blockwishlist
 !modules/arproductlists
 !modules/contentvideo
 !modules/createit_customfield
