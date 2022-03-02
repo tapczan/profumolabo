@@ -67,7 +67,7 @@
         }
 
         &.arpl-group-tabbed{
-            margin: 0 0 50px;
+            margin: 0;
     
             .arpl-section{
                 margin-bottom: 100px;
@@ -612,5 +612,22 @@
 }
 
 .homepage-slider-wrapper {
-    z-index: 10;
+    z-index: 1010;
+
+    & + #wrapper{
+        .container{
+            max-width: none;
+            z-index: 100;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+
+            & > .row{
+                max-width: 1700px;
+                margin: auto;
+            }
+        }
+    }
 }

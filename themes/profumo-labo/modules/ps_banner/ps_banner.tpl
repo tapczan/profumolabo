@@ -29,13 +29,7 @@
   </div>
 </div>
 
-<section class="blockfullbanner">
-  {if isset($banner_img)}
-    <img src="{$banner_img}" alt="{$banner_desc}" title="{$banner_desc}" class="img-fluid pslabo-full-width">
-  {else}
-    <span>{$banner_desc}</span>
-  {/if}
-</section>
+<section class="jarallax" data-jarallax data-video-src="mp4:{$urls.img_url}video/videooferta.mp4"></section>
 
 <div class="container">
   <div class="row">
