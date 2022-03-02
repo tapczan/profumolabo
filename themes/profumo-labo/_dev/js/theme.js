@@ -52,7 +52,6 @@ import PageLoader from './components/PageLoader';
 import { jarallax, jarallaxVideo } from "jarallax";
 import { Fancybox } from "@fancyapps/ui";
 
-// Optional video extension
 jarallaxVideo();
 
 jarallax(document.querySelectorAll('.jarallax'), {
