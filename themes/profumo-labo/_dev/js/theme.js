@@ -49,7 +49,15 @@ import CustomSelect from './components/CustomSelect';
 import PageLazyLoad from './components/Lazyload';
 import PageLoader from './components/PageLoader';
 
+import { jarallax, jarallaxVideo } from "jarallax";
 import { Fancybox } from "@fancyapps/ui";
+
+// Optional video extension
+jarallaxVideo();
+
+jarallax(document.querySelectorAll('.jarallax'), {
+  speed: 0.2,
+});
 
 /* eslint-disable */
 // "inherit" EventEmitter
