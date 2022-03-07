@@ -29,9 +29,16 @@
   </div>
 </div>
 
-<section class="jarallax" data-jarallax data-video-src="mp4:{$urls.img_url}video/videooferta.mp4"></section>
+{*
+<section id="jarallax-height" class="jarallax-section" data-jarallax data-video-src="mp4:{$urls.img_url}video/videooferta.mp4"></section>
+*}
 
-<div class="container">
+<section class="canvas-parallax js-canvas-parallax">
+  <canvas id="js-canvas-offerta" class="canvas-parallax__element"></canvas>
+  <img src="{$urls.base_url}img/cms/parallax/canvas-offerta-001.jpg" class="canvas-parallax__img js-canvas-parallax-img">
+</section>
+
+<div class="container js-after-jarallax">
   <div class="row">
     <div id="content-wrapper" class="col-12 js-content-wrapper">
       <section id="main">
