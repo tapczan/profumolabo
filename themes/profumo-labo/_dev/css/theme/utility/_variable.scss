@@ -34,7 +34,11 @@ $border-bottom-mobile: 1px solid rgba(0, 0, 0, 0.07);
 $border-footer-mobile: 1px solid rgba(255, 255, 255, 0.37);
 $border-social: 1px solid #4E525B;
 $border-comment: 1px solid #686868;
+<<<<<<< HEAD
 $border-block: 1px solid #C6C6C6;
+=======
+$border-contact: 1px solid #A8A8A8;
+>>>>>>> 26afc86 (109: Start styling contact page)
 
 @mixin font-with-line-height($font-size, $line-height) {
     font-size: $font-size;

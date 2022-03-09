@@ -24,7 +24,6 @@
  *}
 <section class="contact-form">
   <form class="card mb-4" action="{$urls.pages.contact}" method="post" {if $contact.allow_file_upload}enctype="multipart/form-data"{/if}>
-
     <div class="card-header">
       <p class="h4 card-title mb-0">
         {l s='Contact us' d='Shop.Theme.Global'}
@@ -32,7 +31,6 @@
     </div>
 
     <div class="card-body">
-
       {if $notifications}
         <div class="col-12 alert {if $notifications.nw_error}alert-danger{else}alert-success{/if}">
           <ul>
@@ -126,8 +124,113 @@
         </footer>
       {/if}
     </div>
-
-
-
   </form>
 </section>
+
+<div class="contact-footer">
+  <div class="row">
+    <div class="col-lg-9 col-md-8 col-12 contact-footer__big">
+      <div class="contact-data__item">
+        <ul class="contact-data__list">
+          <li class="contact-data__title">
+            INFORMACJE
+          </li>
+          <li>
+            <a href="/">
+              O PROFUMO LABO
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Czas i koszt dostawy
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Formy płatności
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Zwroty i reklamacje
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Regulamin sklepu
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Polityka prywatności
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Blog
+            </a>
+          </li>
+        </ul>      
+      </div>
+
+      <div class="contact-data__item">
+        <ul class="contact-data__list">
+          <li class="contact-data__title">
+            WSPÓŁPRACA
+          </li>
+          <li>
+            <a href="/">
+              Współpraca influenser
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Współpraca media
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              Współpraca B2B
+            </a>
+          </li>
+          <li class="contact-data__title contact-data__title--top">
+            PROGRAM PARTNERSKI
+          </li>
+        </ul>      
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-12 contact-social">
+      <ul class="contact-social__list">
+        <li>
+          Visit Us
+        </li>
+        <li>
+          <a href="/">
+            <span class="contact-icon contact-icon--facebook"></span>
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <span class="contact-icon contact-icon--instagram"></span>
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <span class="contact-icon contact-icon--youtube"></span>
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <span class="contact-icon contact-icon--twitter"></span>
+          </a>
+        </li>
+        <li>
+          <a href="/">
+            <span class="contact-icon contact-icon--pinterest"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
