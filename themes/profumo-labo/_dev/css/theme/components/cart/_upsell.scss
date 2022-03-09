@@ -1,0 +1,48 @@
+.page-cart {
+    .cart-grid-bottom {
+        display: flex;
+        flex-wrap: wrap;
+        margin:0 auto;
+
+        .so-display-div {
+            flex: 25%;
+            margin: 0 auto;
+        }
+        
+        .product-line-grid {
+            margin: 0 25px !important;
+            padding: 20px !important;
+        }
+
+        .product-line-grid-left,
+        .product-line-grid-body,
+        .product-line-grid-right
+         {
+            width: 100%;
+            flex:unset;
+            max-width: unset;
+            text-align: center;
+        }
+
+        .product-line-info,
+        .text-xs-center {
+            width: 100%;
+        }
+
+        .sua-add-to-cart {
+            color: #fff;
+            background-color:#000;
+            border-radius: 0;
+            text-transform: uppercase;
+            font-weight: 400;
+            width: 240px;
+            margin: 0 auto;
+            border:0;
+
+            i {
+                display: none;
+            }
+
+        }
+    }
+}

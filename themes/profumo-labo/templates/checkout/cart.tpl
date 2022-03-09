@@ -84,12 +84,21 @@
 
       </div>
 
-      <div class="cart-grid-bottom col-12">
-        <!-- shipping informations -->
-        {block name='hook_shopping_cart_footer'}
-          {hook h='displayShoppingCartFooter'}
-        {/block}
-      </div>
+      
+      {if $page.page_name == 'cart'}
+        <div class="container my-6">
+          <h2 class="h2 text-center products-section-title text-uppercase">
+          {l s='Related Products' d='Shop.Theme.Global'}
+          </h2>
+        </div>
+    
+        <div class="cart-grid-bottom">
+          <!-- shipping informations -->
+          {block name='hook_shopping_cart_footer'}        
+            {hook h='displayShoppingCartFooter'}
+          {/block}
+        </div>
+      {/if}
 
     </div>
   </section>
