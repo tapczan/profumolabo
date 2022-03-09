@@ -327,4 +327,97 @@ class Product extends ProductCore
         return Db::getInstance()->executeS($sql);
 
     }
+
+    /*
+     * 
+     */
+    public static function getSpecificProductByID($id_product) {
+
+        $query = 'SELECT *
+            FROM `' . _DB_PREFIX_ . 'product`
+            WHERE `id_product` = ' . (int) $id_product;  
+        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
+    }
+
+    /*
+     * 
+     */
+    public static function getProductBrandByID($id_manufacturer) {
+
+        $query = 'SELECT *
+            FROM `' . _DB_PREFIX_ . 'manufacturer`
+            WHERE `id_manufacturer` = ' . (int) $id_manufacturer;  
+        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
+    }
+
+    /*
+     * 
+     */
+    public static function getProductRatingByID($id_product) {
+
+        $query = 'SELECT *
+            FROM `' . _DB_PREFIX_ . 'product_comment`
+            WHERE `id_product` = ' . (int) $id_product;  
+        
+        $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
+        $total = 0;
+
+        foreach($result as $k => $v) {
+            $total += (int) $v['grade'];
+        }
+
+        return $total / count($result);
+    }
+
+    /*
+     * 
+     */
+    public static function getProductAttributeCombination($id_product_attribute) {
+        $query = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT *
+        FROM `' . _DB_PREFIX_ . 'product_attribute_combination`
+        WHERE `id_product_attribute` = ' . (int) $id_product_attribute);
+
+        $result = [];
+
+        foreach($query as $k => $v) {
+            $result = self::getProductAttributeLang($v['id_attribute']);
+        }
+        $result = array_unique($result); 
+
+        return $result[0]['name'];
+    }
+
+    /*
+     * 
+     */
+    public static function getProductAttributeLang($id_attribute) {
+        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT `name`
+        FROM `' . _DB_PREFIX_ . 'attribute_lang`
+        WHERE `id_attribute` = ' . (int) $id_attribute);
+    }
+
+    /*
+     * 
+     */
+    public static function getProductCombinationByID($id_product) {
+
+        $query = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT *
+        FROM `' . _DB_PREFIX_ . 'product_attribute`
+        WHERE `id_product` = ' . (int) $id_product);
+        
+        $product = self::getSpecificProductByID($id_product);
+        $productPrice = 0;
+        $result = [];
+
+        foreach($product as $k => $v) {
+            $productPrice = $v['price'];
+        }
+
+        foreach($query as $k => $v) {
+            $packaging = self::getProductAttributeCombination($v['id_product_attribute']);
+            $result[] = $productPrice + $v['price'] .' / '.$packaging;
+        }
+
+        return array_reverse($result, true);
+    }
 }

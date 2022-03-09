@@ -1,0 +1,72 @@
+/*
+* NOTICE OF LICENSE
+*
+* @author    INVERTUS, UAB www.invertus.eu <support@invertus.eu>
+* @copyright Copyright (c) permanent, INVERTUS, UAB
+* @license   Addons PrestaShop license limitation
+* @see       /LICENSE
+*
+* International Registered Trademark & Property of INVERTUS, UAB
+*/
+.sua-error-message-text{
+  color: black;
+  text-align: center;
+  padding: 2px;
+}
+.sua-error-message-icon{
+  color: #ff9a52;
+}
+.sua-view-button{
+  border: 2px solid #2fb5d2;
+  color: #2fb5d2;
+  background-color: white;
+}
+.sua-button-container{
+  text-align: left;
+}
+.sua-quantity-container{
+  display: flex;
+  align-items: center;
+}
+.sua-modal-header{
+  background-color: #2fb5d2!important;
+}
+#blockcart-modal .modal-body .divide-right span{
+  margin-bottom: 0;
+}
+.sua-select-container{
+  background-color: white;
+  min-width: 50px;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,.2);
+}
+.sua-title{
+  margin-bottom: 5px;
+}
+.sua-dropdown-box{
+  margin-bottom: 5px;
+  max-width: 150px;
+}
+.sua-input-quantity{
+  min-width: 100px;
+}
+.sua-product-break{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+.sua-input-container{
+
+}
+@media (min-width: 414px){
+  .sua-button-container{
+    text-align: center;
+  }
+}
+@media (min-width: 767px){
+  .sua-product-break{
+    margin: 0;
+    border: none;
+  }
+}
+.product-name{
+  /*text-align: center;*/
+}

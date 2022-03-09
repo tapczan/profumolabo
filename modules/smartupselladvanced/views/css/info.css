@@ -1,0 +1,171 @@
+/*
+* NOTICE OF LICENSE
+*
+* @author    INVERTUS, UAB www.invertus.eu <support@invertus.eu>
+* @copyright Copyright (c) permanent, INVERTUS, UAB
+* @license   Addons PrestaShop license limitation
+* @see       /LICENSE
+*
+* International Registered Trademark & Property of INVERTUS, UAB
+*/
+#info-panel {
+  color: #696969;
+}
+#info-panel>.row{
+  margin: 0 !important;
+}
+#info-panel .text-center img {
+  margin: auto;
+}
+#info-panel .logos img{
+  height: 120px;
+}
+#info-panel .container {
+  max-width: 100%;
+}
+#info-panel .container .row{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#info-panel .goals{
+  margin: 80px 0 !important;
+}
+#info-panel .goals .goal-column{
+  padding: 0 40px;
+}
+#info-panel .goals .goal-column p{
+  text-align: justify;
+}
+#info-panel .goals h2 {
+  color: #00B8D6;
+  text-align: center;
+  margin: 0 0 10px;
+}
+#info-panel .row.text{
+  margin-top: 50px;
+}
+
+#info-panel .text p {
+  text-align: justify;
+}
+#info-panel .modules {
+  border-top: 1px solid #DFDFDF;
+  border-bottom: 1px solid #DFDFDF;
+  color: #0a0a0a;
+}
+@media (min-width: 769px) {
+  #info-panel .modules{
+    padding: 40px 0;
+  }
+}
+#info-panel .modules .module{
+  margin: 20px 0;
+}
+
+#info-panel .modules .module-icon, #info-panel .modules .module-name{
+  height: 60px;
+  line-height: 60px;
+}
+
+#info-panel .modules .module-name>h2{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+  text-transform: uppercase;
+  margin: 0;
+}
+#info-panel .modules .module-icon>img{
+  max-height: 60px;
+  margin: auto;
+}
+#info-panel .btn.btn-default{
+  background-color: #4d4d4d;
+  color: #ffffff;
+  border-color: #0a0a0a;
+  transition-duration: 0.5s;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#info-panel .btn.btn-default:hover {
+  background-color: #656565;
+}
+#info-panel .modules .module .description{
+  min-height: 100px;
+  margin-bottom: 20px;
+}
+
+#info-panel .modules .module .description ul{
+  padding-left: 20px;
+}
+
+#info-panel .modules .module .description li{
+  text-align: justify;
+}
+
+#info-panel .modules .module .module-visuals{
+  max-height: 300px;
+  padding: 20px;
+}
+
+#info-panel .modules .module .module-image{
+  max-height: 260px;
+  margin: auto;
+}
+
+#info-panel .summary h2{
+  max-width: 500px;
+  margin: auto;
+  padding: 40px 0;
+  color: #0a0a0a;
+}
+#info-panel .summary .btn{
+  font-weight: 600;
+}
+#info-panel .btn-primary{
+  background-color: #00B8D6;
+}
+
+@media(max-width: 1920px) {
+  .module .module-visuals {
+    padding-right: 50px !important;
+    padding-left: 50px !important;
+    padding-top: 40px !important;
+  }
+
+  .module .description{
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+
+  .module .name-block{
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+  }
+}
+ul.green, ul.blue, ul.teal{
+  list-style: none;
+}
+ul.green li::before{
+  content: "\2022";
+  color: #00D67D;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+ul.blue li::before{
+  content: "\2022";
+  color: #0B53E3;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+ul.teal li::before{
+  content: "\2022";
+  color: #00B8D6;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
