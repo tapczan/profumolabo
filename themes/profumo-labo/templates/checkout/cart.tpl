@@ -86,11 +86,14 @@
 
       
       {if $page.page_name == 'cart'}
+
+        {if Module::isEnabled('smartupselladvanced')}
         <div class="container my-6">
           <h2 class="h2 text-center products-section-title text-uppercase">
           {l s='Related Products' d='Shop.Theme.Global'}
           </h2>
         </div>
+        {/if}
     
         <div class="cart-grid-bottom">
           <!-- shipping informations -->
