@@ -63,3 +63,37 @@
     display: block;
   }
 }
+
+.comments_note{
+  width: 100%;
+
+  .star_content{
+      text-align: center;
+      margin-top: 20px;
+
+      .star{
+          margin: 0;
+          padding: 0;
+          display: inline-block;
+          vertical-align: middle;
+          background: url(~/img/icons/star_gray.svg);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          width: 10px;
+          height: 10px;
+          float: none;
+
+          &.star_on{
+              background: url(~/img/icons/star_active.svg) !important;
+              background-size: contain !important;
+              background-position: center !important;
+              background-repeat: no-repeat !important;
+          }
+      }
+
+      & + span{
+          display: none;
+      }
+  }
+}
