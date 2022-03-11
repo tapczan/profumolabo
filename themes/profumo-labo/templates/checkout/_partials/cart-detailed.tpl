@@ -38,4 +38,5 @@
       <span class="no-items">{l s='There are no more items in your cart' d='Shop.Theme.Checkout'}</span>
     {/if}
   </div>
+  {hook h='displayCountdown'}
 {/block}

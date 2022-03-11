@@ -44,16 +44,30 @@
       {if !$notifications || $notifications.nw_error}
         <section class="form-fields">
 
-          <div class="form-group">
-            <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
-            <select name="id_contact" class="custom-select">
-              {foreach from=$contact.contacts item=contact_elt}
-                <option value="{$contact_elt.id_contact}">{$contact_elt.name}</option>
-              {/foreach}
-            </select>
+          <div class="form-group first-name">
+            <label class="form-control-label">{l s='Your Name' d='Shop.Forms.Labels'}</label>
+            <input
+              class="form-control"
+              name="from"
+              type="text"
+              value="{$contact.fname}"
+              placeholder="{l s='First Name' d='Shop.Forms.Help'}"
+              required
+            >
+          </div>
+          <div class="form-group last-name">
+            <label class="form-control-label">{l s='Your Name' d='Shop.Forms.Labels'}</label>
+            <input
+              class="form-control"
+              name="from"
+              type="text"
+              value="{$contact.lname}"
+              placeholder="{l s='Last Name' d='Shop.Forms.Help'}"
+              required
+            >
           </div>
 
-          <div class="form-group">
+          <div class="form-group email">
             <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'}</label>
             <input
               class="form-control"
@@ -61,8 +75,22 @@
               type="email"
               value="{$contact.email}"
               placeholder="{l s='your@email.com' d='Shop.Forms.Help'}"
+              required
             >
           </div>
+          
+          {if $contact.allow_file_upload}
+            <div class="form-group attachment">
+              <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
+              <div class="custom-file">
+                <input name="fileUpload" type="file" class="custom-file-input" id="fileUpload">
+                <label class="custom-file-label" for="fileUpload">{l s='Choose file' d='Shop.Theme.Actions'}</label>
+              </div>
+              <small class="form-text text-muted">
+                {l s='Optional' d='Shop.Forms.Help'}
+              </small>
+            </div>
+          {/if}
 
           {if $contact.orders}
             <div class="form-group">
@@ -79,19 +107,14 @@
             </div>
           {/if}
 
-          {if $contact.allow_file_upload}
-            <div class="form-group">
-              <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
-
-              <div class="custom-file">
-                <input name="fileUpload" type="file" class="custom-file-input" id="fileUpload">
-                <label class="custom-file-label" for="fileUpload">{l s='Choose file' d='Shop.Theme.Actions'}</label>
-              </div>
-              <small class="form-text text-muted">
-                {l s='optional' d='Shop.Forms.Help'}
-              </small>
-            </div>
-          {/if}
+          <div class="form-group">
+            <label class="form-control-label">{l s='Subject' d='Shop.Forms.Labels'}</label>
+            <select name="id_contact" class="custom-select">
+              {foreach from=$contact.contacts item=contact_elt}
+                <option value="{$contact_elt.id_contact}">{$contact_elt.name}</option>
+              {/foreach}
+            </select>
+          </div>
 
           <div class="form-group">
             <label class="form-control-label">{l s='Message' d='Shop.Forms.Labels'}</label>
@@ -126,111 +149,3 @@
     </div>
   </form>
 </section>
-
-<div class="contact-footer">
-  <div class="row">
-    <div class="col-lg-9 col-md-8 col-12 contact-footer__big">
-      <div class="contact-data__item">
-        <ul class="contact-data__list">
-          <li class="contact-data__title">
-            INFORMACJE
-          </li>
-          <li>
-            <a href="/">
-              O PROFUMO LABO
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Czas i koszt dostawy
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Formy płatności
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Zwroty i reklamacje
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Regulamin sklepu
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Polityka prywatności
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Blog
-            </a>
-          </li>
-        </ul>      
-      </div>
-
-      <div class="contact-data__item">
-        <ul class="contact-data__list">
-          <li class="contact-data__title">
-            WSPÓŁPRACA
-          </li>
-          <li>
-            <a href="/">
-              Współpraca influenser
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Współpraca media
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Współpraca B2B
-            </a>
-          </li>
-          <li class="contact-data__title contact-data__title--top">
-            PROGRAM PARTNERSKI
-          </li>
-        </ul>      
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-md-4 col-12 contact-social">
-      <ul class="contact-social__list">
-        <li>
-          Visit Us
-        </li>
-        <li>
-          <a href="/">
-            <span class="contact-icon contact-icon--facebook"></span>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <span class="contact-icon contact-icon--instagram"></span>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <span class="contact-icon contact-icon--youtube"></span>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <span class="contact-icon contact-icon--twitter"></span>
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <span class="contact-icon contact-icon--pinterest"></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>

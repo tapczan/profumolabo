@@ -54,6 +54,8 @@
              {/foreach}
            </div>
 
+            {hook h='displayCountdown'}
+
            {* {foreach from=$cart.subtotals item="subtotal"}
              {if $subtotal.value}
                <div class="cart-summary-line cart-summary-line-{$subtotal.type}">
