@@ -1,0 +1,5 @@
+createit_countdown_index:
+  path: /createit-countdown
+  methods: [GET,POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateitCountdown\Controller\Admin\CreateitCountdownController::indexAction'

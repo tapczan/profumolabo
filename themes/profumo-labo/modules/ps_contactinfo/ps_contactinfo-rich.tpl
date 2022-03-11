@@ -24,6 +24,63 @@
  *}
 
 <div class="contact-rich mb-4">
+  <img src="{$urls.base_url}img/cms/kontaktimage.jpg" class="contact-featured-img">
+
+  <div class="contact-data">
+    <div class="contact-data__item">
+      <ul class="contact-data__list">
+        <li class="contact-data__title">
+          PROFUMO LABO SP. Z O.O.
+        </li>
+        <li>
+          Al. Jerozolimskie 98
+        </li>
+        <li>
+          00-807 Warszawa
+        </li>
+        <li>
+          NIP 7011046498
+        </li>
+        <li>
+          KRS: 1111111111
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-data__item">
+      <ul class="contact-data__list">
+        <li class="contact-data__title contact-data__title--normal">
+          GODZINY PRACY: PN - PT 8:00 - 17:00
+        </li>
+      </ul>
+    </div>
+
+    <div class="contact-data__item">
+      <ul class="contact-data__list">
+        <li class="contact-data__title">
+          TEL.: <a href="tel:11111171111">111 111 711 11</a>
+        </li>
+        {if $contact_infos.email && $display_email}
+          <li class="contact-data__title">
+            {l s='EMAIL US:' d='Shop.Theme.Global'}: <a href="mailto:{$contact_infos.email}">{$contact_infos.email}</a>
+          </li>
+        {/if}
+      </ul>
+    </div>
+
+    <div class="contact-data__item">
+      <ul class="contact-data__list">
+        <li class="contact-data__title contact-data__title--gold">
+          PYTANIA I ODPOWIEDZI
+        </li>
+        <li class="contact-data__title contact-data__title--gold">
+          SPRAWDŹ STATUS ZAMÓWIENIA
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  {*
   <h4>{l s='Store information' d='Shop.Theme.Global'}</h4>
   <div class="block">
     <div class="data">{$contact_infos.address.formatted nofilter}</div>
@@ -55,4 +112,5 @@
       <a href="mailto:{$contact_infos.email}">{$contact_infos.email}</a>
     </div>
   {/if}
+  *}
 </div>

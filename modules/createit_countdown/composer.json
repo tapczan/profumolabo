@@ -1,0 +1,23 @@
+{
+  "name": "createit/countdown",
+  "description": "createIT's countdown module to free delivery while displaying the cart summary.",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "createIT",
+      "email": "support@createit.com"
+    },
+    {
+      "name": "createIT"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaShop\\Module\\CreateitCountdown\\": "src/"
+    },
+    "config": {
+      "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+  }
+}

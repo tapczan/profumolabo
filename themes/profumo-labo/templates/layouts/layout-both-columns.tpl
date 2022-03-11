@@ -69,11 +69,13 @@
           {/block}
 
           <div class="row">
-          
+            
             {if $page.page_name == 'category'}
                 {include file='./custom/custom-category-page.tpl' listing=$listing category=$category}
-            {else if}
-
+            {else if $page.page_name == 'contact'}
+                {include file='./custom/custom-contact-page.tpl'}
+            {else}
+        
             {block name="left_column"}
               <div id="left-column" class="col-12 col-md-4 col-lg-3">
                 {if $page.page_name == 'product'}

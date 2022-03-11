@@ -1,0 +1,45 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col">
+            {{ form_start(form) }}
+                <div class="card">
+                    <h3 class="card-header">
+                        <i class="material-icons">settings</i> createIT countdown settings
+                    </h3>
+                    <div class="card-block row">
+                        <div class="card-text">
+                            <div class="row">
+
+                                <div class="my-custom-class-for-errors">
+                                    {{ form_errors(form) }}
+                                </div>
+
+                                <div class="col-sm">
+                                    {{ form_row(form.amount_value) }}
+                                    {{ form_row(form.background_color) }}
+                                    {{ form_row(form.border_color) }}
+                                    {{ form_row(form.text_color) }}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div class="d-inline-flex">
+                            {{ form_row(form.submit) }}
+                        </div>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}
