@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-{if $page.meta.title != 'O PROFUMO LABO'}
+{if !$page.body_classes['page-contact'] && !$page.body_classes['cms-id-8']}
   {block name='breadcrumb'}
     {if $breadcrumb.links|count > 1}
       <nav aria-label="breadcrumb" data-depth="{$breadcrumb.count}">
