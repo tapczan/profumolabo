@@ -1,6 +1,7 @@
 .cms{
     &-container--onas{
         font-family: $font-jost;
+        color: $black;
     }
 
     &-block{
@@ -18,6 +19,10 @@
             border-bottom-style: none;
         }
 
+        &__flex{
+            padding-left: 40px;
+        }
+
         &__title{
             @include font-with-line-height($font-size-xxl, 38px);
 
@@ -25,6 +30,7 @@
             font-weight: 400;
             margin: 0 0 30px;
             text-transform: uppercase;
+            color: $black;
 
             &--center{
                 text-align: center;
@@ -61,7 +67,7 @@
 
             &--logo{
                 max-width: 90px !important;
-                margin: 100px auto;
+                margin: 0;
             }
 
             &--small{
@@ -70,7 +76,7 @@
             }
 
             &--big{
-                margin-top: 30px;
+                margin-top: 5px;
             }
 
             &--full{
@@ -92,6 +98,10 @@
             &--small{
                 padding-left: 30px;
             }
+
+            &--mtop{
+                padding-top: 30px;
+            }
         }
     }
 }
@@ -100,6 +110,14 @@
     .cms{
         &-container--onas{
             max-width: 1284px;
+        }
+    }
+}
+
+@media(max-width: 991px){
+    .cms-block__content--small{
+        &.cms-block__content--mtop{
+            padding: 0;
         }
     }
 }
