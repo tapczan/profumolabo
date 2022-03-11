@@ -1,6 +1,5 @@
 <div class="col-lg-8 col-md-10 mx-auto mb-6">
     <div class="row">
-
         <div class="col-md-9">
             {widget name="contactform"}
         </div>
