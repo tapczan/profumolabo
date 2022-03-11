@@ -24,9 +24,13 @@
  *}
 {extends file='page.tpl'}
 
-{block name='page_title'}
-  {$cms.meta_title}
-{/block}
+{if $page.meta.title != 'O PROFUMO LABO'}
+  {block name='page_title'}
+    <h1 class="cms-block__title cms-block__title--center">
+      {$cms.meta_title}
+    </h1>
+  {/block}
+{/if}
 
 {block name='page_content_container'}
   <section id="content" class="page-content cms-content page-cms page-cms-{$cms.id}">

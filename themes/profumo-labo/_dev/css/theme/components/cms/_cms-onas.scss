@@ -1,0 +1,150 @@
+.cms{
+    &-container--onas{
+        font-family: $font-jost;
+    }
+
+    &-block{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        padding: 100px 0;
+        border-bottom: $border-block;
+
+        &:first-child{
+            padding-top: 50px;
+        }
+
+        &:last-child{
+            border-bottom-style: none;
+        }
+
+        &__title{
+            @include font-with-line-height($font-size-xxl, 38px);
+
+            font-family: $font-forum;
+            font-weight: 400;
+            margin: 0 0 30px;
+            text-transform: uppercase;
+
+            &--center{
+                text-align: center;
+            }
+        }
+
+        &__quote{
+            @include font-with-line-height($font-size-xl, 35px);
+
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+            margin: 0 auto 30px;
+
+            &:before,
+            &:after{
+                content:'"';
+            }
+
+            &--small{
+                max-width: 862px;
+                margin-bottom: 50px;
+            }
+        }
+
+        &__img{
+            width: 100%;
+            margin: 30px 0;
+            display: block;
+
+            &--main{
+                margin: 0 0 50px;
+            }
+
+            &--logo{
+                max-width: 90px !important;
+                margin: 100px auto;
+            }
+
+            &--small{
+                max-width: 862px !important;
+                margin: 0 auto;
+            }
+
+            &--big{
+                margin-top: 30px;
+            }
+
+            &--full{
+                margin-top: 50px;
+                margin-bottom: 0;
+            }
+        }
+
+        &__video{
+            height: 275px;
+        }
+
+        &__content{
+            @include font-with-line-height($font-size-sm, 23px);
+
+            font-weight: 300;
+            text-align: justify;
+
+            &--small{
+                padding-left: 30px;
+            }
+        }
+    }
+}
+
+@media(min-width: 1400px){
+    .cms{
+        &-container--onas{
+            max-width: 1284px;
+        }
+    }
+}
+
+@media(max-width: 767px){
+    .cms{
+        &-block{
+            padding: 30px 0;
+
+            &__title{
+                @include font-with-line-height($font-size-xl, 26px);
+            }
+
+            &__content{
+                &--small{
+                    padding-left: 0;
+                }
+            }
+
+            &__quote{
+                @include font-with-line-height($font-size-md, 24px);
+            }
+
+            &__video{
+                margin-top: 30px;
+                height: 300px;
+            }
+
+            &__img{
+                &--logo{
+                    margin-top: 50px;
+                    margin-bottom: 50px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 420px){
+    .cms{
+        &-block{
+            &__video{
+                height: 200px;
+                margin-top: 0;
+            }
+        }
+    }
+}
