@@ -45,7 +45,7 @@
         <section class="form-fields">
 
           <div class="form-group first-name">
-            <label class="form-control-label">{l s='Your Name' d='Shop.Forms.Labels'}</label>
+            <label class="form-control-label">{l s='First Name' d='Shop.Forms.Labels'}</label>
             <input
               class="form-control"
               name="from"
@@ -56,7 +56,7 @@
             >
           </div>
           <div class="form-group last-name">
-            <label class="form-control-label">{l s='Your Name' d='Shop.Forms.Labels'}</label>
+            <label class="form-control-label">{l s='Last Name' d='Shop.Forms.Labels'}</label>
             <input
               class="form-control"
               name="from"
