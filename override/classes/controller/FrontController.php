@@ -2152,7 +2152,7 @@ class FrontControllerCore extends Controller
         return $count;
     }
 
-    public function sliceFaqs($array, $offset, $length) 
+    public function sliceFaqs($array = [], $offset = null, $length = null) 
     {
         return array_slice($array, $offset, $length);   
     }
