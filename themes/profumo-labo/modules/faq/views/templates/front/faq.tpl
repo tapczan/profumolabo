@@ -15,24 +15,24 @@
   </ol>
 
   <h1 class="faq__header">
-    {l s='FREQUENTLY ASKED QUESTIONS' mod='faq'}
+    {l s='FREQUENTLY ASKED QUESTIONS' d='Shop.Theme.Global'}
   </h1>
 
   <div class="faq__tab">
     <ul class="faq__tab-nav nav nav-tabs">
       <li class="faq__tab-item nav-item">
         <a href="#faq__tab-1" class="faq__tab-link nav-link active" data-toggle="tab">
-          {l s='SHOPPING' mod='faq'}
+          {l s='SHOPPING' d='Shop.Theme.Global'}
         </a>
       </li>
       <li class="faq__tab-item nav-item">
         <a href="#faq__tab-2" class="faq__tab-link nav-link" data-toggle="tab">
-          {l s='ORDERS AND DELIVERY' mod='faq'}
+          {l s='ORDERS AND DELIVERY' d='Shop.Theme.Global'}
         </a>
       </li>
       <li class="faq__tab-item nav-item">
         <a href="#faq__tab-3" class="faq__tab-link nav-link" data-toggle="tab">
-          {l s='RETURNS' mod='faq'}
+          {l s='RETURNS' d='Shop.Theme.Global'}
         </a>
       </li>
     </ul>
@@ -40,7 +40,7 @@
     <div class="faq__tab-content tab-content">
       <div id="faq__tab-1" class="faq__tab-pane tab-pane active">
         <h2 class="faq__tab-title js-trigger-faq-mobile faq__collapse--mobile-active">
-          {l s='SHOPPING' mod='faq'}
+          {l s='SHOPPING' d='Shop.Theme.Global'}
         </h2>
         <div class="faq__collapse--mobile">
           {assign var='shoppings' value=FrontController::sliceFaqs($faqs,0,10)}
@@ -60,7 +60,7 @@
 
       <div id="faq__tab-2" class="faq__tab-pane tab-pane in">
         <h2 class="faq__tab-title js-trigger-faq-mobile">
-          {l s='ORDERS AND DELIVERY' mod='faq'}
+          {l s='ORDERS AND DELIVERY' d='Shop.Theme.Global'}
         </h2>
         <div class="faq__collapse--mobile">
           {assign var='ordersanddeliverys' value=FrontController::sliceFaqs($faqs,10, 8)}
@@ -80,7 +80,7 @@
 
       <div id="faq__tab-3" class="faq__tab-pane tab-pane in">
         <h2 class="faq__tab-title js-trigger-faq-mobile">
-          {l s='RETURNS' mod='faq'}
+          {l s='RETURNS' d='Shop.Theme.Global'}
         </h2>
         <div class="faq__collapse--mobile">
           {assign var='returns' value=FrontController::sliceFaqs($faqs,18,6)}
@@ -102,11 +102,11 @@
 
   <div class="faq__more">
     <h2 class="faq__more-title">
-      {l s="DIDN'T FIND THE ANSWER TO YOUR QUESTION?" mod='faq'}
+      {l s="DIDN'T FIND THE ANSWER TO YOUR QUESTION?" d='Shop.Theme.Global'}
     </h2>
 
     <h3 class="faq__more-subtitle">
-      {l s='CONTACT US THROUGH THE CONTACT FORM' mod='faq'}
+      {l s='CONTACT US THROUGH THE CONTACT FORM' d='Shop.Theme.Global'}
     </h3>
 
     <ul class="faq__more-list">
@@ -115,7 +115,7 @@
           <img src="{$urls.img_url}faq-paper-icon.svg" class="faq__more-icon">
 
           <span class="faq__more-label">
-            {l s='CONTACT FORM' mod='faq'}
+            {l s='CONTACT FORM' d='Shop.Theme.Global'}
           </span>
         </a>
       </li>
@@ -125,7 +125,7 @@
           <img src="{$urls.img_url}faq-envelop-icon.svg" class="faq__more-icon">
 
           <span class="faq__more-label">
-            {l s='E-MAIL' mod='faq'}
+            {l s='E-MAIL' d='Shop.Theme.Global'}
           </span>
         </a>
       </li>
@@ -135,7 +135,7 @@
           <img src="{$urls.img_url}faq-phone-icon.svg" class="faq__more-icon">
 
           <span class="faq__more-label">
-            {l s='Telephone' mod='faq'}
+            {l s='Telephone' d='Shop.Theme.Global'}
           </span>
         </a>
       </li>
