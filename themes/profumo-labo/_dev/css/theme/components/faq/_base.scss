@@ -1,0 +1,282 @@
+.faq{
+    &__container{
+        font-family: $font-jost;
+        color: $black;
+    }
+
+    &__header{
+        @include font-with-line-height($font-size-xxl, 38px);
+
+        font-family: $font-forum;
+        font-weight: 400;
+        margin: 0 0 30px;
+        text-transform: uppercase;
+        color: $black;
+        text-align: center;
+    }
+
+    &__tab{
+        &-nav{
+            border-bottom-style: none;
+            text-align: center;
+            display: block;
+            margin-bottom: 50px;
+        }
+
+        &-item{
+            display: inline-block;
+        }
+
+        &-link{
+            @include font-with-line-height($font-size-xs, 17px);
+
+            font-weight: 300;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            color: $black;
+            padding: 6px;
+            min-width: 230px;
+            height: auto;
+
+            &.active{
+                border: 1px solid $black !important;
+                color: $black !important;
+            }
+
+            &:hover{
+                color: $black;
+                border-style: none;
+            }
+        }
+
+        &-title{
+            @include font-with-line-height($font-size-product-lg, 27px);
+
+            font-family: $font-forum;
+            font-weight: 400;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            color: $black;
+            letter-spacing: 1px;
+        }
+
+        &-content{
+            margin-bottom: 60px;
+        }
+    }
+
+    &__collapse{
+        border-top: 1px solid $black;
+
+        &-title{
+            @include font-with-line-height($font-size-xs, 17px);
+
+            padding: 10px 15px 10px 0;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: $black;
+            letter-spacing: 1px;
+            list-style-type: none;
+            position: relative;
+
+            &:after{
+                content: '';
+                position: absolute;
+                top: 12px;
+                right: 0;
+                margin: auto;
+                width: 12px;
+                height: 10px;
+                background: url(~/img/icons/menu-left-arrow.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                transform: rotate(-90deg);
+                transform-origin: center;
+            }
+        }
+
+        &-content{
+            @include font-with-line-height($font-size-xs, 17px);
+            
+            font-weight: 300;
+            padding-bottom: 10px;
+        }
+
+        &[open]{
+            .faq__collapse-title:after{
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    &__more{
+        &-title{
+            @include font-with-line-height($font-size-xxl, 38px);
+
+            font-family: $font-forum;
+            font-weight: 400;
+            margin: 0 0 20px;
+            text-transform: uppercase;
+            color: $black;
+            text-align: center;
+        }
+
+        &-subtitle{
+            @include font-with-line-height($font-size-sm, 20px);
+
+            font-weight: 300;
+            text-transform: uppercase;
+            color: $black;
+            margin: 0 0 60px;
+            text-align: center;
+        }
+
+        &-list{
+            margin: 30px 0 50px;
+            padding: 0;
+            display: block;
+            text-align: center;
+        }
+
+        &-item{
+            display: inline-block;
+            text-align: center;
+            width: 20%;
+        }
+
+        &-link{
+            display: inline-block;
+        }
+
+        &-icon{
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        &-label{
+            @include font-with-line-height($font-size-sm, 20px);
+
+            font-weight: 300;
+            text-transform: uppercase;
+            color: $black;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+
+            &:after{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: auto;
+                height: 1px;
+                background: $black;
+            }
+        }
+    }
+}
+
+@media(min-width: 1400px){
+    .faq{
+        &__container{
+            max-width: 1094px;
+        }
+    }
+}
+
+@media(min-width: 768px){
+    .faq__collapse--mobile{
+        display: block !important;
+    }
+}
+
+@media(max-width: 991px){
+    .faq{
+        &__more-item{
+            width: 32%;
+        }
+    }
+}
+
+@media(max-width: 767px){
+    .faq{
+        &__collapse-title:after{
+            right: 2px;
+        }
+
+        &__more-title,
+        &__header{
+            @include font-with-line-height($font-size-product-lg, 28px);
+        }
+
+        &__more-item{
+            width: 100%;
+            display: block;
+            margin: 30px 0 0;
+        }
+
+        &__tab{
+            &-nav{
+                display: none;
+            }
+
+            &-pane{
+                display: block !important;
+                margin: 0 0 10px;
+
+                .faq__collapse--mobile{
+                    display: none;
+
+                    .faq__collapse:first-child{
+                        border-top-style: none;
+                    }
+                }
+            }
+
+            &-title{
+                font-size: $font-size-md;
+                position: relative;
+                border: 1px solid $black;
+                padding: 0 5px;
+                margin: 0;
+                
+                &:after{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 5px;
+                    bottom: 0;
+                    width: 20px;
+                    height: 12px;
+                    background: url(~/img/icons/menu-left-arrow.svg);
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    transform: rotate(-90deg);
+                    transform-origin: center;
+                    margin: auto;
+                }
+
+                &.faq__collapse--mobile-active{
+                    &:after{
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+
+            &-content{
+                .faq__tab-pane:first-child{
+                    .faq__collapse--mobile{
+                        display: block;
+                    }
+                }
+
+                .faq__tab-pane:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}

@@ -560,73 +560,84 @@ $(document).ready(() => {
    * @param {int} canvasImgHeight - height of the actual picture for responsive compatibility
    */
   const canvas = $("#js-canvas-offerta");
-  const canvasContext = canvas[0].getContext('2d');
-  const canvasFrameCount = 40;
-  const winLocationOrigin = window.location.origin;
+  if(canvas.length){
+    const canvasContext = canvas[0].getContext('2d');
+    const canvasFrameCount = 40;
+    const winLocationOrigin = window.location.origin;
 
-  const canvasCurrentFrame = index => (
-    `${winLocationOrigin}/img/cms/parallax/canvas-offerta-${index.toString().padStart(3, '0')}.jpg`
-  );
+    const canvasCurrentFrame = index => (
+      `${winLocationOrigin}/img/cms/parallax/canvas-offerta-${index.toString().padStart(3, '0')}.jpg`
+    );
 
-  const preloadCanvasImage = () => {
-    for (let i = 1; i < canvasFrameCount; i++) {
-      const canvasImgPreload = new Image();
-      canvasImgPreload.src = canvasCurrentFrame(i);
+    const preloadCanvasImage = () => {
+      for (let i = 1; i < canvasFrameCount; i++) {
+        const canvasImgPreload = new Image();
+        canvasImgPreload.src = canvasCurrentFrame(i);
+      }
+    };
+
+    var canvasImg = new Image();
+    var canvasImgWidth = 3840;
+    var canvasImgHeight = 1718;
+          
+    function initCanvas() {
+      canvasContext.canvas.width = canvasImgWidth;
+      canvasContext.canvas.height = canvasImgHeight;
+
+      drawCanvas(); 
     }
-  };
+          
+    function drawCanvas() {
+      canvasImg.src = canvasCurrentFrame(1);
+    }
 
-  var canvasImg = new Image();
-  var canvasImgWidth = 3840;
-  var canvasImgHeight = 1718;
-        
-  function initCanvas() {
-    canvasContext.canvas.width = canvasImgWidth;
-    canvasContext.canvas.height = canvasImgHeight;
+    canvasImg.onload=function(){
+      canvasContext.drawImage(canvasImg, 0, 0);
+    }
 
-    drawCanvas(); 
+    const updateImage = index => {
+      canvasImg.src = canvasCurrentFrame(index);
+      canvasContext.drawImage(canvasImg, 0, 0);
+    }
+    
+    initCanvas();
+
+    preloadCanvasImage();
+
+    $(window).on('scroll', function() {
+      const jsCanvasSection = $(".js-canvas-parallax");
+      const jsCanvasSectionOffset = jsCanvasSection.offset().top;
+      const jsCanvasStart = $(this).scrollTop() + $(this).height();
+      const jsCanvasMaximum = jsCanvasStart - jsCanvasSectionOffset;
+      const jsCanvasProgress = jsCanvasMaximum / (jsCanvasSection.height() * 2);
+      const jsCanvasElement = $('#js-canvas-offerta');  
+      const jsCanvasSectionNative = document.getElementsByClassName("js-canvas-parallax")[0];
+      const jsCanvasBottomValue = jsCanvasSectionNative.getBoundingClientRect().top; 
+
+      jsCanvasElement.css('bottom', jsCanvasBottomValue + 'px');
+
+      if (jsCanvasStart >= jsCanvasSectionOffset) {
+        const frameIndex = Math.min(
+          canvasFrameCount - 1,
+          Math.ceil(jsCanvasProgress * canvasFrameCount)
+        );
+
+        requestAnimationFrame(() => updateImage(frameIndex + 1));
+      } 
+    });
   }
-        
-  function drawCanvas() {
-    canvasImg.src = canvasCurrentFrame(1);
-  }
-
-  canvasImg.onload=function(){
-    canvasContext.drawImage(canvasImg, 0, 0);
-  }
-
-  const updateImage = index => {
-    canvasImg.src = canvasCurrentFrame(index);
-    canvasContext.drawImage(canvasImg, 0, 0);
-  }
-  
-  initCanvas();
-
-  preloadCanvasImage();
-
-  $(window).on('scroll', function() {
-    const jsCanvasSection = $(".js-canvas-parallax");
-    const jsCanvasSectionOffset = jsCanvasSection.offset().top;
-    const jsCanvasStart = $(this).scrollTop() + $(this).height();
-    const jsCanvasMaximum = jsCanvasStart - jsCanvasSectionOffset;
-    const jsCanvasProgress = jsCanvasMaximum / (jsCanvasSection.height() * 2);
-    const jsCanvasElement = $('#js-canvas-offerta');  
-    const jsCanvasSectionNative = document.getElementsByClassName("js-canvas-parallax")[0];
-    const jsCanvasBottomValue = jsCanvasSectionNative.getBoundingClientRect().top; 
-
-    jsCanvasElement.css('bottom', jsCanvasBottomValue + 'px');
-
-    if (jsCanvasStart >= jsCanvasSectionOffset) {
-      const frameIndex = Math.min(
-        canvasFrameCount - 1,
-        Math.ceil(jsCanvasProgress * canvasFrameCount)
-      );
-
-      requestAnimationFrame(() => updateImage(frameIndex + 1));
-    } 
-  });
   /**
    * End parallax effect above offerta
    */
+
+  
+  /**
+   * FAQ
+   */
+  $('.js-trigger-faq-mobile').on('click', function(){
+    $(this).closest('.faq__tab-pane').find('.faq__collapse--mobile').toggle();
+    $(this).toggleClass('faq__collapse--mobile-active');
+  });
 });
 
 function accLinksTriggerActive() {
