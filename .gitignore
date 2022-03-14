@@ -28,6 +28,7 @@ modules/
 # "themes" directory
 themes/*
 !themes/profumo-labo
+!themes/profumo-labo/modules/
 
 # ignore node/grunt dependency directories
 node_modules/
