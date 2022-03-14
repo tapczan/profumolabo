@@ -15,7 +15,6 @@ modules/
 !modules/profumolabocontent
 !modules/pwinstafeed
 !modules/thecheckout
-!modules/faq
 
 # ignore all files starting with .
 .*
@@ -29,6 +28,7 @@ modules/
 # "themes" directory
 themes/*
 !themes/profumo-labo
+!themes/profumo-labo/modules/
 
 # ignore node/grunt dependency directories
 node_modules/
