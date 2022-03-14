@@ -2,6 +2,7 @@
 
 namespace PrestaShop\Module\CreateitCountdown\Form;
 
+use Configuration as ConfigurationLegacy;
 use PrestaShop\Module\CreateitCountdown\Entity\CreateitCountdown;
 use PrestaShop\Module\CreateitCountdown\Repository\CreateitCountdownRepository;
 use PrestaShop\PrestaShop\Core\Form\IdentifiableObject\DataProvider\FormDataProviderInterface;
@@ -36,11 +37,6 @@ class CreateitCountdownFormDataProvider implements FormDataProviderInterface
         $defaultTextColor = null;
 
         /**
-         * @var $countdownAmountValue CreateitCountdown
-         */
-        $countdownAmountValue = $this->createitCountdownRepository->findSetting(CreateitCountdown::AMOUNT_VALUE);
-
-        /**
          * @var $countdownBackgroundColor CreateitCountdown
          */
         $countdownBackgroundColor = $this->createitCountdownRepository->findSetting(CreateitCountdown::BACKGROUND_COLOR);
@@ -55,8 +51,8 @@ class CreateitCountdownFormDataProvider implements FormDataProviderInterface
          */
         $countdownTextColor = $this->createitCountdownRepository->findSetting(CreateitCountdown::TEXT_COLOR);
 
-        if(!is_null($countdownAmountValue)){
-            $defaultAmountValue = $countdownAmountValue->getValue();
+        if(!is_null(ConfigurationLegacy::get('PS_SHIPPING_FREE_PRICE'))){
+            $defaultAmountValue = ConfigurationLegacy::get('PS_SHIPPING_FREE_PRICE');
         }
 
         if(!is_null($countdownBackgroundColor)){
