@@ -82,8 +82,11 @@
             color: $black;
             margin-bottom: -22px;
             display: block;
-        }
 
+            & ~ .upsell-crosssell-price-attribute {
+                font-weight: 300;
+            }
+        }
         .sua-out-of-stock-icon{
             display: inline-block;
             vertical-align: middle;
