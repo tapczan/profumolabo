@@ -16,7 +16,7 @@ class CreateitCountdownFormFieldType extends TranslatorAwareType
     {
         $builder
             ->add('amount_value', NumberType::class, [
-                'label' => 'Amount Value',
+                'label' => 'Free shipping starts at',
                 'constraints' => [
                     new NotBlank(),
                 ]

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Configuration as ConfigurationLegacy;
 use PrestaShop\Module\CreateitCountdown\Entity\CreateitCountdown;
 use PrestaShop\Module\CreateitCountdown\Repository\CreateitCountdownRepository;
 
@@ -140,15 +141,11 @@ class createit_countdown extends Module
     private function getFreeShippingAmountValue(): float
     {
         $value = 0;
-        /**
-         * @var $repository CreateitCountdownRepository
-         */
-        $repository = $this->get('prestashop.module.createit_countdown.repository.createit_countdown_repository');
 
-        $amountValue = $repository->findSetting(CreateitCountdown::AMOUNT_VALUE);
+        $amountValue = ConfigurationLegacy::get('PS_SHIPPING_FREE_PRICE');
 
         if(!is_null($amountValue)){
-            $value = $amountValue->getValue();
+            $value = $amountValue;
         }
 
         return (float)$value;
