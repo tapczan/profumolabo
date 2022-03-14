@@ -19,6 +19,16 @@
             border-bottom-style: none;
         }
 
+        &__blockvideo{
+            margin: auto;
+            display: block;
+            border: 0;
+            width: 100%;
+            max-width: 862px;
+            height: auto;
+            box-shadow: none;
+        }
+
         &__flex{
             padding-left: 40px;
         }
