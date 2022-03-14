@@ -15,6 +15,7 @@ modules/
 !modules/profumolabocontent
 !modules/pwinstafeed
 !modules/thecheckout
+!modules/faq
 
 # ignore all files starting with .
 .*
