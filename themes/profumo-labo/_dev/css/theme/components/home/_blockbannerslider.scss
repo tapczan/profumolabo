@@ -11,12 +11,13 @@
     }
 
     &__item{
-        min-height: 550px;
+        height: calc(100vh - 113.31px);
     }
 
     &__img{
         object-fit: cover;
-        min-height: 550px;
+        object-position: center top;
+        height: calc(100vh - 113px);
         width: 100%;
     }
 
@@ -58,6 +59,24 @@
             button{
                 background-color: $background-gray;
             }
+        }
+    }
+}
+
+@media(max-width: 1199px){
+    .blockbannerslider{
+        &__item,
+        &__img{
+            height: calc(100vh - 110.31px);
+        }
+    }
+}
+
+@media(max-width: 991px){
+    .blockbannerslider{
+        &__item,
+        &__img{
+            height: calc(100vh - 69px);
         }
     }
 }
