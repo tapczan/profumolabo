@@ -45,13 +45,12 @@
         <section class="form-fields">
 
           <div class="form-group first-name">
-            <label class="form-control-label">{l s='First Name' d='Shop.Forms.Labels'}</label>
+            <label class="form-control-label">{l s='First Name' d='Shop.Forms.Labels'} *</label>
             <input
               class="form-control"
               name="from"
               type="text"
               value="{$contact.fname}"
-              placeholder="{l s='First Name' d='Shop.Forms.Help'}"
               required
             >
           </div>
@@ -62,19 +61,17 @@
               name="from"
               type="text"
               value="{$contact.lname}"
-              placeholder="{l s='Last Name' d='Shop.Forms.Help'}"
               required
             >
           </div>
 
           <div class="form-group email">
-            <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'}</label>
+            <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'} *</label>
             <input
               class="form-control"
               name="from"
               type="email"
               value="{$contact.email}"
-              placeholder="{l s='your@email.com' d='Shop.Forms.Help'}"
               required
             >
           </div>
@@ -84,7 +81,7 @@
               <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
               <div class="custom-file">
                 <input name="fileUpload" type="file" class="custom-file-input" id="fileUpload">
-                <label class="custom-file-label" for="fileUpload">{l s='Choose file' d='Shop.Theme.Actions'}</label>
+                <label class="custom-file-label" for="fileUpload"></label>
               </div>
               <small class="form-text text-muted">
                 {l s='Optional' d='Shop.Forms.Help'}
@@ -121,7 +118,6 @@
             <textarea
               class="form-control"
               name="message"
-              placeholder="{l s='How can we help?' d='Shop.Forms.Help'}"
               rows="5"
             >{if $contact.message}{$contact.message}{/if}</textarea>
           </div>
@@ -142,8 +138,8 @@
           </style>
           <input type="text" name="url" value=""/>
           <input type="hidden" name="token" value="{$token}" />
-          <input class="btn btn-primary d-none d-md-inline-block" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
-          <input class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submitMessage" value="{l s='Send' d='Shop.Theme.Actions'}">
+          <input class="btn btn-primary d-none d-md-inline-block" type="submit" name="submitMessage" value="{l s='Send a Message' d='Shop.Theme.Actions'}">
+          <input class="btn btn-primary btn-block d-block d-md-none" type="submit" name="submitMessage" value="{l s='Send a Message' d='Shop.Theme.Actions'}">
         </footer>
       {/if}
     </div>
