@@ -62,7 +62,7 @@
         </li>
         {if $contact_infos.email && $display_email}
           <li class="contact-data__title">
-            {l s='EMAIL US:' d='Shop.Theme.Global'}: <a href="mailto:{$contact_infos.email}">{$contact_infos.email}</a>
+            {l s='EMAIL US:' d='Shop.Theme.Global'} <a href="mailto:info@profumolabo.com">info@profumolabo.com</a>
           </li>
         {/if}
       </ul>

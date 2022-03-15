@@ -1,6 +1,6 @@
 .contact{
     &-rich{
-        padding-top: 125px;
+        padding-top: 148px;
     }
 
     &-form{
@@ -69,7 +69,7 @@
                     }
 
                     #gdpr_consent{
-                        max-width: 400px;
+                        max-width: 500px;
                     }
                 } 
 
@@ -104,6 +104,11 @@
                         box-shadow: none;
                         outline: none
                     }
+                }
+
+                .nice-select-init{
+                    background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 1rem center/8px 10px no-repeat;
+                    background-size: 15px;
                 }
 
                 .custom-file-input{
@@ -141,6 +146,10 @@
 
                     font-family: $font-jost;
                     color: $black;
+                }
+
+                textarea.form-control{
+                    height: 250px;
                 }
             }
 
@@ -330,6 +339,10 @@
     .contact-social__list li{
         padding: 0;
     }
+
+    .contact-form .form-fields .form-group #gdpr_consent{
+        max-width: 400px;
+    }
 }
 
 @media(max-width: 1399px){
@@ -382,6 +395,10 @@
     .contact{
         &-form{
             padding: 50px 0 0;
+
+            .form-footer input[type=submit]{
+                margin: auto;
+            }
         }
 
         &-rich{
@@ -393,6 +410,10 @@
 
             &__list{
                 position: relative;
+
+                li:first-child{
+                    margin-bottom: 5px;
+                }
             }
         }
 
@@ -408,6 +429,10 @@
                 flex: 1;
                 border-right-style: none;
                 padding: 0;
+            }
+
+            .contact-data__item:first-child{
+                margin-bottom: 25px;
             }
         }
     }
