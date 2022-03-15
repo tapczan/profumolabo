@@ -38,7 +38,7 @@
   <img src="{$urls.base_url}img/cms/parallax/canvas-offerta-001.jpg" class="canvas-parallax__img js-canvas-parallax-img">
 </section>
 
-<div class="container js-after-jarallax">
+<div id="js-after-canvas" class="container">
   <div class="row">
     <div id="content-wrapper" class="col-12 js-content-wrapper">
       <section id="main">
