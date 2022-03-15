@@ -605,7 +605,7 @@ $(document).ready(() => {
     preloadCanvasImage();
 
     $(window).on('scroll', function() {
-      const jsAfterCanvasSection = $(".blockhomesections--premium");
+      const jsAfterCanvasSection = $(".blockhomesections--profumo");
       const jsAfterCanvasSectionOffset = jsAfterCanvasSection.offset().top;
       const jsCanvasSection = $(".js-canvas-parallax");
       const jsCanvasSectionOffset = jsCanvasSection.offset().top;
