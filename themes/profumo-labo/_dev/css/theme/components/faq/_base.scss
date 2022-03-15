@@ -66,7 +66,7 @@
     }
 
     &__collapse{
-        border-top: 1px solid $black;
+        border-top: 1px solid $light-gray;
 
         &-title{
             @include font-with-line-height($font-size-xs, 17px);
@@ -87,11 +87,10 @@
                 margin: auto;
                 width: 12px;
                 height: 10px;
-                background: url(~/img/icons/menu-left-arrow.svg);
+                background: url(~/img/icons/faq-dropdown-arrow.svg);
                 background-repeat: no-repeat;
                 background-size: contain;
                 background-position: center;
-                transform: rotate(-90deg);
                 transform-origin: center;
             }
         }
@@ -105,7 +104,7 @@
 
         &[open]{
             .faq__collapse-title:after{
-                transform: rotate(90deg);
+                transform: rotate(-180deg);
             }
         }
     }
@@ -248,20 +247,19 @@
                     top: 0;
                     right: 5px;
                     bottom: 0;
-                    width: 20px;
+                    width: 15px;
                     height: 12px;
-                    background: url(~/img/icons/menu-left-arrow.svg);
+                    background: url(~/img/icons/faq-dropdown-arrow.svg);
                     background-repeat: no-repeat;
                     background-size: contain;
                     background-position: center;
-                    transform: rotate(-90deg);
                     transform-origin: center;
                     margin: auto;
                 }
 
                 &.faq__collapse--mobile-active{
                     &:after{
-                        transform: rotate(90deg);
+                        transform: rotate(-180deg);
                     }
                 }
             }
