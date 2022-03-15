@@ -639,9 +639,9 @@ $(document).ready(() => {
   /**
    * FAQ
    */
-  $('.js-trigger-faq-mobile').on('click', function(){
-    $(this).closest('.faq__tab-pane').find('.faq__collapse--mobile').toggle();
-    $(this).toggleClass('faq__collapse--mobile-active');
+  $('.js-trigger-collapsed-mobile').on('click', function(){
+    $(this).closest('.collapsed__tab-pane').find('.collapsed__collapse--mobile').toggle();
+    $(this).toggleClass('collapsed__collapse--mobile-active');
   });
 });
 

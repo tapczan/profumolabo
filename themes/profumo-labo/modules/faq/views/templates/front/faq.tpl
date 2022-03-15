@@ -2,7 +2,7 @@
 
 {block name='content'}
 
-<div class="container faq__container">
+<div class="container collapsed__container">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="{$urls.pages.index}">
@@ -14,43 +14,43 @@
     </li>
   </ol>
 
-  <h1 class="faq__header">
+  <h1 class="collapsed__header">
     {l s='FREQUENTLY ASKED QUESTIONS' d='Shop.Theme.Global'}
   </h1>
 
-  <div class="faq__tab">
-    <ul class="faq__tab-nav nav nav-tabs">
-      <li class="faq__tab-item nav-item">
-        <a href="#faq__tab-1" class="faq__tab-link nav-link active" data-toggle="tab">
+  <div class="collapsed__tab">
+    <ul class="collapsed__tab-nav nav nav-tabs">
+      <li class="collapsed__tab-item nav-item">
+        <a href="#collapsed__tab-1" class="collapsed__tab-link nav-link active" data-toggle="tab">
           {l s='SHOPPING' d='Shop.Theme.Global'}
         </a>
       </li>
-      <li class="faq__tab-item nav-item">
-        <a href="#faq__tab-2" class="faq__tab-link nav-link" data-toggle="tab">
+      <li class="collapsed__tab-item nav-item">
+        <a href="#collapsed__tab-2" class="collapsed__tab-link nav-link" data-toggle="tab">
           {l s='ORDERS AND DELIVERY' d='Shop.Theme.Global'}
         </a>
       </li>
-      <li class="faq__tab-item nav-item">
-        <a href="#faq__tab-3" class="faq__tab-link nav-link" data-toggle="tab">
+      <li class="collapsed__tab-item nav-item">
+        <a href="#collapsed__tab-3" class="collapsed__tab-link nav-link" data-toggle="tab">
           {l s='RETURNS' d='Shop.Theme.Global'}
         </a>
       </li>
     </ul>
 
-    <div class="faq__tab-content tab-content">
-      <div id="faq__tab-1" class="faq__tab-pane tab-pane active">
-        <h2 class="faq__tab-title js-trigger-faq-mobile faq__collapse--mobile-active">
+    <div class="collapsed__tab-content tab-content">
+      <div id="collapsed__tab-1" class="collapsed__tab-pane tab-pane active">
+        <h2 class="collapsed__tab-title js-trigger-collapsed-mobile collapsed__collapse--mobile-active">
           {l s='SHOPPING' d='Shop.Theme.Global'}
         </h2>
-        <div class="faq__collapse--mobile">
+        <div class="collapsed__collapse--mobile">
           {assign var='shoppings' value=FrontController::sliceFaqs($faqs,0,10)}
           
           {foreach from=$shoppings item=shopping}
-            <details class="faq__collapse">
-              <summary class="faq__collapse-title">
+            <details class="collapsed__collapse">
+              <summary class="collapsed__collapse-title">
                 {$shopping.question nofilter}
               </summary>
-              <div class="faq__collapse-content">
+              <div class="collapsed__collapse-content">
                 {$shopping.answer nofilter}
               </div>
             </details>
@@ -58,19 +58,19 @@
         </div>
       </div>
 
-      <div id="faq__tab-2" class="faq__tab-pane tab-pane in">
-        <h2 class="faq__tab-title js-trigger-faq-mobile">
+      <div id="collapsed__tab-2" class="collapsed__tab-pane tab-pane in">
+        <h2 class="collapsed__tab-title js-trigger-collapsed-mobile">
           {l s='ORDERS AND DELIVERY' d='Shop.Theme.Global'}
         </h2>
-        <div class="faq__collapse--mobile">
+        <div class="collapsed__collapse--mobile">
           {assign var='ordersanddeliverys' value=FrontController::sliceFaqs($faqs,10, 8)}
           
           {foreach from=$ordersanddeliverys item=ordersanddelivery}
-            <details class="faq__collapse">
-              <summary class="faq__collapse-title">
+            <details class="collapsed__collapse">
+              <summary class="collapsed__collapse-title">
                 {$ordersanddelivery.question nofilter}
               </summary>
-              <div class="faq__collapse-content">
+              <div class="collapsed__collapse-content">
                 {$ordersanddelivery.answer nofilter}
               </div>
             </details>
@@ -78,19 +78,19 @@
         </div>
       </div>
 
-      <div id="faq__tab-3" class="faq__tab-pane tab-pane in">
-        <h2 class="faq__tab-title js-trigger-faq-mobile">
+      <div id="collapsed__tab-3" class="collapsed__tab-pane tab-pane in">
+        <h2 class="collapsed__tab-title js-trigger-collapsed-mobile">
           {l s='RETURNS' d='Shop.Theme.Global'}
         </h2>
-        <div class="faq__collapse--mobile">
+        <div class="collapsed__collapse--mobile">
           {assign var='returns' value=FrontController::sliceFaqs($faqs,18,6)}
           
           {foreach from=$returns item=return}
-            <details class="faq__collapse">
-              <summary class="faq__collapse-title">
+            <details class="collapsed__collapse">
+              <summary class="collapsed__collapse-title">
                 {$return.question nofilter}
               </summary>
-              <div class="faq__collapse-content">
+              <div class="collapsed__collapse-content">
                 {$return.answer nofilter}
               </div>
             </details>
@@ -100,41 +100,41 @@
     </div>
   </div>
 
-  <div class="faq__more">
-    <h2 class="faq__more-title">
+  <div class="collapsed__more">
+    <h2 class="collapsed__more-title">
       {l s="DIDN'T FIND THE ANSWER TO YOUR QUESTION?" d='Shop.Theme.Global'}
     </h2>
 
-    <h3 class="faq__more-subtitle">
+    <h3 class="collapsed__more-subtitle">
       {l s='CONTACT US THROUGH THE CONTACT FORM' d='Shop.Theme.Global'}
     </h3>
 
-    <ul class="faq__more-list">
-      <li class="faq__more-item">
-        <a href="{$urls.pages.contact}" class="faq__more-link">
-          <img src="{$urls.img_url}faq-paper-icon.svg" class="faq__more-icon">
+    <ul class="collapsed__more-list">
+      <li class="collapsed__more-item">
+        <a href="{$urls.pages.contact}" class="collapsed__more-link">
+          <img src="{$urls.img_url}faq-paper-icon.svg" class="collapsed__more-icon">
 
-          <span class="faq__more-label">
+          <span class="collapsed__more-label">
             {l s='CONTACT FORM' d='Shop.Theme.Global'}
           </span>
         </a>
       </li>
       
-      <li class="faq__more-item">
-        <a href="mailto:m.mikolaszek@createit.com" class="faq__more-link">
-          <img src="{$urls.img_url}faq-envelop-icon.svg" class="faq__more-icon">
+      <li class="collapsed__more-item">
+        <a href="mailto:m.mikolaszek@createit.com" class="collapsed__more-link">
+          <img src="{$urls.img_url}faq-envelop-icon.svg" class="collapsed__more-icon">
 
-          <span class="faq__more-label">
+          <span class="collapsed__more-label">
             {l s='E-MAIL' d='Shop.Theme.Global'}
           </span>
         </a>
       </li>
       
-      <li class="faq__more-item">
-        <a href="tel:11111171111" class="faq__more-link">
-          <img src="{$urls.img_url}faq-phone-icon.svg" class="faq__more-icon">
+      <li class="collapsed__more-item">
+        <a href="tel:11111171111" class="collapsed__more-link">
+          <img src="{$urls.img_url}faq-phone-icon.svg" class="collapsed__more-icon">
 
-          <span class="faq__more-label">
+          <span class="collapsed__more-label">
             {l s='Telephone' d='Shop.Theme.Global'}
           </span>
         </a>

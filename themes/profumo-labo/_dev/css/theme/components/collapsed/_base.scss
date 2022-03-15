@@ -1,4 +1,4 @@
-.faq{
+.collapsed{
     &__container{
         font-family: $font-jost;
         color: $black;
@@ -103,7 +103,7 @@
         }
 
         &[open]{
-            .faq__collapse-title:after{
+            .collapsed__collapse-title:after{
                 transform: rotate(-180deg);
             }
         }
@@ -178,7 +178,7 @@
 }
 
 @media(min-width: 1400px){
-    .faq{
+    .collapsed{
         &__container{
             max-width: 1094px;
         }
@@ -186,13 +186,13 @@
 }
 
 @media(min-width: 768px){
-    .faq__collapse--mobile{
+    .collapsed__collapse--mobile{
         display: block !important;
     }
 }
 
 @media(max-width: 991px){
-    .faq{
+    .collapsed{
         &__more-item{
             width: 32%;
         }
@@ -200,7 +200,7 @@
 }
 
 @media(max-width: 767px){
-    .faq{
+    .collapsed{
         &__collapse-title:after{
             right: 2px;
         }
@@ -225,10 +225,10 @@
                 display: block !important;
                 margin: 0 0 10px;
 
-                .faq__collapse--mobile{
+                .collapsed__collapse--mobile{
                     display: none;
 
-                    .faq__collapse:first-child{
+                    .collapsed__collapse:first-child{
                         border-top-style: none;
                     }
                 }
@@ -257,7 +257,7 @@
                     margin: auto;
                 }
 
-                &.faq__collapse--mobile-active{
+                &.collapsed__collapse--mobile-active{
                     &:after{
                         transform: rotate(-180deg);
                     }
@@ -265,13 +265,13 @@
             }
 
             &-content{
-                .faq__tab-pane:first-child{
-                    .faq__collapse--mobile{
+                .collapsed__tab-pane:first-child{
+                    .collapsed__collapse--mobile{
                         display: block;
                     }
                 }
 
-                .faq__tab-pane:last-child{
+                .collapsed__tab-pane:last-child{
                     margin-bottom: 0;
                 }
             }
