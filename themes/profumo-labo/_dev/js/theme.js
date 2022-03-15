@@ -605,6 +605,8 @@ $(document).ready(() => {
     preloadCanvasImage();
 
     $(window).on('scroll', function() {
+      const jsAfterCanvasSection = $(".blockhomesections--premium");
+      const jsAfterCanvasSectionOffset = jsAfterCanvasSection.offset().top;
       const jsCanvasSection = $(".js-canvas-parallax");
       const jsCanvasSectionOffset = jsCanvasSection.offset().top;
       const jsCanvasStart = $(this).scrollTop() + $(this).height();
@@ -614,11 +616,6 @@ $(document).ready(() => {
       const jsCanvasSectionNative = document.getElementsByClassName("js-canvas-parallax")[0];
       const jsCanvasBottomValue = jsCanvasSectionNative.getBoundingClientRect().top; 
 
-      jsCanvasElement.css({
-        'bottom': jsCanvasBottomValue + 'px',
-        'top': '-' + jsCanvasBottomValue + 'px',
-      });
-
       if (jsCanvasStart >= jsCanvasSectionOffset) {
         const frameIndex = Math.min(
           canvasFrameCount - 1,
@@ -626,7 +623,12 @@ $(document).ready(() => {
         );
 
         requestAnimationFrame(() => updateImage(frameIndex + 1));
-      } 
+        jsCanvasElement.css('position', 'fixed');
+      }
+
+      if (jsCanvasStart >= jsAfterCanvasSectionOffset) {
+        jsCanvasElement.css('position', 'absolute');
+      }
     });
   }
   /**
