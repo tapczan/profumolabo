@@ -614,7 +614,10 @@ $(document).ready(() => {
       const jsCanvasSectionNative = document.getElementsByClassName("js-canvas-parallax")[0];
       const jsCanvasBottomValue = jsCanvasSectionNative.getBoundingClientRect().top; 
 
-      jsCanvasElement.css('bottom', jsCanvasBottomValue + 'px');
+      jsCanvasElement.css({
+        'bottom': jsCanvasBottomValue + 'px',
+        'top': '-' + jsCanvasBottomValue + 'px',
+      });
 
       if (jsCanvasStart >= jsCanvasSectionOffset) {
         const frameIndex = Math.min(
