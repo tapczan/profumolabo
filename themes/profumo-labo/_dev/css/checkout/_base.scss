@@ -69,6 +69,7 @@
 
             label{
                 margin: 0;
+                font-family: $font-jost;
             }
         }
     }
@@ -98,6 +99,11 @@
 
             label{
                 margin: 0;
+                font-family: $font-jost;
+
+                &.required .field-label:after{
+                    color: $black;
+                }
             }
 
             &.firstname{
@@ -153,6 +159,7 @@
             }
         }
 
+        .js-country.live,
         .nice-select-init{
             background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 10px center/8px 10px no-repeat;
             background-size: 11px;
@@ -167,6 +174,11 @@
         select{
             border-color: $black;
             color: $black;
+            background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 5px center/8px 10px no-repeat;
+            background-size: 11px;
+            -webkit-appearance: none;
+            appearance: none;
+            padding: 2px 20px 2px 5px;
 
             &:focus,
             &:active,
@@ -256,6 +268,7 @@
 
                 .h6{
                     font-weight: 300 !important;
+                    font-family: $font-jost;
                 }
             }
         }
@@ -267,6 +280,7 @@
 
             font-weight: 300 !important;
             color: $black;
+            font-family: $font-jost;
         }
 
         .delivery-option-logo{
@@ -276,6 +290,7 @@
         .definition-list{
             margin-top: 20px;
             text-align: justify;
+            font-family: $font-jost;
 
             dt{
                 @include font-with-line-height($font-size-sm, 20px);
@@ -522,6 +537,7 @@
                 font-weight: 300;
                 color: $black;
                 padding: 8px 0 0 0;
+                font-family: $font-jost;
             }
         }
     }
@@ -563,6 +579,7 @@
         .label{
             @include font-with-line-height($font-size-sm, 20px);
 
+            font-family: $font-jost;
             font-weight: 400;
             margin: 0;
 
@@ -570,6 +587,12 @@
                 font-style: normal;
                 font-weight: 300;
             }
+        }
+    }
+
+    .data-privacy{
+        .error-msg{
+            display: none;
         }
     }
 
@@ -587,6 +610,7 @@
 
             color: $black;
             font-weight: 500;
+            font-family: $font-jost;
         }
 
         .classic-login{
@@ -917,6 +941,14 @@
     }
 }
 
+@media (max-width: 1699px){
+    #tc-container .form-fields .form-group input[name=postcode] ~ .error-msg{
+        width: 140px;
+        top: -33px;
+        line-height: 12px;
+    }
+}
+
 @media (max-width: 1199px){
     .checkout-area{
         &-5{
@@ -990,9 +1022,22 @@
         width: 150px;
     }
 
+    #tc-container-mobile .form-fields .form-group input[name=postcode] ~ .error-msg{
+        width: 160px;
+    }
+
     #tc-container .form-fields .form-group.missing-street-number label[data-missing-street-nr-notice]:after, 
     #tc-container-mobile .form-fields .form-group.missing-street-number label[data-missing-street-nr-notice]:after{
         font-size: 8px;
+    }
+
+    #tc-container-mobile .custom-checkbox input[type=checkbox]{
+        margin-top: 0;
+        margin-left: 0;
+    }
+
+    #tc-container-mobile .custom-checkbox input[type=checkbox] + span{
+        vertical-align: top;
     }
 }
 
@@ -1021,6 +1066,10 @@
 
         .condition-label label{
             padding: 0 !important;
+        }
+
+        .custom-checkbox input[type=checkbox] + span{
+            vertical-align: -2px;
         }
     }
 }
