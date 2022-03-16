@@ -305,7 +305,7 @@ $(document).ready(() => {
                                 #arpl-section-13-25-carousel, 
                                 #arpl-section-12-27-carousel`);
   const sliderBestsellerHome = $('#arpl-section-5-7-carousel, #arpl-section-5-8-carousel');
-  const silderSixOnDesktop = $('#arpl-section-8-16-carousel, #arpl-section-1-15-carousel, #arpl-section-1-17-carousel, #arpl-section-8-19-carousel');
+  const silderSixOnDesktop = $('#arpl-section-8-16-carousel, #arpl-section-1-15-carousel, #arpl-section-1-34-carousel, #arpl-section-1-17-carousel, #arpl-section-8-19-carousel');
 
   sliderOverrideList.slick({
     infinite: false,
@@ -328,12 +328,13 @@ $(document).ready(() => {
     slidesToShow: 6,
     slidesToScroll: 1,
     dots: false,
-    arrow: true,
+    arrow: false,
     responsive: [
       {
         breakpoint: 992,
         settings: {
           slidesToShow: 2,
+          arrow: true,
         }
       }
     ]
@@ -383,6 +384,7 @@ $(document).ready(() => {
       seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5, '#arpl-section-5-7')
       seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5, '#arpl-section-5-8')
       seeMoreBestsellers('#arpl-section-1-15-carousel', '#arpl-section-1-15-carousel .slick-slide', 6, '#arpl-section-1-15')
+      seeMoreBestsellers('#arpl-section-1-34-carousel', '#arpl-section-1-34-carousel .slick-slide', 6, '#arpl-section-1-34')
       seeMoreBestsellers('#arpl-section-8-16-carousel', '#arpl-section-8-16-carousel .slick-slide', 6, '#arpl-section-8-16')
       seeMoreBestsellers('#arpl-section-13-40-carousel', '#arpl-section-13-40-carousel .slick-slide', 5, '#arpl-section-13-40')
       seeMoreBestsellers('#arpl-section-13-26-carousel', '#arpl-section-13-26-carousel .slick-slide', 5, '#arpl-section-13-26')
