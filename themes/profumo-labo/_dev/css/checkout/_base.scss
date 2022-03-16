@@ -107,6 +107,22 @@
             &.lastname{
                 padding-left: 5px;
             }
+
+            &.missing-street-number label[data-missing-street-nr-notice]:after{
+                position: absolute;
+                top: -20px;
+                right: 0;
+            }
+
+            input[name=postcode] ~ .error-msg{
+                position: absolute;
+                top: -26px;
+                right: 0;
+                font-size: 10px;
+                font-style: normal;
+                background: transparent;
+                display: block !important;
+            }
         }
 
         .field-label{
@@ -127,10 +143,19 @@
             &:focus{
                 box-shadow: none;
             }
+
+            &.-error{
+                border: 1px solid $red !important;
+
+                & ~ .error-msg{
+                    display: none;
+                }
+            }
         }
 
         .nice-select-init{
-            background-position: 99% 50% !important;
+            background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 10px center/8px 10px no-repeat;
+            background-size: 11px;
         }
 
         .nice-select{
@@ -138,9 +163,55 @@
         }
     }
 
-    .customer-addresses select{
-        border-color: $black;
-        color: $black;
+    .customer-addresses{
+        select{
+            border-color: $black;
+            color: $black;
+
+            &:focus,
+            &:active,
+            &:hover{
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        .nice-select-init{
+            color: $black;
+            border-color: $black;
+            height: auto;
+            padding: 4.5px 30px 4.5px 10px;
+            font-size: $font-size-sm;
+            text-align: left;
+            border-radius: 5px;
+            background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 10px center/8px 10px no-repeat;
+            background-size: 11px;
+
+            &:focus,
+            &:active,
+            &:hover{
+                outline: none;
+                box-shadow: none;
+            }
+        }
+
+        .list{
+            width: 100%;
+            color: $black;
+            border: 1px solid $black !important;
+            box-shadow: none;
+            margin: 1px 0 0;
+            border-radius: 0;
+
+            li{
+                @include font-with-line-height($font-size-xs, 14px);
+
+                height: auto;
+                padding: 5px 30px 5px 10px;
+                min-height: auto !important;
+                font-weight: normal;
+            }
+        }
     }
 
     .delivery-options,
@@ -237,6 +308,7 @@
         .product-image{
             img{
                 border-style: none;
+                width: 125px;
             }
         }
 
@@ -259,6 +331,10 @@
 
             .discount{
                 @include font-with-line-height($font-size-sm, 24px);
+            }
+
+            .unit-price-cart{
+                color: $gray;
             }
         }
 
@@ -415,6 +491,16 @@
             align-items: center;
         }
 
+        & ~ .error-msg{
+            @include font-with-line-height($font-size-xs, 18px);
+
+            font-family: $font-jost;
+            padding: 5px 10px;
+            border-radius: 0;
+            text-transform: capitalize;
+            font-style: normal;
+        }
+
         .custom-checkbox {
             input[type=checkbox] + span{
                 border: 1px solid $black !important;
@@ -550,6 +636,15 @@
                     box-shadow: none;
                     outline: none;
                 }
+            }
+
+            .alert{
+                @include font-with-line-height($font-size-xs, 18px);
+
+                font-family: $font-jost;
+                padding: 5px 10px;
+                border-radius: 0;
+                text-transform: capitalize;
             }
         }
     }
@@ -886,7 +981,19 @@
                 text-align: center;
             }
         }
-    }    
+    } 
+    
+    #tc-container .form-fields .form-group input[name=postcode] ~ .error-msg, 
+    #tc-container-mobile .form-fields .form-group input[name=postcode] ~ .error-msg{
+        top: -32px;
+        font-size: 8px;
+        width: 150px;
+    }
+
+    #tc-container .form-fields .form-group.missing-street-number label[data-missing-street-nr-notice]:after, 
+    #tc-container-mobile .form-fields .form-group.missing-street-number label[data-missing-street-nr-notice]:after{
+        font-size: 8px;
+    }
 }
 
 @media(max-width: 550px){
