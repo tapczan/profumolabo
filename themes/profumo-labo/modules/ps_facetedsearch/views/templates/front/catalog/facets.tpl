@@ -26,11 +26,6 @@
 <div>
   {if isset($displayedFacets) && $displayedFacets|count}
     <div id="search_filters" class="js-search-filters search-filters card">
-      <div class="card-header">
-        {block name='facets_title'}
-          <p class="card-title">{l s='Filter By' d='Shop.Theme.Actions'}</p>
-        {/block}
-      </div>
       <div class="list-group list-group-flush">
         {block name='facets_clearall_button'}
           {if $activeFilters|count}

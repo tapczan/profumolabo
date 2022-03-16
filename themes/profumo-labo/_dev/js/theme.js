@@ -639,12 +639,22 @@ $(document).ready(() => {
 
   
   /**
-   * FAQ
+   * Used by collapsed template (FAQ Page)
+   * Converts tabs to accordion or collapse style on mobile responsive
    */
   $('.js-trigger-collapsed-mobile').on('click', function(){
     $(this).closest('.collapsed__tab-pane').find('.collapsed__collapse--mobile').toggle();
     $(this).toggleClass('collapsed__collapse--mobile-active');
   });
+  
+  /**
+   * Product category filter show and hide
+   */
+  $('.js-filter-top-show').on('click', function(){
+    $('.js-filter-wrapper').toggleClass('filter-wrapper--show');
+    $('.js-listing-wrapper').toggleClass('listing-wrapper--default');
+  });
+
 });
 
 function accLinksTriggerActive() {

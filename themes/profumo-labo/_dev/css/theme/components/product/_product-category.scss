@@ -47,6 +47,72 @@
         padding-bottom: 40px; 
     }
 
+    .filter-top{
+        &-wrapper{
+            display: flex;
+            justify-content: space-between;
+            
+            .nice-select{
+                @include font-with-line-height($font-size-xs, 14px);
+    
+                background: $white;
+                border-style: none;
+                margin: 0 !important;
+                width: auto !important;
+                padding: 0 25px 0 0;
+                height: auto;
+                position: relative;
+                overflow: visible;
+                outline: none;
+                box-shadow: none !important;
+                color: $black;
+    
+                &:after{
+                    position: absolute;
+                    content: '';
+                    background: url(~/img/icons/left-arrow.svg);
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                    transform: rotate(-90deg);
+                    top: -3px;
+                    right: 0;
+                    width: 20px;
+                    height: 20px;
+                }
+    
+                .list{
+                    right: 0;
+                    left: auto;
+                    border-radius: 0;
+    
+                    li{
+                        min-height: auto;
+                        padding: 5px 10px;
+                        height: auto;
+                        line-height: 14px;
+                    }
+    
+                    li.selected{
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        &-show{
+            @include font-with-line-height($font-size-xm, 23px);
+
+            text-transform: uppercase;
+            cursor: pointer;
+            background: url(~/img/icons/plus-icon.svg);
+            background-repeat: no-repeat;
+            background-position: 0 7px;
+            background-size: 10px;
+            padding-left: 20px;
+        }
+    }
+
     &__title{
         @include font-with-line-height($font-size-xxl, 38px);
 
@@ -89,52 +155,6 @@
     &__main{
         .product{
             &-listing{
-                .nice-select{
-                    @include font-with-line-height($font-size-xs, 14px);
-
-                    background: $white;
-                    border-style: none;
-                    margin: 0 !important;
-                    width: auto !important;
-                    padding: 0 25px 0 0;
-                    height: auto;
-                    position: relative;
-                    overflow: visible;
-                    outline: none;
-                    box-shadow: none !important;
-                    color: $black;
-
-                    &:after{
-                        position: absolute;
-                        content: '';
-                        background: url(~/img/icons/left-arrow.svg);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-size: contain;
-                        transform: rotate(-90deg);
-                        top: -3px;
-                        right: 0;
-                        width: 20px;
-                        height: 20px;
-                    }
-
-                    .list{
-                        right: 0;
-                        left: auto;
-                        border-radius: 0;
-
-                        li{
-                            min-height: auto;
-                            padding: 5px 10px;
-                            height: auto;
-                            line-height: 14px;
-                        }
-
-                        li.selected{
-                            font-weight: 500;
-                        }
-                    }
-                }
                 .arpl-header{
                     overflow: visible;
                     text-align: right;
@@ -160,6 +180,7 @@
                     flex: 0 0 33.33%;
                     max-width: 33.33%;
                     margin-bottom: 50px;
+                    justify-content: center;
               
                     .product{
                         &-miniature{
@@ -501,6 +522,26 @@
             }
         }
     }
+
+    .filter-wrapper{
+        display: none;
+
+        &.filter-wrapper--show{
+            display: block;
+        }
+    }
+
+    .listing-wrapper--default{
+        flex: 0 0 100%;
+        max-width: 100%;
+
+        .product-listing{
+            .products-list__block{
+                flex: 0 0 25%;
+                max-width: 25%;
+            }
+        }
+    }
 }
 
 @media(max-width: 991px){
@@ -522,6 +563,15 @@
                     flex: 0 0 50%;
                     max-width: 50%;
                     margin-bottom: 50px;
+                }
+            }
+        }
+
+        .listing-wrapper--default{
+            .product-listing{
+                .products-list__block{
+                    flex: 0 0 33%;
+                    max-width: 33%;
                 }
             }
         }
@@ -574,6 +624,27 @@
         &__title{
             @include font-with-line-height($font-size-xm, 20px);
             margin-bottom: 30px;
+        }
+
+        .listing-wrapper--default{
+            .product-listing{
+                .products-list__block{
+                    flex: 0 0 50%;
+                    max-width: 50%;
+                }
+            }
+        }
+
+        .filter-top-wrapper{
+            justify-content: flex-end;
+        }
+
+        .filter-top-box{
+            display: none;
+        }
+
+        .filter-wrapper{
+            display: block;
         }
     }
 }
