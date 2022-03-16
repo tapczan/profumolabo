@@ -158,6 +158,16 @@
                 &--small{
                     padding-left: 0;
                 }
+
+                &--bold{
+                    @include font-with-line-height($font-size-md, 22px);
+                }
+
+                &--half{
+                    @include font-with-line-height($font-size-sm, 20px);
+                    
+                    column-count: 1;
+                }
             }
 
             &__quote{
