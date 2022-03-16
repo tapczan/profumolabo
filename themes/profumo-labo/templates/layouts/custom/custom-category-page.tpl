@@ -12,10 +12,12 @@
           </div>
         {/if}
 
-        {if $category.image}
-          <div class="product-category__image">
-            <img src="{$category.image.large.url}" alt="{$category.name}">
-          </div>
+        {if $category.id == 123 || $category.id == 124 || $category.id == 125 }
+          {if $category.image}
+            <div class="product-category__image">
+              <img src="{$category.image.large.url}" alt="{$category.name}">
+            </div>
+          {/if}
         {/if}
 
         {block name='subcategory_list'}
