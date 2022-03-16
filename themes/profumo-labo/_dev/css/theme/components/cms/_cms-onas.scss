@@ -100,7 +100,7 @@
         }
 
         &__content{
-            @include font-with-line-height($font-size-sm, 23px);
+            @include font-with-line-height($font-size-md, 24px);
 
             font-weight: 300;
             text-align: justify;
@@ -120,8 +120,6 @@
             }
 
             &--half{
-                @include font-with-line-height($font-size-md, 24px);
-
                 column-count: 2;
                 margin-bottom: -20px;
             }
@@ -155,6 +153,8 @@
             }
 
             &__content{
+                @include font-with-line-height($font-size-sm, 20px);
+
                 &--small{
                     padding-left: 0;
                 }
@@ -164,8 +164,6 @@
                 }
 
                 &--half{
-                    @include font-with-line-height($font-size-sm, 20px);
-                    
                     column-count: 1;
                 }
             }
