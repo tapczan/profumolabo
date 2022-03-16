@@ -112,6 +112,19 @@
             &--mtop{
                 padding-top: 30px;
             }
+
+            &--bold{
+                @include font-with-line-height($font-size-xm, 27px);
+
+                font-weight: 400;
+            }
+
+            &--half{
+                @include font-with-line-height($font-size-md, 24px);
+
+                column-count: 2;
+                margin-bottom: -20px;
+            }
         }
     }
 }
