@@ -68,6 +68,18 @@
         font-weight: 300;
     }
 
+    &__image{
+        margin: 0 auto;
+        padding: 50px 0;
+
+        img{
+            max-width: 100%;
+            width: auto;
+            display: block;
+            margin: auto;
+        }
+    }
+
     &__listing{
         margin: 50px 0;
         padding: 0 0 50px;

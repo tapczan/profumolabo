@@ -6,18 +6,25 @@
           {$category.name}
         </h1>
 
-        <div class="product-category__description">
-          {$category.description|strip_tags:'UTF-8'}
-        </div>
+        {if $category.description}
+          <div class="product-category__description">
+            {$category.description|strip_tags:'UTF-8'}
+          </div>
+        {/if}
 
-        <div class="product-category__listing">
-          {* {hook h='arCategoryPageHook1'} *}
-          {block name='subcategory_list'}
-            {if isset($subcategories) && $subcategories|@count > 0}
+        {if $category.image}
+          <div class="product-category__image">
+            <img src="{$category.image.large.url}" alt="{$category.name}">
+          </div>
+        {/if}
+
+        {block name='subcategory_list'}
+          {if isset($subcategories) && $subcategories|@count > 0}
+            <div class="product-category__listing">
               {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
-            {/if}
-          {/block}
-        </div>
+            </div>
+          {/if}
+        {/block}
       </div>
     </div>
 
@@ -34,9 +41,10 @@
             {block name='product_list_top'}
               {include file='catalog/_partials/products-top.tpl' listing=$listing}
             {/block}
+
             <div>
               {block name='product_list'}
-                    {include file='catalog/_partials/products.tpl' listing=$listing productClass="col-xs-6 col-xl-4"}
+                {include file='catalog/_partials/products.tpl' listing=$listing productClass="col-xs-6 col-xl-4"}
               {/block}
             </div>
 
