@@ -8,6 +8,7 @@
       {/if}
     {/foreach}
     <a href="{$product.url}" class="product-miniature__thumb-link">
+      {hook h='displayProductActions' }            
       <img
         {if $product.default_image}
           data-full-size-image-url="{$product.default_image.large.url}"

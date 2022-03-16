@@ -44,22 +44,42 @@
                 right: 0;
             }
         }
-
+        
         .products-list__block{
             display: block;
             width: 100%;
             max-width: none;
             margin-bottom: 0;
 
-            .wishlist-button-add{
-                display: none;
-            }
-
             .product{
                 &-miniature{
                     border-style: none;
                     padding: 0 !important;
-    
+                    
+                    .thumbnail-container {
+
+                        .wishlist-button-add{
+                            display: none;
+                            box-shadow: none;
+                        }
+
+                        &:hover {
+                            .wishlist-button-add {
+                                display: unset;
+                                background-color: transparent;
+                                
+                                
+                                ~ .wishlist-button-add {
+                                    display: none;
+                                }
+
+                                &:hover {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+
                     &__thumb{
                         img{
                             margin: auto;
@@ -67,13 +87,14 @@
                             &.lazyload:not(.loaded){
                                 background: $white !important;
                             }
-                        }
-
+                        } 
+                        .wishlist-button-add,
                         .quick-view{
                             display: none;
                         }
 
                         &:hover {
+                            
                             .quick-view{
                                 display: flex;
                                 justify-content: center;
@@ -86,6 +107,7 @@
                                 align-items: center;
                                 border-bottom-right-radius: 5px;
                             }
+
                         }
                     }
 
