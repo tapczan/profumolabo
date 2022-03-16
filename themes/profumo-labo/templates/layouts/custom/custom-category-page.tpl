@@ -30,24 +30,28 @@
 
     <div class="product-category__main">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12 filter-top-wrapper">
+          <div class="filter-top-box">
+            <span class="js-filter-top-show filter-top-show">
+              {l s='Filter By' d='Shop.Theme.Global'}
+            </span>
+          </div>
+          {block name='product_list_top'}
+            {include file='catalog/_partials/products-top.tpl' listing=$listing}
+          {/block}
+        </div>
+        <div class="col-md-3 js-filter-wrapper filter-wrapper">
           <div class="product-filter">
-              {hook h='displayLeftColumn'}
+            {hook h='displayLeftColumn'}
           </div>
         </div>
-          <div class="col-md-9">
-            <div class="product-listing">
-            
-            {block name='product_list_top'}
-              {include file='catalog/_partials/products-top.tpl' listing=$listing}
-            {/block}
-
+        <div class="col-md-9 js-listing-wrapper listing-wrapper--default">
+          <div class="product-listing">
             <div>
               {block name='product_list'}
                 {include file='catalog/_partials/products.tpl' listing=$listing productClass="col-xs-6 col-xl-4"}
               {/block}
             </div>
-
           </div>
         </div>
       </div>
