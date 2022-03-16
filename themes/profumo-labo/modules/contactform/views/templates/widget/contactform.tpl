@@ -48,7 +48,7 @@
             <label class="form-control-label">{l s='First Name' d='Shop.Forms.Labels'} *</label>
             <input
               class="form-control"
-              name="from"
+              name="fname"
               type="text"
               value="{$contact.fname}"
               required
@@ -58,7 +58,7 @@
             <label class="form-control-label">{l s='Last Name' d='Shop.Forms.Labels'} *</label>
             <input
               class="form-control"
-              name="from"
+              name="lname"
               type="text"
               value="{$contact.lname}"
               required
@@ -66,7 +66,7 @@
           </div>
 
           <div class="form-group email">
-            <label class="form-control-label">{l s='Email address' d='Shop.Forms.Labels'} *</label>
+            <label class="form-control-label">{l s='Email Address' d='Shop.Forms.Labels'} *</label>
             <input
               class="form-control"
               name="from"
@@ -75,9 +75,20 @@
               required
             >
           </div>
-          
+
+          <div class="form-group email">
+            <label class="form-control-label">{l s='Phone Number' d='Shop.Forms.Labels'} *</label>
+            <input
+              class="form-control"
+              name="phonenumber"
+              type="tel"
+              value="{$contact.phonenumber}"
+              required
+            >
+          </div>
+           
           {if $contact.allow_file_upload}
-            <div class="form-group attachment">
+            <div class="form-group">
               <label class="form-control-label">{l s='Attachment' d='Shop.Forms.Labels'}</label>
               <div class="custom-file">
                 <input name="fileUpload" type="file" class="custom-file-input" id="fileUpload">
