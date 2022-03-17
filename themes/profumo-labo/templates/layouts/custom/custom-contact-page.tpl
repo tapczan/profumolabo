@@ -13,7 +13,7 @@
             <div class="contact-footer">
                 <div class="row">
                    
-                    <div class="col-lg-9 col-md-8 col-12 contact-footer__big">
+                    <div class="col-lg-8 col-md-8 col-12 contact-footer__big">
  
                     <div class="contact-data__item">
                         <ul class="contact-data__list">
@@ -39,7 +39,7 @@
                     </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-4 col-12 contact-social">
+                    <div class="col-lg-4 col-md-4 col-12 contact-social">
                     <ul class="contact-social__list">
                         <li>{l s='Visit Us' d='Shop.Theme.Global'}</li>
                         <li><a href="https://www.facebook.com/" target="_blank"><span class="contact-icon contact-icon--facebook"></span></a></li>
