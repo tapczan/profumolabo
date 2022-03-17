@@ -1,7 +1,5 @@
 .product-category{
-    .wishlist-button-add{
-        display: none;
-    }
+ 
     .subcategory {
         &-wrapper {
             margin-bottom: 30px;
@@ -45,6 +43,32 @@
     .product-listing{
         position: relative;
         padding-bottom: 40px; 
+        .thumbnail-container {
+            .wishlist-button-add{
+                display: none;
+                box-shadow: none;
+                background: transparent;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+            &:hover {
+                .product-miniature__thumb {
+                    .wishlist-button-add {
+                        display: none !important;
+                    }
+                }
+                .wishlist-button-add {
+                    display: unset;
+                    ~ .wishlist-button-add {
+                        display: none;
+                    }
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
     }
 
     .filter-top{
@@ -154,6 +178,7 @@
 
     &__main{
         .product{
+
             &-listing{
                 .arpl-header{
                     overflow: visible;
@@ -196,10 +221,11 @@
                                         background: $white !important;
                                     }
                                 }
-                    
+
                                 .quick-view{
                                     display: none;
                                 }
+
 
                                 &:hover {
                                     .quick-view{

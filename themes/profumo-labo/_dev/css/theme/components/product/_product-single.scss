@@ -55,24 +55,26 @@
                 &-miniature{
                     border-style: none;
                     padding: 0 !important;
-                    
                     .thumbnail-container {
-
                         .wishlist-button-add{
                             display: none;
                             box-shadow: none;
+                            background: transparent;
+                            position: absolute;
+                            top: 5px;
+                            right: 5px;
                         }
-
                         &:hover {
+                            .product-miniature__thumb {
+                                .wishlist-button-add {
+                                    display: none !important;
+                                }
+                            }
                             .wishlist-button-add {
                                 display: unset;
-                                background-color: transparent;
-                                
-                                
                                 ~ .wishlist-button-add {
                                     display: none;
                                 }
-
                                 &:hover {
                                     opacity: 1;
                                 }
