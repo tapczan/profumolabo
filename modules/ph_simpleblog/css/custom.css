@@ -1,1 +1,9 @@
 /** custom css for SimpleBlog **/
+
+.blog-sub-heading {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 2.5em;
+    margin-bottom: 0;
+}
