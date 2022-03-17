@@ -2,6 +2,32 @@
     &__container{
         font-family: $font-jost;
         color: $black;
+
+        &--no-tab{
+            margin-bottom: 50px;
+
+            .collapsed__collapse:last-child{
+                border-bottom: 1px solid $light-gray;
+            }
+            
+            .collapsed__collapse-title{
+                cursor: pointer;
+
+                &.collapsed__collapse-title--active:after{
+                    transform: rotate(-180deg);
+                }
+            }
+
+            .collapsed__collapse-content{
+                display: none;
+                padding: 10px 0 20px;
+                text-align: justify;
+
+                strong{
+                    font-weight: 500;
+                }
+            }
+        }
     }
 
     &__header{
@@ -28,7 +54,7 @@
         }
 
         &-link{
-            @include font-with-line-height($font-size-xs, 17px);
+            @include font-with-line-height($font-size-md, 17px);
 
             font-weight: 300;
             margin: 0 !important;
@@ -69,7 +95,7 @@
         border-top: 1px solid $light-gray;
 
         &-title{
-            @include font-with-line-height($font-size-xs, 17px);
+            @include font-with-line-height($font-size-md, 20px);
 
             padding: 10px 15px 10px 0;
             font-weight: 300;
@@ -82,7 +108,7 @@
             &:after{
                 content: '';
                 position: absolute;
-                top: 12px;
+                top: 14px;
                 right: 0;
                 margin: auto;
                 width: 12px;
@@ -96,7 +122,7 @@
         }
 
         &-content{
-            @include font-with-line-height($font-size-xs, 17px);
+            @include font-with-line-height($font-size-md, 20px);
             
             font-weight: 300;
             padding-bottom: 10px;
@@ -122,7 +148,7 @@
         }
 
         &-subtitle{
-            @include font-with-line-height($font-size-sm, 20px);
+            @include font-with-line-height($font-size-md, 20px);
 
             font-weight: 300;
             text-transform: uppercase;
@@ -154,7 +180,7 @@
         }
 
         &-label{
-            @include font-with-line-height($font-size-sm, 20px);
+            @include font-with-line-height($font-size-md, 20px);
 
             font-weight: 300;
             text-transform: uppercase;
@@ -275,6 +301,14 @@
                     margin-bottom: 0;
                 }
             }
+        }
+
+        &__collapse-title{
+            @include font-with-line-height($font-size-sm, 18px);
+        }
+
+        &__collapse-content{
+            @include font-with-line-height($font-size-xs, 16px);
         }
     }
 }

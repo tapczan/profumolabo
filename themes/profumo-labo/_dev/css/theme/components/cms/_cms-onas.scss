@@ -45,6 +45,16 @@
             &--center{
                 text-align: center;
             }
+            
+            h1{
+                @include font-with-line-height($font-size-xxl, 38px);
+
+                font-family: $font-forum;
+                font-weight: 400;
+                margin: 0 0 30px;
+                text-transform: uppercase;
+                color: $black;
+            }
         }
 
         &__quote{
@@ -150,6 +160,10 @@
 
             &__title{
                 @include font-with-line-height($font-size-xl, 26px);
+                
+                h1{
+                    @include font-with-line-height($font-size-xl, 26px);
+                }
             }
 
             &__content{

@@ -116,6 +116,13 @@
                 padding: 10px;
                 height: auto;
                 font-size: $font-size-sm;
+
+                &:focus,
+                &:active{
+                    box-shadow: none;
+                    outline: none;
+                    border: 1px solid #ced4da;
+                }
             }
         }
 

@@ -654,6 +654,16 @@ $(document).ready(() => {
     $('.js-filter-wrapper').toggleClass('filter-wrapper--show');
     $('.js-listing-wrapper').toggleClass('listing-wrapper--default');
   });
+  
+  /**
+   * Used by collapsed cms template (Information Page)
+   */
+  const cmsCollapseTitle = $('.js-collapse-no-tab .collapsed__collapse-title');
+
+  cmsCollapseTitle.on('click', function(){
+    $(this).toggleClass('collapsed__collapse-title--active');
+    $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').toggle();
+  });
 
 });
 
