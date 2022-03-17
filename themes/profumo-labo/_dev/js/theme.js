@@ -658,13 +658,33 @@ $(document).ready(() => {
   /**
    * Used by collapsed cms template (Information Page)
    */
+  // const cmsCurrentUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?contentCollapse=';
+  const cmsCurrentCleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
   const cmsCollapseTitle = $('.js-collapse-no-tab .collapsed__collapse-title');
 
-  cmsCollapseTitle.on('click', function(){
-    $(this).toggleClass('collapsed__collapse-title--active');
-    $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').toggle();
-  });
+  cmsCollapseTitle.each(function(){
+    const cmsCollapseText = $(this).text();
+    const cmsUrlParamSearch = new Proxy(new URLSearchParams(window.location.search), {
+      get: (searchParams, prop) => searchParams.get(prop),
+    });
+    const cmsUrlParamValue = cmsUrlParamSearch.contentCollapse;
+    const cmsOrigParameterValue = cmsUrlParamValue.replace(/-/g,' ').toUpperCase();
 
+    $(this).on('click', function(){
+      // const cmsParameterValue = cmsCollapseText.replace(/\s+/g,'-').toLowerCase();
+      // window.history.pushState({ path: cmsCurrentUrl + cmsParameterValue }, '', cmsCurrentUrl + cmsParameterValue);
+
+      window.history.pushState({ path: cmsCurrentCleanUrl }, '', cmsCurrentCleanUrl);
+      $(this).toggleClass('collapsed__collapse-title--active');
+      $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').toggle();
+    });
+
+    if(cmsCollapseText == cmsOrigParameterValue){
+      $(this).addClass('collapsed__collapse-title--active');
+      $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').show();
+    }
+  });
+  
 });
 
 function accLinksTriggerActive() {
