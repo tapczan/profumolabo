@@ -175,7 +175,7 @@ class createit_countdown extends Module
         $borderColor = $this->getSetting('#ffff80', CreateitCountdown::BORDER_COLOR);
         $textColor = $this->getSetting('#80ff80', CreateitCountdown::TEXT_COLOR);
 
-        $summaryTotalPrice = $this->context->cart->getCartTotalPrice();
+        $summaryTotalPrice = $this->context->cart->getOrderTotal(true, Cart::BOTH_WITHOUT_SHIPPING);
         $hasProducts = $this->context->cart->hasProducts();
 
         $freeShippingTotalPriceLeft = $freeShippingAmountValue - $summaryTotalPrice;
