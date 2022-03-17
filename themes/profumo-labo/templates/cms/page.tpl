@@ -25,18 +25,25 @@
 {extends file='page.tpl'}
 
 {if $page.meta.title != 'O PROFUMO LABO'}
-  {block name='page_title'}
-    <h1 class="cms-block__title cms-block__title--center">
-      {$cms.meta_title}
-    </h1>
-  {/block}
+    {block name='page_title'}
+      <span class="cms-block__title cms-block__title--center">
+        {$cms.meta_title}  
+      </span>
+    {/block}
 {/if}
 
 {block name='page_content_container'}
   <section id="content" class="page-content cms-content page-cms page-cms-{$cms.id}">
 
     {block name='cms_content'}
-      {$cms.content nofilter}
+      {if $page.meta.title == 'Information' || $page.meta.title == 'INFORMACJE'}
+        <div class="container collapsed__container collapsed__container--no-tab js-collapse-no-tab">
+          {$cms.content nofilter}
+        </div>
+        {include file='cms/_partials/contact-details-footer.tpl'}
+      {else}
+        {$cms.content nofilter}
+      {/if}
     {/block}
 
     {block name='hook_cms_dispute_information'}
