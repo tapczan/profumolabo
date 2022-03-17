@@ -1,7 +1,7 @@
 <style>
 
     .createit_countdown_wrapper {
-        display: inline-block;
+        display: block;
         color: {$textColor};
         background-color: {$backgroundColor};
         border-color: {$borderColor};
