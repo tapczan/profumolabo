@@ -660,15 +660,14 @@ $(document).ready(() => {
    */
   // const cmsCurrentUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?contentCollapse=';
   const cmsCurrentCleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+  const cmsUrlParamSearch = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+  const cmsUrlParamValue = cmsUrlParamSearch.contentCollapse;
   const cmsCollapseTitle = $('.js-collapse-no-tab .collapsed__collapse-title');
 
   cmsCollapseTitle.each(function(){
     const cmsCollapseText = $(this).text();
-    const cmsUrlParamSearch = new Proxy(new URLSearchParams(window.location.search), {
-      get: (searchParams, prop) => searchParams.get(prop),
-    });
-    const cmsUrlParamValue = cmsUrlParamSearch.contentCollapse;
-    const cmsOrigParameterValue = cmsUrlParamValue.replace(/-/g,' ').toUpperCase();
 
     $(this).on('click', function(){
       // const cmsParameterValue = cmsCollapseText.replace(/\s+/g,'-').toLowerCase();
@@ -679,9 +678,13 @@ $(document).ready(() => {
       $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').toggle();
     });
 
-    if(cmsCollapseText == cmsOrigParameterValue){
-      $(this).addClass('collapsed__collapse-title--active');
-      $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').show();
+    if(cmsUrlParamValue){
+      const cmsOrigParameterValue = cmsUrlParamValue.replace(/-/g,' ').toUpperCase();
+
+      if(cmsCollapseText == cmsOrigParameterValue){
+        $(this).addClass('collapsed__collapse-title--active');
+        $(this).closest('.collapsed__collapse').find('.collapsed__collapse-content').show();
+      }
     }
   });
   
