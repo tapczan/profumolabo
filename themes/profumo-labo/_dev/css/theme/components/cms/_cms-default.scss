@@ -8,14 +8,14 @@
     }
 
     h2{
-        @include font-with-line-height($font-size-xm, 24px);
+        @include font-with-line-height($font-size-sm, 23px);
 
         margin: 0 0 5px;
         font-weight: 400;
     }
 
     p{
-        @include font-with-line-height($font-size-md, 22px);
+        @include font-with-line-height($font-size-sm, 23px);
 
         margin: 0 0 20px;
         font-weight: 300;
@@ -31,13 +31,5 @@
 @media(max-width: 767px){
     .cms-content--default{
         padding: 30px 0 50px;
-
-        h2{
-            @include font-with-line-height($font-size-md, 22px);
-        }
-    
-        p{
-            @include font-with-line-height($font-size-sm, 20px);
-        }
     }
 }
