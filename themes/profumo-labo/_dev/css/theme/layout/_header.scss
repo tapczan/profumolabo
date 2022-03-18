@@ -862,7 +862,8 @@
       }
   
       &-second-col{
-        h3{
+        h3,
+        h3 a{
           font-weight: 500;
           text-transform: uppercase;
         }
