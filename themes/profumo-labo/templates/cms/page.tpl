@@ -41,7 +41,7 @@
           {$cms.content nofilter}
         </div>
         {include file='cms/_partials/contact-details-footer.tpl'}
-      {else if $page.meta.title == 'Cooperation' || $page.meta.title == 'WSPÓŁPRACA'}
+      {else if $page.meta.title == 'Cooperation' || $page.meta.title == 'Współpraca'}
         {$cms.content nofilter}
         {include file='cms/_partials/contact-details-footer.tpl'}
       {else}
