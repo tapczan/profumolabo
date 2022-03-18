@@ -36,10 +36,13 @@
   <section id="content" class="page-content cms-content page-cms page-cms-{$cms.id}">
 
     {block name='cms_content'}
-      {if $page.meta.title == 'Information' || $page.meta.title == 'INFORMACJE'}
+      {if $page.meta.title == 'Information' || $page.meta.title == 'INFORMACJE' }
         <div class="container collapsed__container collapsed__container--no-tab js-collapse-no-tab">
           {$cms.content nofilter}
         </div>
+        {include file='cms/_partials/contact-details-footer.tpl'}
+      {else if $page.meta.title == 'Cooperation' || $page.meta.title == 'WSPÓŁPRACA'}
+        {$cms.content nofilter}
         {include file='cms/_partials/contact-details-footer.tpl'}
       {else}
         <div class="cms-content--default">
