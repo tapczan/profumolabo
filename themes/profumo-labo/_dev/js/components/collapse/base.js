@@ -39,8 +39,9 @@ cmsCollapseTitle.each(function () {
 /**
  * Used by tab menu cms template (Cooperation Page)
  */
-const tabMenuLink = $('.collapsed__tab-nav .nav-link');
-const tabMenuContent = $('.collapsed__tab-pane');
+const cmsTabMenu = $('#cms-tab-menu');
+const tabMenuLink = $(cmsTabMenu).find('.collapsed__tab-nav .nav-link');
+const tabMenuContent = $(cmsTabMenu).find('.collapsed__tab-pane');
 
 $(tabMenuLink).on('click', function () {
     $(tabMenuLink).removeClass('active');
