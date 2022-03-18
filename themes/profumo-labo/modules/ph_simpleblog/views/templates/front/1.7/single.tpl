@@ -25,7 +25,7 @@
 {extends file='page.tpl'}
 
 {block name='page_header_container'}
-<header class="cms-block__title text-center">
+<header class="page-header cms-block__title cms-block__title--center">
 	<h1 class="h1">{$post->title}</h1>
 </header>
 {/block}
@@ -112,6 +112,7 @@
     <div class="simpleblog__post__after-content" id="displayPrestaHomeBlogAfterPostContent">
 		{hook h='displayPrestaHomeBlogAfterPostContent'}
 	</div><!-- #displayPrestaHomeBlogAfterPostContent -->
+<<<<<<< HEAD
 
     <nav>
       <ul class="pagination pagination-lg">
@@ -128,6 +129,11 @@
         {/if}
       </ul>
     </nav>
+=======
+    <div class="simpleblog__post__related pt-6" id="displaySimpleBlogRecentPosts">
+		{hook h='displaySimpleBlogRecentPosts'}
+	</div><!-- #displaySimpleBlogRecentPosts -->
+>>>>>>> 500e29f (Added recent posts)
 </div>
 
 {if $post->author->active|default:false && Configuration::get('PH_BLOG_DISPLAY_AUTHOR')}
@@ -141,4 +147,10 @@
 <script type="application/ld+json">
 {$jsonld nofilter}
 </script>
+<<<<<<< HEAD
 {/block}
+=======
+{/block}
+
+
+>>>>>>> 500e29f (Added recent posts)

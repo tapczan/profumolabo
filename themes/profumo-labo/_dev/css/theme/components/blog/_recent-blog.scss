@@ -1,0 +1,59 @@
+.simpleblog__post__related {
+    border-top: 1px solid #c6c6c6;
+}
+
+#phblogrecentposts {
+    width: 100%;
+    max-width: 900px;
+
+    .page-heading{
+        h1{
+            @include font-with-line-height($font-size-xxl, 38px);
+
+            font-family: $font-forum;
+            font-weight: 400;
+            margin: 0;
+            text-transform: uppercase;
+            color: $black;
+            text-align: center;
+        }
+    }
+
+    .simpleblog__listing {
+        &__post {
+            padding: 40px 10px;
+            &::before,
+            &::after {
+                display: none;
+            }
+        }
+
+        &__post__wrapper {
+            &__content {
+                padding: 20px 30px!important;
+                &__footer {
+                    justify-content: center;
+                }
+            }
+        }
+    }
+
+    .cardblog {
+        overflow: hidden;
+
+        &>a {
+            position: relative;
+            padding-top: 69%;
+            display: block;
+
+            .img-fluid {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 200%;
+                max-width: 138%;
+            }
+        }
+    }
+}
