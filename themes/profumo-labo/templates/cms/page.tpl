@@ -42,7 +42,9 @@
         </div>
         {include file='cms/_partials/contact-details-footer.tpl'}
       {else}
-        {$cms.content nofilter}
+        <div class="cms-content--default">
+          {$cms.content nofilter}
+        </div>
       {/if}
     {/block}
 
