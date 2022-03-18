@@ -65,7 +65,6 @@ if(canvas.length){
         const jsCanvasProgress = jsCanvasMaximum / (jsCanvasSection.height() * 2);
         const jsCanvasElement = $('#js-canvas-offerta');  
         const jsCanvasSectionNative = document.getElementsByClassName("js-canvas-parallax")[0];
-        const jsCanvasBottomValue = jsCanvasSectionNative.getBoundingClientRect().top; 
 
         if (jsCanvasStart >= jsCanvasSectionOffset) {
             const frameIndex = Math.min(
