@@ -192,6 +192,36 @@
     }
 }
 
+#empty-cart-notice{
+    text-align: center;
+
+    h1{
+        @include font-with-line-height($font-size-product-lg, 27px);
+    
+        font-family: $font-forum;
+        font-weight: 400;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $black;
+    }
+
+    a.label{
+        @include font-with-line-height($font-size-sm, 16px);
+
+        text-transform: uppercase;
+        display: inline-block !important;
+
+        .laquo{
+            font-size: $font-size-xm;
+        }
+
+        &:hover{
+            text-decoration: none;
+        }
+    }
+}
+
 @media (max-width: 991px){
     .cart-grid{
         &-right{
