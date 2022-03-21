@@ -1,3 +1,7 @@
+/**
+ * Add dynamic width base on the maximum menu link list 
+ * width of the middle footer menu item
+ */
 $('.footer-card').each(function(){
     const linksListElem = $(this).find('.links-list__link');
     const linksListArr = linksListElem.map(function(){
