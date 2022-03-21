@@ -112,7 +112,7 @@
     <div class="simpleblog__post__after-content" id="displayPrestaHomeBlogAfterPostContent">
 		{hook h='displayPrestaHomeBlogAfterPostContent'}
 	</div><!-- #displayPrestaHomeBlogAfterPostContent -->
-    <div class="simpleblog__post__related pt-6" id="displaySimpleBlogRecentPosts">
+    <div class="simpleblog__post__related my-6 pt-6" id="displaySimpleBlogRecentPosts">
 		{hook h='displaySimpleBlogRecentPosts'}
 	</div><!-- #displaySimpleBlogRecentPosts -->
 </div>
