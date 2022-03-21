@@ -14,7 +14,7 @@ const cmsCurrentCleanUrl = window.location.protocol + "//" + window.location.hos
 const cmsUrlParamSearch = new Proxy(new URLSearchParams(window.location.search), {
 get: (searchParams, prop) => searchParams.get(prop),
 });
-const cmsUrlParamValue = cmsUrlParamSearch.contentCollapse;
+var cmsUrlParamValue = cmsUrlParamSearch.contentCollapse;
 const cmsCollapseTitle = $('.js-collapse-no-tab .collapsed__collapse-title');
 
 cmsCollapseTitle.each(function () {
