@@ -10,13 +10,15 @@
     {/if}"
     >
     <div class="simpleblog__listing__post__wrapper cardblog">
-        {if $post.post_type == 'url'}
-        {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-url/post-thumbnail.tpl"}
-        {else if $post.post_type == 'video'}
-        {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-video/post-thumbnail.tpl"}
-        {else}
-        {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-default/post-thumbnail.tpl"}
-        {/if}
+        <div class="">
+            {if $post.post_type == 'url'}
+            {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-url/post-thumbnail.tpl"}
+            {else if $post.post_type == 'video'}
+            {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-video/post-thumbnail.tpl"}
+            {else}
+            {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-default/post-thumbnail.tpl"}
+            {/if}
+        </div>
         <div class="simpleblog__listing__post__wrapper__content card-block text-center border border-dark py-3 px-4">
             {if $post.post_type == 'url'}
                 {include file="module:ph_simpleblog/views/templates/front/1.7/_partials/type-url/post-headline.tpl"}
@@ -26,7 +28,7 @@
 
             {if Configuration::get('PH_BLOG_DISPLAY_DESCRIPTION')}
                 <p itemprop="description">
-                    {$post.short_content|strip_tags:'UTF-8'}
+                    {$post.short_content|strip_tags:'UTF-8'|truncate:120:""}
                 </p>
             {/if}
 
