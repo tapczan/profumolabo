@@ -1,8 +1,9 @@
 <div class="collapsed__more">
     <h3 class="collapsed__more-subtitle">
-        {l s="IF YOU DIDN'T FIND YOUR INTERESTED INFORMATION, PLEASE CONTACT THE FAQ OR CONTACT US THROUGH THE CONTACT FORM" d="Shop.Theme.Global"}
+        {l s="IF YOU DIDN'T FIND YOUR INTERESTED INFORMATION, PLEASE CONTACT THE" d="Shop.Theme.Global"}
+        <a href="{$urls.pages.index}module/faq/faqpage">{l s="FAQ" d="Shop.Theme.Global"}</a>
+        {l s="OR CONTACT US THROUGH THE CONTACT FORM" d="Shop.Theme.Global"}
     </h3>
-
     <ul class="collapsed__more-list">
         <li class="collapsed__more-item">
             <a href="{$urls.pages.contact}" class="collapsed__more-link">
