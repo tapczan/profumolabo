@@ -43,6 +43,7 @@ import './components/jquery.matchHeight';
 import './components/header/base';
 import './components/header/stickyNav';
 import './components/header/matchHeight';
+import './components/footer/base';
 import './components/footer/dynamicHeight';
 import './components/footer/parallaxEffect';
 import './components/home/parallax';
