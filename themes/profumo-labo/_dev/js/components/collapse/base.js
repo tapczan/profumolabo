@@ -39,8 +39,9 @@ cmsCollapseTitle.each(function () {
 /**
  * Used by tab menu cms template (Cooperation Page)
  */
-const tabMenuLink = $('.collapsed__tab-nav .nav-link');
-const tabMenuContent = $('.collapsed__tab-pane');
+const cmsTabMenu = $('#cms-tab-menu');
+const tabMenuLink = $(cmsTabMenu).find('.collapsed__tab-nav .nav-link');
+const tabMenuContent = $(cmsTabMenu).find('.collapsed__tab-pane');
 
 $(tabMenuLink).on('click', function () {
     $(tabMenuLink).removeClass('active');
@@ -50,6 +51,15 @@ $(tabMenuLink).on('click', function () {
     $(tab).addClass('active');
     $("html, body").animate({ scrollTop: 0 });
 });
+
+if (cmsUrlParamValue == null) {
+    cmsUrlParamValue = "influencer_cooperation";
+    if (cmsUrlParamValue) {
+        $(this).addClass('active');
+    } else {
+        $(this).removeClass('active');
+    }
+}
 
 tabMenuLink.each(function () {
     let url = $(this).attr('href');
