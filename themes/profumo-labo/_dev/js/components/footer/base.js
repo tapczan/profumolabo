@@ -10,7 +10,6 @@ $('.footer-card').each(function(){
     
     for(i=0; i < linksListArr.length; i++){
         const linksListArrMax = Math.max.apply(Math,linksListArr);
-        console.log(linksListArrMax);
 
         if($(this).index() == 1){
             $(this).css('maxWidth', linksListArrMax);
