@@ -112,28 +112,9 @@
     <div class="simpleblog__post__after-content" id="displayPrestaHomeBlogAfterPostContent">
 		{hook h='displayPrestaHomeBlogAfterPostContent'}
 	</div><!-- #displayPrestaHomeBlogAfterPostContent -->
-<<<<<<< HEAD
-
-    <nav>
-      <ul class="pagination pagination-lg">
-        {if $previousPost}
-        <li class="page-item">
-          <a class="page-link" href="{$previousPost.url}" tabindex="-1">{l s='Previous article' mod='ph_simpleblog'}</a>
-        </li>
-        {/if}
-        <li class="page-item"><a class="page-link" href="{$link->getModuleLink('ph_simpleblog', 'list')}">{l s='Main page' mod='ph_simpleblog'}</a></li>
-        {if $nextPost}
-        <li class="page-item">
-          <a class="page-link" href="{$nextPost.url}">{l s='Next article' mod='ph_simpleblog'}</a>
-        </li>
-        {/if}
-      </ul>
-    </nav>
-=======
     <div class="simpleblog__post__related pt-6" id="displaySimpleBlogRecentPosts">
 		{hook h='displaySimpleBlogRecentPosts'}
 	</div><!-- #displaySimpleBlogRecentPosts -->
->>>>>>> 500e29f (Added recent posts)
 </div>
 
 {if $post->author->active|default:false && Configuration::get('PH_BLOG_DISPLAY_AUTHOR')}
@@ -147,10 +128,6 @@
 <script type="application/ld+json">
 {$jsonld nofilter}
 </script>
-<<<<<<< HEAD
-{/block}
-=======
 {/block}
 
 
->>>>>>> 500e29f (Added recent posts)
