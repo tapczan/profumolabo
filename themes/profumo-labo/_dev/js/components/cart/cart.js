@@ -28,6 +28,10 @@ function createSpin() {
   CheckUpdateQuantityOperations.switchErrorStat();
 }
 
+$('body').on('click', '.js-addon-btn-cart', function() {
+  createSpin();
+});
+
 $(() => {
   const productLineInCartSelector = '.js-cart-line-product-quantity';
   const promises = [];

@@ -557,8 +557,7 @@ class FrontControllerCore extends Controller
             'pslanguage' => $this->context->language->iso_code,
             'wishlist_url' => Context::getContext()->link->getModuleLink('blockwishlist', 'lists'),
             'wishlist_count' => $this->countWishlist(),
-            'loginFormFields' => $loginFormFields->getTemplateVariables(),
-            'useCartDetailed' => true
+            'loginFormFields' => $loginFormFields->getTemplateVariables()
         ];
 
         $modulesVariables = Hook::exec(
