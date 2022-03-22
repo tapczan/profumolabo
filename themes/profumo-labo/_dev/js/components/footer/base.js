@@ -13,7 +13,7 @@ function footerMiddleItemWidth(){
             const linksListArrMax = Math.max.apply(Math,linksListArr);
     
             if($(this).index() == 1){
-                $(this).css('maxWidth', linksListArrMax);
+                $(this).css('maxWidth', linksListArrMax + 1);
             }
         }
     });
