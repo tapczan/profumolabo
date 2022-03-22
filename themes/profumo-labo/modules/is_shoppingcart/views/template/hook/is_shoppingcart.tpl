@@ -72,7 +72,7 @@
                   <li class="cart-summary__item">
                     <span class="cart-summary__label">
                       {if $subtotal.label == 'Subtotal' || $subtotal.label == 'Produkty'}
-                        {l s='Total products' d='Shop.Theme.Actions'}
+                        {l s='Order amount' d='Shop.Theme.Actions'}
                       {else}
                         {$subtotal.label}
                       {/if}
@@ -86,7 +86,7 @@
               {if $cart.totals}
                 <li class="cart-summary__item">
                   <span class="cart-summary__label">
-                    {l s='Total (gross)' d='Shop.Theme.Actions'}
+                    {l s='To pay' d='Shop.Theme.Actions'}
                   </span> 
                   <span class="cart-summary__value">
                     {$cart.totals.total.value}  
