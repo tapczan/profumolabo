@@ -26,7 +26,7 @@
   <hr>
 
   <div class="cart-summary-line mb-2">
-    <span class="label">{l s='Subtotal:' d='Shop.Theme.Checkout'}</span>
+    <span class="label">{l s='Order amount:' d='Shop.Theme.Checkout'}</span>
     <span class="value">{$cart.subtotals.products.value}</span>
   </div>
 
@@ -46,7 +46,10 @@
     </div>
   {else}
     <div class="cart-summary-line cart-total mb-0">
-      <span class="label">{$cart.totals.total.label}&nbsp;{if $configuration.taxes_enabled}{$cart.labels.tax_short}{/if}</span>
+      <span class="label">
+        {l s='To pay' d='Shop.Theme.Actions'}
+        {* {$cart.totals.total.label}&nbsp;{if $configuration.taxes_enabled}{$cart.labels.tax_short}{/if} *}
+      </span>
       <span class="value">{$cart.totals.total.value}</span>
     </div>
   {/if}
