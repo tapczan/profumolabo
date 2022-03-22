@@ -29,7 +29,11 @@
       {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
         <div class="cart-summary-line" id="cart-subtotal-{$subtotal.type}">
           <span class="label">
-            {$subtotal.label}
+            {if $subtotal.label == 'Subtotal' || $subtotal.label == 'Produkty'}
+              {l s='Order amount' d='Shop.Theme.Actions'}
+            {else}
+              {$subtotal.label}
+            {/if}
           </span>
           <span class="value">
             {if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}
