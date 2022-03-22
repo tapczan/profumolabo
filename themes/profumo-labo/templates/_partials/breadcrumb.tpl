@@ -35,9 +35,9 @@
                   {if !$smarty.foreach.breadcrumb.last}
                     <a href="{$path.url}">
                   {/if}
-                      {if $path.title == 'Credit slips'}
+                      {if $path.title == 'Credit slips' || $path.title == 'Moje pokwitowania - korekty płatności' }
                         {l s='Returns' d='Shop.Theme.Actions'}
-                      {else if $path.title == 'Your personal information'}
+                      {else if $path.title == 'Your personal information' || $path.title == 'Twoje dane osobowe' }
                         {l s='Login details' d='Shop.Theme.Actions'}
                       {else}
                         {$path.title}
