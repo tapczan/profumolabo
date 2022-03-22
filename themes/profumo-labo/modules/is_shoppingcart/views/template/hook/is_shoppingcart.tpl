@@ -37,12 +37,10 @@
      </a>
      <div class="dropdown-menu blockcart__dropdown cart-dropdown dropdown-menu-right" aria-labelledby="cartDropdown">
        <div class="cart-dropdown__content keep-open js-cart__card-body cart__card-body">
-         {if !$useCartDetailed}
          <div class="cart-loader"><div class="spinner-border text-primary" role="status"><span class="sr-only">{l s='Loading...' d='Shop.Theme.Global'}</span></div></div>
-         {/if}
          <div class="cart-dropdown__title d-flex align-items-center mb-3">
            <h5 class="cart-dropdown__header h5 mb-0 mr-2">
-             {l s='PRODUCT ADDED TO CART' d='Shop.Istheme'}
+             {l s='Cart' d='Shop.Istheme'}
            </h5>
            {*
            <span class="cart-dropdown__close dropdown-close ml-auto cursor-pointer">
@@ -52,21 +50,12 @@
          </div>
           {if $cart.products_count > 0}
            <div class="cart-dropdown__products pt-3 mb-3">  
-            {if $useCartDetailed}
-             {include file='checkout/_partials/cart-detailed.tpl'}
-            {else}
              {foreach from=$cart.products item=product}
                {include 'themes/profumo-labo/modules/is_shoppingcart/views/template/front/is_shoppingcart-product-line.tpl' product=$product} 
              {/foreach}
-            {/if} 
-           </div>
-           {if !$useCartDetailed}
-           {hook h='displayCountdown'}
-           {/if}
-           
-
-            {hook h='displayCountdown'}
-
+           </div>  
+          {hook h='displayCountdown'}
+          
            {* {foreach from=$cart.subtotals item="subtotal"}
              {if $subtotal.value}
                <div class="cart-summary-line cart-summary-line-{$subtotal.type}">
@@ -110,11 +99,11 @@
  
            <div class="cart-action">
              <a href="{$cart_url}" class="cart-action__checkout dropdown-close">
-               {l s='PRZEJDŹ DO REALIZACJI ZAMÓWIENIA' d='Shop.Theme.Actions'}
+               {l s='Go to order fulfillment' d='Shop.Theme.Actions'}
              </a>
              <span class="cart-action__continue dropdown-close">
                <a href="{$link->getPageLink("index",  true)}" style="color: #111;">
-                {l s='Kontynuuj zakupy' d='Shop.Theme.Actions'}
+                {l s='Continue shopping' d='Shop.Theme.Actions'}
                 </a>
              </span>
            </div>

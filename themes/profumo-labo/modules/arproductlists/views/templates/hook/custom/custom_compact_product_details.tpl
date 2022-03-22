@@ -44,13 +44,15 @@
                         <p class="product-unit-price small">{l s='%unit_price%' d='Shop.Theme.Catalog' sprintf=['%unit_price%' => $product.unit_price_full]}</p>
                     {/if}
                 {/block}
-
-                {block name='product_prices'}
-                <div class="product-price">
-                    {include file='catalog/_partials/product-prices.tpl'}
-                </div>
-                {/block}
                 
+                {block name='product_prices'}
+                    <div class="product-prices">
+                        <div>
+                            <span class="price price--lg">{$product.regular_price}</span>
+                        </div>
+                    </div>
+                {/block}
+
                 <span class="product-stock-info">
                     <section class="product-discounts js-product-discounts">
                         {assign var='fromQuantity' value=SpecificPrice::getSpecificPriceByID($product.id)}
@@ -126,20 +128,12 @@
                 <div class="product-accordion" id="productSingleAccordion">
                     <div class="product-accordion__item">
                         <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
-                            {if $pslanguage == 'pl'}
-                                OPIS     
-                            {else if $pslanguage == 'en'}
-                                DESCRIPTION
-                            {/if}
+                            {l s='Description' d='Shop.Theme.Global'}
                         </div>
                         <div class="product-accordion__body collapse show" id="productAccordionContent1" aria-labelledby="productAccordionHeader1" data-parent="#productSingleAccordion">
                             <p>{$product.description_short nofilter}</p>
                             <a href="{$product.url|escape:'htmlall':'UTF-8'}">
-                                {if $pslanguage == 'pl'}
-                                SZCZEGÓŁY PRODUKTU     
-                                {else if $pslanguage == 'en'}
-                                PRODUCT DETAILS
-                                {/if}
+                                {l s='Product Details' d='Shop.Theme.Global'}
                             </a> 
                         </div>
                     </div>

@@ -71,7 +71,7 @@
             <div class="cart-products__quantity">
                     <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
                         <span class="input-group-btn input-group-prepend">
-                        <button class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-down bootstrap-touchspin-injected" type="button">-</button>
+                        <button class="btn btn-touchspin js-touchspin js-increase-product-quantity bootstrap-touchspin-down bootstrap-touchspin-injected js-addon-btn-cart" type="button">-</button>
                         </span>
                         <input
                             class="js-cart-line-product-quantity input-touchspin form-control"
@@ -88,7 +88,7 @@
                             aria-label="{l s='%productName% product quantity field' sprintf=['%productName%' => $product.name] d='Shop.Theme.Checkout'}"
                             />
                         <span class="input-group-btn input-group-append">
-                        <button class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up bootstrap-touchspin-injected" type="button">+</button>
+                        <button class="btn btn-touchspin js-touchspin js-decrease-product-quantity bootstrap-touchspin-up bootstrap-touchspin-injected js-addon-btn-cart" type="button">+</button>
                         </span>
                     </div> 
             </div>
