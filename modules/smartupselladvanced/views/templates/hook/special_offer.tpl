@@ -9,12 +9,21 @@
  * International Registered Trademark & Property of INVERTUS, UAB
  *}
 {if $page.page_name == 'cart'}
+
+{if $special_offers|@count > 0}
+<div class="container my-5 py-5">
+  <h2 class="h2 text-center products-section-title text-uppercase">
+  {l s='Related Products' d='Shop.Theme.Global'}
+  </h2>
+</div>
+{/if} 
+
 {foreach from=$special_offers key=currentIteration item=specialOffer}
   <div class="so-display-div"
        data-product-id="{$specialOffer["id_main_product"]|escape:'htmlall':'UTF-8'}"
        data-special-product-id="{$specialOffer["id_special_product"]|escape:'htmlall':'UTF-8'}"
        data-special-offer-id="{$specialOffer["id_special_offer"]|escape:'htmlall':'UTF-8'}">
-  
+    
     <div class="card cart-container">
       <div class="card-header text-center">
         <p class="mb-0 so-black-title">

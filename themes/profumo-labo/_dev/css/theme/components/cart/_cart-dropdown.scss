@@ -5,6 +5,11 @@
     max-height: rem-calc(500px);
     overflow-y: auto;
     overflow-x: hidden;
+
+    .alert-warning {
+      background-color: #EDEDED;
+      border-color: #CCB48F;
+    } 
   }
 
   &__products {

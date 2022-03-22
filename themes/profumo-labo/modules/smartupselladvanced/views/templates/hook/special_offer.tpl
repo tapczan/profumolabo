@@ -9,12 +9,21 @@
  * International Registered Trademark & Property of INVERTUS, UAB
  *}
 {if $page.page_name == 'cart'}
+
+{if $special_offers|@count > 0}
+<div class="container my-5 py-5">
+  <h2 class="h2 text-center products-section-title text-uppercase">
+  {l s='Related Products' d='Shop.Theme.Global'}
+  </h2>
+</div>
+{/if} 
+
 {foreach from=$special_offers key=currentIteration item=specialOffer}
   <div class="so-display-div"
        data-product-id="{$specialOffer["id_main_product"]|escape:'htmlall':'UTF-8'}"
        data-special-product-id="{$specialOffer["id_special_product"]|escape:'htmlall':'UTF-8'}"
        data-special-offer-id="{$specialOffer["id_special_offer"]|escape:'htmlall':'UTF-8'}">
-  
+    
     <div class="card cart-container">
       <div class="card-header text-center">
         <p class="mb-0 so-black-title">
@@ -136,7 +145,7 @@
                   {foreach from=$specialOffer["group_attributes"] item=group key=main_key}
                     {if $group['group_type'] eq 'select'}
                       <div class="clearfix product-variants-item pr-1 m-0 so-float-left">
-                        <span class="label">{l s='Size:' mod='smartupselladvanced'}</span>
+                        <span class="label">{*{l s='Size:' mod='smartupselladvanced'}*}{l s='Size:' d='Shop.Theme.Global'}</span>
                         <span class="value">
                       <select class="form-control form-control-select so-select-small sua-input" id="group_{$main_key|escape:'htmlall':'UTF-8'}"
                               name="group[{$main_key|escape:'htmlall':'UTF-8'}]">
@@ -182,7 +191,10 @@
                     <!--  special offer  -->
                     <div class="special-offer text-xs-left">
                       <div class="text-xs-left label">
+                        <p>{l s='Offer time' d='Shop.Theme.Global'}</p>
+                        {*
                         <p>{l s='Offer time' mod='smartupselladvanced'}</p>
+                        *}
                       </div>
                       <div>
                         <p class="so-countdown">
@@ -218,8 +230,13 @@
                       <i class="material-icons shopping-cart"></i>
                       <div class="so-button-text">
                         {if $specialOffer["special_offer_type"] eq 0}
+                          {l s='Accept change' d='Shop.Theme.Global'}
+                        {else}{l s='Add to cart' d='Shop.Theme.Global'}{/if}
+                        {*
+                        {if $specialOffer["special_offer_type"] eq 0}
                           {l s='Accept change' mod='smartupselladvanced'}
                         {else}{l s='Add to cart' mod='smartupselladvanced'}{/if}
+                        *}
                       </div>
                     </button>
                   </div>
@@ -227,7 +244,8 @@
                   <div class="pt-1 js-sua-out-of-stock-box">
                     <p style="color: black; text-align: center; padding: 2px">
                       <i class="material-icons product-unavailable sua-out-of-stock-icon"></i>
-                      <strong>{l s='This product variant is out of stock' mod='smartupselladvanced'}</strong>
+                      <strong>{l s='This product variant is out of stock' d='Shop.Theme.Global'}</strong>
+                      {*<strong>{l s='This product variant is out of stock' mod='smartupselladvanced'}</strong>*}
                     </p>
                   </div>
 

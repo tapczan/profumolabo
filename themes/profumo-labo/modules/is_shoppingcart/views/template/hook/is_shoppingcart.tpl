@@ -99,7 +99,7 @@
  
            <div class="cart-action">
              <a href="{$cart_url}" class="cart-action__checkout dropdown-close">
-               {l s='Go to order fulfillment' d='Shop.Theme.Actions'}
+               {l s='Proceed to checkout' d='Shop.Theme.Actions'}
              </a>
              <span class="cart-action__continue dropdown-close">
                <a href="{$link->getPageLink("index",  true)}" style="color: #111;">

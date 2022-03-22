@@ -56,21 +56,17 @@
         border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
         margin: 0 !important;
         padding: 0 20px !important;
-        max-height: 225px;
+        max-height: 235px;
         overflow-x: hidden;
-        overflow-y: scroll;
 
         .js-cart {
           border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
-          
           &:last-child {
             border-bottom: 0;
           }
         }
-
         .cart-products {
-          border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
-          
+          border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25); 
           &:last-child{
             border-bottom-style: none;
           }
