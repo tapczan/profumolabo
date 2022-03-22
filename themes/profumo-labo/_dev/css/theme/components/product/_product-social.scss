@@ -8,6 +8,15 @@
     &__item{
         display: inline-block;
         margin-left: 5px;
+        vertical-align: middle;
+        color: $black;
+
+        &--label{
+            @include font-with-line-height($font-size-xs, 15px);
+
+            font-weight: 300;
+            text-transform: uppercase;
+        }
     }
 
     &__link{
