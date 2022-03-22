@@ -37,7 +37,7 @@
       <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="identity-link" href="{$urls.pages.identity}">
         <span class="link-item">
           <i class="material-icons">account_circle</i>
-          {l s='Information' d='Shop.Theme.Customeraccount'}
+          {l s='Login details' d='Shop.Theme.Customeraccount'}
         </span>
       </a>
 
@@ -70,7 +70,7 @@
         <a class="col-lg-4 col-md-6 col-sm-6 col-12" id="order-slips-link" href="{$urls.pages.order_slip}">
           <span class="link-item">
             <i class="material-icons">&#xE8B0;</i>
-            {l s='Credit slips' d='Shop.Theme.Customeraccount'}
+            {l s='Returns' d='Shop.Theme.Customeraccount'}
           </span>
         </a>
       {/if}
