@@ -35,7 +35,13 @@
                   {if !$smarty.foreach.breadcrumb.last}
                     <a href="{$path.url}">
                   {/if}
-                    {$path.title}
+                      {if $path.title == 'Credit slips'}
+                        {l s='Returns' d='Shop.Theme.Actions'}
+                      {else if $path.title == 'Your personal information'}
+                        {l s='Login details' d='Shop.Theme.Actions'}
+                      {else}
+                        {$path.title}
+                      {/if}
                   {if !$smarty.foreach.breadcrumb.last}
                     </a>
                   {/if}
