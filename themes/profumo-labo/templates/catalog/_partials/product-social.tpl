@@ -22,25 +22,29 @@
  * @copyright Since 2007 PrestaShop SA and Contributors
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
+
 <ul class="product-social">
-  <li class="product-social__item">
-      <a href="product-social__link">
-          <span class="product-social__icon product-social__icon--facebook"></span>
-      </a>
-  </li>
-  <li class="product-social__item">
-      <a href="product-social__link">
-          <span class="product-social__icon product-social__icon--whatsapp"></span>
-      </a>
-  </li>
-  <li class="product-social__item">
-      <a href="product-social__link">
-          <span class="product-social__icon product-social__icon--twitter"></span>
-      </a>
-  </li>
-  <li class="product-social__item">
+    <li class="product-social__item product-social__item--label">
+        {l s='Share' d='Shop.Theme.Actions'}
+    </li>
+    <li class="product-social__item">
+        <a href="product-social__link">
+            <span class="product-social__icon product-social__icon--facebook"></span>
+        </a>
+    </li>
+    <li class="product-social__item">
+        <a href="product-social__link">
+            <span class="product-social__icon product-social__icon--whatsapp"></span>
+        </a>
+    </li>
+    <li class="product-social__item">
+        <a href="product-social__link">
+            <span class="product-social__icon product-social__icon--twitter"></span>
+        </a>
+    </li>
+    <li class="product-social__item">
     <a href="product-social__link">
         <span class="product-social__icon product-social__icon--instagram"></span>
     </a>
-  </li>
+    </li>
 </ul>
