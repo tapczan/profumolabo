@@ -37,10 +37,24 @@
     {block name='search'}
       {hook h='displaySearch'}
     {/block}
-
+    
+    {*
     {block name='hook_not_found'}
       {hook h='displayNotFound'}
     {/block}
+    *}
 
   {/block}
+</section>
+
+<section id="404-bestseller" class="pt-6 mb-6" style="border-top: 1px #ddd solid;">
+
+  <div class="arpl-header">
+    <h2 class="h2 arpl-title  arpl-text-center products-section-title text-center text-uppercase">{l s='Bestseller' d='Shop.Theme.Global'}</h2>
+  </div>
+  <div class="col-lg-9 mx-auto">
+  {block name='hook_not_found'}
+    {hook h='displayNotFound'}
+  {/block}
+  </div>
 </section>
