@@ -28,12 +28,11 @@
                     
                     <div class="contact-data__item">
                         <ul class="contact-data__list">
-                        <li class="contact-data__title">{l s='Cooperation' d='Shop.Theme.Global'}</li>
-                       
+                        <li class="contact-data__title">{l s='Cooperation' d='Shop.Theme.Global'}</li>          
                         {if $pslanguage == 'pl'}
-                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=współpraca_z_influencerami">Influencer Cooperation</a></li>
-                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=współpraca_medialna">Media Collaboration</a></li>
-                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=współpraca_b2b">B2B Cooperation</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=influencerami">Współpraca influenser</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=medialna">Współpraca media</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=b2b">Współpraca B2B</a></li>
                         {else}
                             <li><a href="{$link->getCMSLink(18)}?contentCollapse=influencer_cooperation">Influencer Cooperation</a></li>
                             <li><a href="{$link->getCMSLink(18)}?contentCollapse=media_cooperation">Media Collaboration</a></li>
