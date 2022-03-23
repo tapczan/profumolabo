@@ -52,15 +52,6 @@ $(tabMenuLink).on('click', function () {
     $("html, body").animate({ scrollTop: 0 });
 });
 
-if (cmsUrlParamValue == null) {
-    cmsUrlParamValue = "influencer_cooperation";
-    if (cmsUrlParamValue) {
-        $(this).addClass('active');
-    } else {
-        $(this).removeClass('active');
-    }
-}
-
 tabMenuLink.each(function () {
     let url = $(this).attr('href');
     let hash = url.replace(/#/g, '');
@@ -82,3 +73,12 @@ tabMenuContent.each(function () {
         $(this).removeClass('active');
     }
 });
+
+if (cmsUrlParamValue == null) {
+    let EN = "#influencer_cooperation";
+    let PL = "#influencerami";
+    $(EN).addClass('active');
+    $(PL).addClass('active');
+    $('.nav-link[href="' + EN + '"]').addClass('active');
+    $('.nav-link[href="' + PL +'"]').addClass('active');
+}
