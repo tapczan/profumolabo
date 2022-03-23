@@ -57,6 +57,48 @@
   <div id="collapseOne" class="footer-card__content collapse show" aria-labelledby="headingOne" data-parent="#accordionFooter">
     <div class="footer-card__body">
       <ul class="links-list">
+ 
+        {if !$logged}
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getPageLink('my-account', true, $language.id)}" title="{l s='Login' d='Shop.Theme.Global'}" rel="nofollow">
+              {l s='Login' d='Shop.Theme.Global'}
+            </a>
+        </li>
+        {/if}
+
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getPageLink('cart',true, $language.id)}" title="{l s='My cart' d='Shop.Theme.Global'}" rel="nofollow">
+             {l s='My cart' d='Shop.Theme.Global'}
+            </a>
+        </li>
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getModuleLink('psgdpr','gdpr')}" title="{l s='Personal data' d='Shop.Theme.Global'}" rel="nofollow">
+              {l s='Personal data' d='Shop.Theme.Global'}
+            </a>
+        </li>
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getPageLink('addresses', true, $language.id)}" title="{l s='Addresses' d='Shop.Theme.Global'}" rel="nofollow">
+              {l s='Addresses' d='Shop.Theme.Global'}
+            </a>
+        </li>
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getPageLink('history', true, $language.id)}" title="{l s='Order History' d='Shop.Theme.Global'}" rel="nofollow">
+               {l s='Order History' d='Shop.Theme.Global'}
+            </a>
+        </li>
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getModuleLink('blockwishlist','lists')}" title="{l s='Favourite products' d='Shop.Theme.Global'}" rel="nofollow">
+              {l s='Favourite products' d='Shop.Theme.Global'}
+            </a>
+        </li>
+        <li class="links-list__elem">
+            <a class="links-list__link" href="{$link->getPageLink('contact', true, $language.id)}" title="{l s='Contact with the store' d='Shop.Theme.Global'}" rel="nofollow">
+              {l s='Contact with the store' d='Shop.Theme.Global'}
+            </a>
+        </li>
+
+
+        {* // translation is buggy
         {foreach from=$my_account_urls item=my_account_url}
           <li class="links-list__elem">
             <a class="links-list__link" href="{$my_account_url.url}" title="{$my_account_url.title}" rel="nofollow">
@@ -64,6 +106,8 @@
             </a>
           </li>
         {/foreach}
+        *}
+
       </ul>
     </div>
   </div>
