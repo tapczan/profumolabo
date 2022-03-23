@@ -177,7 +177,7 @@
                         <div class="cart-grid row">
                           <div class="card cart-container">
                             <div
-                              class="block-header shopping-cart-header">{l s='Shopping Cart' d='Shop.Theme.Checkout'}</div>
+                              class="block-header shopping-cart-header">{l s='Cart' d='Shop.Theme.Checkout'}</div>
                           </div>
                         </div>
                       </section>
