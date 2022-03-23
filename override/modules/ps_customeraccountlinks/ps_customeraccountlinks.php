@@ -37,15 +37,15 @@ class Ps_CustomeraccountlinksOverride extends Ps_Customeraccountlinks
 
         $my_account_urls = [
             6 => [
-                'title' => $this->trans('Contact with the store', [], 'Shop.Theme.Global'),
+                'title' => $this->trans('Contact with the store', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('contact', true, $this->context->cookie->id_lang),
             ],
             5 => [
-                'title' => $this->trans('Favourite products', [], 'Shop.Theme.Global'),
+                'title' => $this->trans('Favourite products', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getModuleLink('blockwishlist','lists'),
             ],
             4 => [
-                'title' => $this->trans('Order History', [], 'Shop.Theme.Global'),
+                'title' => $this->trans('Order History', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getPageLink('history', true, $this->context->cookie->id_lang),
             ],
             3 => [
@@ -53,7 +53,7 @@ class Ps_CustomeraccountlinksOverride extends Ps_Customeraccountlinks
                 'url' => $link->getPageLink('addresses', true, $this->context->cookie->id_lang),
             ],
             2 => [
-                'title' => $this->trans('Personal data', [], 'Shop.Theme.Global'),
+                'title' => $this->trans('Personal data', [], 'Modules.Customeraccountlinks.Admin'),
                 'url' => $link->getModuleLink('psgdpr','gdpr'),
             ],
             1 => [
@@ -64,7 +64,7 @@ class Ps_CustomeraccountlinksOverride extends Ps_Customeraccountlinks
 
         if (!$this->context->customer->logged) {
             $my_account_urls[0] = [
-               'title' => $this->trans('Login', [], 'Shop.Theme.Global'),
+               'title' => $this->trans('Login', [], 'Modules.Customeraccountlinks.Admin'),
                'url' => $link->getPageLink('my-account', true),
             ];
         }
