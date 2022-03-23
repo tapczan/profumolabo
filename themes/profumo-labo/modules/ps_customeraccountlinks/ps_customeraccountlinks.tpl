@@ -51,10 +51,9 @@
   <div class="footer-card__header" id="headingOne">
     <h2 class="footer-card__title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         {l s='Your account' d='Shop.Theme.Customeraccount'}
-        <i class="material-icons"></i>
+        {*<i class="material-icons"></i>*}
     </h2>
   </div>
-
   <div id="collapseOne" class="footer-card__content collapse show" aria-labelledby="headingOne" data-parent="#accordionFooter">
     <div class="footer-card__body">
       <ul class="links-list">

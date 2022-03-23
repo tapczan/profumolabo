@@ -2157,4 +2157,25 @@ class FrontControllerCore extends Controller
         return array_slice($array, $offset, $length);   
     }
 
+    public function getCMSPages($ids = [], $lang_id, $linkurl = true) {
+
+        $cms = CMS::listCms($lang_id);
+        $link = new Link();
+        $pages = [];
+
+        foreach($cms as $id) {
+
+            if( in_array($id['id_cms'], $ids) ) {
+                
+                if($linkurl) {
+                    $pages[] = '<a href="'.$link->getCMSLink($id['id_cms']).'">'.$id['meta_title'].'</a>';
+                }
+                else {
+                    $pages[] = $id['meta_title'];
+                }
+            }
+        }
+
+        return $pages;
+    }
 }
