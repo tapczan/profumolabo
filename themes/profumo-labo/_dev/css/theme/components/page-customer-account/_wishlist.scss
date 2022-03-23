@@ -97,3 +97,12 @@
     pointer-events: none;
     cursor: wait;
 }
+
+#module-blockwishlist-lists {
+    .wishlist-container {
+        width: 100%;
+        font-family: $font-jost;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-light;
+    }
+}
