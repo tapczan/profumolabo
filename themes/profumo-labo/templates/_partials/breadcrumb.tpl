@@ -39,6 +39,8 @@
                         {l s='Returns' d='Shop.Theme.Actions'}
                       {else if $path.title == 'Your personal information' || $path.title == 'Twoje dane osobowe' }
                         {l s='Login details' d='Shop.Theme.Actions'}
+                      {else if $path.title == 'Your cart' || $path.title == 'Twój wózek' }
+                        {l s='Cart' d='Shop.Theme.Actions'}
                       {else}
                         {$path.title}
                       {/if}
