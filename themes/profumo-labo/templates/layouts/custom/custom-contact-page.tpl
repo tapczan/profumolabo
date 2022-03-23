@@ -14,26 +14,32 @@
                 <div class="row">
                    
                     <div class="col-lg-8 col-md-8 col-12 contact-footer__big">
- 
+                    
                     <div class="contact-data__item">
                         <ul class="contact-data__list">
                         <li class="contact-data__title">{l s='Information' d='Shop.Theme.Global'}</li>
-                        <li><a href="#">{l s='O PROFUMO LABO' d='Shop.Theme.Global'}</a> </li>
-                        <li><a href="#">{l s='Time and Cost of Delivery' d='Shop.Theme.Global'}</a> </li>
-                        <li><a href="#">{l s='Payment Methods' d='Shop.Theme.Global'}</a> </li>
-                        <li><a href="#">{l s='Returns and Complaints' d='Shop.Theme.Global'}</a></li>
-                        <li><a href="#">{l s='Shop Rules' d='Shop.Theme.Global'}</a></li>
-                        <li><a href="#">{l s='Privacy Policy' d='Shop.Theme.Global'}</a></li>
-                        <li><a href="#">{l s='Blog' d='Shop.Theme.Global'}</a></li>
+                        {assign var='pages' value=FrontController::getCMSPages([8,9,10,11,12,13],$language.id)}
+                        {foreach from=$pages item='page'}
+                            <li>{$page nofilter}</li>
+                        {/foreach}
+                        <li><a href="{$urls.pages['index']}blog">{l s='Blog' d='Shop.Theme.Global'}</a></li>
                         </ul>      
                     </div>
-
+                    
                     <div class="contact-data__item">
                         <ul class="contact-data__list">
                         <li class="contact-data__title">{l s='Cooperation' d='Shop.Theme.Global'}</li>
-                        <li><a href="#">{l s='Influencer Cooperation' d='Shop.Theme.Global'}</a></li>
-                        <li><a href="#">{l s='Media Collaboration' d='Shop.Theme.Global'}</a></li>
-                        <li><a href="#">{l s='B2B Cooperation' d='Shop.Theme.Global'}</a></li>
+                       
+                        {if $pslanguage == 'pl'}
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=współpraca_z_influencerami">Influencer Cooperation</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=współpraca_medialna">Media Collaboration</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=współpraca_b2b">B2B Cooperation</a></li>
+                        {else}
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=influencer_cooperation">Influencer Cooperation</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=media_cooperation">Media Collaboration</a></li>
+                            <li><a href="{$link->getCMSLink(18)}?contentCollapse=b2b_cooperation">B2B Cooperation</a></li>
+                        {/if}
+
                         <li class="contact-data__title contact-data__title--top">{l s='Partner Program' d='Shop.Theme.Global'}</li>
                         </ul>      
                     </div>

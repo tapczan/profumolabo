@@ -37,7 +37,12 @@
       <div class="js-footer-items">
         {block name='hook_footer'}
         <div class="col-12">
+          {*
           <div class="footer-accordion" id="accordionFooter">
+            {hook h='displayFooter'}
+          </div>
+          *}
+          <div class="footer-accordion">
             {hook h='displayFooter'}
           </div>
         </div>

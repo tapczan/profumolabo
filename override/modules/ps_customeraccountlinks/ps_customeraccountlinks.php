@@ -37,34 +37,34 @@ class Ps_CustomeraccountlinksOverride extends Ps_Customeraccountlinks
 
         $my_account_urls = [
             6 => [
-                'title' => $this->trans('Contact with shop staff', [], 'Modules.Customeraccountlinks.Admin'),
-                'url' => $link->getPageLink('contact', true),
+                'title' => $this->trans('Contact with the store', [], 'Shop.Theme.Global'),
+                'url' => $link->getPageLink('contact', true, $this->context->cookie->id_lang),
             ],
             5 => [
-                'title' => $this->trans('My favourite products', [], 'Modules.Customeraccountlinks.Admin'),
-                'url' => '#',
+                'title' => $this->trans('Favourite products', [], 'Shop.Theme.Global'),
+                'url' => $link->getModuleLink('blockwishlist','lists'),
             ],
             4 => [
-                'title' => $this->trans('Orders', [], 'Modules.Customeraccountlinks.Admin'),
-                'url' => $link->getPageLink('history', true),
+                'title' => $this->trans('Order History', [], 'Shop.Theme.Global'),
+                'url' => $link->getPageLink('history', true, $this->context->cookie->id_lang),
             ],
             3 => [
                 'title' => $this->trans('Addresses', [], 'Shop.Theme.Global'),
-                'url' => $link->getPageLink('addresses', true),
+                'url' => $link->getPageLink('addresses', true, $this->context->cookie->id_lang),
             ],
             2 => [
-                'title' => $this->trans('Personal info', [], 'Modules.Customeraccountlinks.Admin'),
-                'url' => $link->getPageLink('identity', true),
+                'title' => $this->trans('Personal data', [], 'Shop.Theme.Global'),
+                'url' => $link->getModuleLink('psgdpr','gdpr'),
             ],
             1 => [
-                'title' => $this->trans('My cart', [], 'Modules.Customeraccountlinks.Admin'),
-                'url' => $link->getPageLink('cart', true),
+                'title' => $this->trans('My cart', [], 'Shop.Theme.Global'),
+                'url' => $link->getPageLink('cart', true, $this->context->cookie->id_lang),
             ],
         ];
 
         if (!$this->context->customer->logged) {
             $my_account_urls[0] = [
-               'title' => $this->trans('Login', [], 'Modules.Customeraccountlinks.Admin'),
+               'title' => $this->trans('Login', [], 'Shop.Theme.Global'),
                'url' => $link->getPageLink('my-account', true),
             ];
         }
