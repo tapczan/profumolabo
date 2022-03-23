@@ -1,0 +1,23 @@
+{
+  "name": "createit/createit_related_products",
+  "description": "createIT's related products module to display other products with the feature.",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "createIT",
+      "email": "support@createit.com"
+    },
+    {
+      "name": "createIT"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaShop\\Module\\CreateitRelatedProducts\\": "src/"
+    },
+    "config": {
+      "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+  }
+}
