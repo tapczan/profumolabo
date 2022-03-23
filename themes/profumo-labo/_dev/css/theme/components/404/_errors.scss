@@ -35,7 +35,6 @@
 }
 
 #404-bestseller {
-
   .arpl-header h2 {
     display: block;
     font-family: Forum,cursive;
@@ -45,5 +44,36 @@
     line-height: 39px;
     margin: 0 auto 50px; 
   }
-  
+}
+
+.page-pagenotfound{
+  .page-header{
+    @include font-with-line-height($font-size-xxl, 39px);
+    
+    font-family: $font-forum;
+    color: $black;
+    margin: 0 auto 50px !important;
+    text-transform: uppercase;
+    display: block;
+    letter-spacing: 3px;
+
+    h1{
+      font-weight: 400;
+    }
+  }
+
+  .page-content{
+    text-align: center;
+    padding: 0 !important;
+    margin: 0 auto 50px !important;
+    
+    h4{
+      font-size: $font-size-xm !important;
+      font-weight: 500 !important; 
+    }
+
+    p{
+      font-size: $font-size-md;
+    }
+  }
 }

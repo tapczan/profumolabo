@@ -1,12 +1,15 @@
 /**
 * Override homepage styling
 * - product category section [arpl-group-6]
-* - bestsellery [#arpl-group-5]
+* - bestsellery home [#arpl-section-5-8-carousel, #arpl-section-5-7-carousel]
+* - bestsellery 404 [#arpl-section-17-38-carousel, #arpl-section-17-39-carousel]
+* - bestsellery 404 test page [#arpl-section-17-35-carousel, #arpl-section-17-36-carousel]
 * - perfume extracts in the form of perfume [arpl-group-8]
 * - premium collection [arpl-group-1]
 * - bootstrap tabs and navs
 */ 
-.page-home{
+.page-home,
+.page-pagenotfound{
     #arpl-group-6,
     #arpl-group-8{
         &.arpl-group.arpl-non-tabbed-group{
@@ -51,90 +54,6 @@
         }
     }
   
-    #arpl-group-5{
-        &:before{
-            @include font-with-line-height($font-size-xxl, 39px);
-    
-            font-family: $font-forum;
-            content: 'Bestsellery';
-            color: $black;
-            font-weight: 400;
-            margin: 0 auto 50px;
-            text-transform: uppercase;
-            display: block;
-            text-align: center;
-            letter-spacing: 3px;
-        }
-
-        &.arpl-group-tabbed{
-            margin: 0;
-    
-            .arpl-section{
-                margin-bottom: 100px;
-                padding-left: 15%;
-                padding-right: 15%;
-            }
-    
-            .nav-tabs{
-                justify-content: center;
-                width: 100%;
-                margin-bottom: 40px;
-                border-bottom-style: none;
-            }
-    
-            .nav-item{
-                position: relative;
-                padding-left: 20px;
-                padding-right: 20px;
-                
-                &:after{
-                    content: '';
-                    width: 1px;
-                    height: 22px;
-                    position: absolute;
-                    margin: auto;
-                    right: 0;
-                    top: 0;
-                    bottom: 0;
-                    background: $black;
-                }
-        
-                &:last-child:after{
-                    display: none;
-                }
-            }
-    
-            .nav-link{
-                @include font-with-line-height($font-size-product-lg, 32px);
-                text-transform: uppercase;
-                color: $dark-gray;
-                padding: 0;
-                border-style: none;
-                font-weight: 300;
-        
-                &.active{
-                    color: $black;
-                }
-            }
-    
-            .tab-content{
-                border-style: none;
-    
-                .tab-pane{
-                    padding: 0;
-        
-                    .arpl-header{
-                        display: none;
-                    }
-        
-                    .arpl-content{
-                        padding: 0;
-                    }
-                }
-            }
-        }
-    }
-  
     #arpl-group-6{
         &.arpl-group.arpl-non-tabbed-group{
             margin: 100px 0 50px;
@@ -158,13 +77,18 @@
             }
         }
     }
+
     #arpl-section-1-57-carousel,
     #arpl-section-1-17-carousel, 
     #arpl-section-8-19-carousel,
     #arpl-section-5-7-carousel,
     #arpl-section-1-15-carousel,
     #arpl-section-8-16-carousel,
-    #arpl-section-5-8-carousel{
+    #arpl-section-5-8-carousel,
+    #arpl-section-17-38-carousel,
+    #arpl-section-17-39-carousel,
+    #arpl-section-17-35-carousel,
+    #arpl-section-17-36-carousel{
         width: 100%;
     
         .slick{
@@ -329,10 +253,8 @@
         }
     }
   
-    #arpl-group-5,
     #arpl-group-1,
     #arpl-group-8{
-
         .arpl-more-container{
             text-align: center;
             margin-top: 50px;
@@ -372,34 +294,9 @@
     }
 }
   
-@media (min-width: 992px){
-    .page-home{
-        #arpl-group-5{
-            .featured-products.arpl-no-carousel-products{
-                display: flex;
-                justify-content: center;
-                text-align: center;
-                flex-wrap: wrap;
-
-                .products-list__block{
-                    padding: 25px 0;
-                }
-            }
-        }
-    }
-}
-  
 @media (max-width: 1199px){
-    .page-home{
-        #arpl-group-5{
-            .featured-products.arpl-no-carousel-products{
-                .products-list__block{
-                    flex: 0 0 23%;
-                    max-width: 23%;
-                }
-            }
-        }
-    
+    .page-home,
+    .page-pagenotfound{
         #arpl-group-1{
             padding-bottom: 0;
             margin-bottom: 50px;
@@ -418,40 +315,8 @@
 }
   
 @media (max-width: 991px){
-    .page-home{
-        #arpl-group-5{
-            &.arpl-group-tabbed{
-                .arpl-tab-header{
-                    display: none;
-                }
-        
-                .arpl-section{
-                    margin-bottom: 50px;
-                }
-            
-                .nav-tabs{
-                    display: block;
-            
-                        .nav-item{
-                            display: inline-block;
-                            width: 45%;
-                            text-align: right;
-                
-                        &:last-child{
-                            text-align: left;
-                        }
-                    }
-                }
-            }
-        
-            .featured-products.arpl-no-carousel-products{
-                .products-list__block{
-                    flex: 0 0 100%;
-                    max-width: 100%;
-                }
-            }
-        }
-  
+    .page-home,
+    .page-pagenotfound{
         #arpl-group-6.arpl-group.arpl-non-tabbed-group{
                 margin: 0 0 50px;
                 padding-bottom: 0;
@@ -465,52 +330,8 @@
 }
   
 @media (max-width: 767px){
-    .page-home{
-        #arpl-group-5{
-            &:before{
-                @include font-with-line-height($font-size-xm, 20px);
-        
-                margin-bottom: 30px;
-            }
-    
-            &.arpl-group-tabbed{
-                margin-bottom: 30px;
-
-                .nav-tabs{
-                    .nav-item{
-                        width: 49%;
-        
-                        &:after{
-                            height: 13px;
-                        }
-                    }
-                }
-    
-                .nav-link{
-                    @include font-with-line-height($font-size-xs, 16px);
-        
-                    &.active{
-                        font-weight: 400;
-                    }
-                }
-    
-                .arpl-section{
-                    margin-bottom: 30px;
-                    padding-left: 0;
-                    padding-right: 0;
-    
-                    .slick-arrow{
-                        left: 0 !important;
-                    }
-                
-                    .slick-next{
-                        left: auto !important;
-                        right: 0 !important;
-                    }
-                }
-            }
-        }
-  
+    .page-home,
+    .page-pagenotfound{
         #arpl-group-6{
             &.arpl-group.arpl-non-tabbed-group{
                 border-top: $border-bottom-mobile;
@@ -533,8 +354,7 @@
                 }
             }
         }
-      
-        #arpl-group-5 .arpl-more-container, 
+        
         #arpl-group-1 .arpl-more-container, 
         #arpl-group-8 .arpl-more-container{
             margin-top: 30px;
@@ -575,7 +395,11 @@
         #arpl-section-5-7-carousel, 
         #arpl-section-1-15-carousel, 
         #arpl-section-8-16-carousel, 
-        #arpl-section-5-8-carousel{
+        #arpl-section-5-8-carousel,
+        #arpl-section-17-38-carousel,
+        #arpl-section-17-39-carousel,
+        #arpl-section-17-35-carousel,
+        #arpl-section-17-36-carousel{
             .slick-arrow{
                 left: -20px;
             }
