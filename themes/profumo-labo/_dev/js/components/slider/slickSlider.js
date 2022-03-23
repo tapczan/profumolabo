@@ -92,7 +92,11 @@ const sliderOverrideList = $(`#arpl-section-13-40-carousel,
                             #arpl-section-13-25-carousel, 
                             #arpl-section-12-27-carousel`);
 const sliderBestsellerHome = $(`#arpl-section-5-7-carousel, 
-                            #arpl-section-5-8-carousel`);
+                            #arpl-section-5-8-carousel,
+                            #arpl-section-17-38-carousel,
+                            #arpl-section-17-39-carousel,
+                            #arpl-section-17-35-carousel,
+                            #arpl-section-17-36-carousel`);
 const silderSixOnDesktop = $(`#arpl-section-8-16-carousel, 
                             #arpl-section-1-15-carousel, 
                             #arpl-section-1-34-carousel, 
@@ -176,6 +180,10 @@ $(window).on('load resize orientationchange', function() {
     if ($(window).width() < 991) {
         seeMoreBestsellers('#arpl-section-5-7-carousel', '#arpl-section-5-7-carousel .slick-slide', 5, '#arpl-section-5-7')
         seeMoreBestsellers('#arpl-section-5-8-carousel', '#arpl-section-5-8-carousel .slick-slide', 5, '#arpl-section-5-8')
+        seeMoreBestsellers('#arpl-section-17-38-carousel', '#arpl-section-17-38-carousel .slick-slide', 5, '#arpl-section-17-38')
+        seeMoreBestsellers('#arpl-section-17-39-carousel', '#arpl-section-17-39-carousel .slick-slide', 5, '#arpl-section-17-39')
+        seeMoreBestsellers('#arpl-section-17-35-carousel', '#arpl-section-17-35-carousel .slick-slide', 5, '#arpl-section-17-35')
+        seeMoreBestsellers('#arpl-section-17-36-carousel', '#arpl-section-17-36-carousel .slick-slide', 5, '#arpl-section-17-36')
         seeMoreBestsellers('#arpl-section-1-15-carousel', '#arpl-section-1-15-carousel .slick-slide', 6, '#arpl-section-1-15')
         seeMoreBestsellers('#arpl-section-1-34-carousel', '#arpl-section-1-34-carousel .slick-slide', 6, '#arpl-section-1-34')
         seeMoreBestsellers('#arpl-section-8-16-carousel', '#arpl-section-8-16-carousel .slick-slide', 6, '#arpl-section-8-16')
