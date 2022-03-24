@@ -25,8 +25,12 @@ var cmsUrlParamValue = cmsUrlParamSearch.contentCollapse;
 
 function cmsLangSwitchHandler(paramUpdate){
     cmsLangSwitcher.each(function(index){
-        if (cmsUrlParamValue) {
-            $(this).attr('href', cmsArrLangLink[index] + '?contentCollapse=' + paramUpdate)
+        if (cmsCollapseTitle) {
+            if(paramUpdate !== null){
+                $(this).attr('href', cmsArrLangLink[index] + '?contentCollapse=' + paramUpdate);
+            }else{
+                $(this).attr('href', cmsArrLangLink[index]);
+            }
         }
     });
 }
