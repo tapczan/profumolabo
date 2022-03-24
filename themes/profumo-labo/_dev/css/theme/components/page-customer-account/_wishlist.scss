@@ -106,3 +106,42 @@
         font-weight: $font-weight-light;
     }
 }
+
+// Globally
+.product{
+    &-miniature{
+        .thumbnail-container {
+            
+            .wishlist-button-add{
+                display: none;
+                box-shadow: none;
+                background: transparent;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+            &:hover {
+                .product-miniature__thumb {
+                    .wishlist-button-add {
+                        display: none !important;
+                    }
+                }
+                .wishlist-button-add {
+                    display: unset;
+                    ~ .wishlist-button-add {
+                        display: none;
+                    }
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &__thumb{
+            .wishlist-button-add{
+                display: none;
+            }
+        }
+    }
+}

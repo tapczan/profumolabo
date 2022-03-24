@@ -6,20 +6,8 @@
 .page-home,
 .page-pagenotfound{
     #arpl-group-5,
-    #arpl-group-17{
-        &:before{
-            @include font-with-line-height($font-size-xxl, 39px);
-    
-            font-family: $font-forum;
-            content: 'Bestsellery';
-            color: $black;
-            font-weight: 400;
-            margin: 0 auto 50px;
-            text-transform: uppercase;
-            display: block;
-            text-align: center;
-            letter-spacing: 3px;
-        }
+    #arpl-group-17,
+    #arpl-group-22 {
 
         &.arpl-group-tabbed{
             margin: 0;
@@ -111,14 +99,15 @@
     }
 }
 
+.page-home,
 .page-pagenotfound{
+
     .arpl-title{
         @include font-with-line-height($font-size-xxl, 39px);
-    
         font-family: $font-forum;
         color: $black;
         font-weight: 400;
-        margin: 0 auto 50px;
+        margin: 0 auto 30px !important;
         text-transform: uppercase;
         display: block;
         text-align: center;
@@ -126,10 +115,7 @@
     }
 
     #arpl-group-17{
-        &:before{
-            display: none
-        }
-
+    
         &.arpl-group-tabbed{
             .arpl-section{
                 padding-left: 0;
@@ -141,54 +127,14 @@
             }
         }
     }
-
-    .arpl-no-carousel-products{
-        .products-list__block{
-            .product{
-                &-miniature{
-                    .thumbnail-container {
-                        .wishlist-button-add{
-                            display: none;
-                            box-shadow: none;
-                            background: transparent;
-                            position: absolute;
-                            top: 5px;
-                            right: 5px;
-                        }
-                        &:hover {
-                            .product-miniature__thumb {
-                                .wishlist-button-add {
-                                    display: none !important;
-                                }
-                            }
-                            .wishlist-button-add {
-                                display: unset;
-                                ~ .wishlist-button-add {
-                                    display: none;
-                                }
-                                &:hover {
-                                    opacity: 1;
-                                }
-                            }
-                        }
-                    }
-
-                    &__thumb{
-                        .wishlist-button-add{
-                            display: none;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 
 @media (min-width: 992px){
     .page-home,
     .page-pagenotfound{
         #arpl-group-5,
-        #arpl-group-17{
+        #arpl-group-17, 
+        #arpl-group-22{
             .featured-products.arpl-no-carousel-products{
                 display: flex;
                 justify-content: center;
@@ -207,7 +153,8 @@
     .page-home,
     .page-pagenotfound{
         #arpl-group-5,
-        #arpl-group-17{
+        #arpl-group-17,
+        #arpl-group-22{
             .featured-products.arpl-no-carousel-products{
                 .products-list__block{
                     flex: 0 0 23%;
@@ -222,7 +169,8 @@
     .page-home,
     .page-pagenotfound{
         #arpl-group-5,
-        #arpl-group-17{
+        #arpl-group-17,
+        #arpl-group-22{
             &.arpl-group-tabbed{
                 .arpl-tab-header{
                     display: none;
@@ -261,7 +209,8 @@
     .page-home,
     .page-pagenotfound{
         #arpl-group-5,
-        #arpl-group-17{
+        #arpl-group-17,
+        #arpl-group-22{
             &:before{
                 @include font-with-line-height($font-size-xm, 20px);
         
