@@ -14,11 +14,7 @@
             margin-bottom: 30px;
             padding: 0;
             color: $black;
-            display: none;
-
-            @media(max-width: 991px){
-                display: block;
-            }
+            display: block;
         }
     }
     .checkout-block.main-block{
@@ -338,17 +334,7 @@
         margin-bottom: 0;
 
         &__header{
-            @include font-with-line-height($font-size-product-lg, 27px);
-
-            font-family: $font-forum;
-            text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            margin: 0;
-            font-weight: 400;
-            margin: 30px 0 20px;
-            padding: 0;
-            color: $black;
+            display: none;
 
             @media(max-width: 991px){
                 display: none;
