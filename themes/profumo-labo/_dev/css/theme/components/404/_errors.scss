@@ -58,6 +58,14 @@
     letter-spacing: 3px;
 
     h1{
+      @include font-with-line-height($font-size-xxl, 39px);
+    
+      font-family: $font-forum;
+      color: $black;
+      margin: 0 auto 50px !important;
+      text-transform: uppercase;
+      display: block;
+      letter-spacing: 3px;
       font-weight: 400;
     }
   }
@@ -70,10 +78,27 @@
     h4{
       font-size: $font-size-xm !important;
       font-weight: 500 !important; 
+      color: $black;
     }
 
     p{
       font-size: $font-size-md;
     }
+  }
+}
+
+.page-not-found{
+  text-align: center;
+  padding: 0 !important;
+  margin: 0 auto 50px !important;
+  
+  h4{
+    font-size: $font-size-xm !important;
+    font-weight: 500 !important; 
+    color: $black;
+  }
+
+  p{
+    font-size: $font-size-md;
   }
 }

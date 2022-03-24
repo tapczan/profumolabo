@@ -4,7 +4,8 @@
 * - bestsellery 404 [#arpl-group-17]
 */ 
 .page-home,
-.page-pagenotfound{
+.page-pagenotfound,
+.page-not-found + section{
     #arpl-group-5,
     #arpl-group-17,
     #arpl-group-22 {
@@ -100,8 +101,8 @@
 }
 
 .page-home,
-.page-pagenotfound{
-
+.page-pagenotfound,
+.page-not-found + section{
     .arpl-title{
         @include font-with-line-height($font-size-xxl, 39px);
         font-family: $font-forum;
@@ -115,7 +116,6 @@
     }
 
     #arpl-group-17{
-    
         &.arpl-group-tabbed{
             .arpl-section{
                 padding-left: 0;
@@ -131,7 +131,8 @@
 
 @media (min-width: 992px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-5,
         #arpl-group-17, 
         #arpl-group-22{
@@ -151,7 +152,8 @@
   
 @media (max-width: 1199px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-5,
         #arpl-group-17,
         #arpl-group-22{
@@ -167,7 +169,8 @@
 
 @media (max-width: 991px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-5,
         #arpl-group-17,
         #arpl-group-22{
@@ -207,7 +210,8 @@
 
 @media (max-width: 767px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-5,
         #arpl-group-17,
         #arpl-group-22{
@@ -264,7 +268,8 @@
         }
     }
 
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         .arpl-title{
             @include font-with-line-height($font-size-xm, 20px);
         
