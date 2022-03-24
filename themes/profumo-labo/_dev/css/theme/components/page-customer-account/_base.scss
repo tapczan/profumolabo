@@ -1,6 +1,7 @@
 body.page-customer-account,
 body.page-addresses,
 body.page-customer-account,
+body.page-order-detail,
 #module-blockwishlist-lists {
 
     #main {
@@ -53,6 +54,8 @@ body.page-customer-account,
                 }
 
                 .nice-select-init{
+                    background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 10px center/8px 10px no-repeat;
+                    background-size: 11px;
                     border-color: #212529;
                     font-family: $font-jost;
                 }
