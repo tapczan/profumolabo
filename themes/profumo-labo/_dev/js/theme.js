@@ -88,6 +88,7 @@ prestashop.pageLoader = new PageLoader();
 $(document).ready(() => {
   prestashop.customSelect.init();
   accLinksTriggerActive();
+  checkAllChkbx();
   Form.init();
   const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
 
@@ -112,3 +113,11 @@ function accLinksTriggerActive() {
     }
   });
 }
+
+function checkAllChkbx() {
+  const check_all = document.getElementsByName('check_all');
+  $(check_all).on('click', function(){
+    $("form#customer-form input[type=checkbox]").prop('checked', $(this).prop('checked'));
+  });  
+}
+
