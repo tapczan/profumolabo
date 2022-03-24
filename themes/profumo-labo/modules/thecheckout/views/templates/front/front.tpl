@@ -169,6 +169,11 @@
             {foreach $checkout_block as $blockName=>$classes}
               {if !in_array($blockName, $excludeBlocks)}
                 <div class="tc-block-placeholder thecheckout-{$blockName}"></div>
+                {if "cart-summary" == $blockName}
+                  <div class="cart-grid__header">
+                    {l s='Order Summary' d='Shop.Theme.Checkout'}
+                  </div>
+                {/if}
                 <div class="checkout-block{if $blockName|in_array:['login-form','account','address-invoice','address-delivery','shipping','payment']} main-block{/if} {$classes}" id="thecheckout-{$blockName}">
                   <div class="inner-area">
                     {if "cart-summary" == $blockName}
