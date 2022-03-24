@@ -186,7 +186,10 @@
     {hook h='arProductPageHook1' product=$product category=$category}
   {/block}
 
-
+  {block name='product_single_ct_related_products'}
+    {hook h='displayRelatedProducts' product=$product}
+  {/block}
+  
 {/block}
 
 
