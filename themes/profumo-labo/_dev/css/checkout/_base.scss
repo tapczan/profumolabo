@@ -818,7 +818,8 @@
     }
 }
 
-#order-confirmation{
+#order-confirmation,
+#order-detail {
     .page-header{
         h1{
             @include font-with-line-height($font-size-product-lg, 27px);
@@ -839,7 +840,8 @@
         text-align: center;
     }
 
-    .page-content.page-order-confirmation{
+    .page-content.page-order-confirmation,
+    .page-content.page-content--order-detail {
         border-style: none;
 
         .order-confirmation-table{
@@ -915,7 +917,8 @@
             }
         }
 
-        & + .card-group{
+        & + .card-group, 
+        .card-group {
             .card{
                 border-radius: 0;
             }
@@ -1044,8 +1047,10 @@
         }
     }
 
-    #order-confirmation{
-        .page-content.page-order-confirmation{
+    #order-confirmation,
+    #order-detail {
+        .page-content.page-order-confirmation,
+        .page-content.page-content--order-detail {
             .table{
                 tbody tr,
                 tbody td{
