@@ -9,7 +9,8 @@
 * - bootstrap tabs and navs
 */ 
 .page-home,
-.page-pagenotfound{
+.page-pagenotfound,
+.page-not-found + section{
     #arpl-group-6,
     #arpl-group-8,
     #arpl-group-22{
@@ -299,7 +300,8 @@
   
 @media (max-width: 1199px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-1{
             padding-bottom: 0;
             margin-bottom: 50px;
@@ -319,7 +321,8 @@
   
 @media (max-width: 991px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-6.arpl-group.arpl-non-tabbed-group{
                 margin: 0 0 50px;
                 padding-bottom: 0;
@@ -334,7 +337,8 @@
   
 @media (max-width: 767px){
     .page-home,
-    .page-pagenotfound{
+    .page-pagenotfound,
+    .page-not-found + section{
         #arpl-group-6{
             &.arpl-group.arpl-non-tabbed-group{
                 border-top: $border-bottom-mobile;
