@@ -11,7 +11,8 @@
 .page-home,
 .page-pagenotfound{
     #arpl-group-6,
-    #arpl-group-8{
+    #arpl-group-8,
+    #arpl-group-22{
         &.arpl-group.arpl-non-tabbed-group{
             margin: 50px 0;
             padding: 50px 0;
@@ -88,7 +89,9 @@
     #arpl-section-17-38-carousel,
     #arpl-section-17-39-carousel,
     #arpl-section-17-35-carousel,
-    #arpl-section-17-36-carousel{
+    #arpl-section-17-36-carousel,
+    #arpl-section-22-64-carousel,
+    #arpl-section-22-60-carousel {
         width: 100%;
     
         .slick{
@@ -399,7 +402,9 @@
         #arpl-section-17-38-carousel,
         #arpl-section-17-39-carousel,
         #arpl-section-17-35-carousel,
-        #arpl-section-17-36-carousel{
+        #arpl-section-17-36-carousel,
+        #arpl-section-22-60-carousel,
+        #arpl-section-22-64-carousel{
             .slick-arrow{
                 left: -20px;
             }
