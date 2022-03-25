@@ -24,3 +24,9 @@ footerMiddleItemWidth();
 $(window).on('load', function(){
     footerMiddleItemWidth();
 });
+
+$('.footer-card__title a').each(function(){
+    $(this).on('click', function(e){
+        e.stopPropagation();
+    });
+});
