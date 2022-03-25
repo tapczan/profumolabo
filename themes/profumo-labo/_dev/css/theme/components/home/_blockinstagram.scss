@@ -2,7 +2,8 @@
     overflow: hidden;
     
     &__inner{
-        margin: 0 -2px 100px;
+        margin: 0 -2px;
+        padding: 100px 0;
     }
 
     &__title{
@@ -54,15 +55,22 @@
     }
 }
 
-@media screen and (max-width: 767px){
-    .blockinstagram{
+@media screen and (max-width: 991px){
+    .blockinstagram{   
         &__inner{
-            margin: 0 -2px 30px;
+            padding: 50px 0;
         }
 
         &__title{
-            margin: 0 0 25px;
-            font-size: $font-size-lg;
+            @include font-with-line-height($font-size-product-xl, 30px);
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    .blockinstagram{
+        &__inner{
+            margin: 0 -2px;
         }
 
         &__feed{
