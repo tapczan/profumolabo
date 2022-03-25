@@ -1,5 +1,9 @@
 .cms-container--rules,
 .cms-container--policy {
+    h2 {
+        @include font-with-line-height($font-size-sm, 23px);
+    }
+
     p{
         @include font-with-line-height($font-size-sm, 23px);
 
