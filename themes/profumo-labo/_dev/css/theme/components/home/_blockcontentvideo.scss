@@ -34,15 +34,35 @@
     }
 }
 
-@media (max-width: 991px){
+@media (max-width: 1024px){
     .blockcontentvideo{
-        padding: 30px 0;
+        padding: 50px 0;
 
         &__item{
-            margin-bottom: 30px;
+            p{
+                @include font-with-line-height($font-size-xm, 28px);
+            }
+
+            iframe{
+                height: 375px;
+            }
+        }
+    }
+}
+
+@media (max-width: 991px){
+    .blockcontentvideo{
+        padding: 50px 0;
+
+        &__item{
+            margin-bottom: 50px;
 
             &:first-child{
                 padding-top: 0;
+            }
+
+            &:last-child{
+                margin-bottom: 0;
             }
 
             img{
@@ -51,7 +71,7 @@
             }
     
             p{
-                @include font-with-line-height($font-size-xs, 18px);
+                @include font-with-line-height($font-size-md, 22px);
             }
     
             iframe{

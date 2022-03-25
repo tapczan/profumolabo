@@ -2,7 +2,6 @@
     &__img{
         max-width: 450px;
         margin: auto;
-        padding-top: 50px;
 
         .product-img{
             text-align: center;
@@ -27,6 +26,7 @@
                 height: 40px;
                 left: 0;
                 z-index: 50;
+                top: 0 !important;
 
                 &:before{
                     display: none;
@@ -64,7 +64,7 @@
 
                     .star_content{
                         text-align: center;
-                        margin-top: 20px;
+                        margin-top: 0;
                         display: inline-block;
 
                         .star{
@@ -399,7 +399,7 @@
 }
 
 /*
-* overwrite homepage
+* Overwrite Home page featured products section
 */
 
 .page-home{
@@ -408,16 +408,19 @@
     }
 
     #arpl-group-4{
-        margin-top: 0;
+        margin: 50px 0 100px;
+        padding: 0;
+        border-bottom-style: none;
 
         .arpl-header {
-            margin: 50px 0 !important;
+            margin: 0;
         
             h2 {
                 @include font-with-line-height($font-size-xxl, 39px);
                 font-family: $font-forum;
                 font-weight: 400;
                 letter-spacing: 3px;
+                margin-bottom: 50px !important;
             }
         }
 
@@ -430,19 +433,14 @@
             }
         }
 
-        .arpl-header,
-        .arpl-title{
-            margin-top: 0 !important;
-        }
-
-        .arpl-header{
-            margin-bottom: 20px !important;
-        }
-
         .arpl-product-list-view .arpl-content{
             .blockfeaturedproduct__info .product-accordion__item{
                 overflow: hidden !important;
             }
+        }
+
+        .product-single{
+            padding: 0;
         }
     }
 }
@@ -463,6 +461,13 @@
             .slick-next{
                 left: auto;
                 right: 5px;
+            }
+        }
+
+        &__info{
+            .product-title,
+            .product-prices .price{
+                @include font-with-line-height($font-size-lg, 24px);
             }
         }
     }

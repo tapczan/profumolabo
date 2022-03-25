@@ -1,6 +1,6 @@
 .blockhomesections{
     padding: 100px 0;
-    margin-bottom: 100px;
+    margin-bottom: 0;
     border-bottom: $border-bottom-section;
 
     &__title{
@@ -111,7 +111,6 @@
     }
 
     &--premium{
-        padding-top: 0;
         padding-bottom: 0;
         margin-bottom: 0;
         border-bottom-style: none;
@@ -141,11 +140,9 @@
     }
 
     &--profumo{
-        padding-top: 0;
-        
         .blockhomesections__title{
             text-align: left;
-            margin-top: 50px;
+            margin-top: 0;
         }
 
         .blockhomesections__content{
@@ -159,12 +156,20 @@
         .blockhomesections__column{
             &:last-child{
                 padding-left: 50px;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+
+                p{
+                    margin: 0;
+                }
             }
         }
 
         .blockhomesections__link{
             @include font-with-line-height($font-size-xs, 16px);
             text-decoration: underline;
+            margin-top: 50px;
 
             &:hover{
                 color: $brown !important;
@@ -206,24 +211,24 @@
             margin-bottom: 50px;
         }
 
-        &--premium{
-            padding: 0;
+        &__title{
+            @include font-with-line-height($font-size-product-xl, 30px);
+        }
 
+        &--premium{
             .arpl-header{
                 display: none;
             }
-        }
 
-        &--profumo{
-            padding-top: 0;
+            .blockhomesections__img{
+                margin-top: 50px;
+            }
         }
     }
 }
 
 @media (max-width: 767px){
     .blockhomesections{
-        padding: 30px 0;
-        margin-bottom: 30px;
         border-bottom: $border-bottom-mobile;
 
         .offerta__item{
@@ -243,23 +248,12 @@
             }
         }
 
-        &__title{
-            @include font-with-line-height($font-size-xm, 20px);
-            margin-bottom: 30px;
-        }
-
         &__description{
             @include font-with-line-height($font-size-sm, 20px);
         }
 
         &--premium{
-            padding-bottom: 0;
-            padding-top: 0;
             border-bottom-style: none;
-
-            .blockhomesections__img{
-                margin-top: 30px;
-            }
         }
 
         &--profumo{
@@ -269,7 +263,7 @@
                 }
 
                 &:last-child{
-                    padding: 0 10px 30px;
+                    padding: 0 10px 50px;
                     order: 1;
                     text-align: center;
                     @include font-with-line-height($font-size-xm, 20px);

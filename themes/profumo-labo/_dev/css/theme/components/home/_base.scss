@@ -1,65 +1,100 @@
 /**
 * Override homepage styling
-* - product category section [arpl-group-6]
-* - bestsellery home [#arpl-section-5-8-carousel, #arpl-section-5-7-carousel]
-* - bestsellery 404 [#arpl-section-17-38-carousel, #arpl-section-17-39-carousel]
-* - bestsellery 404 test page [#arpl-section-17-35-carousel, #arpl-section-17-36-carousel]
-* - perfume extracts in the form of perfume [arpl-group-8]
-* - premium collection [arpl-group-1]
-* - bootstrap tabs and navs
+* - Home featured product section [arpl-group-4]
+* - Home product category section [arpl-group-6]
+* - Home premium collection section [arpl-group-1]
+* - Home perfume extracts in the form of perfume [arpl-group-8]
 */ 
 .page-home,
 .page-pagenotfound,
 .page-not-found + section{
-    #arpl-group-6,
-    #arpl-group-8,
-    #arpl-group-22{
-        &.arpl-group.arpl-non-tabbed-group{
-            margin: 50px 0;
-            padding: 50px 0;
-            border-bottom: $border-bottom-section;
+    .arpl-group.arpl-non-tabbed-group{
+        margin: 50px 0;
+        padding: 50px 0;
+        border-bottom: $border-bottom-section;
+
+        .arpl-title{
+            @include font-with-line-height($font-size-xxl, 39px);
+                
+            font-family: $font-forum;
+            color: $black;
+            font-weight: 400;
+            margin: 0 0 50px;
+            letter-spacing: 3px;
+        }
+
+        .arpl-category{
+            .arpl-cat-img{
+                display: block;
+                position: relative;
+                background: url(~/img/circle-bg.png);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 50%;
     
-            .arpl-title{
-                @include font-with-line-height($font-size-xxl, 39px);
-                    
+                img{
+                    display: block;
+                    margin: auto;
+                }
+            }
+
+            .arpl-cat-title{
+                @include font-with-line-height($font-size-xm, 20px);
+
                 font-family: $font-forum;
-                color: $black;
-                font-weight: 400;
-                margin: 0 0 50px;
-                letter-spacing: 3px;
+                font-weight: normal;
+                margin-top: 30px;
+                letter-spacing: 1px;
+            }
+        }
+
+        .arpl-more-container{
+            text-align: center;
+        }
+    
+        .arpl-more-link{
+            @include font-with-line-height($font-size-xs, 15px);
+    
+            text-transform: uppercase;
+            text-decoration: underline;
+    
+            &:hover{
+                color: $brown;
             }
     
-            .arpl-category{
-                .arpl-cat-img{
-                    display: block;
-                    position: relative;
-                    background: url(~/img/circle-bg.png);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: 50%;
-        
-                    img{
-                        display: block;
-                        margin: auto;
-                    }
-                }
-    
-                .arpl-cat-title{
-                    @include font-with-line-height($font-size-xm, 20px);
+            .material-icons{
+                display: none;
+            }
+        }
+    }
 
-                    font-family: $font-forum;
-                    font-weight: normal;
-                    margin-top: 30px;
-                    letter-spacing: 1px;
-                }
+    #arpl-group-1{
+        &.arpl-group.arpl-non-tabbed-group{
+            padding: 100px 0;
+            margin: 0;
+
+            .arpl-header{
+                display: none;
+            }
+
+            .arpl-more-container{
+                margin-top: 50px;
             }
         }
     }
   
     #arpl-group-6{
         &.arpl-group.arpl-non-tabbed-group{
-            margin: 100px 0 50px;
+            margin: 0;
             padding: 0 0 100px;
+
+            .arpl-header{
+                margin: 0;
+            }
+
+            .arpl-title{
+                margin: 50px 0 !important;
+            }
     
             .arpl-category{
                 .arpl-cat-img{
@@ -80,32 +115,32 @@
         }
     }
 
-    #arpl-section-1-57-carousel,
-    #arpl-section-1-17-carousel, 
-    #arpl-section-8-19-carousel,
-    #arpl-section-5-7-carousel,
-    #arpl-section-1-15-carousel,
-    #arpl-section-8-16-carousel,
-    #arpl-section-5-8-carousel,
-    #arpl-section-17-38-carousel,
-    #arpl-section-17-39-carousel,
-    #arpl-section-17-35-carousel,
-    #arpl-section-17-36-carousel,
-    #arpl-section-22-64-carousel,
-    #arpl-section-22-60-carousel {
+    #arpl-group-8{
+        &.arpl-group.arpl-non-tabbed-group{
+            padding: 100px 0;
+            margin: 0;
+
+            .arpl-more-container{
+                margin-top: 50px;
+            }
+        }
+    }
+
+    .arpl-no-carousel-products{
         width: 100%;
+        padding: 0;
     
         .slick{
             &-arrow{
-            background: url(~/img/icons/left-arrow.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            width: 35px;
-            height: 40px;
-            opacity: 0.5;
-            left: 0;
-            z-index: 20;
+                background: url(~/img/icons/left-arrow.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                width: 35px;
+                height: 40px;
+                opacity: 0.5;
+                left: 0;
+                z-index: 20;
     
                 &:before{
                     display: none;
@@ -249,52 +284,49 @@
             }
         }
     }
-  
-    #arpl-section-5-7-carousel{
-        .products-list__block .product-miniature__title,
-        .products-list__block .product-miniature__pricing .price{
-            font-weight: 400;
+}
+
+.home-custom-variants {
+    .variants-selection {
+        input.input-radio.attribute-radio__input {
+            display: none !important;
         }
     }
-  
-    #arpl-group-1,
-    #arpl-group-8{
-        .arpl-more-container{
-            text-align: center;
-            margin-top: 50px;
-        }
-    
-        .arpl-more-link{
-            @include font-with-line-height($font-size-xs, 15px);
-    
-            text-transform: uppercase;
-            text-decoration: underline;
-    
-            &:hover{
-                color: $brown;
+}
+
+.bestseller-see-more__link {
+    position: absolute;
+    top: calc(50% - 14px);
+    color: #ccb48f !important;
+    font-size: 18px;
+    margin-left: 40px;
+    text-decoration: underline;
+    font-weight: 400;
+
+    @media (max-width: 360px) {
+        margin-left: 18px;  
+    }
+}
+
+.homepage-slider-wrapper {
+    z-index: 1010;
+    background: $black;
+
+    & + #wrapper{
+        .container{
+            max-width: none;
+            z-index: 100;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+
+            & > .row{
+                max-width: 1700px;
+                margin: auto;
             }
-    
-            .material-icons{
-                display: none;
-            }
         }
-    }
-  
-    #arpl-group-8{
-        &.arpl-group.arpl-non-tabbed-group{
-            margin-bottom: 100px;
-            padding-top: 0;
-        }
-        
-        .arpl-more-container{
-            margin-top: 50px;
-        }
-    }
-  
-    #arpl-group-1{
-        border-bottom: $border-bottom-section;
-        padding-bottom: 50px;
-        margin-bottom: 100px;
     }
 }
   
@@ -310,26 +342,56 @@
             .arpl-header{
                 display: none;
             }
-    
-            .arpl-section{
-                margin-bottom: 50px;
-                margin-top: 50px;
-            }
         }
     }
 }
   
+@media (max-width: 1024px){
+    .page-home{
+        #arpl-group-4{
+            margin: 50px 0;
+        }
+    }
+}
+
 @media (max-width: 991px){
     .page-home,
     .page-pagenotfound,
     .page-not-found + section{
         #arpl-group-6.arpl-group.arpl-non-tabbed-group{
-                margin: 0 0 50px;
-                padding-bottom: 0;
-    
+            padding: 50px 0;
+
             .arpl-category.arpl-grid-6{
                 width: 33.33%;
                 margin-bottom: 30px;
+            }
+
+            .arpl-title{
+                margin-top: 0 !important;
+            }
+        }
+
+        #arpl-group-4,
+        #arpl-group-6{
+            .arpl-header h2{
+                @include font-with-line-height($font-size-product-xl, 30px);
+            }
+        }
+
+        #arpl-group-1{
+            &.arpl-group.arpl-non-tabbed-group{
+                padding: 0 0 50px;
+            }
+        }
+
+        #arpl-group-8{
+            &.arpl-group.arpl-non-tabbed-group{
+                padding: 50px 0;
+                margin: 0;
+
+                .arpl-title{
+                    @include font-with-line-height($font-size-product-xl, 30px);
+                }
             }
         }
     }
@@ -343,13 +405,9 @@
             &.arpl-group.arpl-non-tabbed-group{
                 border-top: $border-bottom-mobile;
                 border-bottom: $border-bottom-mobile;
-                padding-top: 30px;
-                margin-bottom: 30px;
     
                 .arpl-title{
-                    @include font-with-line-height($font-size-xm, 20px);
-        
-                    margin-bottom: 30px;
+                    margin-bottom: 50px;
                 }
         
                 .arpl-category .arpl-cat-title{
@@ -387,28 +445,10 @@
         }
   
         #arpl-group-8.arpl-group.arpl-non-tabbed-group{
-            margin: 0 0 30px;
-            padding: 0 0 30px;
             border-bottom: $border-bottom-mobile;
-    
-            .arpl-title{
-                @include font-with-line-height($font-size-xm, 20px);
-        
-                margin-top: 0;
-                margin-bottom: 30px;
-            }
         }
   
-        #arpl-section-5-7-carousel, 
-        #arpl-section-1-15-carousel, 
-        #arpl-section-8-16-carousel, 
-        #arpl-section-5-8-carousel,
-        #arpl-section-17-38-carousel,
-        #arpl-section-17-39-carousel,
-        #arpl-section-17-35-carousel,
-        #arpl-section-17-36-carousel,
-        #arpl-section-22-60-carousel,
-        #arpl-section-22-64-carousel{
+        .arpl-no-carousel-products{
             .slick-arrow{
                 left: -20px;
             }
@@ -416,50 +456,6 @@
             .slick-next{
                 left: auto;
                 right: -20px;
-            }
-        }
-    }
-}
-
-.home-custom-variants {
-    .variants-selection {
-
-        input.input-radio.attribute-radio__input {
-            display: none !important;
-        }
-    }
-}
-
-.bestseller-see-more__link {
-    position: absolute;
-    top: calc(50% - 14px);
-    color: #ccb48f !important;
-    font-size: 18px;
-    margin-left: 40px;
-    text-decoration: underline;
-    font-weight: 400;
-    @media (max-width: 360px) {
-        margin-left: 18px;  
-    }
-}
-
-.homepage-slider-wrapper {
-    z-index: 1010;
-    background: $black;
-
-    & + #wrapper{
-        .container{
-            max-width: none;
-            z-index: 100;
-            background: #fff;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            height: auto;
-
-            & > .row{
-                max-width: 1700px;
-                margin: auto;
             }
         }
     }

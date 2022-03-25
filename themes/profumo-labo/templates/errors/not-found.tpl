@@ -47,7 +47,7 @@
   {/block}
 </section>
 
-<section id="404-bestseller" class="pt-6 mb-6" style="border-top: 1px #ddd solid;">
+<section class="bestseller-not-found">
 
   <div class="col-lg-12">
     {block name='hook_not_found'}

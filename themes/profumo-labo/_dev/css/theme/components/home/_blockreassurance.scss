@@ -1,5 +1,7 @@
 .blockreassurance {
     max-width: 1500px;
+    padding: 0 0 100px !important;
+    margin: 0 auto !important;
 
     &__title {
         @include font-with-line-height($font-size-xxl, 39px);
@@ -65,5 +67,15 @@
 
     p {
         max-width: 229px;
+    }
+}
+
+@media (max-width: 991px){
+    .blockreassurance {
+        padding: 0 0 50px !important;
+
+        &__title{
+            @include font-with-line-height($font-size-product-xl, 30px);
+        }
     }
 }
