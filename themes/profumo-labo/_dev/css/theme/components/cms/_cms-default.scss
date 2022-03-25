@@ -14,11 +14,8 @@
         font-weight: 400;
     }
 
-    p{
-        @include font-with-line-height($font-size-sm, 23px);
-
+    p {
         margin: 0 0 20px;
-        font-weight: 300;
     }
 }
 
