@@ -128,6 +128,11 @@
     font-size: $font-size-md;
     text-transform: uppercase;
     position: relative;
+    cursor: auto !important;
+
+    @media(max-width: 767px){
+      cursor: pointer !important;
+    }
 
     .material-icons{
       position: absolute;
@@ -163,6 +168,10 @@
   .footer-card{
     &__content{
       display: block !important;
+
+      &.collapsing{
+        transition: none !important;
+      }
     }
 
     &__title{
