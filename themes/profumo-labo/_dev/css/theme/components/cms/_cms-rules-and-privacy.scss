@@ -1,0 +1,8 @@
+.cms-container--rules,
+.cms-container--policy {
+    p{
+        @include font-with-line-height($font-size-sm, 23px);
+
+        font-weight: 300;
+    }
+}
