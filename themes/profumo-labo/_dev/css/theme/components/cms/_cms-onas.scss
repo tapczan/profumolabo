@@ -127,12 +127,6 @@
                 @include font-with-line-height($font-size-xm, 27px);
 
                 font-weight: 400;
-
-                p {
-                    @include font-with-line-height($font-size-xm, 27px);
-
-                    font-weight: 400;
-                }
             }
 
             &--half{
