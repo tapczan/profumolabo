@@ -58,12 +58,18 @@
   {/foreach}
 *}
 
-{foreach $linkBlocks as $linkBlock name=linkBlockItem}
+{foreach $linkBlocks as $linkBlock key=key name=linkBlockItem}
 {assign var=_expand_id value=10|mt_rand:100000}
+{assign var=linkItemUrl value={$link->getCMSLink(17)}}
+{if $key == 1}
+  {assign var=linkItemUrl value=$link->getPageLink('contact',true, $language.id)}
+{/if}
 <div class="footer-card">
   <div class="footer-card__header" id="footer_{$_expand_id}">
     <h2 class="footer-card__title collapsed" type="button" data-toggle="collapse" data-target="#footer_collapse_{$_expand_id}" aria-expanded="false" aria-controls="footer_collapse_{$_expand_id}">
-      {$linkBlock.title}
+      <a href="{$linkItemUrl}">
+        {$linkBlock.title}
+      </a>
       <i class="material-icons"></i>
     </h2>
   </div>
