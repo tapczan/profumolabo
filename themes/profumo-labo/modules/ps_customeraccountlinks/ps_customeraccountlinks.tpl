@@ -50,14 +50,16 @@
 <div class="footer-card">
   <div class="footer-card__header" id="headingOne">
     <h2 class="footer-card__title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        {l s='Your account' d='Shop.Theme.Customeraccount'}
-        {*<i class="material-icons"></i>*}
+        <a href="{$link->getPageLink('my-account', true, $language.id)}">
+          {l s='Your account' d='Shop.Theme.Customeraccount'}
+        </a>
+        <i class="material-icons"></i>
     </h2>
   </div>
   <div id="collapseOne" class="footer-card__content collapse show" aria-labelledby="headingOne" data-parent="#accordionFooter">
     <div class="footer-card__body">
       <ul class="links-list">
- 
+
         {if !$logged}
         <li class="links-list__elem">
             <a class="links-list__link" href="{$link->getPageLink('my-account', true, $language.id)}" title="{l s='Login' d='Shop.Theme.Global'}" rel="nofollow">
@@ -72,7 +74,7 @@
             </a>
         </li>
         <li class="links-list__elem">
-            <a class="links-list__link" href="{$link->getModuleLink('psgdpr','gdpr')}" title="{l s='Personal data' d='Shop.Theme.Global'}" rel="nofollow">
+            <a class="links-list__link" href="{$link->getPageLink('my-account', true, $language.id)}" title="{l s='My Account' d='Shop.Theme.Global'}" rel="nofollow">
               {l s='Personal data' d='Shop.Theme.Global'}
             </a>
         </li>

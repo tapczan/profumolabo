@@ -134,6 +134,13 @@
       top: -3px;
       right: 0;
     }
+
+    a,
+    a:hover,
+    a:focus{
+      color: $white;
+      text-decoration: none;
+    }
   }
 
   &__body{
