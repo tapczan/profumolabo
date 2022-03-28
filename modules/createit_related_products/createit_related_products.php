@@ -45,6 +45,11 @@ class createit_related_products extends Module
 
         $limit = Configuration::get('CREATEIT_RELATED_PRODUCT_LIMIT');
 
+        /**
+         * Get value for CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES
+         */
+        $featureListVal = $this->getFeaturedList();
+
         $res = Db::getInstance()->executeS('SELECT DISTINCT
                     p.*
                 FROM
@@ -58,6 +63,8 @@ class createit_related_products extends Module
                             `' . _DB_PREFIX_ . 'feature_product`
                         WHERE
                             `id_product` = '.(int) $product["id_product"].')
+                AND p.id_product NOT IN ('.(int) $product["id_product"].')
+                AND  fp.id_feature IN ('.implode(",", $featureListVal).')
                 LIMIT '.(int) $limit.'
             ');
 
@@ -144,6 +151,13 @@ class createit_related_products extends Module
             // retrieve the value set by the user
             $configValue = Tools::getValue('CREATEIT_RELATED_PRODUCT_LIMIT');
 
+            $filteredFeatures = array_filter(Tools::getAllValues(), function ($key) {
+                return strpos($key, 'CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_') === 0;
+            }, ARRAY_FILTER_USE_KEY);
+
+            $filteredFeatureKeys = array_keys($filteredFeatures);
+            $filteredFeatureKeysClean = str_replace('CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_', '',$filteredFeatureKeys);
+
             // check that the value is valid
             if (empty($configValue) || !Validate::isInt($configValue)) {
                 // invalid value, show an error
@@ -151,6 +165,8 @@ class createit_related_products extends Module
             } else {
                 // value is ok, update it and display a confirmation message
                 Configuration::updateValue('CREATEIT_RELATED_PRODUCT_LIMIT', $configValue);
+                Configuration::updateValue('CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES', serialize($filteredFeatureKeysClean));
+
                 $output = $this->displayConfirmation($this->trans('Settings updated', array(), 'Modules.CreateitRelatedProducts.Admin'));
             }
         }
@@ -161,10 +177,14 @@ class createit_related_products extends Module
 
     /**
      * @return string
+     * @throws PrestaShopDatabaseException
      */
     public function displayForm()
     {
-        // Init Fields form array
+        $language_id = $this->context->language->id;
+
+        $feature_list_arr = $this->getSavedFeaturedLIst($language_id);
+
         $form = [
             'form' => [
                 'legend' => [
@@ -178,6 +198,16 @@ class createit_related_products extends Module
                         'size' => 20,
                         'required' => true,
                     ],
+                    [
+                        'type' => 'checkbox',
+                        'label' => $this->trans('Features to be included', array(), 'Modules.CreateitRelatedProducts.Admin'),
+                        'name' => 'CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES',
+                        'values' => [
+                            'query' => $feature_list_arr,
+                            'id' => 'id_feature',
+                            'name' => 'name',
+                        ],
+                    ]
                 ],
                 'submit' => [
                     'title' => $this->l('Save'),
@@ -201,9 +231,60 @@ class createit_related_products extends Module
         // Load current value into the form
         $helper->fields_value['CREATEIT_RELATED_PRODUCT_LIMIT'] = Tools::getValue('CREATEIT_RELATED_PRODUCT_LIMIT', Configuration::get('CREATEIT_RELATED_PRODUCT_LIMIT'));
 
+        /**
+         * Populate default value for CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES
+         */
+        $featureListVal = $this->getFeaturedList();
+
+        if(count($featureListVal)){
+            foreach($featureListVal as $feature){
+                $currentFeature = 'CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_' . $feature;
+                $helper->fields_value[$currentFeature] = 'on';
+            }
+        }
+
         return $helper->generateForm([$form]);
     }
 
+    /**
+     * @return array
+     * @throws PrestaShopDatabaseException
+     */
+    private function getFeaturedList() : array
+    {
+        if(
+        $dbFeatureList = Db::getInstance()->executeS('
+            SELECT value FROM `' . _DB_PREFIX_ . 'configuration` WHERE name like "%CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES%"
+        ')){
+            $dbFeatureListRes = reset($dbFeatureList);
+            return unserialize($dbFeatureListRes['value']);
+        }else{
+            return [];
+        }
+    }
 
+    /**
+     * @param int $language_id
+     * @return array
+     * @throws PrestaShopDatabaseException
+     */
+    private function getSavedFeaturedLIst(int $language_id): array
+    {
+        $feature_list_arr = [];
+
+        if($feature_list = Db::getInstance()->executeS('
+            SELECT id_feature,name FROM `' . _DB_PREFIX_ . 'feature_lang` WHERE `id_lang` = '.$language_id.'
+        ')){
+            foreach($feature_list as $feature)
+            {
+                $feature_list_arr[] = [
+                    'id_feature' => $feature['id_feature'],
+                    'name' => $feature['name']
+                ];
+            }
+        }
+
+        return $feature_list_arr;
+    }
 
 }
