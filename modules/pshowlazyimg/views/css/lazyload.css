@@ -1,9 +1,0 @@
-img.lazyloaded {
-    transition: filter 0.8s;
-    filter: blur(0);
-}
-
-img.lazyload {
-    transition: filter 0.8s;
-    filter: blur(20px);
-}
