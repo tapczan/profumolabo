@@ -1,19 +1,21 @@
-<div class="row">
+<div class="row createit-related-products">
     
     {if $products|@count > 0}
-        <div class="container my-5 py-5">
-            <h2 class="h2 text-center products-section-title text-uppercase">
+        <div class="container">
+            <h2 class="h2 text-center createit-related-products__title">
                 {l s='You may also like' d='Shop.Theme.Global'}
             </h2>
         </div>
     {/if} 
 
-    {foreach $products as $singleProduct}
-        <div class="col">
-            {block name='product_miniature'}
-                {include file='catalog/_partials/miniatures/product.tpl' product=$singleProduct}
-            {/block}
-        </div>
-    {/foreach}
+    <div class="createit-related-products__slider js-createit-related-products-slider">
+        {foreach $products as $singleProduct}
+            <div class="col">
+                {block name='product_miniature'}
+                    {include file='catalog/_partials/miniatures/product.tpl' product=$singleProduct}
+                {/block}
+            </div>
+        {/foreach}
+    </div>
     
 </div>

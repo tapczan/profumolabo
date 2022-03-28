@@ -1,4 +1,4 @@
-/*
+/**
 * Home page banner slider
 */
 $('.js-blockbannerslider').slick({
@@ -9,7 +9,7 @@ $('.js-blockbannerslider').slick({
     arrow: false,
 });
 
-/*
+/**
 * Home page featured product slider
 */
 $('.js-blockfeaturedproduct').slick({
@@ -19,7 +19,7 @@ $('.js-blockfeaturedproduct').slick({
     dots: false,
 });
 
-/*
+/**
 * Home page offerta slider
 */
 $('.js-blockofferta').slick({
@@ -45,7 +45,7 @@ $('.js-blockofferta').slick({
     ]
 });
 
-/*
+/**
 * Home page reassurance slider
 */
 $('.js-block-reassurance-slider').slick({
@@ -71,7 +71,7 @@ $('.js-block-reassurance-slider').slick({
     ]
 });
 
-/*
+/**
 * Product Single
 */
 $('.js-product-single-img').slick({
@@ -81,7 +81,7 @@ $('.js-product-single-img').slick({
     dots: false,
 });
 
-/*
+/**
 * Override slider for product listings
 */
 const sliderOverrideList = $(`#arpl-section-13-40-carousel, 
@@ -90,7 +90,8 @@ const sliderOverrideList = $(`#arpl-section-13-40-carousel,
                             #arpl-section-13-27-carousel, 
                             #arpl-section-13-28-carousel, 
                             #arpl-section-13-25-carousel, 
-                            #arpl-section-12-27-carousel`);
+                            #arpl-section-12-27-carousel,
+                            .js-createit-related-products-slider`);
 const sliderBestsellerHome = $(`#arpl-section-5-7-carousel, 
                             #arpl-section-5-8-carousel,
                             #arpl-section-17-38-carousel,

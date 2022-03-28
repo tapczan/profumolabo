@@ -34,6 +34,7 @@ $(() => {
       $(event.currentTarget).addClass('selected');
       $('.js-qv-product-cover').attr('src', $(event.target).data('image-large-src'));
     });
+
     if($('.quickview .product-img').length > 1) {
       $('.js-product-single-img').slick({
         infinite: true,
@@ -67,10 +68,31 @@ $(() => {
         $('body').append(resp.quickview_html);
         const productModal = $(`#quickview-modal-${resp.product.id}-${resp.product.id_product_attribute}`);
         productModal.modal('show');
+
+        function slickSliderNotInitialized(){
+          $('.js-product-single-img').not('.slick-initialized').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: false,
+          });
+          $(".js-product-single-img").not('.slick-initialized').slick("refresh");
+          $('.js-product-single-img').not('.slick-initialized').slick('setPosition');
+
+          productModal.on('hidden.bs.modal', () => {
+            productModal.remove();
+          });
+        }
+
         setTimeout(function() {
           $('.modal-loader').fadeOut('fast');
+          
+          // Not slick initialized
+          slickSliderNotInitialized();
         }, 1000);
+        
         productConfig(productModal);
+        
         productModal.on('hidden.bs.modal', () => {
           productModal.remove();
         });
