@@ -1,0 +1,6 @@
+<IfModule mod_authz_core.c>
+Require all denied
+<Files ~ "(?i)^.*\.(webp|jpg|jpeg|gif|png|bmp|tiff|svg|pdf|mov|mpeg|mp4|avi|mpg|wma|flv|webm|ico)$">
+Require all granted
+</Files>
+</IfModule>

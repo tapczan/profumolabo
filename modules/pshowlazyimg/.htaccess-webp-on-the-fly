@@ -1,0 +1,10 @@
+<IfModule mod_mime.c>
+AddType image/webp .webp
+</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule . - [E=REWRITEBASE:/]
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteRule ^(.*)\.(jpe?g|png)$ %{ENV:REWRITEBASE}modules/pshowlazyimg/webp-on-demand.php?source=%{SCRIPT_FILENAME} [NC,L]
+</IfModule>
+
