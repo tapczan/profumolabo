@@ -1,0 +1,14 @@
+.rate .icon-star:before {
+    color: #F2CB05;
+}
+#bon-upload {
+    margin-right: 10px
+}
+.rate{
+    margin-right: 10px;
+}
+
+#bon-upload .process-icon-refresh {
+    font-size: 13px;
+    display: unset;
+}
