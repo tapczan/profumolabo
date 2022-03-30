@@ -1,0 +1,18 @@
+--- HELLO ! ---
+THANK YOU FOR NEWSLETTER SUBSCRIPTION AT {SHOP_NAME}!
+
+
+We are pleased to inform that we have a little gift for you: {VOUCHER}
+
+Code above is the voucher code. This is an exclusive offer for our new customers. To get discount please use it in cart during checkout.
+
+voucher is valid from: {voucher_date_from} to: {voucher_date_to}
+value of the special offer that we have for you: {voucher_value}
+
+minimal cart value: {voucher_minimal_basket_value}
+
+
+
+
+Thank you for choosing {shop_name}
+

@@ -1,0 +1,19 @@
+BONJOUR!
+MERCI DE VOTRE INSCRIPTION À LA NEWSLETTER DE NOTRE BOUTIQUE EN LIGNE {SHOP_NAME}!
+ 
+ 	
+Nous avons le plaisir de vous informer que nous avons un petit cadeau pour vous.
+{VOUCHER}
+Le code ci-dessus est le code du coupon. Ceci est une offre exclusive pour nos nouveaux clients. Pour obtenir une réduction, veuillez l’utiliser dans le panier lors de votre commande.
+
+le bon est valable du: {voucher_date_from} au: {voucher_date_to} 
+
+valeur de l'offre spéciale que nous avons pour vous: {voucher_value}
+
+valeur de panier minimale: {voucher_minimal_basket_value}
+
+
+
+
+Merci d'avoir choisi {shop_name}
+
