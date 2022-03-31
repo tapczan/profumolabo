@@ -23,6 +23,11 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 <div id="hook_footer_before_wrapper" class="footer-paralax-wrapper" data-show-translation="{l s='Show more' d='Shop.Istheme'}">
+  {if $page.page_name == 'index'}
+    {block name='hook_footer_before'}
+      {hook h='displayInstagram'}
+    {/block}
+  {/if}
   {block name='hook_footer_before'}
     {hook h='displayFooterBefore'}
   {/block}
