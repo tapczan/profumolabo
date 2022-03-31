@@ -24,7 +24,7 @@
     <div class="blockinstagram">
         <div class="blockinstagram__inner">
             <h2 class="blockinstagram__title">
-                {l s='SEE US ON INSTAGRAM' mod='boninstagramcarousel'}
+                {l s='SEE US ON INSTAGRAM' d='Shop.Theme.Global'}
             </h2>
 
             <div class="blockinstagram__feed">
