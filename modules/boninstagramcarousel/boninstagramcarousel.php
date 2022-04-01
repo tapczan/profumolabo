@@ -456,15 +456,7 @@ class Boninstagramcarousel extends Module
 
     public function hookdisplayInstagram()
     {
-        // return $this->hookDisplayHome();
-
-        $this->context->smarty->assign('limit', Configuration::get('BONINSTAGRAMCAROUSEL_LIMIT'));
-        $this->context->smarty->assign('instagram_type', Configuration::get('BONINSTAGRAMCAROUSEL_TYPE'));
-        $this->context->smarty->assign('display_caroucel', Configuration::get('BONINSTAGRAMCAROUSEL_DISPLAY_CAROUSEL'));
-        $this->context->smarty->assign('user_tag', Configuration::get('BONINSTAGRAMCAROUSEL_TAG'));
-        $this->context->smarty->assign('user_id', Configuration::get('BONINSTAGRAMCAROUSEL_USERID'));
-        
-        return $this->display(__FILE__, '../../themes/profumo-labo/modules/boninstagramcarousel/views/templates/hooks/ps_instagram.tpl');
+        return $this->hookDisplayHome();
     }
 
     public function hookdisplayFooterBefore()
