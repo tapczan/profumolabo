@@ -94,6 +94,15 @@ $(document).ready(function () {
         // prestashop.emit('showErrorNextToAddtoCartButton', { errorMessage: event.resp.errors.join('<br/>')});
       }
       $.post(refreshURL, requestData).then(function (resp) {
+
+        setTimeout(function(){
+          if($('.header__nav').hasClass('header__nav--sticky')){
+            $('.header__nav #cartDropdown').trigger('click');
+          }else{
+            $('.header__inner #cartDropdown').trigger('click');
+          }
+        },500);
+        
         var html = $('<div />').append($.parseHTML(resp.preview));
         $('.blockcart').replaceWith($(resp.preview).find('.blockcart'));
         prestashop.emit('updatedBlockCart', resp);

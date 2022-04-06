@@ -351,22 +351,26 @@ class Product extends ProductCore
     }
 
     /*
-     * 
+     * Get product ratings
      */
     public static function getProductRatingByID($id_product) {
 
         $query = 'SELECT *
             FROM `' . _DB_PREFIX_ . 'product_comment`
             WHERE `id_product` = ' . (int) $id_product;  
-        
+
         $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
         $total = 0;
+        $ratings = 0;
 
-        foreach($result as $k => $v) {
-            $total += (int) $v['grade'];
-        }
+        if(count($result) > 0 ) {
+            foreach($result as $k => $v) {
+                $total += (int) $v['grade'];
+            }
+            $ratings = $total / count($result);
 
-        return $total / count($result);
+        } 
+        return round($ratings); 
     }
 
     /*
