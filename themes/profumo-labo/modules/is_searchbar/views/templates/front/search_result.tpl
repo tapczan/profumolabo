@@ -1,9 +1,19 @@
 
 <div class="search-result">
+  {assign var='countProductsShow' value=$products|count}
+  {assign var='countProductsMore' value=$moreResultsCount}
+  {assign var='countProductsTotal' value=$countProductsShow + $countProductsMore}
+  
+  {if $countProductsTotal}
+    <h2 class="header__search-title">
+      {l s='FOUND PRODUCTS' d='Shop.Theme.Global'}: <span class="header__search-counter">{$countProductsTotal}</span> {if $countProductsTotal == 1}{l s='pc' d='Shop.Theme.Global'}{else}{l s='pcs' d='Shop.Theme.Global'}{/if}.
+    </h2>
+  {/if}
+
   {if $products}
     <div class="search-result__products row">
       {foreach from=$products item=$product}
-        {include file="module:is_searchbar/views/templates/front/product.tpl"}
+        {include file="themes/profumo-labo/modules/is_searchbar/views/templates/front/product.tpl"}
       {/foreach}
     </div>
 
