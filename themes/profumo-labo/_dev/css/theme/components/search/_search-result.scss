@@ -1,19 +1,3 @@
-
-.js-search-result {
-  @include media-breakpoint-up(lg) {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    z-index: 99;
-    padding: #{$search-input-height / 2 + #{map-get($spacers, 2)}} map-get($spacers, 3) map-get($spacers, 3);
-    margin-top: -#{$search-input-height / 2};
-    background: $white;
-    border: 1px solid $border-color;
-    border-radius: 0 0 $border-radius $border-radius;
-  }
-}
-
 .search-result {
   @include media-breakpoint-up(md) {
     padding: map-get($spacers, 3);

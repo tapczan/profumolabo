@@ -1,6 +1,5 @@
 /* global $ */
 $(document).ready(function () {
-
     var $searchInput = $('.js-search-input');
     var ajaxUrl = $('[data-search-controller-url]').data('search-controller-url');
     var $body = $('body');
@@ -10,12 +9,49 @@ $(document).ready(function () {
         searchUrl: ajaxUrl,
         $input: $searchInput,
         appendTo: '.js-search-form',
-        perPage: 6,
+        perPage: 12,
         onResult: function(e) {
             $body.addClass('header-dropdown-open search-result-open');
+
+            $('.header__search').addClass('search-loading');
+
+            if($('.header__inner .js-search-input').val == ''){
+                $('.header__search').removeClass('search-loading');
+            }
+
+            if($('.header__nav .js-search-input').val == ''){
+                $('.header__search').removeClass('search-loading');
+            }
         },
         onResultAfter: function(e) {
             prestashop.pageLazyLoad.update();
+
+            $('.header__search .js-search-result .search-result__products').on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
+                setTimeout(function(){
+                    if ( $('.header__search .js-search-result .search-result__products').hasClass('slick-initialized')) {
+                        if(slick.slideCount < 4 ){
+                            $('.header__search .js-search-result .search-result__products').slick('unslick');
+                        }
+                    }    
+                }, 500); 
+            });
+
+            $('.header__search .js-search-result .search-result__products').slick({
+                infinite: false,
+                slidesToShow: 4,
+                slidesToScroll: 4,
+                dots: true,
+                arrow: false,
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                        }
+                    }
+                ]
+            });
         },
         onRemoveResult: function(e) {
             $body.removeClass('header-dropdown-open search-result-open');
@@ -33,7 +69,10 @@ $(document).ready(function () {
         if ($body.hasClass('search-result-open') && $target != $inputForm && !$target.closest($inputForm).length) {
             $body.removeClass('header-dropdown-open search-result-open');
             search.removeResults();
+            $('.header__search').removeClass('search-loading');
         }
+
+        $('.header__search').removeClass('search-loading');
     })
 
 });
@@ -108,6 +147,7 @@ var SearchInput = function({
                     appendTo: self.appendTo,
                     s: str
                 });
+                $('.header__search').addClass('search-loading');
             },
             success: function(data) {
                 resetResultIfExits();
@@ -129,6 +169,10 @@ var SearchInput = function({
                     s: str,
                     data: data
                 });
+
+                setTimeout(function(){
+                    $('.header__search').removeClass('search-loading');   
+                }, 1000); 
             }
           })
           .fail(function(err) {

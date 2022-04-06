@@ -81,6 +81,10 @@
         </div>
       </div>
     </div>
+
+    <div class="header__search">
+      {widget name='is_searchbar'}
+    </div>
   </div>
 </div>
 {/block}
