@@ -28,7 +28,7 @@
 
             {if Configuration::get('PH_BLOG_DISPLAY_DESCRIPTION')}
                 <p itemprop="description">
-                    {$post.short_content|strip_tags:'UTF-8'|truncate:120:""}
+                    {$post.short_content|strip_tags:'UTF-8'|truncate:120:"....."}
                 </p>
             {/if}
 
