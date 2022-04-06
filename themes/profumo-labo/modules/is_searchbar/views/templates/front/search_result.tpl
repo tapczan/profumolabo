@@ -6,11 +6,7 @@
   
   {if $countProductsTotal}
     <h2 class="header__search-title">
-      {if $countProductsTotal == 1}
-        {l s='FOUND PRODUCTS %countTotal% pc.' d='Shop.Theme.Catalog' sprintf=['%countTotal%' => $countProductsTotal]}
-      {else}
-        {l s='FOUND PRODUCTS %countTotal% pcs.' d='Shop.Theme.Catalog' sprintf=['%countTotal%' => $countProductsTotal]}
-      {/if}
+      {l s='FOUND PRODUCTS' d='Shop.Theme.Global'}: <span class="header__search-counter">{$countProductsTotal}</span> {if $countProductsTotal == 1}{l s='pc' d='Shop.Theme.Global'}{else}{l s='pcs' d='Shop.Theme.Global'}{/if}.
     </h2>
   {/if}
 
