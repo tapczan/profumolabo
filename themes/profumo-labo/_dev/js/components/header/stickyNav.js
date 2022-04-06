@@ -22,17 +22,3 @@ $(window).on('scroll', function() {
 });
 
 stickyNav();
-
-// Search
-
-$('.header__inner .js-search-input').keyup(function () {
-    const value = $(this).val();
-
-    $(".header__nav .js-search-input").val(value);
-});
-
-$('.header__nav .js-search-input').keyup(function () {
-    const value = $(this).val();
-
-    $(".header__inner .js-search-input").val(value);
-});
