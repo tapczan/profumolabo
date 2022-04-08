@@ -27,4 +27,4 @@
     {l s='Notify me when available' d='Modules.Emailalerts.Shop'}
 </a>
 
-{*include file="module:ps_emailalerts/views/templates/hook/product-modal.tpl"*}
+{include file="module:ps_emailalerts/views/templates/hook/product-modal.tpl"}

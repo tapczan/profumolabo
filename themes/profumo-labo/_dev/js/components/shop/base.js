@@ -22,3 +22,14 @@ const checkoutPage = $('#thecheckout-cart-summary');
 if(checkoutPage){
     checkoutPage.attr('data-header', checkoutCartGridHeader);
 }
+
+/**
+ * Single page on click alert trigger for email
+ */
+$('#email-alert-modal').on('shown.bs.modal', function (e) {
+    $('body').addClass('modal-body-single-product');
+});
+
+$('#email-alert-modal').on('hidden.bs.modal', function (e) {
+    $('body').removeClass('modal-body-single-product');
+});
