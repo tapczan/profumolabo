@@ -72,3 +72,7 @@
     </div>
   </div>
 </div>
+
+{if Module::isEnabled('ps_emailalerts')}
+{include file="module:ps_emailalerts/views/templates/hook/product-modal.tpl"}
+{/if}

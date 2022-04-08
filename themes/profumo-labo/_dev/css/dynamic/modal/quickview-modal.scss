@@ -23,6 +23,11 @@
   }
 }
 .quickview {
+  .js-product-availability .badge-danger{
+    border-radius: 0;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
   .modal-header {
     border-bottom: 0;
     justify-content: center;
