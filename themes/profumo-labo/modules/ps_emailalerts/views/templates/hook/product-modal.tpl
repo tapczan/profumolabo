@@ -1,4 +1,4 @@
-{extends file='components/modal.tpl'}
+{extends file='components/modal-alert-single-product.tpl'}
 
 {block name='modal_extra_attribues'}id="email-alert-modal"{/block}
 
