@@ -74,3 +74,14 @@
   </noscript>
   <!-- End Facebook Pixel Code -->
 {/literal}
+
+{literal}
+  <script>
+    var chatbox = document.getElementById("fb-customer-chat");
+
+    if(chatbox){
+      chatbox.setAttribute("page_id", "110559737836074");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    }
+  </script>
+{/literal}
