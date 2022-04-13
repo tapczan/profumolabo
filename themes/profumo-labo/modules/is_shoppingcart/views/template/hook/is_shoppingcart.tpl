@@ -68,7 +68,7 @@
            <div class="cart-summary-line cart-total">
              <ul class="cart-summary__list">
               {foreach from=$cart.subtotals item="subtotal"}
-                {if $subtotal.value}
+                {if isset($subtotal.value)}
                   <li class="cart-summary__item">
                     <span class="cart-summary__label">
                       {if $subtotal.label == 'Subtotal' || $subtotal.label == 'Produkty'}

@@ -16,7 +16,7 @@
                             <div class="js-product-add-to-cart blockfeaturedproduct__wishlist">
                                 <span
                                 class="wishlist-button"
-                                data-url="{$url}"
+                                data-url="{$url|default:FALSE}"
                                 data-product-id="{$product.id}"
                                 data-product-attribute-id="{$product.id_product_attribute}"
                                 data-is-logged="{$customer.is_logged}"
@@ -94,7 +94,7 @@
                             
 
                             {block name='product_pack'}
-                                {if $packItems}
+                                {if isset($packItems)}
                                 <section class="product-pack">
                                     <p class="h4">{l s='This pack contains' d='Shop.Theme.Catalog'}</p>
                                     <div class="card-group-vertical mb-4">

@@ -1,6 +1,6 @@
 {block name='product_name'}
   {$headingTag = 'h2'}
-  {if $page.page_name == 'index'}
+  {if isset($page.page_name) && $page.page_name == 'index'}
     {$headingTag = 'h3'}
   {/if}
   <{$headingTag} class="h5 product-miniature__title mb-2">
