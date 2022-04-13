@@ -19,8 +19,8 @@
 <div
   class="wishlist-button"
   data-url="{$url}"
-  data-product-id="{$product.id|default:FALSE}"
-  data-product-attribute-id="{$product.id_product_attribute|default:FALSE}"
+  data-product-id="{isset($product.id)}"
+  data-product-attribute-id="{isset($product.id_product_attribute)}"
   data-is-logged="{$customer.is_logged}"
   data-list-id="1"
   data-checked="true"
