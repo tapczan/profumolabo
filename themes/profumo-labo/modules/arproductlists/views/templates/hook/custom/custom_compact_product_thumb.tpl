@@ -3,7 +3,7 @@
     <div class="js-product-add-to-cart blockfeaturedproduct__wishlist">
       <span
         class="wishlist-button"
-        data-url="{$url}"
+        data-url="{$url|default:FALSE}"
         data-product-id="{$product.id}"
         data-product-attribute-id="{$product.id_product_attribute}"
         data-is-logged="{$customer.is_logged}"
