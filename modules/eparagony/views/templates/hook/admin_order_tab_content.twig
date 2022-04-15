@@ -1,0 +1,87 @@
+{% trans_default_domain 'Modules.Eparagony.Eparagony' %}
+
+<div class="tab-pane fade show" id="eparagony-admin-order-tab-content" role="tabpanel">
+    <div class="row">
+        <div class="col-md-6">
+            <dl>
+                <dt>{{'Status:'|trans}}</dt>
+                <dd>
+                    {% if stateRaw == 'blank' %}
+                        {{ 'Processing of e-paragon not active.'|trans }}
+                    {% elseif stateRaw == 'queued'%}
+                        {{ 'Preparing do processing of e-paragon.'|trans }}
+                    {% elseif stateRaw == 'downloading'%}
+                        {{ 'Preparing do processing of e-paragon.'|trans }}
+                    {% elseif stateRaw == 'compiled'%}
+                        {{ 'The e-paragon is waiting to be issued.'|trans }}
+                    {% elseif stateRaw == 'in_progress'%}
+                        {{ 'The e-paragon is beeing issued.'|trans }}
+                    {% elseif stateRaw == 'ready'%}
+                        {{ 'The e-paragon has been issued.'|trans }}
+                        {{ '(waiting for repository confirmation)'|trans }}
+                    {% elseif stateRaw == 'confirmed'%}
+                        {{ 'The e-paragon has been issued.'|trans }}
+                        {{ '(confirmed)'|trans }}
+                    {% elseif stateRaw == 'error'%}
+                        {{ 'An error in issuing e-paragon.'|trans }}
+                    {% elseif stateRaw == 'unknown'%}
+                        {{ 'An error in issuing e-paragon.'|trans }}
+                        {{ '(unknown status)'|trans }}
+                    {% else %}
+                        ({{ stateRaw }})
+                    {% endif %}
+                </dd>
+                <dt>{{'Document type:'|trans}}</dt>
+                <dd>
+                    {% if documentType == 'receipt' %}
+                        {{ 'e-receipt'|trans }}
+                    {% else %}
+                        {{ 'unknown'|trans }}
+                    {% endif %}
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            {% if sendEmail %}
+                <a id="eparagony-force-email" class="btn btn-outline-warning" href="{{ sendEmail }}">
+                    {{ 'Retry e-mail sending'|trans }}
+                </a>
+            {% endif %}
+            {% if forceDownload %}
+                <a class="btn btn-outline-danger js-eparagony-force-download" href="{{ forceDownload }}">
+                    {{ 'Prepare e-paragon'|trans }}
+                </a>
+            {% endif %}
+            {% if url %}
+                <a class="btn btn-outline-primary" href="{{ url }}">
+                    {{ 'Display e-paragon'|trans }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th colspan="4">{{'Additional informations:'|trans}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ 'Shop ID:'|trans }} {{ documentId }}</td>
+                    <td>{{ 'Repository ID:'|trans }} {{ sparkToken }}</td>
+                    <td>{{ 'Last update:'|trans }} {{ updated }}</td>
+                    <td>{{ 'Retry count:'|trans }} {{ retryCount }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12 text-left">
+            {% if debugPrintServer %}
+                <form action="{{ debugPrintServer|raw }}" method="post">
+                    <input type="hidden" name="documentId" value="{{ documentId|raw }}">
+                    <button class="btn btn-outline-secondary">{{ 'Debug print server'|trans }}</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>

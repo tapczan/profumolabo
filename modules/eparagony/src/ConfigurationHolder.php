@@ -1,0 +1,102 @@
+<?php
+/**
+ * @author Check AUTHORS file.
+ * @copyright TBD
+ * @license TBD
+ */
+
+namespace ASoftwareHouse\EParagony;
+
+class ConfigurationHolder
+{
+    const STORE_NIP = 'store_nip';
+    const CLIENT_ID = 'client_id';
+    const CLIENT_SECRET = 'client_secret';
+    const WEBHOOK_SECRET = 'webhook_secret';
+    const TEST_MODE = 'test_mode';
+    const LOG_SPARK_REQUESTS = 'log_spark_requests';
+    const RETURN_POLICY_SPARK = 'return_policy_spark';
+
+    const TAX_A = 'tax_a';
+    const TAX_B = 'tax_b';
+    const TAX_C = 'tax_c';
+    const TAX_D = 'tax_d';
+    const TAX_E = 'tax_e';
+    const TAX_F = 'tax_f';
+    const TAX_G = 'tax_g';
+
+    const PRINTER_TYPE = 'printer_type';
+    const PRINTER_USERNAME = 'printer_username';
+    const PRINTER_PASSWORD = 'printer_password';
+
+    const ASK_FOR_PHONE = 'ask_for_phone';
+
+    public $store_nip;
+    public $client_id;
+    public $client_secret;
+    public $webhook_secret;
+    public $test_mode;
+    public $log_spark_requests;
+    public $return_policy_spark;
+
+    public $tax_a;
+    public $tax_b;
+    public $tax_c;
+    public $tax_d;
+    public $tax_e;
+    public $tax_f;
+    public $tax_g;
+
+    public $printer_type;
+    public $printer_username;
+    public $printer_password;
+
+    public $ask_for_phone;
+
+    public static function fromJson(array $data) : self
+    {
+        $ret = new self();
+        $ret->store_nip = $data[self::STORE_NIP] ?? '';
+        $ret->client_id = $data[self::CLIENT_ID] ?? '';
+        $ret->client_secret = $data[self::CLIENT_SECRET] ?? '';
+        $ret->webhook_secret = $data[self::WEBHOOK_SECRET] ?? '';
+        $ret->test_mode = (bool)($data[self::TEST_MODE] ?? false);
+        $ret->log_spark_requests = (bool)($data[self::LOG_SPARK_REQUESTS] ?? false);
+        $ret->return_policy_spark = $data[self::RETURN_POLICY_SPARK] ?? '';
+
+        $ret->tax_a = $data[self::TAX_A] ?? 0;
+        $ret->tax_b = $data[self::TAX_B] ?? 0;
+        $ret->tax_c = $data[self::TAX_C] ?? 0;
+        $ret->tax_d = $data[self::TAX_D] ?? 0;
+        $ret->tax_e = $data[self::TAX_E] ?? 0;
+        $ret->tax_f = $data[self::TAX_F] ?? 0;
+        $ret->tax_g = $data[self::TAX_G] ?? 0;
+
+        $ret->printer_type = $data[self::PRINTER_TYPE] ?? '';
+        $ret->printer_username = $data[self::PRINTER_USERNAME] ?? '';
+        $ret->printer_password = $data[self::PRINTER_PASSWORD] ?? '';
+
+        $ret->ask_for_phone = (bool)($data[self::ASK_FOR_PHONE] ?? true);
+
+        return $ret;
+    }
+
+    public function isValid() : bool
+    {
+        return $this->store_nip
+            && $this->client_id
+            && $this->client_secret
+            && $this->webhook_secret
+            && strlen($this->tax_a)
+            && strlen($this->tax_b)
+            && strlen($this->tax_c)
+            && strlen($this->tax_d)
+            && strlen($this->tax_e)
+            && strlen($this->tax_f)
+            && strlen($this->tax_g)
+            && $this->printer_type
+            && $this->printer_username
+            && $this->printer_password
+        ;
+    }
+}

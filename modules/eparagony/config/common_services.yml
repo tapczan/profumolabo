@@ -1,0 +1,97 @@
+services:
+  _defaults:
+    public: true
+
+  ASoftwareHouse\EParagony\AddressChecker:
+    class: ASoftwareHouse\EParagony\AddressChecker
+
+  ASoftwareHouse\EParagony\CartPreferenceManager:
+    class: ASoftwareHouse\EParagony\CartPreferenceManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  ASoftwareHouse\EParagony\ConfigHelper:
+    class: ASoftwareHouse\EParagony\ConfigHelper
+
+  ASoftwareHouse\EParagony\Controller\AdminMailerController:
+    class: ASoftwareHouse\EParagony\Controller\AdminMailerController
+    arguments:
+      - '@ASoftwareHouse\EParagony\Mailer'
+      - '@ASoftwareHouse\EParagony\DocumentsManager'
+
+  ASoftwareHouse\EParagony\Controller\AdminSpecialController:
+    class: ASoftwareHouse\EParagony\Controller\AdminSpecialController
+    arguments:
+      - '@ASoftwareHouse\EParagony\DocumentsManager'
+
+  ASoftwareHouse\EParagony\Controller\AdminTwigController:
+    class: ASoftwareHouse\EParagony\Controller\AdminTwigController
+    arguments:
+      - '@ASoftwareHouse\EParagony\DocumentsManager'
+      - '@ASoftwareHouse\EParagony\PrinterLogManager'
+
+  ASoftwareHouse\EParagony\DocumentsManager:
+    class: ASoftwareHouse\EParagony\DocumentsManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ASoftwareHouse\EParagony\ReceiptQueueManager'
+      - '@ASoftwareHouse\EParagony\Mailer'
+      - '@ASoftwareHouse\EParagony\Spark\ApiSparkFactory'
+      - '@ASoftwareHouse\EParagony\OrderChecker'
+
+  ASoftwareHouse\EParagony\Mailer:
+    class: ASoftwareHouse\EParagony\Mailer
+
+  ASoftwareHouse\EParagony\MagicBox:
+    class: ASoftwareHouse\EParagony\MagicBox
+
+  ASoftwareHouse\EParagony\OrderChecker:
+    class: ASoftwareHouse\EParagony\OrderChecker
+
+  ASoftwareHouse\EParagony\PrinterLogManager:
+    class: ASoftwareHouse\EParagony\PrinterLogManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  ASoftwareHouse\EParagony\PrintServer\PrintServerAction:
+    class: ASoftwareHouse\EParagony\PrintServer\PrintServerAction
+    arguments:
+      - '@ASoftwareHouse\EParagony\PrintServer\PrintServerLogin'
+      - '@ASoftwareHouse\EParagony\DocumentsManager'
+      - '@ASoftwareHouse\EParagony\PrinterLogManager'
+
+  ASoftwareHouse\EParagony\PrintServer\PrintServerLogin:
+    class: ASoftwareHouse\EParagony\PrintServer\PrintServerLogin
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@ASoftwareHouse\EParagony\ConfigHelper'
+
+  ASoftwareHouse\EParagony\ReceiptQueueManager:
+    class: ASoftwareHouse\EParagony\ReceiptQueueManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  ASoftwareHouse\EParagony\Spark\ApiSparkFactory:
+    class: ASoftwareHouse\EParagony\Spark\ApiSparkFactory
+    arguments:
+      - '@ASoftwareHouse\EParagony\ConfigHelper'
+      - '@ASoftwareHouse\EParagony\MagicBox'
+      - '%kernel.cache_dir%'
+
+  ASoftwareHouse\EParagony\Spark\WebHookSpark:
+    class: ASoftwareHouse\EParagony\Spark\WebHookSpark
+    arguments:
+      - '@ASoftwareHouse\EParagony\DocumentsManager'
+      - '@ASoftwareHouse\EParagony\ConfigHelper'
+      - '%kernel.cache_dir%'
+
+  ASoftwareHouse\EParagony\SupplementaryFront\FrontAction:
+    class: ASoftwareHouse\EParagony\SupplementaryFront\FrontAction
+    arguments:
+      - '@ASoftwareHouse\EParagony\CartPreferenceManager'
+
+  ASoftwareHouse\EParagony\SupplementaryFront\FrontDisplaySupport:
+    class: ASoftwareHouse\EParagony\SupplementaryFront\FrontDisplaySupport
+    arguments:
+      - '@ASoftwareHouse\EParagony\AddressChecker'
+      - '@ASoftwareHouse\EParagony\ConfigHelper'

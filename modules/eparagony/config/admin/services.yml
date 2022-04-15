@@ -1,0 +1,10 @@
+imports:
+  - { resource: ../common_services.yml }
+
+services:
+  ASoftwareHouse\EParagony\SupplementaryAdmin\AdminOrderDisplay:
+    class: ASoftwareHouse\EParagony\SupplementaryAdmin\AdminOrderDisplay
+    arguments:
+      - '@twig'
+      - '@router'
+      - '@ASoftwareHouse\EParagony\DocumentsManager'

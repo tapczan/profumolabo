@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="adminadmin" source-language="pl-PL" target-language="pl-PL" datatype="plaintext">
+    <body>
+      <trans-unit id="a79b63b1af101cfb96bb273618f6a597">
+        <source>Order Receipt</source>
+        <target>Paragon do zamówienia</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e9b73c2166ac5153ecfc79079acc5935">
+        <source>Nothing done.</source>
+        <target>Brak akcji.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="d5fbaf06d2bdc235d0062069a9f1ca60">
+        <source>Mail send.</source>
+        <target>Wiadomość wysłana.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="cc214d330b768b93f22db989633682bc">
+        <source>E Paragony</source>
+        <target>E Paragony</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="5945177c610226c07e93fc21e720cd2b">
+        <source>Electronic receipt subsystem.</source>
+        <target>Podsystem elektronicznych paragonów.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="28898300e253990aa3942a11b2d9925c">
+        <source>Are you sure you want to uninstall? It is not supported.</source>
+        <target>Czy na pewno chcesz odinstalować? Ta operacja nie jest wspierana.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="672934e96ffa7426dcf077d0c5f13dc1">
+        <source>Settings for Spark</source>
+        <target>Ustawienia dla Spark</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="389809ef9d747be16907b20663368e13">
+        <source>Store NIP</source>
+        <target>NIP sklepu</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="d7360e2ad15a02b4f4711d389101e692">
+        <source>Temporary tax rates (23%, 8%, 5%, 0%)</source>
+        <target>Tymczasowe stawki podatków (23%, 8%, 5%, 0%)</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="76525f0f34b48475e5ca33f71d296f3b">
+        <source>Client ID</source>
+        <target>Client ID</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="1b4739e491387ef5d8a546854308e5fe">
+        <source>Client secret</source>
+        <target>Client secret</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="590354c63797c4b92aa95d8c03a871ee">
+        <source>Address for web hook</source>
+        <target>Adres dla web hooka</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="fa538cc4be3ae6dc7deb0eebe354db1e">
+        <source>Webhook secret</source>
+        <target>Webhook secret</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="4245499695408b974322be6f01b0d17a">
+        <source>Test mode</source>
+        <target>Tryb testowy</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="5b5aa01b349b9d931accddc22dbe4355">
+        <source>Log Spark requests</source>
+        <target>Loguj zapytania Spark</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="2be39e80f18490a1446b7357fc836793">
+        <source>Return policy URL</source>
+        <target>URL regulaminu zwrotów</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="22809316767079a5a7584102d32fb4bd">
+        <source>Settings for print server</source>
+        <target>Ustawienia dla serwera wydruku</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b0ddb6f2a673758c9875c81a36bc40b7">
+        <source>Address for print server</source>
+        <target>Adres dla serwera wydruku</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="708307f74c1632e23b8ceba2a887755b">
+        <source>Printer type</source>
+        <target>Typ drukarki</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f6039d44b29456b20f8f373155ae4973">
+        <source>Username</source>
+        <target>Nazwa użytkownika</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="dc647eb65e6711e155375218212b3964">
+        <source>Password</source>
+        <target>Hasło</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="cb3c93351f1f20809fdd6e938a4319c7">
+        <source>Other settings</source>
+        <target>Inne ustawienia</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="031f1ba4df006ddbbe349df45474001e">
+        <source>Ask for phone if not provided but receipt is expected.</source>
+        <target>Zapytaj o numer telefonu, jeśli nie jest podany, ale jest oczekiwany.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c9cc8cce247e49bae79f15173ce97354">
+        <source>Save</source>
+        <target>Zapisz</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="406cd119667f86dc23dda39ff04d6e2d">
+        <source>Invalid config.</source>
+        <target>Nieprawidłowa konfiguracja.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="3332f1574a25f7e33aef101f3f0fccd2">
+        <source>Config updated.</source>
+        <target>Konfiguracja zmieniona.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="43c82e3ff88d2dbb422b5115d5bdbbce">
+        <source>Please provide phone number.</source>
+        <target>Prosimy podać numer telefonu.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="ca5af82c2008121254aa2a3324e484ab">
+        <source>Provided phone is invalid for Poland.</source>
+        <target>Podany numer telefonu nie jest poprawny w polsce.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="ba97ab8e800268f133e8ec6db68c1db3">
+        <source>There is problem with printing this receipt.</source>
+        <target>Wystąpił problem z drukowaniem tego paragonu.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="2b4744d9dcaae2f6349d5c8f4c26fdc1">
+        <source>The receipt is in queued to be printed.</source>
+        <target>Paragon czeka w kolejce do wydrukowania.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f0feea35d01a09d303a9d375b481f81d">
+        <source>The receipt is ready.</source>
+        <target>Paragon jest gotowy.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="3aea427a69e8906b95790872a9ab07cd">
+        <source>Preview:</source>
+        <target>Podgląd:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="edcf27549b37757a40bc3517a4576c6e">
+        <source>Force send e-mail</source>
+        <target>Wymuś wysłanie e-mail</target>
+        <note>Line: </note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,13 @@
+Hi {firstname}
+
+Thank You for shopping in {shop_name}. The link to Your e-receipt for order {order_name} is below.
+{receipt_url}
+The electronic fiscal receipt is not only convenient but ecological. Thanks to e-receipt we can omit printing on paper of proofs of purchase. Together we care about our planet.
+
+Until the sale system emit fiscal e-receipt the document will be non fiscal.
+
+———
+
+Your e-receipt is hold in the Spark document repository, our processing partner. The document is emitted directly from {shop_name} fiscal apparatus. It guarantees authenticity and immutability.
+
+Is it easier in application? You can find all Your e-recepts in Spark mobile application. Meet us on: spark.pl
