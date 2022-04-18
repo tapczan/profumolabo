@@ -276,4 +276,19 @@ body.page-order-detail,
             }
         }
     }
+
+    .oneall_social_login_block{
+        margin-top: 20px;
+
+        &#oneall_social_login_block_customer_account_form{
+            margin-top: 0;
+        }
+
+        .title_block{
+            @include font-with-line-height($font-size-sm, 16px);
+
+            font-family: $font-jost;
+            font-weight: 300;
+        }
+    }
 }
