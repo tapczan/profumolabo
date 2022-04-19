@@ -1,0 +1,55 @@
+#module-oneallsociallogin-register{
+  .page-content{
+    padding: 50px 15px;
+    max-width: 1120px;
+    margin: auto;
+  }
+
+  .page-heading{
+    @include header-title();
+
+    text-align: center;
+    
+    & + p{
+      text-align: center;
+    }
+  }
+
+  #oneallsociallogin{
+    .form-control{
+      font-family: $font-jost;
+
+      border-color: #212529;
+      outline: none;
+      box-shadow: none;
+    }
+
+    hr{
+      display: none;
+    }
+
+    .submit button{
+      font-family: $font-jost;
+      font-size: $font-size-xs;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $white;
+      background-color: $black;
+      border-radius: 0;
+      border: 0;
+      width: 300px;
+      margin: 30px auto 10px;
+      font-weight: 300;
+      display: block;
+    }
+
+    #oasl_newsletter{
+      accent-color: #000;
+      border-radius: 12px;
+      width: 15px;
+      height: 15px;
+      vertical-align: -2px;
+      margin-right: 5px;
+    }
+  }
+}
