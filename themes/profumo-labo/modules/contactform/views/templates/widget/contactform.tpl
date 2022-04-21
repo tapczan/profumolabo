@@ -50,7 +50,7 @@
               class="form-control"
               name="fname"
               type="text"
-              value="{$contact.fname}"
+              value="{$contact.fname|default:FALSE}"
               required
             >
           </div>
@@ -60,7 +60,7 @@
               class="form-control"
               name="lname"
               type="text"
-              value="{$contact.lname}"
+              value="{$contact.lname|default:FALSE}"
               required
             >
           </div>
@@ -71,7 +71,7 @@
               class="form-control"
               name="from"
               type="email"
-              value="{$contact.email}"
+              value="{$contact.email|default:FALSE}"
               required
             >
           </div>
@@ -82,7 +82,7 @@
               class="form-control"
               name="phonenumber"
               type="tel"
-              value="{$contact.phonenumber}"
+              value="{$contact.phonenumber|default:FALSE}"
               required
             >
           </div>
