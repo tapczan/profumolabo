@@ -49,14 +49,14 @@
 
 <div class="footer-card">
   <div class="footer-card__header" id="headingOne">
-    <h2 class="footer-card__title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <h2 class="footer-card__title collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <a href="{$link->getPageLink('my-account', true, $language.id)}">
           {l s='Your account' d='Shop.Theme.Customeraccount'}
         </a>
         <i class="material-icons"></i>
     </h2>
   </div>
-  <div id="collapseOne" class="footer-card__content collapse show" aria-labelledby="headingOne" data-parent="#accordionFooter">
+  <div id="collapseOne" class="footer-card__content collapse" aria-labelledby="headingOne" data-parent="#accordionFooter">
     <div class="footer-card__body">
       <ul class="links-list">
 

@@ -23,3 +23,7 @@ $(window).on('load resize', function(){
 $('#accordionFooter').on('shown.bs.collapse', function (e) {
     dynamicSpaceAndWidth();
 });
+
+$('#accordionFooter').on('hidden.bs.collapse', function (e) {
+    dynamicSpaceAndWidth();
+});
