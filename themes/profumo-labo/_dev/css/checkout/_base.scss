@@ -328,6 +328,64 @@
                 border-style: none;
             }
         }
+
+        .carrier-extra-content.inpostshipping{
+            .inpost-shipping-container{
+                padding: 0;
+                background: transparent;
+                font-family: $font-jost !important;
+
+                .col-sm-6{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                    margin: 0;
+
+                    .js-inpost-shipping-customer-info-email,
+                    .js-inpost-shipping-customer-info-phone{
+                        font-weight: 500;
+                    }
+
+                    .inpost-shipping-customer-change{
+                        font-size: 10px;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .form-group{
+                    margin: 10px 0 !important;
+                    padding: 0 !important;
+
+                    .inpost-shipping-button,
+                    .js-inpost-shipping-customer-form-save-button{
+                        background: $black;
+                        border-radius: 0;
+                        border-style: none;
+                        color: $white !important;
+                        display: block;
+                        font-size: $font-size-xs;
+                        font-weight: 300;
+                        letter-spacing: 1px;
+                        line-height: 16px;
+                        margin: 0;
+                        text-transform: uppercase;
+                        width: 100%;
+                    }
+
+                    .js-inpost-shipping-customer-form-save-button{
+                        width: 200px;
+                        float: right;
+                    }
+                }
+
+                .form-control{
+                    border-color: $black !important;
+                    color: $black !important;
+                    border-radius: 5px;
+                    padding: 6px;
+                    font-size: 12px;
+                }
+            }
+        }
     }
 
     .cart-grid{
