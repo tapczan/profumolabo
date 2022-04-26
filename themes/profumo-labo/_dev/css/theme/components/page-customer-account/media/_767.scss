@@ -4,7 +4,6 @@
     #module-blockwishlist-lists {
         #main {
             .customer-links {
-                margin-bottom: 80px;
                 &__list {
                     display: block;
                     a{
@@ -90,6 +89,12 @@
 
     #view #wrapper .container {
         width: 100% !important;
+    }
+
+    .personal-information {
+        .wishlist-container .page-content.card.card-block{
+            box-shadow: none;
+        }
     }
 }
 

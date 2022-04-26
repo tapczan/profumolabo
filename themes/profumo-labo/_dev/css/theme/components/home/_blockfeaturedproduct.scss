@@ -599,3 +599,29 @@
         }
     }
 }
+
+@media(max-width: 767px){
+    .blockfeaturedproduct__info{
+        .product-quantity-label,
+        .product-add-to-cart .input-group{
+            display: none;
+        }
+    }
+
+    .js-blockfeaturedproduct{
+        .slick-next,
+        .slick-prev{
+            display: none;
+        }
+    }
+}
+
+@media(max-width: 480px){
+    .blockfeaturedproduct__img .product-img__asset{
+        max-height: 180px;
+    }
+
+    .page-home #arpl-group-4 .arpl-header h2{
+        margin-bottom: 30px !important;
+    }
+}
