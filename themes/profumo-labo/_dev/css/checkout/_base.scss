@@ -641,6 +641,7 @@
 
         .classic-login{
             margin: 0;
+            width: 100%;
 
             .log-in{
                 @include font-with-line-height($font-size-xs, 16px);
@@ -648,7 +649,7 @@
                 font-weight: 300;
                 background: $black;
                 display: block;
-                margin: 15px auto 50px;
+                margin: 25px auto;
                 border-radius: 0;
                 border-style: none;
                 color: $white !important;
@@ -656,12 +657,34 @@
                 letter-spacing: 1px;
                 max-width: 320px;
                 width: 100%;
+                max-width: 180px;
         
                 &:focus,
                 &:hover{
                     box-shadow: none;
                     outline: none;
                 }
+            }
+        }
+
+        .social-login{
+            padding: 15px 0 0;
+            margin: 0;
+            border-left-style: none;
+            border-top: 1px solid #ddd;
+
+            &:before{
+                content: attr(data-trans-or);
+                position: absolute;
+                font-size: 15px;
+                background: #fff;
+                color: #ddd;
+                width: 40px;
+                top: -12px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                display: block !important;
             }
         }
 
