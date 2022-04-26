@@ -601,8 +601,15 @@
 
     .blockfeaturedproduct__info{
         .product-quantity-label,
-        .product-add-to-cart .input-group{
+        .product-add-to-cart .input-group,
+        .product-sku{
             display: none;
+        }
+
+        .product-add-to-cart .add-to-cart{
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 

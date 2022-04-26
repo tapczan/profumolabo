@@ -199,16 +199,6 @@
         &-block{
             padding: 30px 0;
 
-            &__title{
-                font-size: $font-size-xl !important;
-                line-height: 26px !important;
-                
-                h1{
-                    font-size: $font-size-xl !important;
-                    line-height: 26px !important;
-                }
-            }
-
             &__content{
                 @include font-with-line-height($font-size-sm, 20px);
 
