@@ -250,7 +250,10 @@ body.page-order-detail,
             background-color: #fff !important;
         }
         .personal-information {
-        
+            .page-content--history #notifications{
+                margin-bottom: 10px;
+            }
+            
             .customer-links {
                 &__list,
                 &__footer {
