@@ -17,6 +17,15 @@ $('.js-blockfeaturedproduct').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
+    responsive: [
+        {
+        breakpoint: 992,
+        settings: {
+            slidesToShow: 1,
+            arrows: false,
+        }
+        }
+    ]
 });
 
 /**

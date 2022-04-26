@@ -2,6 +2,14 @@
     &-container--onas{
         font-family: $font-jost;
         color: $black;
+
+        .cms-block__img--desktop{
+            display: block;
+        }
+
+        .cms-block__img--mobile{
+            display: none;
+        }
     }
 
     &-block{
@@ -165,7 +173,6 @@
             }
 
             .cms-block__img--logo{
-                max-width: 150px !important;
                 margin-top: 30px;
                 margin-bottom: 30px;
             }
@@ -173,6 +180,19 @@
             .cms-block__img--full{
                 min-height: 250px;
                 object-fit: cover;
+            }
+
+            .cms-block__img--desktop{
+                display: none;
+            }
+
+            .cms-block__img--mobile{
+                display: block;
+                margin: 30px auto;
+            }
+
+            .cms-block__content--mtop{
+                padding-top: 0;
             }
         }
 
