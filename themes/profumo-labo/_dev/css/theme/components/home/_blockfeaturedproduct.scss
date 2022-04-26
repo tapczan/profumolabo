@@ -598,9 +598,7 @@
             }
         }
     }
-}
 
-@media(max-width: 767px){
     .blockfeaturedproduct__info{
         .product-quantity-label,
         .product-add-to-cart .input-group{
@@ -608,11 +606,8 @@
         }
     }
 
-    .js-blockfeaturedproduct{
-        .slick-next,
-        .slick-prev{
-            display: none;
-        }
+    .blockfeaturedproduct__img .product-img__asset{
+        max-height: 250px;
     }
 }
 
