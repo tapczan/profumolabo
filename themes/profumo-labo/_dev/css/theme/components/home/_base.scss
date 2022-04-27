@@ -372,13 +372,6 @@
             }
         }
 
-        #arpl-group-4,
-        #arpl-group-6{
-            .arpl-header h2{
-                @include font-with-line-height($font-size-product-xl, 30px);
-            }
-        }
-
         #arpl-group-1{
             &.arpl-group.arpl-non-tabbed-group{
                 padding: 0 0 50px;
@@ -389,10 +382,6 @@
             &.arpl-group.arpl-non-tabbed-group{
                 padding: 50px 0;
                 margin: 0;
-
-                .arpl-title{
-                    @include font-with-line-height($font-size-product-xl, 30px);
-                }
             }
         }
     }

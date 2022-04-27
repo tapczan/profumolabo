@@ -63,7 +63,7 @@
 
     .block-title,
     p {
-        font-size: $font-size-xs;
+        font-size: $font-size-sm;
     }
 
     p {
@@ -76,7 +76,7 @@
         padding: 0 0 50px !important;
 
         &__title{
-            @include font-with-line-height($font-size-product-xl, 30px);
+            @include font-with-line-height($font-size-xxl, 39px);
         }
     }
 }

@@ -99,10 +99,6 @@
         &__inner{
             padding: 50px 0;
         }
-
-        &__title{
-            @include font-with-line-height($font-size-product-xl, 30px);
-        }
     }
 }
 
