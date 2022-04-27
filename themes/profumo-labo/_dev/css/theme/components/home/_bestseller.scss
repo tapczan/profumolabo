@@ -178,10 +178,6 @@
         .arpl-group-tabbed{
             padding: 50px 0;
 
-            .arpl-title{
-                @include font-with-line-height($font-size-product-xl, 30px);
-            }
-
             .arpl-tab-header{
                 display: none;
             }
@@ -192,6 +188,7 @@
         
             .nav-tabs{
                 display: block;
+                font-size: 0;
         
                 .nav-item{
                     display: inline-block;
@@ -230,17 +227,30 @@
             }
 
             .nav-tabs{
+                text-align: center;
+
                 .nav-item{
                     width: 49%;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    text-align: center;
+                    width: 95px;
+            
+                    &:last-child{
+                        text-align: center;
+                        width: 130px;
+                    }
     
                     &:after{
                         height: 13px;
+                        right: -1px;
                     }
                 }
             }
 
             .nav-link{
-                @include font-with-line-height($font-size-xs, 16px);
+                @include font-with-line-height($font-size-md, 16px);
+                padding: 5px !important;
     
                 &.active{
                     font-weight: 400;

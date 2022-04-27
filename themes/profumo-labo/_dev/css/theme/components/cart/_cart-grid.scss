@@ -192,6 +192,44 @@
     &-right{
         border-left: $border-bottom-mobile;
     }
+
+    .block-promo{
+        .h6{
+            font-weight: 500;
+            padding: 15px 0 0;
+        }
+
+        .promo-code{
+            .promo-input,
+            .input-group-append .btn{
+                height: auto;
+                font-size: $font-size-xs;
+                border-radius: 0;
+                padding: 5px 10px;
+                font-weight: normal;
+
+                &:focus{
+                    box-shadow: none;
+                    border-color: #ced4da;
+                }
+            }
+
+            .promo-input{
+                border-right-style: none;
+            }
+
+            .input-group-append .btn{
+                text-transform: uppercase;
+                background: $black;
+                border-color: $black;
+
+                &:focus{
+                    box-shadow: none;
+                    border-color: $black;
+                }
+            }
+        }
+    }
 }
 
 #empty-cart-notice{
@@ -229,6 +267,10 @@
         &-right{
             border-left-style: none;
         }
+    }
+
+    .createit_countdown_wrapper{
+        margin-bottom: 20px;
     }
 }
 

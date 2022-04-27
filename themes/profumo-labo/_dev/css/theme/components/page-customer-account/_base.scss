@@ -274,6 +274,11 @@ body.page-order-detail,
                             font-weight: 700;
                         }
                     }  
+
+                    #discounts-link,
+                    #emailsalerts{
+                        display: none;
+                    }
                 }
 
                 .customer-links__logout {

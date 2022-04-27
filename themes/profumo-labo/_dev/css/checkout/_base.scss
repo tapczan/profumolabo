@@ -16,6 +16,64 @@
             color: $black;
             display: block;
         }
+
+        .cart-voucher{
+            .collapse-button.promo-code-button:hover,
+            .collapse-button.promo-code-button:focus{
+                text-decoration: none;
+                color: $brown;
+            }
+
+            .promo-code{
+                margin: 10px 0 5px;
+
+                form{
+                    display: flex;
+                    width: 100%;
+
+                    .promo-input,
+                    .btn{
+                        height: auto;
+                        font-size: $font-size-sm;
+                        padding: 5px 10px;
+                        border-radius: 0;
+                        border-style: none;
+
+                        &:focus{
+                            box-shadow: none;
+                            border-color: #cdcdcd;
+                        }
+                    }
+                    
+                    .promo-input{
+                        width: 100%;
+                        border: 1px solid #cdcdcd;
+                        border-right-style: none;
+                        border-radius: 0;
+
+                        &:focus{
+                            border: 1px solid #cdcdcd;
+                            border-right-style: none;
+                            box-shadow: none;
+                            border-color: #cdcdcd;
+                            border-radius: 0;
+                            outline: none;
+                        }
+                    }
+
+                    .btn{
+                        width: 100px;
+                        border: 1px solid $black;
+                        background: $black;
+
+                        &:focus{
+                            box-shadow: none;
+                            border-color: $black;
+                        }
+                    }
+                }
+            }            
+        }
     }
     .checkout-block.main-block{
         .block-header{
@@ -354,6 +412,18 @@
                 .form-group{
                     margin: 10px 0 !important;
                     padding: 0 !important;
+
+                    &:before{
+                        font-size: $font-size-xs;
+                    }
+
+                    &:nth-child(1):before{
+                        content: 'Email:';
+                    }
+
+                    &:nth-child(2):before{
+                        content: 'Phone:';
+                    }
 
                     .inpost-shipping-button,
                     .js-inpost-shipping-customer-form-save-button{

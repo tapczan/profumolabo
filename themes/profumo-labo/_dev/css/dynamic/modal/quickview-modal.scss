@@ -364,3 +364,47 @@
     stroke-dashoffset: 0;
   }
 }
+
+@media(max-width: 767px){
+  .quickview{
+    .product-img__asset{
+      max-height: 200px;
+    }
+
+    &__right-panel--wrapper{
+      text-align: center;
+      margin: auto;
+    }
+
+    .modal-accordion{
+      text-align: left;
+    }
+
+    .product-quantity-label,
+    .product-add-to-cart .bootstrap-touchspin,
+    .product-sku{
+      display: none;
+    }
+
+    .price{
+      font-size: 16px;
+    }
+
+    .product-variants,
+    .variants-selection{
+      margin-bottom: 0 !important;
+    }
+
+    .modal-product-title{
+      padding: 0;
+    }
+
+    .product-reference{
+      margin: 5px 0;
+    }
+
+    .modal-header .close{
+      padding: 5px;
+    }
+  }
+}

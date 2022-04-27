@@ -6,19 +6,27 @@
 
     &__item{
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
         img{
             max-width: 140px !important;
             display: block;
-            margin: 50px auto 35px;
+            margin: 0 auto 35px;
         }
 
         p{
-            @include font-with-line-height($font-size-xl, 35px);
+            @include font-with-line-height($font-size-xm, 26px);
 
             font-weight: 300;
-            margin: 0 auto;
+            margin: 0 auto 10px;
             max-width: 645px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
         }
 
         iframe{
@@ -71,7 +79,7 @@
             }
     
             p{
-                @include font-with-line-height($font-size-md, 22px);
+                @include font-with-line-height($font-size-xm, 26px);
             }
     
             iframe{

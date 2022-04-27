@@ -307,7 +307,7 @@
 
             &-accordion{
                 color: $black;
-                font-size: $font-size-xs;
+                font-size: $font-size-sm;
                 padding-bottom: 10px;
 
                 &__item{
@@ -328,7 +328,7 @@
                     &:before{
                         content: '';
                         position: absolute;
-                        top: 12px;
+                        top: 14px;
                         left: 0;
                         margin: auto;
                         background: url(~/img/icons/plus-icon.svg);
@@ -583,10 +583,6 @@
         #arpl-group-4{
             .arpl-header{
                 min-height: auto;
-    
-                h2{
-                    @include font-with-line-height($font-size-xm, 24px);
-                }
             }
 
             .arpl-product-list-view{

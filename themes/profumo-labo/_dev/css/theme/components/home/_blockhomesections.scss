@@ -14,7 +14,7 @@
     }
 
     &__description{
-        @include font-with-line-height($font-size-xl, 35px);
+        @include font-with-line-height($font-size-xm, 26px);
 
         font-weight: 300;
         text-align: center;
@@ -39,7 +39,7 @@
         }
 
         &__item{
-            @include font-with-line-height($font-size-xs, 15px);
+            @include font-with-line-height($font-size-sm, 18px);
             font-weight: 300;
             text-align: center;
             color: $black;
@@ -146,7 +146,7 @@
         }
 
         .blockhomesections__content{
-            @include font-with-line-height($font-size-xl, 26px);
+            @include font-with-line-height($font-size-xm, 26px);
             background: url(~/img/profumo-labo-content.png) center center no-repeat;
             background-size: contain;
             font-weight: 300;
@@ -181,7 +181,7 @@
 @media (max-width: 1199px){
     .blockhomesections{
         &__description{
-            @include font-with-line-height($font-size-md, 24px);
+            @include font-with-line-height($font-size-xm, 26px);
         }
 
         &--premium{
@@ -197,7 +197,7 @@
             }
 
             .blockhomesections__content{
-                @include font-with-line-height($font-size-md, 22px);
+                @include font-with-line-height($font-size-xm, 26px);
             }
         }
     }
@@ -209,10 +209,6 @@
 
         &__description{
             margin-bottom: 50px;
-        }
-
-        &__title{
-            @include font-with-line-height($font-size-product-xl, 30px);
         }
 
         &--premium{
@@ -248,10 +244,6 @@
             }
         }
 
-        &__description{
-            @include font-with-line-height($font-size-sm, 20px);
-        }
-
         &--premium{
             border-bottom-style: none;
         }
@@ -268,14 +260,9 @@
                     text-align: center;
                     @include font-with-line-height($font-size-xm, 20px);
 
-                    .blockhomesections__title{
-                        text-align: center;
-                    }
-
+                    .blockhomesections__title,
                     .blockhomesections__content{
                         text-align: center;
-
-                        @include font-with-line-height($font-size-sm, 20px);
                     }
 
                     .blockhomesections__link{
