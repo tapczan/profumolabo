@@ -75,7 +75,7 @@
 
             img{
                 margin-top: 0;
-                max-width: 60px !important;
+                max-width: 120px !important;
             }
     
             p{
@@ -84,7 +84,7 @@
     
             iframe{
                 width: 100% !important;
-                height: 300px !important;
+                height: 392px !important;
             }
         }
     }
@@ -98,7 +98,27 @@
             }
 
             iframe{
-                height: auto !important;
+                height: 312px !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 599px){
+    .blockcontentvideo{
+        &__item{
+            iframe{
+                height: 210px !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 379px){
+    .blockcontentvideo{
+        &__item{
+            iframe{
+                height: 170px !important;
             }
         }
     }
