@@ -114,6 +114,7 @@ const silderSixOnDesktop = $(`#arpl-section-8-16-carousel,
                             #arpl-section-1-34-carousel, 
                             #arpl-section-1-17-carousel, 
                             #arpl-section-8-19-carousel, 
+                            #arpl-section-1-37-carousel, 
                             #arpl-section-1-57-carousel`);
 
 sliderOverrideList.slick({
@@ -207,6 +208,7 @@ $(window).on('load resize orientationchange', function() {
         seeMoreBestsellers('#arpl-section-13-27-carousel', '#arpl-section-13-27-carousel .slick-slide', 6, '#arpl-section-13-27')
         seeMoreBestsellers('#arpl-section-13-28-carousel', '#arpl-section-13-28-carousel .slick-slide', 5, '#arpl-section-13-28')
         seeMoreBestsellers('#arpl-section-13-25-carousel', '#arpl-section-13-25-carousel .slick-slide', 5, '#arpl-section-13-25')
+        seeMoreBestsellers('#arpl-section-1-37-carousel', '#arpl-section-1-37-carousel .slick-slide', 5, '#arpl-section-1-37')
         seeMoreBestsellers('#arpl-section-12-27-carousel', '#arpl-section-12-27-carousel .slick-slide', 5, '#arpl-section-12-27')
     }
 });
