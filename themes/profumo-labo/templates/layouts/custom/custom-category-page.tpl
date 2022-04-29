@@ -27,15 +27,16 @@
           </div>
         {/if}
         *}
-    
-        {if isset($subcategories) && $subcategories|@count > 0}
-            {block name='subcategory_list'}
-              <div class="product-category__listing">
-                {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
-              </div>
-            {/block}
-        {/if}
-
+  
+        {if $category.level_depth <= 2 }  
+          {if isset($subcategories) && $subcategories|@count > 0}
+              {block name='subcategory_list'}
+                <div class="product-category__listing">
+                  {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
+                </div>
+              {/block}
+          {/if}
+        {/if}  
       </div>
     </div>
 
