@@ -151,11 +151,18 @@
 
     &__description{
         @include font-with-line-height($font-size-md, 24px);
-
-        max-width: 1000px;
-        margin: 0 auto;
         text-align: center;
         font-weight: 300;
+
+        p {
+            margin: 50px auto;
+            max-width: 1000px;
+
+            &.fullWidthImg {
+                
+                max-width:none;
+            }
+        }
     }
 
     &__image{

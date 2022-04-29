@@ -8,25 +8,34 @@
 
         {if $category.description}
           <div class="product-category__description">
-            {$category.description|strip_tags:'UTF-8'}
+            {$category.description nofilter}
           </div>
         {/if}
-
+ 
+        {*
         {if $category.id == 123 || $category.id == 124 || $category.id == 125 }
-          {if $category.image}
             <div class="product-category__image">
               <img src="{$category.image.large.url}" alt="{$category.name}">
             </div>
-          {/if}
+        {/if}      
+        *}
+
+        {*
+        {if $category.level_depth > 2 }    
+          <div class="product-category__image">
+            <img src="{$category.image.large.url}" alt="{$category.name}" style="margin: 0 auto;">
+          </div>
+        {/if}
+        *}
+    
+        {if isset($subcategories) && $subcategories|@count > 0}
+            {block name='subcategory_list'}
+              <div class="product-category__listing">
+                {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
+              </div>
+            {/block}
         {/if}
 
-        {block name='subcategory_list'}
-          {if isset($subcategories) && $subcategories|@count > 0}
-            <div class="product-category__listing">
-              {include file='catalog/_partials/subcategories.tpl' subcategories=$subcategories}
-            </div>
-          {/if}
-        {/block}
       </div>
     </div>
 
