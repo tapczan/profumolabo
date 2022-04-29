@@ -233,12 +233,12 @@
             position: relative;
 
             .offerta__title{
-                @include font-with-line-height($font-size-sm, 20px);
+                @include font-with-line-height($font-size-product-md, 26px);
 
                 position: absolute;
                 top: 0;
                 color: $white;
-                padding: 5px;
+                padding: 20px 5px;
                 left: 0;
                 right: 0;
             }
