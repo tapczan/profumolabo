@@ -27,16 +27,18 @@
     <div id="subcategories" class="subcategory my-4">
       <ul class="row">
         {foreach from=$subcategories item=subcategory}
-          <div class="col-xl-2 col-lg-3 col-4">
-            <div class="subcategory-wrapper">
-              <a class="subcategory-wrapper__image" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
-                <img height="{$subcategory.image.bySize.category_default.height}" width="{$subcategory.image.bySize.category_default.width}" src="{$subcategory.image.bySize.category_default.url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy">
-              </a>
-              <h5 class="subcategory-wrapper__title">
-                {$subcategory.name|truncate:45:'...'|escape:'html':'UTF-8'}
-              </h5>
+          {if $subcategory@index < 6}
+            <div class="col-xl-2 col-lg-3 col-4">
+              <div class="subcategory-wrapper">
+                <a class="subcategory-wrapper__image" href="{$link->getCategoryLink($subcategory.id_category, $subcategory.link_rewrite)|escape:'html':'UTF-8'}" title="{$subcategory.name|escape:'html':'UTF-8'}" class="img">
+                  <img height="{$subcategory.image.bySize.category_default.height}" width="{$subcategory.image.bySize.category_default.width}" src="{$subcategory.image.bySize.category_default.url}" alt="{$subcategory.name|escape:'html':'UTF-8'}" loading="lazy">
+                </a>
+                <h5 class="subcategory-wrapper__title">
+                  {$subcategory.name|truncate:45:'...'|escape:'html':'UTF-8'}
+                </h5>
+              </div>
             </div>
-          </div>
+          {/if}
         {/foreach}
       </ul>
     </div>
