@@ -1788,6 +1788,12 @@
 */
 .header__mega-menu{
   .mm_menus_ul .mm_menus_li{
+    .mm_columns_li .mm_blocks_ul .ets_mm_block.mm_block_type_category .has-sub > a,
+    &.mega-menu-header-mezczyzna .mm_columns_ul .mm_columns_li:last-child .mm_blocks_ul .ets_mm_categories a,
+    &.mega-menu-header-kobieta .mm_columns_ul .mm_columns_li:last-child .mm_blocks_ul .ets_mm_categories a{
+      text-transform: uppercase;
+    }
+
     &.mega-menu-header-about .mm_columns_li{
       padding-top: 0 !important;
       padding-bottom: 0 !important;
