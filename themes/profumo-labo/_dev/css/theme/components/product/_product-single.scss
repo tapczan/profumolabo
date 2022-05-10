@@ -614,6 +614,22 @@
                         width: 12px;
                         height: 12px;
                     }
+
+                    &[aria-expanded=true]{
+                        &:before{
+                            content: '';
+                            position: absolute;
+                            top: 14px;
+                            left: 0;
+                            margin: auto;
+                            background: url(~/img/icons/minus-icon-svg.svg);
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: contain;
+                            width: 10px;
+                            height: 12px;
+                        }
+                    }
                 }
 
                 &__body{
