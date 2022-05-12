@@ -160,14 +160,18 @@
   }
 
   [data-id-block="42"] {
-    .ets_mm_categories {
+    .ets_mm_categories,
+    .ets_mm_block_content {
       li {
+        width: 100%;
+        text-align:center;
         a {
           font-size: 1em;
           display: block;
           border: 1px solid #000;
           font-weight: 400;
           padding: 2px 0;
+          text-transform: uppercase;
 
           &:hover,
           &:active,
@@ -178,4 +182,5 @@
       }
     }
   }
+
 }
