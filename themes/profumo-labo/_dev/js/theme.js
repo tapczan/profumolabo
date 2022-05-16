@@ -102,6 +102,15 @@ $(document).ready(() => {
   $('.js-select-link').on('change', ({ target }) => {
     window.location.href = $(target).val();
   });
+
+  /**
+   * Loads Youtube Videos on Onas page.
+   * This is in regards with the YouTube fullscreen issue. Prestashop wysiwyg are removing some iframe attributes that are given by the youtube
+   * and this includes the attribute that is needed to make the fullscreen work. As a fix, we will be populating the iframe code via jquery on an empty div
+   * that is being placed on the dashboard wysiwyg for Onas page.
+   */
+  $('.js-onas-yt-video-top').append('<iframe width="560" height="500" src="https://www.youtube.com/embed/lUfQf4Rnyyw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>');
+  $('.js-onas-yt-video-bottom').append('<iframe width="560" height="220" src="https://www.youtube.com/embed/qTXmVYffiBw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 });
 
 function accLinksTriggerActive() {
@@ -121,4 +130,3 @@ function checkAllChkbx() {
     $("form#customer-form input[type=checkbox]").prop('checked', $(this).prop('checked'));
   });  
 }
-
