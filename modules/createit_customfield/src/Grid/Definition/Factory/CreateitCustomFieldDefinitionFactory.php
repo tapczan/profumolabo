@@ -53,12 +53,12 @@ class CreateitCustomFieldDefinitionFactory extends AbstractGridDefinitionFactory
                  ])
              )
 
-             ->add((new DataColumn('label_name'))
-                 ->setName('Label Name')
-                 ->setOptions([
-                     'field' => 'label_name'
-                 ])
-             )
+//             ->add((new DataColumn('label_name'))
+//                 ->setName('Label Name')
+//                 ->setOptions([
+//                     'field' => 'label_name'
+//                 ])
+//             )
              ->add((new ActionColumn('actions'))
                  ->setName('Actions')
                  ->setOptions([
@@ -115,15 +115,15 @@ class CreateitCustomFieldDefinitionFactory extends AbstractGridDefinitionFactory
                 ->setAssociatedColumn('field_name')
             )
 
-            ->add((new Filter('label_name', TextType::class))
-                ->setTypeOptions([
-                    'required' => false,
-                    'attr' => [
-                        'placeholder' => 'Label Name'
-                    ],
-                ])
-                ->setAssociatedColumn('label_name')
-            )
+//            ->add((new Filter('label_name', TextType::class))
+//                ->setTypeOptions([
+//                    'required' => false,
+//                    'attr' => [
+//                        'placeholder' => 'Label Name'
+//                    ],
+//                ])
+//                ->setAssociatedColumn('label_name')
+//            )
 
 
             ->add((new Filter('actions', SearchAndResetType::class))

@@ -18,12 +18,8 @@ class CreateitCustomFieldQueryBuilder extends AbstractDoctrineQueryBuilder
     {
         $qb = $this->getQueryBuilder($searchCriteria->getFilters());
 
-        $qb->select('c.id_createit_products_customfield, c.field_name, c.label_name')
+        $qb->select('c.id_createit_products_customfield, c.field_name')
             ->groupBy('c.id_createit_products_customfield');
-
-//        dump($searchCriteria->getFilters());
-//        dump($qb->getSQL());
-//        exit();
 
         return $qb;
 
@@ -47,7 +43,7 @@ class CreateitCustomFieldQueryBuilder extends AbstractDoctrineQueryBuilder
      */
     private function getQueryBuilder(array $filters)
     {
-        $allowedFilters = ['id_createit_products_customfield','field_name','label_name'];
+        $allowedFilters = ['id_createit_products_customfield','field_name'];
 
         $qb = $this->connection
             ->createQueryBuilder()

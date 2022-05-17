@@ -11,3 +11,9 @@ services:
     factory: ['@doctrine.orm.default_entity_manager', getRepository]
     arguments:
       - PrestaShop\Module\CreateITCustomField\Entity\CreateitCustomfield
+
+  prestashop.module.createit_custom_field.repository.customfield_label_lang_repository:
+    class: 'PrestaShop\Module\CreateITCustomField\Repository\CreateitProductCustomfieldLabelLangRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateITCustomField\Entity\CreateitProductCustomfieldLabelLang
