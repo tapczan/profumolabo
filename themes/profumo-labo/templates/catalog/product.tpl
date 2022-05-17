@@ -157,16 +157,10 @@
               </div>
 
               <div class="product-accordion" id="productSingleAccordion">
-                <div class="product-accordion__item">
-                  <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
-                    {l s='Description' d='Shop.Theme.Global'}
-                  </div>
-                  <div class="product-accordion__body collapse show" id="productAccordionContent1" aria-labelledby="productAccordionHeader1" data-parent="#productSingleAccordion">
-                    <p>{$product.description_short nofilter}</p>
-                  </div>
-                </div>
-           
-        </div>
+
+                  {hook h='displayProductCustomFieldByName' product=$product}
+
+              </div>
         <div class="product-social">
                 {block name='product_additional_info'}
                   {include file='catalog/_partials/product-additional-info.tpl'}

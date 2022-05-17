@@ -2,6 +2,7 @@
 
 namespace PrestaShop\Module\CreateITCustomField\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -9,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PrestaShop\Module\CreateITCustomField\Repository\CreateitProductCustomfieldRepository")
  */
-
 class CreateitProductCustomfield
 {
 
@@ -46,12 +46,6 @@ class CreateitProductCustomfield
     private $fieldType;
 
     /**
-     * @var string
-     * @ORM\Column(name="label_name", type="text")
-     */
-    private $labelName;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -69,6 +63,11 @@ class CreateitProductCustomfield
      * @ORM\OneToMany(targetEntity="PrestaShop\Module\CreateITCustomField\Entity\CreateitCustomfield", cascade={"persist", "remove"}, mappedBy="createitProductsCustomfield")
      */
     private $createitCustomfield;
+
+    /**
+     * @ORM\OneToMany(targetEntity="PrestaShop\Module\CreateITCustomField\Entity\CreateitProductCustomfieldLabelLang", cascade={"persist", "remove"}, mappedBy="createitProductCustomfield")
+     */
+    private $createitProductCustomfieldLabelLangs;
 
     /**
      * @return int
@@ -119,22 +118,6 @@ class CreateitProductCustomfield
     }
 
     /**
-     * @return string|null
-     */
-    public function getLabelName(): ?string
-    {
-        return $this->labelName;
-    }
-
-    /**
-     * @param string $labelName
-     */
-    public function setLabelName(string $labelName): void
-    {
-        $this->labelName = $labelName;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getCreatedAt()
@@ -173,6 +156,8 @@ class CreateitProductCustomfield
         if (null === $this->getUpdatedAt()) {
             $this->updatedAt = new \DateTime();
         }
+
+        $this->createitProductCustomfieldLabelLangs = new ArrayCollection();
     }
 
     /**
@@ -191,13 +176,92 @@ class CreateitProductCustomfield
         $this->createitCustomfield = $createitCustomfield;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getCreateitProductCustomfieldLabelLang()
+    {
+        return $this->createitProductCustomfieldLabelLangs;
+    }
+
+    public function getCreateitProductCustomfieldContentByLang(int $langId)
+    {
+        /**
+         * @var $field CreateitCustomfield
+         */
+        foreach ($this->createitCustomfield as $field)
+        {
+            if($langId === $field->getLangId()){
+                return $field;
+            }
+        }
+        return null;
+    }
+
+    public function getCreateitProductCustomfieldContentByProductAndLang(int $productId, int $langId)
+    {
+        /**
+         * @var $field CreateitCustomfield
+         */
+        foreach ($this->createitCustomfield as $field)
+        {
+            if($productId === $field->getProductId() && $langId === $field->getLangId()){
+                return $field;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param int $langId
+     * @return mixed|null
+     */
+    public function getCreateitProductCustomfieldLabelLangByLangId(int $langId)
+    {
+        /**
+         * @var $createitProductCustomfieldLabelLang CreateitProductCustomfieldLabelLang
+         */
+        foreach ($this->createitProductCustomfieldLabelLangs as $createitProductCustomfieldLabelLang){
+            if($langId === $createitProductCustomfieldLabelLang->getLang()->getId()){
+                return $createitProductCustomfieldLabelLang;
+            }
+        }
+
+        return null;
+    }
+
+    public function getCreateitProductCustomfieldLabelAllLangContent()
+    {
+        $result = [];
+
+        /**
+         * @var $createitProductCustomfieldLabelLang CreateitProductCustomfieldLabelLang
+         */
+        foreach ($this->createitProductCustomfieldLabelLangs as $createitProductCustomfieldLabelLang){
+            $result[$createitProductCustomfieldLabelLang->getLang()->getId()]['content'] = $createitProductCustomfieldLabelLang->getContent();
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param CreateitProductCustomfieldLabelLang $createitProductCustomfieldLabelLang
+     * @return $this
+     */
+    public function addCreateitProductCustomfieldLabelLang(CreateitProductCustomfieldLabelLang $createitProductCustomfieldLabelLang)
+    {
+        $createitProductCustomfieldLabelLang->setCreateitProductCustomfield($this);
+        $this->createitProductCustomfieldLabelLangs->add($createitProductCustomfieldLabelLang);
+
+        return $this;
+    }
+
     public function toArray()
     {
         return [
             'id_createit_products_customfield' => $this->getId(),
             'field_name' => $this->getFieldName(),
             'field_type' => $this->getFieldType(),
-            'label_name' => $this->getLabelName(),
             'created_at' => $this->createdAt->format(\DateTime::ATOM),
             'updated_at' => $this->createdAt->format(\DateTime::ATOM)
         ];

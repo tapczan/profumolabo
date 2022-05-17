@@ -21,7 +21,8 @@ module.exports = {
     jquery: 'jQuery',
   },
   entry: {
-    createit_custom_fields: './createit_custom_fields',
+    createit_customfield: './createit_customfield',
+    createit_customfield_form: './createit_customfield/form',
   },
   output: {
     path: path.resolve(__dirname, '../../views/js'),
@@ -40,7 +41,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, '../createit_custom_fields'),
+        include: path.resolve(__dirname, '../createit_customfield'),
         use: [{
           loader: 'babel-loader',
           options: {
