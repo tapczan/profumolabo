@@ -134,7 +134,15 @@
             background-position: 0 7px;
             background-size: 10px;
             padding-left: 20px;
+            
+            &.open {
+                background: url(~/img/icons/minus-icon-svg.svg);
+                background-repeat: no-repeat;
+                background-position: 1px 8px;
+                background-size: 8px;
+            }
         }
+        
     }
 
     &__title{

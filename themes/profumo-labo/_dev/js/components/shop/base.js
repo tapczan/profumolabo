@@ -4,6 +4,12 @@
 $('.js-filter-top-show').on('click', function () {
     $('.js-filter-wrapper').toggleClass('filter-wrapper--show');
     $('.js-listing-wrapper').toggleClass('listing-wrapper--default');
+
+    if( $('.js-filter-wrapper').hasClass('filter-wrapper--show') ) {
+        $('.js-filter-top-show').addClass('open');
+    } else {
+        $('.js-filter-top-show').removeClass('open');
+    }
 });
 
 /**
