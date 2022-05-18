@@ -12,6 +12,14 @@ $('.js-filter-top-show').on('click', function () {
     }
 });
 
+$('#drogeria').on('click', function() {
+    var url = $(this).attr('data-url'),
+        checkbox = $('input:checkbox[name=drogeria]');
+    if(checkbox.prop("checked")) {
+        location.replace(url);
+    } 
+});
+
 /**
  * Add target blank on terms and condition link for
  * order summary page
