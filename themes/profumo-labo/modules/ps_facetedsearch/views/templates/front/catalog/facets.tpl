@@ -38,8 +38,35 @@
             </div>
           {/if}
         {/block}
-        {foreach from=$displayedFacets item="facet"}
 
+        {if $category.level_depth <= 2 && $category.id != 140}
+        <section class="search-filters__block list-group-item">
+          {assign var=_collapse value=true}
+          <div class="search-filters__header d-flex justify-content-between align-items-center h5 position-relative">
+              <span class="search-filters__title">{l s='For Whom?' d='Shop.Theme.Global'}</span>
+              <a href="#facet_forwhom" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
+                {if !$_collapse} aria-expanded="true" {/if}>
+                <span class="material-icons">&#xE313;</span>
+              </a>
+          </div>
+           <div id="facet_forwhom" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
+            <div>
+              <div class="custom-control custom-checkbox"> 
+                <a href="{$link->getCategoryLink(10)}" style="text-decoration:none;color:#595959;">{l s='%title%' sprintf=['%title%' => FrontController::getCategoryName(10)] d='Shop.Theme.Global'}</a>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <a href="{$link->getCategoryLink(11)}" style="text-decoration:none;color:#595959;">{l s='%title%' sprintf=['%title%' => FrontController::getCategoryName(11)] d='Shop.Theme.Global'}</a>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <a href="{$link->getCategoryLink(141)}" style="text-decoration:none;color:#595959;">{l s='%title%' sprintf=['%title%' => FrontController::getCategoryName(141)] d='Shop.Theme.Global'}</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/if}
+
+        {foreach from=$displayedFacets item="facet"}
+          
           {assign var=_expand_id value=10|mt_rand:100000}
           {assign var=_collapse value=true}
           {foreach from=$facet.filters item="filter"}
@@ -151,6 +178,28 @@
             {/if}
           </section>
         {/foreach}
+        
+
+        {if $category.level_depth <= 2 && $category.id != 140}
+        <section class="search-filters__block list-group-item">
+          {assign var=_collapse value=true}
+          <div class="search-filters__header d-flex justify-content-between align-items-center h5 position-relative">
+              <span class="search-filters__title">{l s='Show other brands only' d='Shop.Theme.Global'}</span>
+              <a href="#facet_other" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
+                {if !$_collapse} aria-expanded="true" {/if}>
+                <span class="material-icons">&#xE313;</span>
+              </a>
+          </div>
+           <div id="facet_other" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
+            <div>
+              <div class="custom-control custom-checkbox"> 
+                <a href="{$link->getCategoryLink(140)}" style="text-decoration:none;color:#595959;">{l s='%title%' sprintf=['%title%' => FrontController::getCategoryName(140)] d='Shop.Theme.Global'}</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/if}
+
 
       </div>
     </div>

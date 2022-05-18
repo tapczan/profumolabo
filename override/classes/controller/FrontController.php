@@ -2178,4 +2178,10 @@ class FrontControllerCore extends Controller
 
         return $pages;
     }
+
+    public static function getCategoryName($id){
+        $category = new Category ($id,Context::getContext()->language->id);
+        return $category->name;
+    }
+
 }
