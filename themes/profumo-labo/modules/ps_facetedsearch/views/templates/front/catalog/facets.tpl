@@ -179,24 +179,11 @@
           </section>
         {/foreach}
         
-
+       
         {if $category.level_depth <= 2 && $category.id != 140}
-        <section class="search-filters__block list-group-item">
-          {assign var=_collapse value=true}
-          <div class="search-filters__header d-flex justify-content-between align-items-center h5 position-relative">
-              <span class="search-filters__title">{l s='Show other brands only' d='Shop.Theme.Global'}</span>
-              <a href="#facet_other" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
-                {if !$_collapse} aria-expanded="true" {/if}>
-                <span class="material-icons">&#xE313;</span>
-              </a>
-          </div>
-           <div id="facet_other" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
-            <div>
-              <div class="custom-control custom-checkbox"> 
-                <a href="{$link->getCategoryLink(140)}" style="text-decoration:none;color:#595959;">{l s='%title%' sprintf=['%title%' => FrontController::getCategoryName(140)] d='Shop.Theme.Global'}</a>
-              </div>
-            </div>
-          </div>
+        <section class="search-filters__block list-group-item" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #212529">
+          <input type="checkbox" id="drogeria" name="drogeria" data-url="{$link->getCategoryLink(140)}"/>
+          <label for="drogeria">{l s='Show other brands only (Drogeria)' d='Shop.Theme.Global'}</label>
         </section>
         {/if}
 
