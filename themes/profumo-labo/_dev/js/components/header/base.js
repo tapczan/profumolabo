@@ -36,10 +36,30 @@ function smoothScrollingTo(target){
     $('html,body').animate({scrollTop:$(target).offset().top - 50}, 500);
 }
 
+function smoothScrollingToMobile(target){
+    $('html,body').animate({scrollTop:$(target).offset().top - 100}, 500);
+}
+
 $('.mega-menu-header-about a[href*="#"]').on('click', function(){  
-    smoothScrollingTo(this.hash);
+    const windowWidth = $(window).outerWidth();
+
+    if(windowWidth < 992){
+        $('.ybc-menu-button-toggle_icon').trigger('click');
+    }
+
+    if(windowWidth < 768){
+        smoothScrollingToMobile(this.hash);
+    }else{
+        smoothScrollingTo(this.hash);
+    }
 });
 
 $(window).on('load', function(){
-    smoothScrollingTo(location.hash);
+    const windowWidth = $(window).outerWidth();
+    
+    if(windowWidth < 768){
+        smoothScrollingToMobile(this.hash);
+    }else{
+        smoothScrollingTo(this.hash);
+    }
 });

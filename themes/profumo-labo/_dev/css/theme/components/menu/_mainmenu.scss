@@ -182,31 +182,4 @@
       }
     }
   }
-
-  .o-nas-menu{
-    .mm_columns_ul {
-      max-width: 1130px;
-      left: unset;
-      a {
-        color: #ccb48f!important;
-        text-transform: uppercase;
-        font-weight: 500;
-      }
-    }
-  } 
-  
 }
-
-.header__nav {
-  &--sticky {
-
-    .ets_mm_megamenu {
-      .o-nas-menu{
-        .mm_columns_ul { 
-          margin-left: -151px;
-        }
-      }
-    }
-  } 
-}
-
