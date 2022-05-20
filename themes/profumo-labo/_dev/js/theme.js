@@ -109,7 +109,7 @@ $(document).ready(() => {
    * and this includes the attribute that is needed to make the fullscreen work. As a fix, we will be populating the iframe code via jquery on an empty div
    * that is being placed on the dashboard wysiwyg for Onas page.
    */
-  $('.js-onas-yt-video-top').append('<iframe width="560" height="500" src="https://www.youtube.com/watch?v=Vt1wUkiPvQI" title="Profumolabo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>');
+  $('.js-onas-yt-video-top').append('<iframe width="560" height="500" src="https://www.youtube.com/embed/Vt1wUkiPvQI" title="Profumolabo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>');
   $('.js-onas-yt-video-bottom').append('<iframe width="560" height="220" src="https://www.youtube.com/embed/qTXmVYffiBw" title="Profumolabo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>');
 });
 
