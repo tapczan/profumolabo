@@ -45,6 +45,7 @@
                 font-weight: normal;
                 margin-top: 30px;
                 letter-spacing: 1px;
+                text-transform:uppercase;
             }
         }
 
@@ -402,6 +403,7 @@
         
                 .arpl-category .arpl-cat-title{
                     @include font-with-line-height($font-size-xs, 16px);
+                   
                 }
         
                 .arpl-section{
