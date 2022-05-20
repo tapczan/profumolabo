@@ -150,7 +150,7 @@
 
         font-family: $font-forum;
         letter-spacing: 3px;
-        margin: 0 0 50px;
+        margin: 0;
         text-transform: uppercase;
         font-weight: 400;
         color: $black;
@@ -163,11 +163,13 @@
         font-weight: 300;
 
         p {
-            margin: 50px auto;
+            margin: 0 auto;
             max-width: 1000px;
+            padding: 25px 0;
 
             &.fullWidthImg {
-                
+                margin: 0 0 25px 0 !important;
+                padding: 0 !important;
                 max-width:none;
             }
         }
