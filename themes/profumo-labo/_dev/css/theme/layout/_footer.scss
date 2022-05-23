@@ -93,8 +93,8 @@
 .block-social {
   li {
     @include media-breakpoint-down(sm) {
-      max-width: 26px;
-      flex: 0 0 26px;
+      max-width: 30px;
+      flex: 0 0 30px;
       padding: 0;
       margin-right: 10px;
     }
