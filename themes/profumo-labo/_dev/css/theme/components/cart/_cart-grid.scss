@@ -289,3 +289,50 @@
         }
     }
 }
+
+#przelewy24Form #submitButton{
+    @include font-with-line-height($font-size-xs, 16px);
+
+    font-weight: 300;
+    background: $black;
+    display: block;
+    border-radius: 0;
+    border-style: none;
+    color: $white !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 30px;
+    box-shadow: none;
+    outline: none;
+
+    &:focus,
+    &:hover{
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+.p24-payment-return-page{
+    .price{
+        font-size: $font-size-xm;
+        font-weight: 500;
+        line-height: 24px;
+        color: $black;
+    }
+
+    .p24-choose{
+        @include font-with-line-height($font-size-product-lg, 27px);
+
+        font-family: $font-forum;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: 1px;
+        margin: 0;
+        font-weight: 400;
+        margin: 30px 0 0;
+        padding: 0;
+        color: $black;
+    }
+}
