@@ -71,7 +71,7 @@
   }
 
   &__logo {
-    max-width: 299px;
+    max-width: 250px;
 
     @include media-breakpoint-down(sm) {
       margin-bottom: 188px;
@@ -164,6 +164,10 @@
   width: 100%;
 }
 
+@media(min-width: 1200px){
+
+}
+
 @media(min-width: 768px){
   .footer-card{
     &__content{
@@ -184,9 +188,12 @@
   .footer-social-follow-desktop{
     display: block;
     width: 100%;
+    position: relative;
+    bottom: 50px;
 
     ul{
       justify-content: end;
+      margin-right: 35px;
 
       li{
         padding: 0 7px;
