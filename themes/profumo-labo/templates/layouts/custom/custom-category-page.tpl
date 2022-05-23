@@ -11,23 +11,11 @@
             {$category.description nofilter}
           </div>
         {/if}
- 
-        {*
-        {if $category.id == 123 || $category.id == 124 || $category.id == 125 }
-            <div class="product-category__image">
-              <img src="{$category.image.large.url}" alt="{$category.name}">
-            </div>
-        {/if}      
-        *}
-
-        {*
-        {if $category.level_depth > 2 }    
-          <div class="product-category__image">
-            <img src="{$category.image.large.url}" alt="{$category.name}" style="margin: 0 auto;">
-          </div>
+        
+        {if $category.id == 3} 
+          {hook h='arCategoryPageHook10'}
         {/if}
-        *}
-  
+
         {if $category.level_depth <= 2 }  
           {if isset($subcategories) && $subcategories|@count > 0}
               {block name='subcategory_list'}
