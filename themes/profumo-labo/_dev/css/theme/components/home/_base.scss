@@ -7,7 +7,8 @@
 */ 
 .page-home,
 .page-pagenotfound,
-.page-not-found + section{
+.page-not-found + section,
+.page-category{
     .arpl-group.arpl-non-tabbed-group{
         margin: 50px 0;
         padding: 50px 0;
@@ -84,7 +85,9 @@
         }
     }
   
-    #arpl-group-6{
+    #arpl-group-6,
+    #arpl-group-19,
+    #arpl-group-18{
         &.arpl-group.arpl-non-tabbed-group{
             margin: 0;
             padding: 0 0 100px;
@@ -287,6 +290,25 @@
     }
 }
 
+.page-category{
+    .arpl-group.arpl-non-tabbed-group{
+        border-bottom-style: none;
+
+        .arpl-cat-title a{
+            color: $black;
+
+            &:hover,
+            &:focus{
+                color: $black;
+            }
+        }
+
+        .arpl-header{
+            display: none;
+        }
+    }
+}
+
 .home-custom-variants {
     .variants-selection {
         input.input-radio.attribute-radio__input {
@@ -359,8 +381,11 @@
 @media (max-width: 991px){
     .page-home,
     .page-pagenotfound,
-    .page-not-found + section{
-        #arpl-group-6.arpl-group.arpl-non-tabbed-group{
+    .page-not-found + section,
+    .page-category{
+        #arpl-group-6.arpl-group.arpl-non-tabbed-group,
+        #arpl-group-19.arpl-group.arpl-non-tabbed-group,
+        #arpl-group-18.arpl-group.arpl-non-tabbed-group{
             padding: 50px 0;
 
             .arpl-category.arpl-grid-6{
@@ -391,8 +416,11 @@
 @media (max-width: 767px){
     .page-home,
     .page-pagenotfound,
-    .page-not-found + section{
-        #arpl-group-6{
+    .page-not-found + section,
+    .page-category{
+        #arpl-group-6,
+        #arpl-group-18,
+        #arpl-group-19{
             &.arpl-group.arpl-non-tabbed-group{
                 border-top: $border-bottom-mobile;
                 border-bottom: $border-bottom-mobile;
@@ -450,5 +478,12 @@
                 right: -20px;
             }
         }
+    }
+
+    .page-category #arpl-group-18.arpl-group.arpl-non-tabbed-group,
+    .page-category #arpl-group-19.arpl-group.arpl-non-tabbed-group{
+        border-top-style: none;
+        border-bottom-style: none;
+        padding-top: 0;
     }
 }
