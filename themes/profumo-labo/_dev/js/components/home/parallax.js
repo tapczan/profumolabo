@@ -13,7 +13,7 @@ const canvas = $("#js-canvas-offerta");
 
 if(canvas.length){
     const canvasContext = canvas[0].getContext('2d');
-    const canvasFrameCount = 40;
+    const canvasFrameCount = 39;
     const winLocationOrigin = window.location.origin;
 
     const canvasCurrentFrame = index => (
@@ -28,8 +28,8 @@ if(canvas.length){
     };
 
     var canvasImg = new Image();
-    var canvasImgWidth = 3840;
-    var canvasImgHeight = 1718;
+    var canvasImgWidth = 3634;
+    var canvasImgHeight = 1692;
         
     function initCanvas() {
         canvasContext.canvas.width = canvasImgWidth;
