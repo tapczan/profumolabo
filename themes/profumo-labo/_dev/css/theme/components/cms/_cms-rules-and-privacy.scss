@@ -74,9 +74,12 @@
         }
     }
 
-    .p-text-center p{
+    .p-text-center-margin{
+        margin-bottom: 50px;
+    }
+
+    .p-text-center h2{
         text-align: center;
-        font-size: 22px;
     }
 
     .p-text-left{
@@ -86,6 +89,25 @@
         p{
             text-decoration: underline;
             margin-bottom: 0;
+        }
+    }
+
+    .p-footer-no-decor{
+        margin: 50px 0;
+        text-align: right;
+    }
+
+    .p-text-left-top{
+        p{
+            margin: 0;
+        }
+
+        .p-underline{
+            border-bottom: 1px solid $black;    
+            height: 14px;
+            max-width: 184px;
+            width: 100%;
+            margin-bottom: 10px;
         }
     }
 
