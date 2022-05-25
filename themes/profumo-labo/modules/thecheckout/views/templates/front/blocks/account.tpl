@@ -12,7 +12,8 @@
   {if isset($customer) && $customer.is_logged}
     {l s='Personal Information' d='Shop.Theme.Checkout'}
   {else}
-    {l s='Email address' mod='thecheckout'}
+    {*{l s='Email address' mod='thecheckout'}*}
+    {l s='Email address' d='Shop.Theme.Global'}
   {/if}
 </div>
 <form class="account-fields">
