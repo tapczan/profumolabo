@@ -97,6 +97,14 @@
         text-align: right;
     }
 
+    .p-footer-border-decor{
+        margin: 50px 0;
+        text-align: right;
+        max-width: 400px;
+        float: right;
+        border-top: 1px solid $black;
+    }
+
     .p-text-left-top{
         p{
             margin: 0;
