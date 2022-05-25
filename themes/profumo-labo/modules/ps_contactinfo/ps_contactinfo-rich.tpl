@@ -33,14 +33,14 @@
         <li>{l s='Al. Jerozolimskie 98' d='Shop.Theme.Global'}</li>
         <li>{l s='00-807 Warszawa' d='Shop.Theme.Global'}</li>
         <li>{l s='NIP 7011046498' d='Shop.Theme.Global'}</li>
-        <li>{l s='KRS: 1111111111' d='Shop.Theme.Global'}</li>
+        <li>{l s='KRS 0000918422' d='Shop.Theme.Global'}</li>
       </ul>
     </div>
 
     <div class="contact-data__item">
       <ul class="contact-data__list">
         <li class="contact-data__title contact-data__title--normal">
-          {l s='WORKING HOURS: Mon - Fri 8:00 - 17:00' d='Shop.Theme.Global'}
+          {l s='WORK HOURS 9:00 - 17:00' d='Shop.Theme.Global'}
         </li>
       </ul>
     </div>
@@ -48,11 +48,11 @@
     <div class="contact-data__item">
       <ul class="contact-data__list">
         <li class="contact-data__title">
-          {l s='TEL' d='Shop.Theme.Global'}: <a href="tel:11111171111">111 111 711 11</a>
+          {l s='TEL' d='Shop.Theme.Global'}: <a href="tel:600666274">600 666 274</a>
         </li>
         {if $contact_infos.email && $display_email}
           <li class="contact-data__title">
-            {l s='EMAIL US' d='Shop.Theme.Global'}: <a href="mailto:info@profumolabo.com">info@profumolabo.com</a>
+            {l s='EMAIL US' d='Shop.Theme.Global'}: <a href="mailto:hello@profumolabo.com">hello@profumolabo.com</a>
           </li>
         {/if}
       </ul>
@@ -69,39 +69,4 @@
       </ul>
     </div>
   </div>
-
-
-  {*
-  <h4>{l s='Store information' d='Shop.Theme.Global'}</h4>
-  <div class="block">
-    <div class="data">{$contact_infos.address.formatted nofilter}</div>
-  </div>
-  {if $contact_infos.phone}
-    <hr/>
-    <div class="block">
-      <div class="data">
-        {l s='Call us' d='Shop.Theme.Global'}:<br/>
-        <a href="tel:{$contact_infos.phone}">{$contact_infos.phone}</a>
-       </div>
-    </div>
-  {/if}
-  {if $contact_infos.fax}
-    <hr/>
-    <div class="block">
-      <div class="data">
-        {l s='Fax' d='Shop.Theme.Global'}:<br/>
-        {$contact_infos.fax}
-      </div>
-    </div>
-  {/if}
-  {if $contact_infos.email && $display_email}
-    <hr/>
-    <div class="block">
-      <div class="data email">
-        {l s='Email us' d='Shop.Theme.Global'}:<br/>
-      </div>
-      <a href="mailto:{$contact_infos.email}">{$contact_infos.email}</a>
-    </div>
-  {/if}
-  *}
 </div>
