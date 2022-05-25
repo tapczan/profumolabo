@@ -671,7 +671,7 @@
 
         .custom-checkbox {
             input[type=checkbox] + span{
-                border: 1px solid $black !important;
+                border: 1px solid $black;
             }
 
             input[type=checkbox]:checked + span{
@@ -681,6 +681,7 @@
                 background-position: center !important;
                 border-color: $black;
             }
+            
         }
 
         .condition-label{
@@ -739,6 +740,8 @@
             em{
                 font-style: normal;
                 font-weight: 300;
+                position: absolute;
+                left: 20px;
             }
         }
     }
@@ -748,6 +751,19 @@
         .error-msg{
             display: none;
         }
+
+        .custom-checkbox {
+
+            .-former-error+span,
+            .-error+span {
+                border: 1px solid red !important;
+            }
+
+            .label.js-anchor-target-blank::before {
+                color: #000;
+            }
+        }
+        
     }
 
     #thecheckout-newsletter,
@@ -755,6 +771,11 @@
         .form-group{
             padding-left: 0;
             padding-right: 0;
+            margin-bottom:20px;
+
+            label {
+                width: 100%;
+            }
         }
     }
 
@@ -1275,4 +1296,11 @@
             vertical-align: -2px;
         }
     }
+}
+
+form#conditions-to-approve {
+    label::after {
+        content: "*";
+        font-weight: 400;
+    }    
 }

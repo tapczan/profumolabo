@@ -258,15 +258,8 @@ class CustomerFormCore extends AbstractForm
             $this->formFields
         );
 
-        // temporary assign
-        if( count($formFields) === 12 ) {  
-            $this->moveFormField($formFields, 8, 11);
-            $this->moveFormField($formFields, 10, 7);
-        }
-        elseif( count($formFields) === 13 ) {
-            $this->moveFormField($formFields, 12,8);
-            $this->moveFormField($formFields, 10,12);
-        }   
+        // temporary assign (moved psgdpr checkbox next to Check all)
+        $this->moveFormField($formFields, count($formFields) - 1, 8);
         
         return [
             'action' => $this->action,
