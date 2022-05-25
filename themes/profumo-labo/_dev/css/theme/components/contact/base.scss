@@ -192,6 +192,24 @@
 
     &-featured-img{
         margin-bottom: 25px;
+        height: 297px;
+        object-fit: cover;
+
+        @media(max-width: 1699px){
+            height: 274px;
+        }
+
+        @media(max-width: 1199px){
+            height: 292px;
+        }
+
+        @media(max-width: 991px){
+            height: 275px;
+        }
+
+        @media(max-width: 767px){
+            height: auto;
+        }
     }
 
     &-data{
