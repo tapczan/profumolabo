@@ -189,11 +189,15 @@
     display: block;
     width: 100%;
     position: relative;
-    bottom: 50px;
+    bottom: 0;
 
     ul{
       justify-content: end;
       margin-right: 35px;
+      margin-top: -50px;
+      margin-bottom: 50px !important;
+      width: 220px;
+      float: right;
 
       li{
         padding: 0 7px;
