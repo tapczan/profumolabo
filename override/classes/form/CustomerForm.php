@@ -258,6 +258,14 @@ class CustomerFormCore extends AbstractForm
             $this->formFields
         );
 
+        if( $formFields['ps_dataprivacy_customer_privacy']['required'] ) {
+            $formFields['ps_dataprivacy_customer_privacy']['label'] = str_replace('<br>', ' * <br>', $formFields['ps_dataprivacy_customer_privacy']['label']);
+        }
+
+        if( $formFields['psgdpr_psgdpr']['required'] ) {
+            $formFields['psgdpr_psgdpr']['label'] = $formFields['psgdpr_psgdpr']['label'] . ' *';
+        }
+
         // temporary assign (moved psgdpr checkbox next to Check all)
         $this->moveFormField($formFields, count($formFields) - 1, 8);
         

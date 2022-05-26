@@ -163,19 +163,19 @@
         @include font-with-line-height($font-size-md, 24px);
         text-align: center;
         font-weight: 300;
-        margin-bottom: 30px;
+        margin-bottom: 100px;
         overflow: hidden;
 
         p {
             margin: 0 auto;
             max-width: 1000px;
-            padding: 20px 0;
+            padding: 30px 0;
 
             &.fullWidthImg {
-                margin: 0 !important;
+                margin: 0 auto !important;
                 padding: 0 !important;
-                max-width:none;
-                max-height: 450px;
+                max-width: 1538px !important;
+                max-height: 422px !important;
             }
         }
     }
