@@ -17,12 +17,18 @@
                     
                     <div class="contact-data__item">
                         <ul class="contact-data__list">
-                        <li class="contact-data__title">{l s='Information' d='Shop.Theme.Global'}</li>
-                        {assign var='pages' value=FrontController::getCMSPages([8,9,10,11,12,13],$language.id)}
-                        {foreach from=$pages item='page'}
-                            <li>{$page nofilter}</li>
-                        {/foreach}
-                        <li><a href="{$urls.pages['index']}blog">{l s='Blog' d='Shop.Theme.Global'}</a></li>
+                            <li class="contact-data__title contact-data__title--upcase">
+                                <a href="{$link->getCMSLink(17)}">
+                                    {l s='Information' d='Shop.Theme.Global'}
+                                </a>
+                            </li>
+                            <li><a href="{$link->getCMSLink(8)}">{l s='O PROFUMO LABO' d='Shop.Theme.Global'}</a></li>
+                            <li><a href="{$link->getCMSLink(17)}?contentCollapse=0">{l s='Time and Cost Delivery' d='Shop.Theme.Global'}</a></li>
+                            <li><a href="{$link->getCMSLink(17)}?contentCollapse=1">{l s='Payment methods' d='Shop.Theme.Global'}</a></li>
+                            <li><a href="{$link->getCMSLink(17)}?contentCollapse=2">{l s='Returns and Complaints' d='Shop.Theme.Global'}</a></li>
+                            <li><a href="{$link->getCMSLink(12)}">{l s='Regulations of the online store' d='Shop.Theme.Global'}</a></li>
+                            <li><a href="{$link->getCMSLink(13)}">{l s='Privacy Policy' d='Shop.Theme.Global'}</a></li>
+                            <li><a href="{$urls.pages['index']}blog">{l s='Blog' d='Shop.Theme.Global'}</a></li>
                         </ul>      
                     </div>
                     
@@ -39,7 +45,11 @@
                             <li><a href="{$link->getCMSLink(18)}?contentCollapse=b2b_cooperation">B2B Cooperation</a></li>
                         {/if}
 
-                        <li class="contact-data__title contact-data__title--top">{l s='Partner Program' d='Shop.Theme.Global'}</li>
+                        <li class="contact-data__title contact-data__title--top contact-data__title--upcase">
+                            <a href="{$link->getCMSLink(19)}">
+                                {l s='Partner Program' d='Shop.Theme.Global'}
+                            </a>
+                        </li>
                         </ul>      
                     </div>
                     </div>

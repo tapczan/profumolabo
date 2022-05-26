@@ -262,6 +262,12 @@
                 color: $black;
                 text-transform: none;
             }
+
+            &--upcase{
+                a{
+                    text-transform: uppercase;
+                }
+            }
         }
 
         &__list{
