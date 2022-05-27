@@ -1884,7 +1884,7 @@
       &.mega-menu-header-kontakt{
         .ets_mm_block.mm_block_type_html.active{
           margin-left: 0;
-  
+          min-height:160px;
           span{
             border-bottom: 1px solid $light-gray;
             padding-left: 35px;

@@ -411,6 +411,37 @@
             }
         }
     }
+
+    .product-miniature__thumb {
+
+        .quick-view {
+            display: flex !important;
+            justify-content: center;
+            width: 100%;
+            background: #fff;
+            bottom: 30px;
+            align-items: center;
+            border: 1px solid #f4f4f4;
+        }
+        .comments_note {
+            padding-top: 30px;
+            background: #fff !important;
+            width: 100% !important;
+        }
+
+        &:hover {
+            .quick-view {
+                bottom: 30px !important;
+            } 
+            .comments_note { 
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+    
+        }
+
+    } 
+    
 }
   
 @media (max-width: 767px){
