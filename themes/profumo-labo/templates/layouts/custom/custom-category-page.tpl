@@ -12,7 +12,7 @@
           </div>
         {/if}
         
-        {if $category.id == 3} 
+        {if $category.id == 3 || $category.id == 139 || $category.id == 145 } 
           {hook h='arCategoryPageHook10'}
         {/if}
 
