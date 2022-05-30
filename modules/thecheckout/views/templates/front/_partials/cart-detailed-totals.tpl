@@ -31,7 +31,7 @@
     <div class="card-block">
       {foreach from=$cart.subtotals item="subtotal"}
         {if isset($subtotal.value) && $subtotal.value && $subtotal.type !== 'tax'}
-          <div class="cart-summary-line{if $waitForShippingCls && 'products' != $subtotal.type}{$waitForShippingCls}{/if}" id="cart-subtotal-{$subtotal.type}">
+          <div class="cart-summary-line{if $waitForShippingCls && 'products' != $subtotal.type}{$waitForShippingCls}{/if}{if !$subtotal.amount} free{/if}" id="cart-subtotal-{$subtotal.type}">
           <span class="label{if 'products' === $subtotal.type} js-subtotal{/if}">
             {if 'products' == $subtotal.type}
               {$cart.summary_string}
@@ -57,7 +57,6 @@
     {*<hr class="separator">*}
 
     <div class="card-block">
-
       {if isset($cart.subtotals.tax) && $cart.subtotals.tax.amount > 0}
         {* tax displayed in cart summary, we show Total (tax excl.), Tax and Total (tax incl.) *}
         <div class="cart-summary-line cart-total cart-total-tax-excluded{$waitForShippingCls}">
@@ -76,7 +75,7 @@
       {else}
         {* tax is zero or not used in cart summary, we show Total (tax_label) *}
         <div class="cart-summary-line cart-total cart-total-auto-tax{$waitForShippingCls}">
-          <span class="label">{$cart.totals.total.label} {if $configuration.taxes_enabled}{$cart.labels.tax_short}{/if}</span>
+          <span class="label">{$cart.totals.total.label} {if isset($configuration) && $configuration.taxes_enabled}{$cart.labels.tax_short}{/if}</span>
           <span class="value">{$cart.totals.total.value}</span>
         </div>
       {/if}

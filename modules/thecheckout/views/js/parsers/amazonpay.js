@@ -14,6 +14,8 @@ checkoutPaymentParser.amazonpay = {
     // since amazonpay v4.0.2 (17.5.2021), popup mode no longer works
     // var removeSubmitBtn = true;
     // payment.setPopupPaymentType(element, removeSubmitBtn);
+    console.info('[amazonpay] remove binary option, redirect');
+    element.find('input[name=payment-option]').removeClass('binary');
   },
 
   additionalInformation: function (element, triggerElementName) {

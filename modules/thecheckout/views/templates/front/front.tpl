@@ -37,6 +37,7 @@
     {foreach $installedModules as $moduleName=>$moduleState}
       installedModules['{$moduleName}'] = '{$moduleState}';
     {/foreach}
+    var tcAmazonPaySessionId = '{$tc_amazonPaySessionId|default:""}';
 
   </script>
   <style>

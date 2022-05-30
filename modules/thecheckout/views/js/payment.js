@@ -33,7 +33,10 @@ var payment = (function () {
         $(self.paymentSelector + ' input[type="checkbox"][disabled]').attr('disabled', false);
 
         if ("undefined" !== typeof selectedOption) {
-            setSelectedOption(selectedOption)
+            setSelectedOption(selectedOption);
+            prestashop.emit('thecheckout_setSelectedPaymentOption', {
+                reason: 'update',
+            });
         }
 
         var $body = $('body');
@@ -69,6 +72,7 @@ var payment = (function () {
         if (0 == $(selectedOption).length) {
             selectedOption = '.' + config_default_payment_method + ' [name=payment-option]:first';
         }
+
         return $(selectedOption).eq(0).prop('checked', true);
     }
 

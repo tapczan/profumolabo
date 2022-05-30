@@ -70,7 +70,7 @@ checkoutPaymentParser.ps_checkout = {
 
         if (paymentOptionId && 'undefined' !== typeof paymentOptionId[0]) {
             paymentOptionId = paymentOptionId[0];
-            element.after('<div id="'+paymentOptionId+'-additional-information" class="js-additional-information definition-list additional-information stripe_official ps-hidden" style="display: none;"><section><p>'+i18_popupPaymentNotice+'</p></section></div>')
+            element.after('<div id="'+paymentOptionId+'-additional-information" class="stripe_official popup-notice js-additional-information definition-list additional-information ps-hidden" style="display: none;"><section><p>'+i18_popupPaymentNotice+'</p></section></div>')
         }
 
         payment.setPopupPaymentType(element);

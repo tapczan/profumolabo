@@ -74,17 +74,19 @@ checkoutPaymentParser.stripe_official_inline = {
         // Remove stripe payment form from actual .js-payment-option-form container and keep only "dynamic" part,
         // which is <script> tag with dynamically created variables
         var scriptTag = paymentOptionForm.find('script');
-        paymentOptionForm.find('*').remove();
-        paymentOptionForm.prepend(scriptTag);
+        // stripe_official can have multiple payment options, make sure move only card payment to static-container
+        if (paymentOptionForm.find('#stripe-card-payment').length) {
+            paymentOptionForm.find('*').remove();
+            paymentOptionForm.prepend(scriptTag);
 
-        // Update ID of fixed form, so that it's displayed/hidden automatically with payment method selection
-        var origId = paymentOptionForm.attr('id');
-        staticContentContainer.find('.stripe-payment-form .js-payment-option-form').attr('id', origId);
+            // Update ID of fixed form, so that it's displayed/hidden automatically with payment method selection
+            var origId = paymentOptionForm.attr('id');
+            staticContentContainer.find('.stripe-payment-form .js-payment-option-form').attr('id', origId);
 
-        // Remove tag ID and class from original form
-        paymentOptionForm.attr('id', 'stripe-script-tag-container');
-        paymentOptionForm.removeClass('js-payment-option-form');
-
+            // Remove tag ID and class from original form
+            paymentOptionForm.attr('id', 'stripe-script-tag-container');
+            paymentOptionForm.removeClass('js-payment-option-form');
+        }
     }
 
 }
@@ -119,7 +121,7 @@ checkoutPaymentParser.stripe_official_popup = {
 
         if (paymentOptionId && 'undefined' !== typeof paymentOptionId[0]) {
             paymentOptionId = paymentOptionId[0];
-            element.after('<div id="'+paymentOptionId+'-additional-information" class="js-additional-information definition-list additional-information stripe_official ps-hidden" style="display: none;"><section><p>'+i18_popupPaymentNotice+'</p></section></div>')
+            element.after('<div id="'+paymentOptionId+'-additional-information" class="stripe_official popup-notice js-additional-information definition-list additional-information ps-hidden" style="display: none;"><section><p>'+i18_popupPaymentNotice+'</p></section></div>')
         }
 
 

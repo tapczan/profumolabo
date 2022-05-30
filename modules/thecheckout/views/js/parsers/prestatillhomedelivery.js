@@ -10,7 +10,7 @@
 
 tc_confirmOrderValidations['prestatillhomedelivery'] = function() {
 	
-	if (_checkIdEC()) 
+	if (_checkIdEC())
 	{
 		console.log('check hd carrier');
 		if(parseInt($('#hd_box').attr('data-creneau')) == 0){
@@ -50,7 +50,7 @@ function _checkIdEC() {
         if($('.delivery-option input[type=radio]:checked').length > 0)
         {
             var id_selected_carrier = $('.delivery-option input[type=radio]:checked').val();
-            id_selected_carrier = id_selected_carrier.replace(",","");
+            id_selected_carrier = id_selected_carrier.replace(/,/g,"");
             
             if($('body').find('#hd_id_carrier_'+id_selected_carrier).length > 0)
                 return true;

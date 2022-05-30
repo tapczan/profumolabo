@@ -22,6 +22,9 @@ var tc_confirmOrderValidations = {};
 
 var tc_updatePaymentWithShipping = true;
 
+// Default value; can be overridden from custom JS
+var tcGlobal_fetchAgainAfterVoucher = false;
+
 // markup added to .inner-area of checkout blocks on updateHtml, while waiting for ajax response
 var tc_loaderHtml = '\
    <div class="tc-ajax-loading">\
@@ -519,6 +522,15 @@ $(document).ready(function () {
         // });
     }
 
+    // Amazonpay, change address link initialization
+    if ("undefined" !== typeof tcAmazonPaySessionId && "" != tcAmazonPaySessionId &&
+        "undefined" !== typeof amazon && "undefined" !== typeof amazon.Pay  && "undefined" !== typeof amazon.Pay.bindChangeAction)
+    {
+        amazon.Pay.bindChangeAction('#thecheckout-address-delivery .amazonpay-change-address', {
+            amazonCheckoutSessionId: tcAmazonPaySessionId,
+            changeAction: 'changeAddress'
+        });
+    }
 
 });
 
@@ -760,10 +772,14 @@ function addVoucher() {
                 $('.promo-code > .alert-danger').slideDown();
 
             } else {
-                updateCheckoutBlocks(jsonData, true, true, tc_updatePaymentWithShipping);
+                if (tcGlobal_fetchAgainAfterVoucher) {
+                    // Shipping is cached in PS core, and our actual jsonData -> carriers here has pre-voucher value,
+                    // so we need to fetch this again; only enable if voucher affect shipping cost
+                    getShippingAndPaymentBlocks();
+                } else {
+                    updateCheckoutBlocks(jsonData, true, false, false);
+                }
             }
-
-
         }
     });
 }
@@ -786,10 +802,12 @@ function removeVoucher(data) {
                 $('.promo-code > .alert-danger').slideDown();
 
             } else {
-                updateCheckoutBlocks(jsonData, true, true, tc_updatePaymentWithShipping);
+                if (tcGlobal_fetchAgainAfterVoucher) {
+                    getShippingAndPaymentBlocks();
+                } else {
+                    updateCheckoutBlocks(jsonData, true, true, tc_updatePaymentWithShipping);
+                }
             }
-
-
         }
     });
 }
@@ -1018,7 +1036,8 @@ function checkEmail(accountFormSelector, triggerEl, callback) {
         data: "&ajax_request=1&action=checkEmail" +
             "&triggerEl=" + encodeURIComponent(triggerEl.attr('id')) +
             "&account=" + serializeVisibleFields(accountFormSelector) +
-            "&token=" + $('#thecheckout-account [name=token]').val(),
+            "&token=" + $('#thecheckout-account [name=token]').val() +
+            _getExtraAccountParams(),
         success: function (jsonData) {
             if (jsonData.hasErrors) {
                 blockSel = '.account-fields';
@@ -1081,7 +1100,7 @@ function updateStaticToken(token) {
 }
 
 function serializeVisibleFields(formSelector) {
-    return encodeURIComponent($(formSelector).find('input:visible, [type=hidden], .orig-field:visible').serialize());
+    return encodeURIComponent($(formSelector).find('input:visible, [type=hidden], .orig-field:visible, .custom-checkbox [type=checkbox]').serialize());
 }
 
 function setConfirmationDirty() {
@@ -1132,6 +1151,48 @@ function displayStaticCustomerInfoAndNav(customerSignInArea)
     }
 }
 
+function _getExtraAccountParams() {
+    // Extra fields added through hooks, tepmplate updates or JS injections
+    var extraAccountAndAddressFields = $('.account-fields, .address-fields').find('input, select, textarea').not('.orig-field').not('.not-extra-field');
+    var extraAccountParams = '';
+
+    if (extraAccountAndAddressFields.length) {
+        extraAccountAndAddressFields.each(function () {
+            extraAccountParams += '&' + $(this).attr('name') + '=' + encodeURIComponent($(this).val());
+        })
+    }
+
+    // Exceptions for certain modules, that hooks in checkout fields, but need field to be sent separately
+    var extraAccountSeparateFields = $('#thecheckout-account [type=checkbox]').not('[name=optin]').not('[name=create-account]');
+
+    if (extraAccountSeparateFields.length) {
+        extraAccountSeparateFields.each(function () {
+            extraAccountParams += '&' + $(this).attr('name') + '=' + encodeURIComponent($(this).val());
+        })
+    }
+
+    // allinonerewards sponsorship field support
+    if ($('input[name=sponsorship]').length) {
+        extraAccountParams += '&sponsorship=' + encodeURIComponent($('input[name=sponsorship]').val());
+    }
+    // Colissimo pick-up module
+    if ($('[name=id_colissimo_pickup_point]').length) {
+        extraAccountParams += '&id_colissimo_pickup_point=' + encodeURIComponent($('[name=id_colissimo_pickup_point]').val());
+    }
+    if ($('[name=colissimo_pickup_mobile_phone\\[full\\]]').length && 'undefined' !== typeof iti) {
+        extraAccountParams += '&colissimo_pickup_mobile_phone[full]=' + encodeURIComponent(iti.getNumber());
+    }
+    if ($('[name=colissimo_is_mobile_valid]').length) {
+        extraAccountParams += '&colissimo_is_mobile_valid=' + encodeURIComponent($('[name=colissimo_is_mobile_valid]').val());
+    }
+    // djtalbrazilianregister (CPF/CNPJ fields module)
+    if ($('[name=document_type]').length && $('[name=document_number]').length) {
+        $('input[name=document_type]:checked, input[name=document_number], input[name=rg], input[name=ie]').each( (key, item) => {
+            extraAccountParams += '&' + $(item).attr('name') + '=' + encodeURIComponent($(item).val());
+        });
+    }
+    return extraAccountParams;
+}
 
 function modifyAccountAndAddress(triggerElement, callback) {
     var triggerSection = triggerElement.closest('.checkout-block').attr('id');
@@ -1157,37 +1218,13 @@ function modifyAccountAndAddress(triggerElement, callback) {
         showConfirmButtonLoader($('[data-link-action=x-confirm-order]'), isMainConfirmationButton(triggerElement));
     }
 
-    // Extra fields added through hooks, tepmplate updates or JS injections
-    var extraAccountAndAddressFields = $('.account-fields, .address-fields').find('input, select, textarea').not('.orig-field').not('.not-extra-field');
-    var extraAccountParams = '';
-
-    if (extraAccountAndAddressFields.length) {
-        extraAccountAndAddressFields.each(function () {
-            extraAccountParams += '&' + $(this).attr('name') + '=' + encodeURIComponent($(this).val());
-        })
-    }
-
-    // Exceptions for certain modules, that hooks in checkout fields, but need field to be sent separately
-    var extraAccountSeparateFields = $('#thecheckout-account [type=checkbox]').not('[name=optin]').not('[name=create-account]');
-
-    if (extraAccountSeparateFields.length) {
-        extraAccountSeparateFields.each(function () {
-            extraAccountParams += '&' + $(this).attr('name') + '=' + encodeURIComponent($(this).val());
-        })
-    }
-
-    // allinonerewards sponsorship field support
-    if ($('input[name=sponsorship]').length) {
-        extraAccountParams += '&sponsorship=' + encodeURIComponent($('input[name=sponsorship]').val());
-    }
-
     $.ajax({
         customPropAffectedBlocks: '#thecheckout-shipping, #thecheckout-payment, #thecheckout-cart-summary',
         url: insertUrlParam('modifyAccountAndAddress'),
         type: 'POST',
         cache: false,
         dataType: "json",
-        data: "modifyAccountAndAddress&ajax_request=1&action=modifyAccountAndAddress&trigger=" + triggerSection +
+        data: "modifyAccountAndAddress=1&ajax_request=1&action=modifyAccountAndAddress&trigger=" + triggerSection +
             "&account=" + serializeVisibleFields('form.account-fields') +
             "&invoice=" + encodeURIComponent($('#thecheckout-address-invoice form :visible').serialize()) +
             "&delivery=" + encodeURIComponent($('#thecheckout-address-delivery form :visible').serialize()) +
@@ -1196,7 +1233,7 @@ function modifyAccountAndAddress(triggerElement, callback) {
             "&invoiceVisible=" + $('#thecheckout-address-invoice form:visible').length +
             "&deliveryVisible=" + $('#thecheckout-address-delivery form:visible').length +
             "&token=" + $('#thecheckout-account [name=token]').val() +
-            extraAccountParams,
+            _getExtraAccountParams(),
         success: function (jsonData) {
 
             var noErrors = true;
@@ -1309,6 +1346,11 @@ function modifyAccountAndAddress(triggerElement, callback) {
 
             if ('thecheckout-prepare-confirmation' == triggerSection) {
                 $('[data-link-action=x-confirm-order]').prop('disabled', false).css('cursor', 'pointer');
+            }
+
+            if ("undefined" !== typeof jsonData && "undefined" !== typeof jsonData.cartQuantityError && jsonData.cartQuantityError) {
+                noErrors = false;
+                showGlobalError();
             }
 
             if (noErrors && "function" === typeof callback) {
@@ -1499,6 +1541,20 @@ function parseShippingMethods(shippingModulesList, html) {
     return html;
 }
 
+function afterShippingLoadCallbacks(shippingModulesList, html, triggerElementName) {
+    $.each(shippingModulesList, function (moduleName, shippingMethodId) {
+        if ("undefined" !== typeof checkoutShippingParser[moduleName]) {
+            if (
+                "undefined" !== typeof checkoutShippingParser[moduleName].after_load_callback
+            ) {
+                //setTimeout(checkoutShippingParser[moduleName].after_load_callback, 200);
+                deliveryOptionIds = shippingMethodId.map((x) => { return parseInt(x) });
+                checkoutShippingParser[moduleName].after_load_callback(deliveryOptionIds);
+            }
+        }
+    });
+}
+
 function afterPaymentLoadCallbacks(paymentModulesList, html, triggerElementName) {
     $.each(paymentModulesList, function (key, moduleName) {
         if ("undefined" !== typeof checkoutPaymentParser[moduleName]) {
@@ -1508,11 +1564,9 @@ function afterPaymentLoadCallbacks(paymentModulesList, html, triggerElementName)
                 //setTimeout(checkoutPaymentParser[moduleName].after_load_callback, 200);
                 checkoutPaymentParser[moduleName].after_load_callback();
             }
-
         }
     });
 }
-
 
 function parsePaymentMethods(paymentModulesList, html, triggerElementName) {
 
@@ -1602,6 +1656,12 @@ function updateShippingBlock(shippingModulesList, html, checksum, triggerElement
         html = parseShippingMethods(shippingModulesList, html);
         updateHtmlBlock(shippingBlockElement, html);
         shippingBlockChecksum = checksum;
+
+        afterShippingLoadCallbacks(shippingModulesList, html, triggerElementName);
+
+        prestashop.emit('thecheckout_updateShippingBlock', {
+            reason: 'update',
+        });
 
         // if force-country is enabled, and no country is selected, hide states
         if ($('<div id="shipping-parser-wrapper">' + html + '</div>').find('.force-country.disallowed').length)
@@ -1714,6 +1774,10 @@ function updatePaymentBlock(paymentModulesList, html, checksum, triggerElementNa
         paymentBlockChecksum = checksum;
 
         afterPaymentLoadCallbacks(paymentModulesList, html, triggerElementName);
+
+        prestashop.emit('thecheckout_updatePaymentBlock', {
+            reason: 'update',
+        });
 
         // restore payment for input and select fields values
         $.each(payment_fields_values, function (index, value) {
@@ -1918,9 +1982,11 @@ function selectDeliveryOption(deliveryForm) {
         type: 'POST',
         cache: false,
         dataType: "json",
-        data: deliveryForm.serialize() + "&selectDeliveryOption&ajax_request=1&action=selectDeliveryOption" + "&token=" + static_token,
+        data: deliveryForm.serialize() + "&selectDeliveryOption=1&ajax_request=1&action=selectDeliveryOption" + "&token=" + static_token,
         success: function (jsonData) {
-
+            prestashop.emit('thecheckout_updateDeliveryOption', {
+                reason: 'update',
+            });
             $('#thecheckout-shipping .error-msg').hide();
             updateCheckoutBlocks(jsonData, true, (forceRefreshShipping ? true : false), true);
             checkAndHideGlobalError();

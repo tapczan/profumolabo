@@ -315,7 +315,7 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
             // which effectively is invoice country; however, in Carrier::getAvailableCarrierList, when
             // address is not set, country is taken as country_default option, so better adhere to that.
             // Except, GEO location module enabled, then as default country, choose the context's one
-            if (Module::isEnabled('geotargetingpro')) {
+            if (Module::isEnabled('geotargetingpro') || (isset($this->context->country) && $this->context->country)) {
                 $country = $this->context->country;
             } else {
                 $country = new Country(Configuration::get('PS_COUNTRY_DEFAULT'));
@@ -398,8 +398,8 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
                     // Unselect country if we just initiated session and force_customer_to_choose_country is ON
                     if ($this->module->config->force_customer_to_choose_country && empty($addressData)) {
                         $guessCountry = true; // Guess country based on selected language
-                        $thisLang = strtolower($this->context->language->locale);
-                        $thisLang = substr($thisLang, strpos($thisLang, '-') + 1);
+                        $thisLang = Tools::strtolower($this->context->language->locale);
+                        $thisLang = Tools::substr($thisLang, strpos($thisLang, '-') + 1);
                         $formField->setValue('');
                     } else {
                         $formField->setValue($country->id);
@@ -407,7 +407,7 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
 
                     foreach ($this->availableCountries as $countryDetail) {
                         if ($guessCountry &&
-                            $thisLang == strtolower($countryDetail['iso_code'])) {
+                            $thisLang == Tools::strtolower($countryDetail['iso_code'])) {
                             $formField->setValue($countryDetail['id_country']);
                         }
                         $formField->addAvailableValue(
@@ -1144,8 +1144,9 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
             parent::initContent();
         });
 
-        if (class_exists('AmazonPayHelper') && method_exists('AmazonPayHelper',
-                'isAmazonPayCheckout') && AmazonPayHelper::isAmazonPayCheckout()) {
+        $amazonPayHelperClass = 'AmazonPayHelper';
+        if (class_exists($amazonPayHelperClass) && method_exists($amazonPayHelperClass,
+                'isAmazonPayCheckout') && $amazonPayHelperClass::isAmazonPayCheckout()) {
             $this->amazonpayOngoingSession                = true;
             $this->isAmazonPayCheckout                    = true;
             $this->module->config->default_payment_method = "amazonpay";
@@ -1338,6 +1339,7 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
             $page["body_classes"]["separate-payment"]          = $this->module->config->separate_payment;
             $page["body_classes"]["amazonpay-ongoing-session"] = $this->amazonpayOngoingSession;
             $page["body_classes"][$customer_groups_cls]        = true;
+            $page["body_classes"]["is-invoice-address-primary"]= (Config::ADDRESS_TYPE_INVOICE === $this->module->config->primary_address);
 
             if ((Configuration::get('PAYPAL_EXPRESS_CHECKOUT_SHORTCUT') || Configuration::get('PAYPAL_EXPRESS_CHECKOUT_SHORTCUT_CART')) && (isset($this->context->cookie->paypal_ecs) || isset($this->context->cookie->paypal_pSc))) {
                 $page["body_classes"]["paypal-express-checkout-session"] = true;
@@ -1406,6 +1408,19 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
                 'separatePaymentKeyName'             => Config::SEPARATE_PAYMENT_KEY_NAME,
                 'sendcloud_script'                   => $sendcloud_script
             ));
+
+            $amazonPayCheckoutSessionClass = "AmazonPayCheckoutSession";
+            if (class_exists($amazonPayCheckoutSessionClass) &&
+                method_exists($amazonPayCheckoutSessionClass,'checkStatus') &&
+                method_exists($amazonPayCheckoutSessionClass,'getAmazonPayCheckoutSessionId'))
+            {
+                $amazonPayCheckoutSession = new $amazonPayCheckoutSessionClass(false);
+
+                if ($amazonPayCheckoutSession->checkStatus()) {
+                    $sessionId = $amazonPayCheckoutSession->getAmazonPayCheckoutSessionId();
+                    $this->context->smarty->assign("tc_amazonPaySessionId", $sessionId);
+                }
+            }
 
             $metas = Meta::getMetaByPage('order', $this->context->language->id);
             if (isset($metas) && count($metas) && isset($metas['title'])) {
@@ -1511,8 +1526,9 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
         $this->context->cart->setNoMultishipping();
         $this->updateAddressIdInDeliveryOptions();
 
-        $deliveryOptions = $this->wrapInNonZeroCustomerIdForVATDeduction(function () {
-            return $this->getCheckoutSession()->getDeliveryOptions();
+        $self = $this;
+        $deliveryOptions = $this->wrapInNonZeroCustomerIdForVATDeduction(function () use(&$self) {
+            return $self->getCheckoutSession()->getDeliveryOptions();
         });
 
         return
@@ -1823,7 +1839,7 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
         $externalShippingModules = array();
         foreach ($shippingOptions["delivery_options"] as $optionId => $options) {
             if (/*"1" === $options['is_module'] && */"" !== $options['external_module_name']) {
-                $externalShippingModules[$options['external_module_name']] = $optionId;
+                $externalShippingModules[$options['external_module_name']][] = $optionId;
             }
         }
 
@@ -2571,7 +2587,7 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
     ) {
 
         // check if shipping methods has any validations
-        $shippingModuleStepComplete = $this->isShippingModuleComplete([]);
+        $shippingModuleStepComplete = $this->isShippingModuleComplete(Tools::getAllValues());
         $shippingResult             = null;
         if (!$shippingModuleStepComplete) {
             $shippingResult = array(
@@ -2703,11 +2719,14 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
             $this->context->cart->setNoMultishipping();
         }
 
+        $invoiceAddressErrors = $invoiceVisible && $invoiceAddressResult && isset($invoiceAddressResult['hasErrors']) && $invoiceAddressResult['hasErrors'];
+        $deliveryAddressErrors = $deliveryVisible && $deliveryAddressResult && isset($deliveryAddressResult['hasErrors']) && $deliveryAddressResult['hasErrors'];
+
         // In case there are no errors, let's set checkout session to payment step, so that 'Prestashop Checkout' module
         // can work properly on separate page; and we will redirect to separate page from JS controller
-        if (!$accountResult['hasErrors']
-            && !$invoiceAddressResult['hasErrors']
-            && !$deliveryAddressResult['hasErrors']
+        if ($accountResult && isset($accountResult['hasErrors']) && !$accountResult['hasErrors']
+            && !$invoiceAddressErrors
+            && !$deliveryAddressErrors
         ) {
 
             $cartChecksum = new CartChecksum(new AddressChecksum());
@@ -3151,13 +3170,28 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
             $allCustomers = Customer::getCustomers();
             if (count($allCustomers)) {
                 Context::getContext()->cookie->id_customer = $allCustomers[0]['id_customer'];
+                // backup also cart's invoice / delivery address IDs, as classes/controller/FrontController->init() will set them
+                // if $this->context->cookie->id_customer > 0
+                $cart = new Cart($this->context->cookie->id_cart);
+                if (isset($cart)) {
+                    $id_address_delivery = $cart->id_address_delivery;
+                    $id_address_invoice = $cart->id_address_invoice;
+                }
             }
         }
 
         $ret = $embed();
 
         if ($customerNotSet && $vatManagementEnabled) {
-            Context::getContext()->cookie->id_customer = 0;
+            $this->context->cookie->id_customer = 0;
+            $cart = new Cart($this->context->cookie->id_cart);
+            if (isset($cart) && isset($cart->id) && $cart->id) {
+                $cart->id_customer = 0;
+                $cart->id_address_delivery = $id_address_delivery;
+                $cart->id_address_invoice = $id_address_invoice;
+                $cart->update();
+                $this->context->cart = $cart;
+            }
         }
 
         return $ret;
@@ -3167,8 +3201,9 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
     {
         $this->parentInitContent();
 
-        $presentedCart = $this->wrapInNonZeroCustomerIdForVATDeduction(function () {
-            return $this->cart_presenter->present($this->context->cart);
+        $self = $this;
+        $presentedCart = $this->wrapInNonZeroCustomerIdForVATDeduction(function () use(&$self) {
+            return $self->cart_presenter->present($self->context->cart);
         });
 
         if ($paymentFee > 0) {
@@ -3242,7 +3277,8 @@ class TheCheckoutModuleFrontController extends ModuleFrontController
             'cartSummaryBlockChecksum' => md5($cartSummaryBlock),
             'emptyCart'                => !($presentedCart['products_count']),
             'isVirtualCart'            => $this->context->cart->isVirtualCart(),
-            'minimalPurchaseError'     => !empty($minimalPurchase)
+            'minimalPurchaseError'     => !empty($minimalPurchase),
+            'cartQuantityError'        => ($cartQuantityError !== false),
         ));
     }
 

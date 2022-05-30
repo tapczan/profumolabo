@@ -44,7 +44,7 @@ class TheCheckout extends Module
     {
         $this->name       = 'thecheckout';
         $this->tab        = 'checkout';
-        $this->version    = '3.3.3';
+        $this->version    = '3.3.4';
         $this->author     = 'Zelarg';
         $this->module_key = "2e602e0a1021555e3d85311cd8ef756d";
         //$this->moduleTHECHECKOUT_key = "2e602e0a1021555e3d85311cd8ef756d";
@@ -618,12 +618,13 @@ class TheCheckout extends Module
                 $shipping_logo = false;
             }
 
+            $amazonPayHelperClass = 'AmazonPayHelper';
             $this->context->smarty->assign(array(
                 'formatted_addresses' => $formatted_addresses,
                 'shipping_method'     => new Carrier($this->context->cart->id_carrier),
                 'shipping_logo'       => $shipping_logo,
                 'delivery_message'    => $delivery_message,
-                'amazon_ongoing_session' => (class_exists('AmazonPayHelper') && AmazonPayHelper::isAmazonPayCheckout())
+                'amazon_ongoing_session' => (class_exists($amazonPayHelperClass) && $amazonPayHelperClass::isAmazonPayCheckout())
             ));
 
             //$ret .= $this->context->smarty->fetch($this->local_path . 'views/templates/front/_partials/separate-payment.tpl');
@@ -960,7 +961,7 @@ class TheCheckout extends Module
             }
             $additionalCustomerFormFields = Hook::exec('additionalCustomerFormFields', array(), null, true);
         } catch (Exception $ex) {
-            // intentionaly empty
+            // intentionally empty
         }
         $allSeparateModuleFields      = array(
             'ps_emailsubscription' => 'newsletter',
@@ -1088,7 +1089,7 @@ class TheCheckout extends Module
         $other['hint'] = $description;
 
         return array_merge(array(
-            'col'              => 9,
+            'col'              => 6,
             'class'            => 'fixed-width-xxl',
             'type'             => 'text',
             'name'             => 'TC_' . $name,
@@ -1103,7 +1104,7 @@ class TheCheckout extends Module
         $other['hint'] = $description;
 
         return array_merge(array(
-            'col'     => 3,
+            'col'     => 6,
             'class'   => 'fixed-width-xxl' . (('default_payment_method' === $name) ? ' progressive-datalist' : ''),
             'type'    => 'select',
             'name'    => 'TC_' . $name,
@@ -1485,7 +1486,7 @@ class TheCheckout extends Module
                         'lang'         => true,
                         'autoload_rte' => '', //'rte' = enable TinyMCE editor, empty = not enabled
                         'class'        => 'tinymce-on-demand',
-                        'col'          => 9,
+                        'col'          => 8,
                         'hint'         => $this->trans('Invalid characters:', array(),
                                 'Admin.Notifications.Info') . ' &lt;&gt;;=#{}'
                     ),
@@ -1496,7 +1497,7 @@ class TheCheckout extends Module
                         'lang'         => true,
                         'autoload_rte' => '', //'rte' = enable TinyMCE editor, empty = not enabled
                         'class'        => 'tinymce-on-demand',
-                        'col'          => 9,
+                        'col'          => 8,
                         'hint'         => $this->trans('Invalid characters:', array(),
                                 'Admin.Notifications.Info') . ' &lt;&gt;;=#{}'
                     ),
@@ -1507,7 +1508,7 @@ class TheCheckout extends Module
                         'lang'         => true,
                         'autoload_rte' => '', //'rte' = enable TinyMCE editor, empty = not enabled
                         'class'        => 'tinymce-on-demand',
-                        'col'          => 9,
+                        'col'          => 8,
                         'hint'         => $this->trans('Invalid characters:', array(),
                                 'Admin.Notifications.Info') . ' &lt;&gt;;=#{}'
                     ),
@@ -1518,7 +1519,7 @@ class TheCheckout extends Module
                         'lang'         => true,
                         'autoload_rte' => '', //'rte' = enable TinyMCE editor, empty = not enabled
                         'class'        => 'tinymce-on-demand',
-                        'col'          => 9,
+                        'col'          => 8,
                         'hint'         => $this->trans('Invalid characters:', array(),
                                 'Admin.Notifications.Info') . ' &lt;&gt;;=#{}'
                     ),
@@ -1530,7 +1531,7 @@ class TheCheckout extends Module
                         'lang'         => true,
                         'autoload_rte' => '', //'rte' = enable TinyMCE editor, empty = not enabled
                         'class'        => 'tinymce-on-demand',
-                        'col'          => 9,
+                        'col'          => 8,
                         'hint'         => $this->trans(
                             'Arbitrary checkbox that user needs to confirm to proceed with order, fill in text to enable.',
                             array(),
@@ -1544,7 +1545,7 @@ class TheCheckout extends Module
                         'lang'         => true,
                         'autoload_rte' => '', //'rte' = enable TinyMCE editor, empty = not enabled
                         'class'        => 'tinymce-on-demand',
-                        'col'          => 9,
+                        'col'          => 8,
                         'hint'         => $this->trans(
                             'Arbitrary checkbox that user needs to confirm to proceed with order, fill in text to enable.',
                             array(),

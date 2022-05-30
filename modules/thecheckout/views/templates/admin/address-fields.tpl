@@ -16,7 +16,7 @@
       <th>{l s='Field name' mod='thecheckout'}</th>
       <th>{l s='Visible' mod='thecheckout'}</th>
       <th>{l s='Required' mod='thecheckout'}</th>
-      <th>{l s='Live' mod='thecheckout'}</th>
+      <th><span data-toggle="tooltip" title="Whenever user changes 'live' field on checkout form, address is immediately saved and shipping/payment methods are refreshed. For non-live fields, address is saved only at final confirmation. Set 'live' for fields that affect shipping or payment.">{l s='Live' mod='thecheckout'}<i class="material-icons" style="position:absolute; font-size: 16px; margin-top:-4px">help</i></span></th>
       <th>{l s='Width [%]' mod='thecheckout'}</th>
     </tr>
     </thead>

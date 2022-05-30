@@ -6,6 +6,8 @@
  *
  *  @author    Peter Sliacky (Zelarg)
  *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
+ * Last tested on 17.3.2022 with Paypal v5.5.0 by 202 ecommerce
  */
 
 checkoutPaymentParser.paypal = {
@@ -15,7 +17,26 @@ checkoutPaymentParser.paypal = {
         return ('undefined' !== typeof PAYPAL && 'undefined' !== typeof PAYPAL.apps && 'undefined' !== typeof PAYPAL.apps.PPP);
     },
 
+    container: function(element) {
+        // Fee parsing - optional, uncomment if Paypal module has a fee assigned
+        // var paymentOption = element.attr('id').match(/payment-option-\d+/)[0];
+        // var feeHtml = element.find('label span').html();
+        // var fee = payment.parsePrice(feeHtml.replace(/.*?\((.*?)\).*/,"$1"));
+        // element.last().append('<div class="payment-option-fee hidden" id="'+paymentOption+'-fee">'+fee+'</div>');
+    },
+
     init_once: function (content, triggerElementName) {
+
+        // v5.5.0 fixes - set popup payment type and move additional info into popup - but only for in-context mode
+        containerElement = content.find('[id$=-container]');
+        additionalInfoElement = content.find('[id$=-additional-information]');
+        // If embedded mode (=data-container-express-checkout button exists), set popup payment type and make it binary
+        if (additionalInfoElement.find('[data-container-express-checkout]').length) {
+            payment.setPopupPaymentType(containerElement, true);
+            additionalInfoElement.addClass('paypal').addClass('popup-notice').addClass('hidden-in-payment-methods');
+            additionalInfoElement.find('.pp-info').prependTo(additionalInfoElement);
+            additionalInfoElement.find('[data-container-express-checkout]').css('align-items', 'initial');
+        }
 
         $.each(content, function (n, paymentContent) {
             if ($(paymentContent).find('.payment_module.braintree-card').length) {
@@ -55,15 +76,6 @@ checkoutPaymentParser.paypal = {
                             </script>\
                         ';
         content.append(express_checkout_make_visible);
-
-    },
-
-    container: function (element) {
-        // Fee parsing
-        // var paymentOption = element.attr('id').match(/payment-option-\d+/)[0];
-        // var feeHtml = element.find('label span').html();
-        // var fee = payment.parsePrice(feeHtml.replace(/.*?\((.*?)\).*/,"$1"));
-        // element.last().append('<div class="payment-option-fee hidden" id="'+paymentOption+'-fee">'+fee+'</div>');
 
     },
 

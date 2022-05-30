@@ -26,10 +26,14 @@
   <!--  product left content: image-->
   <div class="product-line-image">
     <span class="product-image media-middle">
-      {if $product.cover}
-        <img src="{$product.cover.bySize.cart_default.url}" alt="{$product.name|escape:'quotes'}">
+      {if $product.default_image}
+        <img src="{$product.default_image.bySize.cart_default.url}" alt="{$product.name|escape:'quotes'}" loading="lazy">
       {else}
-        <img src="{$urls.no_picture_image.bySize.cart_default.url}" />
+        {if $product.cover}
+          <img src="{$product.cover.bySize.cart_default.url}" alt="{$product.name|escape:'quotes'}">
+        {else}
+          <img src="{$urls.no_picture_image.bySize.cart_default.url}" />
+        {/if}
       {/if}
     </span>
   </div>

@@ -484,7 +484,7 @@ $(document).ready(function () {
     //$('#TC_social_login_google_on, #TC_social_login_btn_style').closest('.form-group').before('<div class="config-sep"></div>');
 
     // thecheckout_video_tutorial, thecheckout_video_tutorial_sub1 are set in hookDisplayBackOfficeHeader()
-    $('#TC_social_login_fb_on').closest('.form-group').before('<div class="howto fb-api"><a target="_blank" href="//youtu.be/xfXAFnXLSR0"><span class="video-tutorial">' + thecheckout_video_tutorial + ':</span> ' + thecheckout_video_tutorial_sub1 + '</a></div>');
+    $('#TC_social_login_fb_on').closest('.form-group').before('<div class="howto fb-api"><a target="_blank" href="//theonetechnologies.com/blog/post/how-to-get-facebook-application-id-and-secret-key"><span class="video-tutorial">' + thecheckout_video_tutorial + ':</span> ' + thecheckout_video_tutorial_sub1 + '</a></div>');
     $('#TC_social_login_google_on').closest('.form-group').before('<div class="howto google-api"><a target="_blank" href="//theonetechnologies.com/blog/post/how-to-get-google-app-client-id-and-client-secret"><span class="video-tutorial">' + thecheckout_video_tutorial + ':</span> ' + thecheckout_video_tutorial_sub2 + '</a></div>');
 
     $('.tinymce-on-demand').closest('.translatable-field').parent().closest('.form-group').find('.control-label').append('<div class="init-html-editor-container"><span class="init-on-demand-html-editor">' + thecheckout_init_html_editor + '</span></div>');
@@ -542,5 +542,6 @@ $(document).ready(function () {
         $('[id^=module_form_submit_btn_]').fadeOut(3000);
     });
 
+    $('[data-toggle="tooltip"]').tooltip();
 
 });

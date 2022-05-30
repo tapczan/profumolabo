@@ -1362,6 +1362,10 @@ form#braintree-form {
   padding: 30px 10px 10px;
 }
 
+.payment-options .hidden-in-payment-methods {
+  display: none!important;
+}
+
 .cart-item .product-line {
   display: flex;
   flex-wrap: wrap;
@@ -1779,9 +1783,9 @@ body:not(.force-email-overlay) .width-below-35pct .classic-login {
 }
 
 // Virtual cart support
-body.is-virtual-cart #thecheckout-address-delivery,
+body.is-virtual-cart.is-invoice-address-primary #thecheckout-address-delivery,
 body.is-virtual-cart #thecheckout-shipping,
-body.is-virtual-cart .checkout-block .second-address {
+body.is-virtual-cart.is-invoice-address-primary .checkout-block .second-address {
   display: none !important;
 }
 
@@ -2396,7 +2400,47 @@ select.form-control.orig-field.form-control-select.live {
   display: none;
 }
 
-/* no-header class treatment */
+/* Disable addresses for Amazonpay ongoing session */
+.amazonpay-ongoing-session :is(#thecheckout-address-invoice, #thecheckout-address-delivery) :is(.address-fields, .business-customer, .second-address) {
+  position: relative;
+}
+
+.amazonpay-ongoing-session :is(#thecheckout-address-delivery) :is(.address-fields, .business-customer):after,
+.amazonpay-ongoing-session :is(#thecheckout-address-invoice) :is(.second-address):after
+{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+  title: 'disabled';
+  cursor: not-allowed;
+}
+
+.amazonpay-ongoing-session :is(#thecheckout-address-delivery) .address-fields .has-float-label :is(input, select)
+{
+  color: #888;
+  background: #fafafa!important;
+}
+
+.amazonpay-ongoing-session .customer-addresses {
+  display: none;
+}
+
+.amazonpay-ongoing-session .amazonpay-change-address {
+  display: block!important;
+}
+
+.amazonpay-change-address {
+  text-align: right;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+  /* no-header class treatment */
 #module-thecheckout-order .checkout-block.no-header .inner-area {
   border-top: 0;
   border-top-left-radius: 0;
@@ -2503,4 +2547,9 @@ a#pppplus_reload {
 
 .logged-in #tc_save_account {
   display: none;
+}
+
+/* vivawallet has modal-backdrop with too high z-index, making problems for pop-up payment */
+.modal-backdrop.show {
+  z-index: 1000;
 }

@@ -9,6 +9,7 @@
 *}
 
 <div class="block-header address-name-header">{l s='Shipping address' mod='thecheckout'}</div>
+<a style="display: none;" href="javascript:void(0);" class="amazonpay-change-address">{l s='Change address' mod='thecheckout'}</a>
 <form class="address-fields" data-address-type="delivery">
   {include file='module:thecheckout/views/templates/front/_partials/customer-addresses-dropdown.tpl' addressType='delivery'}
   {block name="address_delivery_form_fields"}

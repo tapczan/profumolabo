@@ -52,7 +52,7 @@
               <div class="delivery-options">
                 {foreach from=$delivery_options item=carrier key=carrier_id}
                   <div
-                          class="delivery-option-row row delivery-option{if isset($carrier.external_module_name) && "" != $carrier.external_module_name} {$carrier.external_module_name}{/if}{if (isset($customerSelectedDeliveryOption) && $carrier_id == $customerSelectedDeliveryOption)} user-selected{/if}">
+                          class="delivery-option-row row delivery-option{if isset($carrier.external_module_name) && "" != $carrier.external_module_name} {$carrier.external_module_name}{/if}{if (isset($customerSelectedDeliveryOption) && $carrier_id == $customerSelectedDeliveryOption)} user-selected{/if} carrier-ref-{$carrier.id_reference}">
                     <div class="shipping-radio">
                         <span class="custom-radio float-xs-left">
                           <input type="radio" name="delivery_option[{$id_address}]" id="delivery_option_{$carrier.id}"

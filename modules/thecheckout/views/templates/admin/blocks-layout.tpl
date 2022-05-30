@@ -15,7 +15,7 @@
   <div class="block-classes-info" style="display: none;">
     <div>{l s='This allows further fine-grained manipulation using width pre-defined CSS classes. You can use these pre-defined classes:' mod='thecheckout'}
       <br/>{l s='Set number for block:' mod='thecheckout'} <span class="block-classes-sample">num-1</span> ... <span class="block-classes-sample">num-6</span>
-      <br/>{l s='Set block invisible:' mod='thecheckout'} <span class="block-classes-sample">hidden</span>
+      <br/>{l s='Set block invisible:' mod='thecheckout'} <span class="block-classes-sample">hidden</span> <span data-toggle="tooltip" title="For 'psgdpr' and 'data-privacy' - Please do not set them to 'hidden'! Rather disable those modules, if you want to hide these blocks."><i  class="material-icons" style="font-size: 16px;">help</i></span>
       <br/>{l s='Set block position on mobile (flexbox \'order\' property)' mod='thecheckout'}:
       <span class="block-classes-sample">mobile-1</span> ... <span class="block-classes-sample">mobile-15</span>
       <br/>{l s='Set cart block to column-sticky mode' mod='thecheckout'}:
