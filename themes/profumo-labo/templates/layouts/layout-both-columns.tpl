@@ -37,6 +37,8 @@
       {hook h='displayAfterBodyOpeningTag'}
     {/block}
 
+    {hook h='displayX13InfoBar'}
+
     <main class="l-main">
       {block name='product_activation'}
         {include file='catalog/_partials/product-activation.tpl'}
