@@ -1,0 +1,56 @@
+.x13recieptorinvoice-info{
+	margin-bottom: 10px !important;
+}
+.x13recieptorinvoice{
+	background-color :#F4F4F4;
+	border:1px solid;
+	border-color: #DDD;
+	padding:5px 10px;
+	margin:5px 0 10px 0;
+}
+.x13recieptorinvoice .radio{
+	padding-top:6px;
+}
+
+.x13recieptorinvoice img{
+	height: 25px;
+	width: auto;
+	margin-right: 3px;
+}
+
+.x13recieptorinvoice input{
+	position:relative;
+	top:3px;
+}
+
+.x13recieptorinvoice label{
+	padding:5px 0;
+	cursor:pointer;
+	margin:0;
+}
+
+.x13recieptorinvoice .radio, .x13recieptorinvoice input:not(:disabled){
+	cursor:pointer;
+}
+
+.x13recieptorinvoice-error{
+	padding:7px 10px;
+	color:#FFF;
+	background:orange;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+.x13recieptorinvoice-error a{
+	color:#FFF;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.x13recieptorinvoice-error a:hover{
+	color:#FFF;
+}
+
+/* supercheckout fix */
+#x13recieptorinvoice-reciept, #x13recieptorinvoice-invoice {
+	position: relative;
+}

@@ -1,0 +1,17 @@
+admin_xparagonlubfaktura_change_document:
+  path: /xparagonlubfaktura/{orderId}/update
+  methods: [GET, POST]
+  defaults:
+    _controller: 'XReceiptOrInvoice\Controller\HandleStatus::updateAction'
+    _legacy_controller: AdminOrders
+  requirements:
+    orderId: \d+
+
+admin_xparagonlubfaktura_change_document_bulk:
+  path: /xparagonlubfaktura/update_bulk
+  methods: [GET, POST]
+  defaults:
+    _controller: 'XReceiptOrInvoice\Controller\HandleStatus::updateBulkAction'
+    _legacy_controller: AdminOrders
+  requirements:
+    invoice: \d+
