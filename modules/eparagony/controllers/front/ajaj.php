@@ -5,7 +5,7 @@
  * @license TBD
  */
 
-use ASoftwareHouse\EParagony\SupplementaryFront\FrontAction;
+use Spark\EParagony\SupplementaryFront\FrontAction;
 
 class EparagonyAjajModuleFrontController extends ModuleFrontController
 {

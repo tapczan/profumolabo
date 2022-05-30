@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\SupplementaryAdmin;
+namespace Spark\EParagony\SupplementaryAdmin;
 
 use Controller;
-use EParagony;
+use Spark\EParagony\Constants;
 
 class FormFieldGenerator
 {
@@ -33,6 +33,6 @@ class FormFieldGenerator
 
     public static function addJS(Controller $controller, $path)
     {
-        $controller->addJS($path . 'views/js/config.js?v=' . EParagony::ADMIN_SCRIPT_VERSION);
+        $controller->addJS($path . 'views/js/config.js?v=' . Constants::ADMIN_SCRIPT_VERSION);
     }
 }

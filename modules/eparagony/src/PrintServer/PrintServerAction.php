@@ -1,16 +1,16 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\PrintServer;
+namespace Spark\EParagony\PrintServer;
 
-use ASoftwareHouse\EParagony\DatabaseError;
-use ASoftwareHouse\EParagony\DocumentsManager;
-use ASoftwareHouse\EParagony\Entity\EparagonyDocumentStatus;
-use ASoftwareHouse\EParagony\PrinterLogManager;
+use Spark\EParagony\DatabaseError;
+use Spark\EParagony\DocumentsManager;
+use Spark\EParagony\Entity\EparagonyDocumentStatus;
+use Spark\EParagony\PrinterLogManager;
 use Throwable;
 
 /**
@@ -90,8 +90,13 @@ class PrintServerAction
         }
     }
 
-    private static function isPrintStatusTemporaryFailure($status)
+    private static function isPrintStatusTemporaryFailure($status, $errorCode)
     {
+        #Temporal section.
+        if (!$errorCode) {
+            return true;
+        }
+
         switch ($status) {
             case self::PRINT_STATUS_TYPE_COMM_ERROR:
             case self::PRINT_STATUS_TYPE_TIME_SKEW:
@@ -120,13 +125,14 @@ class PrintServerAction
                         ]];
                     } elseif ($printStatus === self::PRINT_STATUS_FAILURE) {
                         $printStatusType = $payload['type'] ?? null;
+                        $printErrorCode = $payload['errorCode'] ?? null;
                         if (self::isPrintStatusAlternativeSuccess($printStatusType)) {
                             $this->dm->finishQueue($document);
                             return [200, [
                                 'RID' => $tag,
                                 'status' => self::QUEUE_REPORT_REMOVED,
                             ]];
-                        } elseif (self::isPrintStatusTemporaryFailure($printStatusType)) {
+                        } elseif (self::isPrintStatusTemporaryFailure($printStatusType, $printErrorCode)) {
                             $this->dm->repeatQueue($document);
                             return [200, [
                                 'RID' => $tag,

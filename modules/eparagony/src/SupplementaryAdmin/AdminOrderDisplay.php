@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\SupplementaryAdmin;
+namespace Spark\EParagony\SupplementaryAdmin;
 
-use ASoftwareHouse\EParagony\DocumentsManager;
-use ASoftwareHouse\EParagony\Entity\EparagonyDocumentStatus;
+use Spark\EParagony\DocumentsManager;
+use Spark\EParagony\Entity\EparagonyDocumentStatus;
 use LogicException;
 use Symfony\Component\Routing\Router;
 use Twig;
@@ -19,10 +19,10 @@ class AdminOrderDisplay
     private $router;
     private $manager;
 
-    const BTN_CODE_ISSUE = 'issue';
-    const BTN_CODE_ISSUING = 'issuing';
-    const BTN_CODE_ISSUED = 'issued';
-    const BTN_CODE_ERROR = 'error';
+    const BTN_CODE_ISSUE = 'Issue e-receipt';
+    const BTN_CODE_ISSUING = 'E-receipt: issuing';
+    const BTN_CODE_ISSUED = 'E-receipt: issued';
+    const BTN_CODE_ERROR = 'E-receipt: error';
 
     public function __construct(Twig\Environment $twig, Router $router, DocumentsManager $manager)
     {

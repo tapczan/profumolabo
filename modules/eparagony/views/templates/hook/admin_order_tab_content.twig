@@ -7,25 +7,25 @@
                 <dt>{{'Status:'|trans}}</dt>
                 <dd>
                     {% if stateRaw == 'blank' %}
-                        {{ 'Processing of e-paragon not active.'|trans }}
+                        {{ 'Issuing e-receipt has not started.'|trans }}
                     {% elseif stateRaw == 'queued'%}
-                        {{ 'Preparing do processing of e-paragon.'|trans }}
+                        {{ 'E-receipt processing initiated.'|trans }}
                     {% elseif stateRaw == 'downloading'%}
-                        {{ 'Preparing do processing of e-paragon.'|trans }}
+                        {{ 'E-receipt processing initiated'|trans }}
                     {% elseif stateRaw == 'compiled'%}
-                        {{ 'The e-paragon is waiting to be issued.'|trans }}
+                        {{ 'E-receipt awaits to be issued.'|trans }}
                     {% elseif stateRaw == 'in_progress'%}
-                        {{ 'The e-paragon is beeing issued.'|trans }}
+                        {{ 'E-receipt is beeing issued.'|trans }}
                     {% elseif stateRaw == 'ready'%}
-                        {{ 'The e-paragon has been issued.'|trans }}
+                        {{ 'E-receipt has been issued.'|trans }}
                         {{ '(waiting for repository confirmation)'|trans }}
                     {% elseif stateRaw == 'confirmed'%}
-                        {{ 'The e-paragon has been issued.'|trans }}
+                        {{ 'E-receipt has been issued.'|trans }}
                         {{ '(confirmed)'|trans }}
                     {% elseif stateRaw == 'error'%}
-                        {{ 'An error in issuing e-paragon.'|trans }}
+                        {{ 'Error occured while issuing e-receipt.'|trans }}
                     {% elseif stateRaw == 'unknown'%}
-                        {{ 'An error in issuing e-paragon.'|trans }}
+                        {{ 'Error occured while issuing e-receipt.'|trans }}
                         {{ '(unknown status)'|trans }}
                     {% else %}
                         ({{ stateRaw }})
@@ -49,12 +49,12 @@
             {% endif %}
             {% if forceDownload %}
                 <a class="btn btn-outline-danger js-eparagony-force-download" href="{{ forceDownload }}">
-                    {{ 'Prepare e-paragon'|trans }}
+                    {{ 'Prepare e-receipt'|trans }}
                 </a>
             {% endif %}
             {% if url %}
                 <a class="btn btn-outline-primary" href="{{ url }}">
-                    {{ 'Display e-paragon'|trans }}
+                    {{ 'Display e-receipt'|trans }}
                 </a>
             {% endif %}
         </div>
@@ -62,7 +62,7 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th colspan="4">{{'Additional informations:'|trans}}</th>
+                    <th colspan="4">{{'Additional information:'|trans}}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -79,7 +79,7 @@
             {% if debugPrintServer %}
                 <form action="{{ debugPrintServer|raw }}" method="post">
                     <input type="hidden" name="documentId" value="{{ documentId|raw }}">
-                    <button class="btn btn-outline-secondary">{{ 'Debug print server'|trans }}</button>
+                    <button class="btn btn-outline-secondary">{{ 'Print server response log'|trans }}</button>
                 </form>
             {% endif %}
         </div>

@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\SupplementaryFront;
+namespace Spark\EParagony\SupplementaryFront;
 
-use ASoftwareHouse\EParagony\CartPreferenceManager;
-use ASoftwareHouse\EParagony\TelephoneTool;
+use Spark\EParagony\CartPreferenceManager;
+use Spark\EParagony\TelephoneTool;
 use Context;
 use PrestaShop\PrestaShop\Adapter\Entity\Address;
 

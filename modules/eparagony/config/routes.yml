@@ -1,14 +1,14 @@
 eparagony_admin_debug_web_server:
   path: /eparagony/debug/web_server
   defaults:
-    _controller: 'ASoftwareHouse\EParagony\Controller\AdminTwigController::debugWebServer'
+    _controller: 'Spark\EParagony\Controller\AdminTwigController::debugWebServer'
 
 eparagony_admin_force_download:
   path: /eparagony/force/download
   defaults:
-    _controller: 'ASoftwareHouse\EParagony\Controller\AdminSpecialController::forceReceiptDownload'
+    _controller: 'Spark\EParagony\Controller\AdminSpecialController::forceReceiptDownload'
 
 eparagony_admin_mail_receipt:
   path: /eparagony/send/receipt
   defaults:
-    _controller: 'ASoftwareHouse\EParagony\Controller\AdminMailerController::sendReceiptUrl'
+    _controller: 'Spark\EParagony\Controller\AdminMailerController::sendReceiptUrl'

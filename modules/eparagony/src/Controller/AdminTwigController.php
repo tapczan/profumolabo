@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\Controller;
+namespace Spark\EParagony\Controller;
 
-use ASoftwareHouse\EParagony\DocumentsManager;
-use ASoftwareHouse\EParagony\PrinterLogManager;
+use Spark\EParagony\DocumentsManager;
+use Spark\EParagony\PrinterLogManager;
 use PrestaShopBundle\Controller\Admin\FrameworkBundleAdminController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

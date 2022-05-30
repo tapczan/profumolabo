@@ -1,8 +1,13 @@
 <?php
+/**
+ * @author Check AUTHORS file.
+ * @copyright Spark
+ * @license proprietary
+ */
 
-namespace ASoftwareHouse\EParagony;
+namespace Spark\EParagony;
 
-use ASoftwareHouse\EParagony\Entity\EparagonyPrinterLog;
+use Spark\EParagony\Entity\EparagonyPrinterLog;
 use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;

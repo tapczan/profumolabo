@@ -1,15 +1,15 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony;
+namespace Spark\EParagony;
 
-use ASoftwareHouse\EParagony\Entity\EparagonyDocumentStatus;
-use ASoftwareHouse\EParagony\Spark\ApiSparkException;
-use ASoftwareHouse\EParagony\Spark\ApiSparkFactory;
+use Spark\EParagony\Entity\EparagonyDocumentStatus;
+use Spark\EParagony\SparkApi\ApiSparkException;
+use Spark\EParagony\SparkApi\ApiSparkFactory;
 use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
@@ -180,6 +180,9 @@ class DocumentsManager
         try {
             $this->receiptManager->confirmQueue($documentStatus);
             $rapportError = false;
+
+            /* Send after flush. */
+            $this->mailer->mailReceipt($documentStatus);
         } catch (ORMException|DBALException $ex) {
             #TODO Check if this logger is reliable in this context.
             /* It is not critical. */
@@ -294,9 +297,6 @@ class DocumentsManager
             $documentStatus->setRest(json_encode($rest));
             /* The function below flush. */
             $this->receiptManager->finishDownload($documentStatus);
-
-            /* Send after flush. */
-            $this->mailer->mailReceipt($documentStatus);
 
             return true;
         } catch (ApiSparkException $ex) {

@@ -2,9 +2,9 @@ imports:
   - { resource: ../common_services.yml }
 
 services:
-  ASoftwareHouse\EParagony\SupplementaryAdmin\AdminOrderDisplay:
-    class: ASoftwareHouse\EParagony\SupplementaryAdmin\AdminOrderDisplay
+  Spark\EParagony\SupplementaryAdmin\AdminOrderDisplay:
+    class: Spark\EParagony\SupplementaryAdmin\AdminOrderDisplay
     arguments:
       - '@twig'
       - '@router'
-      - '@ASoftwareHouse\EParagony\DocumentsManager'
+      - '@Spark\EParagony\DocumentsManager'

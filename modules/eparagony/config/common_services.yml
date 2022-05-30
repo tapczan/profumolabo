@@ -2,96 +2,96 @@ services:
   _defaults:
     public: true
 
-  ASoftwareHouse\EParagony\AddressChecker:
-    class: ASoftwareHouse\EParagony\AddressChecker
+  Spark\EParagony\AddressChecker:
+    class: Spark\EParagony\AddressChecker
 
-  ASoftwareHouse\EParagony\CartPreferenceManager:
-    class: ASoftwareHouse\EParagony\CartPreferenceManager
+  Spark\EParagony\CartPreferenceManager:
+    class: Spark\EParagony\CartPreferenceManager
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ASoftwareHouse\EParagony\ConfigHelper:
-    class: ASoftwareHouse\EParagony\ConfigHelper
+  Spark\EParagony\ConfigHelper:
+    class: Spark\EParagony\ConfigHelper
 
-  ASoftwareHouse\EParagony\Controller\AdminMailerController:
-    class: ASoftwareHouse\EParagony\Controller\AdminMailerController
+  Spark\EParagony\Controller\AdminMailerController:
+    class: Spark\EParagony\Controller\AdminMailerController
     arguments:
-      - '@ASoftwareHouse\EParagony\Mailer'
-      - '@ASoftwareHouse\EParagony\DocumentsManager'
+      - '@Spark\EParagony\Mailer'
+      - '@Spark\EParagony\DocumentsManager'
 
-  ASoftwareHouse\EParagony\Controller\AdminSpecialController:
-    class: ASoftwareHouse\EParagony\Controller\AdminSpecialController
+  Spark\EParagony\Controller\AdminSpecialController:
+    class: Spark\EParagony\Controller\AdminSpecialController
     arguments:
-      - '@ASoftwareHouse\EParagony\DocumentsManager'
+      - '@Spark\EParagony\DocumentsManager'
 
-  ASoftwareHouse\EParagony\Controller\AdminTwigController:
-    class: ASoftwareHouse\EParagony\Controller\AdminTwigController
+  Spark\EParagony\Controller\AdminTwigController:
+    class: Spark\EParagony\Controller\AdminTwigController
     arguments:
-      - '@ASoftwareHouse\EParagony\DocumentsManager'
-      - '@ASoftwareHouse\EParagony\PrinterLogManager'
+      - '@Spark\EParagony\DocumentsManager'
+      - '@Spark\EParagony\PrinterLogManager'
 
-  ASoftwareHouse\EParagony\DocumentsManager:
-    class: ASoftwareHouse\EParagony\DocumentsManager
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ASoftwareHouse\EParagony\ReceiptQueueManager'
-      - '@ASoftwareHouse\EParagony\Mailer'
-      - '@ASoftwareHouse\EParagony\Spark\ApiSparkFactory'
-      - '@ASoftwareHouse\EParagony\OrderChecker'
-
-  ASoftwareHouse\EParagony\Mailer:
-    class: ASoftwareHouse\EParagony\Mailer
-
-  ASoftwareHouse\EParagony\MagicBox:
-    class: ASoftwareHouse\EParagony\MagicBox
-
-  ASoftwareHouse\EParagony\OrderChecker:
-    class: ASoftwareHouse\EParagony\OrderChecker
-
-  ASoftwareHouse\EParagony\PrinterLogManager:
-    class: ASoftwareHouse\EParagony\PrinterLogManager
+  Spark\EParagony\DocumentsManager:
+    class: Spark\EParagony\DocumentsManager
     arguments:
       - '@doctrine.orm.entity_manager'
+      - '@Spark\EParagony\ReceiptQueueManager'
+      - '@Spark\EParagony\Mailer'
+      - '@Spark\EParagony\SparkApi\ApiSparkFactory'
+      - '@Spark\EParagony\OrderChecker'
 
-  ASoftwareHouse\EParagony\PrintServer\PrintServerAction:
-    class: ASoftwareHouse\EParagony\PrintServer\PrintServerAction
-    arguments:
-      - '@ASoftwareHouse\EParagony\PrintServer\PrintServerLogin'
-      - '@ASoftwareHouse\EParagony\DocumentsManager'
-      - '@ASoftwareHouse\EParagony\PrinterLogManager'
+  Spark\EParagony\Mailer:
+    class: Spark\EParagony\Mailer
 
-  ASoftwareHouse\EParagony\PrintServer\PrintServerLogin:
-    class: ASoftwareHouse\EParagony\PrintServer\PrintServerLogin
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@ASoftwareHouse\EParagony\ConfigHelper'
+  Spark\EParagony\MagicBox:
+    class: Spark\EParagony\MagicBox
 
-  ASoftwareHouse\EParagony\ReceiptQueueManager:
-    class: ASoftwareHouse\EParagony\ReceiptQueueManager
+  Spark\EParagony\OrderChecker:
+    class: Spark\EParagony\OrderChecker
+
+  Spark\EParagony\PrinterLogManager:
+    class: Spark\EParagony\PrinterLogManager
     arguments:
       - '@doctrine.orm.entity_manager'
 
-  ASoftwareHouse\EParagony\Spark\ApiSparkFactory:
-    class: ASoftwareHouse\EParagony\Spark\ApiSparkFactory
+  Spark\EParagony\PrintServer\PrintServerAction:
+    class: Spark\EParagony\PrintServer\PrintServerAction
     arguments:
-      - '@ASoftwareHouse\EParagony\ConfigHelper'
-      - '@ASoftwareHouse\EParagony\MagicBox'
+      - '@Spark\EParagony\PrintServer\PrintServerLogin'
+      - '@Spark\EParagony\DocumentsManager'
+      - '@Spark\EParagony\PrinterLogManager'
+
+  Spark\EParagony\PrintServer\PrintServerLogin:
+    class: Spark\EParagony\PrintServer\PrintServerLogin
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@Spark\EParagony\ConfigHelper'
+
+  Spark\EParagony\ReceiptQueueManager:
+    class: Spark\EParagony\ReceiptQueueManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  Spark\EParagony\SparkApi\ApiSparkFactory:
+    class: Spark\EParagony\SparkApi\ApiSparkFactory
+    arguments:
+      - '@Spark\EParagony\ConfigHelper'
+      - '@Spark\EParagony\MagicBox'
       - '%kernel.cache_dir%'
 
-  ASoftwareHouse\EParagony\Spark\WebHookSpark:
-    class: ASoftwareHouse\EParagony\Spark\WebHookSpark
+  Spark\EParagony\SparkApi\WebHookSpark:
+    class: Spark\EParagony\SparkApi\WebHookSpark
     arguments:
-      - '@ASoftwareHouse\EParagony\DocumentsManager'
-      - '@ASoftwareHouse\EParagony\ConfigHelper'
+      - '@Spark\EParagony\DocumentsManager'
+      - '@Spark\EParagony\ConfigHelper'
       - '%kernel.cache_dir%'
 
-  ASoftwareHouse\EParagony\SupplementaryFront\FrontAction:
-    class: ASoftwareHouse\EParagony\SupplementaryFront\FrontAction
+  Spark\EParagony\SupplementaryFront\FrontAction:
+    class: Spark\EParagony\SupplementaryFront\FrontAction
     arguments:
-      - '@ASoftwareHouse\EParagony\CartPreferenceManager'
+      - '@Spark\EParagony\CartPreferenceManager'
 
-  ASoftwareHouse\EParagony\SupplementaryFront\FrontDisplaySupport:
-    class: ASoftwareHouse\EParagony\SupplementaryFront\FrontDisplaySupport
+  Spark\EParagony\SupplementaryFront\FrontDisplaySupport:
+    class: Spark\EParagony\SupplementaryFront\FrontDisplaySupport
     arguments:
-      - '@ASoftwareHouse\EParagony\AddressChecker'
-      - '@ASoftwareHouse\EParagony\ConfigHelper'
+      - '@Spark\EParagony\AddressChecker'
+      - '@Spark\EParagony\ConfigHelper'

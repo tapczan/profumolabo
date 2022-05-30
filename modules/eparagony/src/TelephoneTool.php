@@ -1,11 +1,11 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony;
+namespace Spark\EParagony;
 
 class TelephoneTool
 {

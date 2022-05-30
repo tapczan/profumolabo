@@ -2,7 +2,7 @@
 <module>
     <name>eparagony</name>
     <displayName><![CDATA[Dokumenty fiskalne: E-Paragony i E-faktury]]></displayName>
-    <version><![CDATA[0.1.0]]></version>
+    <version><![CDATA[0.1.6]]></version>
     <description><![CDATA[Electronic fiscal documents subsystem.]]></description>
     <author><![CDATA[Spark]]></author>
     <tab><![CDATA[front_office_features]]></tab>

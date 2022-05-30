@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\SupplementaryFront;
+namespace Spark\EParagony\SupplementaryFront;
 
-use ASoftwareHouse\EParagony\AddressChecker;
-use ASoftwareHouse\EParagony\ConfigHelper;
+use Spark\EParagony\AddressChecker;
+use Spark\EParagony\ConfigHelper;
 use Context;
 use PrestaShop\PrestaShop\Adapter\Entity\Address;
 

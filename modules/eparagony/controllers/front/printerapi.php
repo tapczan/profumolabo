@@ -5,7 +5,7 @@
  * @license TBD
  */
 
-use ASoftwareHouse\EParagony\PrintServer\PrintServerAction;
+use Spark\EParagony\PrintServer\PrintServerAction;
 
 class EparagonyPrinterapiModuleFrontController extends ModuleFrontController
 {

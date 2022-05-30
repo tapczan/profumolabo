@@ -5,7 +5,7 @@
  * @license TBD
  */
 
-use ASoftwareHouse\EParagony\Spark\WebHookSpark;
+use Spark\EParagony\SparkApi\WebHookSpark;
 
 class EparagonySparkModuleFrontController extends ModuleFrontController
 {

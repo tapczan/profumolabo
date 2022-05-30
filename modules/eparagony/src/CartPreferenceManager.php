@@ -1,13 +1,13 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony;
+namespace Spark\EParagony;
 
-use ASoftwareHouse\EParagony\Entity\EparagonyCartConfig;
+use Spark\EParagony\Entity\EparagonyCartConfig;
 use Cart;
 use Doctrine\ORM\EntityManagerInterface;
 use Order;

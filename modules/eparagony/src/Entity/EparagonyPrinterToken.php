@@ -1,11 +1,11 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\Entity;
+namespace Spark\EParagony\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

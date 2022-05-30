@@ -11,20 +11,19 @@ if (!defined('_PS_VERSION_')) {
 
 require_once dirname(__FILE__).'/vendor/autoload.php';
 
-use ASoftwareHouse\EParagony\CartPreferenceManager;
-use ASoftwareHouse\EParagony\ConfigurationHolder;
-use ASoftwareHouse\EParagony\ConfigHelper;
-use ASoftwareHouse\EParagony\DocumentsManager;
-use ASoftwareHouse\EParagony\RawDbActions;
-use ASoftwareHouse\EParagony\SupplementaryAdmin\AdminOrderDisplay;
-use ASoftwareHouse\EParagony\SupplementaryAdmin\FormFieldGenerator;
-use ASoftwareHouse\EParagony\SupplementaryFront\FrontDisplaySupport;
+use Spark\EParagony\CartPreferenceManager;
+use Spark\EParagony\ConfigurationHolder;
+use Spark\EParagony\ConfigHelper;
+use Spark\EParagony\Constants;
+use Spark\EParagony\DocumentsManager;
+use Spark\EParagony\RawDbActions;
+use Spark\EParagony\SupplementaryAdmin\AdminOrderDisplay;
+use Spark\EParagony\SupplementaryAdmin\FormFieldGenerator;
+use Spark\EParagony\SupplementaryFront\FrontDisplaySupport;
 use PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton;
 
 class EParagony extends Module
 {
-    const ADMIN_SCRIPT_VERSION = '002';
-
     const SWITCH_VALUES = [
         ['value' => 1, 'id' => 'active_on'],
         ['value' => 0, 'id' => 'active_off'],
@@ -35,7 +34,7 @@ class EParagony extends Module
         /* The name value should be of the same case as the name of this file. */
         $this->name = 'eparagony';
         $this->tab = 'front_office_features';
-        $this->version = '0.1.0';
+        $this->version = '0.1.6';
         $this->author = 'Spark';
         $this->need_instance = 1;
         $this->ps_versions_compliancy = [
@@ -51,6 +50,10 @@ class EParagony extends Module
         $this->description = $this->l('Electronic receipt and invoice subsystem.');
 
         $this->confirmUninstall = $this->l('Are you sure you want to uninstall? It is not supported.');
+
+        if ($this->version !== Constants::PLUGIN_VERSION) {
+            throw new LogicException('Fix plugin version constant.');
+        }
     }
 
     public function isUsingNewTranslationSystem()
@@ -82,7 +85,7 @@ class EParagony extends Module
 
     public function hookActionAdminControllerSetMedia($params)
     {
-        $script = $this->getPathUri() . 'views/js/admin.js?v=' . EParagony::ADMIN_SCRIPT_VERSION;
+        $script = $this->getPathUri() . 'views/js/admin.js?v=' . Constants::ADMIN_SCRIPT_VERSION;
         $this->context->controller->addJS($script);
     }
 
@@ -120,16 +123,16 @@ class EParagony extends Module
             $bar = $params['actions_bar_buttons_collection'];
             switch ($btnOptions['code']) {
                 case $aod::BTN_CODE_ISSUE:
-                    $label = $this->trans('Prepare e-paragon', [], 'Modules.Eparagony.Eparagony');
+                    $label = $this->trans('Prepare e-receipt', [], 'Modules.Eparagony.Eparagony');
                     break;
                 case $aod::BTN_CODE_ISSUING:
-                    $label = $this->trans('The e-paragon is being issued', [], 'Modules.Eparagony.Eparagony');
+                    $label = $this->trans('E-receipt is being issued', [], 'Modules.Eparagony.Eparagony');
                     break;
                 case $aod::BTN_CODE_ISSUED:
-                    $label = $this->trans('The e-paragon is issued', [], 'Modules.Eparagony.Eparagony');
+                    $label = $this->trans('E-receipt has been issued', [], 'Modules.Eparagony.Eparagony');
                     break;
                 case $aod::BTN_CODE_ERROR:
-                    $label = $this->trans('Error preparing e-paragon', [], 'Modules.Eparagony.Eparagony');
+                    $label = $this->trans('Error preparing e-receipt', [], 'Modules.Eparagony.Eparagony');
                 default:
                     $label = $btnOptions['code'];
 
@@ -188,6 +191,13 @@ class EParagony extends Module
                 'input' => [
                     [
                         'type' => 'text',
+                        'label' => $this->l('POS ID'),
+                        'name' => ConfigurationHolder::POS_ID,
+                        'size' => 20,
+                        'required' => true,
+                    ],
+                    [
+                        'type' => 'text',
                         'label' => $this->l('Store NIP'),
                         'name' => ConfigurationHolder::STORE_NIP,
                         'size' => 20,
@@ -222,7 +232,7 @@ class EParagony extends Module
                     [
                         'type' => 'switch',
                         'values' => self::SWITCH_VALUES,
-                        'label' => $this->l('Test mode'),
+                        'label' => $this->l('Test environment'),
                         'name' => ConfigurationHolder::TEST_MODE,
                         'required' => true,
                     ],
@@ -300,6 +310,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_A,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                     [
                         'type' => 'text',
@@ -307,6 +318,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_B,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                     [
                         'type' => 'text',
@@ -314,6 +326,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_C,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                     [
                         'type' => 'text',
@@ -321,6 +334,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_D,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                     [
                         'type' => 'text',
@@ -328,6 +342,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_E,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                     [
                         'type' => 'text',
@@ -335,6 +350,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_F,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                     [
                         'type' => 'text',
@@ -342,6 +358,7 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::TAX_G,
                         'size' => 10,
                         'required' => true,
+                        'suffix' => '%',
                     ],
                 ],
             ],
@@ -355,7 +372,7 @@ class EParagony extends Module
                     [
                         'type' => 'switch',
                         'values' => self::SWITCH_VALUES,
-                        'label' => $this->l('Ask for phone if not provided but receipt is expected.'),
+                        'label' => $this->l('Ask for phone if not provided but e-receipt is expected.'),
                         'name' => ConfigurationHolder::ASK_FOR_PHONE,
                         'required' => true,
                     ],
@@ -394,6 +411,7 @@ class EParagony extends Module
 
         if (Tools::isSubmit('submit_' . $this->name)) {
             $holder = new ConfigurationHolder();
+            $holder->pos_id = (string) Tools::getValue(ConfigurationHolder::POS_ID);
             $holder->store_nip = (string) Tools::getValue(ConfigurationHolder::STORE_NIP);
             $holder->client_id = (string) Tools::getValue(ConfigurationHolder::CLIENT_ID);
             $holder->client_secret = (string) Tools::getValue(ConfigurationHolder::CLIENT_SECRET);
@@ -416,8 +434,11 @@ class EParagony extends Module
 
             $holder->ask_for_phone = (bool)Tools::getValue(ConfigurationHolder::ASK_FOR_PHONE);
 
-            if (!$holder->isValid()) {
-                $output = $this->displayError($this->l('Invalid config.'));
+            if (!$holder->isValid($errors)) {
+                $output = $this->displayError($this->l('Invalid config.') . ' ' . Constants::E_CONFIG);
+                if ($errors['tax_values']) {
+                    $output .= $this->displayError($this->l('Invalid tax values.') . ' ' . Constants::E_CONFIG_TAX);
+                }
             } else {
                 ConfigHelper::saveConfig($holder);
                 $output = $this->displayConfirmation($this->l('Config updated.'));

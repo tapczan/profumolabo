@@ -1,13 +1,13 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\Entity;
+namespace Spark\EParagony\Entity;
 
-use ASoftwareHouse\EParagony\PrinterLogSimple;
+use Spark\EParagony\PrinterLogSimple;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 

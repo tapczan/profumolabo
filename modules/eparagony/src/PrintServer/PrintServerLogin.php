@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Check AUTHORS file.
- * @copyright TBD
- * @license TBD
+ * @copyright Spark
+ * @license proprietary
  */
 
-namespace ASoftwareHouse\EParagony\PrintServer;
+namespace Spark\EParagony\PrintServer;
 
-use ASoftwareHouse\EParagony\ConfigHelper;
-use ASoftwareHouse\EParagony\Entity\EparagonyPrinterToken;
+use Spark\EParagony\ConfigHelper;
+use Spark\EParagony\Entity\EparagonyPrinterToken;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use LogicException;
