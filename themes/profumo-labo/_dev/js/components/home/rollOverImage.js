@@ -7,7 +7,7 @@ function rolloverImages() {
         $(this).on("mouseover", function() {
             oldSrc = $(this).find('.rollover-images').attr('src');
             $(this).find('.rollover-images').attr('src', newSrc).stop(true,true);
-            $(this).css('background', '#f4f4f4');
+            // $(this).css('background', '#f4f4f4');
         }), 
 
         $(this).on('mouseout', function() {
