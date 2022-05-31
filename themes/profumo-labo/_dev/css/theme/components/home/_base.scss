@@ -128,6 +128,19 @@
                 margin-top: 50px;
             }
         }
+
+        .arplekstrakty{
+            font-size: $font-size-xm;
+            font-weight: 300;
+            line-height: 26px;
+            margin: 0 auto 100px;
+            text-align: center;
+            max-width: 1300px;
+
+            b{
+                font-weight: 500;
+            }
+        }
     }
 
     .arpl-no-carousel-products{

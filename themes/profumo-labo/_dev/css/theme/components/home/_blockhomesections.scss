@@ -22,6 +22,14 @@
 
         p{
             margin-bottom: 0;
+
+            b{
+                font-weight: 500;
+            }
+        }
+
+        b{
+            font-weight: 500;
         }
     }
 
@@ -58,6 +66,10 @@
         &__desc{
             margin: 20px auto;
             max-width: 330px;
+
+            b{
+                font-weight: 500;
+            }
         }
             
         &__link{
@@ -125,11 +137,26 @@
             @include media-breakpoint-down(md) {
                 height: 480px;
                 object-fit: cover;
-                object-position: left;
+                object-position: center;
             }
 
             @include media-breakpoint-down(sm) {
                 height: 500px;
+            }
+
+            &--mobile{
+                display: none;
+
+                @include media-breakpoint-down(sm) {
+                    display: block;
+                    height: auto;
+                }
+            }
+
+            &--desktop{
+                @include media-breakpoint-down(sm) {
+                    display: none;
+                }
             }
         }
 
@@ -151,6 +178,14 @@
             background-size: contain;
             font-weight: 300;
             text-align: justify;  
+
+            p{
+                margin: 0 0 10px !important;
+            }
+
+            b{
+                font-weight: 500;
+            }
         }
 
         .blockhomesections__column{
