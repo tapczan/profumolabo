@@ -65,6 +65,7 @@ if(canvas.length){
         const jsCanvasProgress = jsCanvasMaximum / (jsCanvasSection.height() * 2);
         const jsCanvasElement = $('#js-canvas-offerta');  
         const jsCanvasSectionNative = document.getElementsByClassName("js-canvas-parallax")[0];
+        const jsScrollTop = $(window).scrollTop();
 
         if (jsCanvasStart >= jsCanvasSectionOffset) {
             const frameIndex = Math.min(
@@ -76,7 +77,7 @@ if(canvas.length){
             jsCanvasElement.css('position', 'fixed');
         }
 
-        if (jsCanvasStart >= jsAfterCanvasSectionOffset) {
+        if (jsCanvasStart >= jsAfterCanvasSectionOffset || jsScrollTop < 100) {
             jsCanvasElement.css('position', 'absolute');
         }
     });
