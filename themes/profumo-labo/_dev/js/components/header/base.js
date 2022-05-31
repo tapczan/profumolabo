@@ -63,3 +63,9 @@ $(window).on('load', function(){
         smoothScrollingTo(this.hash);
     }
 });
+
+$('#arpl-group-8 .arpl-header').append(`<div class="arplekstrakty">
+                                            <p>
+                                                Produkty tworzone z myślą o kobietach. Aż <b>40% kompozycji zapachowej</b> oraz <b>0% alkoholu. Alternatywa dla wód perfumowanych</b>, dzięki której <b>unikniesz podrażnień i starzenia się delikatnej skóry szyi</b>.
+                                            </p>
+                                        </div>`);
