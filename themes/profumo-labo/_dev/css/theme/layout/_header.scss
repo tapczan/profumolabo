@@ -834,20 +834,6 @@
               }
             }
           }
-
-          .mm_blocks_li:nth-child(3){
-            display: none;
-          }
-
-          @media(max-width: 767px){
-            .mm_blocks_li:nth-child(2){
-              display: none;
-            }
-
-            .mm_blocks_li:nth-child(3){
-              display: block;
-            }
-          }
         }
       }
     }
@@ -1934,6 +1920,10 @@
 
         .mm_columns_ul .mm_columns_li:last-child .mm_blocks_ul{
           padding-bottom: 20px;
+        }
+
+        .mm_blocks_ul .mm_blocks_li{
+          margin: 10px 0;
         }
       }
 
