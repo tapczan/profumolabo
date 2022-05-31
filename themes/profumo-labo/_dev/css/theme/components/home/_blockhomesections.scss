@@ -18,7 +18,7 @@
 
         font-weight: 300;
         text-align: center;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
 
         p{
             margin-bottom: 0;
@@ -132,7 +132,7 @@
         }
 
         .blockhomesections__img{
-            margin-top: 100px;
+            margin-top: 50px;
 
             @include media-breakpoint-down(md) {
                 height: 480px;
