@@ -34,7 +34,7 @@ class EParagony extends Module
         /* The name value should be of the same case as the name of this file. */
         $this->name = 'eparagony';
         $this->tab = 'front_office_features';
-        $this->version = '0.1.6';
+        $this->version = '0.1.7';
         $this->author = 'Spark';
         $this->need_instance = 1;
         $this->ps_versions_compliancy = [

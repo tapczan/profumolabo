@@ -60,12 +60,16 @@ class ReceiptQueueManager
         if ($count) {
             $transition .= ' (' . $count . ')';
         }
+
         $status
             ->appendTransition($transition)
             ->setUpdated($now)
-            ->setChecked($now)
             ->setDocumentState($state)
         ;
+        $checked = $status->getChecked();
+        if (!$checked && $checked < $now) {
+            $status->setChecked($now);
+        }
 
         return $count;
     }
@@ -120,7 +124,8 @@ class ReceiptQueueManager
             $timeLimit = new DateTime('10 minutes ago');
             if ($status->getUpdated() > $timeLimit) {
                 /* It is expected this state will be changed from different thread in few seconds. */
-                $status->setChecked($now);
+                $inOneMinute = new DateTime('1 minute');
+                $status->setChecked($inOneMinute);
                 $this->em->flush();
                 return false;
             } else {
@@ -184,7 +189,8 @@ class ReceiptQueueManager
         }
         assert($one instanceof EparagonyDocumentStatus);
         /* Update to protect from infinite loop in case of error. */
-        $one->setChecked($now);
+        $inTenMinutes = new DateTime('10 minutes');
+        $one->setChecked($inTenMinutes);
         $this->em->flush();
 
         return $one;
@@ -219,9 +225,6 @@ class ReceiptQueueManager
                     return false;
                 } else {
                     $this->addTransition($status, $now, $status::STATE_IN_PROGRESS, self::COUNT_INCREMENT);
-                    $oneHour = new DateTime('1 hour'); #TODO This should be possible to be configured.
-                    /* Mark check in the future. */
-                    $status->setChecked($oneHour);
                     $this->em->flush();
                     return true;
                 }

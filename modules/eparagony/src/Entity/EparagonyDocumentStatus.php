@@ -226,7 +226,8 @@ class EparagonyDocumentStatus
      */
     public function setChecked(?DateTime $checked): EparagonyDocumentStatus
     {
-        $this->checked = $checked;
+        /* Limitations of ORM. */
+        $this->checked = clone $checked;
         return $this;
     }
 

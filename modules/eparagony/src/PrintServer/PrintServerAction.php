@@ -125,7 +125,7 @@ class PrintServerAction
                         ]];
                     } elseif ($printStatus === self::PRINT_STATUS_FAILURE) {
                         $printStatusType = $payload['type'] ?? null;
-                        $printErrorCode = $payload['errorCode'] ?? null;
+                        $printErrorCode = $payload['errorCode'] ?? $payload['errorcode'] ?? null;
                         if (self::isPrintStatusAlternativeSuccess($printStatusType)) {
                             $this->dm->finishQueue($document);
                             return [200, [

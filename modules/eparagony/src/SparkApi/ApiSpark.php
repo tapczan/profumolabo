@@ -62,10 +62,11 @@ class ApiSpark
             /* The tax_rate field is not reliable. */
             $taxRate = round(($product['unit_price_tax_incl'] / $product['unit_price_tax_excl'] - 1) * 100);
 
-            $unitPriceNett = round($product['unit_price_tax_excl'], 2);
+            /* We assume the gross price is more correct. */
+
+            $unitPrice = round($product['unit_price_tax_incl'], 2);
+            $unitPriceNett = round($unitPrice / (1 + $taxRate / 100), 2);
             $quantity = $product['product_quantity'];
-            /* Our gross is from the rounded net price. */
-            $unitPrice = round($unitPriceNett * (1 + $taxRate/100), 2);
             $totalPrice = round($unitPrice * $quantity, 2);
             $totalPriceNett = round($unitPriceNett * $quantity, 2);
 
@@ -74,8 +75,8 @@ class ApiSpark
             $product['our_total_price'] = $totalPrice;
             $product['our_total_price_nett'] = $totalPriceNett;
 
-            $orgPriceNett = round($product['original_product_price'], 2);
-            $orgPrice = round($orgPriceNett * (1 + $taxRate/100), 2);
+            $orgPrice = round($product['original_product_price'] * (1 + $taxRate/100), 2);
+            $orgPriceNett = round($orgPrice / (1 + $taxRate / 100), 2);
             $totalOrgPrice = round($orgPrice * $quantity, 2);
             $totalOrgPriceNett = round($orgPriceNett * $quantity, 2);
 
