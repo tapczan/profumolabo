@@ -23,37 +23,40 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
-{block name='product_cover'}
-  <div class="product-single__img js-product-single-img">
-    {if $product.images}
-      {foreach from=$product.images item=image}
-        <div class="product-img">
-          <div class="js-product-add-to-cart">
-            {hook h='displayProductActions'}
+<div class="images-container js-images-container">
+  {block name='product_cover'}
+    <div class="product-single__img js-product-single-img">
+      {if $product.images}
+        {foreach from=$product.images item=image}
+          <div class="product-img">
+            <div class="js-product-add-to-cart">
+              {hook h='displayProductActions'}
+            </div>
+            {if !Context::getContext()->controller->isQuickView()}
+            <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
+            {/if}
+              <img 
+                src="{$image.bySize.medium_default.url}" 
+                {if !empty($product.default_image.legend)}
+                  alt="{$image.legend}" title="{$image.legend}"
+                {else}
+                  alt="{$product.name}"
+                {/if}
+                class="product-img__asset"
+              >
+            {if !Context::getContext()->controller->isQuickView()}
+            </a>
+            {/if}
           </div>
-          {if !Context::getContext()->controller->isQuickView()}
-          <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
-          {/if}
-            <img 
-              src="{$image.bySize.medium_default.url}" 
-              {if !empty($product.default_image.legend)}
-                alt="{$image.legend}" title="{$image.legend}"
-              {else}
-                alt="{$product.name}"
-              {/if}
-              class="product-img__asset"
-            >
-          {if !Context::getContext()->controller->isQuickView()}
-          </a>
-          {/if}
+        {/foreach}
+      {else}
+        <div class="product-img">
+          <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
         </div>
-      {/foreach}
-    {else}
-      <div class="product-img">
-        <img src="{$urls.no_picture_image.bySize.large_default.url}" class="rounded img-fluid" loading="lazy">
-      </div>
-    {/if}
-  </div>
-{/block}
+      {/if}
+    </div>
+  {/block}
 
-{hook h='displayAfterProductThumbs' product=$product}
+  {hook h='displayAfterProductThumbs' product=$product}
+
+</div>
