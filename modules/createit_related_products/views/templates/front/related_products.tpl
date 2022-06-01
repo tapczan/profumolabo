@@ -3,7 +3,7 @@
     {if $products|@count > 0}
         <div class="container">
             <h2 class="h2 text-center createit-related-products__title">
-                {l s='You may also like' d='Shop.Theme.Global'}
+                {l s='You may also like' d='Modules.Createitrelatedproducts.Admin'}
             </h2>
         </div>
     {/if} 
