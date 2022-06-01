@@ -27,12 +27,12 @@ class CreateIt_CustomField extends Module
     /**
      * @var int
      */
-    private int $newProductId;
+    private $newProductId;
 
     /**
      * @var int
      */
-    private int $oldProductId;
+    private $oldProductId;
 
     /**
      * @return int
@@ -277,7 +277,7 @@ class CreateIt_CustomField extends Module
     {
         return Db::getInstance()->execute('
                 INSERT INTO `' . _DB_PREFIX_ . 'createit_customfield` (id_product,id_shop,id_lang,content,lang_iso_code,id_createit_products_customfield,created_at,updated_at)
-SELECT '.$this->getNewProductId().',id_shop,id_lang,content,lang_iso_code,id_createit_products_customfield,created_at,updated_at FROM profumolabo.pslabo_createit_customfield where id_product = '.$this->getOldProductId()
+SELECT '.$this->getNewProductId().',id_shop,id_lang,content,lang_iso_code,id_createit_products_customfield,created_at,updated_at FROM `' . _DB_PREFIX_ . 'createit_customfield` where id_product = '.$this->getOldProductId()
         );
     }
 
