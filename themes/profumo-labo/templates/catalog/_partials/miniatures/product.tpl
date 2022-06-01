@@ -44,8 +44,13 @@
             <span class="product-inspired text-center">
               {$product.reference}
             </span>
+
             <span class="product-brand text-center">
-              {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
+              {if isset($product.manufacturer_name) && $product.manufacturer_name != ''}
+                <span class="product_manufacturer_name">{$product.manufacturer_name}</span>
+              {else}
+                {Manufacturer::getNameById($product.id_manufacturer)}
+              {/if}
             </span>
         </div>
         
