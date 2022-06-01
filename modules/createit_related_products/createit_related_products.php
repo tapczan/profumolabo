@@ -33,10 +33,10 @@ class createit_related_products extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->trans('createIT Related Products', array(), 'Modules.CreateitRelatedProducts.Admin');
-        $this->description = $this->trans('createIT\'s related products module to display other products with the feature.', array(), 'Modules.CreateitRelatedProducts.Admin');
+        $this->displayName = $this->trans('createIT Related Products', array(), 'Modules.Createitrelatedproducts.Admin');
+        $this->description = $this->trans('createIT\'s related products module to display other products with the feature.', array(), 'Modules.Createitrelatedproducts.Admin');
 
-        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', array(), 'Modules.CreateitRelatedProducts.Admin');
+        $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', array(), 'Modules.Createitrelatedproducts.Admin');
     }
     
     public function hookDisplayRelatedProducts($params)
@@ -161,13 +161,13 @@ class createit_related_products extends Module
             // check that the value is valid
             if (empty($configValue) || !Validate::isInt($configValue)) {
                 // invalid value, show an error
-                $output = $this->displayError($this->trans('Invalid Configuration value', array(), 'Modules.CreateitRelatedProducts.Admin'));
+                $output = $this->displayError($this->trans('Invalid Configuration value', array(), 'Modules.Createitrelatedproducts.Admin'));
             } else {
                 // value is ok, update it and display a confirmation message
                 Configuration::updateValue('CREATEIT_RELATED_PRODUCT_LIMIT', $configValue);
                 Configuration::updateValue('CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES', serialize($filteredFeatureKeysClean));
 
-                $output = $this->displayConfirmation($this->trans('Settings updated', array(), 'Modules.CreateitRelatedProducts.Admin'));
+                $output = $this->displayConfirmation($this->trans('Settings updated', array(), 'Modules.Createitrelatedproducts.Admin'));
             }
         }
 
@@ -188,19 +188,19 @@ class createit_related_products extends Module
         $form = [
             'form' => [
                 'legend' => [
-                    'title' => $this->trans('Settings', array(), 'Modules.CreateitRelatedProducts.Admin'),
+                    'title' => $this->trans('Settings', array(), 'Modules.Createitrelatedproducts.Admin'),
                 ],
                 'input' => [
                     [
                         'type' => 'text',
-                        'label' => $this->trans('Related Products Limit', array(), 'Modules.CreateitRelatedProducts.Admin'),
+                        'label' => $this->trans('Related Products Limit', array(), 'Modules.Createitrelatedproducts.Admin'),
                         'name' => 'CREATEIT_RELATED_PRODUCT_LIMIT',
                         'size' => 20,
                         'required' => true,
                     ],
                     [
                         'type' => 'checkbox',
-                        'label' => $this->trans('Features to be included', array(), 'Modules.CreateitRelatedProducts.Admin'),
+                        'label' => $this->trans('Features to be included', array(), 'Modules.Createitrelatedproducts.Admin'),
                         'name' => 'CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES',
                         'values' => [
                             'query' => $feature_list_arr,
@@ -286,5 +286,11 @@ class createit_related_products extends Module
 
         return $feature_list_arr;
     }
+
+    public function isUsingNewTranslationSystem()
+    {
+        return true;
+    }
+
 
 }
