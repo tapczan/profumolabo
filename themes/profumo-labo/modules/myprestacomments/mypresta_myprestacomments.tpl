@@ -99,11 +99,11 @@
         {else}
             {if (!$too_early AND ($logged OR $allow_guests))}
                 <div class="product-comment__alert-notice">
-                    Be the first to write your review
+                    {l s='Be the first to write your review' mod='myprestacomments'}
                 </div>
             {else}
                 <div class="product-comment__alert-notice">
-                    No customer reviews for the moment.
+                    {l s='No customer reviews for the moment.' mod='myprestacomments'}
                 </div>
             {/if}
         {/if}
