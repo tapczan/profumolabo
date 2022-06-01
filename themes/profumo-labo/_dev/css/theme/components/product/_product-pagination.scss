@@ -3,6 +3,7 @@
     padding: 0 20px;
     font-size: 12px;
     letter-spacing: 0.1em;
+    
     &__prev {
         position: absolute;
         left: 0;
@@ -18,4 +19,8 @@
             color: $black;
         }
     }
+}
+
+.product-social + .listing-pagination{
+    margin-left: 20px;
 }
