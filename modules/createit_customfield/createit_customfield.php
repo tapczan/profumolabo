@@ -24,6 +24,48 @@ class CreateIt_CustomField extends Module
 {
     const INSTALL_SQL_FILE = 'install.sql';
 
+    /**
+     * @var int
+     */
+    private int $newProductId;
+
+    /**
+     * @var int
+     */
+    private int $oldProductId;
+
+    /**
+     * @return int
+     */
+    public function getOldProductId(): int
+    {
+        return $this->oldProductId;
+    }
+
+    /**
+     * @param int $oldProductId
+     */
+    public function setOldProductId(int $oldProductId): void
+    {
+        $this->oldProductId = $oldProductId;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNewProductId(): int
+    {
+        return $this->newProductId;
+    }
+
+    /**
+     * @param int $newProductId
+     */
+    public function setNewProductId(int $newProductId): void
+    {
+        $this->newProductId = $newProductId;
+    }
+
     public function __construct()
     {
         $this->name = 'createit_customfield';
@@ -72,11 +114,12 @@ class CreateIt_CustomField extends Module
             $hook->add();
         }
 
-
         if (
             parent::install() == false
             || !$this->registerHook('displayAdminProductsMainStepLeftColumnMiddle')
             || !$this->registerHook('actionProductUpdate')
+            || !$this->registerHook('actionAdminDuplicateAfter')
+            || !$this->registerHook('actionProductAdd')
             || !$this->registerHook('displayProductCustomField')
             || !$this->registerHook('displayProductCustomFieldByName')
             || !$this->registerHook('displayProductCustomFields')
@@ -213,6 +256,29 @@ class CreateIt_CustomField extends Module
         }else{
             return false;
         }
+    }
+
+    /**
+     * Store old and new product id.
+     * @param $params
+     */
+    public function hookActionProductAdd($params)
+    {
+        $this->setNewProductId($params['id_product']);
+        $this->setOldProductId($params['id_product_old']);
+    }
+
+    /**
+     * Select and insert new custom field.
+     * @param $params
+     * @return bool
+     */
+    public function hookActionAdminDuplicateAfter($params)
+    {
+        return Db::getInstance()->execute('
+                INSERT INTO `' . _DB_PREFIX_ . 'createit_customfield` (id_product,id_shop,id_lang,content,lang_iso_code,id_createit_products_customfield,created_at,updated_at)
+SELECT '.$this->getNewProductId().',id_shop,id_lang,content,lang_iso_code,id_createit_products_customfield,created_at,updated_at FROM profumolabo.pslabo_createit_customfield where id_product = '.$this->getOldProductId()
+        );
     }
 
     public function hookActionProductUpdate($params)
