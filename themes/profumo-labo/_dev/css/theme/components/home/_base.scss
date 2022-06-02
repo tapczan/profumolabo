@@ -72,7 +72,7 @@
 
     #arpl-group-1{
         &.arpl-group.arpl-non-tabbed-group{
-            padding: 100px 0;
+            padding: 50px 0;
             margin: 0;
 
             .arpl-header{
@@ -90,7 +90,7 @@
     #arpl-group-18{
         &.arpl-group.arpl-non-tabbed-group{
             margin: 0;
-            padding: 0 0 100px;
+            padding: 0 0 50px;
 
             .arpl-header{
                 margin: 0;
@@ -121,7 +121,7 @@
 
     #arpl-group-8{
         &.arpl-group.arpl-non-tabbed-group{
-            padding: 100px 0;
+            padding: 50px 0;
             margin: 0;
 
             .arpl-more-container{
@@ -133,7 +133,7 @@
             font-size: $font-size-xm;
             font-weight: 300;
             line-height: 26px;
-            margin: 0 auto 100px;
+            margin: 0 auto 50px;
             text-align: center;
             max-width: 1300px;
 
@@ -529,5 +529,17 @@
         border-top-style: none;
         border-bottom-style: none;
         padding-top: 0;
+    }
+
+    .product-miniature__thumb {
+        .quick-view {
+            font-size: $font-size-xs;
+            padding: 2px;
+            height: auto;
+
+            .product-miniature__quick-view-icon{
+                font-size: $font-size-lg;
+            }
+        }
     }
 }

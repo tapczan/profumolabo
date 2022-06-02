@@ -28,6 +28,16 @@
     }
 }
 
+.goldlist {
+    a{
+        color: $brown !important;
+
+        &:hover{
+            color: $black !important;
+        }
+    }
+}
+
 @media(min-width: 1400px){
     .cms-content--default{
         max-width: 1118px;

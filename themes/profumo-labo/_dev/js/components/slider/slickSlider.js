@@ -110,6 +110,7 @@ const sliderBestsellerHome = $(`#arpl-section-5-7-carousel,
                             #arpl-section-22-60-carousel,
                             #arpl-section-22-64-carousel`);
 const silderSixOnDesktop = $(`#arpl-section-8-16-carousel, 
+                            #arpl-section-8-39-carousel,
                             #arpl-section-1-15-carousel, 
                             #arpl-section-1-34-carousel, 
                             #arpl-section-1-17-carousel, 
@@ -202,6 +203,7 @@ $(window).on('load resize orientationchange', function() {
         seeMoreBestsellers('#arpl-section-1-15-carousel', '#arpl-section-1-15-carousel .slick-slide', 6, '#arpl-section-1-15')
         seeMoreBestsellers('#arpl-section-1-34-carousel', '#arpl-section-1-34-carousel .slick-slide', 6, '#arpl-section-1-34')
         seeMoreBestsellers('#arpl-section-8-16-carousel', '#arpl-section-8-16-carousel .slick-slide', 6, '#arpl-section-8-16')
+        seeMoreBestsellers('#arpl-section-8-39-carousel', '#arpl-section-8-39-carousel .slick-slide', 6, '#arpl-section-8-39')
         seeMoreBestsellers('#arpl-section-13-40-carousel', '#arpl-section-13-40-carousel .slick-slide', 5, '#arpl-section-13-40')
         seeMoreBestsellers('#arpl-section-13-26-carousel', '#arpl-section-13-26-carousel .slick-slide', 5, '#arpl-section-13-26')
         seeMoreBestsellers('#arpl-section-12-31-carousel', '#arpl-section-12-31-carousel .slick-slide', 5, '#arpl-section-12-31')
