@@ -1213,6 +1213,20 @@
     }
 }
 
+.inpost-shipping-machine-address{
+    font-weight: 500 !important;
+}
+
+.p24-payment-return-page a.bank-box.selected:before{
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    bottom: 0;
+    left: 0;
+}
+
 @media (max-width: 1699px){
     #tc-container .form-fields .form-group input[name=postcode] ~ .error-msg{
         width: 140px;

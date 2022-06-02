@@ -47,6 +47,7 @@ import './components/header/resizeNav';
 import './components/footer/base';
 import './components/footer/dynamicHeight';
 import './components/footer/parallaxEffect';
+import './components/home/base';
 import './components/home/parallax';
 import './components/home/rollOverImage';
 import './components/shop/mobileTabToDropdown';
