@@ -253,10 +253,28 @@ class Product extends ProductCore
                     $discount = intval($row['reduction']) ? true : false;
 
                     if($discount) {
-                        $combination['discount_price'] = $priceFormatter->format(Product::getPriceStatic($row['id_product'], false, $combination['id_product_attribute'], 6, null, false, $discount));
+                        $combination['discount_price'] = $priceFormatter->format(
+                            Product::getPriceStatic(
+                                (int) $row['id_product'],
+                                (bool) $usetax,
+                                $combination['id_product_attribute'],
+                                6,
+                                null,
+                                false,
+                                true)
+                        );
                     }
 
-                    $combination['price'] = $priceFormatter->format(Product::getPriceStatic($row['id_product'], false, $combination['id_product_attribute'], 6, null, false, false));
+                    $combination['price'] = $priceFormatter->format(
+                        Product::getPriceStatic(
+                            (int) $row['id_product'],
+                            (bool) $usetax ,
+                            $combination['id_product_attribute'],
+                            6,
+                            null,
+                            false,
+                            !$discount)
+                    );
                     $row['attribute_combinations'][] = $combination;
                 }
             }
