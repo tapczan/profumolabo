@@ -1227,6 +1227,46 @@
     left: 0;
 }
 
+#module-przelewy24-paymentSuccessful #main .box{
+    text-align: center;
+    padding: 50px 0;
+
+    h2{
+        font-weight: 500;
+        font-size: $font-size-xxl;
+    }
+
+    a{
+        display: block;
+        width: 300px;
+        margin: 0 auto 50px;
+    }
+
+    p{
+        margin: 25px auto 0;
+        max-width: 1000px;
+        font-size: $font-size-xl;
+    }
+
+    .cart_navigation{
+        a{
+            background: $black;
+            border: 1px solid $black;
+            border-radius: 0;
+            color: $white;
+            display: inline-block;
+            font-size: $font-size-xs;
+            font-weight: 400;
+            height: auto;
+            margin: 5px 10px;
+            padding: 10px 30px;
+            text-align: center;
+            text-transform: uppercase;
+            width: auto;    
+        }
+    }
+}
+
 @media (max-width: 1699px){
     #tc-container .form-fields .form-group input[name=postcode] ~ .error-msg{
         width: 140px;
