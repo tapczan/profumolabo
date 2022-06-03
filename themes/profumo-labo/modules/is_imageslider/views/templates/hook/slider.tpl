@@ -29,9 +29,13 @@
       {foreach from=$homeslider.slides item=slide}
         <div class="blockbannerslider__item">
           <img
-          class="blockbannerslider__img"
-          src="{$slide.image_url}"
-          alt="{$slide.title}">
+            class="blockbannerslider__img blockbannerslider__img--desktop"
+            src="{$slide.image_url}"
+            alt="{$slide.title}">
+          <img
+            class="blockbannerslider__img blockbannerslider__img--mobile"
+            src="{$slide.image_mobile_url}"
+            alt="{$slide.title}">
         </div>
       {/foreach}
     </div>
