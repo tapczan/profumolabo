@@ -19,6 +19,10 @@
         object-position: center top;
         height: calc(100vh - 113px);
         width: 100%;
+
+        &--mobile{
+            display: none !important;
+        }
     }
 
     .slick-slider{
@@ -77,6 +81,22 @@
         &__item,
         &__img{
             height: calc(100vh - 69px);
+        }
+    }
+}
+
+@media(max-width: 480px){
+    .blockbannerslider{
+        &__img{
+            object-position: center bottom;
+
+            &--desktop{
+                display: none !important;
+            }
+
+            &--mobile{
+                display: block !important;
+            }
         }
     }
 }
