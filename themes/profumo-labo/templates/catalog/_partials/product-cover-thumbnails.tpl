@@ -36,7 +36,7 @@
             <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
             {/if}
               <img 
-                src="{$image.bySize.medium_default.url}" 
+                src="{$image.bySize.medium_default_x2.url}" 
                 {if !empty($product.default_image.legend)}
                   alt="{$image.legend}" title="{$image.legend}"
                 {else}
