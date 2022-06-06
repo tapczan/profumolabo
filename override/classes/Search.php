@@ -226,18 +226,22 @@ class Search extends SearchCore
      * 
      * exclude category drogeria/drugstore products on search results
      */
-    public static function exclude_category($category_name) {
+    public static function exclude_category($products) {
         
         $result = [];
 
-        foreach($category_name as $cat_name) {
+        if(!empty($products)) {
 
-            $category = strtolower($cat_name['category']);
-            if( $category == 'drugstore' || $category == 'drogeria' ) {
-                continue;
+            foreach($products as $product) {
+                
+                // Production category id 140 = Drogeria/Drugstore
+                if( $product['id_category_default'] == '140') {
+                    continue;
+                }
+                $result[] = $product;
             }
-            $result[] = $cat_name;
-        }
+        }   
+
         return $result;
     }
 
