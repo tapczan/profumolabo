@@ -1,9 +1,10 @@
 
 <div class="search-result">
   {assign var='countProductsShow' value=$products|count}
+  {assign var='newProductsCount' value=$newProducts|count}
   {assign var='countProductsMore' value=$moreResultsCount}
-  {assign var='countProductsTotal' value=$countProductsShow + $countProductsMore}
-  
+  {assign var='countProductsTotal' value=$countProductsShow + $newProductsCount}
+
   {if $countProductsTotal}
     <h2 class="header__search-title">
       {l s='FOUND PRODUCTS' d='Shop.Theme.Global'}: <span class="header__search-counter">{$countProductsTotal}</span> {if $countProductsTotal == 1}{l s='pc' d='Shop.Theme.Global'}{else}{l s='pcs' d='Shop.Theme.Global'}{/if}.

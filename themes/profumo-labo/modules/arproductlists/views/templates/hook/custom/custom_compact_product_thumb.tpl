@@ -1,5 +1,6 @@
 {block name='product_cover'}
-    <div class="blockfeaturedproduct__img">
+
+    <div class="blockfeaturedproduct__img images-container js-images-container">
         <div class="js-product-add-to-cart blockfeaturedproduct__wishlist">
       <span
               class="wishlist-button"
