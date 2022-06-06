@@ -1213,6 +1213,65 @@
     }
 }
 
+#module-przelewy24-accountMyCards{
+    font-family: $font-jost;
+
+    .przelewy-24{
+        text-align: center;
+        padding: 20px 0 50px;
+
+        .alert{
+            border-radius: 0;
+            padding: 10px;
+            margin-bottom: 0;
+    
+            .close{
+                line-height: 17px;
+            }
+        }
+    
+        .page-heading{
+            font-weight: 500;
+            font-size: $font-size-xxl;
+            padding: 50px 0 0;
+            margin: 0;
+        }
+    
+        h3{
+            font-weight: 500;
+        }
+    
+        input[type=checkbox]{
+            accent-color: $black;
+            width: 11px;
+            height: 11px;
+            margin-right: 5px;
+        }
+    
+        button[type=submit],
+        .p24-account-bottom-nav a{
+            background: $black;
+            border: 1px solid $black;
+            border-radius: 0;
+            color: $white;
+            display: inline-block;
+            font-size: $font-size-xs;
+            font-weight: 400;
+            height: auto;
+            margin: 5px 10px;
+            padding: 10px 30px;
+            text-align: center;
+            text-transform: uppercase;
+            width: auto;    
+    
+            &:hover,
+            &:focus{
+                box-shadow: none;
+            }
+        }
+    }
+}
+
 .inpost-shipping-machine-address{
     font-weight: 500 !important;
 }
