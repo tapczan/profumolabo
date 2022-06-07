@@ -98,6 +98,10 @@ $(document).ready(() => {
     prestashop.customSelect.init();
   });
 
+  prestashop.on('updatedProduct', (event) => {
+    $('.js-product-references').first().replaceWith(event.product_references);
+  });
+
   topMenu.init();
 
   $('.js-select-link').on('change', ({ target }) => {

@@ -53,6 +53,7 @@
                         </div>
                     {/block}
 
+                    {*
                     <span class="product-stock-info">
                     <section class="product-discounts js-product-discounts">
                         {assign var='fromQuantity' value=SpecificPrice::getSpecificPriceByID($product.id)}
@@ -60,8 +61,9 @@
                             {l s='Buy <span class="product-stock-info__num">%quantity%</span> pieces for a discounted price' d='Shop.Theme.Global' sprintf=['%quantity%' => $quantity.from_quantity]}<br/>
                         {/foreach}
                     </section>
-                </span>
-
+                    </span>
+                    *}
+                    
                     <div class="product-actions js-product-actions">
                         {block name='product_buy'}
                             <form action="{$urls.pages.cart}" method="post" id="add-to-cart-or-refresh">
@@ -119,10 +121,15 @@
                     </div>
 
                     <div class="product-sku">
+                        {block name='product_references'}
+                            {include file='catalog/_partials/product-references.tpl'}
+                        {/block}
+                        {*
                         <p id="product_ean13"{if empty($product->ean13) || !$product->ean13} style="display: none;"{/if}>
                             <label>{l s='Ean13:'} </label>
                             <span {if !empty($product->ean13) && $product->ean13} content="{$product->ean13}"{/if}>{$product->ean13|escape:'html':'UTF-8'}</span>
                         </p>
+                        *}
                     </div>
 
                     <div class="product-accordion" id="productSingleAccordion">
