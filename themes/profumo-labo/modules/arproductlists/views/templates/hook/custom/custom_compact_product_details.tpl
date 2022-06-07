@@ -46,12 +46,35 @@
                     {/block}
 
                     {block name='product_prices'}
+
+                        <div class="product-prices js-product-prices">
+                         
+                            <span class="price price--lg {if $product.has_discount}price--discounted{/if}">
+                                {capture name='custom_price'}{hook h='displayProductPriceBlock' product=$product type='custom_price' hook_origin='product_sheet'}{/capture}
+                                {if '' !== $smarty.capture.custom_price}
+                                {$smarty.capture.custom_price nofilter}
+                                {else}
+                                {$product.price}
+                                {/if}
+                            </span>
+                            {block name='product_discount'}
+                                {if $product.has_discount}
+                                <span class="ml-2 price price--regular">{$product.regular_price}</span>
+                                {/if}
+                            {/block}
+                            {hook h='displayProductPriceBlock' product=$product type="old_price"}
+                            
+                        </div>
+
+                        {*
                         <div class="product-prices">
                             <div>
                                 <span class="price price--lg">{$product.regular_price}</span>
                             </div>
-                        </div>
+                        </div> 
+                        *}
                     {/block}
+                    
 
                     {*
                     <span class="product-stock-info">
