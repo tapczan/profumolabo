@@ -22,7 +22,7 @@
       <div class="search-result__bottom">
         <a href="{$moreResults}" class="btn btn-block btn-outline-secondary btn-sm">
           {l
-            s='Show the remaining %qty% products'
+            s='Show all suggestions'
             sprintf=[
               '%qty%' => $moreResultsCount
             ]

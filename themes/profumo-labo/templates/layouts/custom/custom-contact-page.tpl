@@ -57,12 +57,13 @@
                     <div class="col-lg-4 col-md-4 col-12 contact-social">
                     <ul class="contact-social__list">
                         <li>{l s='Visit Us' d='Shop.Theme.Global'}</li>
-                        <li><a href="https://www.facebook.com/" target="_blank"><span class="contact-icon contact-icon--facebook"></span></a></li>
-                        <li><a href="https://www.instagram.com/" target="_blank"><span class="contact-icon contact-icon--instagram"></span></a></li>
-                        <li><a href="https://www.youtube.com/" target="_blank"><span class="contact-icon contact-icon--youtube"></span></a></li>
+                        <li><a href="https://www.facebook.com/PROFUMOLABO" target="_blank"><span class="contact-icon contact-icon--facebook"></span></a></li>
+                        <li><a href="https://www.youtube.com/channel/UC-f-s6t7Ymelrj83tj6UcbQ" target="_blank"><span class="contact-icon contact-icon--youtube"></span></a></li>
+                        <li><a href="https://www.instagram.com/profumolabo/" target="_blank"><span class="contact-icon contact-icon--instagram"></span></a></li>
+                        {*
                         <li><a href="https://twitter.com/" target="_blank"><span class="contact-icon contact-icon--twitter"></span></a></li>
-                        <li><a href="https://www.pinterest.com/" target="_blank"><span class="contact-icon contact-icon--pinterest"></span></a>
-                        </li>
+                        <li><a href="https://www.pinterest.com/" target="_blank"><span class="contact-icon contact-icon--pinterest"></span></a></li>
+                        *}
                     </ul>
                     </div>
 
