@@ -347,7 +347,7 @@ class Product extends ProductCore
     }
 
     /*
-     * 
+     * for smartupsell
      */
     public static function getSpecificProductByID($id_product) {
 
@@ -358,7 +358,7 @@ class Product extends ProductCore
     }
 
     /*
-     * 
+     * for smartupsell
      */
     public static function getProductBrandByID($id_manufacturer) {
 
@@ -369,73 +369,71 @@ class Product extends ProductCore
     }
 
     /*
-     * 
+     *  for smartupsell
      */
     public static function getProductRatingByID($id_product) {
-
-        $query = 'SELECT *
-            FROM `' . _DB_PREFIX_ . 'product_comment`
-            WHERE `id_product` = ' . (int) $id_product;  
-        
-        $result = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($query);
         $total = 0;
 
-        foreach($result as $k => $v) {
-            $total += (int) $v['grade'];
+        $products = Db::getInstance()->executeS('SELECT `grade`
+            FROM `' . _DB_PREFIX_ . 'product_comment`
+            WHERE `id_product` = ' . (int) $id_product);
+        
+        foreach($products as $product) {
+            $total += (int) $product['grade'];
+        }
+        
+        $result = round($total / count($products));
+        return $result;
+    }
+   
+    /*
+     * for smartupsell
+     */
+    public static function getProductCombinationByID($id_product) {
+        global $cookie;
+        $id_lang = $cookie->id_lang;
+
+        $base_price = 0;
+        $result = [];
+
+        $productAttributes = Db::getInstance()->executeS('SELECT *
+        FROM `' . _DB_PREFIX_ . 'product_attribute`
+        WHERE `id_product` = ' . $id_product);
+        
+        $productPrice = Db::getInstance()->executeS('SELECT `price`
+            FROM `' . _DB_PREFIX_ . 'product`
+            WHERE `id_product` = ' . $id_product);
+ 
+        if(!empty($productPrice)) {
+            $base_price = $productPrice[0]['price'];
+        }
+ 
+        foreach($productAttributes as $product_attribute) {
+            $packaging = self::getProductAttributeCombination($product_attribute['id_product_attribute'], $id_lang);
+            $result[] = $base_price + $product_attribute['price'] .' / '.$packaging;
         }
 
-        return $total / count($result);
+        return array_reverse($result, true);
     }
 
-    /*
-     * 
+     /*
+     * for smartupsell
      */
-    public static function getProductAttributeCombination($id_product_attribute) {
-        $query = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT *
+    public static function getProductAttributeCombination($id_product_attribute, $id_lang) {
+
+        $productAttributeCombinations = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT *
         FROM `' . _DB_PREFIX_ . 'product_attribute_combination`
         WHERE `id_product_attribute` = ' . (int) $id_product_attribute);
 
         $result = [];
 
-        foreach($query as $k => $v) {
-            $result = self::getProductAttributeLang($v['id_attribute']);
+        foreach($productAttributeCombinations as $product_attribute_combination) {
+          
+            $result = Db::getInstance()->executeS('SELECT `name`
+                FROM `' . _DB_PREFIX_ . 'attribute_lang`
+                WHERE `id_attribute` = ' . $product_attribute_combination['id_attribute'] .'
+                AND `id_lang` =  ' . $id_lang );
         }
-        $result = array_unique($result); 
-
         return $result[0]['name'];
-    }
-
-    /*
-     * 
-     */
-    public static function getProductAttributeLang($id_attribute) {
-        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT `name`
-        FROM `' . _DB_PREFIX_ . 'attribute_lang`
-        WHERE `id_attribute` = ' . (int) $id_attribute);
-    }
-
-    /*
-     * 
-     */
-    public static function getProductCombinationByID($id_product) {
-
-        $query = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS('SELECT *
-        FROM `' . _DB_PREFIX_ . 'product_attribute`
-        WHERE `id_product` = ' . (int) $id_product);
-        
-        $product = self::getSpecificProductByID($id_product);
-        $productPrice = 0;
-        $result = [];
-
-        foreach($product as $k => $v) {
-            $productPrice = $v['price'];
-        }
-
-        foreach($query as $k => $v) {
-            $packaging = self::getProductAttributeCombination($v['id_product_attribute']);
-            $result[] = $productPrice + $v['price'] .' / '.$packaging;
-        }
-
-        return array_reverse($result, true);
     }
 }
