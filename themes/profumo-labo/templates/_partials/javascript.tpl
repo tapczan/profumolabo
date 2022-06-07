@@ -49,8 +49,7 @@
 
 {literal}
   <!-- Facebook Pixel Code -->
-  <script>
-    if(typeof fbq === 'undefined') {
+    <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -62,16 +61,12 @@
       
       fbq('init', '3084462355150264');
       fbq('track', 'PageView');
-    }
-    else {
-      fbq('track', 'PageView');
-    }
-  </script>
-  <noscript>
-    <img height="1" width="1"
-    src="https://www.facebook.com/tr?id=3084462355150264&ev=PageView
-    &noscript=1"/>
-  </noscript>
+    </script>
+    <noscript>
+      <img height="1" width="1"
+      src="https://www.facebook.com/tr?id=3084462355150264&ev=PageView
+      &noscript=1"/>
+    </noscript>
   <!-- End Facebook Pixel Code -->
 {/literal}
 
