@@ -25,6 +25,7 @@
 <div class="product-add-to-cart js-product-add-to-cart">
   {if !$configuration.is_catalog}
 
+    {*
     {block name='product_availability'}
       <span id="product-availability" class="js-product-availability">
         {if $product.show_availability && $product.availability_message}
@@ -49,6 +50,7 @@
         {/if}
       </span>
     {/block}
+    *}
 
     {*
     {block name='product_minimal_quantity'}
