@@ -373,16 +373,22 @@ class Product extends ProductCore
      */
     public static function getProductRatingByID($id_product) {
         $total = 0;
-
+        $result = 0;
+        
         $products = Db::getInstance()->executeS('SELECT `grade`
             FROM `' . _DB_PREFIX_ . 'product_comment`
             WHERE `id_product` = ' . (int) $id_product);
-        
-        foreach($products as $product) {
-            $total += (int) $product['grade'];
+
+        if(!empty($products)) {
+
+            foreach($products as $product) {
+                $total += (int) $product['grade'];
+            }
+            
+            $result = round($total / count($products));
+    
         }
         
-        $result = round($total / count($products));
         return $result;
     }
    
@@ -407,12 +413,13 @@ class Product extends ProductCore
         if(!empty($productPrice)) {
             $base_price = $productPrice[0]['price'];
         }
- 
-        foreach($productAttributes as $product_attribute) {
-            $packaging = self::getProductAttributeCombination($product_attribute['id_product_attribute'], $id_lang);
-            $result[] = $base_price + $product_attribute['price'] .' / '.$packaging;
+        
+        if(!empty($productAttributes)) {
+            foreach($productAttributes as $product_attribute) {
+                $packaging = self::getProductAttributeCombination($product_attribute['id_product_attribute'], $id_lang);
+                $result[] = $base_price + $product_attribute['price'] .' / '.$packaging;
+            }
         }
-
         return array_reverse($result, true);
     }
 
@@ -427,13 +434,16 @@ class Product extends ProductCore
 
         $result = [];
 
-        foreach($productAttributeCombinations as $product_attribute_combination) {
+        if(!empty($productAttributeCombinations)) {
+            foreach($productAttributeCombinations as $product_attribute_combination) {
           
-            $result = Db::getInstance()->executeS('SELECT `name`
-                FROM `' . _DB_PREFIX_ . 'attribute_lang`
-                WHERE `id_attribute` = ' . $product_attribute_combination['id_attribute'] .'
-                AND `id_lang` =  ' . $id_lang );
+                $result = Db::getInstance()->executeS('SELECT `name`
+                    FROM `' . _DB_PREFIX_ . 'attribute_lang`
+                    WHERE `id_attribute` = ' . $product_attribute_combination['id_attribute'] .'
+                    AND `id_lang` =  ' . $id_lang );
+            }
         }
+        
         return $result[0]['name'];
     }
 }
