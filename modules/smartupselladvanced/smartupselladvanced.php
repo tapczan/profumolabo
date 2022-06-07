@@ -286,7 +286,8 @@ class SmartUpsellAdvanced extends Module
         ]);
         $this->context->customer->getBoughtProducts();
 
-        return $this->fetch($this->getLocalPath(). '/views/templates/hook/special_offer.tpl');
+        // return $this->fetch($this->getLocalPath(). '/views/templates/hook/special_offer.tpl'); 
+        return $this->display(__FILE__,'../../themes/profumo-labo/modules/smartupselladvanced/views/templates/hook/special_offer.tpl');
     }
 
     /**
