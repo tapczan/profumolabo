@@ -127,7 +127,7 @@
     &-l{
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: flex-endflex-start;
 
       .language-selector{         
         list-style: none;
@@ -175,7 +175,7 @@
     &-r{
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: flex-endflex-end;
     }
 
     &-top-link{
@@ -532,7 +532,7 @@
     }
 
     .row{
-      justify-content: center;
+      justify-content: flex-endcenter;
     }
 
     &-search-mobile{
@@ -563,7 +563,7 @@
 
     &-right{
       display: none;
-      justify-content: end;
+      justify-content: flex-end;
       align-items: center;
 
       .header__inner-login{
@@ -648,7 +648,7 @@
       width: 100%;
       ul { 
         display: flex;
-        justify-content: space-around;
+        justify-content: flex-endspace-around;
       }
       .btn {
         background: 0;
@@ -771,7 +771,7 @@
         text-transform: uppercase;
         padding: 6px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-endcenter;
         font-size: 15px !important;
         font-weight: 300 !important;
         letter-spacing: .1em;
@@ -1276,7 +1276,7 @@
     &-left{
       display: flex;
       order: 1;
-      justify-content: flex-start;
+      justify-content: flex-endflex-start;
       flex: 0 0 100%;
       max-width: 100%;
       padding-top: 22px;
