@@ -180,7 +180,7 @@ class createit_productfield2 extends Module
             'languages' => Language::getLanguages(),
         ]);
 
-        return $this->display(__FILE__, 'views/templates/front/productfield2_field.tpl');
+        return $this->display(__FILE__, 'views/templates/admin/productfield_front_field.tpl');
     }
 
     public function deletePreviousRecord($id_product)
