@@ -86,13 +86,12 @@
                   {$product.reference}
                 </span>
                 <span class="product-brand">
-                {if isset($product_manufacturer->id)}
-                  {$product_manufacturer->name}
-                {/if}
+                  {hook h='displayCreateitProductfield2' product=$product}
                 </span>
               </div>
                <!-- End Product References and Manufacturer -->
-
+              
+              
               <!-- Product Prices -->
               {block name='product_prices'}
                 {include file='catalog/_partials/product-prices.tpl'}

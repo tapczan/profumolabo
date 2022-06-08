@@ -31,12 +31,12 @@
                     {/block}
 
                     <div class="product-reference">
-                    <span class="product-inspired">
-                        {$product.reference}
-                    </span>
+                        <span class="product-inspired">
+                            {$product.reference}
+                        </span>
                         <span class="product-brand">
-                    {if isset($product.manufacturer_name)}<span class="product_manufacturer_name">{$product.manufacturer_name}</span>{/if}
-                    </span>
+                            {hook h='displayCreateitProductfield2' product=$product}
+                        </span>
                     </div>
 
                     {block name='product_unit_price'}

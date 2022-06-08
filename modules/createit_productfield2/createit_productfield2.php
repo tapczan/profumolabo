@@ -134,7 +134,8 @@ class createit_productfield2 extends Module
             && $this->registerHook('actionAdminDuplicateAfter')
             && $this->registerHook('actionProductAdd')
             && $this->registerHook('displayBackOfficeHeader')
-            && $this->registerHook('displayCreateitProductfield2');
+            && $this->registerHook('displayCreateitProductfield2')
+            && $this->registerHook('displayCreateitProductfield2_id_product');
     }
 
     /**
