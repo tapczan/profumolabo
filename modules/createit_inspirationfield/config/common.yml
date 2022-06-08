@@ -1,0 +1,7 @@
+services:
+
+  prestashop.module.createit_productfield.createit_inspirationfield_repository:
+    class: 'PrestaShop\Module\CreateitInspirationfield\Repository\CreateitInspirationfieldRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateitInspirationfield\Entity\CreateitInspirationfield
