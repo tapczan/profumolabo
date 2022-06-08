@@ -50,6 +50,10 @@ class createit_related_products extends Module
          */
         $featureListVal = $this->getFeaturedList();
 
+        $excludedCategory = $this->getSavedExcludedProductsCategoryList();
+
+        $excludedCategory[] = (int) $product["id_product"];
+
         $res = Db::getInstance()->executeS('SELECT DISTINCT
                     p.*
                 FROM
@@ -63,7 +67,7 @@ class createit_related_products extends Module
                             `' . _DB_PREFIX_ . 'feature_product`
                         WHERE
                             `id_product` = '.(int) $product["id_product"].')
-                AND p.id_product NOT IN ('.(int) $product["id_product"].')
+                AND p.id_product NOT IN ('. implode(',', $excludedCategory ).')
                 AND  fp.id_feature IN ('.implode(",", $featureListVal).')
                 LIMIT '.(int) $limit.'
             ');
@@ -155,8 +159,15 @@ class createit_related_products extends Module
                 return strpos($key, 'CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_') === 0;
             }, ARRAY_FILTER_USE_KEY);
 
+            $filteredCategories = array_filter(Tools::getAllValues(), function ($key) {
+                return strpos($key, 'CREATEIT_RELATED_PRODUCT_INCLUDED_CATEGORIES_') === 0;
+            }, ARRAY_FILTER_USE_KEY);
+
             $filteredFeatureKeys = array_keys($filteredFeatures);
-            $filteredFeatureKeysClean = str_replace('CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_', '',$filteredFeatureKeys);
+            $filteredFeatureKeysClean = str_replace('CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_', '', $filteredFeatureKeys);
+
+            $filteredCategoriesKeys = array_keys($filteredCategories);
+            $filteredCategoriesKeysClean = str_replace('CREATEIT_RELATED_PRODUCT_INCLUDED_CATEGORIES_', '', $filteredCategoriesKeys);
 
             // check that the value is valid
             if (empty($configValue) || !Validate::isInt($configValue)) {
@@ -166,6 +177,7 @@ class createit_related_products extends Module
                 // value is ok, update it and display a confirmation message
                 Configuration::updateValue('CREATEIT_RELATED_PRODUCT_LIMIT', $configValue);
                 Configuration::updateValue('CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES', serialize($filteredFeatureKeysClean));
+                Configuration::updateValue('CREATEIT_RELATED_PRODUCT_INCLUDED_CATEGORIES', serialize($filteredCategoriesKeysClean));
 
                 $output = $this->displayConfirmation($this->trans('Settings updated', array(), 'Modules.Createitrelatedproducts.Admin'));
             }
@@ -173,6 +185,25 @@ class createit_related_products extends Module
 
         // display any message, then the form
         return $output . $this->displayForm();
+    }
+
+    private function getSavedExcludedProductsCategoryList()
+    {
+        $category_arr = $this->getCategoryList();
+        $products = [];
+
+        if(!empty($category_arr))
+        {
+            if($productsRes = Db::getInstance()->executeS('SELECT id_product FROM `' . _DB_PREFIX_ . 'category_product` where id_category in ('.implode(',',$category_arr).') group by id_product'))
+            {
+                foreach ($productsRes as $id)
+                {
+                    $products[] = (int) $id['id_product'];
+                }
+            }
+        }
+
+        return $products;
     }
 
     /**
@@ -184,6 +215,8 @@ class createit_related_products extends Module
         $language_id = $this->context->language->id;
 
         $feature_list_arr = $this->getSavedFeaturedLIst($language_id);
+
+        $category_list_arr = $this->getSavedCategoryList($this->context->language->id);
 
         $form = [
             'form' => [
@@ -205,6 +238,16 @@ class createit_related_products extends Module
                         'values' => [
                             'query' => $feature_list_arr,
                             'id' => 'id_feature',
+                            'name' => 'name',
+                        ],
+                    ],
+                    [
+                        'type' => 'checkbox',
+                        'label' => $this->trans('Categories to be excluded', array(), 'Modules.Createitrelatedproducts.Admin'),
+                        'name' => 'CREATEIT_RELATED_PRODUCT_INCLUDED_CATEGORIES',
+                        'values' => [
+                            'query' => $category_list_arr,
+                            'id' => 'id_category',
                             'name' => 'name',
                         ],
                     ]
@@ -236,6 +279,8 @@ class createit_related_products extends Module
          */
         $featureListVal = $this->getFeaturedList();
 
+        $categoryListVal = $this->getCategoryList();
+
         if(count($featureListVal)){
             foreach($featureListVal as $feature){
                 $currentFeature = 'CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES_' . $feature;
@@ -243,7 +288,31 @@ class createit_related_products extends Module
             }
         }
 
+        if(count($categoryListVal)){
+            foreach($categoryListVal as $category){
+                $currentCategory = 'CREATEIT_RELATED_PRODUCT_INCLUDED_CATEGORIES_' . $category;
+                $helper->fields_value[$currentCategory] = 'on';
+            }
+        }
+
         return $helper->generateForm([$form]);
+    }
+
+    /**
+     * @return array
+     * @throws PrestaShopDatabaseException
+     */
+    private function getCategoryList() : array
+    {
+        if(
+        $dbCategoryList = Db::getInstance()->executeS('
+            SELECT value FROM `' . _DB_PREFIX_ . 'configuration` WHERE name like "%CREATEIT_RELATED_PRODUCT_INCLUDED_CATEGORIES%"
+        ')){
+            $dbCategoryListRes = reset($dbCategoryList);
+            return unserialize($dbCategoryListRes['value']);
+        }else{
+            return [];
+        }
     }
 
     /**
@@ -285,6 +354,40 @@ class createit_related_products extends Module
         }
 
         return $feature_list_arr;
+    }
+
+
+    /**
+     * @param int $language_id
+     * @return array
+     * @throws PrestaShopDatabaseException
+     */
+    private function getSavedCategoryList(int $language_id): array
+    {
+        $list = [];
+
+        if($category_list = Db::getInstance()->executeS('
+        SELECT
+            c.id_category,
+            cl.name
+        FROM 
+            `' . _DB_PREFIX_ . 'category` as c
+        LEFT JOIN
+            `' . _DB_PREFIX_ . 'category_lang` cl ON (cl.id_category = c.id_category)
+        WHERE
+            cl.id_lang = '.$language_id.'
+        ORDER BY c.id_category ASC
+        ')){
+            foreach($category_list as $category)
+            {
+                $list[] = [
+                    'id_category' => $category['id_category'],
+                    'name' => $category['name']
+                ];
+            }
+        }
+
+        return $list;
     }
 
     public function isUsingNewTranslationSystem()
