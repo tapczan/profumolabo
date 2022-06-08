@@ -1,0 +1,1 @@
+<a href="{$product_object['product_url']}">{$product_object['product_name']}</a>
