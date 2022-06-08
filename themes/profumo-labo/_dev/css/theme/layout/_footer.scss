@@ -124,11 +124,18 @@
     margin-bottom: 0 !important;
     font-family: $font-jost;
     font-weight: 400;
+    font-size: 0 !important;
     color: $white;
-    font-size: $font-size-md;
     text-transform: uppercase;
     position: relative;
     cursor: auto !important;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+
+    a{
+      font-size: $font-size-md;
+    }
 
     @media(max-width: 767px){
       cursor: pointer !important;
