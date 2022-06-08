@@ -1076,6 +1076,10 @@
   }
 }
 
+.header__mega-menu .mm_menus_ul .mm_menus_li.mega-menu-header-marki .three-column-list li a{
+  font-size: $font-size-xs !important;
+}
+
 .ets_mm_block_content ul li ul {
   @include media-breakpoint-down(md) {
     transition: none !important;
