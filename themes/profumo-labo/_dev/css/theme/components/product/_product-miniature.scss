@@ -47,4 +47,17 @@
     }
 
   }
+
+  &__thumb {
+    img.img-fluid {
+      transition: 0.1s all ease-in-out;
+    }
+    &:hover {
+      img.img-fluid {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  
 }
