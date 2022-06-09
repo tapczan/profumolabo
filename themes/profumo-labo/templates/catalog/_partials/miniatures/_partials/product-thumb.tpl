@@ -19,9 +19,7 @@
         {/if}
         alt="{if !empty($product.default_image.legend)}{$product.default_image.legend}{else}{$product.name|truncate:30:'...'}{/if}"
         loading="lazy"
-        {if isset($product.images[1])} 
-          data-rollover="{$rolloverImage}"
-        {/if}
+        {*{if isset($product.images[1])} data-rollover="{$rolloverImage}" {/if}*}
         class="img-fluid rounded lazyload rollover-images"
         width="{$product.default_image.bySize.home_default.width}"
         height="{$product.default_image.bySize.home_default.height}"
