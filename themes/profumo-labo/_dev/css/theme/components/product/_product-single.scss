@@ -419,6 +419,12 @@
 
             &-brand{
                 color: $dark-gray;
+                text-transform: uppercase;
+
+                a {
+                    color: $dark-gray !important;
+                    text-decoration: none;
+                }
             }
 
             &-prices{

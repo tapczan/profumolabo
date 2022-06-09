@@ -39,6 +39,7 @@
           {/if}
         {/block}
 
+        {*
         {if $category.level_depth <= 2 && $category.id != 140}
         <section class="search-filters__block list-group-item">
           {assign var=_collapse value=true}
@@ -64,7 +65,8 @@
           </div>
         </section>
         {/if}
-
+        *}
+        
         {foreach from=$displayedFacets item="facet"}
           
           {assign var=_expand_id value=10|mt_rand:100000}
@@ -74,7 +76,10 @@
           {/foreach}
           <section class="search-filters__block list-group-item">
             <div class="search-filters__header d-flex justify-content-between align-items-center h5 position-relative">
-              <span class="search-filters__title">{$facet.label}</span>
+              <span class="search-filters__title">
+                {if $facet.label eq "Brand" || $facet.label eq "Marka" } {/if} 
+                {$facet.label}
+              </span>
               <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
                 {if !$_collapse} aria-expanded="true" {/if}>
                 <span class="material-icons">&#xE313;</span>

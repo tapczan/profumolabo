@@ -42,15 +42,10 @@
         
         <div class="product-single__info" style="margin-bottom: 10px;">
             <span class="product-inspired text-center">
-              {$product.reference}
+              {hook h='displayCreateitInspirationfield' product=$product}
             </span>
             <span class="product-brand text-center">
               {hook h='displayCreateitProductfield2' product=$product}
-              {*
-              {if isset($product.manufacturer_name) && $product.manufacturer_name != ''}
-                <span class="product_manufacturer_name">{$product.manufacturer_name}</span>
-              {/if}
-              *}
             </span>    
         </div>
         

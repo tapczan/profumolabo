@@ -104,14 +104,19 @@
                     {$specialOffer["special_offer_name"]|escape:'htmlall':'UTF-8'}
                   </a>
                 </div>
-
+                 
                 <div class="product-single__info" style="margin-bottom: 10px; margin-top:10px">              
                       {assign var='specialProducts' value=Product::getSpecificProductByID($specialOffer['id_special_product'])}
                       {if $specialProducts}
                         {foreach $specialProducts item='product' name='product'}
-                            <span class="product-inspired text-center">
-                              {$product['reference']|escape:'htmlall':'UTF-8'}
+                            <span class="product-inspired text-center">                  
+                              {hook h='displayCreateitInspirationfield' product=$product}
                             </span>
+                            
+                            <span class="product-brand text-center">
+                              {hook h='displayCreateitProductfield2_id_product' product=$product}
+                            </span>
+                            {*
                             <span class="product-brand text-center">
                               <span class="product_manufacturer_name"> 
                               {assign var='specialProductsManufacturer' value=Product::getProductBrandByID($product['id_manufacturer'])}
@@ -120,6 +125,7 @@
                               {/foreach}
                               </span>            
                             </span>
+                            *}
                         {/foreach}  
                       {/if}
                 </div>
