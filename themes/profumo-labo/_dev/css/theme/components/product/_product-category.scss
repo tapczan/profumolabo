@@ -608,6 +608,19 @@
     }
 }
 
+.category-kolekcje{
+    .product-category .subcategory-wrapper__image{
+        background: transparent !important;
+
+        img{
+            max-height: 100px;
+            width: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+    }
+}
+
 @media(max-width: 991px){
     .product-category{
         &__listing{
