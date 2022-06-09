@@ -42,7 +42,7 @@
         
         <div class="product-single__info" style="margin-bottom: 10px;">
             <span class="product-inspired text-center">
-              {$product.reference}
+              {hook h='displayCreateitInspirationfield' product=$product}
             </span>
             <span class="product-brand text-center">
               {hook h='displayCreateitProductfield2' product=$product}

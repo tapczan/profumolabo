@@ -109,8 +109,8 @@
                       {assign var='specialProducts' value=Product::getSpecificProductByID($specialOffer['id_special_product'])}
                       {if $specialProducts}
                         {foreach $specialProducts item='product' name='product'}
-                            <span class="product-inspired text-center">
-                              {$product['reference']|escape:'htmlall':'UTF-8'}
+                            <span class="product-inspired text-center">                  
+                              {hook h='displayCreateitInspirationfield' product=$product}
                             </span>
                             
                             <span class="product-brand text-center">

@@ -32,7 +32,7 @@
 
                     <div class="product-reference">
                         <span class="product-inspired">
-                            {$product.reference}
+                            {hook h='displayCreateitInspirationfield' product=$product}
                         </span>
                         <span class="product-brand">
                             {hook h='displayCreateitProductfield2' product=$product}
