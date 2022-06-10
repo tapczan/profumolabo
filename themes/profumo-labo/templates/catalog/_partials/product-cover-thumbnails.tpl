@@ -33,7 +33,7 @@
               {hook h='displayProductActions'}
             </div>
             {if !Context::getContext()->controller->isQuickView()}
-            <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url">
+            <a href="{$image.bySize.large_default.url}" data-fancybox="product-single-featured-img" class="product-img__url js-fancybox-img">
             {/if}
               <img 
                 src="{$image.bySize.medium_default_x2.url}" 

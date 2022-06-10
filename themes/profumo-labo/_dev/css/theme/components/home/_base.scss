@@ -551,3 +551,20 @@
         }
     }
 }
+
+.fancybox__container.product-img-fancybox .fancybox__backdrop{
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.fancybox__container.product-img-fancybox .fancybox__thumbs .carousel__slide.is-nav-selected .fancybox__thumb:after {
+    border: 2px solid #c3c3c3 !important;
+    border-radius: 0 !important;
+}
+
+.fancybox__container.product-img-fancybox .fancybox__thumb{
+    background-size: 80% !important;
+}
+
+.compensate-for-scrollbar{
+    padding-right: 0 !important;
+}
