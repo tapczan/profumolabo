@@ -79,10 +79,32 @@
 {if !$contentOnly}
     {if $model->getList()->getMoreLink() and $model->getList()->more_link}
         <div class="arpl-more-container">
-            <a class="arpl-more-link" href="{$model->getList()->getMoreLink() nofilter}">
-                {$model->more_link|escape:'htmlall':'UTF-8'}
-                <i class="material-icons">&#xE315;</i>
-            </a>
+            {if $model->id == 39}    
+                <a class="arpl-more-link" href="{$link->getCategoryLink('6')}">
+                    {$model->more_link|escape:'htmlall':'UTF-8'}
+                    <i class="material-icons">&#xE315;</i>
+                </a>
+            {elseif $model->id == 34}
+                <a class="arpl-more-link" href="{$link->getCategoryLink('124')}">
+                    {$model->more_link|escape:'htmlall':'UTF-8'}
+                    <i class="material-icons">&#xE315;</i>
+                </a>
+            {elseif $model->id == 45}
+                <a class="arpl-more-link" href="{$link->getCategoryLink('178')}">
+                    {$model->more_link|escape:'htmlall':'UTF-8'}
+                    <i class="material-icons">&#xE315;</i>
+                </a>
+            {elseif $model->id == 43}
+                <a class="arpl-more-link" href="{$link->getCategoryLink('179')}">
+                    {$model->more_link|escape:'htmlall':'UTF-8'}
+                    <i class="material-icons">&#xE315;</i>
+                </a>
+            {else}
+                <a class="arpl-more-link" href="{$model->getList()->getMoreLink() nofilter}">
+                    {$model->more_link|escape:'htmlall':'UTF-8'}
+                    <i class="material-icons">&#xE315;</i>
+                </a>
+            {/if}
         </div>
     {/if}
 </div>

@@ -154,23 +154,24 @@
                         </p>
                         *}
                     </div>
-
-                    <div class="product-accordion" id="productSingleAccordion">
-                        <div class="product-accordion__item">
-                            <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
-                                {l s='Description' d='Shop.Theme.Global'}
-                            </div>
-                            <div class="product-accordion__body collapse show" id="productAccordionContent1" aria-labelledby="productAccordionHeader1" data-parent="#productSingleAccordion">
-                                <p>{$product.description_short nofilter}</p>
-                                <a href="{$product.url|escape:'htmlall':'UTF-8'}">
-                                    {l s='Product Details' d='Shop.Theme.Global'}
-                                </a>
+                    
+                    {if $product.description_short} 
+                        <div class="product-accordion" id="productSingleAccordion">  
+                            <div class="product-accordion__item">
+                                <div class="product-accordion__header" id="productAccordionHeader1" data-toggle="collapse" data-target="#productAccordionContent1" aria-expanded="true" aria-controls="productAccordionContent1">
+                                    {l s='Description' d='Shop.Theme.Global'}
+                                </div>
+                                <div class="product-accordion__body collapse show" id="productAccordionContent1" aria-labelledby="productAccordionHeader1" data-parent="#productSingleAccordion">
+                                    <p>{$product.description_short nofilter}</p>
+                                    <a href="{$product.url|escape:'htmlall':'UTF-8'}">
+                                        {l s='Product Details' d='Shop.Theme.Global'}
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {/if}
 
                 </div>
-
             </div>
         </div>
     </section>

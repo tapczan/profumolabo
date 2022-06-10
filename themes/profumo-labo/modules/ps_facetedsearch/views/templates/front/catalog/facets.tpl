@@ -77,8 +77,11 @@
           <section class="search-filters__block list-group-item">
             <div class="search-filters__header d-flex justify-content-between align-items-center h5 position-relative">
               <span class="search-filters__title">
-                {if $facet.label eq "Brand" || $facet.label eq "Marka" } {/if} 
-                {$facet.label}
+                {if $facet.label eq "Brand" || $facet.label eq "Marka" } 
+                  {l s='Brand Inspiration' d='Shop.Theme.Global'} 
+                {else} 
+                  {$facet.label} 
+                {/if}
               </span>
               <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
                 {if !$_collapse} aria-expanded="true" {/if}>
