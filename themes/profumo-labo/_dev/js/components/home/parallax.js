@@ -14,10 +14,10 @@ const canvas = $("#js-canvas-offerta");
 if(canvas.length){
     const canvasContext = canvas[0].getContext('2d');
     const canvasFrameCount = 39;
-    const winLocationOrigin = window.location.origin;
+    const winLocationOrigin = prestashop.urls.base_url;
 
     const canvasCurrentFrame = index => (
-        `${winLocationOrigin}/img/cms/parallax/canvas-offerta-${index.toString().padStart(3, '0')}.jpg`
+        `${winLocationOrigin}img/cms/parallax/canvas-offerta-${index.toString().padStart(3, '0')}.jpg`
     );
 
     const preloadCanvasImage = () => {
@@ -42,18 +42,20 @@ if(canvas.length){
         canvasImg.src = canvasCurrentFrame(1);
     }
 
-    canvasImg.onload=function(){
-        canvasContext.drawImage(canvasImg, 0, 0);
-    }
-
     const updateImage = index => {
         canvasImg.src = canvasCurrentFrame(index);
         canvasContext.drawImage(canvasImg, 0, 0);
     }
-    
-    initCanvas();
 
-    preloadCanvasImage();
+    $(window).on('load', function() {
+        canvasImg.onload = function(){
+            canvasContext.drawImage(canvasImg, 0, 0);
+        }
+        
+        initCanvas();
+    
+        preloadCanvasImage();
+    });
 
     $(window).on('scroll', function() {
         const jsAfterCanvasSection = $(".blockhomesections--profumo");
