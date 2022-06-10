@@ -34,7 +34,9 @@
                     {/if}
                             <div class="blockinstagram__item">
                                 <a href="https://www.instagram.com/{if $instagram_type == "tagged"}explore/tags/{$user_tag|escape:'htmlall':'UTF-8'}{else}{$user_id|escape:'htmlall':'UTF-8'}{/if}/" target="_blank" rel="nofollow">
-                                    <img src="{_MODULE_DIR_}boninstagramcarousel/views/img/parseImg/sample-{$i|escape:'htmlall':'UTF-8'}.jpg" alt="instagram-{$i|escape:'htmlall':'UTF-8'}" class="blockinstagram__img">
+                                    <img 
+                                        src="{_MODULE_DIR_}boninstagramcarousel/views/img/parseImg/sample-{$i|escape:'htmlall':'UTF-8'}.jpg" alt="instagram-{$i|escape:'htmlall':'UTF-8'}" class="blockinstagram__img"
+                                        {if $i == 5 || $i == 6}width="477" height="477"{else}width="234" height="234"{/if}>
                                     <span class="blockinstagram__overlay"></span>
                                     <svg class="blockinstagram__overlay-icon" x="0px" y="0px" viewBox="0 0 611.977 611.977" style="enable-background:new 0 0 611.977 611.977;" xml:space="preserve">
                                         <g>
