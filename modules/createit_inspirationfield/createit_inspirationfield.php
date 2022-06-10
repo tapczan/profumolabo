@@ -178,7 +178,7 @@ class createit_inspirationfield extends Module
 
     private function getInspirationfieldFrontList($params)
     {
-        $id_product = $params['product']->id;
+        $id_product = (isset($params['product']->id)) ? $params['product']->id : $params['product']['id_product'];
 
         $list = [];
 
