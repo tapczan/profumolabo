@@ -98,17 +98,19 @@
                     </p>
                   </div>
 
-                  <div class="modal-accordion" id="modalAccordionParent">
-                    <div class="modal-accordion__item">
-                      <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
-                        {l s='Description' d='Shop.Theme.Global'}
-                      </div>
-                      <div class="modal-accordion__body collapse show" id="modalAccordionContent1" aria-labelledby="modalAccordionHeader1" data-parent="#modalAccordionParent">
-                        {$product.description_short nofilter}
+                  {if $product.description_short} 
+                    <div class="modal-accordion" id="modalAccordionParent">
+                      <div class="modal-accordion__item">
+                        <div class="modal-accordion__header" id="modalAccordionHeader1" data-toggle="collapse" data-target="#modalAccordionContent1" aria-expanded="true" aria-controls="modalAccordionContent1">
+                          {l s='Description' d='Shop.Theme.Global'}
+                        </div>
+                        <div class="modal-accordion__body collapse show" id="modalAccordionContent1" aria-labelledby="modalAccordionHeader1" data-parent="#modalAccordionParent">
+                          {$product.description_short nofilter}
+                          <a class="quickview-product-link" href="{$product.url}">{l s='Product Details' d='Shop.Theme.Catalog'}</a>
+                        </div>       
                       </div>
                     </div>
-                  </div>
-                  <a class="quickview-product-link" href="{$product.url}">{l s='Product Details' d='Shop.Theme.Catalog'}</a>
+                  {/if}
 
                   {* Input to refresh product HTML removed, block kept for compatibility with themes *}
                   {block name='product_refresh'}{/block}

@@ -7,8 +7,19 @@ $('.js-filter-top-show').on('click', function () {
 
     if( $('.js-filter-wrapper').hasClass('filter-wrapper--show') ) {
         $('.js-filter-top-show').addClass('open');
+
+        if(prestashop.language.iso_code == "pl") {
+            $('.js-filter-top-show').html('ZWIŃ FILTRY');
+        } else {
+            $('.js-filter-top-show').html('FILTER BY');
+        }
     } else {
         $('.js-filter-top-show').removeClass('open');
+        if(prestashop.language.iso_code == "pl") {
+            $('.js-filter-top-show').html('ROZWIŃ FILTRY');
+        } else {
+            $('.js-filter-top-show').html('FILTER BY');
+        }
     }
 });
 
