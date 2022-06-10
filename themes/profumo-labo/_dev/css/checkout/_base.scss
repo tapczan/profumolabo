@@ -1326,6 +1326,32 @@
     }
 }
 
+.inpostship-main{
+    border-style: none !important;
+    width: 100%;
+    margin: 0 0 20px;
+    background: #F4F4F4 !important;
+
+    .inpostship-main-box .btn{
+        background: $black;
+        border-radius: 0;
+        border-style: none;
+        color: $white !important;
+        display: block;
+        font-size: $font-size-sm;
+        font-weight: 300;
+        letter-spacing: 1px;
+        line-height: 16px;
+        margin: 0 auto;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    b{
+        font-weight: 500;
+    }
+}
+
 @media (max-width: 1699px){
     #tc-container .form-fields .form-group input[name=postcode] ~ .error-msg{
         width: 140px;
