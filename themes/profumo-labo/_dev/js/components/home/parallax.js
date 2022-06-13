@@ -28,8 +28,8 @@ if(canvas.length){
     };
 
     var canvasImg = new Image();
-    var canvasImgWidth = 3634;
-    var canvasImgHeight = 1692;
+    var canvasImgWidth = 1920;
+    var canvasImgHeight = 937;
         
     function initCanvas() {
         canvasContext.canvas.width = canvasImgWidth;
