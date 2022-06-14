@@ -63,7 +63,7 @@ $(() => {
     }
 
     
-    if (updateEvenType === 'updatedProductCombination') {
+    if (updateEvenType === 'updatedProductCombination' || updateEvenType === 'updatedProductQuantity') {
       $('.js-product-single-img').slick({
         infinite: true,
         slidesToShow: 1,

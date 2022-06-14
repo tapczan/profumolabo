@@ -5,7 +5,7 @@
   font-style: normal;
   font-weight: 400;
   src: url("#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?qzbeni") format("truetype"), url("#{$icomoon-font-path}/#{$icomoon-font-family}.woff?qzbeni") format("woff");
-  font-display: block;
+  font-display: swap;
 }
 
 .icon {
