@@ -42,15 +42,6 @@ function checkFilteredCategory(data) {
 
   let newData = [],
       filteredCategory = {
-        "category-id-164" : '.feature_7', // open bestsellers
-        "category-id-34"  : '.feature_7', // ""
-        "category-id-44"  : '.feature_7', // ""
-        "category-id-52"  : '.feature_7', // ""
-        "category-id-155" : '.feature_7', // ""
-        "category-id-77"  : '.feature_7', // ""
-        "category-id-87"  : '.feature_7', // ""
-        "category-id-105" : '.feature_7', // ""
-        "category-id-113" : '.feature_7', // ""
         "category-id-166" : '.manufacturer', // open brand inspiration
         "category-id-36"  : '.manufacturer', // ""
         "category-id-46"  : '.manufacturer', // ""
@@ -62,17 +53,28 @@ function checkFilteredCategory(data) {
         "category-id-115" : '.manufacturer', // ""
         "category-id-170" : '.feature_1', // open fragrance group
         "category-id-83"  : '.feature_1', // ""
-        "category-id-173" : '.feature_5', // open unisex
-        "category-id-41"  : '.feature_5', // ""
-        "category-id-51"  : '.feature_5', // ""
-        "category-id-59"  : '.feature_5', // ""
-        "category-id-162" : '.feature_5', // ""
-        "category-id-86"  : '.feature_5', // ""
-        "category-id-94"  : '.feature_5', // ""
-        "category-id-112" : '.feature_5', // ""
-        "category-id-121" : '.feature_5', // ""
         "category-id-169" : '.feature_2', // open time of year
-        "category-id-82" : '.feature_2', // ""
+        "category-id-82"  : '.feature_2', // ""
+        "category-id-168" : '.feature_4', // open collection
+        "category-id-81"  : '.feature_4', // ""
+        // "category-id-164" : '.feature_7', // open bestsellers
+        // "category-id-34"  : '.feature_7', // ""
+        // "category-id-44"  : '.feature_7', // ""
+        // "category-id-52"  : '.feature_7', // ""
+        // "category-id-155" : '.feature_7', // ""
+        // "category-id-77"  : '.feature_7', // ""
+        // "category-id-87"  : '.feature_7', // ""
+        // "category-id-105" : '.feature_7', // ""
+        // "category-id-113" : '.feature_7', // ""
+        // "category-id-173" : '.feature_5', // open unisex
+        // "category-id-41"  : '.feature_5', // ""
+        // "category-id-51"  : '.feature_5', // ""
+        // "category-id-59"  : '.feature_5', // ""
+        // "category-id-162" : '.feature_5', // ""
+        // "category-id-86"  : '.feature_5', // ""
+        // "category-id-94"  : '.feature_5', // ""
+        // "category-id-112" : '.feature_5', // ""
+        // "category-id-121" : '.feature_5', // ""
       };
 
   newData = Object.entries(data.page.body_classes);
