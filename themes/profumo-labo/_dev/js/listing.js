@@ -18,37 +18,10 @@ $(() => {
   });
 
   if(prestashop.page.body_classes['page-category']) {
-    console.log('i am category')
     checkFilteredCategory(prestashop);
   }
   
 });
-
-function checkFilteredCategory(data) {
-
-  let newData = [],
-      filteredCategory = [
-        ['category-id-170','.manufacturer'],
-        ['category-id-166','.manufacturer'],
-        ['category-id-36','.manufacturer'],
-        ['category-id-46','.manufacturer'],
-        ['category-id-54','.manufacturer'],
-        ['category-id-157','.manufacturer'],
-        ['category-id-79','.manufacturer'],
-        ['category-id-89','.manufacturer'],
-        ['category-id-107','.manufacturer'],
-        ['category-id-115','.manufacturer']
-      ];
-
-  newData = Object.entries(data.page.body_classes);
-
-  newData.forEach(function(newdata) {
-    if( filteredCategory[0][0].includes(newdata[0]) ) {
-      activateFilter(filteredCategory[0][1]);
-    }
-  });
-}
-
 
 function updateProductListDOM(data) {
   $('#search_filters').replaceWith(data.rendered_facets);
@@ -62,6 +35,37 @@ function updateProductListDOM(data) {
 
   prestashop.customSelect.init();
   prestashop.emit('updatedProductList', data);
+
+}
+
+function checkFilteredCategory(data) {
+
+  let newData = [],
+      filteredCategory = {
+        // "category-id-3" : '.manufacturer',
+        "category-id-170" : '.manufacturer',
+        "category-id-166" : '.manufacturer',
+        "category-id-36"  : '.manufacturer',
+        "category-id-46"  : '.manufacturer',
+        "category-id-54"  : '.manufacturer',
+        "category-id-157" : '.manufacturer',
+        "category-id-79"  : '.manufacturer',
+        "category-id-89"  : '.manufacturer',
+        "category-id-107" : '.manufacturer',
+        "category-id-115" : '.manufacturer'
+      };
+
+  newData = Object.entries(data.page.body_classes);
+
+  newData.forEach( (newdata) => {
+    if( Object.keys(filteredCategory).includes(newdata[0]) ) {
+      Object.entries(filteredCategory).forEach( (filter_class) => {
+        if(filter_class[0] === newdata[0]) {
+          activateFilter( filter_class[1] );
+        }
+      }); 
+    }
+  });
 
 }
 
