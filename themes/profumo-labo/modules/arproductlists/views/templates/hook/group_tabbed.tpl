@@ -42,6 +42,14 @@
                 {/if}
             </li>
         {/foreach}
+        {if $model->id|intval == 20}
+            <li class="nav-item">
+                 <a href="#arpl-tab-custom1" data-group="c1" data-id="custom1" class="nav-link" data-toggle="tab">
+                    {l s='You may also like' d='Modules.Createitrelatedproducts.Admin'}
+                </a>
+            </li>
+        {/if}
+
     </ul>
     <div class="arpl-tab-content tab-content">
         {foreach $lists as $k => $list}
@@ -54,5 +62,12 @@
                 {$list.content nofilter}
             </div>
         {/foreach}
+        {if $model->id|intval == 20}
+            <div id="arpl-tab-custom1" class="arpl-tab-pane tab-pane ">
+                {block name='product_single_ct_related_products'}
+                    {hook h='displayRelatedProducts' product=$product}
+                {/block}
+            </div>
+         {/if}
     </div>
 </div>
