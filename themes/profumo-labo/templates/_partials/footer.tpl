@@ -72,9 +72,3 @@
     </div>
   </div>
 </div>
-
-<!-- Messenger Wtyczka czatu Code -->
-<div id="fb-root"></div>
-
-<!-- Your Wtyczka czatu code -->
-<div id="fb-customer-chat" class="fb-customerchat"></div>
