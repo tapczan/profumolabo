@@ -102,9 +102,9 @@
                {l s='Proceed to checkout' d='Shop.Theme.Actions'}
              </a>
              <span class="cart-action__continue dropdown-close">
-               <a href="{$link->getPageLink("index",  true)}" style="color: #111;">
+              <span class=" dropdown-close ml-auto cursor-pointer">
                 {l s='Continue shopping' d='Shop.Theme.Actions'}
-                </a>
+              </span>
              </span>
            </div>
            
