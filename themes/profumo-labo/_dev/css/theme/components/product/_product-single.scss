@@ -203,7 +203,10 @@
         text-transform: uppercase;
     }
 
-    #arpl-group-13{
+    #arpl-group-13,
+    #arpl-group-19,
+    #arpl-group-20,
+    #arpl-group-22{
         &.arpl-group-tabbed{
             margin: 0;
 
@@ -902,7 +905,10 @@
             }
         }
 
-        #arpl-group-13{
+        #arpl-group-13,
+        #arpl-group-19,
+        #arpl-group-20,
+        #arpl-group-22{
             &.arpl-group-tabbed{
                 .nav-tabs{
                     display: none;
@@ -1103,7 +1109,10 @@
     }
 
     .page-product{
-        #arpl-group-13.arpl-group-tabbed{
+        #arpl-group-13.arpl-group-tabbed,
+        #arpl-group-19.arpl-group-tabbed,
+        #arpl-group-20.arpl-group-tabbed,
+        #arpl-group-22.arpl-group-tabbed{
             .nav-tabs{
                 display: flex !important;
             }
