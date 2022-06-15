@@ -68,7 +68,7 @@
         *}
         
         {foreach from=$displayedFacets item="facet"}
-          
+ 
           {assign var=_expand_id value=10|mt_rand:100000}
           {assign var=_collapse value=true}
           {foreach from=$facet.filters item="filter"}
@@ -83,7 +83,7 @@
                   {$facet.label} 
                 {/if}
               </span>
-              <a href="#facet_{$_expand_id}" class="icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
+              <a href="#facet_{$_expand_id}" class="{$facet.type}{if isset($facet.properties.id_feature)}_{$facet.properties.id_feature}{/if} icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
                 {if !$_collapse} aria-expanded="true" {/if}>
                 <span class="material-icons">&#xE313;</span>
               </a>
@@ -91,7 +91,7 @@
 
             {if in_array($facet.widgetType, ['radio', 'checkbox'])}
               {block name='facet_item_other'}
-                <div id="facet_{$_expand_id}" class="search-filters__collapse collapse{if !$_collapse} show{/if}">
+                <div id="facet_{$_expand_id}" class="{$facet.type}{if isset($facet.properties.id_feature)}_{$facet.properties.id_feature}{/if} search-filters__collapse collapse{if !$_collapse} show{/if}">
                   {foreach from=$facet.filters key=filter_key item="filter"}
                     {if !$filter.displayed}
                       {continue}
@@ -126,7 +126,7 @@
             {elseif $facet.widgetType == 'dropdown'}
               {block name='facet_item_dropdown'}
                 <div>
-                  <div id="facet_{$_expand_id}" class="search-filters__collapse  collapse{if !$_collapse} show{/if}">
+                  <div id="facet_{$_expand_id}" class="{$facet.type}{if isset($facet.properties.id_feature)}_{$facet.properties.id_feature}{/if} search-filters__collapse  collapse{if !$_collapse} show{/if}">
                     <select class="custom-select">
                       <option value="">---</option>
                       {foreach from=$facet.filters item="filter"}
@@ -148,7 +148,7 @@
                 {foreach from=$facet.filters item="filter"}
 
                   <div>
-                    <div id="facet_{$_expand_id}" class="search-filters__collapse  collapse{if !$_collapse} show{/if} search-filters__slider">
+                    <div id="facet_{$_expand_id}" class="{$facet.type}{if isset($facet.properties.id_feature)}_{$facet.properties.id_feature}{/if} search-filters__collapse  collapse{if !$_collapse} show{/if} search-filters__slider">
                       <div class="js-input-range-slider-container">
                         <div class="search-slider-input-wrapper">
                           <div class="search-filters__input-group">

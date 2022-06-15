@@ -101,7 +101,7 @@ $(document).ready(() => {
   prestashop.on('updatedProduct', (event) => {
     $('.js-product-references').first().replaceWith(event.product_references);
   });
-
+  
   topMenu.init();
 
   $('.js-select-link').on('change', ({ target }) => {
@@ -135,13 +135,6 @@ function checkAllChkbx() {
     $("form#customer-form input[type=checkbox]").prop('checked', $(this).prop('checked'));
   });  
 }
-
-var chatbox = document.getElementById("fb-customer-chat");
-
-if(chatbox){
-  chatbox.setAttribute("page_id", "110559737836074");
-  chatbox.setAttribute("attribution", "biz_inbox");
-} 
 
 /**
  * Add class fancy box clicked on
