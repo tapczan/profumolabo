@@ -62,18 +62,18 @@ $(() => {
       });
     }
 
-    
-    if (updateEvenType === 'updatedProductCombination' || updateEvenType === 'updatedProductQuantity') {
-      $('.js-product-single-img').slick({
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: false,
-      });
+    if (updateEvenType === 'updatedProductCombination') {
       $('.js-product-images').replaceWith(event.product_cover_thumbnails);
       $('.js-product-images-modal').replaceWith(event.product_images_modal);
       prestashop.emit('updatedProductCombination', event);
     }
+    
+    $('.js-product-single-img').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+    });
 
     updateEvenType = false;
 
