@@ -9,8 +9,6 @@ function mobileDropdown(){
         var mobileDropdownElemLink = $(this).find('.nav-link');
         var mobileDropdownElemActive = $(this).find('.nav-link.active').text();
 
-        console.log('mobileDropdownElemActive -> ' + mobileDropdownElemActive);
-
         if( $(this).find('.nav-tabs-mobile-label').length == 0 ){
             $(this).prepend('<h3 class="nav-tabs-mobile-label">' + mobileDropdownElemActive + '</h3>');
         }
