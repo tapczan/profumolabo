@@ -65,7 +65,7 @@ $(() => {
     
     if (updateEvenType === 'updatedProductCombination' || updateEvenType === 'updatedProductQuantity') {
       $('.js-product-single-img').slick({
-        infinite: true,
+        infinite: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         dots: false,
