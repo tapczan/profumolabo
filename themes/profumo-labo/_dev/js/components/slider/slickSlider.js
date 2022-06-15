@@ -13,7 +13,7 @@ $('.js-blockbannerslider').slick({
 * Home page featured product slider
 */
 $('.js-blockfeaturedproduct').slick({
-    infinite: true,
+    infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
@@ -84,7 +84,7 @@ $('.js-block-reassurance-slider').slick({
 * Product Single
 */
 $('.js-product-single-img').slick({
-    infinite: true,
+    infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
     dots: false,
@@ -100,6 +100,9 @@ const sliderOverrideList = $(`#arpl-section-13-40-carousel,
                             #arpl-section-13-28-carousel, 
                             #arpl-section-13-25-carousel, 
                             #arpl-section-12-27-carousel,
+                            #arpl-section-19-42-carousel,
+                            #arpl-section-20-39-carousel,
+                            #arpl-section-20-48-carousel,
                             .js-createit-related-products-slider`);
 const sliderBestsellerHome = $(`#arpl-section-5-7-carousel, 
                             #arpl-section-5-45-carousel,
@@ -216,5 +219,8 @@ $(window).on('load resize orientationchange', function() {
         seeMoreBestsellers('#arpl-section-13-25-carousel', '#arpl-section-13-25-carousel .slick-slide', 5, '#arpl-section-13-25')
         seeMoreBestsellers('#arpl-section-1-37-carousel', '#arpl-section-1-37-carousel .slick-slide', 8, '#arpl-section-1-37')
         seeMoreBestsellers('#arpl-section-12-27-carousel', '#arpl-section-12-27-carousel .slick-slide', 5, '#arpl-section-12-27')
+        seeMoreBestsellers('#arpl-section-19-42-carousel', '#arpl-section-19-42-carousel .slick-slide', 5, '#arpl-section-19-42')
+        seeMoreBestsellers('#arpl-section-20-39-carousel', '#arpl-section-20-39-carousel .slick-slide', 5, '#arpl-section-20-39')
+        seeMoreBestsellers('#arpl-section-20-48-carousel', '#arpl-section-20-48-carousel .slick-slide', 5, '#arpl-section-20-48')
     }
 });
