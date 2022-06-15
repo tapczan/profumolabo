@@ -36,12 +36,14 @@
           <p class="inpost-shipping-machine-name">
             {l s='Parcel Locker' mod='inpostshipping'}
             <span class="js-inpost-shipping-machine-name">
-              {if isset($locker.name)}{$locker.name|escape:'html':'UTF-8'}{/if}
+              {if isset($locker.name)}{$locker.name|escape:'html':'UTF-8'}{else}WAW281M{/if}
             </span>
           </p>
           <p class="inpost-shipping-machine-address js-inpost-shipping-machine-address">
             {if isset($locker.address.line1) && isset($locker.address.line2)}
               {$locker.address.line1|escape:'html':'UTF-8'}, {$locker.address.line2|escape:'html':'UTF-8'}
+	    {else}
+		Aleje Jerozolimskie 96, 00-803 Warszawa
             {/if}
           </p>
         </div>
