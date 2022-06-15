@@ -23,6 +23,13 @@
         {if $title}
             <h2 class="h2 arpl-title products-section-title text-uppercase {if $model->getList()->titleAlign == 'left'} arpl-text-left {elseif $model->getList()->titleAlign == 'right'} arpl-text-right {else} arpl-text-center {/if}">{$title|escape:'htmlall':'UTF-8'}</h2>
         {/if}
+
+        {if $model->id == 39}
+            <div class="arplekstrakty">
+                <p>Produkty tworzone z myślą o kobietach. <b>Aż 40% kompozycji zapachowej oraz 0% alkoholu.</b> Alternatywa dla wód perfumowanych, dzięki której unikniesz podrażnień i starzenia się delikatnej skóry szyi.</p>
+            </div>
+        {/if}
+
         {if $model->getList()->sortorder and $model->getList()->getFrontendOrderOptions()}
             <div class="arpl-sort-container">
                 <select class="arpl-sort form-control" onchange="arPL.loadAjaxTab({$group->id|intval}, {$model->id|intval}, 1);">
