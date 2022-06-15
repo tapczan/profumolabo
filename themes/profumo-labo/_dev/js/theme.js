@@ -136,13 +136,6 @@ function checkAllChkbx() {
   });  
 }
 
-var chatbox = document.getElementById("fb-customer-chat");
-
-if(chatbox){
-  chatbox.setAttribute("page_id", "110559737836074");
-  chatbox.setAttribute("attribution", "biz_inbox");
-} 
-
 /**
  * Add class fancy box clicked on
  * product featured image
