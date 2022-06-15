@@ -35,7 +35,7 @@
                             {hook h='displayCreateitInspirationfield' product=$product}
                         </span>
                         <span class="product-brand">
-                            {hook h='displayCreateitProductfield2' product=$product}
+                            {hook h='displayCreateitProductfield2' product=$product is_linked='true'}
                         </span>
                     </div>
 

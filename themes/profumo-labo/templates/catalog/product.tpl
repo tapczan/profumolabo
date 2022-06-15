@@ -86,7 +86,7 @@
                   {hook h='displayCreateitInspirationfield' product=$product}
                 </span>
                 <span class="product-brand">
-                  {hook h='displayCreateitProductfield2' product=$product}
+                  {hook h='displayCreateitProductfield2' product=$product is_linked='true'}
                 </span>
               </div>
                <!-- End Product References and Manufacturer -->
@@ -161,10 +161,8 @@
                 *}
               </div>
 
-              <div class="product-accordion" id="productSingleAccordion">
-
+              <div class="product-accordion" id="productSingleAccordion">     
                   {hook h='displayProductCustomFieldByName' product=$product}
-
               </div>
         <div class="product-social">
                 {block name='product_additional_info'}
