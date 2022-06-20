@@ -37,7 +37,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <img class="footer-container__logo img-fluid js-footer-logo-img" src="{$urls.img_url}footer_logo.svg" alt="">
+        <img class="footer-container__logo img-fluid js-footer-logo-img" src="{$urls.img_url}footer_logo.svg" alt="Profumo Labo" width="250" height="428">
       </div>
       <div class="js-footer-items">
         {block name='hook_footer'}
@@ -60,7 +60,7 @@
             </div>
           </div>
           <div class="col-lg-12 col-5">
-            <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="">
+            <img class="footer-container__payment img-fluid" src="{$urls.img_url}payment.png" alt="Profumo Labo" width="110" height="22">
           </div>
         </div>
       </div>

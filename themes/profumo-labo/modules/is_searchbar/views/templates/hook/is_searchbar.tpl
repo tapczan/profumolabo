@@ -28,13 +28,13 @@
 <input type="hidden" name="controller" value="search">
 <input class="js-search-input search-form__input form-control" placeholder="{l s='Search' d='Shop.Istheme'}" type="text" name="s" value="{$search_string}" autocomplete="off">
 <button type="submit" class="search-form__btn btn">
-<img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-icon_gray.svg">
+<img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-icon_gray.svg" width="14" height="14">
 </button>
 </div>    
 </form>
 
 <a role="button" class="search-toggler header-top__link jsSearchToggleMobile">
 	<div class="header-top__icon-container">
-		<img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-mobile-icon.svg">
+		<img class="header-top__icon header__inner-search-icon" src="{$urls.img_url}search-mobile-icon.svg" width="24" height="24">
 	</div>
 </a>

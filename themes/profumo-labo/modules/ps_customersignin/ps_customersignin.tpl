@@ -34,7 +34,7 @@
     {/if}
   >
     <div class="header-top__icon-container">
-      <img class="header__inner-login-icon" src="{$urls.img_url}user-icon.svg">
+      <img class="header__inner-login-icon" src="{$urls.img_url}user-icon.svg" width="25" height="24">
     </div>
   </a>
 </div>
