@@ -1,6 +1,10 @@
 .thumbnail-container--zoom .product-miniature__thumb img.img-fluid {
     transform: scale(1.15);
     max-width: 250px !important;
+
+    @media(max-width: 767px){
+        max-width: 100% !important;
+    }
 }
 
 #prices-drop{
