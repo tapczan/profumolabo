@@ -1418,6 +1418,19 @@
                 }
             }
         }
+
+        #thecheckout-newsletter .form-group{
+            margin-bottom: 0;
+        }
+
+        .checkout-block{
+            padding: 0;
+        }
+
+        .custom-checkbox .label em{
+            position: relative;
+            left: 0;
+        }
     }
 
     #order-confirmation,
