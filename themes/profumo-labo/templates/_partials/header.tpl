@@ -42,7 +42,7 @@
           <div class="header__inner-r">
             {widget name='ps_customersignin'}
 
-            <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
+            <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24"> 
               {if $wishlist_count > 0}
                 <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top">{$wishlist_count}</span> 
               {/if}
@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-md-2 col-sm-7 col-6 header__nav-left">
           <a href="{$urls.pages.index}">
-            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
+            <img class="logo img-fluid" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy" width="200" height="15">
           </a>
         </div>
         <div class="col-md-8 col-sm-1 col-2 header__nav-mid">
@@ -72,7 +72,7 @@
           {widget name='is_searchbar'}
           {widget name='ps_customersignin'}
 
-          <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg"> 
+          <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24"> 
             {if $wishlist_count > 0}
               <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav">{$wishlist_count}</span> 
             {/if}

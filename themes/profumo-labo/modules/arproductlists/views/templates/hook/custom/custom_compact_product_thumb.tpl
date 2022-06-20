@@ -28,6 +28,8 @@
                                         alt="{$product.name}"
                                     {/if}
                                     class="product-img__asset"
+                                    width="330"
+                                    height="330"
                             >
                         </a>
                     </div>
