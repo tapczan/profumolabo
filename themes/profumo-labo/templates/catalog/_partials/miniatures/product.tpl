@@ -35,7 +35,7 @@
       class="product-miniature card js-product-miniature p-2 h-100 {block name='product_miniature_item_class'}{/block}"
       data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}"
       >
-      <div class="thumbnail-container">
+      <div class="thumbnail-container{if $product.id_category_default != '140'} thumbnail-container--zoom{/if}">
         {include file='catalog/_partials/miniatures/_partials/product-thumb.tpl' thumbExtraClass='mb-2'}
 
         {include file='catalog/_partials/miniatures/_partials/product-title.tpl'}
