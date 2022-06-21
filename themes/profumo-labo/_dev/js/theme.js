@@ -50,7 +50,7 @@ import './components/footer/parallaxEffect';
 import './components/home/base';
 import './components/home/parallax';
 import './components/home/rollOverImage';
-import './components/shop/mobileTabToDropdown';
+// import './components/shop/mobileTabToDropdown';
 import './components/shop/comment';
 import './components/shop/base';
 import './components/shop/filter';

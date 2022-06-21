@@ -11,6 +11,10 @@
     .arpl-section{
         margin-bottom: 0 !important;
     }
+    
+    .createit-related-products .products-list__block{
+        padding: 0;
+    }
 
     .arpl-no-carousel-products,
     .createit-related-products{
@@ -848,6 +852,30 @@
             }
         }
     }
+
+    .page-product{
+        .arpl-header .arpl-title{
+            font-size: $font-size-product-md;
+            line-height: 30px;
+        }
+        
+        #arpl-group-13,
+        #arpl-group-19,
+        #arpl-group-20,
+        #arpl-group-22{
+            &.arpl-group-tabbed{
+                .nav-link{
+                    font-size: $font-size-product-md;
+                    line-height: 30px;
+                }
+
+                .nav-item:after{
+                    height: 20px;
+                    margin: auto;   
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px){
@@ -894,6 +922,21 @@
             font-size: $font-size-xm;
             margin-bottom: 20px;
         }
+        
+        #arpl-group-13,
+        #arpl-group-19,
+        #arpl-group-20,
+        #arpl-group-22{
+            &.arpl-group-tabbed{
+                .nav-link{
+                    font-size: $font-size-xm;
+                }
+
+                .nav-item:after{
+                    height: 15px;
+                }
+            }
+        }
 
         .createit-related-products{
             padding-top: 25px;
@@ -905,7 +948,7 @@
             }
         }
 
-        #arpl-group-13,
+        /* #arpl-group-13,
         #arpl-group-19,
         #arpl-group-20,
         #arpl-group-22{
@@ -982,7 +1025,7 @@
                     }
                 }
             }
-        }
+        } */
     }
 
     .product-single{
@@ -1090,6 +1133,23 @@
     }
 }
 
+@media (max-width: 576px){
+    #arpl-group-13,
+    #arpl-group-19,
+    #arpl-group-20,
+    #arpl-group-22{
+        &.arpl-group-tabbed{
+            .nav-tabs{
+                display: flex;
+            }
+
+            .arpl-tab-header{
+                display: none;
+            }
+        }
+    }
+}
+
 @media (max-width: 380px){
     .page-product{
         .arpl-no-carousel-products,
@@ -1108,14 +1168,14 @@
         display: none;
     }
 
-    .page-product{
-        #arpl-group-13.arpl-group-tabbed,
-        #arpl-group-19.arpl-group-tabbed,
-        #arpl-group-20.arpl-group-tabbed,
-        #arpl-group-22.arpl-group-tabbed{
-            .nav-tabs{
-                display: flex !important;
-            }
-        }
-    }
+    // .page-product{
+    //     #arpl-group-13.arpl-group-tabbed,
+    //     #arpl-group-19.arpl-group-tabbed,
+    //     #arpl-group-20.arpl-group-tabbed,
+    //     #arpl-group-22.arpl-group-tabbed{
+    //         .nav-tabs{
+    //             display: flex !important;
+    //         }
+    //     }
+    // }
 }
