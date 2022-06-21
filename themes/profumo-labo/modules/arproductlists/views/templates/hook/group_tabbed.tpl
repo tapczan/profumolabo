@@ -30,8 +30,13 @@
     <ul class="nav nav-tabs">
         {foreach $lists as $k => $list}
             <li class="nav-item">
+                {assign var='mobileTitle' value=FrontController::getMobileTitle($list.title|escape:'htmlall':'UTF-8')}
                 <a href="#arpl-tab-{$list.model->id|intval}" data-group="{$model->id|intval}" data-id="{$list.model->id|intval}" class="{if $list.ajax}arpl-tab-ajax{/if} nav-link {if $k == 0}active{/if}" data-toggle="tab">
-                    {$list.title|escape:'htmlall':'UTF-8'}
+                    {if $isMobile}
+                        {$mobileTitle}
+                    {else}
+                        {$list.title|escape:'htmlall':'UTF-8'}
+                    {/if}
                 </a>
                 {if $list.ajax and $k == 0}
                 <script>
@@ -42,10 +47,15 @@
                 {/if}
             </li>
         {/foreach}
+
         {if $model->id|intval == 20}
             <li class="nav-item">
                  <a href="#arpl-tab-custom1" data-group="c1" data-id="custom1" class="nav-link" data-toggle="tab">
-                    {l s='You may also like' d='Modules.Createitrelatedproducts.Admin'}
+                    {if $isMobile} 
+                        {l s='SIMILAR' d='Modules.Createitrelatedproducts.Admin'}
+                    {else}
+                        {l s='SIMILAR PRODUCTS' d='Modules.Createitrelatedproducts.Admin'}
+                    {/if}
                 </a>
             </li>
         {/if}

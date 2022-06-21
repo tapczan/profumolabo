@@ -237,6 +237,8 @@ class FrontControllerCore extends Controller
             new Filesystem()
         );
 
+        $this->context->smarty->assign('isMobile', $this->context->isMobile());
+
     }
 
     /**
@@ -2182,6 +2184,36 @@ class FrontControllerCore extends Controller
     public static function getCategoryName($id){
         $category = new Category ($id,Context::getContext()->language->id);
         return $category->name;
+    }
+
+    public static function getMobileTitle($title) {
+        
+        $result = '';   
+
+        switch ($title) {
+            case 'RELATED PRODUCTS':
+                $result = 'RELATED';
+                break;
+            case 'RECOMMENDED FOR YOU':
+                $result = 'RECOMMENDED';
+                break;
+            case 'LAST WATCHED':
+                $result = 'WATCHED';
+                break;
+            case 'PRODUKTY POWIĄZANE':
+                $result = 'POWIĄZANE';
+                break;
+            case 'POLECANE DLA CIEBIE':
+                $result = 'POLECANE';
+                break;
+            case 'OSTATNIO OGLADANE':
+                $result = 'OGLADANE';
+                break;
+            default:
+                $result = $title;
+        }
+
+        return $result;
     }
 
 }
