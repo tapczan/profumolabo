@@ -42,8 +42,8 @@
           <p class="inpost-shipping-machine-address js-inpost-shipping-machine-address">
             {if isset($locker.address.line1) && isset($locker.address.line2)}
               {$locker.address.line1|escape:'html':'UTF-8'}, {$locker.address.line2|escape:'html':'UTF-8'}
-	    {else}
-		Aleje Jerozolimskie 96, 00-803 Warszawa
+            {else}
+		          Aleje Jerozolimskie 96, 00-803 Warszawa
             {/if}
           </p>
         </div>

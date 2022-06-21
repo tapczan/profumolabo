@@ -59,8 +59,8 @@ class TranslateAdapter
         $iso = null
     ) {
         if ($this->shopContext->is17()) {
-            return Translate::getModuleTranslation($module, $originalString, $source, null, false, $iso);
-        } elseif ($iso === null) {
+            return Translate::getModuleTranslation($module, $originalString, $source, null, false, $iso, false);
+        } elseif (empty($iso)) {
             return Translate::getModuleTranslation($module, $originalString, $source);
         }
 
@@ -69,10 +69,6 @@ class TranslateAdapter
         static $translationsMerged = [];
 
         $name = $module instanceof Module ? $module->name : $module;
-
-        if (empty($iso)) {
-            $iso = Context::getContext()->language->iso_code;
-        }
 
         if (!isset($translationsMerged[$name][$iso])) {
             $filesByPriority = [

@@ -53,4 +53,11 @@ class Hooks implements InstallerInterface
 
         return true;
     }
+
+    public function uninstallOutdated()
+    {
+        foreach ($this->hookDispatcher->getOutdatedHooks() as $hookName) {
+            $this->module->unregisterHook($hookName);
+        }
+    }
 }

@@ -87,4 +87,14 @@ class HookDispatcher
 
         return false;
     }
+
+    public function getOutdatedHooks()
+    {
+        $outdatedHooks = [];
+        foreach ($this->hooks as $hook) {
+            $outdatedHooks = array_merge($outdatedHooks, $hook->getOutdatedHooks());
+        }
+
+        return $outdatedHooks;
+    }
 }

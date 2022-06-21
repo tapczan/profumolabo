@@ -57,4 +57,11 @@ abstract class AbstractHook
                 : static::HOOK_LIST_16
         );
     }
+
+    public function getOutdatedHooks()
+    {
+        return $this->shopContext->is17()
+            ? static::HOOK_LIST_16
+            : [];
+    }
 }

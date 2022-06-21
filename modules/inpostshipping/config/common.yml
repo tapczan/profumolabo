@@ -74,6 +74,12 @@ services:
 
   InPost\Shipping\Configuration\CheckoutConfiguration: '@inpost.shipping.configuration.checkout'
 
+  inpost.shipping.configuration.shop:
+    class: InPost\Shipping\Configuration\ShopConfiguration
+    public: true
+
+  InPost\Shipping\Configuration\ShopConfiguration: '@inpost.shipping.configuration.shop'
+
   inpost.shipping.data_provider.customer_choice:
     class: InPost\Shipping\DataProvider\CustomerChoiceDataProvider
     public: true

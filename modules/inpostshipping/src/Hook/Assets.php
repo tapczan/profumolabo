@@ -25,6 +25,7 @@
 namespace InPost\Shipping\Hook;
 
 use InPost\Shipping\Configuration\CheckoutConfiguration;
+use InPost\Shipping\HookUpdater;
 use InPost\Shipping\ShipX\Resource\Service;
 use Media;
 use ModuleFrontController;
@@ -44,6 +45,8 @@ class Assets extends AbstractHook
 
     public function hookActionAdminControllerSetMedia()
     {
+        $this->updateHookRegistrations();
+
         if (Tools::getValue('controller') === 'AdminOrders') {
             $display = $this->getOrdersDisplay();
 
@@ -220,5 +223,15 @@ class Assets extends AbstractHook
         }
 
         return [];
+    }
+
+    protected function updateHookRegistrations()
+    {
+        if ($this->shopContext->is17()) {
+            /** @var HookUpdater $updater */
+            $updater = $this->module->getService('inpost.shipping.hook_updater');
+
+            $updater->updateHookRegistrations();
+        }
     }
 }

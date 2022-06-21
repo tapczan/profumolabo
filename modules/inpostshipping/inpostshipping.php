@@ -54,7 +54,7 @@ class InPostShipping extends CarrierModule
     {
         $this->name = 'inpostshipping';
         $this->tab = 'shipping_logistics';
-        $this->version = '1.6.0';
+        $this->version = '1.7.0';
         $this->author = 'InPost S.A.';
         $this->need_instance = 0;
 

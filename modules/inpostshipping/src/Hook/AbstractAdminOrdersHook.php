@@ -41,6 +41,13 @@ abstract class AbstractAdminOrdersHook extends AbstractHook
             : static::HOOK_LIST;
     }
 
+    public function getOutdatedHooks()
+    {
+        return $this->shopContext->is177()
+            ? static::HOOK_LIST
+            : [];
+    }
+
     protected function renderPrintShipmentLabelModal()
     {
         /** @var PrintShipmentLabelModal $modal */

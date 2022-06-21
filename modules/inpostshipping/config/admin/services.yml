@@ -252,6 +252,8 @@ services:
     public: true
     autowire: true
 
+  InPost\Shipping\Install\Hooks: '@inpost.shipping.install.hooks'
+
   inpost.shipping.install.tabs:
     class: InPost\Shipping\Install\Tabs
     public: false
@@ -272,6 +274,7 @@ services:
         - '@inpost.shipping.configuration.szybkie_zwroty'
         - '@inpost.shipping.configuration.carriers'
         - '@inpost.shipping.configuration.orders'
+        - '@inpost.shipping.configuration.shop'
 
   InPost\Shipping\CarrierUpdater:
     class: InPost\Shipping\CarrierUpdater
@@ -382,5 +385,10 @@ services:
 
   inpost.shipping.views.dispatch_point_nav_tabs:
     class: InPost\Shipping\Views\DispatchPointNavTabs
+    public: true
+    autowire: true
+
+  inpost.shipping.hook_updater:
+    class: InPost\Shipping\HookUpdater
     public: true
     autowire: true
