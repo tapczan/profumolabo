@@ -7,6 +7,8 @@ $('.js-blockbannerslider').slick({
     slidesToScroll: 1,
     dots: true,
     arrow: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
 });
 
 /**
