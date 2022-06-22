@@ -571,3 +571,13 @@
 .compensate-for-scrollbar{
     padding-right: 0 !important;
 }
+
+@media (max-width: 550px) {
+    .page-home #arpl-group-6.arpl-group.arpl-non-tabbed-group .arpl-category .arpl-cat-img{
+        background-size: contain !important;
+
+        img{
+            transform: scale(1.4);
+        }
+    }
+}

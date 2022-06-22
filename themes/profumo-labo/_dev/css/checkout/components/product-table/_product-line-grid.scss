@@ -29,6 +29,14 @@
         align-self: center;
         @include custom-col(100px);
       }
+
+      @media(max-width: 550px){
+        flex: 0 0 100%;
+        max-width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+      }
     }
 
     &--prod {
@@ -37,6 +45,11 @@
       @include media-breakpoint-up(md) {
         flex: 1 1 auto;
         max-width: inherit;
+      }
+
+      @media(max-width: 550px){
+        max-width: 80%;
+        flex: 0 0 80%;
       }
     }
 
@@ -70,6 +83,12 @@
         align-self: flex-start;
         order: -1;
         padding-top: rem-calc(5px);
+      }
+
+      @media(max-width: 550px){
+        justify-content: flex-end;
+        display: flex;
+        padding-right: 0;
       }
     }
   }

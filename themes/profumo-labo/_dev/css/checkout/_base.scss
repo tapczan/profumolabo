@@ -117,12 +117,14 @@
         .customer-name{
             @include font-with-line-height($font-size-xm, 26px);
             
+            font-family: $font-jost;
             font-weight: 500;
         }
 
         .customer-email{
             @include font-with-line-height($font-size-sm, 20px);
 
+            font-family: $font-jost;
             font-weight: 300;
         }
     }
@@ -477,6 +479,10 @@
             img{
                 border-style: none;
                 width: 125px;
+
+                @media(max-width: 550px){
+                    width: 250px;
+                }
             }
         }
 
