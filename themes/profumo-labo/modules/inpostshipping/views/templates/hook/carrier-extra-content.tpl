@@ -94,9 +94,7 @@
     </div>
 
     <div class="col-sm-12">
-      <div class="inpost-shipping-customer-change-form"
-           {if isset($errors.email) || isset($errors.phone) || empty($phone)}style="display: block"{/if}
-      >
+      <div class="inpost-shipping-customer-change-form">
         <div class="form-group {if isset($errors.email)}has-error{/if}">
           <input type="text"
                  id="inpost_email_{$id_carrier|intval}"
