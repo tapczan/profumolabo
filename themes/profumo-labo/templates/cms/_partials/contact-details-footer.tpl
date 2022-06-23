@@ -16,7 +16,7 @@
         </li>
         
         <li class="collapsed__more-item">
-            <a href="mailto:m.mikolaszek@createit.com" class="collapsed__more-link">
+            <a href="mailto:hello@profumolabo.com" class="collapsed__more-link">
                 <img src="{$urls.img_url}faq-envelop-icon.svg" class="collapsed__more-icon">
 
                 <span class="collapsed__more-label">
