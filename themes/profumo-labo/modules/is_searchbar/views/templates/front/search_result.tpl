@@ -1,7 +1,11 @@
 
 <div class="search-result">
   {assign var='countProductsShow' value=$products|count}
-  {assign var='newProductsCount' value=$newProducts|count}
+  {if $newProducts}
+    {assign var='newProductsCount' value=$newProducts|count}
+  {else}
+    {assign var='newProductsCount' value='0'}
+  {/if}
   {assign var='countProductsMore' value=$moreResultsCount}
   {assign var='countProductsTotal' value=$countProductsShow + $newProductsCount}
 
