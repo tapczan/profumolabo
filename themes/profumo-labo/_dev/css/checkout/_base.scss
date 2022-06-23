@@ -411,21 +411,25 @@
                     }
                 }
 
+                .inpost-shipping-customer-change-form{
+                    .form-group{
+                        &:before{
+                            font-size: $font-size-xs;
+                        }
+    
+                        &:nth-child(1):before{
+                            content: 'Email:';
+                        }
+    
+                        &:nth-child(2):before{
+                            content: 'Phone:';
+                        }
+                    }
+                }
+
                 .form-group{
                     margin: 10px 0 !important;
                     padding: 0 !important;
-
-                    &:before{
-                        font-size: $font-size-xs;
-                    }
-
-                    &:nth-child(1):before{
-                        content: 'Email:';
-                    }
-
-                    &:nth-child(2):before{
-                        content: 'Phone:';
-                    }
 
                     .inpost-shipping-button,
                     .js-inpost-shipping-customer-form-save-button{
