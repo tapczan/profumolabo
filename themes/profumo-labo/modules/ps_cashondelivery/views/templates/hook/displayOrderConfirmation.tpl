@@ -20,6 +20,8 @@
 <section id="ps_cashondelivery-displayOrderConfirmation">
   {*<p>{l s='Your order on %s is complete.' sprintf=[$shop_name] d='Modules.Cashondelivery.Shop'}</p>
   <p>{l s='You have chosen the cash on delivery method.' d='Modules.Cashondelivery.Shop'}</p>*}
+  {if $smarty.get.id_module != '94'}
   <p>{l s='Your order will be sent very soon.' d='Modules.Cashondelivery.Shop'}</p>
+  {/if}
   {*<p>{l s='For any questions or for further information, please contact our' d='Modules.Cashondelivery.Shop'} <a href="{$contact_url}" rel="nofollow">{l s='customer support' d='Modules.Cashondelivery.Shop'}</a>.</p>*}
 </section>
