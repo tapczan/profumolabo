@@ -1303,19 +1303,19 @@
 
     h2{
         font-weight: 500;
-        font-size: $font-size-xxl;
+        font-size: $font-size-xl;
     }
 
     a{
         display: block;
         width: 300px;
-        margin: 0 auto 50px;
+        margin: 0 auto 20px;
     }
 
     p{
         margin: 25px auto 0;
         max-width: 1000px;
-        font-size: $font-size-xl;
+        font-size: $font-size-md;
     }
 
     .cart_navigation{
