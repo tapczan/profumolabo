@@ -1296,7 +1296,8 @@
     left: 0;
 }
 
-#module-przelewy24-paymentSuccessful #main .box{
+#module-przelewy24-paymentSuccessful #main .box,
+#module-przelewy24-paymentFailed #main .box{
     text-align: center;
     padding: 50px 0;
 
