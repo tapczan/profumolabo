@@ -218,11 +218,9 @@ $(window).on('load resize orientationchange', function() {
         seeMoreBestsellers('#arpl-section-12-31-carousel', '#arpl-section-12-31-carousel .slick-slide', 5, '#arpl-section-12-31')
         seeMoreBestsellers('#arpl-section-13-27-carousel', '#arpl-section-13-27-carousel .slick-slide', 6, '#arpl-section-13-27')
         seeMoreBestsellers('#arpl-section-13-28-carousel', '#arpl-section-13-28-carousel .slick-slide', 5, '#arpl-section-13-28')
-        seeMoreBestsellers('#arpl-section-13-25-carousel', '#arpl-section-13-25-carousel .slick-slide', 5, '#arpl-section-13-25')
         seeMoreBestsellers('#arpl-section-1-37-carousel', '#arpl-section-1-37-carousel .slick-slide', 8, '#arpl-section-1-37')
         seeMoreBestsellers('#arpl-section-12-27-carousel', '#arpl-section-12-27-carousel .slick-slide', 5, '#arpl-section-12-27')
         seeMoreBestsellers('#arpl-section-19-42-carousel', '#arpl-section-19-42-carousel .slick-slide', 5, '#arpl-section-19-42')
         seeMoreBestsellers('#arpl-section-20-39-carousel', '#arpl-section-20-39-carousel .slick-slide', 5, '#arpl-section-20-39')
-        seeMoreBestsellers('#arpl-section-20-48-carousel', '#arpl-section-20-48-carousel .slick-slide', 5, '#arpl-section-20-48')
     }
 });
