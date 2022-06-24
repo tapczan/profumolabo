@@ -57,9 +57,11 @@ $('.mega-menu-header-about a[href*="#"]').on('click', function(){
 $(window).on('load', function(){
     const windowWidth = $(window).outerWidth();
     
-    if(windowWidth < 768){
-        smoothScrollingToMobile(this.hash);
-    }else{
-        smoothScrollingTo(this.hash);
+    if(window.location.hash) {
+        if(windowWidth < 768){
+            smoothScrollingToMobile(this.hash);
+        }else{
+            smoothScrollingTo(this.hash);
+        }
     }
 });
