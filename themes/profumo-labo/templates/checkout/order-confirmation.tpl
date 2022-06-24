@@ -33,92 +33,93 @@
 {/block}
 
 {block name='page_content_container'}
-  <section id="content" class="page-content page-order-confirmation card my-4">
-    {block name='order_confirmation_table'}
-      {include
-        file='checkout/_partials/order-confirmation-table.tpl'
-        products=$order.products
-        subtotals=$order.subtotals
-        totals=$order.totals
-        labels=$order.labels
-        add_product_link=false
-      }
-    {/block}
-  </section>
+  {if $smarty.get.id_module != '94'}
+    <section id="content" class="page-content page-order-confirmation card my-4">
+      {block name='order_confirmation_table'}
+        {include
+          file='checkout/_partials/order-confirmation-table.tpl'
+          products=$order.products
+          subtotals=$order.subtotals
+          totals=$order.totals
+          labels=$order.labels
+          add_product_link=false
+        }
+      {/block}
+    </section>
 
-  <div class="row card-group no-gutters my-4">
-    {block name='order_details'}
-      <div class="col-sm-6 col-12 card">
-        <div class="card-header">
-          <h3 class="h5 mb-0 card-title">{l s='Order details' d='Shop.Theme.Checkout'}</h3>
-        </div>
-        <div class="card-body">
-          <ul class="m-0">
-            <li class="cart-summary-line">
-              <span id="order-reference-value">
-                {l s='Order reference: %reference%' d='Shop.Theme.Checkout' sprintf=['%reference%' => "<strong>`$order.details.reference`</strong>"]}
-              </span>
-            </li>
-            <li class="cart-summary-line">
-              <span>
-                {l s='Payment method: %method%' d='Shop.Theme.Checkout' sprintf=['%method%' => "<strong>`$order.details.payment`</strong>"]}
-              </span>
-            </li>
-            {if !$order.details.is_virtual}
+    <div class="row card-group no-gutters my-4">
+      {block name='order_details'}
+        <div class="col-sm-6 col-12 card">
+          <div class="card-header">
+            <h3 class="h5 mb-0 card-title">{l s='Order details' d='Shop.Theme.Checkout'}</h3>
+          </div>
+          <div class="card-body">
+            <ul class="m-0">
               <li class="cart-summary-line">
-                <span>
-                  {l s='Shipping method: %method%' d='Shop.Theme.Checkout' sprintf=['%method%' => "<strong>`$order.carrier.name`</strong>"]}
+                <span id="order-reference-value">
+                  {l s='Order reference: %reference%' d='Shop.Theme.Checkout' sprintf=['%reference%' => "<strong>`$order.details.reference`</strong>"]}
                 </span>
               </li>
-            {/if}
-          </ul>
+              <li class="cart-summary-line">
+                <span>
+                  {l s='Payment method: %method%' d='Shop.Theme.Checkout' sprintf=['%method%' => "<strong>`$order.details.payment`</strong>"]}
+                </span>
+              </li>
+              {if !$order.details.is_virtual}
+                <li class="cart-summary-line">
+                  <span>
+                    {l s='Shipping method: %method%' d='Shop.Theme.Checkout' sprintf=['%method%' => "<strong>`$order.carrier.name`</strong>"]}
+                  </span>
+                </li>
+              {/if}
+            </ul>
+          </div>
         </div>
-      </div>
-    {/block}
+      {/block}
 
-    <div class="col-sm-6 col-12 card">
-      <div class="card-header">
-        <h3 class="h5 mb-0 card-title">{l s='Order subtotals' d='Shop.Istheme'}</h3>
-      </div>
+      <div class="col-sm-6 col-12 card">
+        <div class="card-header">
+          <h3 class="h5 mb-0 card-title">{l s='Order subtotals' d='Shop.Istheme'}</h3>
+        </div>
 
-      <div class="card-body">
-        {foreach $order.subtotals as $subtotal}
-          {if $subtotal !== null && $subtotal.type !== 'tax' && $subtotal.label !== null}
+        <div class="card-body">
+          {foreach $order.subtotals as $subtotal}
+            {if $subtotal !== null && $subtotal.type !== 'tax' && $subtotal.label !== null}
+              <div class="cart-summary-line">
+                <span class="label">{$subtotal.label}</span>
+                <span class="value">{if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}</span>
+              </div>
+            {/if}
+          {/foreach}
+
+          {if !$configuration.display_prices_tax_incl && $configuration.taxes_enabled}
             <div class="cart-summary-line">
-              <span class="label">{$subtotal.label}</span>
-              <span class="value">{if 'discount' == $subtotal.type}-&nbsp;{/if}{$subtotal.value}</span>
+              <span class="label">{$order.totals.total.label}&nbsp;{$order.labels.tax_short}</span>
+              <span class="value">{$order.totals.total.value}</span>
+            </div>
+            <div class="cart-summary-line cart-total">
+              <span class="label">{$order.totals.total_including_tax.label}</span>
+              <span class="value">{$order.totals.total_including_tax.value}</span>
+            </div>
+          {else}
+            <div class="cart-summary-line cart-total">
+              <span class="label">{$order.totals.total.label}&nbsp;{if $configuration.taxes_enabled}{$order.labels.tax_short}{/if}</span>
+                <span class="value">{$order.totals.total.value}</span>
             </div>
           {/if}
-        {/foreach}
 
-        {if !$configuration.display_prices_tax_incl && $configuration.taxes_enabled}
-          <div class="cart-summary-line">
-            <span class="label">{$order.totals.total.label}&nbsp;{$order.labels.tax_short}</span>
-            <span class="value">{$order.totals.total.value}</span>
-          </div>
-          <div class="cart-summary-line cart-total">
-            <span class="label">{$order.totals.total_including_tax.label}</span>
-            <span class="value">{$order.totals.total_including_tax.value}</span>
-          </div>
-        {else}
-          <div class="cart-summary-line cart-total">
-            <span class="label">{$order.totals.total.label}&nbsp;{if $configuration.taxes_enabled}{$order.labels.tax_short}{/if}</span>
-              <span class="value">{$order.totals.total.value}</span>
-          </div>
-        {/if}
+          {if $order.subtotals !== null && $order.subtotals.tax.label !== null}
+            <div class="cart-summary-line">
+              <span class="label">{l s='%label%:' sprintf=['%label%' => $order.subtotals.tax.label] d='Shop.Theme.Global'}</span>
+              <span class="value">{$order.subtotals.tax.value}</span>
+            </div>
+          {/if}
+        </div>
 
-        {if $order.subtotals !== null && $order.subtotals.tax.label !== null}
-          <div class="cart-summary-line">
-            <span class="label">{l s='%label%:' sprintf=['%label%' => $order.subtotals.tax.label] d='Shop.Theme.Global'}</span>
-            <span class="value">{$order.subtotals.tax.value}</span>
-          </div>
-        {/if}
       </div>
 
     </div>
-
-  </div>
-
+  {/if}
 
 
   {block name='hook_payment_return'}
