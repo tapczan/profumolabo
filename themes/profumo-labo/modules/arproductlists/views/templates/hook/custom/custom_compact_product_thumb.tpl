@@ -19,7 +19,7 @@
             {if $product.images}
                 {foreach from=$product.images item=image}
                     <div class="product-img">
-                        <a href="{$image.bySize.product_popup.url}" data-fancybox="blockfeaturedproduct-featured-img" class="product-img__url js-fancybox-img">
+                        <a href="{$product.url|escape:'htmlall':'UTF-8'}" class="product-img__url">
                             <img
                                     src="{$image.bySize.medium_default_x2.url}"
                                     {if !empty($product.default_image.legend)}
