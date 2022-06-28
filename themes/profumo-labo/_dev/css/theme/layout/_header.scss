@@ -133,6 +133,7 @@
         list-style: none;
         padding: 0;
         margin: 0;
+        display: none;
 
         &__item{
           display: inline-block;
@@ -477,7 +478,7 @@
     &__form-group{
       position: relative;
       padding: 4px 18px 4px 30px;
-      @media (min-width: 1200px) {
+      @media (min-width: 992px) {
         background-color: #f4f4f4;
         border-radius: 5px;
       }
