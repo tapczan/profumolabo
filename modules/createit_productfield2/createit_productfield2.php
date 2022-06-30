@@ -193,11 +193,18 @@ class createit_productfield2 extends Module
         }
     }
 
+    /**
+     * TO DO REFACTOR!!!
+     * @param $id_product
+     * @return array|string[]
+     * @throws PrestaShopException
+     */
     private function getProductfield2List($id_product)
     {
         $list = [
             'product_name' => '',
-            'product_url' => ''
+            'product_url' => '',
+            'product_id' => ''
         ];
 
         $productObj = [];
@@ -221,7 +228,8 @@ class createit_productfield2 extends Module
 
             $list = [
                 'product_name' => $productObj->name,
-                'product_url' => $url
+                'product_url' => $url,
+                'product_id' => $productObj->id
             ];
         }
 
@@ -244,6 +252,7 @@ class createit_productfield2 extends Module
         $list = [
             'product_name' => '',
             'product_url' => '',
+            'product_id' => '',
             'is_linked' => ''
         ];
 
@@ -267,6 +276,7 @@ class createit_productfield2 extends Module
             $list = [
                 'product_name' => $productObj->name,
                 'product_url' => $url,
+                'product_id' => $productObj->id,
                 'is_linked' => $isLinked
             ];
 

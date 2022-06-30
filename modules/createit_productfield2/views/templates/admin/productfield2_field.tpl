@@ -20,10 +20,10 @@
                     type="text"
                     id="createit-productlist"
                     class="form-control autocomplete search mb-1"
-                    value="{$productfield2_list['product_name']}"
+                    value="{$productfield2_list['product_name']|default:''}"
                     placeholder="{l s='Search a product' d='Modules.Createitproductfield2.Admin'}">
 
-            <input name="createit_productfield2" type="hidden">
+            <input name="createit_productfield2" type="hidden" value="{$productfield2_list['product_id']|default:''}">
 
         </div>
 
