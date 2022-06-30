@@ -239,9 +239,12 @@ class createit_productfield2 extends Module
 
         $id_product = $params['product']->id;
 
+        $isLinked = array_key_exists('is_linked', $params) ? $params['is_linked'] : false;
+
         $list = [
             'product_name' => '',
-            'product_url' => ''
+            'product_url' => '',
+            'is_linked' => ''
         ];
 
         /**
@@ -263,7 +266,8 @@ class createit_productfield2 extends Module
 
             $list = [
                 'product_name' => $productObj->name,
-                'product_url' => $url
+                'product_url' => $url,
+                'is_linked' => $isLinked
             ];
 
         }
