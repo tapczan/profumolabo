@@ -181,7 +181,7 @@ class createit_countdown extends Module
         $freeShippingTotalPriceLeft = $freeShippingAmountValue - $summaryTotalPrice;
 
         $this->context->smarty->assign([
-            'freeShippingTotalPriceLeft' => $freeShippingTotalPriceLeft,
+            'freeShippingTotalPriceLeft' => sprintf('%0.2f', $freeShippingTotalPriceLeft),
             'backgroundColor' => $backgroundColor,
             'borderColor' => $borderColor,
             'textColor' => $textColor,
@@ -189,6 +189,11 @@ class createit_countdown extends Module
         ]);
 
         return $this->display(__FILE__, 'views/templates/hook/countdown.tpl');
+    }
+
+    public function isUsingNewTranslationSystem()
+    {
+        return true;
     }
 
 }
