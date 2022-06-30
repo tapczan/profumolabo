@@ -18,6 +18,16 @@ if (file_exists(__DIR__.'/vendor/autoload.php')) {
 
 class createit_related_products extends Module
 {
+    /**
+     * Static male category array.
+     */
+    CONST MALE_ARR = [4,11,179,184];
+
+    /**
+     * Static female category array.
+     */
+    CONST FEMALE_ARR = [5,7,10,177,178];
+
     public function __construct()
     {
         $this->name = 'createit_related_products';
@@ -45,14 +55,26 @@ class createit_related_products extends Module
 
         $limit = Configuration::get('CREATEIT_RELATED_PRODUCT_LIMIT');
 
+        $limitQuery = is_numeric($limit) ? 'LIMIT '.(int) $limit : '';
+
         /**
          * Get value for CREATEIT_RELATED_PRODUCT_INCLUDED_FEATURES
          */
         $featureListVal = $this->getFeaturedList();
 
+        /**
+         * Get opposite gender products
+         */
+        $oppositeGenderProducts = $this->getExcludedOppositeGenderProducts((int) $product["id_product"]);
+
         $excludedCategory = $this->getSavedExcludedProductsCategoryList();
 
         $excludedCategory[] = (int) $product["id_product"];
+
+        $excludedCategoryWithOppositeGender = array_merge($excludedCategory, $oppositeGenderProducts);
+
+        $sqlExcludedProducts = empty($excludedCategoryWithOppositeGender) ? '' : 'AND p.id_product NOT IN ('. implode(',', $excludedCategoryWithOppositeGender ).')';
+        $sqlFeature = empty($featureListVal) ? '' : 'AND  fp.id_feature IN ('.implode(",", $featureListVal).')' ;
 
         $res = Db::getInstance()->executeS('SELECT DISTINCT
                     p.*
@@ -67,9 +89,9 @@ class createit_related_products extends Module
                             `' . _DB_PREFIX_ . 'feature_product`
                         WHERE
                             `id_product` = '.(int) $product["id_product"].')
-                AND p.id_product NOT IN ('. implode(',', $excludedCategory ).')
-                AND  fp.id_feature IN ('.implode(",", $featureListVal).')
-                LIMIT '.(int) $limit.'
+                '. $sqlExcludedProducts .'
+                '. $sqlFeature .'
+                '. $limitQuery .'
             ');
 
         $assembler = new ProductAssembler($this->context);
@@ -388,6 +410,73 @@ class createit_related_products extends Module
         }
 
         return $list;
+    }
+
+    private function getProductCategories(int $id_product)
+    {
+        $category = [];
+
+        if($productsRes = Db::getInstance()->executeS('SELECT id_category FROM `' . _DB_PREFIX_ . 'category_product` WHERE id_product = '.$id_product.''))
+        {
+            foreach ($productsRes as $id)
+            {
+                $category[] = (int) $id['id_category'];
+            }
+        }
+
+        return $category;
+    }
+
+    private function getProductGender(int $id_product): string
+    {
+        $category_id = [];
+        $gender = '';
+
+        if(!empty($category_id = $this->getProductCategories($id_product))) {
+            if (array_intersect($category_id, self::MALE_ARR)){
+                $gender = 'male';
+                if(array_intersect($category_id, self::FEMALE_ARR)){
+                    $gender = 'unisex';
+                }
+            }else{
+                $gender = 'female';
+                if(array_intersect($category_id, self::MALE_ARR)){
+                    $gender = 'unisex';
+                }
+            }
+        }
+
+        return $gender;
+    }
+
+    private function getExcludedOppositeGenderProducts(int $id_product): array
+    {
+        $result = [];
+
+        switch ($this->getProductGender($id_product))
+        {
+            case 'male':
+                if($query = Db::getInstance()->executeS('SELECT id_product FROM `' . _DB_PREFIX_ . 'category_product` WHERE id_category in ('.implode(",", self::FEMALE_ARR).')')){
+                    foreach ($query as $id)
+                    {
+                        $result[] = (int) $id['id_product'];
+                    }
+                }
+                break;
+            case 'female':
+                if($query = Db::getInstance()->executeS('SELECT id_product FROM `' . _DB_PREFIX_ . 'category_product` WHERE id_category in ('.implode(",", self::MALE_ARR).')')){
+                    foreach ($query as $id)
+                    {
+                        $result[] = (int) $id['id_product'];
+                    }
+                }
+                break;
+            default:
+                $result = [];
+
+        }
+
+        return $result;
     }
 
     public function isUsingNewTranslationSystem()
