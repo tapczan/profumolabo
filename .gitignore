@@ -19,6 +19,7 @@ modules/
 !modules/profumolabocontent
 !modules/pwinstafeed
 !modules/thecheckout
+!modules/ps_facetedsearch
 
 # ignore all files starting with .
 .*

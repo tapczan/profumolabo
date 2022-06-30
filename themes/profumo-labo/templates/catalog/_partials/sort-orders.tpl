@@ -29,7 +29,13 @@
       data-href="{$sort_order.url}"
       {if $sort_order.current}selected{/if}
     >
-      {$sort_order.label}
+      {if $sort_order.urlParameter eq 'product.grade.asc' }
+        {l s='Grade, low to High' d='Shop.Theme.Global'}
+      {elseif $sort_order.urlParameter eq 'product.grade.desc'}
+        {l s='Grade, High to low' d='Shop.Theme.Global'}
+      {else}
+        {$sort_order.label}
+      {/if}
     </option>
   {/foreach}
 </select>
