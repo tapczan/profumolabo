@@ -77,7 +77,7 @@ class createit_inspirationfield extends Module
 
         parent::__construct();
 
-        $this->displayName = $this->trans('createIT Inspiration', [], 'Modules.Createitinspirationfield.Admin');
+        $this->displayName = $this->trans('createIT Inspiration 2', [], 'Modules.Createitinspirationfield.Admin');
         $this->description = $this->trans('Add custom inspiration field for prestashop.', [], 'Modules.Createitinspirationfield.Admin');
         $this->confirmUninstall = $this->trans('Are you sure you want to uninstall?', [], 'Modules.Createitinspirationfield.Admin');
     }
@@ -178,7 +178,7 @@ class createit_inspirationfield extends Module
 
     private function getInspirationfieldFrontList($params)
     {
-        $id_product = (isset($params['product']->id)) ? $params['product']->id : $params['product']['id_product'];
+        $id_product = $params['product']->id;
 
         $list = [];
 
