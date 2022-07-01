@@ -16,3 +16,17 @@ section#main {
     font-weight: 400;
   }
 }
+
+@media(max-width: 991px){
+  html #x13-counter-container{
+    position: relative !important;
+  }
+  
+  html #x13-counter-container.x13-counter-container-fixed{
+    position: fixed !important;
+  }
+
+  html .x13counter_offset{
+    height: auto !important;
+  }
+}
