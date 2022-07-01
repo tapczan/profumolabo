@@ -76,4 +76,5 @@
       </div>
     </div>
   </div>
+  <div class="js-remove-header-classes"></div>
 </div>
