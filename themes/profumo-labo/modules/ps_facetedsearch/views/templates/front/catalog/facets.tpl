@@ -22,7 +22,6 @@
   * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
   * International Registered Trademark & Property of PrestaShop SA
   *}
-
 <div>
   {if isset($displayedFacets) && $displayedFacets|count}
     <div id="search_filters" class="js-search-filters search-filters card">
@@ -80,7 +79,11 @@
                 {if $facet.label eq "Brand" || $facet.label eq "Marka" } 
                   {l s='Brand Inspiration' d='Shop.Theme.Global'} 
                 {else} 
-                  {$facet.label} 
+                  {if $facet.label eq 'Grade'}
+                      {l s='Grade' d='Shop.Theme.Global'}
+                  {else}
+                      {$facet.label}
+                  {/if}
                 {/if}
               </span>
               <a href="#facet_{$_expand_id}" class="{$facet.type}{if isset($facet.properties.id_feature)}_{$facet.properties.id_feature}{/if} icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
