@@ -27,8 +27,8 @@
   <div class="container">
     <div class="row align-items-center">
       <p id="block-newsletter-label" class="col-md-6 col-12 mb-md-0 mb-3 text-uppercase block_newsletter__label">
-      {l s='Sign up for our newsletter' d='Shop.Theme.Global'}<br>
-      {l s='to get a 15% off your first order' d='Shop.Theme.Global'}
+      {l s='ZAPISZ SIĘ DO NASZEGO NEWSLETTERA' d='Shop.Theme.Global'}<br>
+      {l s='ABY OTRZYMAĆ 15% ZNIŻKI NA PIERWSZE ZAMÓWIENIE' d='Shop.Theme.Global'}
       </p>
       <div class="col-md-6 col-12">
         <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
