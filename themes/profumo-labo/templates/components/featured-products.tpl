@@ -1,5 +1,5 @@
 {block name='featured_products'}
-  <div class="featured-products my-4 {block name='featured_products_class'}{/block}">
+  {* <div class="featured-products my-4 {block name='featured_products_class'}{/block}">
 
     {block name='featured_products_header'}
       <div class="featured-products__header d-flex align-items-center mb-3">
@@ -54,6 +54,28 @@
       </div>
     {/block}
 
+
+  </div> *}
+
+  <div class="featured-products my-4 featured-products--related">
+
+    {block name='featured_products_header'}
+      <div class="featured-products__header">
+        <p class="h1 featured-products__title">
+          PRODUKTY POWIĄZANE
+        </p>
+      </div>
+    {/block}
+
+    <div class="featured-products__wrapper">
+      {block name='featured_products_products'}
+        {foreach from=$products item="product"}
+          {block name='product_miniature'}
+            {include file='catalog/_partials/miniatures/product.tpl' product=$product type='listing'}
+          {/block}
+        {/foreach}
+      {/block}
+    </div>
 
   </div>
 {/block}
