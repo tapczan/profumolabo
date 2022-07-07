@@ -28,6 +28,13 @@
         {$HOOK_ORDER_CONFIRMATION nofilter}
       {/block}
 
+      {if $smarty.get.id_module == '94'}
+      <script>
+        window.onload = function() {
+          document.getElementById("przelewy24Form").submit();
+        }
+      </script>
+      {/if}
     </div>
   </section>
 {/block}

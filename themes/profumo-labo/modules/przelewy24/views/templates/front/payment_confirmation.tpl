@@ -4,8 +4,11 @@
 * @copyright Przelewy24
 * @license https://www.gnu.org/licenses/lgpl-3.0.en.html
 *
-* The name of template is misleading. It is for payment confirmation.
 *}
+{extends file='page.tpl'}
+{capture name=path}{l s='Pay with Przelewy24' mod='przelewy24'}{/capture}
+{assign var='current_step' value='payment'}
+{block name='page_content'}
 {* The may_skip varialbe is overwritten if widgets the user can interact with are rendered. *}
 <div class="p24-payment-return-page przelewy-24">
 
@@ -34,7 +37,8 @@
             </p>
             <p>
                 <img alt="{$payment_method_selected_name}"
-                     src="https://secure.przelewy24.pl/template/201312/bank/logo_{$payment_method_selected_id}.gif">
+                     class="p24-svg-image-limited"
+                     src="{$payment_methods_map[$payment_method_selected_id]['imgUrl']}">
             </p>
         {/if}
         {if $card_remember_input}
@@ -103,7 +107,7 @@
         {if $p24_paymethod_list_exists}
             {assign var='may_skip' value=false}
             {if $p24_paymethod_graphics}
-                <div class="pay-method-list pay-method-graphics pay-method-list-first d-flex justify-content-center my-4">
+                <div class="pay-method-list pay-method-graphics pay-method-list-first">
                     {if $p24_paymethod_list_first|sizeof > 0}
                         {foreach $p24_paymethod_list_first as $bank_id => $bank_name}
                             {if !empty($bank_name)}
@@ -127,7 +131,16 @@
                         {/foreach}
                     {/if}
                 </div>
-                {include file="module:przelewy24/views/templates/hook/parts/nav_more_less.tpl"}
+                <div class="p24-text-center">
+                    <div class="p24-stuff-nav">
+                        <div class="p24-more-stuff p24-stuff">
+                            {l s='More payment methods' mod='przelewy24'}
+                        </div>
+                        <div class="p24-less-stuff p24-stuff">
+                            {l s='Less payment methods' mod='przelewy24'}
+                        </div>
+                    </div>
+                </div>
                 <div class="pay-method-list pay-method-graphics pay-method-list-second" style="display: none">
                     {if $p24_paymethod_list_second|sizeof > 0}
                         {foreach $p24_paymethod_list_second as $bank_id => $bank_name}
@@ -198,7 +211,7 @@
             <input type="hidden" name="p24_session_id" value="{$p24_session_id}">
             <input type="hidden" name="p24_pos_id" value="{$p24_pos_id}">
             <input type="hidden" name="p24_amount" value="{$p24_amount}">
-            <input type="hidden" name="p24_currency" id="p24_currency" value="{$p24_currency}">
+            <input type="hidden" name="p24_currency" value="{$p24_currency}">
             <input type="hidden" name="p24_description" value="{$p24_description}">
             <input type="hidden" name="p24_email" value="{$p24_email}">
             <input type="hidden" name="p24_client" value="{$p24_client}">
@@ -217,14 +230,10 @@
             <input type="hidden" name="p24_wait_for_result" value="{$p24_wait_for_result}">
             <input type="hidden" name="p24_shipping" value="{$p24_shipping}">
             <input type="hidden" name="p24_method" value="{$payment_method_selected_id}">
-            <input type="hidden" name="p24_channel" {if $payment_method_selected_id === 266} value="2048" {/if}>
             <input type="hidden" name="p24_card_customer_id" value="">
-            {if $extracharge > 0 }
-                <input type="hidden" name="extrachargeReturn" id="extrachargeReturn" value="{$extracharge}">
-                <input type="hidden" name="extrachargeReturnFormatted" id="extrachargeReturnFormatted" value="{$extrachargeFormatted}">
-                <input type="hidden" name="extracharge_text" id="extracharge_text" value="{l s="Extracharge Przelewy24" mod='przelewy24'}">
-            {/if}
-            <input type="hidden" name="currencySign" id="currencySign" value="{$currencySign}">
+            <input type="hidden" name="p24_channel" {if $payment_method_selected_id === 266} value="2048" {/if}>
+            
+
             {foreach $p24ProductItems as $name => $value}
                 <input type="hidden" name="{$name}" value="{$value}">
             {/foreach}
@@ -301,19 +310,18 @@
                 {$submitButtonDisabled = ''}
             {/if}
             {if $payment_method_selected_id > 0}
-                <button {$submitButtonDisabled} id="submitButton"
-                        data-text-oneclick="{l s='Pay by OneClick' mod='przelewy24'}" onclick="formSend();"
-                        class="btn btn-primary">{l s='Pay' mod='przelewy24'}</button>
+                <button data-validation-required="{$validationRequired}" data-text-oneclick="{l s='Pay by OneClick' mod='przelewy24'}"  {$submitButtonDisabled} id="submitButton" class="btn btn-primary" {if 2 === ($validationRequired|intval)}data-validation-link="{$validationLink}" type="button" onclick="proceedPayment({$cartId})"{else} onclick="formSend();" type="submit"{/if} >{l s='Pay' mod='przelewy24'}</button>
             {elseif isset($p24_blik_code)}
-                <button {$submitButtonDisabled} id="submitButton" onclick="formSend();"
-                        class="btn btn-primary">{l s='Pay by Blik' mod='przelewy24'}</button>
+                <button {$submitButtonDisabled} id="submitButton" onclick="formSend();" class="btn btn-primary">{l s='Pay by Blik' mod='przelewy24'}</button>
             {else}
-                <button {$submitButtonDisabled} id="submitButton"
-                        data-text-oneclick="{l s='Pay by OneClick' mod='przelewy24'}"  onclick="formSend();"
-                        class="btn btn-primary">{l s='Pay by Przelewy24' mod='przelewy24'}</button>
+                <button {$submitButtonDisabled} id="submitButton" data-validation-required="{$validationRequired}" data-text-oneclick="{l s='Pay by OneClick' mod='przelewy24'}" class="btn btn-primary" {if 2 === ($validationRequired|intval)}data-validation-link="{$validationLink}" type="button" onclick="proceedPayment({$cartId})"{else} onclick="formSend();" type="submit"{/if}>{l s='Pay by Przelewy24' mod='przelewy24'}</button>
             {/if}
         </form>
-       
+        <script>
+            window.onload = function() {
+                document.getElementById("przelewy24Form").submit();
+            }
+        </script>
         {if !isset($p24_blik_code)}
             <p class="p24-small-text">
                 {l s='Now you will be redirected to the Przelewy24 to process payments.' mod='przelewy24'}
@@ -321,7 +329,7 @@
         {/if}
     {elseif 'payment' === $status}
         <p class="warning">
-            {l s='Thank you for your order' mod='przelewy24'} {$reference}
+            {l s='Thank you for your order' mod='przelewy24'}
         </p>
     {else}
         <p class="warning">
@@ -399,3 +407,5 @@
     });
 </script>
 {/if}
+
+{/block}
