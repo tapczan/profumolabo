@@ -92,10 +92,14 @@ function checkFilteredCategory(data) {
 }
 
 function activateFilter(facetType) {
- 
+  console.log(facetType)
   $('.filter-top-show').addClass('open');
   $('.js-filter-wrapper').addClass('filter-wrapper--show');
   $('.js-listing-wrapper').removeClass('listing-wrapper--default');
+
+  // open mobile filter
+  $('.js-filtermobile-slider').addClass('istoggled');
+  $('.js-search-filters').css('display','block');
 
   $('a'+facetType).attr('aria-expanded', true);
   $('div'+facetType).addClass('show');
