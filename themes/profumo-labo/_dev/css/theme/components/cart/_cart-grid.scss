@@ -262,6 +262,169 @@
     }
 }
 
+.featured-products--related{
+    width: 100%;
+    overflow: hidden;
+    
+    .featured-products{
+        &__title{
+            @include font-with-line-height($font-size-xxl, 38px);
+
+            font-family: $font-forum;
+            letter-spacing: 3px;
+            margin: 0 0 50px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: $black;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+
+        &__wrapper{
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    .products-list__block{
+        display: flex;
+        flex: 0 0 16%;
+        max-width: 16%;
+        margin-bottom: 50px;
+        justify-content: center;
+
+        @media(max-width: 991px){
+            flex: 50%;
+            max-width: 50%;
+        }
+  
+        .product{
+            &-miniature{
+                border-style: none;
+                padding: 0 !important;
+  
+                &__thumb{
+                    img{
+                        margin: auto;
+                        display: block;
+                        width: 100%;
+        
+                        &.lazyload:not(.loaded){
+                            background: $white !important;
+                        }
+                    }
+
+                    .quick-view{
+                        display: none;
+                    }
+
+
+                    &:hover {
+                        .quick-view{
+                            display: flex;
+                            justify-content: center;
+                            width: 100%;
+                            background: #fff;
+                            bottom: 0;
+                            border: 1px solid #f4f4f4;
+                            border-bottom-left-radius: 5px;
+                            align-items: center;
+                            border-bottom-right-radius: 5px;
+                        }
+                    }
+    
+                    .comments_note{
+                        width: 100%;
+                    }
+
+                    .star_content{
+                        text-align: center;
+                        margin-top: 20px;
+    
+                        .star{
+                            margin: 0;
+                            padding: 0;
+                            display: inline-block;
+                            vertical-align: middle;
+                            background: url(~/img/icons/star_gray.svg);
+                            background-size: contain;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            width: 10px;
+                            height: 10px;
+                            float: none;
+        
+                            &.star_on{
+                                background: url(~/img/icons/star_active.svg) !important;
+                                background-size: contain !important;
+                                background-position: center !important;
+                                background-repeat: no-repeat !important;
+                            }
+                        }
+    
+                        & + span{
+                            display: none;
+                        }
+                    }
+                }
+  
+                &__title{
+                    font-weight: 400;
+                    font-size: $font-size-sm;
+                    text-align: center;
+                    color: $black;
+                    height: auto;
+                }
+    
+                &__pricing{
+                    text-align: center !important;
+                    margin-bottom: 0;
+        
+                    .price{
+                        font-size: $font-size-xs;
+                        font-weight: 400;
+                        color: $black;
+                        margin-right: 0;
+        
+                        &--regular{
+                            color: $light-gray;
+                            font-size: $font-size-xs;
+                            margin-right: 5px;
+                        }
+
+                        &--discounted{
+                            color: $red;
+                        }
+
+                        &-attribute{
+                            @include font-with-line-height($font-size-xs, 15px);
+                            font-weight: 300;
+                            display: block;
+
+                            &--default{
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+  
+                &__actions{
+                    display: none;
+                }
+            }
+  
+            &-flags{
+                display: none !important;
+            }
+        }
+    }
+}
+
 @media (max-width: 991px){
     .cart-grid{
         &-right{
