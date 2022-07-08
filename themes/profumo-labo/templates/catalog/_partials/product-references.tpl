@@ -24,17 +24,5 @@
  *}
  
 <div class="product-references js-product-references">
-
-    {*
-    <pre>
-    <span class="js-product-sku">SKU: {$product.attributes|print_r}</span>
-    </pre>
-    *}
-
-    {foreach from=$product.attributes item=foo} 
-        {if $foo['reference']}
-            SKU: {$foo['reference']}
-        {/if}
-    {/foreach}
-
+    <span class="js-product-sku">SKU: {$product.reference_to_display}</span>
 </div>
