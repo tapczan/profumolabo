@@ -68,37 +68,19 @@
 
 {block name='stylesheets'}
   {include file="_partials/stylesheets.tpl" stylesheets=$stylesheets}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" media="print" onload="this.onload=null;this.removeAttribute('media');">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Josefin+Sans&family=Jost:wght@200;300;400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Josefin+Sans&family=Jost:wght@200;300;400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.onload=null;this.removeAttribute('media');">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Josefin+Sans&family=Jost:wght@200;300;400;500;700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  </noscript>
 {/block}
 
 {block name='javascript_head'}
   {include file="_partials/javascript.tpl" javascript=$javascript.head vars=$js_custom_vars}
 {/block}
-
-{literal}
-  <script>
-  var chatbox = document.getElementById("fb-customer-chat");
-  chatbox.setAttribute("page_id", "110559737836074");
-  chatbox.setAttribute("attribution", "biz_inbox");
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml            : true,
-      version          : 'v14.0'
-    });
-  };
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = 'https://connect.facebook.net/pl_PL/sdk/xfbml.customerchat.js';
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-  </script>
-{/literal}
 
 {block name='hook_header'}
   {$HOOK_HEADER nofilter}
