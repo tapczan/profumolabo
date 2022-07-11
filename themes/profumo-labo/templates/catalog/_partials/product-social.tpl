@@ -23,28 +23,44 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
+{assign var='catUrl' value=$page.canonical}
+{assign var='catTitle' value=$page.meta.title}
+{assign var='catMedia' value=$category.image.bySize.category_default.url}
+
 <ul class="product-social">
     <li class="product-social__item product-social__item--label">
         {l s='Share' d='Shop.Theme.Actions'}
     </li>
     <li class="product-social__item">
-        <a href="product-social__link">
+        {if $catUrl}
+            <a href="https://www.facebook.com/sharer.php?u={$catUrl}" target="_blank">
+                <span class="product-social__icon product-social__icon--facebook"></span>
+            </a>
+        {else}
             <span class="product-social__icon product-social__icon--facebook"></span>
-        </a>
+        {/if}
     </li>
     <li class="product-social__item">
+        {if $catUrl && $catTitle}
+            <a href="https://twitter.com/intent/tweet?text={$catTitle}%20{$catUrl}" target="_blank">
+                <span class="product-social__icon product-social__icon--twitter"></span>
+            </a>
+        {else}
+            <span class="product-social__icon product-social__icon--twitter"></span>
+        {/if} 
+    </li>
+    <li class="product-social__item">
+        {if $catMedia && $catUrl}
+            <a href="https://www.pinterest.com/pin/create/button/?media={$catMedia}&url={$catUrl}" target="_blank">
+                <span class="product-social__icon product-social__icon--instagram"></span>
+            </a>
+        {else}
+            <span class="product-social__icon product-social__icon--instagram"></span>
+        {/if}        
+    </li>
+    {*<li class="product-social__item">
         <a href="product-social__link">
             <span class="product-social__icon product-social__icon--whatsapp"></span>
         </a>
-    </li>
-    <li class="product-social__item">
-        <a href="product-social__link">
-            <span class="product-social__icon product-social__icon--twitter"></span>
-        </a>
-    </li>
-    <li class="product-social__item">
-    <a href="product-social__link">
-        <span class="product-social__icon product-social__icon--instagram"></span>
-    </a>
-    </li>
+    </li>*}
 </ul>
