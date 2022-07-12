@@ -36,6 +36,10 @@
 $(document).ready(function () {
   var $body = $('body');
 
+  function noTranslate(){
+    $('.material-icons').addClass('notranslate').attr('translate', 'no');
+  }
+
   function bindEvents() {
     $('.blockcart.dropdown').on('show.bs.dropdown', function () {
       $body.addClass('header-dropdown-open block-cart-open');
@@ -101,8 +105,10 @@ $(document).ready(function () {
             setTimeout(function(){
               if($('.header__nav').hasClass('header__nav--sticky')){
                 $('.header__nav #cartDropdown').trigger('click');
+                noTranslate();
               } else {
                 $('.header__inner #cartDropdown').trigger('click');
+                noTranslate();
               }
             },500);
           }
@@ -122,6 +128,8 @@ $(document).ready(function () {
           showModal(resp.modal);
         }
         $('body').removeClass('cart-loading');
+        
+        noTranslate();
       }).fail(function (resp) {
         prestashop.emit('handleError', { eventType: 'updateShoppingCart', resp: resp });
       });

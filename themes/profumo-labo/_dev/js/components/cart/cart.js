@@ -28,6 +28,11 @@ function createSpin() {
   CheckUpdateQuantityOperations.switchErrorStat();
 }
 
+function noTranslate(){
+  $('.material-icons').addClass('notranslate').attr('translate', 'no');
+}
+
+
 $('body').on('click', '.js-addon-btn-cart', function() {
   createSpin();
 });
@@ -39,11 +44,13 @@ $(() => {
   prestashop.on('updateCart', () => {
     $('.quickview').modal('hide');
     $('body').addClass('cart-loading');
+    noTranslate();
   });
 
   prestashop.on('updatedCart', () => {
     createSpin();
     $('body').removeClass('cart-loading');
+    noTranslate();
   });
 
   createSpin();
