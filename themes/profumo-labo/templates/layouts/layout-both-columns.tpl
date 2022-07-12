@@ -109,7 +109,9 @@
             {block name="left_column"}
               <div id="left-column" class="col-12 col-md-4 col-lg-3">
                 {if $page.page_name == 'product'}
-                  {hook h='displayLeftColumnProduct'}
+                    {hook h='displayLeftColumnProduct'}
+                {elseif $page.page_name == 'best-sales'}
+                    {hook h="displayLeftColumn"}
                 {else}
                   {*{hook h="displayLeftColumn"}*}
                 {/if}
