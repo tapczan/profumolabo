@@ -15,7 +15,7 @@ if (envResult.error) {
   process.exit();
 }
 
-const entriesArray = ['theme', 'product', 'checkout', 'listing', 'oneallsocial'];
+const entriesArray = ['theme', 'product', 'checkout', 'listing', 'oneallsocials'];
 
 exports.webpackVars = {
   themeDev,
