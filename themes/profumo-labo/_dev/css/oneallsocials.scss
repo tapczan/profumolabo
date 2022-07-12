@@ -49,6 +49,7 @@
 
 .plugin #providers .providers_group .providers_block .providers_row {
 	clear: both;
+	text-align: center;
 }
 
 .plugin #providers .providers_group .scroll {
@@ -220,6 +221,7 @@ only screen and (min-device-pixel-ratio: 2) {
 .plugin #providers .provider{
 	float: none !important;
     margin: auto !important;
+	display: inline-block;
 }
 
 .plugin .footer #message{

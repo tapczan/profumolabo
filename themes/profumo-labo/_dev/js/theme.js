@@ -153,6 +153,16 @@ Fancybox.bind(".js-fancybox-img", {
  * Add 'notranslate' class to all material-icons element
  * This is a fix for edge browser when using the default translation of the browser
  */
+function noTranslate(){
+  $('.material-icons').addClass('notranslate').attr('translate', 'no');
+}
+
+noTranslate();
+
 $(window).on('load', function(){
-  $('.material-icons').addClass('notranslate');
+  noTranslate();
+});
+
+$(document).ajaxComplete(function() {
+  noTranslate();
 });
