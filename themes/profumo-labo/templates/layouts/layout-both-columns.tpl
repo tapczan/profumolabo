@@ -98,7 +98,14 @@
             {include file='_partials/breadcrumb.tpl'}
           {/block}
 
-          <div class="row">
+          {$bestSalesPageClass = ''}
+          {if $page.page_name == 'best-sales'}
+            {$bestSalesPageClass = 'bestsales-page js-best-sales-left'}
+
+            <h1 class="bestsales-title">Najczęściej kupowane</h1>
+          {/if}
+
+          <div class="row {$bestSalesPageClass}">
             
             {if $page.page_name == 'category'}
                 {include file='./custom/custom-category-page.tpl' listing=$listing category=$category}
@@ -107,15 +114,19 @@
             {else}
         
             {block name="left_column"}
-              <div id="left-column" class="col-12 col-md-4 col-lg-3">
-                {if $page.page_name == 'product'}
-                    {hook h='displayLeftColumnProduct'}
-                {elseif $page.page_name == 'best-sales'}
-                    {hook h="displayLeftColumn"}
-                {else}
+              {if $page.page_name == 'product'}
+                <div id="left-column" class="col-12 col-md-4 col-lg-3">
+                  {hook h='displayLeftColumnProduct'}
+                </div>
+              {elseif $page.page_name == 'best-sales'}
+                <div id="left-column" class="col-12 col-md-4 col-lg-3 js-filter-wrapper">
+                  {hook h="displayLeftColumn"}
+                </div>
+              {else}
+                <div id="left-column" class="col-12 col-md-4 col-lg-3">
                   {*{hook h="displayLeftColumn"}*}
-                {/if}
-              </div>
+                </div>
+              {/if}
             {/block}
 
             {block name="content_wrapper"}
