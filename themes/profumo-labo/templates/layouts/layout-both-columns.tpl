@@ -31,7 +31,7 @@
     {/block}
   </head>
 
-  <body id="{$page.page_name}" class="{$page.body_classes|classnames} {if $page.page_name == 'index'} page-product {/if}">
+  <body id="{$page.page_name}" class="{$page.body_classes|classnames} {if $page.page_name == 'index'} page-product {/if} no-js">
   <!-- Messenger Chat Plugin Code -->
   <div id="fb-root"></div>
 
