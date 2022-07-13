@@ -26,7 +26,7 @@
 {$jsAssetHash = Configuration::get('PS_CCCJS_VERSION')|md5}
 
 {foreach $javascript.external as $js}
-  <script async
+  <script
     type="text/javascript"
     src="{$js.uri}?v={$jsAssetHash}"
     {$js.attribute}></script>
