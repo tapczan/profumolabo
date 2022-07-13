@@ -26,12 +26,12 @@
 import $ from 'jquery';
 import './boostrap/boostrap-imports';
 import 'bootstrap-touchspin';
-import 'jquery-hoverintent';
+// import 'jquery-hoverintent';
 import 'slick-carousel';
 import './components/dynamic-bootstrap-components';
 
 import './components/selectors';
-import './components/sliders';
+// import './components/sliders';
 import './components/responsive';
 import './components/customer';
 import './components/quickview';
@@ -49,7 +49,7 @@ import './components/footer/dynamicHeight';
 import './components/footer/parallaxEffect';
 import './components/home/base';
 import './components/home/parallax';
-import './components/home/rollOverImage';
+// import './components/home/rollOverImage';
 // import './components/shop/mobileTabToDropdown';
 import './components/shop/comment';
 import './components/shop/base';
@@ -61,7 +61,7 @@ import './components/collapse/base';
 import prestashop from 'prestashop';
 import EventEmitter from 'events';
 import Form from './components/form';
-import TopMenu from './components/TopMenu';
+// import TopMenu from './components/TopMenu';
 import CustomSelect from './components/CustomSelect';
 
 import PageLazyLoad from './components/Lazyload';
@@ -92,7 +92,7 @@ $(document).ready(() => {
   accLinksTriggerActive();
   checkAllChkbx();
   Form.init();
-  const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
+  // const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
 
   prestashop.on('updatedAddressForm', () => {
     prestashop.customSelect.init();
@@ -102,7 +102,7 @@ $(document).ready(() => {
     $('.js-product-references').first().replaceWith(event.product_references);
   });
   
-  topMenu.init();
+  // topMenu.init();
 
   $('.js-select-link').on('change', ({ target }) => {
     window.location.href = $(target).val();
@@ -161,6 +161,8 @@ noTranslate();
 
 $(window).on('load', function(){
   noTranslate();
+
+  $('body').removeClass('no-js');
 });
 
 $(document).ajaxComplete(function() {
