@@ -191,13 +191,14 @@
         {/foreach}
         
        
+      {if isset($category)}
         {if $category.level_depth <= 2 && $category.id != 140}
-        <section class="search-filters__block list-group-item" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #212529">
-          <input type="checkbox" id="drogeria" name="drogeria" data-url="{$link->getCategoryLink(140)}"/>
-          <label for="drogeria">{l s='Show other brands only (Drogeria)' d='Shop.Theme.Global'}</label>
-        </section>
+          <section class="search-filters__block list-group-item" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #212529">
+            <input type="checkbox" id="drogeria" name="drogeria" data-url="{$link->getCategoryLink(140)}"/>
+            <label for="drogeria">{l s='Show other brands only (Drogeria)' d='Shop.Theme.Global'}</label>
+          </section>
         {/if}
-
+      {/if}
 
       </div>
     </div>

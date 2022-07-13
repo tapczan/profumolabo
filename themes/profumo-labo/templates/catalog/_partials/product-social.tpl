@@ -23,6 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 
+{if isset($category)}
 {assign var='catUrl' value=$page.canonical}
 {assign var='catTitle' value=$page.meta.title}
 {assign var='catMedia' value=$category.image.bySize.category_default.url}
@@ -64,3 +65,4 @@
         </a>
     </li>*}
 </ul>
+{/if}
