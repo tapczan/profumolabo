@@ -76,14 +76,14 @@
           <section class="search-filters__block list-group-item">
             <div class="search-filters__header d-flex justify-content-between align-items-center h5 position-relative">
               <span class="search-filters__title">
-                {if $facet.label eq "Brand" || $facet.label eq "Marka" } 
-                  {l s='Brand Inspiration' d='Shop.Theme.Global'} 
-                {else} 
-                  {if $facet.label eq 'Grade'}
-                      {l s='Grade' d='Shop.Theme.Global'}
-                  {else}
-                      {$facet.label}
-                  {/if}
+                {if $facet.label eq "Brand" || $facet.label eq "Marka" }
+                    {l s='Brand Inspiration' d='Shop.Theme.Global'}
+                {elseif  $facet.label eq 'Grade'}
+                    {l s='Grade' d='Shop.Theme.Global'}
+                {elseif $facet.label eq 'Price'}
+                    {l s='Price' d='Shop.Theme.Global'}
+                {else}
+                    {$facet.label}
                 {/if}
               </span>
               <a href="#facet_{$_expand_id}" class="{$facet.type}{if isset($facet.properties.id_feature)}_{$facet.properties.id_feature}{/if} icon-collapse stretched-link text-reset d-block" data-toggle="collapse"
