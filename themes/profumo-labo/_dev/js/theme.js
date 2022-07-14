@@ -154,7 +154,7 @@ Fancybox.bind(".js-fancybox-img", {
  * This is a fix for edge browser when using the default translation of the browser
  */
 function noTranslate(){
-  $('.material-icons').addClass('notranslate').attr('translate', 'no');
+  $('.material-icons, #module-blockwishlist-lists .personal-information .col-lg-7').addClass('notranslate').attr('translate', 'no');
 }
 
 noTranslate();
