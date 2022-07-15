@@ -94,6 +94,7 @@ $(document).ready(() => {
   Form.init();
   const topMenu = new TopMenu('#_desktop_top_menu .js-main-menu');
 
+  
   prestashop.on('updatedAddressForm', () => {
     prestashop.customSelect.init();
   });
@@ -108,6 +109,7 @@ $(document).ready(() => {
     window.location.href = $(target).val();
   });
 
+ 
   /**
    * Loads Youtube Videos on Onas page.
    * This is in regards with the YouTube fullscreen issue. Prestashop wysiwyg are removing some iframe attributes that are given by the youtube
@@ -127,6 +129,9 @@ function accLinksTriggerActive() {
       $el.addClass('active');
     }
   });
+
+  $('.js-wishlist-counter-top').html(prestashop.wishlist_count);
+  
 }
 
 function checkAllChkbx() {
