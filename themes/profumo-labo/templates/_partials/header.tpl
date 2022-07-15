@@ -40,14 +40,28 @@
         </div>
         <div class="col-md-4 d-md-flex align-items-center justify-content-end">
           <div class="header__inner-r">
-            {widget name='ps_customersignin'}
 
-            <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24"> 
-              {if $wishlist_count > 0}
-                <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top">{$wishlist_count}</span> 
-              {/if}
-            </a> 
-            {widget name='is_shoppingcart'}
+            {*{widget name='ps_customersignin'}*}
+            {hook h="litespeedEsiBegin" m="ps_customersignin" field="widget_block" tpl="module:ps_customersignin/ps_customersignin.tpl"}
+              {widget_block name=ps_customersignin}
+                {include file='module:ps_customersignin/ps_customersignin.tpl'}
+              {/widget_block}
+            {hook h="litespeedEsiEnd"}
+            
+            <a href="{$wishlist_url}" style='position: relative'>
+              <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24"> 
+              
+              <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: none;"></span>
+            </a>
+            
+            {*{widget name='is_shoppingcart'}*}
+            {hook h="litespeedEsiBegin" m="is_shoppingcart" field="widget_block" tpl="module:is_shoppingcart/views/template/hook/is_shoppingcart.tpl"}  
+              {widget_block name=is_shoppingcart}
+                <span style="display:none">X</span>
+                {include file='module:is_shoppingcart/views/template/hook/is_shoppingcart.tpl'}
+              {/widget_block}
+            {hook h="litespeedEsiEnd"}
+
           </div>
         </div>
       </div>
@@ -70,14 +84,27 @@
         </div>
         <div class="col-md-2 col-sm-4 col-4 header__nav-right">
           {widget name='is_searchbar'}
-          {widget name='ps_customersignin'}
 
-          <a href="{$wishlist_url}" style='position: relative'><img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24"> 
-            {if $wishlist_count > 0}
-              <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav">{$wishlist_count}</span> 
-            {/if}
-          </a> 
-          {widget name='is_shoppingcart'}
+
+          {*{widget name='ps_customersignin'}*}
+          {hook h="litespeedEsiBegin" m="ps_customersignin" field="widget_block" tpl="themes/profumo-labo/modules/ps_customersignin/ps_customersignin.tpl"}
+            {widget_block name=ps_customersignin}
+              {include file='themes/profumo-labo/modules/ps_customersignin/ps_customersignin.tpl'}
+            {/widget_block}
+          {hook h="litespeedEsiEnd"}
+
+          <a href="{$wishlist_url}" style='position: relative'>
+            <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24">    
+            <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: none;" ></span> 
+          </a>
+          
+          {*{widget name='is_shoppingcart'}*}
+          {hook h="litespeedEsiBegin" m="is_shoppingcart" field="widget_block" tpl="themes/profumo-labo/modules/is_shoppingcart/views/template/hook/is_shoppingcart.tpl"}  
+            {widget_block name=is_shoppingcart}
+              {include file='themes/profumo-labo/modules/is_shoppingcart/views/template/hook/is_shoppingcart.tpl'}
+            {/widget_block}
+          {hook h="litespeedEsiEnd"}
+          
         </div>
       </div>
     </div>
