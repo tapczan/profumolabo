@@ -260,12 +260,12 @@ class PaymentModule extends PaymentModuleCore
                         ];
 
                         $save_amount_price_without_reduction = $product['price_without_reduction'] * (float)$product['cart_quantity'];
-                        $save_amount_price = $product_price * $product['quantity'];
+                        $save_amount_price = (float)$product_price * $product['quantity'];
 
                         $save_amount_arr[] = [
-                            'price_without_reduction' => $save_amount_price_without_reduction,
+                            'price_without_reduction' => (float)$save_amount_price_without_reduction,
                             'price' => $save_amount_price,
-                            'saved_amount' => (int)$save_amount_price_without_reduction - (int)$save_amount_price,
+                            'saved_amount' => (float)$save_amount_price_without_reduction - (float)$save_amount_price,
                         ];
 
                         if (isset($product['price']) && $product['price']) {
@@ -308,14 +308,14 @@ class PaymentModule extends PaymentModuleCore
                         }
                     } // end foreach ($products)
 
-                    $save_amount_var = 0;
+                    $save_amount_var = 0.0;
 
                     foreach ($save_amount_arr as $prod)
                     {
-                        $save_amount_var += $prod['saved_amount'];
+                        $save_amount_var += (float)$prod['saved_amount'];
                     }
 
-                    $total_save_amount_var = $save_amount_var + $order->total_discounts;
+                    $total_save_amount_var = (float)$save_amount_var + (float)$order->total_discounts;
 
 
                     $product_list_txt = '';
@@ -498,7 +498,7 @@ class PaymentModule extends PaymentModuleCore
                                 '{total_paid}' => Tools::getContextLocale($this->context)->formatPrice($order->total_paid, $this->context->currency->iso_code),
                                 '{total_products}' => Tools::getContextLocale($this->context)->formatPrice(Product::getTaxCalculationMethod() == PS_TAX_EXC ? $order->total_products : $order->total_products_wt, $this->context->currency->iso_code),
                                 '{total_discounts}' => Tools::getContextLocale($this->context)->formatPrice($order->total_discounts, $this->context->currency->iso_code),
-                                '{total_save_amount_var}' => $total_save_amount_var,
+                                '{total_save_amount_var}' => Tools::getContextLocale($this->context)->formatPrice($total_save_amount_var, $this->context->currency->iso_code),
                                 '{total_shipping}' => Tools::getContextLocale($this->context)->formatPrice($order->total_shipping, $this->context->currency->iso_code),
                                 '{total_shipping_tax_excl}' => Tools::getContextLocale($this->context)->formatPrice($order->total_shipping_tax_excl, $this->context->currency->iso_code),
                                 '{total_shipping_tax_incl}' => Tools::getContextLocale($this->context)->formatPrice($order->total_shipping_tax_incl, $this->context->currency->iso_code),
