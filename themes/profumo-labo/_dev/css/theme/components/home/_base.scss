@@ -573,8 +573,12 @@
 }
 
 #cookieNotice{
-    z-index: 9999999999999 !important;
+    z-index: 9999 !important;
     font-family: $font-jost !important;
+}
+
+.fb_reset{
+    z-index: 9998 !important;
 }
 
 @media (max-width: 550px) {
