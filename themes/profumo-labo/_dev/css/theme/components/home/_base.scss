@@ -572,6 +572,11 @@
     padding-right: 0 !important;
 }
 
+#cookieNotice{
+    z-index: 99999 !important;
+    font-family: $font-jost !important;
+}
+
 @media (max-width: 550px) {
     .page-home #arpl-group-6.arpl-group.arpl-non-tabbed-group .arpl-category .arpl-cat-img{
         background-size: contain !important;
