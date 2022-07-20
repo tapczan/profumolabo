@@ -173,3 +173,8 @@ $(window).on('load', function(){
 $(document).ajaxComplete(function() {
   noTranslate();
 });
+
+/**
+ * Remove scroll lock fancybox
+ */
+Fancybox.defaults.ScrollLock = false;
