@@ -759,11 +759,15 @@
     .data-privacy,
     .psgdpr {
         .error-msg{
-            display: none;
+            margin: 0;
+            padding: 0;
+            font-style: normal;
+            background: transparent;
+            padding-left: 20px;
+            font-size: 10px;
         }
 
         .custom-checkbox {
-
             .-former-error+span,
             .-error+span {
                 border: 1px solid red !important;
@@ -773,7 +777,11 @@
                 color: #000;
             }
         }
-        
+
+        .custom-checkbox .label em{
+            left: 0;
+            position: relative;
+        }
     }
 
     #thecheckout-newsletter,
