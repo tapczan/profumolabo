@@ -1371,6 +1371,14 @@
     }
 }
 
+#tc-container .form-fields .form-group.postcode.text{
+    .form-control.orig-field.live.-error{
+        @media (min-width: 991px) and (max-width: 1699px) {
+            margin-top: 15px;
+        }
+    }
+}
+
 @media (max-width: 1699px){
     #tc-container .form-fields .form-group input[name=postcode] ~ .error-msg{
         width: 140px;
