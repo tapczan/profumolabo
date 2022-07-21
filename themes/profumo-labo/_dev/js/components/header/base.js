@@ -65,3 +65,8 @@ $(window).on('load', function(){
         }
     }
 });
+
+/**
+ * Change login menu item text for login users
+ */
+$('.js-header-user-login .mobile-menu__main-item.mobile-menu__main-border.lm .mm_menu_content_title').text('moje konto');
