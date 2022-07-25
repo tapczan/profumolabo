@@ -118,10 +118,6 @@
                 <div id="left-column" class="col-12 col-md-4 col-lg-3">
                   {hook h='displayLeftColumnProduct'}
                 </div>
-              {elseif $page.page_name == 'best-sales'}
-                <div id="left-column" class="col-12 col-md-4 col-lg-3 js-filter-wrapper">
-                  {hook h="displayLeftColumn"}
-                </div>
               {else}
                 <div id="left-column" class="col-12 col-md-4 col-lg-3">
                   {*{hook h="displayLeftColumn"}*}
