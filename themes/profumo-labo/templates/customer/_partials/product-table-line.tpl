@@ -1,6 +1,7 @@
 <td class="product-line__cell product-line__cell--img">
   <img
       {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+      loading="lazy"
       alt="{$product.name|escape:'quotes'}"
       class="img-fluid rounded"
       width="{$product.default_image.bySize.cart_default.width}"
