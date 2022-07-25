@@ -1,0 +1,9 @@
+[{shop_name}]({shop_url})
+Witaj {firstname} {lastname},
+Twoje zamówienie zostało wysłane
+
+Twoje zamówienie o numerze {order_name} zostało wysłane.
+Dziękujemy za zakupy na stronie {shop_name}!
+Śledź status swojego zamówienia i pobierz fakturę w naszym sklepie, na stronie [Historia i szczegóły zamówień]({history_url}) w sekcji konta klienta.
+
+[{shop_name}]({shop_url}) obsługiwany przez [PrestaShop ™](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)

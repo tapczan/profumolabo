@@ -1,0 +1,12 @@
+[{shop_name}]({shop_url})
+Twoja wiadomość do Obsługi sklepu {shop_name}
+
+Twoja wiadomość została wysłana pomyślnie.
+
+Nr zamówienia: {order_name}
+Produkt: {product_name}
+Załączony plik: {attached_file}
+
+Postaramy się odpowiedzieć tak szybko jak to możliwe.
+
+[{shop_name}]({shop_url}) obsługiwany przez [PrestaShop ™](https://www.prestashop.com/?utm_source=marchandprestashop&utm_medium=e-mail&utm_campaign=footer_1-7)
