@@ -1,11 +1,11 @@
 <td class="product-line__cell product-line__cell--img">
   <img
-    {generateImagesSources image=$product.cover size='cart_default' lazyload=false}
-    loading="lazy"
-    alt="{$product.name|escape:'quotes'}"
-    class="product-line__img rounded img-fluid"
-    width="{$product.cover.bySize.cart_default.width}"
-    height="{$product.cover.bySize.cart_default.height}">
+      {generateImagesSources image=$product.default_image size='cart_default' lazyload=false}
+      loading="lazy"
+      alt="{$product.name|escape:'quotes'}"
+      class="img-fluid rounded"
+      width="{$product.default_image.bySize.cart_default.width}"
+      height="{$product.default_image.bySize.cart_default.height}">
 </td>
 
 <td class="product-line__cell product-line__cell--prod">
