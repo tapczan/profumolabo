@@ -17,9 +17,16 @@ $(document).ready(function(){
 
                 if(wishlistToastText == 'Product added' || wishlistToastText == 'Produkt dodany'){
                     wishlistTopAdd = parseInt(wishlistCounterTop.text()) + parseInt(1);
-                    wishlistCounterTop.text(wishlistTopAdd);
-                    wishlistCounterNav.text(wishlistTopAdd);
-                    wishlistButtonAdd.addClass('wishlist-button-wait');
+                    if (prestashop.responsive.mobile === false ) {
+                        if(isNaN(wishlistTopAdd)) {
+                            wishlistTopAdd = 1;
+                        }
+                        wishlistCounterTop.replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: block;" >'+wishlistTopAdd+'</span>');
+                        wishlistCounterNav.replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav" style="display: block;" >'+wishlistTopAdd+'</span>');
+                        // wishlistCounterTop.text(wishlistTopAdd);
+                        // wishlistCounterNav.text(wishlistTopAdd);
+                        wishlistButtonAdd.addClass('wishlist-button-wait');
+                    }
 
                     setTimeout(() => {
                         wishlistButtonAdd.removeClass('wishlist-button-wait');
@@ -27,10 +34,14 @@ $(document).ready(function(){
                 }
                 
                 if(wishlistToastText == 'Product successfully removed'){
-                    wishlistTopAdd = parseInt(wishlistCounterTop.text()) - parseInt(1);
-                    wishlistCounterTop.text(wishlistTopAdd);
-                    wishlistCounterNav.text(wishlistTopAdd);
-                    wishlistButtonAdd.addClass('wishlist-button-wait');
+                    wishlistTopRemove = parseInt(wishlistCounterTop.text()) - parseInt(1);
+                    if (prestashop.responsive.mobile === false ) {
+                        wishlistCounterTop.replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: block;" >'+wishlistTopRemove+'</span>');
+                        wishlistCounterNav.replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav" style="display: block;" >'+wishlistTopRemove+'</span>');
+                        // wishlistCounterTop.text(wishlistTopRemove);
+                        // wishlistCounterNav.text(wishlistTopRemove);
+                        wishlistButtonAdd.addClass('wishlist-button-wait');
+                    }
 
                     setTimeout(() => {
                         wishlistButtonAdd.removeClass('wishlist-button-wait');
