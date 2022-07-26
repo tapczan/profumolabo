@@ -42,23 +42,21 @@
           <div class="header__inner-r">
 
             {*{widget name='ps_customersignin'}*}
-            {hook h="litespeedEsiBegin" m="ps_customersignin" field="widget_block" tpl="module:ps_customersignin/ps_customersignin.tpl"}
+            {hook h="litespeedEsiBegin" m="ps_customersignin" field="widget_block" tpl="themes/profumo-labo/modules/ps_customersignin/ps_customersignin.tpl"}
               {widget_block name=ps_customersignin}
-                {include file='module:ps_customersignin/ps_customersignin.tpl'}
+                {include file='themes/profumo-labo/modules/ps_customersignin/ps_customersignin.tpl'}
               {/widget_block}
             {hook h="litespeedEsiEnd"}
             
             <a href="{$wishlist_url}" style='position: relative'>
               <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24"> 
-              
               <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: none;"></span>
             </a>
             
             {*{widget name='is_shoppingcart'}*}
-            {hook h="litespeedEsiBegin" m="is_shoppingcart" field="widget_block" tpl="module:is_shoppingcart/views/template/hook/is_shoppingcart.tpl"}  
+            {hook h="litespeedEsiBegin" m="is_shoppingcart" field="widget_block" tpl="themes/profumo-labo/modules/is_shoppingcart/views/template/hook/is_shoppingcart.tpl"}  
               {widget_block name=is_shoppingcart}
-                <span style="display:none">X</span>
-                {include file='module:is_shoppingcart/views/template/hook/is_shoppingcart.tpl'}
+                {include file='themes/profumo-labo/modules/is_shoppingcart/views/template/hook/is_shoppingcart.tpl'}
               {/widget_block}
             {hook h="litespeedEsiEnd"}
 
@@ -95,7 +93,7 @@
 
           <a href="{$wishlist_url}" style='position: relative'>
             <img class="header__inner-cart-wishlist" src="{$urls.img_url}heart-icon.svg" width="24" height="24">    
-            <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: none;" ></span> 
+            <span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav" style="display: none;" ></span> 
           </a>
           
           {*{widget name='is_shoppingcart'}*}

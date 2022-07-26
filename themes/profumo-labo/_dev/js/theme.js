@@ -109,6 +109,14 @@ $(document).ready(() => {
     window.location.href = $(target).val();
   });
 
+  // console.log('Wishlist Count: '+prestashop.wishlist_count)
+  if(prestashop.wishlist_count > 0) {
+    if (prestashop.responsive.mobile === false ) {
+      $('.js-wishlist-counter-top').replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: block;" >'+prestashop.wishlist_count+'</span>');
+      $('.js-wishlist-counter-nav').replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-nav" style="display: block;" >'+prestashop.wishlist_count+'</span>');
+    }
+  }
+
  
   /**
    * Loads Youtube Videos on Onas page.
@@ -129,9 +137,6 @@ function accLinksTriggerActive() {
       $el.addClass('active');
     }
   });
-
-  $('.js-wishlist-counter-top').html(prestashop.wishlist_count);
-  
 }
 
 function checkAllChkbx() {
