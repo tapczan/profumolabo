@@ -1176,7 +1176,7 @@
       display: none;
 
       & + .header-top__badge{
-        display: none;
+        display: none !important;
       }
     }
 
