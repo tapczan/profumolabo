@@ -44,6 +44,14 @@
         }
     }
 
+    &--offerta{
+        .blockhomesections__description{
+            @media(max-width: 767px){
+                margin-bottom: 0;
+            }
+        }
+    }
+
     .offerta{
         margin-top: 100px;
 
