@@ -10,13 +10,8 @@
  * @param {int} canvasImgHeight - height of the actual picture for responsive compatibility
  */
 const canvas = $("#js-canvas-offerta");
-const windowWidth = $(window).innerWidth();
 
-if(windowWidth < 768){
-    $('.js-canvas-parallax').remove();
-}
-
-if(canvas.length && (windowWidth > 767)){
+if(canvas.length){
     const canvasContext = canvas[0].getContext('2d');
     const canvasFrameCount = 39;
     const winLocationOrigin = prestashop.urls.base_url;

@@ -1,3 +1,9 @@
+const windowWidth = $(window).innerWidth();
+
+if(windowWidth < 768){
+    $('.js-blockofferta').remove();
+}
+
 /**
 * Home page banner slider
 */
