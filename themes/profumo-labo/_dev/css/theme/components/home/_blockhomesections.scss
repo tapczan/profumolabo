@@ -50,6 +50,12 @@
                 margin-bottom: 0;
             }
         }
+
+        .blockhomesections__products{
+            @media(max-width: 767px){
+                display: none;
+            }
+        }
     }
 
     .offerta{
