@@ -40,6 +40,18 @@ function smoothScrollingToMobile(target){
     $('html,body').animate({scrollTop:$(target).offset().top - 100}, 500);
 }
 
+function smoothScrolling(target){
+    const windowWidth = $(window).outerWidth();
+    
+    if(target) {
+        if(windowWidth < 768){
+            smoothScrollingToMobile(target);
+        }else{
+            smoothScrollingTo(target);
+        }
+    }
+}
+
 $('.mega-menu-header-about a[href*="#"]').on('click', function(){  
     const windowWidth = $(window).outerWidth();
 
@@ -47,23 +59,15 @@ $('.mega-menu-header-about a[href*="#"]').on('click', function(){
         $('.ybc-menu-button-toggle_icon').trigger('click');
     }
 
-    if(windowWidth < 768){
-        smoothScrollingToMobile(this.hash);
-    }else{
-        smoothScrollingTo(this.hash);
+    if($('.cms-container--onas').length){
+        smoothScrolling(this.hash);
     }
 });
 
+smoothScrolling(window.location.hash);
+
 $(window).on('load', function(){
-    const windowWidth = $(window).outerWidth();
-    
-    if(window.location.hash) {
-        if(windowWidth < 768){
-            smoothScrollingToMobile(this.hash);
-        }else{
-            smoothScrollingTo(this.hash);
-        }
-    }
+    smoothScrolling(window.location.hash);
 });
 
 /**
