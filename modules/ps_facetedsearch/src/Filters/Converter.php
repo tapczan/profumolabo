@@ -445,7 +445,6 @@ class Converter
                         }
                     }
             }
-
         }
 
         // Remove all empty selected filters
@@ -492,7 +491,7 @@ class Converter
              * Angelo's grade filter.
              */
             case self::TYPE_GRADE:
-                return $this->context->getTranslator()->trans('Grade', [], 'Modules.Facetedsearch.Add');
+                return $this->context->getTranslator()->trans('Grade', [], 'Modules.Facetedsearch.Shop');
             case self::TYPE_FEATURE:
             case self::TYPE_ATTRIBUTE_GROUP:
             default:

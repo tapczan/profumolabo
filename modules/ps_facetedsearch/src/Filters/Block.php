@@ -221,7 +221,7 @@ class Block
             'type_lite' => 'price',
             'type' => 'price',
             'id_key' => 0,
-            'name' => $this->context->getTranslator()->trans('Price', [], 'Modules.Facetedsearch.Add'),
+            'name' => $this->context->getTranslator()->trans('Price', [], 'Modules.Facetedsearch.Shop'),
             'max' => '0',
             'min' => null,
             'unit' => $this->context->currency->sign,
@@ -263,25 +263,10 @@ class Block
         $priceMinFilter = $filteredSearchAdapter->getFilter('price_min');
         $priceMaxFilter = $filteredSearchAdapter->getFilter('price_max');
         $weightFilter = $filteredSearchAdapter->getFilter('weight');
-
-        /**
-         * Angelo's grade filter
-         */
-//        $gradeMinFilter = $filteredSearchAdapter->getFilter('grade');
-//        $gradeMaxFilter = $filteredSearchAdapter->getFilter('grade_max');
         $filteredSearchAdapter->resetFilter('price_min');
         $filteredSearchAdapter->resetFilter('price_max');
         $filteredSearchAdapter->resetFilter('weight');
 
-        /**
-         * Angelo's grade filter
-         */
-//        $filteredSearchAdapter->resetFilter('grade_min');
-//        $filteredSearchAdapter->resetFilter('grade_min');
-
-        /**
-         * TODO
-         */
         return [
             $priceMinFilter,
             $priceMaxFilter,
