@@ -28,27 +28,12 @@ $('.mobile-menu__accordion-header').on('click', function(){
     $(this).closest('.mobile-menu__accordion-item').stop().toggleClass('mobile-menu__accordion-item--active');
 });
 
-
 /**
  * Smooth scroll on onas/about page
  */
-function smoothScrollingTo(target){
-    $('html,body').animate({scrollTop:$(target).offset().top - 50}, 500);
-}
-
-function smoothScrollingToMobile(target){
-    $('html,body').animate({scrollTop:$(target).offset().top - 100}, 500);
-}
-
 function smoothScrolling(target){
-    const windowWidth = $(window).outerWidth();
-    
     if(target) {
-        if(windowWidth < 768){
-            smoothScrollingToMobile(target);
-        }else{
-            smoothScrollingTo(target);
-        }
+        $('html,body').animate({scrollTop:$(target).offset().top - 50}, 500);
     }
 }
 
@@ -63,8 +48,6 @@ $('.mega-menu-header-about a[href*="#"]').on('click', function(){
         smoothScrolling(this.hash);
     }
 });
-
-smoothScrolling(window.location.hash);
 
 $(window).on('load', function(){
     smoothScrolling(window.location.hash);

@@ -292,6 +292,18 @@
 
     .search-result{
       padding: 40px 15px;
+
+      &__products{
+        & + .search-result__bottom{
+          margin-top: 20px;
+        }
+        
+        &.slick-dotted{
+          & + .search-result__bottom{
+            margin-top: 0;
+          }
+        }
+      }
     }
 
     .js-search-result{
