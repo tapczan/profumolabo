@@ -114,6 +114,11 @@
     display: none;
 }
 
+.wishlist-toast.success{
+    background-color: $brown !important;
+    border-color: $brown !important;
+}
+
 // Globally
 .product{
     &-miniature{

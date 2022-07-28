@@ -33,7 +33,7 @@ $(document).ready(function(){
                     }, 3000);
                 }
                 
-                if(wishlistToastText == 'Product successfully removed'){
+                if(wishlistToastText == 'Product successfully removed' || wishlistToastText == 'PRODUKT USUNIĘTY'){
                     wishlistTopRemove = parseInt(wishlistCounterTop.text()) - parseInt(1);
                     if (prestashop.responsive.mobile === false ) {
                         wishlistCounterTop.replaceWith('<span class="header-top__badge header__inner-wishlist-badge js-wishlist-counter-top" style="display: block;" >'+wishlistTopRemove+'</span>');
