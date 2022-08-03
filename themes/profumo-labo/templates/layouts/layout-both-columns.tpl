@@ -106,10 +106,10 @@
           {/if}
 
           <div class="row {$bestSalesPageClass}">
-            
-            {if $page.page_name == 'category'}
-                {include file='./custom/custom-category-page.tpl' listing=$listing category=$category}
-            {else if $page.page_name == 'contact'}
+
+            {if $page.page_name == 'category' or $page.page_name == 'prices-drop' }
+                {include file='./custom/custom-category-page.tpl' listing=$listing category=$category|default:''}
+            {elseif $page.page_name == 'contact'}
                 {include file='./custom/custom-contact-page.tpl'}
             {else}
         

@@ -690,7 +690,7 @@ class MySQL extends AbstractAdapter
      *
      * @return array
      */
-    private function computeGroupByFields(array $filterToTableMapping)
+    public function computeGroupByFields(array $filterToTableMapping)
     {
         $groupFields = [];
         if ($this->getGroupFields()->isEmpty()) {

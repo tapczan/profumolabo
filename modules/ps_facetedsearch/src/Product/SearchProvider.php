@@ -61,6 +61,11 @@ class SearchProvider implements FacetsRendererInterface, ProductSearchProviderIn
      */
     private $searchFactory;
 
+    /**
+     * @var PricesDropSearchFactory
+     */
+    private $pricesDropSearchFactory;
+
     public function __construct(
         Ps_Facetedsearch $module,
         Filters\Converter $converter,
@@ -73,6 +78,7 @@ class SearchProvider implements FacetsRendererInterface, ProductSearchProviderIn
         $this->urlSerializer = $serializer;
         $this->dataAccessor = $dataAccessor;
         $this->searchFactory = $searchFactory === null ? new SearchFactory() : $searchFactory;
+        $this->pricesDropSearchFactory = new PricesDropSearchFactory();
     }
 
     /**
@@ -141,7 +147,15 @@ class SearchProvider implements FacetsRendererInterface, ProductSearchProviderIn
         $orderBy = $query->getSortOrder()->toLegacyOrderBy(false);
         $orderWay = $query->getSortOrder()->toLegacyOrderWay();
 
-        $filterProductSearch = new Filters\Products($facetedSearch);
+        if($query->getQueryType() === 'prices-drop'){
+
+            $facetedSearch = $this->pricesDropSearchFactory->build($context);
+            $facetedSearch->initSearch($facetedSearchFilters);
+            $filterProductSearch = new Filters\PricesDropProducts($facetedSearch);
+
+        }else{
+            $filterProductSearch = new Filters\Products($facetedSearch);
+        }
 
         // get the product associated with the current filter
         $productsAndCount = $filterProductSearch->getProductByFilters(

@@ -30,6 +30,7 @@ use PrestaShop\Module\FacetedSearch\URLSerializer;
 use PrestaShop\PrestaShop\Core\Product\Search\Facet;
 use PrestaShop\PrestaShop\Core\Product\Search\Filter;
 use PrestaShop\PrestaShop\Core\Product\Search\ProductSearchQuery;
+use Shop;
 use Tools;
 
 class Converter
@@ -431,7 +432,21 @@ class Converter
                 case self::TYPE_CATEGORY:
                     if (isset($facetAndFiltersLabels[$filterLabel])) {
                         foreach ($facetAndFiltersLabels[$filterLabel] as $queryFilter) {
-                            $categories = Category::searchByNameAndParentCategoryId($idLang, $queryFilter, (int) $query->getIdCategory());
+                            if($query->getIdCategory() == null){
+
+                                $categories = Db::getInstance(_PS_USE_SQL_SLAVE_)->getRow('
+                                SELECT c.*, cl.*
+                                FROM `' . _DB_PREFIX_ . 'category` c
+                                LEFT JOIN `' . _DB_PREFIX_ . 'category_lang` cl
+                                    ON (c.`id_category` = cl.`id_category`
+                                    AND `id_lang` = ' . (int) $idLang . Shop::addSqlRestrictionOnLang('cl') . ')
+                                WHERE `name` = \'' . pSQL($queryFilter) . '\'
+                                    AND c.`id_parent` = ' . (int) Configuration::get('PS_HOME_CATEGORY'));
+
+
+                            }else{
+                                $categories = Category::searchByNameAndParentCategoryId($idLang, $queryFilter, (int) $query->getIdCategory());
+                            }
                             if ($categories) {
                                 $searchFilters[$filter['type']][] = $categories['id_category'];
                             }
