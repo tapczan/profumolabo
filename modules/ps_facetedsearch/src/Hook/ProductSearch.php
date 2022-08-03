@@ -47,7 +47,7 @@ class ProductSearch extends AbstractHook
         // Query is an instance of:
         // PrestaShop\PrestaShop\Core\Product\Search\ProductSearchQuery
 
-        if ($query->getIdCategory()) {
+        if ($query->getIdCategory() || $query->getQueryType() == 'prices-drop') {
             $this->context->controller->addJqueryUi('slider');
             $this->context->controller->registerStylesheet(
                 'facetedsearch_front',

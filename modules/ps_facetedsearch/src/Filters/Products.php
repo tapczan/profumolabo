@@ -107,7 +107,7 @@ class Products
      * @param array $matchingProductList
      * @param array $selectedFilters
      */
-    private function pricePostFiltering(&$matchingProductList, $selectedFilters)
+    protected function pricePostFiltering(&$matchingProductList, $selectedFilters)
     {
         if (!isset($selectedFilters['price'])) {
             return;

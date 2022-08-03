@@ -1,5 +1,7 @@
 <div class="col-md-12 product-category">
   <div class="container">
+
+    {if isset($category) && $category != '' }
     <div class="row">
       <div class="col-md-12">
         <h1 class="product-category__title">
@@ -27,6 +29,7 @@
         {/if}  
       </div>
     </div>
+    {/if}
 
     <div class="product-category__main">
       <div class="row">
