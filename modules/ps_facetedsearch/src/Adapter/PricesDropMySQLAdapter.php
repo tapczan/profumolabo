@@ -55,4 +55,35 @@ class PricesDropMySQLAdapter extends MySQL
         return $query;
     }
 
+    /**
+     * @return array
+     * @throws \PrestaShopDatabaseException
+     */
+    public function getMinMaxPriceValue()
+    {
+        $minQuery = 'SELECT MIN(price) as min FROM (SELECT * FROM `'. _DB_PREFIX_ .'product` where id_product in (SELECT id_product FROM `'. _DB_PREFIX_ .'specific_price`)) as prices_drop_table_min';
+
+        $maxQuery = 'SELECT MAX(price) as max FROM (SELECT * FROM `'. _DB_PREFIX_ .'product` where id_product in (SELECT id_product FROM `'. _DB_PREFIX_ .'specific_price`)) as prices_drop_table_max';
+
+        $minArr = $this->getDatabase()->executeS($minQuery);
+        $maxArr = $this->getDatabase()->executeS($maxQuery);
+
+        $min = 0;
+        $max = 0;
+
+        try {
+            $min = floor((float) $minArr[0]['min']);
+        }catch (\Exception $exception){
+            $min = 0;
+        }
+
+        try {
+            $max = ceil((float) $maxArr[0]['max']);
+        }catch (\Exception $exception){
+            $max = 0;
+        }
+
+        return [$min, $max];
+    }
+
 }
