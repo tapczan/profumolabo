@@ -33,6 +33,9 @@ class CustomerFormCore extends AbstractForm
 {
     protected $template = 'customer/_partials/customer-form.tpl';
 
+    const MINIMUM_LENGTH = 3;
+    const MAXIMUM_LENGTH = 255;
+
     private $context;
     private $urls;
 
@@ -160,6 +163,12 @@ class CustomerFormCore extends AbstractForm
             ));
         }
 
+        /**
+         * #351 Minimum name length validator.
+         */
+        $this->validateFieldMinimumLength('firstname', self::MINIMUM_LENGTH,'First name must be at least longer than 3 letters.');
+        $this->validateFieldMinimumLength('lastname', self::MINIMUM_LENGTH,'Last name must be at least longer than 3 letters.');
+
         $this->validateFieldsLengths();
         $this->validateFieldsValues();
         $this->validateByModules();
@@ -169,9 +178,9 @@ class CustomerFormCore extends AbstractForm
 
     protected function validateFieldsLengths()
     {
-        $this->validateFieldLength('email', 255, $this->getEmailMaxLengthViolationMessage());
-        $this->validateFieldLength('firstname', 255, $this->getFirstNameMaxLengthViolationMessage());
-        $this->validateFieldLength('lastname', 255, $this->getLastNameMaxLengthViolationMessage());
+        $this->validateFieldLength('email', self::MAXIMUM_LENGTH, $this->getEmailMaxLengthViolationMessage());
+        $this->validateFieldLength('firstname', self::MAXIMUM_LENGTH, $this->getFirstNameMaxLengthViolationMessage());
+        $this->validateFieldLength('lastname', self::MAXIMUM_LENGTH, $this->getLastNameMaxLengthViolationMessage());
     }
 
     /**
@@ -184,6 +193,24 @@ class CustomerFormCore extends AbstractForm
         $emailField = $this->getField($fieldName);
         if (strlen($emailField->getValue()) > $maximumLength) {
             $emailField->addError($violationMessage);
+        }
+    }
+
+    /**
+     * #351 Validate the length of the field.
+     * @param $fieldName
+     * @param $maximumLength
+     * @param $violationMessage
+     */
+    protected function validateFieldMinimumLength($fieldName, $maximumLength, $violationMessage): void
+    {
+        $field = $this->getField($fieldName);
+        if (!empty($field) &&
+            !empty($field->getValue())
+        ){
+            if(strlen($field->getValue()) < $maximumLength){
+                $field->addError($violationMessage);
+            }
         }
     }
 
