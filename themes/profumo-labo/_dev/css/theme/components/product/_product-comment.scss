@@ -225,7 +225,6 @@
         }
     }
 }
-
 @media(max-width: 767px){
     .product-comment{
         padding: 10px 0 0;
@@ -245,6 +244,10 @@
     #new_comment_form.product-comment__form #criterions_list{
         padding-bottom: 0;
         text-align: left;
+    }
+
+    .js-product-comment-form-addon .fancybox__slide{
+        padding: 20px 8px 80px 8px !important;
     }
 }
 
