@@ -160,6 +160,19 @@ Fancybox.bind(".js-fancybox-img", {
 });
 
 /**
+ * Add class fancy box clicked on
+ * product single comment section
+ */
+Fancybox.bind(".js-product-comment-btn-form", {
+  groupAll : true, 
+  on : {
+    ready : (fancybox) => {
+      $('.fancybox__container').addClass('js-product-comment-form-addon');
+    }
+  }
+});
+
+/**
  * Add 'notranslate' class to all material-icons element
  * This is a fix for edge browser when using the default translation of the browser
  */

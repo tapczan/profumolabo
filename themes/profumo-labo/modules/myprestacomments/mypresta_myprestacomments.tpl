@@ -43,7 +43,7 @@
 
         {if ($too_early == false AND ($logged OR $allow_guests))}
             <div class="product-comment__controls">
-                <a class="product-comment__btn-form" data-fancybox="comment-modal-trigger" href="#new_comment_form">{l s='Write your review' mod='myprestacomments'}</a>
+                <a class="product-comment__btn-form js-product-comment-btn-form" data-fancybox="comment-modal-trigger" href="#new_comment_form">{l s='Write your review' mod='myprestacomments'}</a>
             </div>
         {/if}
         <span class="product-comment__close js-comment-close"></span>
