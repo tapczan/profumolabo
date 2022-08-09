@@ -860,6 +860,12 @@
             }
         }
 
+        &.expanded{
+            .social-login{
+                display: none;
+            }
+        }
+
         & + #login-form{
             .btn{
                 @include font-with-line-height($font-size-xs, 16px);
