@@ -168,7 +168,12 @@ Fancybox.bind(".js-product-comment-btn-form", {
   on : {
     ready : (fancybox) => {
       $('.fancybox__container').addClass('js-product-comment-form-addon');
-    }
+    },
+    done: (fancybox, slide) => {
+      setTimeout(() => {
+        $('.js-input-comment, .js-textarea-comment').removeAttr("tabindex");
+      }, 100);
+    },
   }
 });
 
