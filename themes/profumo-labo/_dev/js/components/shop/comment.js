@@ -2,7 +2,7 @@ function addClassReviewPopUp(){
     $('.js-product-comment-form--overlay').addClass('show-popup');
     $('.header__inner, .header__nav').addClass('product-comment__form--overlay-header');
     $('body, html').addClass('overflow-hidden');
-    $('.l-header').addClass('less-z-index');
+    $('.l-header, .x13-counter-container').addClass('less-z-index');
     $('.sticky-menu-correction').addClass('more-z-index');
 }
 
@@ -10,7 +10,7 @@ function removeClassReviewPopUp(){
     $('.js-product-comment-form--overlay').removeClass('show-popup');
     $('.header__inner, .header__nav').removeClass('product-comment__form--overlay-header');
     $('body, html').removeClass('overflow-hidden');
-    $('.l-header').removeClass('less-z-index');
+    $('.l-header, .x13-counter-container').removeClass('less-z-index');
     $('.sticky-menu-correction').removeClass('more-z-index');
 }
 
@@ -39,7 +39,7 @@ $(document).on('keyup', function(e) {
 */
 $('.js-comment-close').on('click', function(){
     $('.js-comment-form').slideToggle();
-    $(this).toggleClass('product-comment__close--notactive')
+    $(this).toggleClass('product-comment__close--notactive');
 });
 
 /*
@@ -50,6 +50,10 @@ const observer = new MutationObserver(function(mutations) {
         setTimeout(() => {
             removeClassReviewPopUp();
             $('.js-input-comment, .js-textarea-comment').val('');
+
+            $('html,body').animate({
+                scrollTop: $("#new_comment_form_ok").offset().top - 130
+            },'slow');
         }, 100);
     });    
 });
