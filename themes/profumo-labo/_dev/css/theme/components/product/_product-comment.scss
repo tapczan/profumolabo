@@ -123,8 +123,7 @@
         left: 0;
         right: 0;
         height: auto;
-        overflow: auto;
-        overflow-x: hidden;
+        overflow: hidden;
 
         &--overlay{
             display: none;
@@ -142,6 +141,7 @@
             justify-content: center;
             padding-top: 30px;
             overflow: auto;
+            overflow-x: hidden;
 
             &.show-popup{
                 display: flex !important;
