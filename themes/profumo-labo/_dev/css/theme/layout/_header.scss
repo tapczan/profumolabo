@@ -2185,3 +2185,7 @@
 .l-header.less-z-index .header__nav.product-comment__form--overlay-header:before{
   display: none !important;
 }
+
+.x13-counter-container.less-z-index{
+  z-index: 1005;
+}
