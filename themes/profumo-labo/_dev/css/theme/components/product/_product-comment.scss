@@ -142,13 +142,10 @@
             padding-top: 30px;
             overflow: auto;
             overflow-x: hidden;
+            padding-bottom: 90px;
 
             &.show-popup{
                 display: flex !important;
-            }
-
-            @media(max-height: 740px){
-                padding-bottom: 90px;
             }
         }
 
