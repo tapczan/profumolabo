@@ -122,12 +122,9 @@
         z-index: 1000;
         left: 0;
         right: 0;
-
-        @media(max-height: 740px){
-            height: auto;
-            overflow: auto;
-            overflow-x: hidden;
-        }
+        height: auto;
+        overflow: auto;
+        overflow-x: hidden;
 
         &--overlay{
             display: none;
