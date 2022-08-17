@@ -88,12 +88,10 @@ $(document).on('click', '.js-checkout-step-header', (event) => {
 
 $(document).on('focusout', 'form.account-fields input[name=email]', () => {
   $('span.js-inpost-shipping-customer-info-email').html( $('form.account-fields input[name=email]').val() );
-  $('#inpost_email_82').val( $('form.account-fields input[name=email]').val() );
-  $('#inpost_email_83').val( $('form.account-fields input[name=email]').val() );
+  $('input[name=inpost_email]').val( $('form.account-fields input[name=email]').val() );
 });
 
 $(document).on('focusout', 'form.address-fields input[name=phone]', () => {
   $('span.js-inpost-shipping-customer-info-phone').html( $('form.address-fields input[name=phone]').val() );
-  $('#inpost_phone_82').val( $('form.address-fields input[name=phone]').val() ); 
-  $('#inpost_phone_83').val( $('form.address-fields input[name=phone]').val() );  
+  $('input[name=inpost_phone]').val( $('form.address-fields input[name=phone]').val() ); 
 });
