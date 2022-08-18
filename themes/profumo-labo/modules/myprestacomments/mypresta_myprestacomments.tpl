@@ -148,8 +148,8 @@
                                 {/foreach}
                             </ul>
                         {/if}
-                        <label for="comment_title">{l s='Title for your review' mod='myprestacomments'}<sup class="required">*</sup></label>
-                        <input id="comment_title" class="js-input-comment" name="title" type="text" value=""/>
+                        <label for="comment_title" style="display: none;">{l s='Title for your review' mod='myprestacomments'}<sup class="required">*</sup></label>
+                        <input id="comment_title" class="js-input-comment" name="title" type="hidden" value="Recenzja"/>
 
                         <label for="content">{l s='Your review' mod='myprestacomments'}<sup class="required">*</sup></label>
                         <textarea id="content" class="js-textarea-comment" name="content"></textarea>
