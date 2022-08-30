@@ -15,6 +15,7 @@ $('.js-blockbannerslider').slick({
     arrow: false,
     autoplay: true,
     autoplaySpeed: 5000,
+    useTransform: false,
 });
 
 /**
