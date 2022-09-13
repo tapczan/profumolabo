@@ -1,0 +1,41 @@
+createit_accordion_index:
+  path: /createit-accordion
+  methods: [GET]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateitAccordion\Controller\Admin\CreateitAccordionAdminController::indexAction'
+    _legacy_controller: 'CreateitAccordionLink'
+    _legacy_link : 'CreateitAccordionLink'
+
+createit_accordion_search:
+  path: /createit-accordion
+  methods: [POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateitAccordion\Controller\Admin\CreateitAccordionAdminController::searchAction'
+    _legacy_controller: 'CreateitAccordionLink'
+    _legacy_link: 'AdminDemodoctrineQuote:search'
+
+createit_accordion_create:
+  path: /createit-accordion/create
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateitAccordion\Controller\Admin\CreateitAccordionAdminController::createAction'
+
+createit_accordion_edit:
+  path: /createit-accordion/{createitAccordionId}/edit
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateitAccordion\Controller\Admin\CreateitAccordionAdminController::editAction'
+    _legacy_controller: 'CreateitAccordionLink'
+    _legacy_link: 'CreateitAccordionLink:update'
+  requirements:
+    createitAccordionId: \d+
+
+createit_accordion_delete:
+  path: /createit-accordion/{createitAccordionId}/delete
+  methods: [DELETE]
+  defaults:
+    _controller: 'PrestaShop\Module\CreateitAccordion\Controller\Admin\CreateitAccordionAdminController::deleteAction'
+    _legacy_controller: 'CreateitAccordionLink'
+    _legacy_link: 'CreateitAccordionLink:deletequote'
+  requirements:
+    quoteId: \d+

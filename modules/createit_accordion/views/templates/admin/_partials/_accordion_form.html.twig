@@ -1,0 +1,23 @@
+<form method="post" class="form-horizontal">
+    <div class="card">
+        <h3 class="card-header">
+            <i class="material-icons">settings</i>  {{ header }}
+        </h3>
+        <div class="card-block row">
+            <div class="card-text">
+                <div class="row">
+                    <div class="col-sm">
+                        {{ form(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div class="d-inline-flex">
+                <a class="btn btn-outline-secondary" href="{{ path('createit_accordion_index') }}">{{ backBtnLbl }}</a>
+            </div>
+        </div>
+
+    </div>
+</form>

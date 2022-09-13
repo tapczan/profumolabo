@@ -7,6 +7,7 @@ modules/
 !modules/blockwishlist
 !modules/arproductlists
 !modules/contentvideo
+!modules/createit_accordion
 !modules/createit_customfield
 !modules/createit_countdown
 !modules/createit_related_products
