@@ -417,6 +417,8 @@
                 }
 
                 .inpost-shipping-customer-change-form{
+                    display: none !important;
+                    
                     .form-group{
                         &:before{
                             font-size: $font-size-xs;
