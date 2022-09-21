@@ -103,5 +103,15 @@ $(() => {
           resp,
         });
       });
+
+  });
+
+  prestashop.on('updatedProduct', () => {
+    $('.modal-content .js-product-single-img').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+    });
   });
 });

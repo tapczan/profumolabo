@@ -66,6 +66,13 @@ $(() => {
       $('.js-product-images').replaceWith(event.product_cover_thumbnails);
       $('.js-product-images-modal').replaceWith(event.product_images_modal);
       prestashop.emit('updatedProductCombination', event);
+
+      if( event.product_add_to_cart.match(/disabled/) ) {
+        $('.btn.btn-primary.add-to-cart').prop('disabled', true);
+      } else {
+        $('.btn.btn-primary.add-to-cart').prop('disabled', false);
+      }
+
     }
     
     $('.js-product-single-img').slick({
