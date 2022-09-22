@@ -98,7 +98,12 @@
               disabled
             {/if}
             >
-            {l s='Add to cart' d='Shop.Theme.Actions'}
+
+            {if $product.quantity <= 0}
+              {l s='Out of stock' d='Shop.Theme.Actions'}
+            {else}
+              {l s='Add to cart' d='Shop.Theme.Actions'}
+            {/if}
           </button>
         </div>
       </div>

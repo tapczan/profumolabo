@@ -58,6 +58,9 @@ $(() => {
   };
 
   prestashop.on('clickQuickView', (elm) => {
+
+    prestashop.quickview = true;
+
     const data = {
       action: 'quickview',
       id_product: elm.dataset.idProduct,
