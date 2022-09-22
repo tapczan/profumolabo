@@ -50,6 +50,14 @@ function setUpCheckout() {
   });
 }
 
+function iamBusinessEnable() {
+  $('#i_am_business').prop('checked', true);
+  $('.form-group.company.business-field.text').css('display', 'block');
+  $('.form-group.dni.business-field.private-field.text').css('display', 'block');
+  $('.form-group.vat_number.business-field.text').css('display', 'block');
+  $('.business-fields-separator').css('display', 'block');
+}
+
 $(document).on('ready', () => {
   if ($('body#checkout').length === 1) {
     setUpCheckout();
@@ -70,6 +78,9 @@ $(document).on('ready', () => {
       $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
     }
   });
+  
+  iamBusinessEnable();
+  
 });
 
 $(document).on('change', '.checkout-option input[type="radio"]', (event) => {
