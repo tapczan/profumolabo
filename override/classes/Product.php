@@ -614,4 +614,24 @@ class Product extends ProductCore
         
         return $result[0]['name'];
     }
+
+    /**
+     * Custom URL Anchor for product attribute combinations
+    */
+    public static function customAnchor($id_product_attribute, $with_id = false, $product_id )
+    {
+        $attributes = Product::getAttributesParams($product_id, $id_product_attribute);
+        $anchor = '#';
+        $sep = Configuration::get('PS_ATTRIBUTE_ANCHOR_SEPARATOR');
+
+        foreach ($attributes as &$a) {
+            foreach ($a as &$b) {
+                $b = str_replace($sep, '_', Tools::link_rewrite($b));
+            }
+            $anchor .= '/' . $a['name'];
+        }
+
+        return $anchor;
+    }
+
 }
