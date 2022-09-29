@@ -43,7 +43,7 @@
 
         {if ($too_early == false AND ($logged OR $allow_guests))}
             <div class="product-comment__controls">
-                <a class="product-comment__btn-form" data-fancybox="comment-modal-trigger" href="#new_comment_form">{l s='Write your review' mod='myprestacomments'}</a>
+                <a class="product-comment__btn-form js-product-comment-btn-form" href="javascript:;">{l s='Write your review' mod='myprestacomments'}</a>
             </div>
         {/if}
         <span class="product-comment__close js-comment-close"></span>
@@ -110,71 +110,76 @@
     </div>
 
     {if isset($myprestacomments_product) && $myprestacomments_product}
-        <!-- Fancybox -->
-        <div id="new_comment_form" class="product-comment__form">
-            <form id="id_new_comment_form" action="#">
-                <h2 class="title">{l s='Write your review' mod='myprestacomments'}</h2>
-                {if isset($myprestacomments_product) && $myprestacomments_product}
-                    <div class="product clearfix">
-                        <div class="product_desc comment-form-desc">
-                            <p class="product_name"><strong>{if isset($myprestacomments_product->name)}{$myprestacomments_product->name}{elseif isset($myprestacomments_product.name)}{$myprestacomments_product.name}{/if}</strong></p>
-                            {if isset($myprestacomments_product->description_short)}{$myprestacomments_product->description_short nofilter}{elseif isset($myprestacomments_product.description_short)}{$myprestacomments_product.description_short nofilter}{/if}
+        <!-- Popup -->
+        <div class="product-comment__form--overlay js-product-comment-form--overlay">
+            <div id="new_comment_form" class="product-comment__form js-product-comment-form">
+                <form id="id_new_comment_form" action="#">
+                    <div class="comment-header-wrapper">
+                        <h2 class="title">{l s='Write your review' mod='myprestacomments'}</h2>
+                        <span class="material-icons js-product-comment-form-close product-comment__form-close">close</span>
+                    </div>
+                    {if isset($myprestacomments_product) && $myprestacomments_product}
+                        <div class="product clearfix">
+                            <div class="product_desc comment-form-desc">
+                                <p class="product_name"><strong>{if isset($myprestacomments_product->name)}{$myprestacomments_product->name}{elseif isset($myprestacomments_product.name)}{$myprestacomments_product.name}{/if}</strong></p>
+                                {if isset($myprestacomments_product->description_short)}{$myprestacomments_product->description_short nofilter}{elseif isset($myprestacomments_product.description_short)}{$myprestacomments_product.description_short nofilter}{/if}
+                            </div>
+                        </div>
+                    {/if}
+                    <div class="new_comment_form_content">
+                        <h2>{l s='Write your review' mod='myprestacomments'}</h2>
+                        <div id="new_comment_form_error" class="error" style="display:none;padding:15px 25px">
+                            <ul></ul>
+                        </div>
+                        {if $criterions|@count > 0}
+                            <ul id="criterions_list">
+                                {foreach from=$criterions item='criterion'}
+                                    <li>
+                                        <label class="star-rating-label">Jakość</label>
+                                        <div class="star_content">
+                                            <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="1"/>
+                                            <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="2"/>
+                                            <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="3"/>
+                                            <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="4"/>
+                                            <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="5" checked="checked"/>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </li>
+                                {/foreach}
+                            </ul>
+                        {/if}
+                        <label for="comment_title" style="display: none;">{l s='Title for your review' mod='myprestacomments'}<sup class="required">*</sup></label>
+                        <input id="comment_title" class="js-input-comment" name="title" type="hidden" value="Recenzja"/>
+
+                        <label for="content">{l s='Your review' mod='myprestacomments'}<sup class="required">*</sup></label>
+                        <textarea id="content" class="js-textarea-comment" name="content"></textarea>
+
+                        {if $allow_guests == true && !$logged}
+                            <label>{l s='Your name' mod='myprestacomments'}<sup class="required">*</sup></label>
+                            <input id="commentCustomerName" name="customer_name" type="text" value=""/>
+                            <label>{l s='Your email' mod='myprestacomments'}<sup class="required">*</sup></label>
+                            <input id="commentCustomerEmail" name="customer_email" type="text" value=""/>
+                        {/if}
+
+                        <div id="new_comment_form_footer">
+                            <input id="id_product_comment_send" name="id_product" type="hidden" value='{$id_product_comment_form}'/>
+                            <p class="required"><sup>*</sup> {l s='Required fields' mod='myprestacomments'}</p>
+                            <p class="fr">
+                                {if $PRODUCT_COMMENTS_GDPR == 1}
+                                {literal}
+                                    <input onchange="if($(this).is(':checked')){$('#submitNewMessage').removeClass('gdpr_disabled'); $('#submitNewMessage').removeAttr('disabled'); rebindClickButton();}else{$('#submitNewMessage').addClass('gdpr_disabled'); $('#submitNewMessage').off('click'); $('#submitNewMessage').attr('disabled', 1); }" id="gdpr_checkbox" type="checkbox" >
+                                {/literal}
+                                    {l s='I accept ' mod='myprestacomments'} <a target="_blank" href="{$link->getCmsLink($PRODUCT_COMMENTS_GDPRCMS)}">{l s='privacy policy' mod='myprestacomments'}</a> {l s='rules' mod='myprestacomments'}
+                                {/if}
+
+                                <button {if $PRODUCT_COMMENTS_GDPR == 1}disabled{/if} class="js-comment-button-submit comment-button-submit {if $PRODUCT_COMMENTS_GDPR == 1}gdpr_disabled{/if}" id="submitNewMessage" name="submitMessage" type="submit" data-fancybox-close>{l s='Send' mod='myprestacomments'}</button>&nbsp;
+                                {l s='or' mod='myprestacomments'}&nbsp;<a href="#" onclick="$.fancybox.close();" class="js-trigger-click-submit">{l s='Cancel' mod='myprestacomments'}</a>
+                            </p>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
-                {/if}
-                <div class="new_comment_form_content">
-                    <h2>{l s='Write your review' mod='myprestacomments'}</h2>
-                    <div id="new_comment_form_error" class="error" style="display:none;padding:15px 25px">
-                        <ul></ul>
-                    </div>
-                    {if $criterions|@count > 0}
-                        <ul id="criterions_list">
-                            {foreach from=$criterions item='criterion'}
-                                <li>
-                                    <label class="star-rating-label">Jakość</label>
-                                    <div class="star_content">
-                                        <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="1"/>
-                                        <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="2"/>
-                                        <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="3"/>
-                                        <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="4"/>
-                                        <input class="star" type="radio" name="criterion[{$criterion.id_product_comment_criterion|round}]" value="5" checked="checked"/>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </li>
-                            {/foreach}
-                        </ul>
-                    {/if}
-                    <label for="comment_title">{l s='Title for your review' mod='myprestacomments'}<sup class="required">*</sup></label>
-                    <input id="comment_title" class="js-input-comment" name="title" type="text" value=""/>
-
-                    <label for="content">{l s='Your review' mod='myprestacomments'}<sup class="required">*</sup></label>
-                    <textarea id="content" class="js-textarea-comment" name="content"></textarea>
-
-                    {if $allow_guests == true && !$logged}
-                        <label>{l s='Your name' mod='myprestacomments'}<sup class="required">*</sup></label>
-                        <input id="commentCustomerName" name="customer_name" type="text" value=""/>
-                        <label>{l s='Your email' mod='myprestacomments'}<sup class="required">*</sup></label>
-                        <input id="commentCustomerEmail" name="customer_email" type="text" value=""/>
-                    {/if}
-
-                    <div id="new_comment_form_footer">
-                        <input id="id_product_comment_send" name="id_product" type="hidden" value='{$id_product_comment_form}'/>
-                        <p class="required"><sup>*</sup> {l s='Required fields' mod='myprestacomments'}</p>
-                        <p class="fr">
-                            {if $PRODUCT_COMMENTS_GDPR == 1}
-                            {literal}
-                                <input onchange="if($(this).is(':checked')){$('#submitNewMessage').removeClass('gdpr_disabled'); $('#submitNewMessage').removeAttr('disabled'); rebindClickButton();}else{$('#submitNewMessage').addClass('gdpr_disabled'); $('#submitNewMessage').off('click'); $('#submitNewMessage').attr('disabled', 1); }" id="gdpr_checkbox" type="checkbox" >
-                            {/literal}
-                                {l s='I accept ' mod='myprestacomments'} <a target="_blank" href="{$link->getCmsLink($PRODUCT_COMMENTS_GDPRCMS)}">{l s='privacy policy' mod='myprestacomments'}</a> {l s='rules' mod='myprestacomments'}
-                            {/if}
-
-                            <button {if $PRODUCT_COMMENTS_GDPR == 1}disabled{/if} class="js-comment-button-submit comment-button-submit {if $PRODUCT_COMMENTS_GDPR == 1}gdpr_disabled{/if}" id="submitNewMessage" name="submitMessage" type="submit" data-fancybox-close>{l s='Send' mod='myprestacomments'}</button>&nbsp;
-                            {l s='or' mod='myprestacomments'}&nbsp;<a href="#" onclick="$.fancybox.close();" class="js-trigger-click-submit">{l s='Cancel' mod='myprestacomments'}</a>
-                        </p>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </form><!-- /end new_comment_form_content -->
+                </form><!-- /end new_comment_form_content -->
+            </div>
         </div>
         <!-- End fancybox -->
     {/if}

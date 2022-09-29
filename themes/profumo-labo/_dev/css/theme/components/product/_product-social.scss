@@ -70,6 +70,14 @@
 }
 
 @media(max-width: 767px){
+
+    .product-single {
+        .product-social{
+            display: block !important;
+            margin-bottom: 20px;
+        }
+    }
+    
     .product-social{
         display: none;
     }

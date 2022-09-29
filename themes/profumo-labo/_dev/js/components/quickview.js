@@ -58,6 +58,9 @@ $(() => {
   };
 
   prestashop.on('clickQuickView', (elm) => {
+
+    prestashop.quickview = true;
+
     const data = {
       action: 'quickview',
       id_product: elm.dataset.idProduct,
@@ -103,5 +106,15 @@ $(() => {
           resp,
         });
       });
+
+  });
+
+  prestashop.on('updatedProduct', () => {
+    $('.modal-content .js-product-single-img').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      dots: false,
+    });
   });
 });

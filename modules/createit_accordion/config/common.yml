@@ -1,0 +1,19 @@
+services:
+
+  prestashop.module.createit_accordion.createit_accordion_repository:
+    class: 'PrestaShop\Module\CreateitAccordion\Repository\CreateitAccordionRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateitAccordion\Entity\CreateitAccordion
+
+  prestashop.module.createit_accordion.createit_accordion_header_repository:
+    class: 'PrestaShop\Module\CreateitAccordion\Repository\CreateitAccordionHeaderRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateitAccordion\Entity\CreateitAccordionHeader
+
+  prestashop.module.createit_accordion.createit_accordion_content_repository:
+    class: 'PrestaShop\Module\CreateitAccordion\Repository\CreateitAccordionContentRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateitAccordion\Entity\CreateitAccordionContent

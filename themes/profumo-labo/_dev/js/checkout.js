@@ -50,7 +50,7 @@ function setUpCheckout() {
   });
 }
 
-$(document).ready(() => {
+$(document).on('ready', () => {
   if ($('body#checkout').length === 1) {
     setUpCheckout();
   }
@@ -59,6 +59,7 @@ $(document).ready(() => {
     if (typeof params.deliveryOption === 'undefined' || params.deliveryOption.length === 0) {
       return;
     }
+
     // Hide all carrier extra content ...
     $(prestashop.themeSelectors.checkout.carrierExtraContent).hide();
     // and show the one related to the selected carrier
@@ -69,6 +70,7 @@ $(document).ready(() => {
       $('.collapse', params.event.currentTarget).not('.show').not('.collapse .collapse').collapse('show');
     }
   });
+  
 });
 
 $(document).on('change', '.checkout-option input[type="radio"]', (event) => {
@@ -88,12 +90,33 @@ $(document).on('click', '.js-checkout-step-header', (event) => {
 
 $(document).on('focusout', 'form.account-fields input[name=email]', () => {
   $('span.js-inpost-shipping-customer-info-email').html( $('form.account-fields input[name=email]').val() );
-  $('#inpost_email_82').val( $('form.account-fields input[name=email]').val() );
-  $('#inpost_email_83').val( $('form.account-fields input[name=email]').val() );
+  $('input[name=inpost_email]').val( $('form.account-fields input[name=email]').val() );
 });
 
 $(document).on('focusout', 'form.address-fields input[name=phone]', () => {
   $('span.js-inpost-shipping-customer-info-phone').html( $('form.address-fields input[name=phone]').val() );
-  $('#inpost_phone_82').val( $('form.address-fields input[name=phone]').val() ); 
-  $('#inpost_phone_83').val( $('form.address-fields input[name=phone]').val() );  
+  $('input[name=inpost_phone]').val( $('form.address-fields input[name=phone]').val() ); 
+});
+
+$(document).on('ajaxComplete', () => {
+  //force reset email phone
+  var email = $('form.account-fields input[name=email]').val(),
+      phone = $('form.address-fields input[name=phone]').val();
+
+  if( email === '') {
+    $('input[name=inpost_email]').val('');
+    $('span.js-inpost-shipping-customer-info-email').html('');
+  } else {
+    $('input[name=inpost_email]').val( email );
+    $('span.js-inpost-shipping-customer-info-email').html( email );
+  }
+
+  if( phone === '') {
+    $('input[name=inpost_phone]').val(''); 
+    $('span.js-inpost-shipping-customer-info-phone').html( '' );
+  } else {
+    $('input[name=inpost_phone]').val( phone ); 
+    $('span.js-inpost-shipping-customer-info-phone').html( phone );
+  }
+
 });

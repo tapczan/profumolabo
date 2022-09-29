@@ -23,7 +23,7 @@
  * @license   https://opensource.org/licenses/AFL-3.0 Academic Free License 3.0 (AFL-3.0)
  *}
 {block name='header_top'}
-<div class="header header--loggedin">
+<div class="{if $logged}header header--main{else}header header--main header--notloggedin{/if}">
   <div class="header__inner">
     <div class="container">
       <div class="row">

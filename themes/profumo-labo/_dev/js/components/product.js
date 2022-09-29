@@ -49,8 +49,11 @@ $(() => {
   });
 
   prestashop.on('updatedProduct', (event) => {
-    createInputFile();
+    
+    let html = $.parseHTML(event.product_add_to_cart);
 
+    createInputFile();
+    
     if (event && event.product_minimal_quantity) {
       const minimalProductQuantity = parseInt(event.product_minimal_quantity, 10);
       const quantityInputSelector = '#quantity_wanted';
@@ -68,6 +71,17 @@ $(() => {
       prestashop.emit('updatedProductCombination', event);
     }
     
+    $.each( html, function( i, el ) {
+      if(el.nodeName === 'DIV') {
+        var addtocart = $(this).find('button')[0];
+        if(prestashop.quickview) {
+          $('.modal-dialog .btn.btn-primary.add-to-cart').replaceWith(addtocart);
+        } else {
+          $('.product-single .btn.btn-primary.add-to-cart').replaceWith(addtocart);
+        }
+      }
+    }); 
+
     $('.js-product-single-img').slick({
       infinite: true,
       slidesToShow: 1,

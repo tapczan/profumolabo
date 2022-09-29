@@ -26,6 +26,7 @@
         border-radius: 0;
         text-transform: uppercase;
         color: $black;
+        cursor: pointer;
 
         &:hover,
         &:focus{
@@ -114,11 +115,56 @@
     }
 
     &__form{
-        display: none;
         padding: 0;
         max-width: 585px !important;
         width: 100% !important;
         margin: auto !important;
+        z-index: 1000;
+        left: 0;
+        right: 0;
+        height: auto;
+        overflow: hidden;
+
+        &--overlay{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 950;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 30px;
+            overflow: auto;
+            overflow-x: hidden;
+            padding-bottom: 90px;
+
+            &.show-popup{
+                display: flex !important;
+            }
+        }
+
+        &-close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #fff;
+            cursor: pointer;
+            font-size: 26px;
+            padding: 5px;
+        }
+
+        .comment-header-wrapper{
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
 
         .comment-form-desc{
             margin-left: 0 !important;
@@ -245,6 +291,10 @@
     #new_comment_form.product-comment__form #criterions_list{
         padding-bottom: 0;
         text-align: left;
+    }
+
+    .js-product-comment-form-addon .fancybox__slide{
+        padding: 20px 8px 80px 8px !important;
     }
 }
 

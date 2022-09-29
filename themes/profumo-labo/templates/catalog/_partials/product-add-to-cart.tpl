@@ -93,11 +93,17 @@
             class="btn btn-primary add-to-cart"
             data-button-action="add-to-cart"
             type="submit"
-            {if !$product.add_to_cart_url}
+
+            {if !$product.add_to_cart_url || $product.quantity <= 0}
               disabled
             {/if}
-          >
-            {l s='Add to cart' d='Shop.Theme.Actions'}
+            >
+
+            {if $product.quantity <= 0}
+              {l s='Out of stock' d='Shop.Theme.Actions'}
+            {else}
+              {l s='Add to cart' d='Shop.Theme.Actions'}
+            {/if}
           </button>
         </div>
       </div>

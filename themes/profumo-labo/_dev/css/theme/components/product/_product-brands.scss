@@ -1,4 +1,9 @@
 #manufacturer{
+    .breadcrumb{
+        .breadcrumb-item:nth-child(2){
+            display: none;
+        }
+    }
     #main{
         h1{
             @include font-with-line-height($font-size-xxl, 38px);
