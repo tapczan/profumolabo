@@ -28,7 +28,7 @@
         {$HOOK_ORDER_CONFIRMATION nofilter}
       {/block}
 
-      {if $smarty.get.id_module == '94'}
+      {if $smarty.get.id_module == '94' || $smarty.get.id_module == '146'}
       <script>
         window.onload = function() {
           document.getElementById("przelewy24Form").submit();
