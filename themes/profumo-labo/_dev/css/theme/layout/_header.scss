@@ -1538,6 +1538,12 @@
     .kontakt-first-col-gold--notlogin{
       display: none !important;
     }
+
+    @media(max-width: 991px){
+      .kontakt-mobile-notlogin{
+        display: none !important;
+      }
+    }
   }
 
   &--notloggedin{
@@ -1547,6 +1553,16 @@
 
     .kontakt-first-col-gold--login{
       display: none !important;
+    }
+
+    @media(max-width: 991px){
+      .kontakt-mobile-notlogin{
+        display: block !important;
+      }
+  
+      .kontakt-mobile-login{
+        display: none !important;
+      }
     }
   }
 }
@@ -2006,3 +2022,4 @@
 .x13-counter-container.less-z-index{
   z-index: 1005;
 }
+
