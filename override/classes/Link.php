@@ -44,7 +44,21 @@ class Link extends LinkCore
             $rule = 'layered_rule';
             $params['selected_filters'] = $selected_filters;
         }
-        return $url.Dispatcher::getInstance()->createUrl($rule, $id_lang, $params, $this->allow, '', $id_shop);
+        // return $url.Dispatcher::getInstance()->createUrl($rule, $id_lang, $params, $this->allow, '', $id_shop);
+
+        $top_rated_ids = [165, 156, 129, 61, 53, 45, 35, 106, 88, 78, 114];
+        $order = '';
+
+        foreach ($top_rated_ids as $id) {
+            // add top rated order filter
+            if( $id == $category->id ) {
+                $order .= "?order=product.grade.desc";
+            }
+        }
+
+        $catUrl = Dispatcher::getInstance()->createUrl($rule, $id_lang, $params, $this->allow, '', $id_shop);
+
+        return $url.$catUrl.$order;
     }
     /*
     * module: x13links
@@ -155,11 +169,11 @@ class Link extends LinkCore
                 $params['id_product_attribute'] = false;
             }
         }
-        
+
         // $anchor = $idProductAttribute ? $product->getAnchor((int) $idProductAttribute, (bool) $addAnchor) : '';
 		// return strtok($url . $dispatcher->createUrl('product_rule', $idLang, array_merge($params, $extraParams), $force_routes, $anchor, $idShop), '#');
 
-        $anchor = $idProductAttribute ? $product->customAnchor((int) $idProductAttribute, (bool) $addAnchor, $product->id) : '';
+        $anchor = $idProductAttribute ? $product->customAnchor((int) $idProductAttribute, $product->id) : '';
         return $url . $dispatcher->createUrl('product_rule', $idLang, array_merge($params, $extraParams), $force_routes, $anchor, $idShop);
     }
 }
