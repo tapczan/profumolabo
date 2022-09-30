@@ -63,9 +63,15 @@
         <li class="contact-data__title contact-data__title--gold">
           <a href="{$link->getModuleLink('faq','faqpage')}">{l s='QUESTIONS AND ANSWERS' d='Shop.Theme.Global'}</a>
         </li>
-        <li class="contact-data__title contact-data__title--gold">
-          <a href="{$urls.pages['history']}">{l s='CHECK ORDER STATUS' d='Shop.Theme.Global'}</a>
-        </li>
+        {if $logged}
+          <li class="contact-data__title contact-data__title--gold">
+            <a href="{$urls.pages['history']}">{l s='CHECK ORDER STATUS' d='Shop.Theme.Global'}</a>
+          </li>
+        {else}
+          <li class="contact-data__title contact-data__title--gold">
+            <a href="https://profumolabo.com/sledzenie-zamowien-gosci">{l s='CHECK ORDER STATUS' d='Shop.Theme.Global'}</a>
+          </li>
+        {/if}
       </ul>
     </div>
   </div>
