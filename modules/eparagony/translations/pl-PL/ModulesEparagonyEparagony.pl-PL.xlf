@@ -17,14 +17,39 @@
         <target>Wiadomość wysłana.</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="cc214d330b768b93f22db989633682bc">
-        <source>E Paragony</source>
-        <target>E Paragony</target>
+      <trans-unit id="383e7c11d87dd6cd2ff756790b627d89">
+        <source>Download finished.</source>
+        <target>Pobieranie zakończone.</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="5945177c610226c07e93fc21e720cd2b">
-        <source>Electronic receipt subsystem.</source>
-        <target>Podsystem elektronicznych paragonów.</target>
+      <trans-unit id="b5d53171009238fee9db347e98959f38">
+        <source>Prepare e-receipt</source>
+        <target>Przygotuj e-paragon</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="2659c234aef84d0c620bb0ecc4434ca2">
+        <source>E-receipt is being issued</source>
+        <target>E-paragon jest wydawany</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="32962d33d3299e68b011e8fa40ba0afb">
+        <source>E-receipt has been issued</source>
+        <target>E-paragon został wydany</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="a49d1ae04ad81a772209db868e0a1b58">
+        <source>Error preparing e-receipt</source>
+        <target>Błąd podczas przygotowywania e-paragonu</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="7c527e58712ad216cce391ad20f69226">
+        <source>Dokumenty fiskalne: E-Paragony i E-Faktury</source>
+        <target>Dokumenty fiskalne: E-Paragony i E-Faktury</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="df716c07e8b406ca72d56c28ac654c27">
+        <source>Electronic receipt and invoice subsystem.</source>
+        <target>System dla elektronicznych paragonów i faktur.</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="28898300e253990aa3942a11b2d9925c">
@@ -32,19 +57,29 @@
         <target>Czy na pewno chcesz odinstalować? Ta operacja nie jest wspierana.</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="bd908db5ccb07777ced8023dffc802f4">
+        <source>Links</source>
+        <target>Linki</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="3ae40d77d4d30120f1238adb76b0e349">
+        <source>Show queue</source>
+        <target>Pokaż kolejkę</target>
+        <note>Line: </note>
+      </trans-unit>
       <trans-unit id="672934e96ffa7426dcf077d0c5f13dc1">
         <source>Settings for Spark</source>
         <target>Ustawienia dla Spark</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="e9adbbd1cd7eff7e1a588c31f79521d5">
+        <source>POS ID</source>
+        <target>ID sklpeu</target>
+        <note>Line: </note>
+      </trans-unit>
       <trans-unit id="389809ef9d747be16907b20663368e13">
         <source>Store NIP</source>
         <target>NIP sklepu</target>
-        <note>Line: </note>
-      </trans-unit>
-      <trans-unit id="d7360e2ad15a02b4f4711d389101e692">
-        <source>Temporary tax rates (23%, 8%, 5%, 0%)</source>
-        <target>Tymczasowe stawki podatków (23%, 8%, 5%, 0%)</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="76525f0f34b48475e5ca33f71d296f3b">
@@ -57,9 +92,9 @@
         <target>Client secret</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="590354c63797c4b92aa95d8c03a871ee">
-        <source>Address for web hook</source>
-        <target>Adres dla web hooka</target>
+      <trans-unit id="e342a2e585b5df38fad1cf1e6cd7c140">
+        <source>Address for fiscalization web hook</source>
+        <target>Adres dla web hooka fiskalizacji</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="fa538cc4be3ae6dc7deb0eebe354db1e">
@@ -67,9 +102,9 @@
         <target>Webhook secret</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="4245499695408b974322be6f01b0d17a">
-        <source>Test mode</source>
-        <target>Tryb testowy</target>
+      <trans-unit id="c8a1fb794dede8cb2e7c2893248b1d43">
+        <source>Test environment</source>
+        <target>Środowisko testowe</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="5b5aa01b349b9d931accddc22dbe4355">
@@ -82,29 +117,44 @@
         <target>URL regulaminu zwrotów</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="22809316767079a5a7584102d32fb4bd">
-        <source>Settings for print server</source>
-        <target>Ustawienia dla serwera wydruku</target>
+      <trans-unit id="3fa7e08da507fa5aebc4bc59216a318e">
+        <source>Tax letters</source>
+        <target>Litery podatków</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="b0ddb6f2a673758c9875c81a36bc40b7">
-        <source>Address for print server</source>
-        <target>Adres dla serwera wydruku</target>
+      <trans-unit id="7d64934798a7d4154943faca70401223">
+        <source>Tax A</source>
+        <target>Podatek A</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="708307f74c1632e23b8ceba2a887755b">
-        <source>Printer type</source>
-        <target>Typ drukarki</target>
+      <trans-unit id="e4811751bfaf5dda8fb8ad378e48f188">
+        <source>Tax B</source>
+        <target>Podatek B</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="f6039d44b29456b20f8f373155ae4973">
-        <source>Username</source>
-        <target>Nazwa użytkownika</target>
+      <trans-unit id="92571d4a2b6002672121dfe396627052">
+        <source>Tax C</source>
+        <target>Podatek C</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="dc647eb65e6711e155375218212b3964">
-        <source>Password</source>
-        <target>Hasło</target>
+      <trans-unit id="fab197ef62cd37dc142d987032a9ef6f">
+        <source>Tax D</source>
+        <target>Podated D</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="9cca4434bdd4e201866f1fab715c46e0">
+        <source>Tax E</source>
+        <target>Podatek E</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="e9c0183262784b5678eeb82f5365c4ee">
+        <source>Tax F</source>
+        <target>Podatek F</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="3d21782a52548a4ab118d27b393276ac">
+        <source>Tax G</source>
+        <target>Podatek G</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="cb3c93351f1f20809fdd6e938a4319c7">
@@ -112,9 +162,9 @@
         <target>Inne ustawienia</target>
         <note>Line: </note>
       </trans-unit>
-      <trans-unit id="031f1ba4df006ddbbe349df45474001e">
-        <source>Ask for phone if not provided but receipt is expected.</source>
-        <target>Zapytaj o numer telefonu, jeśli nie jest podany, ale jest oczekiwany.</target>
+      <trans-unit id="76a82b6fd390e510122e2652b4f20c92">
+        <source>Ask for phone if not provided but e-receipt is expected.</source>
+        <target>Pytaj o numer telefonu, jeśli nie podany, na potrzeby wydruku e-paragonu.</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="c9cc8cce247e49bae79f15173ce97354">
@@ -127,9 +177,124 @@
         <target>Nieprawidłowa konfiguracja.</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="651addb2e8688c0090222ce2bf723f1d">
+        <source>Invalid tax values.</source>
+        <target>Niepoprawne wartości podatku.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="d134ba6f37d2958936f091948da566ef">
+        <source>Invalid pos id.</source>
+        <target>Niepoprawny ID sklepu.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b7a2afd784442dd0dda66a19f4012c57">
+        <source>Invalid store NIP.</source>
+        <target>Niepoprawny NIP sklepu.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="fa1f929948f8301581fd98fbd38f95ee">
+        <source>Invalid client id.</source>
+        <target>Błędny client id.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="c2b2e0bac7262398be1439450ec3e44a">
+        <source>Invalid client secret.</source>
+        <target>Błędny client secret.</target>
+        <note>Line: </note>
+      </trans-unit>
       <trans-unit id="3332f1574a25f7e33aef101f3f0fccd2">
         <source>Config updated.</source>
         <target>Konfiguracja zmieniona.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="24a23d787190f2c4812ff9ab11847a72">
+        <source>Status:</source>
+        <target>Status:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="8887e9495cf45f67ff36b1058298f03f">
+        <source>Issuing e-receipt has not started.</source>
+        <target>Wydawanie e-paragonu się jeszcze nie rozpoczęło.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6d8a2469cc496c0572524a4c8e4d2775">
+        <source>E-receipt processing initiated.</source>
+        <target>Wydawanie e-paragonu rozpoczęte.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="7679253e8807eeca5d035aa3401d60b8">
+        <source>E-receipt processing initiated</source>
+        <target>Wydawanie e-paragonu rozpoczęte</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="7b9fc263a6029760d9a62908cfae9809">
+        <source>E-receipt awaits to be issued.</source>
+        <target>Paragon oczekuje na wydanie.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="17ad8542aa26807864ac899d3d8ceec2">
+        <source>E-receipt has been issued.</source>
+        <target>Paragon został wydany.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="47792b3d99a4afc08861ef23033969c6">
+        <source>Error occured while issuing e-receipt.</source>
+        <target>Błąd nastąpił podczas wydawania e-paragonu.</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="2e75d03992c793357d1e0d7749591c4e">
+        <source>(unknown status)</source>
+        <target>(nieznany status)</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="eff3acd8c30e9d8e19dd51f3ce648138">
+        <source>Document type:</source>
+        <target>Typ dokumentu:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="243ab4f98f7a890f1a09a943bb225fc2">
+        <source>e-receipt</source>
+        <target>e-paragon</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="ad921d60486366258809553a3db49a4a">
+        <source>unknown</source>
+        <target>nieznany</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="b15fd0f06baf42f69d008eaa470747d9">
+        <source>Retry e-mail sending</source>
+        <target>Ponów wysyłanie e-mail</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6f0f953bed953dd5901bb1be35b8fb3b">
+        <source>Display e-receipt</source>
+        <target>Wyświetl e-paragon</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="0f361089adfeb72cd539c7d335c08cdb">
+        <source>Additional information:</source>
+        <target>Dodatkowe informacje:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="212713efb37cd2f521ee584f1dbb5f0b">
+        <source>Shop ID:</source>
+        <target>ID sklepu:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="a0751e413b3a6b165a58e230cf3ee403">
+        <source>Repository ID:</source>
+        <target>ID repozytorium:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6d2e7477916d118eb0a377fd13af4f63">
+        <source>Last update:</source>
+        <target>Ostatnia aktualizacja:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="d3ee1dc5166ee37fa420775932f09d1f">
+        <source>Retry count:</source>
+        <target>Liczba prób:</target>
         <note>Line: </note>
       </trans-unit>
       <trans-unit id="43c82e3ff88d2dbb422b5115d5bdbbce">
@@ -157,6 +322,11 @@
         <target>Paragon jest gotowy.</target>
         <note>Line: </note>
       </trans-unit>
+      <trans-unit id="f0d4fc97a4ab7c688960a0b3677cd047">
+        <source>Internal state:</source>
+        <target>Wewnętrzny stan:</target>
+        <note>Line: </note>
+      </trans-unit>
       <trans-unit id="3aea427a69e8906b95790872a9ab07cd">
         <source>Preview:</source>
         <target>Podgląd:</target>
@@ -165,6 +335,96 @@
       <trans-unit id="edcf27549b37757a40bc3517a4576c6e">
         <source>Force send e-mail</source>
         <target>Wymuś wysłanie e-mail</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f21571b7f687913c49da2cfdf4769ef6">
+        <source>Force download</source>
+        <target>Wymuś pobranie</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="f316e4effdd22c2c56b351f2290c175f">
+        <source>Prepare new e-receipt</source>
+        <target>Przygotuj nowy e-paragon</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="a853bcbb52d00a73c9f5fdfdc75b81c5">
+        <source>Documents list</source>
+        <target>Lista dokumentów</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="2ca3deb5cd68fa9119b285804fab572f">
+        <source>Order:</source>
+        <target>Zamówienie:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="5610b9bd40efffe9d0711f11b338896b">
+        <source>Receipt:</source>
+        <target>Paragon:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="3eb0470ba5cae79939112bb903304502">
+        <source>Next check:</source>
+        <target>Następne sprawdzenie:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="00a114eb52ecc0878fcc99f6ec935e1b">
+        <source>Transitions:</source>
+        <target>Przejścia:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="52b3015e96a1fa6d7117cb2b8c930cd9">
+        <source>Actions:</source>
+        <target>Akcje:</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="13348442cc6a27032d2b4aa28b75a5d3">
+        <source>Search</source>
+        <target>Szukaj</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="526d688f37a86d3c3f27d0c5016eb71d">
+        <source>Reset</source>
+        <target>Zresetuj</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="4c41e0bd957698b58100a5c687d757d9">
+        <source>Select all</source>
+        <target>Wybierz wszystkie</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="6a1854f62e217911db9a2a437d219212">
+        <source>Select none</source>
+        <target>Wyczyść wybór</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="eab07a59ab7c2019b5fe02b4bd69472f">
+        <source>not ready</source>
+        <target>niegotowy</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="eefef6a64decae9f6804973acf242f87">
+        <source>Generate selected</source>
+        <target>Wygeneruj zaznaczone</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="14acc5e0b612ca0f89da0b52b676dc20">
+        <source>Print Server Debug</source>
+        <target>Debugowanie serwera wydruku</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="14cf477313f196c912a7d5b3721dc5a2">
+        <source>Document ID</source>
+        <target>Dokument ID</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="44749712dbec183e983dcd78a7736c41">
+        <source>Date</source>
+        <target>Data</target>
+        <note>Line: </note>
+      </trans-unit>
+      <trans-unit id="15c2d85f1fae22a3c3a0594510a1f611">
+        <source>Request</source>
+        <target>Zapytanie</target>
         <note>Line: </note>
       </trans-unit>
     </body>

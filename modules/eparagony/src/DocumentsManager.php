@@ -7,131 +7,67 @@
 
 namespace Spark\EParagony;
 
-use Spark\EParagony\Entity\EparagonyDocumentStatus;
-use Spark\EParagony\SparkApi\ApiSparkException;
-use Spark\EParagony\SparkApi\ApiSparkFactory;
 use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\ORMException;
-use Exception;
 use OrderHistory;
 use PrestaShop\PrestaShop\Adapter\Entity\Order;
 use PrestaShop\PrestaShop\Adapter\Entity\OrderState;
 use PrestaShopLogger;
+use Spark\EParagony\Entity\EparagonyDocumentStatus;
+use Spark\EParagony\Repository\EparagonyDocumentStatusRepository;
+use Spark\EParagony\SparkApi\ApiSpark;
+use Spark\EParagony\SparkApi\ApiSparkException;
+use Spark\EParagony\SparkApi\ApiSparkFactory;
 
-class DocumentsManager
+/*
+
+graph LR
+    Blank([Blank]) --> Queued
+    Sent -->|potwierdzenie od serwera| Confirmed
+    Sent -->|błąd z serwera| Error
+    Queued -->|przygotowanie do wysyłki| Sending
+    Sending -->|połączenie z API wykonane| Sent
+    Sending -->|przygotowanie do wysyłki udane| Sending
+    Sending -->|przygotowanie do wysyłki nieudane| Error
+    Confirmed -->|błąd z serwera| Confirmed
+    Confirmed -->|potwierdzenie od serwera| Confirmed
+    Blank & Queued & Sending -.->|potwierdzenie od serwera| Unknown
+    Blank & Queued & Sending -.->|błąd z serwera| Unknown
+
+*/
+
+class DocumentsManager extends MiniDocumentsManager
 {
-    private $em;
-    private $receiptManager;
     private $mailer;
     private $apiSparkFactory;
-    private $orderChecker;
+    private $apiSpark;
+
+    const MAX_RETRY = 10;
 
     public function __construct(
         EntityManagerInterface $em,
-        ReceiptQueueManager $receiptManager,
         Mailer $mailer,
         ApiSparkFactory $apiSparkFactory,
         OrderChecker $orderChecker
     ) {
-        $this->em = $em;
-        $this->receiptManager = $receiptManager;
+        parent::__construct($em, $orderChecker);
+
         $this->mailer = $mailer;
         $this->apiSparkFactory = $apiSparkFactory;
-        $this->orderChecker = $orderChecker;
-    }
-
-    public function getDocumentStatusIfExists($orderId) : ?EparagonyDocumentStatus
-    {
-        $repo = $this->em->getRepository(EparagonyDocumentStatus::class);
-
-        return $repo->findOneBy(['orderId' => $orderId]);
     }
 
     public function handleHistoryChange(OrderHistory $orderHistory)
     {
-        $orderState = new OrderState($orderHistory->id_order_state);
-        if (!$this->orderChecker->isDocumentPossibleForState($orderState)) {
-            /* Nothing to do. */
-            return;
-        }
+        $documentStatus = parent::handleHistoryChange($orderHistory);
 
-        $order = new Order($orderHistory->id_order);
-        if (!$this->orderChecker->isApplicableForOrder($order)) {
-            /* Nothing to do. */
-            return;
-        }
-
-        $documentStatus = $this->getDocumentStatusIfExists($order->id);
-        if (!$documentStatus) {
-            try {
-                $documentStatus = $this->receiptManager->createEmpty($order->id);
-                if (!$documentStatus) {
-                    /* There is an error log. Ignore creation of receipt. */
-                    return;
-                }
-            } catch (ORMException|DBALException $ex) {
-                #TODO Check if this logger is reliable in this context.
-                /* It is not critical. */
-                $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
-                PrestaShopLogger::addLog(
-                    $ex->getMessage(),
-                    $level,
-                    $ex->getCode()
-                );
-                return;
-            }
-        }
-
-        /* We can assume the method below is not thrown. */
-        $this->downloadRecipe($documentStatus);
-    }
-
-    public function getFromQueue()
-    {
-        try {
-            $status = $this->getFromQueueInternal();
-            if ($status) {
-                $ok = $this->receiptManager->prepForUpload($status);
-                if ($ok) {
-                    return $status;
-                } else {
-                    return null;
-                }
-            }
-        } catch (ORMException|DBALException $ex) {
-            #TODO Check if this logger is reliable in this context.
-            /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
-            PrestaShopLogger::addLog(
-                $ex->getMessage(),
-                $level,
-                $ex->getCode()
-            );
-
-            return null;
-        }
-    }
-
-    private function getFromQueueInternal()
-    {
-        $documentStatus = $this->receiptManager->getFromQueue();
         if ($documentStatus) {
-            if ($this->receiptManager->needDownloadStep($documentStatus)) {
-                $canDownload = $this->receiptManager->prepForDownload($documentStatus);
-                if ($canDownload) {
-                    $downloaded = $this->downloadRecipe($documentStatus);
-                    if ($downloaded) {
-                        return $documentStatus;
-                    }
-                }
-            } else {
-                return $documentStatus;
-            }
+            /* We can assume the method below is not thrown. */
+            $this->downloadRecipe($documentStatus);
         }
 
-        return null;
+        return $documentStatus;
     }
 
     public function getByTag($tag) : ?EparagonyDocumentStatus
@@ -143,96 +79,71 @@ class DocumentsManager
         return $one;
     }
 
-    /**
-     * The method to mark document queue as finished.
-     *
-     * This function do not distinct between finishing with and without error.
-     * Only database errors are reported back, as exception.
-     *
-     * @param EparagonyDocumentStatus $documentStatus
-     * @throws DatabaseError
-     */
-    public function finishQueue(EparagonyDocumentStatus $documentStatus)
-    {
-        try {
-            $this->receiptManager->finishQueue($documentStatus);
-            $rapportError = false;
-        } catch (ORMException|DBALException $ex) {
-            #TODO Check if this logger is reliable in this context.
-            /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
-            PrestaShopLogger::addLog(
-                $ex->getMessage(),
-                $level,
-                $ex->getCode()
-            );
-
-            $rapportError = true;
-        }
-
-        if ($rapportError) {
-            throw new DatabaseError('Cannot finish queue.');
-        }
-    }
-
     public function confirmQueue(EparagonyDocumentStatus $documentStatus)
     {
+        $rapportError = false;
         try {
-            $this->receiptManager->confirmQueue($documentStatus);
-            $rapportError = false;
+            $state = $documentStatus->getDocumentState();
+            $now = new DateTime();
+            switch ($state) {
+                case $documentStatus::STATE_SENT:
+                    $this->addTransition($documentStatus, $now, $documentStatus::STATE_CONFIRMED, self::COUNT_ZERO);
+                    $this->em->flush();
+                    break;
+                case $documentStatus::STATE_CONFIRMED:
+                    /* Nothing to do. */
+                    break;
+                default:
+                    /* Not expected. */
+                    $this->addTransition($documentStatus, $now, $documentStatus::STATE_UNKNOWN, self::COUNT_IGNORE);
+                    $this->em->flush();
+                    break;
+            }
+        } catch (ORMException|DBALException $ex) {
+            #TODO Check if this logger is reliable in this context.
+            /* It is not critical. */
+            $level = self::LOG_SEVERITY_LEVEL_WARNING;
+            PrestaShopLogger::addLog(
+                $ex->getMessage(),
+                $level,
+                $ex->getCode()
+            );
 
+            $rapportError = true;
+        }
+
+        if ($rapportError) {
+            throw new DatabaseError('Cannot finish queue.');
+        } else {
             /* Send after flush. */
             $this->mailer->mailReceipt($documentStatus);
-        } catch (ORMException|DBALException $ex) {
-            #TODO Check if this logger is reliable in this context.
-            /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
-            PrestaShopLogger::addLog(
-                $ex->getMessage(),
-                $level,
-                $ex->getCode()
-            );
-
-            $rapportError = true;
-        }
-
-        if ($rapportError) {
-            throw new DatabaseError('Cannot finish queue.');
-        }
-    }
-
-    public function repeatQueue(EparagonyDocumentStatus $documentStatus)
-    {
-        try {
-            $this->receiptManager->repeatQueue($documentStatus);
-            $rapportError = false;
-        } catch (ORMException|DBALException $ex) {
-            #TODO Check if this logger is reliable in this context.
-            /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
-            PrestaShopLogger::addLog(
-                $ex->getMessage(),
-                $level,
-                $ex->getCode()
-            );
-
-            $rapportError = true;
-        }
-
-        if ($rapportError) {
-            throw new DatabaseError('Cannot finish queue.');
         }
     }
 
     public function cancelQueue(EparagonyDocumentStatus $documentStatus)
     {
+        $rapportError = false;
         try {
-            $this->receiptManager->cancelQueue($documentStatus);
-            $rapportError = false;
+            $state = $documentStatus->getDocumentState();
+            $now = new DateTime();
+            switch ($state) {
+                case $documentStatus::STATE_CONFIRMED:
+                    /* Nothing to do. Ignore command. */
+                    break;
+                case $documentStatus::STATE_SENT:
+                    $this->addTransition($documentStatus, $now, $documentStatus::STATE_ERROR, self::COUNT_IGNORE);
+                    $this->em->flush();
+                    break;
+                default:
+                    /* Not expected. */
+                    $this->addTransition($documentStatus, $now, $documentStatus::STATE_UNKNOWN, self::COUNT_IGNORE);
+                    $this->em->flush();
+                    break;
+            }
         } catch (ORMException|DBALException $ex) {
             #TODO Check if this logger is reliable in this context.
             /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
+            $level = self::LOG_SEVERITY_LEVEL_WARNING;
             PrestaShopLogger::addLog(
                 $ex->getMessage(),
                 $level,
@@ -249,17 +160,29 @@ class DocumentsManager
 
     public function forceDownloadRecipe($orderId)
     {
+        $level = self::LOG_SEVERITY_LEVEL_NOTICE;
+        PrestaShopLogger::addLog(
+            "Forced download of e-paragon of order $orderId.",
+            $level
+        );
+
         $order = new Order($orderId);
         if ($order->id) {
             $documentStatus = $this->getDocumentStatusIfExists($order->id);
             if ($documentStatus) {
-                $this->receiptManager->forceQueued($documentStatus);
+                $state = $documentStatus->getDocumentState();
+                if ($documentStatus::STATE_QUEUED !== $state) {
+                    $now = new DateTime();
+                    $randomId = $now->format('ym') . '-' . bin2hex(random_bytes(8)) . '_forced';
+                    $documentStatus->setTextId($randomId);
+                    $this->addTransition($documentStatus, $now, $documentStatus::STATE_QUEUED, self::COUNT_RESET);
+                    $this->em->flush();
+                }
             } else {
-                $documentStatus = $this->receiptManager->createEmpty($order->id);
+                $documentStatus = $this->createEmpty($order->id);
             }
 
-            $this->downloadRecipe($documentStatus);
-            return true;
+            return $this->downloadRecipe($documentStatus);
         } else {
             return false;
         }
@@ -275,8 +198,28 @@ class DocumentsManager
      */
     public function downloadRecipe(EparagonyDocumentStatus $documentStatus)
     {
+        return $this->downloadRecipeInternal($documentStatus, false);
+    }
+
+    /**
+     * Try download recipe (internal use).
+     *
+     * We have to skip check if it has been executed before.
+     *
+     * This method does not throw.
+     *
+     * @param EparagonyDocumentStatus $documentStatus
+     * @param bool $skipCheck
+     * @return bool True for success.
+     */
+    private function downloadRecipeInternal(EparagonyDocumentStatus $documentStatus, $skipCheck)
+    {
         try {
-            $canDownload = $this->receiptManager->prepForDownload($documentStatus);
+            if ($skipCheck) {
+                $canDownload = true;
+            } else {
+                $canDownload = $this->prepForSending($documentStatus);
+            }
             if (!$canDownload) {
                 /* The document cannot be downloaded. */
                 return false;
@@ -284,8 +227,8 @@ class DocumentsManager
             $order = new Order($documentStatus->getOrderId());
 
             $textId = $documentStatus->getTextId();
-            $api = $this->apiSparkFactory->getApiClass();
-            list($command, $url, $sparkToken, $printer) = $api->getRecipeCommand($order, $textId);
+            $api = $this->getApiSpark();
+            list($command, $url, $sparkToken) = $api->getRecipeCommand($order, $textId);
             $rest = json_decode($documentStatus->getRest(), true);
             if (!is_array($rest)) {
                 $rest = [];
@@ -293,15 +236,14 @@ class DocumentsManager
             $rest['command'] = $command;
             $rest['url'] = $url;
             $rest['sparkToken'] = $sparkToken;
-            $rest['printer'] = $printer;
             $documentStatus->setRest(json_encode($rest));
             /* The function below flush. */
-            $this->receiptManager->finishDownload($documentStatus);
+            $this->finishSending($documentStatus);
 
             return true;
         } catch (ApiSparkException $ex) {
             /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
+            $level = self::LOG_SEVERITY_LEVEL_WARNING;
             PrestaShopLogger::addLog(
                 $ex->getMessage(),
                 $level,
@@ -312,7 +254,7 @@ class DocumentsManager
         } catch (ORMException|DBALException $ex) {
             #TODO Check if this logger is reliable in this context.
             /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
+            $level = self::LOG_SEVERITY_LEVEL_WARNING;
             PrestaShopLogger::addLog(
                 $ex->getMessage(),
                 $level,
@@ -321,5 +263,90 @@ class DocumentsManager
 
             return false;
         }
+    }
+
+    public function finishSending(EparagonyDocumentStatus $status)
+    {
+        $now = new DateTime();
+        $state = $status->getDocumentState();
+        if ($status::STATE_SENDING === $state) {
+            $this->addTransition($status, $now, $status::STATE_SENT, self::COUNT_ZERO);
+        } else {
+            $this->addTransition($status, $now, $status::STATE_UNKNOWN, self::COUNT_IGNORE);
+        }
+        $this->em->flush();
+    }
+
+    private function prepForSending(EparagonyDocumentStatus $status)
+    {
+        $state = $status->getDocumentState();
+        $now = new DateTime();
+        if ($status::STATE_QUEUED === $state) {
+            $this->addTransition($status, $now, $status::STATE_SENDING, self::COUNT_RESET);
+            $this->em->flush();
+            return true;
+        } elseif (EparagonyDocumentStatus::STATE_SENDING === $state) {
+            $timeLimit = new DateTime('10 minutes ago');
+            if ($status->getUpdated() > $timeLimit) {
+                /* It is expected this state will be changed from different thread in few seconds. */
+                $inOneMinute = new DateTime('1 minute');
+                $status->setChecked($inOneMinute);
+                $this->em->flush();
+                return false;
+            } else {
+                $count = $status->getRetryCount();
+                if ($count >= self::MAX_RETRY) {
+                    $this->addTransition($status, $now, $status::STATE_ERROR, self::COUNT_IGNORE);
+                    $this->em->flush();
+                    return false;
+                } else {
+                    $newCount = $this->addTransition($status, $now, $status::STATE_SENDING, self::COUNT_INCREMENT);
+                    /* We want to wait more each time. The tenth time is over one day. */
+                    $seconds = round(3.2 ** ($newCount - 1) + 600);
+                    $checkAt = new DateTime("$seconds seconds");
+                    $status->setChecked($checkAt);
+                    $this->em->flush();
+                    return true;
+                }
+            }
+        } else {
+            /* Nothing sane to do. */
+            return false;
+        }
+    }
+
+    /**
+     * Get Spark API
+     *
+     * @return ApiSpark
+     */
+    private function getApiSpark()
+    {
+        if (!isset($this->apiSpark)) {
+            $this->apiSpark = $this->apiSparkFactory->getApiClass();
+        }
+
+        return $this->apiSpark;
+    }
+
+    public function tryRepeatRegister()
+    {
+        $repo = $this->em->getRepository(EparagonyDocumentStatus::class);
+        assert($repo instanceof EparagonyDocumentStatusRepository);
+
+        /* 10 additional seconds. */
+        $stop = time() + 10;
+        do {
+            $status =  $repo->getFromQueue();
+            if (!$status) {
+                /* Early exit. */
+                return;
+            }
+            $ready = $this->prepForSending($status);
+            if ($ready) {
+                /* It is checked. */
+                $this->downloadRecipeInternal($status, true);
+            }
+        } while (time() < $stop);
     }
 }

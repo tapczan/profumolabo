@@ -18,6 +18,8 @@ class PrinterLogManager
 {
     private $em;
 
+    const LOG_SEVERITY_LEVEL_WARNING = 2;
+
     public function __construct(
         EntityManagerInterface $em
     ) {
@@ -41,7 +43,7 @@ class PrinterLogManager
         } catch (ORMException|DBALException $ex) {
             #TODO Check if this logger is reliable in this context.
             /* It is not critical. */
-            $level = PrestaShopLogger::LOG_SEVERITY_LEVEL_WARNING;
+            $level = self::LOG_SEVERITY_LEVEL_WARNING;
             PrestaShopLogger::addLog(
                 $ex->getMessage(),
                 $level,

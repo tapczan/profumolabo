@@ -32,17 +32,6 @@ class RawDbActions
         )';
         $ret[] = Db::getInstance()->execute($sql);
 
-        $sql = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'eparagony_printer_token` (
-                `id_document_state` INT UNSIGNED AUTO_INCREMENT NOT NULL,
-                `token` VARCHAR(255) NOT NULL,
-                `created` DATETIME NOT NULL,
-                `valid_to` DATETIME NOT NULL,
-                `privileges` LONGTEXT NOT NULL,
-                 UNIQUE INDEX UNIQ_41CE29835F37A13B (`token`),
-                 PRIMARY KEY(`id_document_state`)
-        )';
-        $ret[] = Db::getInstance()->execute($sql);
-
         $sql = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'eparagony_cart_config` (
                 `id_document_state` INT UNSIGNED AUTO_INCREMENT NOT NULL,
                 `id_cart` INT UNSIGNED NOT NULL,
@@ -50,15 +39,6 @@ class RawDbActions
                 UNIQUE INDEX UNIQ_3FEB9AAA808394B5 (`id_cart`),
                 PRIMARY KEY(`id_document_state`)
         )';
-        $ret[] = Db::getInstance()->execute($sql);
-
-        $sql = 'CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'eparagony_printer_log` (
-                `id_printer_log` INT UNSIGNED AUTO_INCREMENT NOT NULL,
-                `document_text_id` VARCHAR(255) NOT NULL,
-                `created` DATETIME NOT NULL,
-                `rest` LONGTEXT NOT NULL,
-                PRIMARY KEY(`id_printer_log`)
-        );';
         $ret[] = Db::getInstance()->execute($sql);
 
         $reduceAnd = function ($a, $b) {

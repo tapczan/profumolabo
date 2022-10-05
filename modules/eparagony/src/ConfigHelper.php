@@ -15,12 +15,7 @@ class ConfigHelper
 
     private static function propagateDefaultvalues(ConfigurationHolder $configuration)
     {
-        if (!$configuration->printer_username) {
-            $configuration->printer_username = 'default_printer';
-        }
-        if (!$configuration->printer_password) {
-            $configuration->printer_password = bin2hex(random_bytes(10));
-        }
+        /* Empty for now. */
     }
 
     public static function getSavedConfig(): ConfigurationHolder

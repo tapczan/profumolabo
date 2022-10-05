@@ -18,20 +18,19 @@ use PrestaShop\PrestaShop\Adapter\Entity\Product;
 
 class ApiSpark
 {
-    private $printerType;
     private $posId;
     private $storeNip;
     private $token;
     private $url;
     private $logRequests;
     private $logDirectory;
-    private $logFileName;
+    private $logFileNames;
     private $returnPolicySpark;
-    private $webhookUrl;
+    private $fiscalizationUrl;
     private $taxHelper;
+    private $orderId;
 
     public function __construct(
-        string $printerType,
         string $posId,
         string $storeNip,
         string $token,
@@ -39,10 +38,9 @@ class ApiSpark
         bool $logRequests,
         string $logDirectory,
         string $returnPolicySpark,
-        string $webhookUrl,
+        string $fiscalizationUrl,
         TaxHelperForSpark $taxHelper
     ) {
-        $this->printerType = $printerType;
         $this->posId = $posId;
         $this->storeNip = $storeNip;
         $this->token = $token;
@@ -50,8 +48,10 @@ class ApiSpark
         $this->logRequests = $logRequests;
         $this->logDirectory = $logDirectory;
         $this->returnPolicySpark = $returnPolicySpark;
-        $this->webhookUrl = $webhookUrl;
+        $this->fiscalizationUrl = $fiscalizationUrl;
         $this->taxHelper = $taxHelper;
+
+        $this->logFileNames = array();
     }
 
     private function getRawProducts(Order $order)
@@ -62,18 +62,18 @@ class ApiSpark
             /* The tax_rate field is not reliable. */
             $taxRate = round(($product['unit_price_tax_incl'] / $product['unit_price_tax_excl'] - 1) * 100);
 
-            /* We assume the gross price is more correct. */
+            $product['our_tax_rate'] = (int)$taxRate;
 
-            $unitPrice = round($product['unit_price_tax_incl'], 2);
-            $unitPriceNett = round($unitPrice / (1 + $taxRate / 100), 2);
+            /* We care only for totals. The rebate is per line, not per item. */
+
             $quantity = $product['product_quantity'];
-            $totalPrice = round($unitPrice * $quantity, 2);
-            $totalPriceNett = round($unitPriceNett * $quantity, 2);
+            $totalPrice = round($product['total_price_tax_incl'], 2);
+            $totalPriceNett = round($product['total_price_tax_excl'], 2);
 
-            $product['our_unit_price_nett'] = $unitPriceNett;
-            $product['our_unit_price'] = $unitPrice;
             $product['our_total_price'] = $totalPrice;
             $product['our_total_price_nett'] = $totalPriceNett;
+
+            /* We assume the gross price is more correct. */
 
             $orgPrice = round($product['original_product_price'] * (1 + $taxRate/100), 2);
             $orgPriceNett = round($orgPrice / (1 + $taxRate / 100), 2);
@@ -84,8 +84,6 @@ class ApiSpark
             $product['our_org_price'] = $orgPrice;
             $product['our_org_total_price'] = $totalOrgPrice;
             $product['our_org_total_price_nett'] = $totalOrgPriceNett;
-
-            $product['our_tax_rate'] = (int)$taxRate;
 
             $rawProducts[] = $product;
         }
@@ -111,6 +109,10 @@ class ApiSpark
         if (!$this->checkIfPln($order)) {
             throw new LogicException('Only PLN is supported. It should be checked earlier.');
         }
+
+        /* Useful for debug. */
+        $this->orderId = $order->id;
+
         $rawProducts = $this->getRawProducts($order);
         $rawShipping = $this->getShipping($order);
         $response = $this->registerTransaction($order, $rawProducts, $rawShipping, $session);
@@ -123,7 +125,7 @@ class ApiSpark
             throw new ApiSparkException('Cannot get commoand.', ApiSparkException::CODE_COMMAND_FAILED);
         }
 
-        return [$command, $receipeUrl, $receipeToken, $this->printerType];
+        return [$command, $receipeUrl, $receipeToken];
     }
 
     private function checkIfPln(Order $order)
@@ -156,8 +158,8 @@ class ApiSpark
             $product->id = (string)$id; /* Yes, string. */
             $product->name = (string)$rawProduct['product_name'];
             $product->quantity = (string)$rawProduct['product_quantity']; /* Yes, string. */
-            $product->unitPrice = MoneyTool::roundToCentile($rawProduct['our_unit_price']);
-            $product->value = MoneyTool::roundToCentile($rawProduct['our_total_price']);
+            $product->unitPrice = MoneyTool::roundToCentile($rawProduct['our_org_price']);
+            $product->value = MoneyTool::roundToCentile($rawProduct['our_org_total_price']);
             $product->taxRate = $this->taxHelper->decodeToLetter($rawProduct['our_tax_rate']);
             $product->taxRateValue = (string)MoneyTool::roundTax($rawProduct['our_tax_rate']); /* Yes, string. */
             $product->SKU = (string)$rawProduct['reference'] ?: 'x-' . $rawProduct['id_product'];
@@ -204,7 +206,7 @@ class ApiSpark
             'paymentAmount' => MoneyTool::roundToCentile($this->computeTotalPrice($rawProducts, $rawShipping)),
             'shippingAmount' => MoneyTool::roundToCentile($rawShipping['shipping']),
             'currency' => 'PLN',
-            'statusUrl' => $this->webhookUrl,
+            'statusUrl' => 'http://example.com', /* Unused but required. */
             'currentTimePOS' => date(DATE_ATOM),
             'products' => $this->getProducts($rawProducts),
             'ereceiptIntent' => true,
@@ -224,7 +226,7 @@ class ApiSpark
         curl_setopt_array($curl, [
             CURLOPT_POST => true,
             CURLOPT_URL => $fullUrl,
-            CURLOPT_USERAGENT => Constants::USER_AGENT . '/' . Constants::PLUGIN_VERSION,
+            CURLOPT_USERAGENT => Constants::getUserAgentWithVersion(),
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
                 'Authorization: Bearer ' . $this->token,
@@ -314,13 +316,13 @@ class ApiSpark
         return MoneyTool::displayMoneyWithDotFromCentiles($withTax);
     }
 
-    private function getRecipeLines($rawProducts, $rawShipping)
+    private function getRecipeLines($rawProducts, $rawShipping, $totalDiscount)
     {
         $lines = [];
         /* Count from 1. */
         $id = 1;
         foreach ($rawProducts as $rawProduct) {
-            $line = new SparkRecipeLine();
+            $line = new SparkRecipeProductLine();
             $line->productOrServiceName = (string)$rawProduct['product_name'];
             $line->ID = $id;
             $line->SKU = (string)$rawProduct['reference'] ?: 'x-' . $rawProduct['id_product'];
@@ -328,10 +330,9 @@ class ApiSpark
             $line->unitPrice = MoneyTool::displayMoneyWithDot($rawProduct['our_org_price']);
             $line->totalLineValue = MoneyTool::displayMoneyWithDot($rawProduct['our_org_total_price']);
             $line->taxRate =  $this->taxHelper->decodeToLetter($rawProduct['our_tax_rate']);
-            if ($rawProduct['our_org_price'] !== $rawProduct['our_unit_price']) {
+            if ($rawProduct['our_org_total_price'] !== $rawProduct['our_total_price']) {
                 /* Binary floats. */
-                $value = round($rawProduct['our_org_price'] - $rawProduct['our_unit_price'], 2);
-                $value = round($value * $rawProduct['product_quantity'], 2);
+                $value = round($rawProduct['our_org_total_price'] - $rawProduct['our_total_price'], 2);
                 $reductionPercent = (float)$rawProduct['reduction_percent'];
                 if ($reductionPercent) {
                     $label = 'Rabat ' . $reductionPercent . '%';
@@ -349,14 +350,22 @@ class ApiSpark
             $id++;
         }
         if ($rawShipping['shipping']) {
-            $line = new SparkRecipeLine();
-            $line->productOrServiceName = 'Transport';
+            $taxLetter = $this->taxHelper->decodeToLetter($rawShipping['tax_rate']);
+            $line = new SparkRecipeProductLine();
+            $line->productOrServiceName = 'Transport ' . $taxLetter;
             $line->ID = $id;
             $line->quantity = '1';
             $line->unitPrice = MoneyTool::displayMoneyWithDot($rawShipping['shipping']);
             $line->totalLineValue = MoneyTool::displayMoneyWithDot($rawShipping['shipping']);
-            $line->taxRate =  $this->taxHelper->decodeToLetter($rawShipping['tax_rate']);
+            $line->taxRate = $taxLetter;
             $lines[] = $this->nullFilter($line);
+        }
+
+        if ($totalDiscount) {
+            $line = new SparkRecipeRebateLine();
+            $line->value = MoneyTool::displayMoneyWithDot(-$totalDiscount);
+            $line->name = 'Zniżka';
+            $lines[] = $line;
         }
 
         return $lines;
@@ -373,6 +382,17 @@ class ApiSpark
         $nowAtom = date(DATE_ATOM);
         $grossSaleValue = $this->getTotalValue($rawProducts, $rawShipping, $order->total_discounts);
         $paid = MoneyTool::displayMoneyWithDot($order->total_paid_tax_incl);
+        /* Floating point zero as string may be true in PHP. We need to cast. */
+        $totalDiscounts = (float)$order->total_discounts;
+
+        $payment = [
+            'paymentName' => $order->payment ?: null,
+            'paymentForm' => 'Przelew',
+            'paidThisForm' => $paid,
+        ];
+        if (!$payment['paymentName']) {
+            unset($payment['paymentName']);
+        }
 
         $rawPayload = [
             'token' => $recipeToken,
@@ -380,7 +400,6 @@ class ApiSpark
             'eReceipt' => [
                 'metadata' => [
                     'orderId' => (string)$order->getUniqReference(),
-                    'globalReturnPolicy' => (string)$this->returnPolicySpark,
                     'TIN' => (string)$this->storeNip,
                     'nextDocumentID' => '', /* Required but unused. */
                     'taxRates' => $taxRates,
@@ -389,42 +408,27 @@ class ApiSpark
                     'taxTotalValue' => $this->getTaxTotalValue($rawProducts, $rawShipping),
                     'grossSaleValue' => $grossSaleValue,
                     'description' => 'DO ZAPŁATY',
-                    'nextReceiptNumber' => '', /* Required but unused. */
-                    #TODO Set line below to empty string when ready.
-                    'cashRegisterID' => '0', /* Required but unused. */
-                    #TODO Set line below to empty string when ready.
-                    'cashierID' => '0', /* Required but unused. */
                     'endTime' => $nowAtom,
-                    'documentDigitalSignature' => '', /* Required but unused. */
-                    'uniqueCashRegisterID' => '', /* Required but unused. */
+                    'extensions' => [
+                        'globalReturnPolicy' => (string)$this->returnPolicySpark,
+                    ],
                 ],
-                'lines' => $this->getRecipeLines($rawProducts, $rawShipping),
+                'lines' => $this->getRecipeLines($rawProducts, $rawShipping, $totalDiscounts),
                 'payment' => [
                     'payments' => [ /* Yes, array with single child. */
-                        [
-                            'paymentName' => $order->payment ?: '(b.d.)',
-                            'paymentForm' => 'Przelew',
-                            'paidThisForm' => $paid,
-                        ]
+                        $payment,
                     ],
                     'totalPaid' => $paid,
                 ],
             ],
+            'fiscalize' => true,
+            'fiscalizationStatusUrl' => $this->fiscalizationUrl,
             'currentTimePOS' => $nowAtom,
         ];
 
-        /* Floating point zero as string may be true in PHP. */
-        $totalDiscounts = (float)$order->total_discounts;
-        if ($totalDiscounts) {
-            $rebate = MoneyTool::displayMoneyWithDot(-$totalDiscounts); /* Negate value. */
-            $rawPayload['eReceipt']['metadata']['rebatesMarkups'] = [[
-                'type' => 'OBNIŻKA',
-                'value' => $rebate,
-                'name' => 'Zniżka',
-            ]];
-        }
         if (!$this->returnPolicySpark) {
-            unset($rawPayload['eReceipt']['metada']['globalReturnPolicy']);
+            /* We drop whole parent. */
+            unset($rawPayload['eReceipt']['metadata']['extensions']);
         }
 
         return $rawPayload;
@@ -433,19 +437,16 @@ class ApiSpark
     private function finalRequest(string $recipeToken, Order $order, array $rawProducts, array $rawShipping)
     {
         $rawPayload = $this->getFinalRequestData($order, $recipeToken, $rawProducts, $rawShipping);
-        $query = http_build_query([
-            'commandProtocol' => $this->printerType
-        ]);
 
         $payload = json_encode($rawPayload);
-        $fullUrl = $this->url . '/transactions/' . $recipeToken . '/receipt?' . $query;
+        $fullUrl = $this->url . '/transactions/' . $recipeToken . '/receipt';
         $this->tryCreateLogRequest($fullUrl, $payload);
 
         $curl = curl_init();
         curl_setopt_array($curl, [
             CURLOPT_POST => true,
             CURLOPT_URL => $fullUrl,
-            CURLOPT_USERAGENT => Constants::USER_AGENT . '/' . Constants::PLUGIN_VERSION,
+            CURLOPT_USERAGENT => Constants::getUserAgentWithVersion(),
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
                 'Authorization: Bearer ' . $this->token,
@@ -458,7 +459,7 @@ class ApiSpark
         $response = json_decode($rawResponse, true);
         if (is_array($response)) {
             if (($response['status'] ?? 'error') === 'saved') {
-                return $response['command'];
+                return $response['command'] ?? 'no command';
             }
         }
 
@@ -470,12 +471,14 @@ class ApiSpark
         if (!$this->logRequests) {
             return;
         }
-        if (!$this->logFileName) {
+        if (!array_key_exists($this->orderId, $this->logFileNames)) {
             $random = bin2hex(random_bytes(3));
-            $this->logFileName = 'eparagony_spark_' . date('Y-m-d_H-i-s') . '_' . $random;
+            $path = $this->logDirectory . DIRECTORY_SEPARATOR;
+            $this->logFileNames[$this->orderId] = $path . 'eparagony_spark_' . date('Y-m-d_H-i-s') . '_' . $random;
+            $content = "OrderId: " . $this->orderId . "\n\n";
+            file_put_contents($this->logFileNames[$this->orderId], $content, FILE_APPEND);
         }
-        $path = $this->logDirectory . DIRECTORY_SEPARATOR . $this->logFileName;
         $content = "\n". $url . "\n" . $payload . "\n";
-        file_put_contents($path, $content, FILE_APPEND);
+        file_put_contents($this->logFileNames[$this->orderId], $content, FILE_APPEND);
     }
 }

@@ -40,18 +40,15 @@ class AdminOrderDisplay
         }
 
         switch ($state) {
-            case EparagonyDocumentStatus::STATE_READY:
             case EparagonyDocumentStatus::STATE_CONFIRMED:
                 $url = $rest['url'] ?? null;
                 $ready = (bool)$url;
                 break;
-            case EparagonyDocumentStatus::STATE_COMPILED:
-            case EparagonyDocumentStatus::STATE_IN_PROGRESS:
+            case EparagonyDocumentStatus::STATE_SENT:
                 $url = $rest['url'] ?? null;
                 $waiting = true;
                 break;
             case EparagonyDocumentStatus::STATE_QUEUED:
-            case EparagonyDocumentStatus::STATE_DOWNLOADING:
                 $url = null;
                 $waiting = true;
                 break;
@@ -146,12 +143,10 @@ class AdminOrderDisplay
                 $ret['code'] = self::BTN_CODE_ISSUE;
                 $ret['additionalClass'] = 'js-eparagony-force-download';
                 break;
-            case EparagonyDocumentStatus::STATE_DOWNLOADING:
+            case EparagonyDocumentStatus::STATE_SENDING:
                 $ret['code'] = self::BTN_CODE_ISSUING;
                 break;
-            case EparagonyDocumentStatus::STATE_COMPILED:
-            case EparagonyDocumentStatus::STATE_IN_PROGRESS:
-            case EparagonyDocumentStatus::STATE_READY:
+            case EparagonyDocumentStatus::STATE_SENT:
                 $ret['code'] = self::BTN_CODE_ISSUING;
                 $ret['url'] = $status->extractRestField('url');
                 break;
@@ -179,8 +174,8 @@ class AdminOrderDisplay
             'retryCount' => null,
             'sendEmail' => false,
             'forceDownload' => false,
-            'documentId' => null,
-            'debugPrintServer' => null,
+            'forceRedownload' => false,
+            'queueLink' => null,
         ];
 
         if ($status) {
@@ -191,7 +186,7 @@ class AdminOrderDisplay
             $r['sparkToken'] = $status->extractRestField('sparkToken');
             $r['updated'] = $status->getUpdated()->format('Y-m-d H:i:s');
             $r['retryCount'] = $status->getRetryCount();
-            $r['documentId'] = $status->getTextId();
+            $r['queueLink'] = $this->router->generate('eparagony_admin_queue', ['order-id' => $orderId]);
         }
 
         if ($r['url']) {
@@ -206,9 +201,17 @@ class AdminOrderDisplay
             $r['forceDownload'] = $this->router->generate('eparagony_admin_force_download', $params);
         }
 
-        if ($r['documentId']) {
-            /* We have to pass parameters in a form. */
-            $r['debugPrintServer'] = $this->router->generate('eparagony_admin_debug_web_server');
+        if (!$r['forceDownload']) {
+            switch ($r['stateRaw']) {
+                case $status::STATE_ERROR:
+                case $status::STATE_UNKNOWN:
+                    /* Yes, additional place to force download. */
+                    $params = [
+                        'order_id' => $orderId,
+                    ];
+                    /* Different key. */
+                    $r['forceRedownload'] = $this->router->generate('eparagony_admin_force_download', $params);
+            }
         }
 
         return $r;

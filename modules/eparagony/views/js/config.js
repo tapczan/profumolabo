@@ -8,7 +8,6 @@
 
 $(function() {
    let $pack = $('.eparagony-form-password-pack');
-   console.log($pack);
 
    $pack.each(function (idx, elm) {
        let $elm = $(elm);
@@ -18,7 +17,6 @@ $(function() {
        $eye.css('position', 'absolute').css('top', '1em').css('right', '1em').css('cursor', 'pointer');
        $eye.show();
        $censored.on('change', function() {
-           console.log($censored.val());
            $withValue.val($censored.val());
        });
        $eye.on('click', function(){

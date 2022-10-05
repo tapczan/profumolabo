@@ -26,10 +26,6 @@ class ConfigurationHolder
     const TAX_F = 'tax_f';
     const TAX_G = 'tax_g';
 
-    const PRINTER_TYPE = 'printer_type';
-    const PRINTER_USERNAME = 'printer_username';
-    const PRINTER_PASSWORD = 'printer_password';
-
     const ASK_FOR_PHONE = 'ask_for_phone';
 
     public $pos_id;
@@ -48,10 +44,6 @@ class ConfigurationHolder
     public $tax_e;
     public $tax_f;
     public $tax_g;
-
-    public $printer_type;
-    public $printer_username;
-    public $printer_password;
 
     public $ask_for_phone;
 
@@ -74,10 +66,6 @@ class ConfigurationHolder
         $ret->tax_e = $data[self::TAX_E] ?? 0;
         $ret->tax_f = $data[self::TAX_F] ?? 0;
         $ret->tax_g = $data[self::TAX_G] ?? 0;
-
-        $ret->printer_type = $data[self::PRINTER_TYPE] ?? '';
-        $ret->printer_username = $data[self::PRINTER_USERNAME] ?? '';
-        $ret->printer_password = $data[self::PRINTER_PASSWORD] ?? '';
 
         $ret->ask_for_phone = (bool)($data[self::ASK_FOR_PHONE] ?? true);
 
@@ -106,9 +94,6 @@ class ConfigurationHolder
             && $this->client_id
             && $this->client_secret
             && $this->webhook_secret
-            && $this->printer_type
-            && $this->printer_username
-            && $this->printer_password
             && !$errors['tax_values']
         ;
     }

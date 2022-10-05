@@ -14,16 +14,24 @@ require_once dirname(__FILE__).'/vendor/autoload.php';
 use Spark\EParagony\CartPreferenceManager;
 use Spark\EParagony\ConfigurationHolder;
 use Spark\EParagony\ConfigHelper;
+use Spark\EParagony\ConfigValidator;
 use Spark\EParagony\Constants;
 use Spark\EParagony\DocumentsManager;
+use Spark\EParagony\LegacyFactory;
+use Spark\EParagony\LegacyRouter;
+use Spark\EParagony\MiniDocumentsManager;
+use Spark\EParagony\MiniGenerator;
 use Spark\EParagony\RawDbActions;
 use Spark\EParagony\SupplementaryAdmin\AdminOrderDisplay;
+use Spark\EParagony\SupplementaryAdmin\AdminOrderDisplayLegacy;
 use Spark\EParagony\SupplementaryAdmin\FormFieldGenerator;
 use Spark\EParagony\SupplementaryFront\FrontDisplaySupport;
 use PrestaShopBundle\Controller\Admin\Sell\Order\ActionsBarButton;
 
 class EParagony extends Module
 {
+    const LOG_SEVERITY_LEVEL_ERROR = 3;
+
     const SWITCH_VALUES = [
         ['value' => 1, 'id' => 'active_on'],
         ['value' => 0, 'id' => 'active_off'],
@@ -34,11 +42,11 @@ class EParagony extends Module
         /* The name value should be of the same case as the name of this file. */
         $this->name = 'eparagony';
         $this->tab = 'front_office_features';
-        $this->version = '0.1.7';
+        $this->version = '0.3.4';
         $this->author = 'Spark';
         $this->need_instance = 1;
         $this->ps_versions_compliancy = [
-            'min' => '1.7.8',
+            'min' => '1.7.6',
             'max' => '1.7.99',
         ];
         $this->bootstrap = true;
@@ -54,6 +62,20 @@ class EParagony extends Module
         if ($this->version !== Constants::PLUGIN_VERSION) {
             throw new LogicException('Fix plugin version constant.');
         }
+
+        $this->registerLegacyHooks();
+    }
+
+    private function isLegacy()
+    {
+        if (defined('_PS_VERSION_')) {
+            $result = version_compare(_PS_VERSION_, '1.7.7');
+
+            return $result < 0;
+        }
+
+        /* Fallback to false. */
+        return false;
     }
 
     public function isUsingNewTranslationSystem()
@@ -80,7 +102,13 @@ class EParagony extends Module
             && $this->registerHook('displayPaymentTop')
             && $this->registerHook('displayAdminOrderTabLink')
             && $this->registerHook('displayAdminOrderTabContent')
+            && $this->registerLegacyHooks()
         ;
+    }
+
+    private function registerLegacyHooks()
+    {
+        return $this->registerHook('displayAdminOrderLeft');
     }
 
     public function hookActionAdminControllerSetMedia($params)
@@ -93,9 +121,47 @@ class EParagony extends Module
     {
         $orderHistory = $params['order_history'];
         assert($orderHistory instanceof OrderHistory);
+
+        if ($this->isLegacy()) {
+            $this->handleOrderHistoryChangeLegacy($orderHistory);
+        } else {
+            $this->handleOrderHistoryChangeModern($orderHistory);
+        }
+    }
+
+    private function handleOrderHistoryChangeModern(OrderHistory $orderHistory)
+    {
+        $container = $this->getContainer();
+        if ($container->has(DocumentsManager::class)) {
+            $documentsManager = $container->get(DocumentsManager::class);
+            assert($documentsManager instanceof DocumentsManager);
+            $documentsManager->handleHistoryChange($orderHistory);
+
+            /* Try register older orders too. The action below has internal time limit. */
+            $documentsManager->tryRepeatRegister();
+        } else {
+            /* We are one a legacy path. */
+            $em = $container->get('doctrine.orm.entity_manager');
+            $documentsManager = LegacyFactory::createMiniDocumentManager($em);
+            assert($documentsManager instanceof MiniDocumentsManager);
+            $documentsManager->handleHistoryChange($orderHistory);
+        }
+    }
+
+    private function handleOrderHistoryChangeLegacy(OrderHistory $orderHistory)
+    {
         $documentsManager = $this->get(DocumentsManager::class);
-        assert($documentsManager instanceof DocumentsManager);
-        $documentsManager->handleHistoryChange($orderHistory);
+        if ($documentsManager) {
+            $documentsManager->handleHistoryChange($orderHistory);
+
+            /* Try register older orders too. The action below has internal time limit. */
+            $documentsManager->tryRepeatRegister();
+        } else {
+            /* We are on a very legacy path. */
+            $em = $this->context->container->get('doctrine.orm.default_entity_manager');
+            $documentsManager = LegacyFactory::createMiniDocumentManager($em);
+            $documentsManager->handleHistoryChange($orderHistory);
+        }
     }
 
     public function hookActionValidateOrder($params)
@@ -170,19 +236,63 @@ class EParagony extends Module
     public function hookDisplayPaymentTop($params)
     {
         $support = $this->get(FrontDisplaySupport::class);
+        if (!$support) {
+            /* It looks like an error from an external module. */
+            PrestaShopLogger::addLog(
+                'Class '. FrontDisplaySupport::class . ' not in container.',
+                self::LOG_SEVERITY_LEVEL_ERROR
+            );
+            return '';
+        }
         assert($support instanceof FrontDisplaySupport);
         $vars = $support->displayOnPayment($this->name, $this->context);
         if ($vars) {
             $this->smarty->assign($vars);
 
-            return $this->display(__FILE__, 'display_payment_top.tpl');
+            if ($this->isLegacy()) {
+                return $this->display(__FILE__, 'display_payment_top_legacy.tpl');
+            } else {
+                return $this->display(__FILE__, 'display_payment_top.tpl');
+            }
         } else {
             return '';
         }
     }
 
+    public function hookDisplayAdminOrderLeft($params)
+    {
+        $aod = $this->get(AdminOrderDisplayLegacy::class);
+        $vars = $aod->display($params['id_order'], $this->context);
+        $this->smarty->assign($vars);
+
+        return $this->display(__FILE__, 'admin_order_content.tpl');
+    }
+
     private function generateForm(ConfigurationHolder $holder)
     {
+        if ($this->isLegacy()) {
+            $router = new LegacyRouter();
+        } else {
+            $router = $this->get('router');
+        }
+
+        $preForm = [
+            'form' => [
+                'legend' => [
+                    'title' => $this->l('Links'),
+                ],
+                'input' => [
+                    [
+                        'label' => '',
+                        'type' => 'html',
+                        'name' => MiniGenerator::button(
+                            $router->generate('eparagony_admin_queue'),
+                            $this->l('Show queue')
+                        ),
+                    ],
+                ],
+            ],
+        ];
         $formSpark = [
             'form' => [
                 'legend' => [
@@ -218,9 +328,9 @@ class EParagony extends Module
                         'required' => true,
                     ],
                     [
-                        'label' => $this->l('Address for web hook'),
+                        'label' => $this->l('Address for fiscalization web hook'),
                         'type' => 'html',
-                        'name' => Context::getContext()->link->getModuleLink($this->name, 'spark'),
+                        'name' => Context::getContext()->link->getModuleLink($this->name, 'fiscalization'),
                     ],
                     [
                         'type' => 'text',
@@ -249,51 +359,6 @@ class EParagony extends Module
                         'name' => ConfigurationHolder::RETURN_POLICY_SPARK,
                         'size' => 20,
                         'required' => false,
-                    ],
-                ],
-            ],
-        ];
-        $formPrinter = [
-            'form' => [
-                'legend' => [
-                    'title' => $this->l('Settings for print server'),
-                ],
-                'input' => [
-                    [
-                        'label' => $this->l('Address for print server'),
-                        'type' => 'html',
-                        'name' => Context::getContext()->link->getModuleLink($this->name, 'printerapi'),
-                    ],
-                    [
-                        'type' => 'select',
-                        /* Yes, this has to look like this. */
-                        'options' => [
-                            'query' => [
-                                ['name' => 'NOVITUS', 'id' => 'novitus'],
-                                ['name' => 'POSNET', 'id' => 'posnet'],
-                            ],
-                            'id' => 'id',
-                            'name' => 'name',
-                        ],
-                        'label' => $this->l('Printer type'),
-                        'name' => ConfigurationHolder::PRINTER_TYPE,
-                        'required' => true,
-                    ],
-                    [
-                        'type' => 'text',
-                        'label' => $this->l('Username'),
-                        'name' => ConfigurationHolder::PRINTER_USERNAME,
-                        'size' => 20,
-                        'required' => true,
-                    ],
-                    [
-                        'label' => $this->l('Password'),
-                        'type' => 'html',
-                        'name' => FormFieldGenerator::password(
-                            ConfigurationHolder::PRINTER_PASSWORD,
-                            $holder->printer_password
-                        ),
-                        'required' => true,
                     ],
                 ],
             ],
@@ -397,8 +462,8 @@ class EParagony extends Module
         FormFieldGenerator::addJS($this->context->controller, $this->getPathUri());
 
         return $helper->generateForm([
+            $preForm,
             $formSpark,
-            $formPrinter,
             $formTax,
             $formOther,
             $formSave,
@@ -428,16 +493,34 @@ class EParagony extends Module
             $holder->tax_f = Tools::getValue(ConfigurationHolder::TAX_F);
             $holder->tax_g = Tools::getValue(ConfigurationHolder::TAX_G);
 
-            $holder->printer_type = (string) Tools::getValue(ConfigurationHolder::PRINTER_TYPE);
-            $holder->printer_username = (string) Tools::getValue(ConfigurationHolder::PRINTER_USERNAME);
-            $holder->printer_password = (string) Tools::getValue(ConfigurationHolder::PRINTER_PASSWORD);
-
             $holder->ask_for_phone = (bool)Tools::getValue(ConfigurationHolder::ASK_FOR_PHONE);
 
-            if (!$holder->isValid($errors)) {
-                $output = $this->displayError($this->l('Invalid config.') . ' ' . Constants::E_CONFIG);
-                if ($errors['tax_values']) {
-                    $output .= $this->displayError($this->l('Invalid tax values.') . ' ' . Constants::E_CONFIG_TAX);
+            $validator = $this->get(ConfigValidator::class);
+            assert($validator instanceof ConfigValidator);
+            $errors = $validator->getErrors($holder);
+
+            if ($errors) {
+                foreach ($errors as $error) {
+                    switch ($error) {
+                        case $validator::E_GENERIC:
+                            $output .= $this->displayError($this->l('Invalid config.') . ' ' . $error);
+                            break;
+                        case $validator::E_TAX:
+                            $output .= $this->displayError($this->l('Invalid tax values.') . ' ' . $error);
+                            break;
+                        case $validator::E_POS_ID:
+                            $output .= $this->displayError($this->l('Invalid pos id.') . ' ' . $error);
+                            break;
+                        case $validator::E_STORE_NIP:
+                            $output .= $this->displayError($this->l('Invalid store NIP.') . ' ' . $error);
+                            break;
+                        case $validator::E_CLIENT_ID:
+                            $output .= $this->displayError($this->l('Invalid client id.') . ' ' . $error);
+                            break;
+                        case $validator::E_CLIENT_SECRET:
+                            $output .= $this->displayError($this->l('Invalid client secret.') . ' ' . $error);
+                            break;
+                    }
                 }
             } else {
                 ConfigHelper::saveConfig($holder);

@@ -13,6 +13,11 @@ services:
   Spark\EParagony\ConfigHelper:
     class: Spark\EParagony\ConfigHelper
 
+  Spark\EParagony\ConfigValidator:
+    class: Spark\EParagony\ConfigValidator
+    arguments:
+      - '@Spark\EParagony\Validator\NipValidator'
+
   Spark\EParagony\Controller\AdminMailerController:
     class: Spark\EParagony\Controller\AdminMailerController
     arguments:
@@ -24,20 +29,18 @@ services:
     arguments:
       - '@Spark\EParagony\DocumentsManager'
 
-  Spark\EParagony\Controller\AdminTwigController:
-    class: Spark\EParagony\Controller\AdminTwigController
-    arguments:
-      - '@Spark\EParagony\DocumentsManager'
-      - '@Spark\EParagony\PrinterLogManager'
-
   Spark\EParagony\DocumentsManager:
     class: Spark\EParagony\DocumentsManager
     arguments:
       - '@doctrine.orm.entity_manager'
-      - '@Spark\EParagony\ReceiptQueueManager'
       - '@Spark\EParagony\Mailer'
       - '@Spark\EParagony\SparkApi\ApiSparkFactory'
       - '@Spark\EParagony\OrderChecker'
+
+  Spark\EParagony\DocumentsMassManager:
+    class: Spark\EParagony\DocumentsMassManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
 
   Spark\EParagony\Mailer:
     class: Spark\EParagony\Mailer
@@ -48,29 +51,6 @@ services:
   Spark\EParagony\OrderChecker:
     class: Spark\EParagony\OrderChecker
 
-  Spark\EParagony\PrinterLogManager:
-    class: Spark\EParagony\PrinterLogManager
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
-  Spark\EParagony\PrintServer\PrintServerAction:
-    class: Spark\EParagony\PrintServer\PrintServerAction
-    arguments:
-      - '@Spark\EParagony\PrintServer\PrintServerLogin'
-      - '@Spark\EParagony\DocumentsManager'
-      - '@Spark\EParagony\PrinterLogManager'
-
-  Spark\EParagony\PrintServer\PrintServerLogin:
-    class: Spark\EParagony\PrintServer\PrintServerLogin
-    arguments:
-      - '@doctrine.orm.entity_manager'
-      - '@Spark\EParagony\ConfigHelper'
-
-  Spark\EParagony\ReceiptQueueManager:
-    class: Spark\EParagony\ReceiptQueueManager
-    arguments:
-      - '@doctrine.orm.entity_manager'
-
   Spark\EParagony\SparkApi\ApiSparkFactory:
     class: Spark\EParagony\SparkApi\ApiSparkFactory
     arguments:
@@ -78,8 +58,8 @@ services:
       - '@Spark\EParagony\MagicBox'
       - '%kernel.cache_dir%'
 
-  Spark\EParagony\SparkApi\WebHookSpark:
-    class: Spark\EParagony\SparkApi\WebHookSpark
+  Spark\EParagony\SparkApi\Fiscalization:
+    class: Spark\EParagony\SparkApi\Fiscalization
     arguments:
       - '@Spark\EParagony\DocumentsManager'
       - '@Spark\EParagony\ConfigHelper'
@@ -95,3 +75,6 @@ services:
     arguments:
       - '@Spark\EParagony\AddressChecker'
       - '@Spark\EParagony\ConfigHelper'
+
+  Spark\EParagony\Validator\NipValidator:
+    class: Spark\EParagony\Validator\NipValidator

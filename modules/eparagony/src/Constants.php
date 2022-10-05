@@ -10,9 +10,17 @@ namespace Spark\EParagony;
 class Constants
 {
     const ADMIN_SCRIPT_VERSION = '002';
-    const PLUGIN_VERSION = '0.1.7';
+    const PLUGIN_VERSION = '0.3.4';
     const USER_AGENT = 'Eparagony';
 
-    const E_CONFIG = '[001-000]';
-    const E_CONFIG_TAX = '[001-001]';
+    /* This is as constant as possible in PHP. */
+    public static function getUserAgentWithVersion()
+    {
+        $ret = self::USER_AGENT . '/' . self::PLUGIN_VERSION . ' (PHP ' . PHP_VERSION . ')';
+        if (defined('_PS_VERSION_')) {
+            $ret .= ' (PrestaShop ' . _PS_VERSION_ . ')';
+        }
+
+        return $ret;
+    }
 }

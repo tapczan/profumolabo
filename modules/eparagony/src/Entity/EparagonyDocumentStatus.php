@@ -11,7 +11,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Spark\EParagony\Repository\EparagonyDocumentStatusRepository")
  * @ORM\Table()
  *
  * We have to use prefix in the class name.
@@ -19,13 +19,11 @@ use Doctrine\ORM\Mapping as ORM;
 class EparagonyDocumentStatus
 {
     const STATE_BLANK = 'blank';
-    const STATE_COMPILED = 'compiled';
+    const STATE_SENT = 'sent';
     const STATE_CONFIRMED = 'confirmed';
-    const STATE_DOWNLOADING = 'downloading';
+    const STATE_SENDING = 'sending';
     const STATE_ERROR = 'error';
-    const STATE_IN_PROGRESS = 'in_progress';
     const STATE_QUEUED = 'queued';
-    const STATE_READY = 'ready';
     const STATE_UNKNOWN = 'unknown';
 
     const TYPE_RECEIPT = 'receipt';

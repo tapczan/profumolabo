@@ -41,8 +41,6 @@
             if ($buttonSet.length) {
                 var observer = new MutationObserver(tryChangeButtonState);
                 observer.observe($buttonSet[0], { attributeFilter: ['class'] });
-            } else {
-                console.log('Cannot find button.');
             }
         };
 
@@ -56,7 +54,6 @@
                         telephone: $input.val()
                     }
                 }).done(function(data) {
-                    console.log(data);
                     telephoneSet = true;
                     $error.hide();
                     tryChangeButtonState();

@@ -46,7 +46,7 @@ class ApiSparkFactory
         curl_setopt_array($curl, [
             CURLOPT_POST => true,
             CURLOPT_URL => $url . '/auth/token',
-            CURLOPT_USERAGENT => Constants::USER_AGENT . '/' . Constants::PLUGIN_VERSION,
+            CURLOPT_USERAGENT => Constants::getUserAgentWithVersion(),
             CURLOPT_POSTFIELDS => $payload,
             CURLOPT_RETURNTRANSFER => true,
         ]);
@@ -69,7 +69,6 @@ class ApiSparkFactory
         );
 
         return new ApiSpark(
-            $config->printer_type,
             $config->pos_id,
             $config->store_nip,
             $token,
@@ -77,7 +76,7 @@ class ApiSparkFactory
             $config->log_spark_requests,
             $this->logDir,
             $config->return_policy_spark,
-            $this->magicBox::getModuleLink('spark'),
+            $this->magicBox::getModuleLink('fiscalization'),
             $taxHelper
         );
     }
