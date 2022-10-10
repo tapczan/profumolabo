@@ -1,0 +1,11 @@
+Cześć {firstname}
+
+dziękujemy za zakupy w {shop_name}. Poniżej znajdziesz link do Twojego e-paragonu za zamówienie {order_name}.
+{receipt_url}
+Paragon fiskalny w wersji elektronicznej jest nie tylko wygodny, ale też ekologiczny – dzięki e-paragonom nie musimy już drukować papierowych dowodów zakupu. Wspólnie dbamy o naszą planetę!
+
+———
+
+Twój e-paragon jest przechowywany przez repozytorium dokumentów fiskalnych Spark, naszego partnera obsługującego. Dokument został wydany bezpośrednio z urządzenia fiskalnego {shop_name}, co daje Ci gwarancję jego autentyczności i niezmienności.
+
+Wygodniej w aplikacji? Wszystkie Twoje e-paragony znajdziesz także w aplikacji mobilnej Spark. Poznaj nas na: spark.pl

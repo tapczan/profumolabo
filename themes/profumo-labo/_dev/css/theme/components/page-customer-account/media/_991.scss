@@ -1,0 +1,40 @@
+@media (max-width: 991px){
+    body.page-customer-account,
+    #module-blockwishlist-lists {
+        #main {
+            .customer-links {
+                &__list {
+                    display: block;
+
+                    a{
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+
+                &__footer{
+                    a{
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+            }
+
+            .user-form__block:nth-child(2) .user-form__content .mt-auto.text-center{
+                margin-top: 112px !important;
+            }
+
+            .page-content button.btn.btn-primary, 
+            .page-content a.btn.btn-primary{
+                width: 100%;
+            }
+        }
+
+        #content{
+            .user-form--sm{
+                max-width: 100%;
+            }
+        }
+        
+    }
+}

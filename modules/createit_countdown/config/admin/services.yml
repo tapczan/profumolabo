@@ -1,0 +1,31 @@
+imports:
+  - { resource: ../common.yml }
+
+services:
+  #  Form Data Provider
+  prestashop.module.createit_countdown.form.identifiable_object.data_provider.createit_countdown_form_data_provider:
+    class: 'PrestaShop\Module\CreateitCountdown\Form\CreateitCountdownFormDataProvider'
+    arguments:
+      - '@prestashop.module.createit_countdown.repository.createit_countdown_repository'
+
+  #  Form Data Handler
+  prestashop.module.createit_countdown.form.identifiable_object.data_handler.createit_countdown_form_data_handler:
+    class: 'PrestaShop\Module\CreateitCountdown\Form\CreateitCountdownFormDataHandler'
+    arguments:
+      - '@prestashop.module.createit_countdown.repository.createit_countdown_repository'
+      - '@doctrine.orm.default_entity_manager'
+
+  #  Form Handler
+  prestashop.module.createit_countdown.form.identifiable_object.handler.createit_countdown_form_data_handler:
+    class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Handler\FormHandler'
+    factory: 'prestashop.core.form.identifiable_object.handler.form_handler_factory:create'
+    arguments:
+      - '@prestashop.module.createit_countdown.form.identifiable_object.data_handler.createit_countdown_form_data_handler'
+
+  #  Form Builder
+  prestashop.module.createit_countdown.form.identifiable_object.builder.createit_countdown_form_builder:
+    class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Builder\FormBuilder'
+    factory: 'prestashop.core.form.builder.form_builder_factory:create'
+    arguments:
+      - 'PrestaShop\Module\CreateitCountdown\Form\CreateitCountdownFormFieldType'
+      - '@prestashop.module.createit_countdown.form.identifiable_object.data_provider.createit_countdown_form_data_provider'

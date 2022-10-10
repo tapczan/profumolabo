@@ -1,0 +1,7 @@
+services:
+
+  prestashop.module.createit_countdown.repository.createit_countdown_repository:
+    class: 'PrestaShop\Module\CreateitCountdown\Repository\CreateitCountdownRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateitCountdown\Entity\CreateitCountdown

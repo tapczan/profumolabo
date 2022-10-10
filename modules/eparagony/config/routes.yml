@@ -1,0 +1,21 @@
+eparagony_admin_force_download:
+  path: /eparagony/force/download
+  defaults:
+    _controller: 'Spark\EParagony\Controller\AdminSpecialController::forceReceiptDownload'
+
+eparagony_admin_mail_receipt:
+  path: /eparagony/send/receipt
+  defaults:
+    _controller: 'Spark\EParagony\Controller\AdminMailerController::sendReceiptUrl'
+
+eparagony_admin_queue:
+  path: /eparagony/queue
+  defaults:
+    _controller: 'Spark\EParagony\Controller\AdminTwigController::queue'
+    _legacy_controller: EparagonyAdminQueue
+    _legacy_link: EparagonyAdminQueue
+
+eparagony_admin_force_download_multiple:
+  path: /eparagony/force/download/multiple
+  defaults:
+    _controller: 'Spark\EParagony\Controller\AdminTwigController::forceMultiple'

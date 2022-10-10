@@ -1,0 +1,19 @@
+services:
+
+  prestashop.module.createit_custom_field.repository.custom_field_product_repository:
+    class: 'PrestaShop\Module\CreateITCustomField\Repository\CreateitProductCustomfieldRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateITCustomField\Entity\CreateitProductCustomfield
+
+  prestashop.module.createit_custom_field.repository.custom_field_repository:
+    class: 'PrestaShop\Module\CreateITCustomField\Repository\CreateitCustomfieldRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateITCustomField\Entity\CreateitCustomfield
+
+  prestashop.module.createit_custom_field.repository.customfield_label_lang_repository:
+    class: 'PrestaShop\Module\CreateITCustomField\Repository\CreateitProductCustomfieldLabelLangRepository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateITCustomField\Entity\CreateitProductCustomfieldLabelLang

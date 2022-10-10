@@ -1,0 +1,32 @@
+.l-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+section#main {
+  a {
+    color:$black;
+  }
+
+  .ts-12 {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+  }
+}
+
+@media(max-width: 991px){
+  html #x13-counter-container{
+    position: relative !important;
+  }
+  
+  html #x13-counter-container.x13-counter-container-fixed{
+    position: fixed !important;
+  }
+
+  html .x13counter_offset{
+    height: auto !important;
+  }
+}

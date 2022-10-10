@@ -1,0 +1,23 @@
+{
+  "name": "createit/productfield2",
+  "description": "createIT's Productfield 2 module.",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "createIT",
+      "email": "support@createit.com"
+    },
+    {
+      "name": "createIT"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaShop\\Module\\CreateitProductfield2\\": "src/"
+    },
+    "config": {
+      "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+  }
+}

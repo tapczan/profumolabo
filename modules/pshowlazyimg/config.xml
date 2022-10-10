@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+    <name>pshowlazyimg</name>
+    <displayName><![CDATA[Image Optimizer]]></displayName>
+    <version><![CDATA[2.8.0]]></version>
+    <description><![CDATA[All photos will be converted to WebP format and loaded only when they are visible on the screen.]]></description>
+    <author><![CDATA[PrestaShow.pl]]></author>
+    <tab><![CDATA[other]]></tab>
+    <is_configurable>1</is_configurable>
+    <need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>

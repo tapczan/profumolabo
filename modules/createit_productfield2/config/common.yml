@@ -1,0 +1,7 @@
+services:
+
+  prestashop.module.createit_productfield.createit_productfield2_repository:
+    class: 'PrestaShop\Module\CreateitProductfield2\Repository\CreateitProductfield2Repository'
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - PrestaShop\Module\CreateitProductfield2\Entity\CreateitProductfield2

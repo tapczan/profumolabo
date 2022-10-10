@@ -1,0 +1,135 @@
+.cms-container--rules,
+.cms-container--policy,
+.cms-container--form {
+    @include font-with-line-height($font-size-sm, 23px);
+
+    h2 {
+        @include font-with-line-height($font-size-sm, 23px);
+    }
+
+    p{
+        @include font-with-line-height($font-size-sm, 23px);
+
+        font-weight: 300;
+    }
+
+    ul{
+        list-style-type: disc;
+        list-style-position: outside;
+        margin: 0 0 20px;
+    }
+
+    ol{
+        list-style: auto;
+        list-style-position: outside;
+        margin: 0 0 20px;
+
+        &.alphabet-list{
+            list-style-type: lower-alpha;
+        }
+    }
+
+    ol,
+    ul{
+        padding-left: 25px;
+
+        ul,
+        ol{
+            margin-bottom: 0;
+        }
+
+        &.list-margin-btm{
+            margin-bottom: 20px;
+        }
+    }
+
+    b{
+        font-weight: 400;
+    }
+}
+
+.cms-container--form{
+    .p-footer{
+        text-align: center;
+        max-width: 420px;
+        float: right;
+        margin: 50px 0;
+        border-top: 1px solid $black;
+
+        p{
+            margin: 0;
+        }
+    }
+
+    .p-margin-top{
+        margin: 20px 0 0;
+    }
+
+    .p-text-right-top{
+        margin: 50px 0;
+        text-align: right;
+
+        p{
+            margin-bottom: 0;
+        }
+    }
+
+    .p-text-center-margin{
+        margin-bottom: 50px;
+    }
+
+    .p-text-center h2{
+        text-align: center;
+    }
+
+    .p-text-left{
+        margin-top: 30px;
+        margin-bottom: 10px;
+
+        p{
+            text-decoration: underline;
+            margin-bottom: 0;
+        }
+    }
+
+    .p-footer-no-decor{
+        margin: 50px 0;
+        text-align: right;
+    }
+
+    .p-footer-border-decor{
+        margin: 50px 0;
+        text-align: right;
+        max-width: 400px;
+        float: right;
+        border-top: 1px solid $black;
+    }
+
+    .p-text-left-top{
+        p{
+            margin: 0;
+        }
+
+        .p-underline{
+            border-bottom: 1px solid $black;    
+            height: 14px;
+            max-width: 184px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+    table{
+        width: 100%;
+        
+        td{
+            border: 1px solid $black;
+            padding: 5px;
+            vertical-align: top;
+        }
+    }
+
+    .table-sm{
+        max-width: 400px;
+    }
+}

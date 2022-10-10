@@ -1,0 +1,184 @@
+#boninstagram .instagram-carousel-container {
+  background-color: #fff;
+}
+
+#boninstagram .instagram-carousel-container .instagram-home-title h3 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 400;
+  color: #3a3a3a;
+  text-transform: uppercase;
+}
+#boninstagram .instagram-carousel-container .instagram-home-title span {
+  display: block;
+  font-size: 14px;
+  text-transform: none;
+  padding-top: 7px;
+  color: #777;
+}
+#boninstagram .instagram-carousel-container .instagram-item-gallery {
+  width: 12.5%;
+  float: left;
+}
+
+@media only screen and (max-width: 480px){
+  #boninstagram .instagram-carousel-container .instagram-item-gallery {
+      width: 50%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1440px){
+  #boninstagram .instagram-carousel-container .instagram-item-gallery{
+    width: 25%;
+  }
+}
+
+#boninstagram .instagram-carousel-container .instagram-home-title {
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+}
+#boninstagram .instagram-carousel-container .slick-prev:before,
+#boninstagram .instagram-carousel-container .slick-next:before {
+  color: #222;
+}
+
+#boninstagram .instagram-carousel-container.bonhidden {
+  display: none;
+}
+#boninstagram .instagram-carousel-container .slick-prev {
+  left: 15px;
+  z-index: 1;
+}
+#boninstagram .instagram-carousel-container .slick-list-wrap {
+  overflow: hidden;
+  height: auto;
+}
+
+#boninstagram .instagram-carousel-container .slick-list {
+  margin: 0 -15px;
+}
+#boninstagram .instagram-carousel-container ul {
+  margin-bottom:0;
+}
+
+#boninstagram .instagram-carousel-container ul li a {
+  display: block;
+  position: relative;
+}
+
+#boninstagram .instagram-carousel-container ul li a img {
+  max-width: 100%;
+  height: auto;
+}
+#boninstagram .instagram-carousel-container .instagram_cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  opacity: 0;
+  text-align: center;
+  transition: all .3s ease-out;
+  background-color: rgba(0,0,0,0.7);
+}
+#boninstagram .instagram-carousel-container ul li a:hover .instagram_cover,
+#boninstagram .instagram-carousel-container ul li a:hover .instagram_likes,
+#boninstagram .instagram-carousel-container ul li a:hover .instagram_comment,
+#boninstagram .instagram-carousel-container ul li a:hover .insta-eye{
+  opacity: 1;
+  transition: all .5s ease-out;
+}
+#boninstagram .instagram-carousel-container ul li a:hover img{
+  -webkit-filter: grayscale(50%);
+}
+
+#boninstagram .insta-eye {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  z-index: 1;
+  left: 50%;
+  top: 41%;
+  transform: translate(-51%);
+  opacity: 0;
+  fill: #ffffffd6;
+}
+
+#boninstagram .instagram-carousel-container .instagram_likes {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  color: #ffffff;
+  font-size: 16px;
+  opacity: 0;
+}
+
+#boninstagram .instagram-carousel-container .instagram_likes:before,
+#boninstagram .instagram-carousel-container .instagram_comment:before{
+  font-style: normal;
+  font-weight: 400;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+  transition: all 1s ease-out;
+  vertical-align: -1px;
+  margin-right: 7px;
+}
+
+#boninstagram .instagram-carousel-container .instagram_likes:before{
+  content: '\e028';
+  font-family: "fl-outicons";
+}
+
+#boninstagram .instagram-carousel-container .instagram_comment:before{
+  content: '\e053';
+  font-family: "fl-outicons";
+  transform: rotateY(180deg);
+}
+
+#boninstagram .instagram-carousel-container .instagram_comment {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: #fff;
+  font-size: 16px;
+  opacity: 0;
+}
+
+#boninstagram .instagram-carousel-container ul li a:hover .instagram_cover:before{
+  transform: scale(1);
+}
+
+#boninstagram .instagram-carousel-container .owl-nav {
+  position: absolute;
+  right: 10px;
+}
+#boninstagram .instagram-carousel-container .owl-theme .owl-nav [class*="owl-"] {
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+#boninstagram .instagram-carousel-container .owl-theme .owl-nav [class*="owl-"]:hover {
+  background: #333;
+}
+#boninstagram .instagram-carousel-container .owl-theme .owl-dots .owl-dot.active span,
+#boninstagram .instagram-carousel-container .owl-theme .owl-dots .owl-dot:hover span {
+  background: #333;
+}
+
+#boninstagram .instagram-carousel-container .slick-prev, .instagram-carousel-container .slick-next {
+  width: 34px;
+  height: 25px;
+}
+#boninstagram .instagram-carousel-container .slick-next {
+  right: 30px;
+}
+
+
+

@@ -1,0 +1,9 @@
+{
+  "entrypoints": {
+    "module": {
+      "js": [
+        "/views/js/build/module.js"
+      ]
+    }
+  }
+}

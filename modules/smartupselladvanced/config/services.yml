@@ -1,0 +1,28 @@
+services:
+  _defaults:
+    public: true
+
+  smartupselladvanced.helper.price:
+    class: Invertus\SmartUpsellAdvanced\Helper\PriceHelper
+
+  smartupselladvanced.helper.upsell:
+    class: Invertus\SmartUpsellAdvanced\Helper\UpsellHelper
+    arguments:
+      - '@smartupselladvanced.helper.price'
+      - '@smartupselladvanced.clientbusinesslogicprovider.link'
+      - '@smartupselladvanced.helper.specialoffer'
+
+  smartupselladvanced.helper.cart:
+    class: Invertus\SmartUpsellAdvanced\Helper\CartHelper
+
+  smartupselladvanced.helper.specialoffer:
+    class: Invertus\SmartUpsellAdvanced\Helper\SpecialOfferHelper
+    arguments:
+      - '@smartupselladvanced.clientbusinesslogicprovider.link'
+      - '@smartupselladvanced.helper.price'
+
+  smartupselladvanced.clientbusinesslogicprovider.link:
+    class: Invertus\SmartUpsellAdvanced\ClientBusinessLogicProvider\LinkProvider
+
+  smartupselladvanced.clientbusinesslogicprovider.filter:
+    class: Invertus\SmartUpsellAdvanced\ClientBusinessLogicProvider\SpecialOfferFilterProvider

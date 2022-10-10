@@ -1,0 +1,18 @@
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col">
+            {{ include('@Modules/createit_accordion/views/templates/admin/_partials/_accordion_form.html.twig', {
+                'header': 'Edit createIT Accordion',
+                'backBtnLbl' : 'Go back to custom field list'
+            }) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('../modules/createit_accordion/views/js/createit_accordion_form.bundle.js') }}"></script>
+{% endblock %}

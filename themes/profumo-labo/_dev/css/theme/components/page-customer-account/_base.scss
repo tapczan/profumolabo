@@ -1,0 +1,364 @@
+body.page-customer-account,
+body.page-addresses,
+body.page-customer-account,
+body.page-order-detail,
+#module-blockwishlist-lists,
+#module-ps_emailalerts-account {
+
+    #main {
+        font-family: $font-jost;
+        color: $black;
+
+        label{
+            color: $black;
+
+            em{
+                font-style: normal;
+            }
+        }
+
+        header.page-header {
+            h1 {
+                @include header-title();
+            }
+        }
+
+        .address__header{
+            font-weight: 500;
+        }
+
+        .page-content {
+            margin-bottom: 80px;
+            .card {
+                border: 0;
+
+                .card-header {
+                    background: transparent;
+                }
+                .card-footer {
+                    @include font-with-line-height($font-size-sm, 20px);
+
+                    background: transparent;
+                    border: 0;
+                    font-family: $font-jost;
+                }
+            }
+            .form-group{
+                input:focus,
+                button:focus{
+                    outline: none;
+                    box-shadow: none;
+                }
+
+                input{
+                    font-family: $font-jost;
+                }
+
+                .nice-select-init{
+                    background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 10px center/8px 10px no-repeat;
+                    background-size: 11px;
+                    border-color: #212529;
+                    font-family: $font-jost;
+                }
+
+                .form-control.js-visible-password,
+                .form-control.js-visible-password:focus{
+                    border-right: 1px solid #979797;
+                }
+
+                .form-label{
+                    @include font-with-line-height($font-size-sm, 16px);
+
+                    font-family: $font-jost;
+                    font-weight: 300;
+                }
+
+                .form-text.text-muted{
+                    @include font-with-line-height(10px, 12px);
+
+                    font-family: $font-jost;
+                    font-weight: 300;
+                    margin-top: 7px;
+                    color: $black !important;
+                }
+            }
+
+            .form-control {
+                border-color: #212529;
+            }
+
+            .form-footer{
+                margin-top: 50px !important;
+            }
+
+            .input-group-append {
+                .btn.btn-primary {
+                    background-color: #979797;
+                    width: 100%;
+                    border-radius: 0 .4rem .4rem 0 !important;
+                    border: 1px solid #979797;
+                    padding: 8px 12px;
+
+                    .material-icons{
+                        font-size: 0;
+                        background: url(~/img/icons/password-icon.svg);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        width: 20px;
+                        height: 24px;
+                    }
+                }
+            }
+            
+            button.btn.btn-primary,
+            a.btn.btn-primary {
+                font-family: $font-jost;
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #fff;
+                background-color:#000;
+                border-radius: 0;
+                border: 0;
+                width: 80%;
+                margin-bottom:10px;
+                font-weight: 300;
+
+                &:focus{
+                    box-shadow: none;
+                    outline: none;
+                }
+            }
+
+            button.btn.btn-primary{
+                margin-bottom: 0;
+            }
+
+            .custom-control-input {
+                box-shadow: none;
+                outline: none;
+                z-index: 10;
+            }
+
+            .custom-control-label{
+                @include font-with-line-height($font-size-sm, 23px);
+
+                font-family: $font-jost;
+                font-weight: 300;
+
+                &:before,
+                &:after{
+                    top: 3px;
+                }
+            }
+
+            .custom-control-input:focus,
+            .custom-control-input:not(:checked) ~ .custom-control-label::before,
+            .custom-control-input:focus:not(:checked) ~ .custom-control-label::before,
+            .custom-control-input:checked ~ .custom-control-label::before,
+            .custom-control-input:focus:checked ~ .custom-control-label::before {
+                outline: none;
+                box-shadow: none !important;
+                border-color: #000;
+            }
+        
+            .custom-control-input:checked ~ .custom-control-label::before {
+                border-color: #000;
+                background-color: #000;
+            }
+
+            &--module-psgdpr-gdpr {
+                button.btn.btn-primary,
+                a.btn.btn-primary {
+                    width: 49%; 
+                }
+            }
+
+            .address.card{
+                border: 0.0625rem solid rgba(0, 0, 0, 0.125);
+                border-radius: 0;
+
+                .address__footer {
+                    border-top: 0.0625rem solid rgba(0, 0, 0, 0.125);
+                }
+            }
+
+            &.page-content--history,
+            &.page-content--order-slip{
+                .alert{
+                    @include font-with-line-height($font-size-sm, 16px);
+
+                    border-radius: 0;
+                    text-transform: uppercase;
+                    padding: 10px;
+                }
+
+                h6{
+                    font-weight: 500;
+                }
+            }
+        }
+        .user-form__block {
+            font-family: $font-jost;
+            color: $black !important;
+
+            h4 {
+                @include header-title();
+            }
+            
+            &:nth-child(1) {
+                border-right: 2px solid #ddd;
+
+                .user-form__content {
+                    padding-right: 15%;
+                }
+
+                .form-control.js-visible-password,
+                .form-control.js-visible-password:focus{
+                    border-right: 1px solid #979797;
+                }
+
+                .form-footer{
+                    margin-top: 0 !important;
+                }
+
+                .forgot-password{
+                    @include font-with-line-height($font-size-sm, 20px);
+
+                    font-weight: 300;
+                }
+            }
+            &:nth-child(2) {
+                .user-form__content {
+                    padding-left: 15%;
+
+                    .text-muted{
+                        @include font-with-line-height($font-size-sm, 20px);
+
+                        font-weight: 300;
+                        color: $black !important;
+                    }
+
+                    .mt-auto.text-center{
+                        margin-top: 133px !important;
+                        margin-bottom: 0 !important;
+                    }
+                }   
+            }
+        }
+        .bg-light {
+            background-color: #fff !important;
+        }
+        .personal-information {
+            .page-content--history #notifications,
+            .page-content--order-slip #notifications{
+                margin-bottom: 10px;
+            }
+
+            .wishlist-list-item-link{
+                padding: 10px 0;
+            }
+            
+            .customer-links {
+                &__list,
+                &__footer {
+                    a {
+                        background: transparent;
+                        font-weight: 400;
+                        letter-spacing: 2px;
+                        i {
+                            color:#979797;
+                        }
+                        &.active {
+                            font-weight: 700;
+                        }
+                    }  
+
+                    #discounts-link,
+                    #emailsalerts{
+                        display: none;
+                    }
+                }
+
+                .customer-links__logout {
+                    text-align: left;
+                }
+            }
+            button[type=submit] {
+                max-width: 340px;
+            }
+        }
+    }
+
+    .oneall_social_login_block{
+        margin-top: 20px;
+
+        &#oneall_social_login_block_customer_account_form{
+            margin-top: 0;
+        }
+
+        .title_block{
+            @include font-with-line-height($font-size-sm, 16px);
+
+            font-family: $font-jost;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .block_content{
+            display: none;
+        }
+    }
+}
+
+
+.personal-information {
+    .page-content--module-ps_emailalerts-account{
+        .alert.alert-warning{
+            padding: 5px 10px;
+            border-radius: 0 !important;
+        }
+    }
+
+    .customer-links {
+        #emailsalerts,
+        #discounts-link{
+            .material-icons{
+                font-size: 20px;
+                color: #979797;
+            }
+
+            &.active{
+                .material-icons{
+                    color: $black;
+                }
+            }
+        }
+    }
+
+    .customer-links__footer .customer-links__logout .material-icons{
+        color: #979797;
+    }
+}
+
+@media(max-width: 991px){
+    .personal-information{
+        .customer-links__list {
+            flex-direction: column;
+    
+            a{
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        .customer-links__footer{
+            a{
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,80 @@
+services:
+  _defaults:
+    public: true
+
+  Spark\EParagony\AddressChecker:
+    class: Spark\EParagony\AddressChecker
+
+  Spark\EParagony\CartPreferenceManager:
+    class: Spark\EParagony\CartPreferenceManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  Spark\EParagony\ConfigHelper:
+    class: Spark\EParagony\ConfigHelper
+
+  Spark\EParagony\ConfigValidator:
+    class: Spark\EParagony\ConfigValidator
+    arguments:
+      - '@Spark\EParagony\Validator\NipValidator'
+
+  Spark\EParagony\Controller\AdminMailerController:
+    class: Spark\EParagony\Controller\AdminMailerController
+    arguments:
+      - '@Spark\EParagony\Mailer'
+      - '@Spark\EParagony\DocumentsManager'
+
+  Spark\EParagony\Controller\AdminSpecialController:
+    class: Spark\EParagony\Controller\AdminSpecialController
+    arguments:
+      - '@Spark\EParagony\DocumentsManager'
+
+  Spark\EParagony\DocumentsManager:
+    class: Spark\EParagony\DocumentsManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@Spark\EParagony\Mailer'
+      - '@Spark\EParagony\SparkApi\ApiSparkFactory'
+      - '@Spark\EParagony\OrderChecker'
+
+  Spark\EParagony\DocumentsMassManager:
+    class: Spark\EParagony\DocumentsMassManager
+    arguments:
+      - '@doctrine.orm.entity_manager'
+
+  Spark\EParagony\Mailer:
+    class: Spark\EParagony\Mailer
+
+  Spark\EParagony\MagicBox:
+    class: Spark\EParagony\MagicBox
+
+  Spark\EParagony\OrderChecker:
+    class: Spark\EParagony\OrderChecker
+
+  Spark\EParagony\SparkApi\ApiSparkFactory:
+    class: Spark\EParagony\SparkApi\ApiSparkFactory
+    arguments:
+      - '@Spark\EParagony\ConfigHelper'
+      - '@Spark\EParagony\MagicBox'
+      - '%kernel.cache_dir%'
+
+  Spark\EParagony\SparkApi\Fiscalization:
+    class: Spark\EParagony\SparkApi\Fiscalization
+    arguments:
+      - '@Spark\EParagony\DocumentsManager'
+      - '@Spark\EParagony\ConfigHelper'
+      - '%kernel.cache_dir%'
+
+  Spark\EParagony\SupplementaryFront\FrontAction:
+    class: Spark\EParagony\SupplementaryFront\FrontAction
+    arguments:
+      - '@Spark\EParagony\CartPreferenceManager'
+
+  Spark\EParagony\SupplementaryFront\FrontDisplaySupport:
+    class: Spark\EParagony\SupplementaryFront\FrontDisplaySupport
+    arguments:
+      - '@Spark\EParagony\AddressChecker'
+      - '@Spark\EParagony\ConfigHelper'
+
+  Spark\EParagony\Validator\NipValidator:
+    class: Spark\EParagony\Validator\NipValidator

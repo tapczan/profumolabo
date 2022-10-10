@@ -1,0 +1,20 @@
+imports:
+  - { resource: ../common_services.yml }
+
+services:
+  Spark\EParagony\Controller\AdminTwigController:
+    class: Spark\EParagony\Controller\AdminTwigController
+    arguments:
+      - '@Spark\EParagony\DocumentsManager'
+      - '@Spark\EParagony\DocumentsMassManager'
+  Spark\EParagony\SupplementaryAdmin\AdminOrderDisplay:
+    class: Spark\EParagony\SupplementaryAdmin\AdminOrderDisplay
+    factory: 'Spark\EParagony\SupplementaryAdmin\AdminOrderDisplayFactory:create'
+  Spark\EParagony\SupplementaryAdmin\AdminOrderDisplayFactory:
+    class: Spark\EParagony\SupplementaryAdmin\AdminOrderDisplayFactory
+    arguments:
+      - '@service_container'
+  Spark\EParagony\SupplementaryAdmin\AdminOrderDisplayLegacy:
+    class: Spark\EParagony\SupplementaryAdmin\AdminOrderDisplayLegacy
+    arguments:
+      - '@Spark\EParagony\DocumentsManager'

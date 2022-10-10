@@ -1,0 +1,24 @@
+@mixin header-title {
+    font-family: Forum, cursive;
+    font-size: 35px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    line-height: 39px;
+    color: #212529;
+    text-transform: uppercase;
+}
+
+@import "base";
+@import "wishlist";
+@import "table";
+@import "order";
+@import "warning";
+@import "oneall";
+@import "media/1199";
+@import "media/992";
+@import "media/991";
+@import "media/767";
+@import "media/360";
+
+
+

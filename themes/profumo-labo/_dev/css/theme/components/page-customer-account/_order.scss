@@ -1,0 +1,66 @@
+body.page-order-detail {
+    #main {
+        .page-content {
+            .card {
+                border: 0.0625rem solid rgba(0, 0, 0, 0.125);
+            }
+        }
+    }
+}
+
+#order-detail {
+    .page-content.page-content--order-detail {
+        .table {
+            thead tr th {
+                font-weight: 500;
+            }
+        }
+
+        .card {
+            border-radius: 0;
+        }
+    }
+
+    .form-fields {
+        .nice-select-init {
+            background: $white url(~/img/icons/faq-dropdown-arrow.svg) right 10px center/8px 10px no-repeat;
+            background-size: 11px;
+
+            &.open {
+                .list {
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    .btn-outline-primary {
+        font-family: $font-jost;
+        font-size: $font-size-sm;
+        font-weight: 300;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        width: auto;
+        color: $white !important;
+        background: $black;
+        border-radius: 0;
+        border: 0;
+    }
+
+    .order-message-form {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .d-md-none {
+        .card-body {
+            strong {
+                color: $brown !important;
+            }
+        }
+    }
+
+
+}

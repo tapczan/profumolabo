@@ -1,0 +1,11 @@
+#information_bar_form details {
+
+}
+
+#information_bar_form summary:hover {
+    cursor: pointer;
+}
+
+#information_bar_form details p {
+    padding-left: 10px; padding-top: 5px;
+}

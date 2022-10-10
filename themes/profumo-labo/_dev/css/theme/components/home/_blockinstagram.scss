@@ -1,0 +1,140 @@
+.blockinstagram{
+    overflow: hidden;
+    
+    &__inner{
+        margin: 0 -2px;
+        padding: 50px 0;
+    }
+
+    &__title{
+        @include font-with-line-height($font-size-xxl, 39px);
+
+        font-family: $font-forum;
+        margin: 0 0 50px;
+        padding: 0;
+        text-align: center;
+        font-weight: normal;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    &__feed{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+    
+    &__item{
+        flex: 0 0 50%;
+        max-width: 50%;
+        padding: 2px;
+        overflow: hidden;
+        position: relative;
+
+        &:hover{
+            .blockinstagram__overlay,
+            .blockinstagram__overlay-icon{
+                opacity: 1;
+            }
+        }
+    }
+
+    &__small{
+        flex: 0 0 25%;
+        max-width: 25%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__big{
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: flex;
+
+        .blockinstagram__item{
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+        .blockinstagram__overlay-icon{
+            width: 50px;
+        }
+    }
+
+    &__img{
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+    }
+
+    &__overlay{
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background: rgba(0,0,0,0.7);
+        z-index: 5;
+        opacity: 0;
+        transition: all .2s;
+
+        &-icon{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            fill: #fff;
+            width: 30px;
+            margin: auto;
+            opacity: 0;
+            transition: all .2s;
+        }
+    }
+}
+
+@media screen and (max-width: 991px){
+    .blockinstagram{   
+        &__inner{
+            padding: 50px 0;
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    .blockinstagram{
+        &__inner{
+            margin: 0 -2px;
+        }
+
+        &__feed{
+            flex-direction: column;
+        }
+
+        &__item{
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+    
+        &__small{
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+    
+        &__big{
+            flex: 0 0 100%;
+            max-width: 100%;
+            flex-direction: column;
+            flex-wrap: wrap;
+    
+            .blockinstagram__item{
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}

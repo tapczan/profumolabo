@@ -1,0 +1,300 @@
+/**
+* Override homepage styling
+* - bestsellery home [#arpl-group-5]
+* - bestsellery 404 [#arpl-group-17]
+*/ 
+.page-home,
+.page-pagenotfound,
+.bestseller-not-found{
+    .arpl-group-tabbed{
+        margin: 0;
+        padding: 100px 0;
+
+        .arpl-section{
+            max-width: 1176px;
+            padding: 0;
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+    
+        .arpl-header{
+            margin: 0;
+            min-height: auto;
+        }
+    
+        .arpl-title{
+            @include font-with-line-height($font-size-xxl, 39px);
+            font-family: $font-forum;
+            color: $black;
+            font-weight: 400;
+            margin: 0 auto 50px !important;
+            text-transform: uppercase;
+            display: block;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .arpl-more-container{
+            text-align: center;
+            margin-top: 50px;
+        }
+    
+        .arpl-more-link{
+            @include font-with-line-height($font-size-xs, 15px);
+    
+            text-transform: uppercase;
+            text-decoration: underline;
+    
+            &:hover{
+                color: $brown;
+            }
+    
+            .material-icons{
+                display: none;
+            }
+        }
+        
+        .nav-tabs{
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 40px;
+            border-bottom-style: none;
+        }
+
+        .nav-item{
+            position: relative;
+            padding-left: 20px;
+            padding-right: 20px;
+            
+            &:after{
+                content: '';
+                width: 1px;
+                height: 22px;
+                position: absolute;
+                margin: auto;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                background: $black;
+            }
+    
+            &:last-child:after{
+                display: none;
+            }
+        }
+
+        .nav-link{
+            @include font-with-line-height($font-size-product-lg, 32px);
+            text-transform: uppercase;
+            color: $dark-gray;
+            padding: 0;
+            border-style: none;
+            font-weight: 100;
+    
+            &.active{
+                color: $black;
+                font-weight: 300;
+            }
+
+            &:hover{
+                border-style: none !important;
+            }
+        }
+
+        .tab-content{
+            border-style: none;
+
+            .tab-pane{
+                padding: 0;
+    
+                .arpl-header{
+                    display: none;
+                }
+    
+                .arpl-content{
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+.page-home{
+    .arpl-group-tabbed{
+        padding: 50px 0;
+    }
+}
+
+.bestseller-not-found{
+    padding: 50px 0;
+    border-top: 1px #ddd solid;
+
+    .arpl-group-tabbed{
+        padding: 0;
+
+        .arpl-section{
+            padding-left: 0;
+            padding-right: 0;
+            max-width: 1176px;
+        }
+
+        .arpl-more-container{
+            margin-top: 0;
+        }
+    }
+}
+
+@media (min-width: 992px){
+    .page-home,
+    .page-pagenotfound,
+    .bestseller-not-found{
+        .arpl-group-tabbed{
+            .featured-products.arpl-no-carousel-products{
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                flex-wrap: wrap;
+
+                .products-list__block{
+                    padding: 25px 0;
+                }
+            }
+        }
+    }
+}
+  
+@media (max-width: 1199px){
+    .page-home,
+    .page-pagenotfound,
+    .bestseller-not-found{
+        .arpl-group-tabbed{
+            .featured-products.arpl-no-carousel-products{
+                .products-list__block{
+                    flex: 0 0 23%;
+                    max-width: 23%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991px){
+    .page-home,
+    .page-pagenotfound,
+    .bestseller-not-found{
+        .arpl-group-tabbed{
+            padding: 50px 0;
+
+            .arpl-tab-header{
+                display: none;
+            }
+    
+            .arpl-section{
+                max-width: 660px;
+            }
+        
+            .nav-tabs{
+                display: block;
+                font-size: 0;
+        
+                .nav-item{
+                    display: inline-block;
+                    width: 48%;
+                    text-align: right;
+            
+                    &:last-child{
+                        text-align: left;
+                    }
+                }
+            }
+
+            .nav-link{
+                @include font-with-line-height($font-size-xm, 24px);
+            }
+    
+            .featured-products.arpl-no-carousel-products{
+                .products-list__block{
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){
+    .page-home,
+    .page-pagenotfound,
+    .bestseller-not-found{
+        .arpl-group-tabbed{
+            &:before{
+                @include font-with-line-height($font-size-xm, 20px);
+        
+                margin-bottom: 30px;
+            }
+
+            .nav-tabs{
+                text-align: center;
+
+                .nav-item{
+                    width: 49%;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    text-align: center;
+                    width: 95px;
+            
+                    &:last-child{
+                        text-align: center;
+                        width: 130px;
+                    }
+    
+                    &:after{
+                        height: 13px;
+                        right: -1px;
+                    }
+                }
+            }
+
+            .nav-link{
+                @include font-with-line-height($font-size-md, 16px);
+                padding: 5px !important;
+    
+                &.active{
+                    font-weight: 400;
+                }
+            }
+
+            .arpl-section{
+                margin-bottom: 30px;
+                padding-left: 0;
+                padding-right: 0;
+
+                .slick-arrow{
+                    left: -10px !important;
+                }
+            
+                .slick-next{
+                    left: auto !important;
+                    right: -10px !important;
+                }
+            }
+
+            .arpl-more-container{
+                margin-top: 30px;
+        
+                .arpl-more-link{
+                    color: $brown;
+                }
+            }
+        }
+    }
+
+    .page-pagenotfound,
+    .bestseller-not-found{
+        .arpl-title{
+            @include font-with-line-height($font-size-xm, 20px);
+        
+            margin-bottom: 30px;
+        }
+    }
+}

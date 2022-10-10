@@ -1,0 +1,92 @@
+##########################
+# v1.0.1  - (2019-10-03) #
+##########################
+
+Bugfixes:
+
+[-] BO : fixed issues according to PrestaShop validator
+
+##########################
+# v1.0.2  - (2019-10-07) #
+##########################
+
+Bugfixes:
+
+[-] BO : FO template variables has been escaped
+
+###################################
+# v1.0.3  - (2020-02-10)  LAUSED  #
+###################################
+
+Improvements:
+
+[-] BO : Info page rework
+[+] BO/FO : Added french translations
+
+###################################
+# v1.0.4  - (2020-03-16)  DIABUT  #
+###################################
+
+Improvements:
+
+[-] BO : Fixed validator issues
+[+] BO/FO : Added two manuals EN and FR languages
+
+###################################
+# v1.0.5  - (2020-05-06)  LUKVAI  #
+###################################
+
+Improvements:
+
+[-] BO : Added validation for cart products
+[+] FO : Fixed specific price issue when currency was changed
+
+###################################
+# v1.0.6  - (2020-06-09)  DIABUT  #
+###################################
+
+Improvements:
+
+[-] BO : Fixed discount logic
+[+] FO : Fixed discount display
+
+###################################
+# v1.0.7  - (2020-07-01)  DIABUT  #
+###################################
+
+Improvements:
+
+[-] BO : Fixed filters logic
+
+###################################
+# v1.0.8  - (2021-03-31)  ALFIVA  #
+###################################
+
+Improvements:
+
+[-] BO : Fixed add to cart with discount logic.
+
+###################################
+# v1.0.9  - (2021-08-13)  LUKVAI  #
+###################################
+
+Improvements:
+
+[-] BO : Fixed issue with cart id retrieval in actionPaymentConfirmation
+
+###################################
+# v1.0.10  - (2021-12-30)  ERNLUZ  #
+###################################
+
+Improvements:
+
+[-] FO : Fixed issue with special offer prices in cart and discounts
+[-] FO : Fixed issue with special offer after accept change remove main product
+
+###################################
+# v1.0.11  - (2022-02-14)  GYTZUM  #
+###################################
+
+Improvements:
+
+[-] BO : Fixed BO issue

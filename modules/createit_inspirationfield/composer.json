@@ -1,0 +1,23 @@
+{
+  "name": "createit/inspirationfield",
+  "description": "createIT's Inspiration field module.",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "createIT",
+      "email": "support@createit.com"
+    },
+    {
+      "name": "createIT"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PrestaShop\\Module\\CreateitInspirationfield\\": "src/"
+    },
+    "config": {
+      "prepend-autoloader": false
+    },
+    "type": "prestashop-module"
+  }
+}

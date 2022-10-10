@@ -1,0 +1,1 @@
+{foreach from=$inspirationfield item=list }{$list['content']}{/foreach}

@@ -1,0 +1,39 @@
+{% trans_default_domain 'Modules.Eparagony.Eparagony' %}
+
+<div class="card">
+    {% if internalState %}
+        <div class="card-body">
+            {% if receiptError %}
+                {{ 'There is problem with printing this receipt.'|trans }}
+            {% endif %}
+            {% if receiptWaiting %}
+                {{ 'The receipt is in queued to be printed.'|trans }}
+            {% endif %}
+            {% if receiptReady %}
+                {{ 'The receipt is ready.'|trans }}
+            {% endif %}
+            <div>
+                {{ 'Internal state:'|trans }} <b>{{ internalState }}</b>
+            </div>
+            {% if receiptUrl %}
+                <div>
+                    {{ 'Preview:'|trans }} <a href="{{ receiptUrl }}">{{ receiptUrl }}</a>
+                </div>
+                <div>
+                    <a id="eparagony-force-email" class="btn btn-outline-warning" href="{{ sendEmail }}">
+                        {{ 'Force send e-mail'|trans }}
+                    </a>
+                    {{ 'It is expected the system has sent the e-mail already. Please check logs before clicking.' }}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% if forceDownload %}
+        <div class="card-body">
+            <a id="eparagony-force-download" class="btn btn-outline-danger" href="{{ forceDownload }}">
+                {{ 'Force download'|trans }}
+            </a>
+            {{ 'Click this button only in emergency.' }}
+        </div>
+    {% endif %}
+</div>

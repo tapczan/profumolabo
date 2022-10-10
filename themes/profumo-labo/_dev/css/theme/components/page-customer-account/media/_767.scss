@@ -1,0 +1,156 @@
+@media (max-width: 767px) {
+
+    body.page-customer-account,
+    #module-blockwishlist-lists {
+        #main {
+            .customer-links {
+                &__list {
+                    display: block;
+                    a{
+                        padding-left: 0;
+                    }
+                }
+                .customer-links__logout {
+                    padding-left:0;
+                }
+            }
+            .page-content {
+                button.btn.btn-primary,
+                a.btn.btn-primary {
+                    width: 100%; 
+                    margin: 0 auto;
+                    padding-left: 0;
+                }
+            }
+
+            .user-form__block {
+                
+                &:nth-child(1) {
+                    border-right: 0px solid #ddd;
+                    border-bottom: 2px solid #ddd;
+                    padding-bottom: 80px;
+                    .user-form__content {
+                            padding-right: 20px;
+                    }
+                }
+                &:nth-child(2) {
+                    .user-form__content {
+                        padding-left: 20px;
+                        margin-top: 50px;
+                        
+                        .mt-auto.text-center{
+                            margin-top: 0 !important;
+                        }
+                    }   
+                }
+            }
+        }
+    }
+    .wishlist-products-container {
+        .page-content.card {
+            box-shadow: none !important;
+        }
+        .wishlist-products-container-header {
+            h1 {
+                margin: 0 auto;
+            }
+            .sort-by-row {
+                padding: 10px 0;
+                min-width: 300px;
+                margin: 0 auto;
+
+                .products-sort-order .btn-unstyle.select-title {
+                    width: unset;
+                }
+            }
+        }
+        .wishlist-products-list {
+            .wishlist-products-item {
+                width: 220px;
+                .wishlist-product-link {
+                    overflow: hidden;
+                    display: unset;
+                }
+                .wishlist-product {
+                    max-width: 100%;
+                    .wishlist-product-availability.wishlist-product-availability-responsive {
+                        display: none;
+                    }
+                }
+                .wishlist-product-bottom {
+                    display: block;
+                    .wishlist-button-add {
+                        position: absolute;
+                    }
+                }
+            }
+        }
+    }
+
+    #view #wrapper .container {
+        width: 100% !important;
+    }
+
+    .personal-information {
+        .wishlist-container .page-content.card.card-block{
+            box-shadow: none;
+        }
+    }
+}
+
+
+@media (max-width: 509px) {
+
+    .wishlist-products-container {
+        
+        .wishlist-products-list {
+            .wishlist-products-item {
+                width: 200px !important;
+
+                .wishlist-product-image {
+                    width: 200px !important;
+                    height: 200px !important;
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .wishlist-products-container {
+        
+        .wishlist-products-list {
+            .wishlist-products-item {
+                width: 160px !important;
+                .wishlist-product-image {
+                    width: 160px !important;
+                    height: 160px !important;
+                }
+               
+            }
+
+            .user-form__block{
+                .user-form__content{
+                    padding-right: 15px;
+                    padding-left: 15px;
+                }
+
+                &:nth-child(1){
+                    border-right-style: none;
+                    margin-bottom: 30px;
+
+                    .user-form__content{
+                        padding-right: 15px;
+                    }
+                }
+
+                &:nth-child(2) .user-form__content{
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+
+}

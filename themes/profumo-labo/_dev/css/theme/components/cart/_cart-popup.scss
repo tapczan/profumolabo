@@ -1,0 +1,173 @@
+#blockcart-modal{
+    .modal{
+        &-title{
+            position: relative;
+            padding: 20px;
+            margin: 0 !important;
+            font-weight: normal;
+        }
+    
+        &-header{
+            @include font-with-line-height($font-size-lg, 22px);
+    
+            font-family: $font-forum;
+            color: $black;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            border-bottom-style: none;
+
+            .close{
+                position: absolute;
+                top: 18px;
+                right: 20px;
+                color: $black;
+                opacity: 1;
+                font-size: $font-size-xxl;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        }
+
+        &-content{
+            border-radius: 0;
+            border-style: none;
+        }
+
+        &-body{
+            border-top: 1px solid rgba($color: $gray, $alpha: 0.25);
+            padding: 0 !important;
+            margin: 0 !important;
+
+            hr{
+                display: none;
+            }
+        }
+
+        &-footer{
+            @include font-with-line-height($font-size-sm, 20px);
+  
+            border-top-style: none;
+            padding: 20px;
+            text-align: center;
+            font-family: $font-jost;
+    
+            a{
+                font-weight: 300;
+                background: $black;
+                color: $white;
+                padding: 10px;
+                text-transform: uppercase;
+                outline: none;
+                display: block;
+                text-decoration: none;
+                letter-spacing: 1px;
+                border-radius: 0;
+                border-style: none;
+                box-shadow: none;
+                margin: 0;
+
+                &:hover,
+                &:focus{
+                    box-shadow: none;
+                    outline: none;
+                }
+            }
+
+            button{
+                @include font-with-line-height($font-size-sm, 18px);
+
+                font-weight: 400;
+                margin-top: 10px;
+                text-decoration: underline;
+                display: inline-block;
+                cursor: pointer;
+
+                &:hover,
+                &:focus{
+                    box-shadow: none;
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .cart-products{
+        border-bottom: 1px solid rgba($color: $gray, $alpha: 0.25);
+        border-top-style: none !important;
+        padding: 20px 20px 20px 120px !important;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 !important;
+  
+        &__thumb{
+            position: absolute;
+            top: 0;
+            left: 20px;
+            bottom: 0;
+            width: 100px;
+
+            img{
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: auto;
+                margin: auto;
+            }
+        }
+    
+        &__desc{
+            font-family: $font-jost;
+            font-weight: 400;
+            color: $black;
+            width: 235px;
+
+            .h6{
+                @include font-with-line-height($font-size-xm, 26px);
+    
+                font-weight: 400;
+                text-transform: uppercase;
+                margin: 0 !important;
+                color: $black;
+            }
+
+            .price{
+                @include font-with-line-height($font-size-product-lg, 36px);
+        
+                font-weight: 500;
+                color: $black;
+            }
+        }
+    }
+
+    .cart-summary{
+        &-line{
+            @include font-with-line-height($font-size-xm, 30px);
+
+            padding: 20px 20px 0;
+            margin: 0 !important;
+            display: flex;
+            justify-content: space-between;
+            color: $black;
+            font-family: $font-jost;
+
+            & + .cart-summary-line{
+                padding-top: 0;
+            }
+
+            .label{
+                font-weight: 400;
+            }
+    
+            .value{
+                font-weight: 500;
+            }
+        }
+    }
+}

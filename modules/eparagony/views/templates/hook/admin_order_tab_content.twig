@@ -1,0 +1,68 @@
+{% trans_default_domain 'Modules.Eparagony.Eparagony' %}
+
+<div class="tab-pane fade show" id="eparagony-admin-order-tab-content" role="tabpanel">
+    <div class="row">
+        <div class="col-md-6">
+            <dl>
+                <dt>{{'Status:'|trans}}</dt>
+                <dd>
+                    {{ include('@Modules/eparagony/views/templates/parts/status_decoder.twig') }}
+                </dd>
+                <dt>{{'Document type:'|trans}}</dt>
+                <dd>
+                    {% if documentType == 'receipt' %}
+                        {{ 'e-receipt'|trans }}
+                    {% else %}
+                        {{ 'unknown'|trans }}
+                    {% endif %}
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            {% if sendEmail %}
+                <a id="eparagony-force-email" class="btn btn-outline-warning mb-1" href="{{ sendEmail }}">
+                    {{ 'Retry e-mail sending'|trans }}
+                </a>
+            {% endif %}
+            {% if forceDownload %}
+                <a class="btn btn-outline-danger mb-1 js-eparagony-force-download" href="{{ forceDownload }}">
+                    {{ 'Prepare e-receipt'|trans }}
+                </a>
+            {% endif %}
+            {% if forceRedownload %}
+                <a class="btn btn-outline-danger mb-1 js-eparagony-force-download" href="{{ forceRedownload }}">
+                    {{ 'Prepare new e-receipt'|trans }}
+                </a>
+            {% endif %}
+            {% if url %}
+                <a class="btn btn-outline-primary mb-1" href="{{ url }}">
+                    {{ 'Display e-receipt'|trans }}
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th colspan="4">{{'Additional information:'|trans}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ 'Shop ID:'|trans }} {{ documentId }}</td>
+                    <td>{{ 'Repository ID:'|trans }} {{ sparkToken }}</td>
+                    <td>{{ 'Last update:'|trans }} {{ updated }}</td>
+                    <td>{{ 'Retry count:'|trans }} {{ retryCount }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        {% if queueLink %}
+        <div class="col-md-12">
+            <a class="btn btn-secondary btn-sm mb-1" href="{{ queueLink|raw }}">
+                {{ 'Show queue'|trans }}
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>

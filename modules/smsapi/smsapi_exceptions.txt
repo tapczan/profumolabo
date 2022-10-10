@@ -1,0 +1,87 @@
+object(SoapFault)#179 (10) {
+  ["message":protected]=>
+  string(39) "Cannot send sms, account balance is low"
+  ["string":"Exception":private]=>
+  string(0) ""
+  ["code":protected]=>
+  int(0)
+  ["file":protected]=>
+  string(75) "/home/ojvxsoeyaq/domains/profumolabo.com/public_html/modules/smsapi/lib.php"
+  ["line":protected]=>
+  int(59)
+  ["trace":"Exception":private]=>
+  array(1) {
+    [0]=>
+    array(6) {
+      ["file"]=>
+      string(75) "/home/ojvxsoeyaq/domains/profumolabo.com/public_html/modules/smsapi/lib.php"
+      ["line"]=>
+      int(59)
+      ["function"]=>
+      string(6) "__call"
+      ["class"]=>
+      string(10) "SoapClient"
+      ["type"]=>
+      string(2) "->"
+      ["args"]=>
+      array(2) {
+        [0]=>
+        string(8) "send_sms"
+        [1]=>
+        array(1) {
+          [0]=>
+          array(2) {
+            ["client"]=>
+            array(2) {
+              ["username"]=>
+              string(22) "office@profumolabo.com"
+              ["password"]=>
+              string(32) "d18feb6b54c42c60c84f9a17ba2ecd98"
+            }
+            ["sms"]=>
+            array(9) {
+              ["sender"]=>
+              NULL
+              ["recipient"]=>
+              string(9) "791524028"
+              ["eco"]=>
+              string(1) "0"
+              ["date_send"]=>
+              int(0)
+              ["details"]=>
+              int(0)
+              ["message"]=>
+              string(179) "Witaj Joanna Dziadosz. Twoje zamówienie o numerze 1211 i wartości 48,90 zostało złożone. Powiadomimy Cię, gdy Twoje zamówienie zostanie wysłane. Pozdrawiamy, Profumo Labo."
+              ["partner_id"]=>
+              int(7413)
+              ["params"]=>
+              array(4) {
+                ["single_message"]=>
+                int(0)
+                ["no_unicode"]=>
+                int(1)
+                ["test"]=>
+                string(1) "1"
+                ["flash"]=>
+                string(5) "FALSE"
+              }
+              ["idx"]=>
+              string(13) "633d70f67f3a3"
+            }
+          }
+        }
+      }
+    }
+  }
+  ["previous":"Exception":private]=>
+  NULL
+  ["faultstring"]=>
+  string(39) "Cannot send sms, account balance is low"
+  ["faultcode"]=>
+  string(7) "ns1:103"
+  ["detail"]=>
+  object(stdClass)#178 (1) {
+    ["Fault"]=>
+    string(0) ""
+  }
+}

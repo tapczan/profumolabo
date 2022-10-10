@@ -1,0 +1,40 @@
+# ignore everything in the root except the "wp-content" directory.
+/*
+!themes/
+!override/
+modules/
+!modules/is*
+!modules/blockwishlist
+!modules/arproductlists
+!modules/contentvideo
+!modules/createit_accordion
+!modules/createit_customfield
+!modules/createit_countdown
+!modules/createit_related_products
+!modules/createit_productfield2
+!modules/createit_inspirationfield
+!modules/ets_megamenu
+!modules/kolekcjapremium
+!modules/myprestacomments
+!modules/ph_simpleblog
+!modules/profumolabocontent
+!modules/pwinstafeed
+!modules/thecheckout
+!modules/ps_facetedsearch
+
+# ignore all files starting with .
+.*
+
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# ignore everything in the "wp-content" directory, except:
+# "mu-plugins" directory
+# "plugins" directory
+# "themes" directory
+themes/*
+!themes/profumo-labo
+!themes/profumo-labo/modules/
+
+# ignore node/grunt dependency directories
+node_modules/

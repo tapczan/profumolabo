@@ -1,0 +1,37 @@
+/*
+* NOTICE OF LICENSE
+*
+* @author    INVERTUS, UAB www.invertus.eu <support@invertus.eu>
+* @copyright Copyright (c) permanent, INVERTUS, UAB
+* @license   Addons PrestaShop license limitation
+* @see       /LICENSE
+*
+* International Registered Trademark & Property of INVERTUS, UAB
+*/
+.so-float-left{
+  float: left!important;
+}
+.so-select-small{
+  height: 25px;
+  width: 105px;
+}
+.so-countdown{
+  color: red;
+  font-size: xx-large;
+}
+.so-discount-small{
+  line-height: 26px;
+}
+.so-button-smaller{
+  padding: 5px;
+  font-size: 14px;
+}
+.so-black-title{
+  color: #0a0a0a;
+}
+.so-button-text{
+  text-align: center;
+}
+.sua-out-of-stock-icon{
+  color: #ff9a52;
+}

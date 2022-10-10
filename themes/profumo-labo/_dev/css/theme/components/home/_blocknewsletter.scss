@@ -1,0 +1,120 @@
+.block_newsletter {
+    background-color: #f1f1f1;
+
+    &__label {
+        @include font-with-line-height($font-size-product-lg, 28px);
+        
+        font-family: $font-forum;
+        letter-spacing: 0.08em;
+        color: $black;
+
+        @include media-breakpoint-down(sm) {
+            @include font-with-line-height($font-size-xs, 15px);
+            
+            text-align: center;
+            letter-spacing: 0.1em;
+        }
+    }
+
+    &_alert{
+        border-radius: 0 !important;
+        padding: 5px 15px !important;
+        font-size: 12px;
+    }
+
+    .container {
+        @include media-breakpoint-up(xl) {
+            max-width: 1500px;
+        }
+    }
+
+    .input-group-append{
+        margin-left: 0 !important;
+    }
+
+    .input-group {
+        margin-bottom: 11px;
+    }
+
+    .form-control {
+        border-color: #fff;
+        max-width: 376px;
+        height: 54px;
+        border-radius: 0;
+        color: #000;
+        font-weight: 300;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        @include media-breakpoint-down(sm) {
+            height: 30px;
+        }
+    }
+
+    .btn-primary {
+        min-width: 155px;
+        background-color: #fff;
+        border: 1px solid #b6b6b6;
+        border-radius: 0;
+        color: #000;
+        font-weight: 300;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: #000 !important;
+            border-color: #000 !important;
+            color: #fff;
+            box-shadow: none !important;
+        }
+
+        @include media-breakpoint-down(sm) {
+            @include font-with-line-height($font-size-xs, 30px);
+
+            height: 30px;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .custom-control-input {
+        box-shadow: none;
+        outline: none;
+        z-index: 10;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+        border-color: #000;
+        background-color: #000;
+    }
+
+    .custom-control-label {
+        @include font-with-line-height($font-size-md, 21px);
+
+        font-weight: 300;
+        letter-spacing: 0.15em;
+        color: #000;
+
+        @include media-breakpoint-down(sm) {
+            @include font-with-line-height($font-size-xs, 16px);
+        }
+
+        &::before {
+            border-color: #000;
+            border-radius: 0;
+            top: 0.2rem;
+        }
+
+        a {
+            color: #000;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

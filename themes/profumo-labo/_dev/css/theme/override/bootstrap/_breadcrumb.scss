@@ -1,0 +1,51 @@
+
+.breadcrumb {
+  background: transparent;
+  text-align: center;
+  padding: 0;
+  margin: 50px 0 40px;
+  display: block;
+
+  &-item{
+    @include font-with-line-height($font-size-sm, 18px);
+
+    display: inline-block;
+    padding: 0 20px 0 10px !important;
+    color: $black;
+    text-transform: uppercase;
+    position: relative;
+
+    a{
+      @include font-with-line-height($font-size-sm, 18px);
+      color: $black;
+    }
+
+    &:after{
+      @include font-with-line-height($font-size-md, 18px);
+
+      content: '>';
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-weight: 300;
+    }
+
+    &:last-child:after{
+      display: none;
+    }
+
+    &:before{
+      display: none;
+    }
+
+    &.active{
+      color: $black;
+    }
+  }
+}
+
+@media(max-width: 767px){
+  .breadcrumb{
+    margin: 30px 0;
+  }
+}

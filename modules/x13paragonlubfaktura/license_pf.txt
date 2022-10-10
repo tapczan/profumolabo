@@ -1,0 +1,24 @@
+Server restriction: profumolabo.com,www.profumolabo.com,*.profumolabo.com,*.local,*.loc,*.localhost,*.test,dev.*,*.dev,*.dev.*
+
+------ LICENSE FILE DATA -------
+2V2V4U10bTg51wxgUb943uHM26I6cFcs
+iFkSzna8lpRJtg1yXnR76l6JGoGsYpJb
+OCn2JxJjyUFfeIfjR0jUGv+Tn+PYZ+q7
+GcszTTId1ys6w3ce9j6FomeQf+HIidNE
+hlk59T8P+mg+8Aw1c4BF4H8RR63ziUYf
+B6qfHUhzlypaJM/k0nKLz2lztYNN23Wr
+G1XuDKPQkPADRr4FhyXToqVL0xdMBhn5
+NUScK+5GB6bUZ17dmoEU8Z7Mj4YnrC+B
+wKbshKJk1QvK+fe0HlzXbVj7LYCt0Mnh
+Jkw2BweBHmUlkG/xHeWop3xbv3HE56G9
+FHNabpJlF4IQJ8obpJmgF8gMbPPmrWDD
+90qajpkMEpHm4cI/owAAHdOzg9A6V3n7
+TTQ9+UbPlPlRAQc6+kGRoaw59sJbHJW2
+eFhfxnBhB8U1DMPBRtwifSbpXpTyDcxM
+a3q2jZ7HggFDyAqmJsn2pgkM7UAvYatt
+VDyU3D97XRgqWe0xKae43KTpdJ5MsuwW
+LvmRXDPJncBepjxvw0NH9BbD1D27boQb
+nSxNZ5KaamVNhmJyzKT4y4zVU2IfHXks
+JhLCm0x0Jgx+t2t7WtJ6ZvFWW+pPWsxL
+KslkpFeYveSs
+--------------------------------

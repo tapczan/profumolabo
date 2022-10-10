@@ -1,0 +1,107 @@
+.page-cart{
+    .cart-grid{
+        .products-section-title{
+            @include font-with-line-height($font-size-xxl, 38px);
+    
+            font-family: $font-forum;
+            letter-spacing: 3px;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: $black;
+            text-align: center;
+        }
+    }
+
+    .cart-grid-bottom{
+        display: flex;
+        flex-wrap: wrap;
+        margin:0 auto;
+
+        .so-display-div{
+            flex: 25%;
+            margin: 0 auto;
+        }
+        
+        .product-line-grid{
+            margin: 0 25px !important;
+            padding: 20px !important;
+        }
+
+        .product-line-grid-left,
+        .product-line-grid-body,
+        .product-line-grid-right{
+            width: 100%;
+            flex:unset;
+            max-width: unset;
+            text-align: center;
+        }
+
+        .product-line-info,
+        .text-xs-center{
+            width: 100%;
+        }
+
+        .sua-add-to-cart{
+            color: #fff;
+            background-color:#000;
+            border-radius: 0;
+            text-transform: uppercase;
+            font-weight: 400;
+            width: 240px;
+            margin: 0 auto;
+            border:0;
+
+            i{
+                display: none;
+            }
+        }
+
+        .product-variants{
+            display: none;
+        }
+
+        .card-header{
+            margin-bottom: 20px;
+        }
+
+        .so-black-title{
+            @include font-with-line-height($font-size-sm, 16px);
+
+            font-family: $font-jost;
+
+            b{
+                font-weight: 500;
+            }
+        }
+
+        .upsell-crosssell-price-attribute{
+            @include font-with-line-height($font-size-xs, 15px);
+
+            font-weight: 400;
+            color: $black;
+            margin-bottom: -22px;
+            display: block;
+
+            & ~ .upsell-crosssell-price-attribute {
+                font-weight: 300;
+            }
+        }
+        .sua-out-of-stock-icon{
+            display: inline-block;
+            vertical-align: middle;
+            
+            & + strong{
+                @include font-with-line-height($font-size-xs, 15px);
+                
+                font-weight: 500;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        .js-sua-out-of-stock-box{
+            width: 100%;
+        }
+    }
+}

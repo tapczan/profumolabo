@@ -1,0 +1,47 @@
+{% trans_default_domain 'Modules.Eparagony.Eparagony' %}
+
+{% set layoutTitle = 'Print Server Debug'|trans %}
+
+{% extends '@PrestaShop/Admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        {{ 'Document ID'|trans }}
+                    </th>
+                    <th>
+                        {{ 'Date'|trans }}
+                    </th>
+                    <th>
+                        {{ 'Request'|trans }}
+                    </th>
+                </tr>
+                </thead>
+                {% for log in logs %}
+                <tr>
+                    <td>
+                        {{ log.documentTextId|raw }}
+                    </td>
+                    <td>
+                        {{ log.created|date('Y-m-d H:i:s') }}
+                    </td>
+                    <td>
+                        <code>
+                            {{ log.payload|nl2br }}
+                        </code>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

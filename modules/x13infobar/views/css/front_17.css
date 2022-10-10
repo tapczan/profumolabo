@@ -1,0 +1,7 @@
+.x13-counter-container {
+  z-index: 1000;
+}
+
+#x13-counter-container .container{
+  background: none;
+}
