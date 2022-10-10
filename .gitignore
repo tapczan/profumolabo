@@ -1,4 +1,4 @@
-# ignore everything in the root except the "wp-content" directory.
+# ignore everything in the root
 /*
 !themes/
 !override/
@@ -28,10 +28,6 @@ modules/
 # track this file .gitignore (i.e. do NOT ignore it)
 !.gitignore
 
-# ignore everything in the "wp-content" directory, except:
-# "mu-plugins" directory
-# "plugins" directory
-# "themes" directory
 themes/*
 !themes/profumo-labo
 !themes/profumo-labo/modules/
